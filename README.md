@@ -92,7 +92,15 @@ Read on below for project specifics.
 ## Credits
 
 ## Project comments
-Menu music acts as an intro to your game, but also as an outro. When players are done playing, they oftentimes end back again to the menu.
+### Wall clipping
+To stop the wall from clipping out of sight it is nessasary to set the `camera.near` to a very tiny amount, like so:
+```
+camera = new PerspectiveCamera(67, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+camera.lookAt(0, 0, 0);
+camera.near = .01f;
+camera.far = 100f;
+camera.update();
+```
 
 ## Other
 For other project specifics check out the [commits](https://github.com/Slideshow776/3D-shooting-game/commits/master).
