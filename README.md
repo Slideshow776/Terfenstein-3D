@@ -6,7 +6,7 @@ Read on below for project specifics.
 2. [Credits](#credits)
 3. [Project Comments](#project-comments)
 4. [Other](#other)
-5. [Project Kanban Board](https://github.com/Slideshow776/Pride-Art-2022/projects/1)
+5. [Project Kanban Board](https://github.com/Slideshow776/3D-shooting-game/projects/1)
 
 ## Game Design Document :sparkling_heart:
 
