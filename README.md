@@ -101,6 +101,30 @@ camera.near = .01f;
 camera.far = 100f;
 camera.update();
 ```
+### Player movement
+The cursor can be locked to the window like this: 
+`Gdx.input.setCursorCatched(true);`
+
+Keyboard movement is as simple as this: 
+```
+private void keyboardPolling(float dt) {
+   if (Gdx.input.isKeyPressed(Input.Keys.W))
+      stage.moveCameraForward(speed * dt);
+   if (Gdx.input.isKeyPressed(Input.Keys.A))
+      stage.moveCameraRight(speed * dt);
+   if (Gdx.input.isKeyPressed(Input.Keys.S))
+      stage.moveCameraForward(-speed * dt);
+   if (Gdx.input.isKeyPressed(Input.Keys.D))
+      stage.moveCameraRight(-speed * dt);
+}
+```
+
+Mouse movement is this simple line:
+```
+private void mousePolling() {
+   stage.turnCamera(rotateSpeed * Gdx.input.getDeltaX() * BaseGame.mouseMovementSensitivity);
+}
+```
 
 ## Other
 For other project specifics check out the [commits](https://github.com/Slideshow776/3D-shooting-game/commits/master).
