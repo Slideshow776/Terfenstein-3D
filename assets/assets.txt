@@ -2,6 +2,7 @@ d:assets:assets:0:application/unknown:1
 d:audio:audio:0:application/unknown:1
 d:audio/music:audio/music:0:application/unknown:1
 d:audio/sound:audio/sound:0:application/unknown:1
+a:audio/sound/370220__eflexmusic__pistol-shot-close-mixed.wav:audio/sound/370220__eflexmusic__pistol-shot-close-mixed-2c3b8e64780244219ff34f0480f41448.wav:264146:audio/x-wav:1
 d:effects:effects:0:application/unknown:1
 d:fonts:fonts:0:application/unknown:1
 d:i18n:i18n:0:application/unknown:1
@@ -10,16 +11,16 @@ d:images/excluded:images/excluded:0:application/unknown:1
 d:images/included:images/included:0:application/unknown:1
 i:images/included/crate.jpg:images/included/crate-3ad813e05fe757d6a6fb85b9b3f99381.jpg:6103:image/jpeg:1
 d:images/included/packed:images/included/packed:0:application/unknown:1
-t:images/included/packed/images.pack.atlas:images/included/packed/images.pack-2b32a2fb5fa0d5e37ffa962c4fb96f43.atlas:877:application/unknown:1
+t:images/included/packed/images.pack.atlas:images/included/packed/images.pack-a517a023e62666f9793b89240d249ce7.atlas:877:application/unknown:1
 i:images/included/packed/images.pack.png:images/included/packed/images.pack-382da42c721f4eada682d89708e4cc2f.png:18021:image/png:1
 i:images/included/packed/images.pack2.png:images/included/packed/images.pack2-72ba17033a43ff2f4d0fba14c84741d4.png:32522:image/png:1
 i:images/included/packed/images.pack3.png:images/included/packed/images.pack3-6937211afa8fac2cd9ef5522cf5e120a.png:19096:image/png:1
 i:images/included/packed/images.pack4.png:images/included/packed/images.pack4-20857dd4ccfdb037d00546de0dc2bf42.png:15852:image/png:1
 d:images/included/player:images/included/player:0:application/unknown:1
-i:images/included/player/shooting 1.png:images/included/player/shooting 1-46e066ee52625c7a3f5b6f3a2f10641b.png:19654:image/png:1
-i:images/included/player/shooting 2.png:images/included/player/shooting 2-12cb7229b7d52602511c3d18619cf754.png:29836:image/png:1
-i:images/included/player/shooting 3.png:images/included/player/shooting 3-03bae454cdfc3fe17c42ff46e9cbd3af.png:24887:image/png:1
-i:images/included/player/shooting 4.png:images/included/player/shooting 4-56cde11493049677cae6fcb12a1bb3b7.png:21912:image/png:1
+i:images/included/player/shooting 0.png:images/included/player/shooting 0-46e066ee52625c7a3f5b6f3a2f10641b.png:19654:image/png:1
+i:images/included/player/shooting 1.png:images/included/player/shooting 1-12cb7229b7d52602511c3d18619cf754.png:29836:image/png:1
+i:images/included/player/shooting 2.png:images/included/player/shooting 2-03bae454cdfc3fe17c42ff46e9cbd3af.png:24887:image/png:1
+i:images/included/player/shooting 3.png:images/included/player/shooting 3-56cde11493049677cae6fcb12a1bb3b7.png:21912:image/png:1
 d:maps:maps:0:application/unknown:1
 d:shaders:shaders:0:application/unknown:1
 d:skins:skins:0:application/unknown:1
