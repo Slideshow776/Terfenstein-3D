@@ -37,10 +37,10 @@ public class Player extends BaseActor3D {
     private void keyboardPolling(float dt) {
         if (Gdx.input.isKeyPressed(Input.Keys.W))
             stage.moveCameraForward(speed * dt);
-        if (Gdx.input.isKeyPressed(Input.Keys.S))
-            stage.moveCameraForward(-speed * dt);
         if (Gdx.input.isKeyPressed(Input.Keys.A))
             stage.moveCameraRight(speed * dt);
+        if (Gdx.input.isKeyPressed(Input.Keys.S))
+            stage.moveCameraForward(-speed * dt);
         if (Gdx.input.isKeyPressed(Input.Keys.D))
             stage.moveCameraRight(-speed * dt);
     }

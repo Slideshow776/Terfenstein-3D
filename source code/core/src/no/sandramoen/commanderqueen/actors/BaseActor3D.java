@@ -1,6 +1,7 @@
 package no.sandramoen.commanderqueen.actors;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.g3d.Environment;
 import com.badlogic.gdx.graphics.g3d.ModelBatch;
 import com.badlogic.gdx.graphics.g3d.ModelInstance;
@@ -20,6 +21,7 @@ import com.badlogic.gdx.math.Intersector.MinimumTranslationVector;
 
 import java.util.ArrayList;
 
+import no.sandramoen.commanderqueen.utils.BaseGame;
 import no.sandramoen.commanderqueen.utils.Stage3D;
 
 public class BaseActor3D {
@@ -67,6 +69,14 @@ public class BaseActor3D {
 
         for (Material m : modelData.materials)
             m.set(TextureAttribute.createDiffuse(tex));
+    }
+
+    public void loadImage(String name) {
+        TextureRegion region = BaseGame.textureAtlas.findRegion(name);
+        if (region == null)
+            Gdx.app.error(getClass().getSimpleName(), "Error: region is null. Are you sure the image '" + name + "' exists?");
+        for (Material m : modelData.materials)
+            m.set(TextureAttribute.createDiffuse(region));
     }
 
     public Vector3 getPosition() {

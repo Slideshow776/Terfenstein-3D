@@ -17,7 +17,7 @@ public class LevelScreen extends BaseScreen {
     public void initialize() {
         Box markerO = new Box(0f, 0f, 0f, mainStage3D);
         markerO.setColor(Color.BROWN);
-        markerO.loadTexture("assets/crate.jpg");
+        markerO.loadImage("crate");
         markerO.setScale(2, 2, -2);
 
         player = new Player(0f, 0f, 0f, mainStage3D);
