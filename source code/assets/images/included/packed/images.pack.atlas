@@ -17,14 +17,14 @@ size: 1024, 1024
 format: RGBA8888
 filter: Nearest, Nearest
 repeat: none
-player/shooting 1
+player/shooting 0
   rotate: false
   xy: 2, 508
   size: 512, 512
   orig: 512, 512
   offset: 0, 0
   index: -1
-player/shooting 2
+player/shooting 1
   rotate: false
   xy: 2, 2
   size: 512, 504
@@ -37,7 +37,7 @@ size: 1024, 1024
 format: RGBA8888
 filter: Nearest, Nearest
 repeat: none
-player/shooting 3
+player/shooting 2
   rotate: false
   xy: 2, 2
   size: 512, 512
@@ -50,7 +50,7 @@ size: 1024, 1024
 format: RGBA8888
 filter: Nearest, Nearest
 repeat: none
-player/shooting 4
+player/shooting 3
   rotate: false
   xy: 2, 2
   size: 512, 512

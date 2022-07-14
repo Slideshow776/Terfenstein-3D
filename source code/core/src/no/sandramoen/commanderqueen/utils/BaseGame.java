@@ -6,6 +6,7 @@ import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.assets.AssetDescriptor;
 import com.badlogic.gdx.assets.AssetErrorListener;
 import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 
 public abstract class BaseGame extends Game implements AssetErrorListener {
@@ -15,9 +16,13 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
 
     // game assets
     public static TextureAtlas textureAtlas;
+    public static Sound pistolShotSound;
 
     // game state
     public static float mouseMovementSensitivity = .05f;
+    public static float voiceVolume = 1f;
+    public static float soundVolume = .3f;
+    public static float musicVolume = .7f;
 
     public BaseGame() {
         game = this;
@@ -55,7 +60,7 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
         // assetManager.load("audio/music/99567__shnitzelkiller__cammipple.mp3", Music.class);
 
         // sound
-        // assetManager.load("audio/sound/armor1.wav", Sound.class);
+        assetManager.load("audio/sound/370220__eflexmusic__pistol-shot-close-mixed.wav", Sound.class);
 
         // tiled maps
         // assetManager.setLoader(TiledMap.class, new TmxMapLoader(new InternalFileHandleResolver()));
@@ -67,7 +72,7 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
         // levelMusic1 = assetManager.get("audio/music/99567__shnitzelkiller__cammipple.mp3", Music.class);
 
         // sound
-        // armor1Sound = assetManager.get("audio/sound/armor1.wav", Sound.class);
+        pistolShotSound = assetManager.get("audio/sound/370220__eflexmusic__pistol-shot-close-mixed.wav", Sound.class);
 
         // tiled maps
         // level1Map = assetManager.get("maps/level1.tmx", TiledMap.class);
