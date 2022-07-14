@@ -1,5 +1,9 @@
 # 3D-shooting-game
 
+[Try it](https://slideshow776.github.io/3D-shooting-game/)
+![image](https://user-images.githubusercontent.com/4059636/179039668-9a6e8b86-c5fe-4ecf-b3be-08fcc6bc85d7.png)
+
+
 Read on below for project specifics.
 
 1. [Game Design Document](#game-design-document-sparkling_heart)
