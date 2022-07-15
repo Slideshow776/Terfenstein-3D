@@ -135,6 +135,7 @@ public class BaseActor3D {
 
         float[] vertices =
                 {max.x, max.z, min.x, max.z, min.x, min.z, max.x, min.z};
+
         boundingPolygon = new Polygon(vertices);
         boundingPolygon.setOrigin(0, 0);
     }

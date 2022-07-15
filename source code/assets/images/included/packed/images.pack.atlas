@@ -1,14 +1,14 @@
 
 images.pack.png
-size: 256, 256
+size: 1024, 1024
 format: RGBA8888
 filter: Nearest, Nearest
 repeat: none
-crate
+cliff0
   rotate: false
   xy: 2, 2
-  size: 128, 128
-  orig: 128, 128
+  size: 640, 640
+  orig: 640, 640
   offset: 0, 0
   index: -1
 

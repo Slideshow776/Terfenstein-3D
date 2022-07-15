@@ -8,12 +8,12 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 
-public abstract class BaseScreen implements Screen, InputProcessor {
+public abstract class BaseScreen3D implements Screen, InputProcessor {
     protected Stage3D mainStage3D;
     protected Stage uiStage;
     protected Table uiTable;
 
-    public BaseScreen() {
+    public BaseScreen3D() {
         mainStage3D = new Stage3D();
         uiStage = new Stage();
 

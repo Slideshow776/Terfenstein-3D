@@ -33,7 +33,7 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
         assetManager();
     }
 
-    public static void setActiveScreen(BaseScreen screen) {
+    public static void setActiveScreen(BaseScreen3D screen) {
         game.setScreen(screen);
     }
 
