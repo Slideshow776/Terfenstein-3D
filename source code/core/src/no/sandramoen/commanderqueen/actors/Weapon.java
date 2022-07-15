@@ -1,4 +1,4 @@
-package no.sandramoen.commanderqueen.ui;
+package no.sandramoen.commanderqueen.actors;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Animation;
@@ -32,7 +32,8 @@ public class Weapon extends BaseActor {
     @Override
     public void draw(Batch batch, float parentAlpha) {
         super.draw(batch, parentAlpha);
-        totalTime += Gdx.graphics.getDeltaTime();
+        if (totalTime < 10f)
+            totalTime += Gdx.graphics.getDeltaTime();
         batch.draw(shootAnimation.getKeyFrame(totalTime), getX(), getY());
     }
 

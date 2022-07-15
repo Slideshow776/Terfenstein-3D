@@ -4,12 +4,11 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.g3d.utils.FirstPersonCameraController;
 import com.badlogic.gdx.math.MathUtils;
 
 import no.sandramoen.commanderqueen.actors.Box;
 import no.sandramoen.commanderqueen.actors.Player;
-import no.sandramoen.commanderqueen.ui.Weapon;
+import no.sandramoen.commanderqueen.actors.Weapon;
 import no.sandramoen.commanderqueen.utils.BaseGame;
 import no.sandramoen.commanderqueen.utils.BaseScreen;
 
