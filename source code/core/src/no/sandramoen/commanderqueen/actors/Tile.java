@@ -4,9 +4,9 @@ import com.badlogic.gdx.graphics.Color;
 
 import no.sandramoen.commanderqueen.utils.Stage3D;
 
-public class Tile extends Cube{
-    public Tile(float x, float z, float sizeOfSides, Stage3D s) {
-        super(x, z, sizeOfSides, s);
+public class Tile extends Cuboid {
+    public Tile(float x, float z, Stage3D s) {
+        super(x, z, 4, s);
         setColor(Color.BROWN);
         loadImage("cliff0");
     }

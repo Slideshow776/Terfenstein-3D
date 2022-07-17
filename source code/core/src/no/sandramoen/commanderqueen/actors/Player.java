@@ -6,7 +6,7 @@ import com.badlogic.gdx.Input;
 import no.sandramoen.commanderqueen.utils.BaseGame;
 import no.sandramoen.commanderqueen.utils.Stage3D;
 
-public class Player extends Cube {
+public class Player extends Cuboid {
     private float speed = 4.0f;
     private float rotateSpeed = 90f * .05f;
 

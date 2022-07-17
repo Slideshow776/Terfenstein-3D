@@ -19,12 +19,8 @@ public class LevelScreen extends BaseScreen3D {
     private Label debugLabel;
 
     public void initialize() {
-        tile = new Tile(5f, 5f, 4f, mainStage3D);
-        player = new Player(0f, 0f, mainStage3D);
-        weapon = new Weapon(uiStage);
-
-        debugLabel = new Label(" ", BaseGame.label26Style);
-        uiTable.add(debugLabel).expand().top().left().padTop(Gdx.graphics.getHeight() * .01f).padLeft(Gdx.graphics.getWidth() * .01f);
+        initializeActors();
+        initializeUI();
     }
 
     public void update(float dt) {
@@ -53,5 +49,16 @@ public class LevelScreen extends BaseScreen3D {
             weapon.shoot();
         }
         return super.touchDown(screenX, screenY, pointer, button);
+    }
+
+    private void initializeActors() {
+        tile = new Tile(5f, 5f, mainStage3D);
+        player = new Player(0f, 0f, mainStage3D);
+        weapon = new Weapon(uiStage);
+    }
+
+    private void initializeUI() {
+        debugLabel = new Label(" ", BaseGame.label26Style);
+        uiTable.add(debugLabel).expand().top().left().padTop(Gdx.graphics.getHeight() * .01f).padLeft(Gdx.graphics.getWidth() * .01f);
     }
 }
