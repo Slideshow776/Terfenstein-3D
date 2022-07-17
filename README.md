@@ -130,6 +130,14 @@ private void mousePolling() {
 }
 ```
 
+### Collisions
+While the game is 3D viewed from a birds perspective the area of movement is 2D, and thus we can implement a simple/standard 2D collision detection system using these functions found in `BaseActor3D.java`: 
+* `setBaseRectangle()`
+* `setBasePolygon()`
+* `getBoundaryPolygon()`
+* `overlaps(BaseActor3D other)`
+* `preventOverlap(BaseActor3D other)`
+
 ## Other
 For other project specifics check out the [commits](https://github.com/Slideshow776/3D-shooting-game/commits/master).
 
