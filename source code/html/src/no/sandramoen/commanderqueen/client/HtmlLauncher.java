@@ -1,6 +1,7 @@
 package no.sandramoen.commanderqueen.client;
 
 import com.badlogic.gdx.ApplicationListener;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.backends.gwt.GwtApplication;
 import com.badlogic.gdx.backends.gwt.GwtApplicationConfiguration;
 import no.sandramoen.commanderqueen.MyGdxGame;
@@ -10,6 +11,7 @@ public class HtmlLauncher extends GwtApplication {
         @Override
         public GwtApplicationConfiguration getConfig () {
                 // Resizable application, uses available space in browser
+                Gdx.input.setCursorCatched(true);
                 return new GwtApplicationConfiguration(true);
                 // Fixed size application:
                 //return new GwtApplicationConfiguration(480, 320);

@@ -1,4 +1,4 @@
-package no.sandramoen.commanderqueen.actors;
+package no.sandramoen.commanderqueen.actors.utils;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -19,8 +19,6 @@ import com.badlogic.gdx.math.collision.BoundingBox;
 import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.Intersector.MinimumTranslationVector;
-
-import java.util.ArrayList;
 
 import no.sandramoen.commanderqueen.utils.BaseGame;
 import no.sandramoen.commanderqueen.utils.Stage3D;
@@ -65,20 +63,12 @@ public class BaseActor3D {
             m.set(ColorAttribute.createDiffuse(c));
     }
 
-    public void loadTexture(String fileName) {
-        Texture tex = new Texture(Gdx.files.internal(fileName), true);
-        tex.setFilter(TextureFilter.Linear, TextureFilter.Linear);
-
-        for (Material m : modelData.materials)
-            m.set(TextureAttribute.createDiffuse(tex));
-    }
-
     public void loadImage(String name) {
         TextureRegion region = BaseGame.textureAtlas.findRegion(name);
         if (region == null)
             Gdx.app.error(getClass().getSimpleName(), "Error: region is null. Are you sure the image '" + name + "' exists?");
-        for (Material m : modelData.materials)
-            m.set(TextureAttribute.createDiffuse(region));
+        for (Material material : modelData.materials)
+            material.set(TextureAttribute.createDiffuse(region));
     }
 
     public Vector3 getPosition() {
@@ -102,15 +92,15 @@ public class BaseActor3D {
     }
 
     public void moveForward(float dist) {
-        moveBy(rotation.transform(new Vector3(0, 0, -1)).scl(dist));
+        moveBy(rotation.transform(new Vector3(0, 0, 1)).scl(dist));
     }
 
     public void moveUp(float dist) {
-        moveBy(rotation.transform(new Vector3(0, 1, 0)).scl(dist));
+        moveBy(rotation.transform(new Vector3(1, 0, 0)).scl(dist));
     }
 
     public void moveRight(float dist) {
-        moveBy(rotation.transform(new Vector3(1, 0, 0)).scl(dist));
+        moveBy(rotation.transform(new Vector3(0, 1, 0)).scl(dist));
     }
 
     public float getTurnAngle() {
@@ -118,11 +108,11 @@ public class BaseActor3D {
     }
 
     public void setTurnAngle(float degrees) {
-        rotation.set(new Quaternion(Vector3.Y, degrees));
+        rotation.set(new Quaternion(Vector3.X, degrees));
     }
 
     public void turnBy(float degrees) {
-        rotation.mul(new Quaternion(Vector3.Y, -degrees));
+        rotation.mul(new Quaternion(Vector3.X, -degrees));
     }
 
     public void setScale(float x, float y, float z) {
@@ -136,29 +126,16 @@ public class BaseActor3D {
         Vector3 min = modelBounds.min;
 
         float[] vertices =
-                {max.x, max.z, min.x, max.z, min.x, min.z, max.x, min.z};
+                {max.z, max.y, min.z, max.y, min.z, min.y, max.z, min.y};
 
-        boundingPolygon = new Polygon(vertices);
-        boundingPolygon.setOrigin(0, 0);
-    }
-
-    public void setBasePolygon() {
-        BoundingBox modelBounds = modelData.calculateBoundingBox(new BoundingBox());
-        Vector3 max = modelBounds.max;
-        Vector3 min = modelBounds.min;
-
-        float a = 0.75f; // offset amount.
-        float[] vertices =
-                {max.x, 0, a * max.x, a * max.z, 0, max.z, a * min.x, a * max.z,
-                        min.x, 0, a * min.x, a * min.z, 0, min.z, a * max.x, a * min.z};
         boundingPolygon = new Polygon(vertices);
         boundingPolygon.setOrigin(0, 0);
     }
 
     public Polygon getBoundaryPolygon() {
-        boundingPolygon.setPosition(position.x, position.z);
+        boundingPolygon.setPosition(position.y, position.z);
         boundingPolygon.setRotation(getTurnAngle());
-        boundingPolygon.setScale(scale.x, scale.z);
+        boundingPolygon.setScale(scale.y, scale.z);
         return boundingPolygon;
     }
 
@@ -186,7 +163,7 @@ public class BaseActor3D {
         boolean polygonOverlap = Intersector.overlapConvexPolygons(poly1, poly2, mtv);
 
         if (polygonOverlap)
-            this.moveBy(mtv.normal.x * mtv.depth, 0, mtv.normal.y * mtv.depth);
+            this.moveBy(0, mtv.normal.x * mtv.depth, mtv.normal.y * mtv.depth);
     }
 
     public void remove() {

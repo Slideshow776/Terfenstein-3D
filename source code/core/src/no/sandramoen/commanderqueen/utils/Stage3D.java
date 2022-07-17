@@ -3,7 +3,6 @@ package no.sandramoen.commanderqueen.utils;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.g3d.ModelInstance;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.graphics.PerspectiveCamera;
 import com.badlogic.gdx.graphics.g3d.Environment;
@@ -13,7 +12,7 @@ import com.badlogic.gdx.graphics.g3d.environment.DirectionalLight;
 
 import java.util.ArrayList;
 
-import no.sandramoen.commanderqueen.actors.BaseActor3D;
+import no.sandramoen.commanderqueen.actors.utils.BaseActor3D;
 
 public class Stage3D {
     private Environment environment;
@@ -35,6 +34,7 @@ public class Stage3D {
         environment.add(dLight);
 
         camera = new PerspectiveCamera(67, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        camera.rotate(-90, 0, 0, 1);
         camera.lookAt(0, 0, 0);
         camera.near = .01f;
         camera.far = 100f;
@@ -116,7 +116,7 @@ public class Stage3D {
     }
 
     public void turnCamera(float angle) {
-        camera.rotate(Vector3.Y, -angle);
+        camera.rotate(Vector3.X, -angle);
     }
 
     public void tiltCamera(float angle) {
