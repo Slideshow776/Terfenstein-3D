@@ -3,6 +3,7 @@ package no.sandramoen.commanderqueen.actors;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.g3d.Environment;
+import com.badlogic.gdx.graphics.g3d.Model;
 import com.badlogic.gdx.graphics.g3d.ModelBatch;
 import com.badlogic.gdx.graphics.g3d.ModelInstance;
 import com.badlogic.gdx.graphics.g3d.Material;
@@ -25,7 +26,8 @@ import no.sandramoen.commanderqueen.utils.BaseGame;
 import no.sandramoen.commanderqueen.utils.Stage3D;
 
 public class BaseActor3D {
-    protected ModelInstance modelData;
+    public GameObject modelData;
+
     protected final Vector3 position;
     protected final Quaternion rotation;
     protected final Vector3 scale;
@@ -42,7 +44,7 @@ public class BaseActor3D {
         s.addActor(this);
     }
 
-    public void setModelInstance(ModelInstance m) {
+    public void setModelInstance(GameObject m) {
         modelData = m;
     }
 
@@ -189,5 +191,21 @@ public class BaseActor3D {
 
     public void remove() {
         stage.removeActor(this);
+    }
+
+    public static class GameObject extends ModelInstance {
+        public final Vector3 center = new Vector3();
+        public final Vector3 dimensions = new Vector3();
+        public final float radius;
+
+        private final static BoundingBox bounds = new BoundingBox();
+
+        public GameObject(Model boxModel, Vector3 position) {
+            super(boxModel, position);
+            calculateBoundingBox(bounds);
+            bounds.getCenter(center);
+            bounds.getDimensions(dimensions);
+            radius = dimensions.len() / 2f;
+        }
     }
 }

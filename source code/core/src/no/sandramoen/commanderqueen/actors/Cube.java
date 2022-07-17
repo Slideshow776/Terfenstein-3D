@@ -45,6 +45,6 @@ public class Cube extends BaseActor3D {
         Model boxModel = modelBuilder.createBox(sizeOfSides, sizeOfSides, sizeOfSides, boxMaterial, usageCode);
         Vector3 position = new Vector3(0, 0, 0);
 
-        setModelInstance(new ModelInstance(boxModel, position));
+        setModelInstance(new GameObject(boxModel, position));
     }
 }

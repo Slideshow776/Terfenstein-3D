@@ -1,7 +1,9 @@
 package no.sandramoen.commanderqueen.utils;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g3d.ModelInstance;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.graphics.PerspectiveCamera;
 import com.badlogic.gdx.graphics.g3d.Environment;
@@ -17,7 +19,9 @@ public class Stage3D {
     private Environment environment;
     private final ModelBatch modelBatch;
     private ArrayList<BaseActor3D> actorList;
+    private Vector3 position = new Vector3();
 
+    public int visibleCount = 0;
     public PerspectiveCamera camera;
 
     public Stage3D() {
@@ -49,8 +53,14 @@ public class Stage3D {
 
     public void draw() {
         modelBatch.begin(camera);
-        for (BaseActor3D ba : actorList)
-            ba.draw(modelBatch, environment);
+        visibleCount = 0;
+        for (int i = 0; i < actorList.size(); i++) {
+            if (isVisible(camera, actorList.get(i).modelData)) {
+                actorList.get(i).draw(modelBatch, environment);
+                modelBatch.render(actorList.get(i).modelData, environment);
+                visibleCount++;
+            }
+        }
         modelBatch.end();
     }
 
@@ -112,5 +122,11 @@ public class Stage3D {
     public void tiltCamera(float angle) {
         Vector3 side = new Vector3(camera.direction.z, 0, -camera.direction.x);
         camera.direction.rotate(side, angle);
+    }
+
+    private boolean isVisible(final Camera cam, final BaseActor3D.GameObject instance) {
+        instance.transform.getTranslation(position);
+        position.add(instance.center);
+        return cam.frustum.sphereInFrustum(position, instance.radius);
     }
 }

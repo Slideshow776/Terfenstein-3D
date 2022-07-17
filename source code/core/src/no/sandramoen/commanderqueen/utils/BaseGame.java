@@ -7,7 +7,9 @@ import com.badlogic.gdx.assets.AssetDescriptor;
 import com.badlogic.gdx.assets.AssetErrorListener;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 
 public abstract class BaseGame extends Game implements AssetErrorListener {
 
@@ -16,6 +18,7 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
 
     // game assets
     public static TextureAtlas textureAtlas;
+    public static Label.LabelStyle label26Style;
     public static Sound pistolShotSound;
 
     // game state
@@ -30,6 +33,7 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
 
     public void create() {
         Gdx.input.setInputProcessor(new InputMultiplexer());
+        UI();
         assetManager();
     }
 
@@ -48,6 +52,12 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
 
     public void error(AssetDescriptor asset, Throwable throwable) {
         Gdx.app.error(this.getClass().getSimpleName(), "Could not load asset: " + asset.fileName, throwable);
+    }
+
+    private void UI() {
+        label26Style = new Label.LabelStyle();
+        BitmapFont myFont2 = new BitmapFont(Gdx.files.internal("fonts/arcade26.fnt"));
+        label26Style.font = myFont2;
     }
 
     private void assetManager() {
