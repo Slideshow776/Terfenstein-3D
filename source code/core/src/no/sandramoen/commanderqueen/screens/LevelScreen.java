@@ -4,6 +4,8 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.maps.MapObject;
+import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.math.collision.Ray;
@@ -18,6 +20,7 @@ import no.sandramoen.commanderqueen.actors.Weapon;
 import no.sandramoen.commanderqueen.actors.utils.BaseActor;
 import no.sandramoen.commanderqueen.actors.utils.BaseActor3D;
 import no.sandramoen.commanderqueen.actors.utils.Enemy;
+import no.sandramoen.commanderqueen.actors.utils.TilemapActor;
 import no.sandramoen.commanderqueen.utils.BaseGame;
 import no.sandramoen.commanderqueen.utils.BaseScreen3D;
 import no.sandramoen.commanderqueen.utils.GameUtils;
@@ -34,10 +37,11 @@ public class LevelScreen extends BaseScreen3D {
     private Array<BaseActor3D> shootable;
     private Vector3 position = new Vector3();
     private boolean isGameOver = false;
-    private BaseActor ghoulSpawner;
+    private TilemapActor tilemap;
 
     public void initialize() {
-        GameUtils.playLoopingMusic(BaseGame.levelMusic0);
+        /*GameUtils.playLoopingMusic(BaseGame.levelMusic0);*/
+        tilemap = new TilemapActor(BaseGame.level0Map, mainStage3D);
         initializeActors();
         initializeUI();
     }
@@ -135,7 +139,6 @@ public class LevelScreen extends BaseScreen3D {
             gameLabel.setText("G A M E   O V E R !");
             isGameOver = true;
             player.isPause = true;
-            ghoulSpawner.clearActions();
             for (Enemy enemy : enemies)
                 enemy.isPause = true;
         }
@@ -145,33 +148,38 @@ public class LevelScreen extends BaseScreen3D {
         shootable = new Array();
 
         tiles = new Array();
-        tiles.add(new Tile(-5f, -5f, mainStage3D));
-        tiles.add(new Tile(5f, -5f, mainStage3D));
-        tiles.add(new Tile(-5f, 5f, mainStage3D));
-        tiles.add(new Tile(5f, 5f, mainStage3D));
-        for (Tile tile : tiles)
+        for (MapObject obj : tilemap.getTileList("wall")) {
+            MapProperties props = obj.getProperties();
+            float x = (Float) props.get("x") * BaseGame.unitScale;
+            float y = (Float) props.get("y") * BaseGame.unitScale;
+            tiles.add(new Tile(x, y, mainStage3D));
+            shootable.add(tiles.get(tiles.size - 1));
+        }
+        for (MapObject obj : tilemap.getTileList("floor")) {
+            MapProperties props = obj.getProperties();
+            float x = (Float) props.get("x") * BaseGame.unitScale;
+            float y = (Float) props.get("y") * BaseGame.unitScale;
+            Tile tile = new Tile(-4, x, y, mainStage3D);
+            tile.setColor(Color.DARK_GRAY);
+            tile.isCollisionEnabled = false;
+            tiles.add(tile);
             shootable.add(tile);
+        }
 
-        player = new Player(0, 10f, mainStage3D);
+        MapObject startPoint = tilemap.getTileList("player start").get(0);
+        float playerX = (float) startPoint.getProperties().get("x") * BaseGame.unitScale;
+        float playerY = (float) startPoint.getProperties().get("y") * BaseGame.unitScale;
+        player = new Player(playerX, playerY, mainStage3D);
         weapon = new Weapon(uiStage);
 
         enemies = new Array();
-        spawnEndlessGhouls();
-    }
-
-    private void spawnEndlessGhouls() {
-        ghoulSpawner = new BaseActor(0f, 0f, uiStage);
-        ghoulSpawner.addAction(Actions.forever(Actions.sequence(
-                Actions.delay(1f),
-                Actions.run(new Runnable() {
-                    @Override
-                    public void run() {
-                        enemies.add(new Ghoul(MathUtils.random(-15, 15), MathUtils.random(-15, 15), mainStage3D, player));
-                        shootable.add(enemies.get(enemies.size - 1));
-                    }
-                })
-                )
-        ));
+        for (MapObject obj : tilemap.getTileList("enemy")) {
+            MapProperties props = obj.getProperties();
+            float x = (Float) props.get("x") * BaseGame.unitScale;
+            float y = (Float) props.get("y") * BaseGame.unitScale;
+            enemies.add(new Ghoul(x, y, mainStage3D, player));
+            shootable.add(enemies.get(enemies.size - 1));
+        }
     }
 
     private void initializeUI() {

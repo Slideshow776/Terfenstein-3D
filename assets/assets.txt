@@ -21,7 +21,7 @@ i:images/included/enemies/ghoul die 0.png:images/included/enemies/ghoul die 0-55
 i:images/included/enemies/ghoul die 1.png:images/included/enemies/ghoul die 1-1288f3240feb71dbf4770aa95e567a8e.png:16211:image/png:1
 i:images/included/enemies/ghoul die 2.png:images/included/enemies/ghoul die 2-1dd6d0092c06d8fa29b1f8115397678e.png:15886:image/png:1
 i:images/included/enemies/ghoul die 3.png:images/included/enemies/ghoul die 3-64d71e34188d5bdc02042e657da1fd4a.png:17129:image/png:1
-i:images/included/enemies/ghoul die 4.png:images/included/enemies/ghoul die 4-40c7446fa57c3c4d18efc4d9ece6d2f6.png:13619:image/png:1
+i:images/included/enemies/ghoul die 4.png:images/included/enemies/ghoul die 4-b2a7c0bf95949155de3c86b278934790.png:7547:image/png:1
 i:images/included/enemies/ghoul walk 0.png:images/included/enemies/ghoul walk 0-148bb61d5b13c5a4b62696c5cf01d500.png:14322:image/png:1
 i:images/included/enemies/ghoul walk 1.png:images/included/enemies/ghoul walk 1-2335578024359e362360572966f5c68f.png:14480:image/png:1
 i:images/included/enemies/ghoul walk 2.png:images/included/enemies/ghoul walk 2-2b205cac03f3892707c06a459cc95a0b.png:15497:image/png:1
@@ -29,7 +29,7 @@ i:images/included/enemies/ghoul walk 3.png:images/included/enemies/ghoul walk 3-
 d:images/included/packed:images/included/packed:0:application/unknown:1
 t:images/included/packed/images.pack.atlas:images/included/packed/images.pack-a15dc756198440f7be0553a524fd5e5b.atlas:1964:application/unknown:1
 i:images/included/packed/images.pack.png:images/included/packed/images.pack-39615d3449d0298b2c2c4370409332f9.png:1624:image/png:1
-i:images/included/packed/images.pack2.png:images/included/packed/images.pack2-484b41f360ffcaad60fc1bc7ee61e772.png:73286:image/png:1
+i:images/included/packed/images.pack2.png:images/included/packed/images.pack2-fad161de293f9658ce752e7b9b98b603.png:73285:image/png:1
 i:images/included/packed/images.pack3.png:images/included/packed/images.pack3-72ba17033a43ff2f4d0fba14c84741d4.png:32522:image/png:1
 i:images/included/packed/images.pack4.png:images/included/packed/images.pack4-6937211afa8fac2cd9ef5522cf5e120a.png:19096:image/png:1
 i:images/included/packed/images.pack5.png:images/included/packed/images.pack5-20857dd4ccfdb037d00546de0dc2bf42.png:15852:image/png:1
@@ -39,6 +39,8 @@ i:images/included/player/shooting 1.png:images/included/player/shooting 1-12cb72
 i:images/included/player/shooting 2.png:images/included/player/shooting 2-03bae454cdfc3fe17c42ff46e9cbd3af.png:24887:image/png:1
 i:images/included/player/shooting 3.png:images/included/player/shooting 3-56cde11493049677cae6fcb12a1bb3b7.png:21912:image/png:1
 d:maps:maps:0:application/unknown:1
+b:maps/level0.tmx:maps/level0-09e032ac735278548895d2b04f3f3e9e.tmx:5193:application/unknown:1
+i:maps/tileset.png:maps/tileset-02639d60d1bc2ce11ff72a5ffd1fe48e.png:5982:image/png:1
 d:shaders:shaders:0:application/unknown:1
 d:skins:skins:0:application/unknown:1
 d:skins/default:skins/default:0:application/unknown:1

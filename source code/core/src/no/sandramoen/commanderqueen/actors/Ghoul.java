@@ -55,6 +55,7 @@ public class Ghoul extends Enemy {
             moveForward(movementSpeed);
     }
 
+    @Override
     public void draw(ModelBatch batch, Environment env) {
         super.draw(batch, env);
         totalTime += Gdx.graphics.getDeltaTime();

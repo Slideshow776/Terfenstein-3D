@@ -6,10 +6,13 @@ import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.assets.AssetDescriptor;
 import com.badlogic.gdx.assets.AssetErrorListener;
 import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.maps.tiled.TiledMap;
+import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 
 public abstract class BaseGame extends Game implements AssetErrorListener {
@@ -20,6 +23,7 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
     // game assets
     public static TextureAtlas textureAtlas;
     public static Label.LabelStyle label26Style;
+    public static TiledMap level0Map;
     public static Music levelMusic0;
     public static Sound pistolShotSound;
     public static Sound ghoulDeathSound;
@@ -29,6 +33,7 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
     public static float voiceVolume = 1f;
     public static float soundVolume = .7f;
     public static float musicVolume = .7f;
+    public static float unitScale = .0621f;
 
     public BaseGame() {
         game = this;
@@ -77,8 +82,8 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
         assetManager.load("audio/sound/249686__cylon8472__cthulhu-growl.wav", Sound.class);
 
         // tiled maps
-        // assetManager.setLoader(TiledMap.class, new TmxMapLoader(new InternalFileHandleResolver()));
-        // assetManager.load("maps/level1.tmx", TiledMap.class);
+        assetManager.setLoader(TiledMap.class, new TmxMapLoader(new InternalFileHandleResolver()));
+        assetManager.load("maps/level0.tmx", TiledMap.class);
 
         assetManager.finishLoading();
 
@@ -90,7 +95,7 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
         ghoulDeathSound = assetManager.get("audio/sound/249686__cylon8472__cthulhu-growl.wav", Sound.class);
 
         // tiled maps
-        // level1Map = assetManager.get("maps/level1.tmx", TiledMap.class);
+        level0Map = assetManager.get("maps/level0.tmx", TiledMap.class);
 
         textureAtlas = assetManager.get("images/included/packed/images.pack.atlas");
         printLoadingTime(startTime);

@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.g3d.Environment;
 import com.badlogic.gdx.graphics.g3d.ModelBatch;
 import com.badlogic.gdx.graphics.g3d.attributes.ColorAttribute;
 import com.badlogic.gdx.graphics.g3d.environment.DirectionalLight;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 
 import java.util.ArrayList;
 
@@ -17,7 +18,8 @@ import no.sandramoen.commanderqueen.actors.utils.BaseActor3D;
 public class Stage3D {
     private Environment environment;
     private final ModelBatch modelBatch;
-    private ArrayList<BaseActor3D> actorList;
+    private ArrayList<BaseActor3D> actorList3D;
+    private ArrayList<Actor> actorList;
     private Vector3 position = new Vector3();
 
     public int visibleCount = 0;
@@ -42,22 +44,23 @@ public class Stage3D {
 
         modelBatch = new ModelBatch();
 
+        actorList3D = new ArrayList();
         actorList = new ArrayList();
     }
 
     public void act(float dt) {
         camera.update();
-        for (BaseActor3D ba : actorList)
+        for (BaseActor3D ba : actorList3D)
             ba.act(dt);
     }
 
     public void draw() {
         modelBatch.begin(camera);
         visibleCount = 0;
-        for (int i = 0; i < actorList.size(); i++) {
-            if (isVisible(camera, actorList.get(i).modelData)) {
-                actorList.get(i).draw(modelBatch, environment);
-                modelBatch.render(actorList.get(i).modelData, environment);
+        for (int i = 0; i < actorList3D.size(); i++) {
+            if (isVisible(camera, actorList3D.get(i).modelData)) {
+                actorList3D.get(i).draw(modelBatch, environment);
+                modelBatch.render(actorList3D.get(i).modelData, environment);
                 visibleCount++;
             }
         }
@@ -65,16 +68,22 @@ public class Stage3D {
     }
 
     public void addActor(BaseActor3D ba) {
-        actorList.add(ba);
+        actorList3D.add(ba);
     }
+
+    public void addActor(Actor a) { actorList.add(a); }
 
     public void removeActor(BaseActor3D ba) {
-        actorList.remove(ba);
+        actorList3D.remove(ba);
     }
 
-    public ArrayList<BaseActor3D> getActors() {
-        return actorList;
+    public void removeActor(Actor a) {actorList.remove(a);}
+
+    public ArrayList<BaseActor3D> getActors3D() {
+        return actorList3D;
     }
+
+    public ArrayList<Actor> getActors() { return actorList;}
 
     public void setCameraPosition(float x, float y, float z) {
         camera.position.set(x, y, z);
