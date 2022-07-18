@@ -151,6 +151,12 @@ As explained in [this blog](https://xoppa.github.io/blog/3d-frustum-culling-with
 
 Ray picking was implemented following [this tutorial](https://xoppa.github.io/blog/interacting-with-3d-objects/) and can be seen in [this commit](https://github.com/Slideshow776/3D-shooting-game/commit/55d86d4240be404148fd7d3fe5502e6591f9f13b).
 
+### Tile Maps
+Tile maps was implemented [like so](https://github.com/Slideshow776/3D-shooting-game/commit/edddec5d5e640447599fe48c0d940af20ee898e7).
+
+![image](https://user-images.githubusercontent.com/4059636/179554378-55590c98-aa44-45e3-a6ce-30da743743ed.png)
+
+
 ## Other
 For other project specifics check out the [commits](https://github.com/Slideshow776/3D-shooting-game/commits/master).
 
