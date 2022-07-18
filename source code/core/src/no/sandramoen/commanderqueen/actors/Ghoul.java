@@ -49,6 +49,7 @@ public class Ghoul extends Enemy {
     }
 
     public void die() {
+        totalTime = 0f;
         currentAnimation = dieAnimation;
         isPreventOverlapEnabled = false;
     }
