@@ -125,7 +125,8 @@ private void keyboardPolling(float dt) {
 Mouse movement is this simple line:
 ```
 private void mousePolling() {
-   stage.turnCamera(rotateSpeed * Gdx.input.getDeltaX() * BaseGame.mouseMovementSensitivity);
+    turnBy(rotateSpeed * Gdx.input.getDeltaX() * BaseGame.mouseMovementSensitivity);
+    stage.turnCamera(rotateSpeed * Gdx.input.getDeltaX() * BaseGame.mouseMovementSensitivity);
 }
 ```
 
@@ -141,6 +142,14 @@ While the game is 3D viewed from a birds perspective the area of movement is 2D,
 ![demo](https://user-images.githubusercontent.com/4059636/179392342-22c26f1b-775d-49b6-8f44-ed7992cc1aa7.gif)
 
 As explained in [this blog](https://xoppa.github.io/blog/3d-frustum-culling-with-libgdx/) one can save computer resources by only drawing the 3D world entities that are actually visible, this is called frustum culling. Feature added in [this commit](https://github.com/Slideshow776/3D-shooting-game/commit/b8b4f9183c6923a61a60fabbc4b729be8523ebe2).
+
+### Ray Picking
+![image](https://user-images.githubusercontent.com/4059636/179480413-eb9409c7-0b68-4168-aa83-17a3e187834a.png)
+> Mathematically, a ray is the portion of a line that originates from a fixed point and extends indefinitely in a particular direction. A ray always travels in a straight line in a medium until it hits the boundary of the medium that it is traveling in. 
+>
+>Once it hits that boundary, it can either get reflected, refracted, absorbed, or undergo all three operations partially. >-- <cite>[techcenturion.com](https://www.techcenturion.com/ray-tracing)</cite>
+
+Ray picking was implemented following [this tutorial](https://xoppa.github.io/blog/interacting-with-3d-objects/) and can be seen in [this commit](https://github.com/Slideshow776/3D-shooting-game/commit/55d86d4240be404148fd7d3fe5502e6591f9f13b).
 
 ## Other
 For other project specifics check out the [commits](https://github.com/Slideshow776/3D-shooting-game/commits/master).
