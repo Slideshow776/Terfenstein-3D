@@ -28,7 +28,6 @@ public class Weapon extends BaseActor {
         animationImages.clear();
     }
 
-    @Override
     public void draw(Batch batch, float parentAlpha) {
         super.draw(batch, parentAlpha);
         if (totalTime < 10f)

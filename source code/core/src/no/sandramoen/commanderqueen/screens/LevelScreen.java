@@ -52,6 +52,7 @@ public class LevelScreen extends BaseScreen3D {
         if (button == Input.Buttons.LEFT) {
             BaseGame.pistolShotSound.play(BaseGame.soundVolume, MathUtils.random(.9f, 1.1f), 0f);
             weapon.shoot();
+            Gdx.input.setCursorCatched(true);
         }
         return super.touchDown(screenX, screenY, pointer, button);
     }

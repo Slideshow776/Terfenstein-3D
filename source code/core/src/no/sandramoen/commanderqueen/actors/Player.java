@@ -10,6 +10,7 @@ import no.sandramoen.commanderqueen.utils.Stage3D;
 public class Player extends Cuboid {
     private float speed = 6.0f;
     private float rotateSpeed = 90f * .05f;
+    private float totalTime = 0;
 
     public Player(float y, float z, Stage3D s) {
         super(y, z, 1, s);
@@ -19,13 +20,16 @@ public class Player extends Cuboid {
     @Override
     public void act(float dt) {
         super.act(dt);
+        if (totalTime < 1f)
+            totalTime += dt;
         movementPolling(dt);
         stage.camera.position.set(position);
     }
 
     private void movementPolling(float dt) {
         keyboardPolling(dt);
-        mousePolling();
+        if (totalTime >= .15f)
+            mousePolling();
     }
 
     private void keyboardPolling(float dt) {
