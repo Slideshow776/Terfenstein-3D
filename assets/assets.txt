@@ -1,7 +1,9 @@
 d:assets:assets:0:application/unknown:1
 d:audio:audio:0:application/unknown:1
 d:audio/music:audio/music:0:application/unknown:1
+a:audio/music/342991__furbyguy__stuttering-guitar-metal.wav:audio/music/342991__furbyguy__stuttering-guitar-metal-8e12546c6b20ba41d7855ad87e85729b.wav:1411244:audio/x-wav:1
 d:audio/sound:audio/sound:0:application/unknown:1
+a:audio/sound/249686__cylon8472__cthulhu-growl.wav:audio/sound/249686__cylon8472__cthulhu-growl-15ce057c9152db377e3df65b3d8fef8f.wav:230996:audio/x-wav:1
 a:audio/sound/370220__eflexmusic__pistol-shot-close-mixed.wav:audio/sound/370220__eflexmusic__pistol-shot-close-mixed-2c3b8e64780244219ff34f0480f41448.wav:264146:audio/x-wav:1
 d:effects:effects:0:application/unknown:1
 d:fonts:fonts:0:application/unknown:1

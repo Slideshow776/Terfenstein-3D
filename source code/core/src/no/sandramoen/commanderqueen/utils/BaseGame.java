@@ -6,6 +6,7 @@ import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.assets.AssetDescriptor;
 import com.badlogic.gdx.assets.AssetErrorListener;
 import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
@@ -19,12 +20,14 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
     // game assets
     public static TextureAtlas textureAtlas;
     public static Label.LabelStyle label26Style;
+    public static Music levelMusic0;
     public static Sound pistolShotSound;
+    public static Sound ghoulDeathSound;
 
     // game state
     public static float mouseMovementSensitivity = .05f;
     public static float voiceVolume = 1f;
-    public static float soundVolume = .3f;
+    public static float soundVolume = .7f;
     public static float musicVolume = .7f;
 
     public BaseGame() {
@@ -67,10 +70,11 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
         assetManager.load("images/included/packed/images.pack.atlas", TextureAtlas.class);
 
         // music
-        // assetManager.load("audio/music/99567__shnitzelkiller__cammipple.mp3", Music.class);
+        assetManager.load("audio/music/342991__furbyguy__stuttering-guitar-metal.wav", Music.class);
 
         // sound
         assetManager.load("audio/sound/370220__eflexmusic__pistol-shot-close-mixed.wav", Sound.class);
+        assetManager.load("audio/sound/249686__cylon8472__cthulhu-growl.wav", Sound.class);
 
         // tiled maps
         // assetManager.setLoader(TiledMap.class, new TmxMapLoader(new InternalFileHandleResolver()));
@@ -79,10 +83,11 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
         assetManager.finishLoading();
 
         // music
-        // levelMusic1 = assetManager.get("audio/music/99567__shnitzelkiller__cammipple.mp3", Music.class);
+        levelMusic0 = assetManager.get("audio/music/342991__furbyguy__stuttering-guitar-metal.wav", Music.class);
 
         // sound
         pistolShotSound = assetManager.get("audio/sound/370220__eflexmusic__pistol-shot-close-mixed.wav", Sound.class);
+        ghoulDeathSound = assetManager.get("audio/sound/249686__cylon8472__cthulhu-growl.wav", Sound.class);
 
         // tiled maps
         // level1Map = assetManager.get("maps/level1.tmx", TiledMap.class);

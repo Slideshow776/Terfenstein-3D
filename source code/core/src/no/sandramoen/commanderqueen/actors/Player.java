@@ -19,6 +19,9 @@ public class Player extends Cuboid {
     @Override
     public void act(float dt) {
         super.act(dt);
+        if (isPause)
+            return;
+
         if (totalTime < 1f)
             totalTime += dt;
         movementPolling(dt);

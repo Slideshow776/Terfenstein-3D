@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.g3d.Environment;
 import com.badlogic.gdx.graphics.g3d.ModelBatch;
 import com.badlogic.gdx.utils.Array;
 
+import no.sandramoen.commanderqueen.actors.utils.BaseActor;
 import no.sandramoen.commanderqueen.actors.utils.Enemy;
 import no.sandramoen.commanderqueen.utils.BaseGame;
 import no.sandramoen.commanderqueen.utils.Stage3D;
@@ -18,6 +19,8 @@ public class Ghoul extends Enemy {
     private Animation<TextureRegion> walkAnimation;
     private Animation<TextureRegion> dieAnimation;
     private float totalTime = 0;
+    private float movementSpeed = .05f;
+    private float timeToStopMoving = 1.1f;
 
     public Ghoul(float y, float z, Stage3D s, Player player) {
         super(y, z, s, player);
@@ -42,6 +45,16 @@ public class Ghoul extends Enemy {
         setBaseRectangle();
     }
 
+    @Override
+    public void act(float dt) {
+        super.act(dt);
+        if (isPause)
+            return;
+
+        if (!dead || totalTime < timeToStopMoving)
+            moveForward(movementSpeed);
+    }
+
     public void draw(ModelBatch batch, Environment env) {
         super.draw(batch, env);
         totalTime += Gdx.graphics.getDeltaTime();
@@ -49,8 +62,12 @@ public class Ghoul extends Enemy {
     }
 
     public void die() {
-        totalTime = 0f;
-        currentAnimation = dieAnimation;
-        isPreventOverlapEnabled = false;
+        if (!dead) {
+            BaseGame.ghoulDeathSound.play(BaseGame.soundVolume);
+            dead = true;
+            totalTime = 0f;
+            currentAnimation = dieAnimation;
+            isPreventOverlapEnabled = false;
+        }
     }
 }

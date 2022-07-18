@@ -10,8 +10,6 @@ import com.badlogic.gdx.graphics.g3d.Material;
 import com.badlogic.gdx.graphics.g3d.attributes.ColorAttribute;
 import com.badlogic.gdx.graphics.g3d.attributes.TextureAttribute;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.math.Quaternion;
 import com.badlogic.gdx.math.Matrix4;
@@ -27,8 +25,9 @@ public class BaseActor3D {
     public GameObject modelData;
     public boolean isCollisionEnabled = true;
     public boolean isPreventOverlapEnabled = true;
+    public final Vector3 position;
+    public boolean isPause = false;
 
-    protected final Vector3 position;
     protected final Quaternion rotation;
     protected final Vector3 scale;
     protected Polygon boundingPolygon;
@@ -53,7 +52,8 @@ public class BaseActor3D {
     }
 
     public void act(float dt) {
-        modelData.transform.set(calculateTransform());
+        if (!isPause)
+            modelData.transform.set(calculateTransform());
     }
 
     public void draw(ModelBatch batch, Environment env) {

@@ -3,9 +3,11 @@ package no.sandramoen.commanderqueen.screens;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.math.collision.Ray;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.utils.Array;
 
@@ -13,38 +15,40 @@ import no.sandramoen.commanderqueen.actors.Ghoul;
 import no.sandramoen.commanderqueen.actors.Player;
 import no.sandramoen.commanderqueen.actors.Tile;
 import no.sandramoen.commanderqueen.actors.Weapon;
+import no.sandramoen.commanderqueen.actors.utils.BaseActor;
 import no.sandramoen.commanderqueen.actors.utils.BaseActor3D;
 import no.sandramoen.commanderqueen.actors.utils.Enemy;
 import no.sandramoen.commanderqueen.utils.BaseGame;
 import no.sandramoen.commanderqueen.utils.BaseScreen3D;
+import no.sandramoen.commanderqueen.utils.GameUtils;
 
 public class LevelScreen extends BaseScreen3D {
     private Player player;
     private Weapon weapon;
     private Array<Tile> tiles;
     private Array<Enemy> enemies;
+
     private Label debugLabel;
+    private Label gameLabel;
 
     private Array<BaseActor3D> shootable;
     private Vector3 position = new Vector3();
+    private boolean isGameOver = false;
+    private BaseActor ghoulSpawner;
 
     public void initialize() {
+        GameUtils.playLoopingMusic(BaseGame.levelMusic0);
         initializeActors();
         initializeUI();
     }
 
     public void update(float dt) {
-        for (Tile tile : tiles) {
-            if (player.overlaps(tile)) {
-                player.preventOverlap(tile);
-            }
-        }
-        for (Enemy enemy : enemies) {
-            if (player.overlaps(enemy)) {
-                player.preventOverlap(enemy);
-            }
-        }
+        if (isGameOver) return;
+        updateTiles();
+        updateEnemies();
+
         debugLabel.setText("FPS: " + Gdx.graphics.getFramesPerSecond() + "\nVisible: " + mainStage3D.visibleCount);
+
         if (!Gdx.input.isCursorCatched())
             Gdx.input.setCursorCatched(true);
     }
@@ -55,18 +59,12 @@ public class LevelScreen extends BaseScreen3D {
             Gdx.app.exit();
         if (keycode == Keys.R)
             BaseGame.setActiveScreen(new LevelScreen());
-        if (keycode == Keys.SPACE) {
-            BaseGame.pistolShotSound.play(BaseGame.soundVolume, MathUtils.random(.9f, 1.1f), 0f);
-            weapon.shoot();
-        }
         return super.keyDown(keycode);
     }
 
     @Override
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-        if (button == Input.Buttons.LEFT) {
-            BaseGame.pistolShotSound.play(BaseGame.soundVolume, MathUtils.random(.9f, 1.1f), 0f);
-
+        if (button == Input.Buttons.LEFT && !isGameOver) {
             weapon.shoot();
 
             int rayPickedIndex = rayPickShootableObject(Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() / 2);
@@ -109,6 +107,40 @@ public class LevelScreen extends BaseScreen3D {
         return result;
     }
 
+    private void updateTiles() {
+        for (Tile tile : tiles) {
+            if (player.overlaps(tile)) {
+                player.preventOverlap(tile);
+            }
+        }
+    }
+
+    private void updateEnemies() {
+        for (Enemy enemy : enemies) {
+            if (player.overlaps(enemy)) {
+                player.preventOverlap(enemy);
+                gameOver();
+                break;
+            }
+
+            for (Tile tile : tiles) {
+                if (enemy.overlaps(tile))
+                    enemy.preventOverlap(tile);
+            }
+        }
+    }
+
+    private void gameOver() {
+        if (!isGameOver) {
+            gameLabel.setText("G A M E   O V E R !");
+            isGameOver = true;
+            player.isPause = true;
+            ghoulSpawner.clearActions();
+            for (Enemy enemy : enemies)
+                enemy.isPause = true;
+        }
+    }
+
     private void initializeActors() {
         shootable = new Array();
 
@@ -124,13 +156,42 @@ public class LevelScreen extends BaseScreen3D {
         weapon = new Weapon(uiStage);
 
         enemies = new Array();
-        enemies.add(new Ghoul(0f, 0f, mainStage3D, player));
-        for (Enemy enemy : enemies)
-            shootable.add(enemy);
+        spawnEndlessGhouls();
+    }
+
+    private void spawnEndlessGhouls() {
+        ghoulSpawner = new BaseActor(0f, 0f, uiStage);
+        ghoulSpawner.addAction(Actions.forever(Actions.sequence(
+                Actions.delay(1f),
+                Actions.run(new Runnable() {
+                    @Override
+                    public void run() {
+                        enemies.add(new Ghoul(MathUtils.random(-15, 15), MathUtils.random(-15, 15), mainStage3D, player));
+                        shootable.add(enemies.get(enemies.size - 1));
+                    }
+                })
+                )
+        ));
     }
 
     private void initializeUI() {
         debugLabel = new Label(" ", BaseGame.label26Style);
-        uiTable.add(debugLabel).expand().top().left().padTop(Gdx.graphics.getHeight() * .01f).padLeft(Gdx.graphics.getWidth() * .01f);
+        uiTable.add(debugLabel)
+                .expand()
+                .top()
+                .left()
+                .padTop(Gdx.graphics.getHeight() * .01f)
+                .padLeft(Gdx.graphics.getWidth() * .01f)
+                .row();
+
+        gameLabel = new Label("", BaseGame.label26Style);
+        gameLabel.setColor(Color.RED);
+        gameLabel.setFontScale(2f);
+        uiTable.add(gameLabel)
+                .expand()
+                .center()
+                .top();
+
+        /*uiTable.setDebug(true);*/
     }
 }
