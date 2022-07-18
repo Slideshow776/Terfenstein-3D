@@ -25,6 +25,8 @@ import no.sandramoen.commanderqueen.utils.Stage3D;
 
 public class BaseActor3D {
     public GameObject modelData;
+    public boolean isCollisionEnabled = true;
+    public boolean isPreventOverlapEnabled = true;
 
     protected final Vector3 position;
     protected final Quaternion rotation;
@@ -140,6 +142,7 @@ public class BaseActor3D {
     }
 
     public boolean overlaps(BaseActor3D other) {
+        if (!isPreventOverlapEnabled || !other.isPreventOverlapEnabled) return false;
         Polygon poly1 = this.getBoundaryPolygon();
         Polygon poly2 = other.getBoundaryPolygon();
 
@@ -152,6 +155,7 @@ public class BaseActor3D {
     }
 
     public void preventOverlap(BaseActor3D other) {
+        if (!isCollisionEnabled || !other.isCollisionEnabled) return;
         Polygon poly1 = this.getBoundaryPolygon();
         Polygon poly2 = other.getBoundaryPolygon();
 

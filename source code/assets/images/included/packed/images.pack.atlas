@@ -52,28 +52,28 @@ enemies/ghoul die 4
   orig: 268, 256
   offset: 0, 0
   index: -1
-enemies/ghoul walk 1
+enemies/ghoul walk 0
   rotate: false
   xy: 530, 518
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
   index: -1
-enemies/ghoul walk 2
+enemies/ghoul walk 1
   rotate: false
   xy: 260, 2
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
   index: -1
-enemies/ghoul walk 3
+enemies/ghoul walk 2
   rotate: false
   xy: 518, 260
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
   index: -1
-enemies/ghoul walk 4
+enemies/ghoul walk 3
   rotate: false
   xy: 518, 2
   size: 256, 256

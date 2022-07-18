@@ -14,7 +14,6 @@ public class Player extends Cuboid {
 
     public Player(float y, float z, Stage3D s) {
         super(y, z, 1, s);
-        Gdx.input.setCursorCatched(true);
     }
 
     @Override

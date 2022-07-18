@@ -20,12 +20,12 @@ i:images/included/enemies/ghoul die 1.png:images/included/enemies/ghoul die 1-12
 i:images/included/enemies/ghoul die 2.png:images/included/enemies/ghoul die 2-1dd6d0092c06d8fa29b1f8115397678e.png:15886:image/png:1
 i:images/included/enemies/ghoul die 3.png:images/included/enemies/ghoul die 3-64d71e34188d5bdc02042e657da1fd4a.png:17129:image/png:1
 i:images/included/enemies/ghoul die 4.png:images/included/enemies/ghoul die 4-40c7446fa57c3c4d18efc4d9ece6d2f6.png:13619:image/png:1
-i:images/included/enemies/ghoul walk 1.png:images/included/enemies/ghoul walk 1-148bb61d5b13c5a4b62696c5cf01d500.png:14322:image/png:1
-i:images/included/enemies/ghoul walk 2.png:images/included/enemies/ghoul walk 2-ae063e9f0511d0626068ecccd76a7880.png:14258:image/png:1
-i:images/included/enemies/ghoul walk 3.png:images/included/enemies/ghoul walk 3-2b205cac03f3892707c06a459cc95a0b.png:15497:image/png:1
-i:images/included/enemies/ghoul walk 4.png:images/included/enemies/ghoul walk 4-9d199ba61538889c47a7bac7cf2cb758.png:14325:image/png:1
+i:images/included/enemies/ghoul walk 0.png:images/included/enemies/ghoul walk 0-148bb61d5b13c5a4b62696c5cf01d500.png:14322:image/png:1
+i:images/included/enemies/ghoul walk 1.png:images/included/enemies/ghoul walk 1-2335578024359e362360572966f5c68f.png:14480:image/png:1
+i:images/included/enemies/ghoul walk 2.png:images/included/enemies/ghoul walk 2-2b205cac03f3892707c06a459cc95a0b.png:15497:image/png:1
+i:images/included/enemies/ghoul walk 3.png:images/included/enemies/ghoul walk 3-9ad76982e266b13ed36b0cc8f5903036.png:14549:image/png:1
 d:images/included/packed:images/included/packed:0:application/unknown:1
-t:images/included/packed/images.pack.atlas:images/included/packed/images.pack-4eb4a2d8bbf85c642ebf561c82903db6.atlas:1964:application/unknown:1
+t:images/included/packed/images.pack.atlas:images/included/packed/images.pack-a15dc756198440f7be0553a524fd5e5b.atlas:1964:application/unknown:1
 i:images/included/packed/images.pack.png:images/included/packed/images.pack-39615d3449d0298b2c2c4370409332f9.png:1624:image/png:1
 i:images/included/packed/images.pack2.png:images/included/packed/images.pack2-484b41f360ffcaad60fc1bc7ee61e772.png:73286:image/png:1
 i:images/included/packed/images.pack3.png:images/included/packed/images.pack3-72ba17033a43ff2f4d0fba14c84741d4.png:32522:image/png:1

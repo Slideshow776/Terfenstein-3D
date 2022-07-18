@@ -14,26 +14,42 @@ import no.sandramoen.commanderqueen.utils.BaseGame;
 import no.sandramoen.commanderqueen.utils.Stage3D;
 
 public class Ghoul extends Enemy {
+    private Animation<TextureRegion> currentAnimation;
     private Animation<TextureRegion> walkAnimation;
-    private float totalTime = 0f;
+    private Animation<TextureRegion> dieAnimation;
+    private float totalTime = 0;
 
     public Ghoul(float y, float z, Stage3D s, Player player) {
         super(y, z, s, player);
-        loadImage("enemies/ghoul walk 1");
 
         Array<TextureAtlas.AtlasRegion> animationImages = new Array();
+        animationImages.add(BaseGame.textureAtlas.findRegion("enemies/ghoul walk 0"));
         animationImages.add(BaseGame.textureAtlas.findRegion("enemies/ghoul walk 1"));
         animationImages.add(BaseGame.textureAtlas.findRegion("enemies/ghoul walk 2"));
         animationImages.add(BaseGame.textureAtlas.findRegion("enemies/ghoul walk 3"));
-        animationImages.add(BaseGame.textureAtlas.findRegion("enemies/ghoul walk 4"));
         walkAnimation = new Animation(.15f, animationImages, Animation.PlayMode.LOOP);
         animationImages.clear();
+
+        animationImages.add(BaseGame.textureAtlas.findRegion("enemies/ghoul die 0"));
+        animationImages.add(BaseGame.textureAtlas.findRegion("enemies/ghoul die 1"));
+        animationImages.add(BaseGame.textureAtlas.findRegion("enemies/ghoul die 2"));
+        animationImages.add(BaseGame.textureAtlas.findRegion("enemies/ghoul die 3"));
+        animationImages.add(BaseGame.textureAtlas.findRegion("enemies/ghoul die 4"));
+        dieAnimation = new Animation(.2f, animationImages, Animation.PlayMode.NORMAL);
+        animationImages.clear();
+
+        currentAnimation = walkAnimation;
+        setBaseRectangle();
     }
 
-    @Override
     public void draw(ModelBatch batch, Environment env) {
         super.draw(batch, env);
         totalTime += Gdx.graphics.getDeltaTime();
-        loadImage(walkAnimation.getKeyFrame(totalTime).toString());
+        loadImage(currentAnimation.getKeyFrame(totalTime).toString());
+    }
+
+    public void die() {
+        currentAnimation = dieAnimation;
+        isPreventOverlapEnabled = false;
     }
 }
