@@ -125,7 +125,8 @@ private void keyboardPolling(float dt) {
 Mouse movement is this simple line:
 ```
 private void mousePolling() {
-   stage.turnCamera(rotateSpeed * Gdx.input.getDeltaX() * BaseGame.mouseMovementSensitivity);
+    turnBy(rotateSpeed * Gdx.input.getDeltaX() * BaseGame.mouseMovementSensitivity);
+    stage.turnCamera(rotateSpeed * Gdx.input.getDeltaX() * BaseGame.mouseMovementSensitivity);
 }
 ```
 
