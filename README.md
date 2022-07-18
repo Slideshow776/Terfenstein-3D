@@ -97,7 +97,7 @@ Read on below for project specifics.
 
 ## Project comments
 ### Wall clipping
-To stop the wall from clipping out of sight it is nessasary to set the `camera.near` to a very tiny amount, like so:
+To stop the wall from clipping out of sight it is necessary to set the `camera.near` to a very tiny amount, like so:
 ```
 camera = new PerspectiveCamera(67, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 camera.lookAt(0, 0, 0);
@@ -141,7 +141,7 @@ While the game is 3D viewed from a birds perspective the area of movement is 2D,
 ### Frustum Culling
 ![demo](https://user-images.githubusercontent.com/4059636/179392342-22c26f1b-775d-49b6-8f44-ed7992cc1aa7.gif)
 
-As explained in [this blog](https://xoppa.github.io/blog/3d-frustum-culling-with-libgdx/) one can save computer resources by only drawing the 3D world entities that are actually visible, this is called frustum culling. Feature added in [this commit](https://github.com/Slideshow776/3D-shooting-game/commit/b8b4f9183c6923a61a60fabbc4b729be8523ebe2).
+As explained in [this blog](https://xoppa.github.io/blog/3d-frustum-culling-with-libgdx/) one can save computer resources by only drawing the 3D world entities that are visible, this is called frustum culling. Feature added in [this commit](https://github.com/Slideshow776/3D-shooting-game/commit/b8b4f9183c6923a61a60fabbc4b729be8523ebe2).
 
 ### Ray Picking
 ![image](https://user-images.githubusercontent.com/4059636/179480413-eb9409c7-0b68-4168-aa83-17a3e187834a.png)
@@ -152,7 +152,7 @@ As explained in [this blog](https://xoppa.github.io/blog/3d-frustum-culling-with
 Ray picking was implemented following [this tutorial](https://xoppa.github.io/blog/interacting-with-3d-objects/) and can be seen in [this commit](https://github.com/Slideshow776/3D-shooting-game/commit/55d86d4240be404148fd7d3fe5502e6591f9f13b).
 
 ### Tile Maps
-Tile maps was implemented [like so](https://github.com/Slideshow776/3D-shooting-game/commit/edddec5d5e640447599fe48c0d940af20ee898e7).
+Tile maps were implemented [like so](https://github.com/Slideshow776/3D-shooting-game/commit/edddec5d5e640447599fe48c0d940af20ee898e7).
 
 ![image](https://user-images.githubusercontent.com/4059636/179554378-55590c98-aa44-45e3-a6ce-30da743743ed.png)
 
