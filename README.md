@@ -106,8 +106,7 @@ camera.far = 100f;
 camera.update();
 ```
 ### Player movement
-The cursor can be locked to the window like this: 
-`Gdx.input.setCursorCatched(true);`
+The cursor can be locked to the window like this line of code: `Gdx.input.setCursorCatched(true);`. In HTML this needs to be triggered multiple times to ensure the correct application behaviour.
 
 Keyboard movement is as simple as this: 
 ```
