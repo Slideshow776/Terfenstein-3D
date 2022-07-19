@@ -117,7 +117,7 @@ public class Stage3D {
     }
 
     public void moveCameraUp(float dist) {
-        moveCamera(0, dist, 0);
+        moveCamera(dist, 0, 0);
     }
 
     public void setCameraDirection(Vector3 v) {
