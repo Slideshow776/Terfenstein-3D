@@ -1,15 +1,18 @@
 package no.sandramoen.commanderqueen.actors.utils;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.VertexAttributes;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.g3d.Environment;
 import com.badlogic.gdx.graphics.g3d.Model;
 import com.badlogic.gdx.graphics.g3d.ModelBatch;
-import com.badlogic.gdx.graphics.g3d.ModelInstance;
 import com.badlogic.gdx.graphics.g3d.Material;
+import com.badlogic.gdx.graphics.g3d.attributes.BlendingAttribute;
 import com.badlogic.gdx.graphics.g3d.attributes.ColorAttribute;
 import com.badlogic.gdx.graphics.g3d.attributes.TextureAttribute;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g3d.utils.ModelBuilder;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.math.Quaternion;
 import com.badlogic.gdx.math.Matrix4;
@@ -32,6 +35,7 @@ public class BaseActor3D {
     protected final Vector3 scale;
     protected Polygon boundingPolygon;
     protected Stage3D stage;
+    protected BoundingBox bounds = new BoundingBox();
 
     public BaseActor3D(float x, float y, float z, Stage3D s) {
         modelData = null;
@@ -174,19 +178,19 @@ public class BaseActor3D {
         stage.removeActor(this);
     }
 
-    public static class GameObject extends ModelInstance {
-        public final Vector3 center = new Vector3();
-        public final Vector3 dimensions = new Vector3();
-        public final float radius;
+    public void buildModel(float width, float height, float depth) {
+        ModelBuilder modelBuilder = new ModelBuilder();
+        Material boxMaterial = new Material();
 
-        private final static BoundingBox bounds = new BoundingBox();
+        boxMaterial.set(new BlendingAttribute(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA));
+        int usageCode = VertexAttributes.Usage.Position + VertexAttributes.Usage.ColorPacked + VertexAttributes.Usage.Normal + VertexAttributes.Usage.TextureCoordinates;
 
-        public GameObject(Model boxModel, Vector3 position) {
-            super(boxModel, position);
-            calculateBoundingBox(bounds);
-            bounds.getCenter(center);
-            bounds.getDimensions(dimensions);
-            radius = dimensions.len() / 2f;
-        }
+        Model boxModel = modelBuilder.createBox(height, width, depth, boxMaterial, usageCode);
+        Vector3 position = new Vector3(0, 0, 0);
+
+        GameObject instance = new GameObject(boxModel, position);
+        setModelInstance(instance);
+        instance.calculateBoundingBox(bounds);
+        instance.shape = new Box(bounds);
     }
 }

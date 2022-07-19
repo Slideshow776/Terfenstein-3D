@@ -2,14 +2,12 @@ package no.sandramoen.commanderqueen.actors;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Animation;
-import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.g3d.Environment;
 import com.badlogic.gdx.graphics.g3d.ModelBatch;
 import com.badlogic.gdx.utils.Array;
 
-import no.sandramoen.commanderqueen.actors.utils.BaseActor;
 import no.sandramoen.commanderqueen.actors.utils.Enemy;
 import no.sandramoen.commanderqueen.utils.BaseGame;
 import no.sandramoen.commanderqueen.utils.Stage3D;

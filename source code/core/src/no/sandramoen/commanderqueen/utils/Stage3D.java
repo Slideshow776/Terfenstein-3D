@@ -1,7 +1,6 @@
 package no.sandramoen.commanderqueen.utils;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.graphics.PerspectiveCamera;
@@ -58,7 +57,7 @@ public class Stage3D {
         modelBatch.begin(camera);
         visibleCount = 0;
         for (int i = 0; i < actorList3D.size(); i++) {
-            if (isVisible(camera, actorList3D.get(i).modelData)) {
+            if (actorList3D.get(i).modelData.isVisible(camera)) {
                 actorList3D.get(i).draw(modelBatch, environment);
                 modelBatch.render(actorList3D.get(i).modelData, environment);
                 visibleCount++;
@@ -71,19 +70,25 @@ public class Stage3D {
         actorList3D.add(ba);
     }
 
-    public void addActor(Actor a) { actorList.add(a); }
+    public void addActor(Actor a) {
+        actorList.add(a);
+    }
 
     public void removeActor(BaseActor3D ba) {
         actorList3D.remove(ba);
     }
 
-    public void removeActor(Actor a) {actorList.remove(a);}
+    public void removeActor(Actor a) {
+        actorList.remove(a);
+    }
 
     public ArrayList<BaseActor3D> getActors3D() {
         return actorList3D;
     }
 
-    public ArrayList<Actor> getActors() { return actorList;}
+    public ArrayList<Actor> getActors() {
+        return actorList;
+    }
 
     public void setCameraPosition(float x, float y, float z) {
         camera.position.set(x, y, z);
@@ -131,11 +136,5 @@ public class Stage3D {
     public void tiltCamera(float angle) {
         Vector3 side = new Vector3(camera.direction.z, 0, -camera.direction.x);
         camera.direction.rotate(side, angle);
-    }
-
-    private boolean isVisible(final Camera cam, final BaseActor3D.GameObject instance) {
-        instance.transform.getTranslation(position);
-        position.add(instance.center);
-        return cam.frustum.sphereInFrustum(position, instance.radius);
     }
 }

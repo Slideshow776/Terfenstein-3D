@@ -3,17 +3,19 @@ package no.sandramoen.commanderqueen.actors;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 
-import no.sandramoen.commanderqueen.actors.utils.Cuboid;
+import no.sandramoen.commanderqueen.actors.utils.BaseActor3D;
 import no.sandramoen.commanderqueen.utils.BaseGame;
 import no.sandramoen.commanderqueen.utils.Stage3D;
 
-public class Player extends Cuboid {
+public class Player extends BaseActor3D {
     private float speed = 6.0f;
     private float rotateSpeed = 90f * .05f;
     private float totalTime = 0;
 
     public Player(float y, float z, Stage3D s) {
-        super(y, z, 1, s);
+        super(0, y, z, s);
+        buildModel(1, 1, 1);
+        setBaseRectangle();
     }
 
     @Override
