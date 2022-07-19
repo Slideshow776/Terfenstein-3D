@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import no.sandramoen.commanderqueen.actors.utils.BaseActor3D;
 
 public class Stage3D {
-    private Environment environment;
+    public Environment environment;
     private final ModelBatch modelBatch;
     private ArrayList<BaseActor3D> actorList3D;
     private ArrayList<Actor> actorList;

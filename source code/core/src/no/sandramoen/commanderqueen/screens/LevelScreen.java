@@ -66,6 +66,7 @@ public class LevelScreen extends BaseScreen3D {
     @Override
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
         if (button == Input.Buttons.LEFT && !isGameOver) {
+            player.shoot();
             weapon.shoot();
             int index = rayPickBaseActor3DFromList(Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() / 2, shootable);
             determineConsequencesOfPick(index);

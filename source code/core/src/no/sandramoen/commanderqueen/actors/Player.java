@@ -2,6 +2,10 @@ package no.sandramoen.commanderqueen.actors;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g3d.environment.DirectionalLight;
+import com.badlogic.gdx.graphics.g3d.environment.PointLight;
+import com.badlogic.gdx.math.Vector3;
 
 import no.sandramoen.commanderqueen.actors.utils.BaseActor3D;
 import no.sandramoen.commanderqueen.utils.BaseGame;
@@ -11,9 +15,14 @@ public class Player extends BaseActor3D {
     private float speed = 6.0f;
     private float rotateSpeed = 90f * .05f;
     private float totalTime = 0;
+    private Stage3D stage3d;
 
-    public Player(float y, float z, Stage3D s) {
-        super(0, y, z, s);
+    private PointLight muzzleLight;
+    private float muzzleCount;
+
+    public Player(float y, float z, Stage3D stage3D) {
+        super(0, y, z, stage3D);
+        this.stage3d = stage3D;
         buildModel(1, 1, 1);
         setBaseRectangle();
     }
@@ -28,6 +37,19 @@ public class Player extends BaseActor3D {
             totalTime += dt;
         movementPolling(dt);
         stage.camera.position.set(position);
+
+        muzzleCount += dt;
+        if (muzzleCount > .1f)
+            stage3d.environment.remove(muzzleLight);
+    }
+
+    public void shoot() {
+        muzzleLight = new PointLight();
+        Color lightColor = new Color(.3f, .1f, 0, 1);
+        Vector3 lightVector = new Vector3(position.x, position.y, position.z);
+        muzzleLight.set(lightColor, lightVector, 25f);
+        stage3d.environment.add(muzzleLight);
+        muzzleCount = 0;
     }
 
     private void movementPolling(float dt) {

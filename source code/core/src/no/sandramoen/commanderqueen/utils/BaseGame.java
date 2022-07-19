@@ -31,7 +31,7 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
     // game state
     public static float mouseMovementSensitivity = .05f;
     public static float voiceVolume = 1f;
-    public static float soundVolume = .7f;
+    public static float soundVolume = .5f;
     public static float musicVolume = .7f;
     public static float unitScale = .0621f;
 
