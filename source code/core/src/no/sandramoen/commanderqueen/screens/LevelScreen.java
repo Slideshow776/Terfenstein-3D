@@ -47,6 +47,7 @@ public class LevelScreen extends BaseScreen3D {
         if (isGameOver) return;
         updateTiles();
         updateEnemies();
+        weapon.sway(player.isMoving);
 
         debugLabel.setText("FPS: " + Gdx.graphics.getFramesPerSecond() + "\nVisible: " + mainStage3D.visibleCount);
 

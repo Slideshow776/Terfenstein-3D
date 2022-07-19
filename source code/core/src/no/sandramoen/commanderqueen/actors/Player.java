@@ -11,7 +11,7 @@ import no.sandramoen.commanderqueen.utils.BaseGame;
 import no.sandramoen.commanderqueen.utils.Stage3D;
 
 public class Player extends BaseActor3D {
-    private float speed = 6.0f;
+    private float speed = 8.0f;
     private float rotateSpeed = 90f * .05f;
     private float totalTime = 0;
     private Stage3D stage3d;
@@ -19,10 +19,11 @@ public class Player extends BaseActor3D {
     private PointLight muzzleLight;
     private float muzzleCount;
 
-    float bobFrequency = 4;
-    float bobAmount = .01f;
-    float bobCounter = 0;
-    boolean moving = false;
+    private float bobFrequency = 4;
+    private float bobAmount = .01f;
+    private float bobCounter = 0;
+
+    public boolean isMoving = false;
 
     public Player(float y, float z, Stage3D stage3D) {
         super(0, y, z, stage3D);
@@ -67,11 +68,10 @@ public class Player extends BaseActor3D {
 
         if (BaseGame.isHeadBobbing) {
             bobCounter += bobFrequency * dt;
-            if ((int) bobCounter % 2 == 0 && moving)
+            if ((int) bobCounter % 2 == 0 && isMoving)
                 stage.moveCameraUp(bobAmount);
-            else if (moving)
+            else if (isMoving)
                 stage.moveCameraUp(-bobAmount);
-            moving = false;
         }
     }
 
@@ -84,20 +84,23 @@ public class Player extends BaseActor3D {
     private void keyboardPolling(float dt) {
         if (Gdx.input.isKeyPressed(Input.Keys.W)) {
             moveForward(-speed * dt);
-            moving = true;
+            isMoving = true;
         }
         if (Gdx.input.isKeyPressed(Input.Keys.A)) {
             moveRight(speed * dt);
-            moving = true;
+            isMoving = true;
         }
         if (Gdx.input.isKeyPressed(Input.Keys.S)) {
             moveForward(speed * dt);
-            moving = true;
+            isMoving = true;
         }
         if (Gdx.input.isKeyPressed(Input.Keys.D)) {
             moveRight(-speed * dt);
-            moving = true;
+            isMoving = true;
         }
+
+        if (!Gdx.input.isKeyPressed(Input.Keys.ANY_KEY))
+            isMoving = false;
     }
 
     private void mousePolling() {

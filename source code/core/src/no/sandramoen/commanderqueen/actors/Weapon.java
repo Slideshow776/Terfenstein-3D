@@ -6,7 +6,10 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
+import com.badlogic.gdx.scenes.scene2d.actions.RepeatAction;
 import com.badlogic.gdx.utils.Array;
 
 import no.sandramoen.commanderqueen.actors.utils.BaseActor;
@@ -15,10 +18,13 @@ import no.sandramoen.commanderqueen.utils.BaseGame;
 public class Weapon extends BaseActor {
     private Animation<TextureRegion> shootAnimation;
     private float totalTime = 5f;
+    private float swayFrequency = .5f;
+    private float swayAmount = .01f;
+    private Vector2 restPosition = new Vector2(Gdx.graphics.getWidth() / 2 - getWidth() / 2, -Gdx.graphics.getHeight() * swayAmount);
 
     public Weapon(Stage stage) {
         super(0, 0, stage);
-        setPosition(Gdx.graphics.getWidth() / 2 - getWidth() / 2, 0);
+        setPosition(restPosition.x, restPosition.y);
 
         Array<TextureAtlas.AtlasRegion> animationImages = new Array();
         animationImages.add(BaseGame.textureAtlas.findRegion("player/shooting 1"));
@@ -27,6 +33,11 @@ public class Weapon extends BaseActor {
         animationImages.add(BaseGame.textureAtlas.findRegion("player/shooting 0"));
         shootAnimation = new Animation(.1f, animationImages, Animation.PlayMode.NORMAL);
         animationImages.clear();
+    }
+
+    @Override
+    public void act(float delta) {
+        super.act(delta);
     }
 
     @Override
@@ -40,5 +51,18 @@ public class Weapon extends BaseActor {
     public void shoot() {
         totalTime = 0f;
         BaseGame.pistolShotSound.play(BaseGame.soundVolume, MathUtils.random(.9f, 1.1f), 0f);
+    }
+
+    public void sway(boolean isMoving) {
+        if (!hasActions() && isMoving) {
+            addAction(Actions.forever(Actions.sequence(
+                    Actions.moveBy(Gdx.graphics.getWidth() * swayAmount, Gdx.graphics.getHeight() * swayAmount, swayFrequency),
+                    Actions.moveBy(-Gdx.graphics.getWidth() * 2 * swayAmount, -Gdx.graphics.getHeight() * 2 * swayAmount, 2 * swayFrequency),
+                    Actions.moveBy(Gdx.graphics.getWidth() * swayAmount, Gdx.graphics.getHeight() * swayAmount, swayFrequency)
+            )));
+        } else if (!isMoving) {
+            clearActions();
+            addAction(Actions.moveTo(restPosition.x, restPosition.y, .5f));
+        }
     }
 }
