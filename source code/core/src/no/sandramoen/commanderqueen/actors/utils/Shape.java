@@ -41,9 +41,8 @@ abstract class BaseShape implements Shape {
     @Override
     public float intersects(Matrix4 transform, Ray ray) {
         transform.getTranslation(position).add(center);
-        if (Intersector.intersectRayBoundsFast(ray, position, dimensions)) {
+        if (Intersector.intersectRayBoundsFast(ray, position, dimensions))
             return ray.origin.dst2(position);
-        }
         return -1f;
     }
 }

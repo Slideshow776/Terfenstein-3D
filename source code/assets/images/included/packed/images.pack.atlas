@@ -1,9 +1,37 @@
 
 images.pack.png
-size: 16, 16
+size: 256, 128
 format: RGBA8888
 filter: Nearest, Nearest
 repeat: none
+barrel
+  rotate: false
+  xy: 2, 5
+  size: 32, 96
+  orig: 32, 96
+  offset: 0, 0
+  index: -1
+barrel explode 1
+  rotate: false
+  xy: 36, 5
+  size: 32, 96
+  orig: 32, 96
+  offset: 0, 0
+  index: -1
+barrel explode 2
+  rotate: false
+  xy: 70, 5
+  size: 32, 96
+  orig: 32, 96
+  offset: 0, 0
+  index: -1
+barrel explode 3
+  rotate: false
+  xy: 104, 5
+  size: 32, 96
+  orig: 32, 96
+  offset: 0, 0
+  index: -1
 clearPixel
   rotate: false
   xy: 2, 2

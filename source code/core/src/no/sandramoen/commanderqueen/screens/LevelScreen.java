@@ -11,6 +11,7 @@ import com.badlogic.gdx.math.collision.Ray;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.utils.Array;
 
+import no.sandramoen.commanderqueen.actors.Barrel;
 import no.sandramoen.commanderqueen.actors.hud.HUD;
 import no.sandramoen.commanderqueen.actors.characters.Ghoul;
 import no.sandramoen.commanderqueen.actors.characters.Player;
@@ -107,6 +108,11 @@ public class LevelScreen extends BaseScreen3D {
                 ghoul.die();
                 shootable.removeIndex(index);
                 hud.incrementScore(10);
+                hud.face.happy();
+            } else if (shootable.get(index).getClass().getSimpleName().equals("Barrel")) {
+                Barrel barrel = (Barrel) shootable.get(index);
+                barrel.explode();
+                shootable.removeIndex(index);
                 hud.face.happy();
             }
         }
@@ -207,6 +213,8 @@ public class LevelScreen extends BaseScreen3D {
 
         pickups.add(new Armor(playerY, playerX + 1, mainStage3D, player));
         pickups.add(new Health(playerY - 1, playerX, mainStage3D, player));
+
+        shootable.add(new Barrel(playerX, playerY, mainStage3D, player));
     }
 
     private void initializeEnemies() {
