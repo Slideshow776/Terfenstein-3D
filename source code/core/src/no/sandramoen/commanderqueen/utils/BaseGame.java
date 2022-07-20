@@ -27,6 +27,9 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
     public static Music levelMusic0;
     public static Sound pistolShotSound;
     public static Sound ghoulDeathSound;
+    public static Sound ammoPickupSound;
+    public static Sound armorPickupSound;
+    public static Sound healthPickupSound;
 
     // game state
     public static float mouseMovementSensitivity = .05f;
@@ -82,6 +85,9 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
         // sound
         assetManager.load("audio/sound/370220__eflexmusic__pistol-shot-close-mixed.wav", Sound.class);
         assetManager.load("audio/sound/249686__cylon8472__cthulhu-growl.wav", Sound.class);
+        assetManager.load("audio/sound/Pickup_Coin45.wav", Sound.class);
+        assetManager.load("audio/sound/armor pickup.wav", Sound.class);
+        assetManager.load("audio/sound/health pickup.wav", Sound.class);
 
         // tiled maps
         assetManager.setLoader(TiledMap.class, new TmxMapLoader(new InternalFileHandleResolver()));
@@ -95,6 +101,9 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
         // sound
         pistolShotSound = assetManager.get("audio/sound/370220__eflexmusic__pistol-shot-close-mixed.wav", Sound.class);
         ghoulDeathSound = assetManager.get("audio/sound/249686__cylon8472__cthulhu-growl.wav", Sound.class);
+        ammoPickupSound = assetManager.get("audio/sound/Pickup_Coin45.wav", Sound.class);
+        armorPickupSound = assetManager.get("audio/sound/armor pickup.wav", Sound.class);
+        healthPickupSound = assetManager.get("audio/sound/health pickup.wav", Sound.class);
 
         // tiled maps
         level0Map = assetManager.get("maps/level0.tmx", TiledMap.class);

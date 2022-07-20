@@ -16,6 +16,10 @@ import no.sandramoen.commanderqueen.actors.characters.Ghoul;
 import no.sandramoen.commanderqueen.actors.characters.Player;
 import no.sandramoen.commanderqueen.actors.Tile;
 import no.sandramoen.commanderqueen.actors.Weapon;
+import no.sandramoen.commanderqueen.actors.pickups.Ammo;
+import no.sandramoen.commanderqueen.actors.pickups.Armor;
+import no.sandramoen.commanderqueen.actors.pickups.Health;
+import no.sandramoen.commanderqueen.actors.pickups.Pickup;
 import no.sandramoen.commanderqueen.actors.utils.BaseActor3D;
 import no.sandramoen.commanderqueen.actors.utils.Enemy;
 import no.sandramoen.commanderqueen.actors.utils.TilemapActor;
@@ -28,6 +32,7 @@ public class LevelScreen extends BaseScreen3D {
     private HUD hud;
     private Array<Tile> tiles;
     private Array<Enemy> enemies;
+    private Array<Pickup> pickups;
 
     private Label debugLabel;
     private Label gameLabel;
@@ -39,6 +44,7 @@ public class LevelScreen extends BaseScreen3D {
 
     public void initialize() {
         /*GameUtils.playLoopingMusic(BaseGame.levelMusic0);*/
+        pickups = new Array();
         tilemap = new TilemapActor(BaseGame.level0Map, mainStage3D);
         shootable = new Array();
         initializeActors();
@@ -49,6 +55,7 @@ public class LevelScreen extends BaseScreen3D {
         if (isGameOver) return;
         updateTiles();
         updateEnemies();
+        updatePickups();
         weapon.sway(player.isMoving);
 
         debugLabel.setText("FPS: " + Gdx.graphics.getFramesPerSecond() + "\nVisible: " + mainStage3D.visibleCount);
@@ -71,7 +78,7 @@ public class LevelScreen extends BaseScreen3D {
         if (button == Input.Buttons.LEFT && !isGameOver) {
             player.shoot();
             weapon.shoot();
-            hud.useAmmo();
+            hud.decrementAmmo();
             int index = rayPickBaseActor3DFromList(Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() / 2, shootable);
             determineConsequencesOfPick(index);
         }
@@ -96,6 +103,7 @@ public class LevelScreen extends BaseScreen3D {
         if (index >= 0) {
             if (shootable.get(index).getClass().getSimpleName().equals("Ghoul")) {
                 Ghoul ghoul = (Ghoul) shootable.get(index);
+                pickups.add(new Ammo(ghoul.position.y, ghoul.position.z, mainStage3D, player));
                 ghoul.die();
                 shootable.removeIndex(index);
                 hud.incrementScore(10);
@@ -123,6 +131,21 @@ public class LevelScreen extends BaseScreen3D {
             for (Tile tile : tiles) {
                 if (enemy.overlaps(tile))
                     enemy.preventOverlap(tile);
+            }
+        }
+    }
+
+    private void updatePickups() {
+        for (Pickup pickup : pickups) {
+            if (player.overlaps(pickup)) {
+                if (pickup.getClass().getSimpleName().equals("Ammo"))
+                    hud.incrementAmmo(1);
+                if (pickup.getClass().getSimpleName().equals("Armor"))
+                    hud.incrementArmor(25);
+                if (pickup.getClass().getSimpleName().equals("Health"))
+                    hud.incrementHealth(10);
+                pickups.removeValue(pickup, false);
+                pickup.remove();
             }
         }
     }
@@ -170,6 +193,8 @@ public class LevelScreen extends BaseScreen3D {
         float playerY = (float) startPoint.getProperties().get("y") * BaseGame.unitScale;
         player = new Player(playerX, playerY, mainStage3D);
 
+        pickups.add(new Armor(playerY, playerX + 1, mainStage3D, player));
+        pickups.add(new Health(playerY - 1, playerX, mainStage3D, player));
     }
 
     private void initializeEnemies() {

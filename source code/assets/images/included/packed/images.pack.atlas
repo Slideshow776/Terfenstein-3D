@@ -123,6 +123,33 @@ hud/hud
   index: -1
 
 images.pack4.png
+size: 128, 64
+format: RGBA8888
+filter: Nearest, Nearest
+repeat: none
+pickups/ammo
+  rotate: false
+  xy: 2, 2
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+pickups/armor
+  rotate: false
+  xy: 36, 2
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+pickups/health
+  rotate: false
+  xy: 70, 2
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+
+images.pack5.png
 size: 1024, 1024
 format: RGBA8888
 filter: Nearest, Nearest
@@ -142,7 +169,7 @@ player/shooting 1
   offset: 0, 0
   index: -1
 
-images.pack5.png
+images.pack6.png
 size: 1024, 1024
 format: RGBA8888
 filter: Nearest, Nearest
@@ -155,7 +182,7 @@ player/shooting 2
   offset: 0, 0
   index: -1
 
-images.pack6.png
+images.pack7.png
 size: 1024, 1024
 format: RGBA8888
 filter: Nearest, Nearest

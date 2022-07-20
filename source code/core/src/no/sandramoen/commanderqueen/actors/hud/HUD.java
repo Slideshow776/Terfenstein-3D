@@ -11,6 +11,7 @@ import no.sandramoen.commanderqueen.utils.BaseGame;
 public class HUD extends BaseActor {
     private Label armorLabel, healthLabel, ammoLabel, scoreLabel;
     private int armor = 25, health = 100, ammo = 50, score = 0;
+    private int maxArmor = 200, maxHealth = 100;
     private float labelScale = 1.0f;
 
     public Face face;
@@ -49,7 +50,29 @@ public class HUD extends BaseActor {
         scoreLabel.setPosition(getWidth() * 4 / 5 + scoreLabel.getWidth() / 4, getHeight() / 2 - scoreLabel.getHeight() / 2);
     }
 
-    public void useAmmo() {
+    public void incrementArmor(int amount) {
+        if (armor + amount <= maxArmor) {
+            armor += amount;
+            armorLabel.setText(armor + "%");
+        }
+        BaseGame.armorPickupSound.play(BaseGame.soundVolume);
+    }
+
+    public void incrementHealth(int amount) {
+        if (health + amount <= maxHealth) {
+            health += amount;
+            healthLabel.setText(health + "%");
+        }
+        BaseGame.healthPickupSound.play(BaseGame.soundVolume);
+    }
+
+    public void incrementAmmo(int amount) {
+        ammo += amount;
+        ammoLabel.setText(ammo + "");
+        BaseGame.ammoPickupSound.play(BaseGame.soundVolume);
+    }
+
+    public void decrementAmmo() {
         ammo--;
         ammoLabel.setText(ammo + "");
     }
