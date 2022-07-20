@@ -174,15 +174,27 @@ public class LevelScreen extends BaseScreen3D {
             MapProperties props = obj.getProperties();
             float x = (Float) props.get("x") * BaseGame.unitScale;
             float y = (Float) props.get("y") * BaseGame.unitScale;
-            tiles.add(new Tile(x, y, mainStage3D));
+            Tile tile = new Tile(x, y, mainStage3D);
+            tile.loadImage("tiles/research0");
+            tiles.add(tile);
             shootable.add(tiles.get(tiles.size - 1));
         }
         for (MapObject obj : tilemap.getTileList("floor")) {
             MapProperties props = obj.getProperties();
             float x = (Float) props.get("x") * BaseGame.unitScale;
             float y = (Float) props.get("y") * BaseGame.unitScale;
-            Tile tile = new Tile(-4, x, y, mainStage3D);
-            tile.setColor(Color.DARK_GRAY);
+            Tile tile = new Tile(-Tile.height, x, y, mainStage3D);
+            tile.loadImage("tiles/floor0");
+            tiles.add(tile);
+            tile.isCollisionEnabled = false;
+        }
+        for (MapObject obj : tilemap.getTileList("ceiling")) {
+            MapProperties props = obj.getProperties();
+            float x = (Float) props.get("x") * BaseGame.unitScale;
+            float y = (Float) props.get("y") * BaseGame.unitScale;
+            Tile tile = new Tile(Tile.height, x, y, mainStage3D);
+            tile.loadImage("tiles/floor0");
+            tiles.add(tile);
             tile.isCollisionEnabled = false;
         }
     }

@@ -1,7 +1,5 @@
 package no.sandramoen.commanderqueen.actors;
 
-import com.badlogic.gdx.graphics.Color;
-
 import no.sandramoen.commanderqueen.actors.utils.BaseActor3D;
 import no.sandramoen.commanderqueen.utils.Stage3D;
 
@@ -20,8 +18,6 @@ public class Tile extends BaseActor3D {
 
     private void setup() {
         buildModel(height, height, height);
-        setColor(Color.BROWN);
-        loadImage("cliff0");
         setBaseRectangle();
     }
 }

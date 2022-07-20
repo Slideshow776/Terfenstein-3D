@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.3.1" orientation="orthogonal" renderorder="right-down" compressionlevel="-1" width="20" height="20" tilewidth="64" tileheight="64" infinite="0" nextlayerid="6" nextobjectid="104">
+<map version="1.2" tiledversion="1.3.1" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="20" height="20" tilewidth="64" tileheight="64" infinite="0" nextlayerid="7" nextobjectid="132">
  <tileset firstgid="1" name="test" tilewidth="64" tileheight="64" tilecount="64" columns="8">
   <image source="tileset.png" width="512" height="512"/>
   <tile id="0">
@@ -10,6 +10,11 @@
   <tile id="1">
    <properties>
     <property name="name" value="player start"/>
+   </properties>
+  </tile>
+  <tile id="2">
+   <properties>
+    <property name="name" value="ceiling"/>
    </properties>
   </tile>
   <tile id="8">
@@ -85,6 +90,36 @@
   <object id="33" gid="1" x="896" y="768" width="64" height="64"/>
   <object id="34" gid="1" x="832" y="768" width="64" height="64"/>
   <object id="35" gid="1" x="896" y="576" width="64" height="64"/>
+ </objectgroup>
+ <objectgroup id="6" name="ceilings">
+  <object id="104" gid="3" x="576" y="448" width="64" height="64"/>
+  <object id="105" gid="3" x="576" y="512" width="64" height="64"/>
+  <object id="106" gid="3" x="576" y="576" width="64" height="64"/>
+  <object id="107" gid="3" x="576" y="640" width="64" height="64"/>
+  <object id="108" gid="3" x="576" y="704" width="64" height="64"/>
+  <object id="109" gid="3" x="640" y="704" width="64" height="64"/>
+  <object id="110" gid="3" x="704" y="704" width="64" height="64"/>
+  <object id="111" gid="3" x="768" y="704" width="64" height="64"/>
+  <object id="112" gid="3" x="832" y="704" width="64" height="64"/>
+  <object id="113" gid="3" x="896" y="704" width="64" height="64"/>
+  <object id="114" gid="3" x="960" y="704" width="64" height="64"/>
+  <object id="115" gid="3" x="960" y="640" width="64" height="64"/>
+  <object id="116" gid="3" x="896" y="640" width="64" height="64"/>
+  <object id="117" gid="3" x="832" y="640" width="64" height="64"/>
+  <object id="118" gid="3" x="832" y="576" width="64" height="64"/>
+  <object id="119" gid="3" x="768" y="576" width="64" height="64"/>
+  <object id="120" gid="3" x="704" y="576" width="64" height="64"/>
+  <object id="121" gid="3" x="704" y="512" width="64" height="64"/>
+  <object id="122" gid="3" x="704" y="448" width="64" height="64"/>
+  <object id="123" gid="3" x="640" y="448" width="64" height="64"/>
+  <object id="124" gid="3" x="768" y="448" width="64" height="64"/>
+  <object id="125" gid="3" x="832" y="448" width="64" height="64"/>
+  <object id="126" gid="3" x="832" y="512" width="64" height="64"/>
+  <object id="127" gid="3" x="896" y="448" width="64" height="64"/>
+  <object id="128" gid="3" x="896" y="512" width="64" height="64"/>
+  <object id="129" gid="3" x="960" y="448" width="64" height="64"/>
+  <object id="130" gid="3" x="960" y="512" width="64" height="64"/>
+  <object id="131" gid="3" x="960" y="576" width="64" height="64"/>
  </objectgroup>
  <objectgroup id="4" name="actors">
   <object id="39" gid="2" x="576" y="704" width="64" height="64"/>
