@@ -1,6 +1,6 @@
 package no.sandramoen.commanderqueen.actors.utils;
 
-import no.sandramoen.commanderqueen.actors.Player;
+import no.sandramoen.commanderqueen.actors.characters.Player;
 import no.sandramoen.commanderqueen.utils.GameUtils;
 import no.sandramoen.commanderqueen.utils.Stage3D;
 

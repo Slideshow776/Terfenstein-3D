@@ -89,6 +89,40 @@ enemies/ghoul walk 3
   index: -1
 
 images.pack3.png
+size: 1024, 64
+format: RGBA8888
+filter: Nearest, Nearest
+repeat: none
+hud/face happy
+  rotate: false
+  xy: 2, 2
+  size: 160, 32
+  orig: 160, 32
+  offset: 0, 0
+  index: -1
+hud/face idle 1
+  rotate: false
+  xy: 164, 2
+  size: 160, 32
+  orig: 160, 32
+  offset: 0, 0
+  index: -1
+hud/face idle 2
+  rotate: false
+  xy: 326, 2
+  size: 160, 32
+  orig: 160, 32
+  offset: 0, 0
+  index: -1
+hud/hud
+  rotate: false
+  xy: 488, 2
+  size: 160, 32
+  orig: 160, 32
+  offset: 0, 0
+  index: -1
+
+images.pack4.png
 size: 1024, 1024
 format: RGBA8888
 filter: Nearest, Nearest
@@ -108,7 +142,7 @@ player/shooting 1
   offset: 0, 0
   index: -1
 
-images.pack4.png
+images.pack5.png
 size: 1024, 1024
 format: RGBA8888
 filter: Nearest, Nearest
@@ -121,7 +155,7 @@ player/shooting 2
   offset: 0, 0
   index: -1
 
-images.pack5.png
+images.pack6.png
 size: 1024, 1024
 format: RGBA8888
 filter: Nearest, Nearest

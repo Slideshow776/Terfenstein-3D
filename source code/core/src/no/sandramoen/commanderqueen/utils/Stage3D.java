@@ -29,7 +29,7 @@ public class Stage3D {
         environment.set(new ColorAttribute(ColorAttribute.AmbientLight, 0.7f, 0.7f, 0.7f, 1f));
 
         DirectionalLight dLight = new DirectionalLight();
-        Color lightColor = new Color(0.9f, 0.9f, 0.9f, 1);
+        Color lightColor = new Color(0.8f, 0.8f, 0.9f, 1);
         Vector3 lightVector = new Vector3(-1.0f, -0.75f, -0.25f);
         dLight.set(lightColor, lightVector);
         environment.add(dLight);

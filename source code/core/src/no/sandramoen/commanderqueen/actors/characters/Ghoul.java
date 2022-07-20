@@ -1,4 +1,4 @@
-package no.sandramoen.commanderqueen.actors;
+package no.sandramoen.commanderqueen.actors.characters;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Animation;

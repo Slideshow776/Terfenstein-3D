@@ -22,6 +22,7 @@ public class DesktopLauncher {
 		float aspectRatio = 16 / 9f;
 		int height = (int) (width / aspectRatio);
 
+		System.out.println("Window dimensions => width: " + width + ", height: " + height);
 		config.setWindowedMode(width, height);
 	}
 }

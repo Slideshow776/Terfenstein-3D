@@ -20,11 +20,10 @@ public class Weapon extends BaseActor {
     private float totalTime = 5f;
     private float swayFrequency = .5f;
     private float swayAmount = .01f;
-    private Vector2 restPosition = new Vector2(Gdx.graphics.getWidth() / 2 - getWidth() / 2, -Gdx.graphics.getHeight() * swayAmount);
+    private Vector2 restPosition = new Vector2(Gdx.graphics.getWidth() * 3 / 5 - getWidth() / 2, -Gdx.graphics.getHeight() * swayAmount);
 
     public Weapon(Stage stage) {
         super(0, 0, stage);
-        setPosition(restPosition.x, restPosition.y);
 
         Array<TextureAtlas.AtlasRegion> animationImages = new Array();
         animationImages.add(BaseGame.textureAtlas.findRegion("player/shooting 1"));
@@ -33,6 +32,10 @@ public class Weapon extends BaseActor {
         animationImages.add(BaseGame.textureAtlas.findRegion("player/shooting 0"));
         shootAnimation = new Animation(.1f, animationImages, Animation.PlayMode.NORMAL);
         animationImages.clear();
+
+        setWidth(Gdx.graphics.getWidth() * .25f);
+        setSize(getWidth(), getWidth() / BaseGame.aspectRatio);
+        setPosition(restPosition.x, restPosition.y);
     }
 
     @Override
@@ -45,7 +48,7 @@ public class Weapon extends BaseActor {
         super.draw(batch, parentAlpha);
         if (totalTime < 10f)
             totalTime += Gdx.graphics.getDeltaTime();
-        batch.draw(shootAnimation.getKeyFrame(totalTime), getX(), getY());
+        batch.draw(shootAnimation.getKeyFrame(totalTime), getX(), getY(), getWidth(), getHeight());
     }
 
     public void shoot() {

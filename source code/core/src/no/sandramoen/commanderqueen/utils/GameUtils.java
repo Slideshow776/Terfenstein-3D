@@ -3,7 +3,7 @@ package no.sandramoen.commanderqueen.utils;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.math.MathUtils;
 
-import no.sandramoen.commanderqueen.actors.Player;
+import no.sandramoen.commanderqueen.actors.characters.Player;
 import no.sandramoen.commanderqueen.actors.Tile;
 import no.sandramoen.commanderqueen.actors.utils.BaseActor3D;
 

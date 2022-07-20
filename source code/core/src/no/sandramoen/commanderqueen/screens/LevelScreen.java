@@ -11,8 +11,9 @@ import com.badlogic.gdx.math.collision.Ray;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.utils.Array;
 
-import no.sandramoen.commanderqueen.actors.Ghoul;
-import no.sandramoen.commanderqueen.actors.Player;
+import no.sandramoen.commanderqueen.actors.hud.HUD;
+import no.sandramoen.commanderqueen.actors.characters.Ghoul;
+import no.sandramoen.commanderqueen.actors.characters.Player;
 import no.sandramoen.commanderqueen.actors.Tile;
 import no.sandramoen.commanderqueen.actors.Weapon;
 import no.sandramoen.commanderqueen.actors.utils.BaseActor3D;
@@ -24,6 +25,7 @@ import no.sandramoen.commanderqueen.utils.BaseScreen3D;
 public class LevelScreen extends BaseScreen3D {
     private Player player;
     private Weapon weapon;
+    private HUD hud;
     private Array<Tile> tiles;
     private Array<Enemy> enemies;
 
@@ -69,6 +71,7 @@ public class LevelScreen extends BaseScreen3D {
         if (button == Input.Buttons.LEFT && !isGameOver) {
             player.shoot();
             weapon.shoot();
+            hud.useAmmo();
             int index = rayPickBaseActor3DFromList(Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() / 2, shootable);
             determineConsequencesOfPick(index);
         }
@@ -95,6 +98,8 @@ public class LevelScreen extends BaseScreen3D {
                 Ghoul ghoul = (Ghoul) shootable.get(index);
                 ghoul.die();
                 shootable.removeIndex(index);
+                hud.incrementScore(10);
+                hud.face.happy();
             }
         }
     }
@@ -133,6 +138,8 @@ public class LevelScreen extends BaseScreen3D {
     }
 
     private void initializeActors() {
+        hud = new HUD(uiStage);
+        weapon = new Weapon(uiStage);
         initializeTiles();
         initializePlayer();
         initializeEnemies();
@@ -162,7 +169,7 @@ public class LevelScreen extends BaseScreen3D {
         float playerX = (float) startPoint.getProperties().get("x") * BaseGame.unitScale;
         float playerY = (float) startPoint.getProperties().get("y") * BaseGame.unitScale;
         player = new Player(playerX, playerY, mainStage3D);
-        weapon = new Weapon(uiStage);
+
     }
 
     private void initializeEnemies() {
