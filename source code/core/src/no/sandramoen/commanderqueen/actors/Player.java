@@ -30,6 +30,7 @@ public class Player extends BaseActor3D {
         this.stage3d = stage3D;
         buildModel(1, 1, 1);
         setBaseRectangle();
+        loadImage("clearPixel");
     }
 
     @Override
