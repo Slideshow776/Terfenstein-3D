@@ -27,6 +27,7 @@ import no.sandramoen.commanderqueen.actors.utils.Enemy;
 import no.sandramoen.commanderqueen.actors.utils.TilemapActor;
 import no.sandramoen.commanderqueen.utils.BaseGame;
 import no.sandramoen.commanderqueen.utils.BaseScreen3D;
+import no.sandramoen.commanderqueen.utils.GameUtils;
 
 public class LevelScreen extends BaseScreen3D {
     private Player player;
@@ -46,7 +47,8 @@ public class LevelScreen extends BaseScreen3D {
     private TilemapActor tilemap;
 
     public void initialize() {
-        /*GameUtils.playLoopingMusic(BaseGame.levelMusic0);*/
+        /*GameUtils.playLoopingMusic(BaseGame.level0Music);*/
+        GameUtils.playLoopingMusic(BaseGame.metalWalkingMusic, 0);
         pickups = new Array();
         shootable = new Array();
         explosionBlasts = new Array();

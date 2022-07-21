@@ -24,7 +24,8 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
     public static TextureAtlas textureAtlas;
     public static Label.LabelStyle label26Style;
     public static TiledMap level0Map;
-    public static Music levelMusic0;
+    public static Music level0Music;
+    public static Music metalWalkingMusic;
     public static Sound pistolShotSound;
     public static Sound ghoulDeathSound;
     public static Sound ammoPickupSound;
@@ -38,7 +39,7 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
     public static float aspectRatio = 16 / 9;
     public static float voiceVolume = 1f;
     public static float soundVolume = .5f;
-    public static float musicVolume = .7f;
+    public static float musicVolume = .1f;
     public static float unitScale = .0621f;
 
     public BaseGame() {
@@ -82,6 +83,7 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
 
         // music
         assetManager.load("audio/music/342991__furbyguy__stuttering-guitar-metal.wav", Music.class);
+        assetManager.load("audio/music/398937__mypantsfelldown__metal-footsteps.wav", Music.class);
 
         // sound
         assetManager.load("audio/sound/370220__eflexmusic__pistol-shot-close-mixed.wav", Sound.class);
@@ -98,7 +100,8 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
         assetManager.finishLoading();
 
         // music
-        levelMusic0 = assetManager.get("audio/music/342991__furbyguy__stuttering-guitar-metal.wav", Music.class);
+        level0Music = assetManager.get("audio/music/342991__furbyguy__stuttering-guitar-metal.wav", Music.class);
+        metalWalkingMusic = assetManager.get("audio/music/398937__mypantsfelldown__metal-footsteps.wav", Music.class);
 
         // sound
         pistolShotSound = assetManager.get("audio/sound/370220__eflexmusic__pistol-shot-close-mixed.wav", Sound.class);

@@ -44,6 +44,10 @@ public class Player extends BaseActor3D {
         stage.camera.position.y = position.y;
         stage.camera.position.z = position.z;
         headBobbing(dt);
+        if (isMoving)
+            BaseGame.metalWalkingMusic.setVolume(BaseGame.soundVolume);
+        else
+            BaseGame.metalWalkingMusic.setVolume(0);
 
         turnOffMuzzleLight(dt);
     }

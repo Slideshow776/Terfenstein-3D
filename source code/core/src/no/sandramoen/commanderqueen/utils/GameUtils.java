@@ -35,4 +35,10 @@ public class GameUtils {
         music.setLooping(true);
         music.play();
     }
+
+    public static void playLoopingMusic(Music music, float volume) {
+        music.setVolume(volume);
+        music.setLooping(true);
+        music.play();
+    }
 }
