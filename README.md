@@ -1,7 +1,8 @@
 # 3D-shooting-game
 
 [Try it](https://slideshow776.github.io/3D-shooting-game/)
-[![image](https://user-images.githubusercontent.com/4059636/179406200-43b104f5-78b4-4c17-b0b3-aec3d089788f.png)](https://slideshow776.github.io/3D-shooting-game/)
+[![image](https://user-images.githubusercontent.com/4059636/180185920-df0b8e69-6390-43dd-83d7-99acd720655a.gif)
+](https://slideshow776.github.io/3D-shooting-game/)
 
 
 Read on below for project specifics.
