@@ -40,6 +40,7 @@ public class LevelScreen extends BaseScreen3D {
 
     private Label debugLabel;
     private Label gameLabel;
+    private Label statusLabel;
 
     private Array<BaseActor3D> shootable;
     private Vector3 position = new Vector3();
@@ -47,7 +48,7 @@ public class LevelScreen extends BaseScreen3D {
     private TilemapActor tilemap;
 
     public void initialize() {
-        /*GameUtils.playLoopingMusic(BaseGame.level0Music);*/
+        GameUtils.playLoopingMusic(BaseGame.level0Music);
         GameUtils.playLoopingMusic(BaseGame.metalWalkingMusic, 0);
         pickups = new Array();
         shootable = new Array();
@@ -111,7 +112,9 @@ public class LevelScreen extends BaseScreen3D {
                 Ghoul ghoul = (Ghoul) shootable.get(index);
                 pickups.add(new Ammo(ghoul.position.y, ghoul.position.z, mainStage3D, player));
                 ghoul.die();
-                shootable.removeIndex(index);
+                shootable.removeValue(ghoul, false);
+                enemies.removeValue(ghoul, false);
+                statusLabel.setText("enemies left: " + enemies.size);
                 hud.incrementScore(10);
                 hud.face.happy();
             } else if (shootable.get(index).getClass().getSimpleName().equals("Barrel")) {
@@ -143,6 +146,8 @@ public class LevelScreen extends BaseScreen3D {
                 if (explosionBlast.overlaps(enemy)) {
                     explosionPushBack(enemy, explosionBlast);
                     enemy.die();
+                    enemies.removeValue(enemy, false);
+                    statusLabel.setText("enemies left: " + enemies.size);
                 }
             }
             explosionBlasts.removeValue(explosionBlast, false);
@@ -257,14 +262,19 @@ public class LevelScreen extends BaseScreen3D {
     }
 
     private void initializeUI() {
+        statusLabel = new Label("enemies left: " + enemies.size, BaseGame.label26Style);
+        uiTable.add(statusLabel)
+                .row();
+
         debugLabel = new Label(" ", BaseGame.label26Style);
         uiTable.add(debugLabel)
-                .expand()
+                .expandX()
                 .top()
                 .left()
                 .padTop(Gdx.graphics.getHeight() * .01f)
                 .padLeft(Gdx.graphics.getWidth() * .01f)
                 .row();
+
 
         gameLabel = new Label("", BaseGame.label26Style);
         gameLabel.setColor(Color.RED);
@@ -272,7 +282,7 @@ public class LevelScreen extends BaseScreen3D {
         uiTable.add(gameLabel)
                 .expand()
                 .center()
-                .top();
+                .colspan(2);
 
         /*uiTable.setDebug(true);*/
     }
