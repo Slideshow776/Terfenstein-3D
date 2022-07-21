@@ -73,7 +73,8 @@ public class Player extends BaseActor3D {
                 stage.moveCameraUp(bobAmount);
             else if (isMoving)
                 stage.moveCameraUp(-bobAmount);
-        }
+        } else
+            position.x = 0;
     }
 
     private void movementPolling(float dt) {

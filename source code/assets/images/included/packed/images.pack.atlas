@@ -1,38 +1,17 @@
 
 images.pack.png
-size: 256, 128
+size: 16, 16
 format: RGBA8888
 filter: Nearest, Nearest
 repeat: none
-barrel
+clearPixel
   rotate: false
   xy: 2, 5
-  size: 32, 96
-  orig: 32, 96
+  size: 1, 1
+  orig: 1, 1
   offset: 0, 0
   index: -1
-barrel explode 1
-  rotate: false
-  xy: 36, 5
-  size: 32, 96
-  orig: 32, 96
-  offset: 0, 0
-  index: -1
-barrel explode 2
-  rotate: false
-  xy: 70, 5
-  size: 32, 96
-  orig: 32, 96
-  offset: 0, 0
-  index: -1
-barrel explode 3
-  rotate: false
-  xy: 104, 5
-  size: 32, 96
-  orig: 32, 96
-  offset: 0, 0
-  index: -1
-clearPixel
+redPixel
   rotate: false
   xy: 2, 2
   size: 1, 1
@@ -41,6 +20,75 @@ clearPixel
   index: -1
 
 images.pack2.png
+size: 1024, 128
+format: RGBA8888
+filter: Nearest, Nearest
+repeat: none
+barrel/barrel
+  rotate: false
+  xy: 2, 2
+  size: 64, 96
+  orig: 64, 96
+  offset: 0, 0
+  index: -1
+barrel/barrel explode 1
+  rotate: false
+  xy: 68, 2
+  size: 64, 96
+  orig: 64, 96
+  offset: 0, 0
+  index: -1
+barrel/barrel explode 2
+  rotate: false
+  xy: 134, 2
+  size: 64, 96
+  orig: 64, 96
+  offset: 0, 0
+  index: -1
+barrel/barrel explode 3
+  rotate: false
+  xy: 200, 2
+  size: 64, 96
+  orig: 64, 96
+  offset: 0, 0
+  index: -1
+barrel/barrel explode 4
+  rotate: false
+  xy: 266, 2
+  size: 64, 96
+  orig: 64, 96
+  offset: 0, 0
+  index: -1
+barrel/barrel explode 5
+  rotate: false
+  xy: 332, 2
+  size: 64, 96
+  orig: 64, 96
+  offset: 0, 0
+  index: -1
+barrel/barrel explode 6
+  rotate: false
+  xy: 398, 2
+  size: 64, 96
+  orig: 64, 96
+  offset: 0, 0
+  index: -1
+barrel/barrel explode 7
+  rotate: false
+  xy: 464, 2
+  size: 64, 96
+  orig: 64, 96
+  offset: 0, 0
+  index: -1
+barrel/barrel explode 8
+  rotate: false
+  xy: 530, 2
+  size: 64, 96
+  orig: 64, 96
+  offset: 0, 0
+  index: -1
+
+images.pack3.png
 size: 1024, 1024
 format: RGBA8888
 filter: Nearest, Nearest
@@ -109,7 +157,7 @@ enemies/ghoul walk 3
   offset: 0, 0
   index: -1
 
-images.pack3.png
+images.pack4.png
 size: 1024, 64
 format: RGBA8888
 filter: Nearest, Nearest
@@ -143,7 +191,7 @@ hud/hud
   offset: 0, 0
   index: -1
 
-images.pack4.png
+images.pack5.png
 size: 128, 64
 format: RGBA8888
 filter: Nearest, Nearest
@@ -170,7 +218,7 @@ pickups/health
   offset: 0, 0
   index: -1
 
-images.pack5.png
+images.pack6.png
 size: 1024, 1024
 format: RGBA8888
 filter: Nearest, Nearest
@@ -190,7 +238,7 @@ player/shooting 1
   offset: 0, 0
   index: -1
 
-images.pack6.png
+images.pack7.png
 size: 1024, 1024
 format: RGBA8888
 filter: Nearest, Nearest
@@ -203,7 +251,7 @@ player/shooting 2
   offset: 0, 0
   index: -1
 
-images.pack7.png
+images.pack8.png
 size: 1024, 1024
 format: RGBA8888
 filter: Nearest, Nearest
@@ -216,7 +264,7 @@ player/shooting 3
   offset: 0, 0
   index: -1
 
-images.pack8.png
+images.pack9.png
 size: 512, 128
 format: RGBA8888
 filter: Nearest, Nearest

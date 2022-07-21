@@ -12,6 +12,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.utils.Array;
 
 import no.sandramoen.commanderqueen.actors.Barrel;
+import no.sandramoen.commanderqueen.actors.ExplosionBlast;
 import no.sandramoen.commanderqueen.actors.hud.HUD;
 import no.sandramoen.commanderqueen.actors.characters.Ghoul;
 import no.sandramoen.commanderqueen.actors.characters.Player;
@@ -34,6 +35,7 @@ public class LevelScreen extends BaseScreen3D {
     private Array<Tile> tiles;
     private Array<Enemy> enemies;
     private Array<Pickup> pickups;
+    private Array<ExplosionBlast> explosionBlasts;
 
     private Label debugLabel;
     private Label gameLabel;
@@ -46,8 +48,9 @@ public class LevelScreen extends BaseScreen3D {
     public void initialize() {
         /*GameUtils.playLoopingMusic(BaseGame.levelMusic0);*/
         pickups = new Array();
-        tilemap = new TilemapActor(BaseGame.level0Map, mainStage3D);
         shootable = new Array();
+        explosionBlasts = new Array();
+        tilemap = new TilemapActor(BaseGame.level0Map, mainStage3D);
         initializeActors();
         initializeUI();
     }
@@ -112,6 +115,7 @@ public class LevelScreen extends BaseScreen3D {
             } else if (shootable.get(index).getClass().getSimpleName().equals("Barrel")) {
                 Barrel barrel = (Barrel) shootable.get(index);
                 barrel.explode();
+                explosionBlasts.add(new ExplosionBlast(barrel.position.y, barrel.position.z, 20, mainStage3D));
                 shootable.removeIndex(index);
                 hud.face.happy();
             }
@@ -127,6 +131,22 @@ public class LevelScreen extends BaseScreen3D {
     }
 
     private void updateEnemies() {
+        for (ExplosionBlast explosionBlast : explosionBlasts) {
+            if (explosionBlast.overlaps(player)) {
+                explosionPushBack(player, explosionBlast);
+                if (hud.decrementHealth(50) <= 0)
+                    gameOver();
+            }
+            for (Enemy enemy : enemies) {
+                if (explosionBlast.overlaps(enemy)) {
+                    explosionPushBack(enemy, explosionBlast);
+                    enemy.die();
+                }
+            }
+            explosionBlasts.removeValue(explosionBlast, false);
+            explosionBlast.remove();
+        }
+
         for (Enemy enemy : enemies) {
             if (player.overlaps(enemy)) {
                 player.preventOverlap(enemy);
@@ -164,6 +184,12 @@ public class LevelScreen extends BaseScreen3D {
             for (Enemy enemy : enemies)
                 enemy.isPause = true;
         }
+    }
+
+    private void explosionPushBack(BaseActor3D baseActor3D, BaseActor3D explosion) {
+        float moveY = baseActor3D.position.y - explosion.position.y;
+        float moveZ = baseActor3D.position.z - explosion.position.z;
+        baseActor3D.moveBy(0f, moveY * .5f, moveZ * .5f);
     }
 
     private void initializeActors() {
@@ -214,7 +240,7 @@ public class LevelScreen extends BaseScreen3D {
         pickups.add(new Armor(playerY, playerX + 1, mainStage3D, player));
         pickups.add(new Health(playerY - 1, playerX, mainStage3D, player));
 
-        shootable.add(new Barrel(playerX, playerY, mainStage3D, player));
+        shootable.add(new Barrel(playerX + 5, playerY, mainStage3D, player));
     }
 
     private void initializeEnemies() {

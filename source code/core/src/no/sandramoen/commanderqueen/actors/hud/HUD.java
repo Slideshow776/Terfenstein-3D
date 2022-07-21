@@ -13,6 +13,8 @@ public class HUD extends BaseActor {
     private int armor = 25, health = 100, ammo = 50, score = 0;
     private int maxArmor = 200, maxHealth = 100;
     private float labelScale = 1.0f;
+    private boolean invulnerable = false;
+    private float invulnerableCounter;
 
     public Face face;
 
@@ -50,6 +52,19 @@ public class HUD extends BaseActor {
         scoreLabel.setPosition(getWidth() * 4 / 5 + scoreLabel.getWidth() / 4, getHeight() / 2 - scoreLabel.getHeight() / 2);
     }
 
+    @Override
+    public void act(float delta) {
+        super.act(delta);
+
+        if (invulnerable) {
+            invulnerableCounter += delta;
+            if (invulnerableCounter > 1) {
+                invulnerable = false;
+                invulnerableCounter = 0;
+            }
+        }
+    }
+
     public void incrementArmor(int amount) {
         if (armor + amount <= maxArmor) {
             armor += amount;
@@ -64,6 +79,18 @@ public class HUD extends BaseActor {
             healthLabel.setText(health + "%");
         }
         BaseGame.healthPickupSound.play(BaseGame.soundVolume);
+    }
+
+    public int decrementHealth(int amount) {
+        if (!invulnerable) {
+            if (health - amount < 0)
+                health = 0;
+            else
+                health -= amount;
+            healthLabel.setText(health + "%");
+            invulnerable = true;
+        }
+        return health;
     }
 
     public void incrementAmmo(int amount) {

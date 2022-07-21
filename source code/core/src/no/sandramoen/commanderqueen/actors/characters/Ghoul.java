@@ -60,13 +60,12 @@ public class Ghoul extends Enemy {
         loadImage(currentAnimation.getKeyFrame(totalTime).toString());
     }
 
+    @Override
     public void die() {
-        if (!dead) {
-            BaseGame.ghoulDeathSound.play(BaseGame.soundVolume);
-            dead = true;
-            totalTime = 0f;
-            currentAnimation = dieAnimation;
-            isPreventOverlapEnabled = false;
-        }
+        BaseGame.ghoulDeathSound.play(BaseGame.soundVolume);
+        dead = true;
+        totalTime = 0f;
+        currentAnimation = dieAnimation;
+        isCollisionEnabled = false;
     }
 }
