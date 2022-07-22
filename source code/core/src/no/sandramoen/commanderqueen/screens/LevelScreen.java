@@ -60,6 +60,10 @@ public class LevelScreen extends BaseScreen3D {
 
     public void update(float dt) {
         if (isGameOver) return;
+        if (hud.getHealth() == 0) {
+            setGameOver();
+            return;
+        }
         updateTiles();
         updateEnemies();
         updatePickups();
@@ -77,12 +81,12 @@ public class LevelScreen extends BaseScreen3D {
             Gdx.app.exit();
         if (keycode == Keys.R)
             BaseGame.setActiveScreen(new LevelScreen());
-        if (keycode == Keys.NUM_1) {
-            if (hud.decrementHealth(10) == 0)
-                setGameOver();
-        }
+        if (keycode == Keys.NUM_1)
+            hud.decrementHealth(10);
         if (keycode == Keys.NUM_2)
             hud.incrementHealth(10);
+        if (keycode == Keys.NUM_3)
+            hud.setinvulnerable();
         return super.keyDown(keycode);
     }
 
@@ -145,8 +149,7 @@ public class LevelScreen extends BaseScreen3D {
         for (ExplosionBlast explosionBlast : explosionBlasts) {
             if (explosionBlast.overlaps(player)) {
                 explosionPushBack(player, explosionBlast);
-                if (hud.decrementHealth(50) <= 0)
-                    setGameOver();
+                hud.decrementHealth(50);
             }
             for (Enemy enemy : enemies) {
                 if (explosionBlast.overlaps(enemy)) {
@@ -163,8 +166,13 @@ public class LevelScreen extends BaseScreen3D {
         for (Enemy enemy : enemies) {
             if (player.overlaps(enemy)) {
                 player.preventOverlap(enemy);
-                setGameOver();
-                break;
+                if (enemy.getClass().getSimpleName().equals("Ghoul")) {
+                    Ghoul ghoul = (Ghoul) enemy;
+                    if (ghoul.isReadyToAttack()) {
+                        hud.decrementHealth(10);
+                        BaseGame.ghoulDeathSound.play(BaseGame.soundVolume, 1.5f, 0);
+                    }
+                }
             }
 
             for (Tile tile : tiles) {
@@ -191,11 +199,14 @@ public class LevelScreen extends BaseScreen3D {
 
     private void setGameOver() {
         if (!isGameOver) {
+            hud.setDeadFace();
+            BaseGame.metalWalkingMusic.stop();
+            weapon.moveDown();
             gameLabel.setText("G A M E   O V E R !");
-            isGameOver = true;
             player.isPause = true;
             for (Enemy enemy : enemies)
                 enemy.isPause = true;
+            isGameOver = true;
         }
     }
 

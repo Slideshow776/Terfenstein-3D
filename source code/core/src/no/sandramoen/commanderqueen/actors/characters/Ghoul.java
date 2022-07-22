@@ -19,6 +19,10 @@ public class Ghoul extends Enemy {
     private float totalTime = 0;
     private float movementSpeed = .05f;
     private float timeToStopMoving = 1.1f;
+    private float attackCounter = 0f;
+    private final float ATTACK_FREQUENCY = 2f;
+
+    public boolean isReadyToAttack = true;
 
     public Ghoul(float y, float z, Stage3D s, Player player) {
         super(y, z, s, player);
@@ -52,6 +56,13 @@ public class Ghoul extends Enemy {
 
         if (!dead || totalTime < timeToStopMoving)
             moveForward(movementSpeed);
+
+        if (attackCounter > ATTACK_FREQUENCY)
+            isReadyToAttack = true;
+        else {
+            attackCounter += dt;
+            isReadyToAttack = false;
+        }
     }
 
     @Override
@@ -67,5 +78,12 @@ public class Ghoul extends Enemy {
         totalTime = 0f;
         currentAnimation = dieAnimation;
         isCollisionEnabled = false;
+    }
+
+    public boolean isReadyToAttack() {
+        if (isReadyToAttack == true) {
+            attackCounter = 0;
+        }
+        return isReadyToAttack;
     }
 }

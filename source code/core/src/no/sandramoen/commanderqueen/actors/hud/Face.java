@@ -31,10 +31,41 @@ public class Face extends BaseActor {
         setZIndex(0);
     }
 
-    public void setKillFace(final int i) {
+    public void setSTAnimation(int st) {
+        currentHealthIndecy = st;
+        setAnimation(stAnimations.get(st));
+        setDimensions();
+    }
+
+    public void setKillFace(int i) {
+        clearActions();
         currentHealthIndecy = i;
         loadImage("hud/HUD-KILL" + i);
         setDimensions();
+        setDelayedStAnimation();
+    }
+
+    public void setOuch(int i) {
+        clearActions();
+        currentHealthIndecy = i;
+        loadImage("hud/HUD-OUCH" + i);
+        setDimensions();
+        setDelayedStAnimation();
+    }
+
+    public void setDead() {
+        clearActions();
+        loadImage("hud/HUD-DEAD");
+        setDimensions();
+    }
+
+    public void setGod() {
+        clearActions();
+        loadImage("hud/HUD-GOD");
+        setDimensions();
+    }
+
+    private void setDelayedStAnimation() {
         addAction(Actions.sequence(
                 Actions.delay(1f),
                 Actions.run(new Runnable() {
@@ -44,17 +75,6 @@ public class Face extends BaseActor {
                     }
                 })
         ));
-    }
-
-    public void setSTAnimation(int st) {
-        currentHealthIndecy = st;
-        setAnimation(stAnimations.get(st));
-        setDimensions();
-    }
-
-    public void setDead() {
-        loadImage("hud/HUD-DEAD");
-        setDimensions();
     }
 
     private void setDimensions() {

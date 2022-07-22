@@ -35,19 +35,14 @@ public class Weapon extends BaseActor {
 
         setWidth(Gdx.graphics.getWidth() * .25f);
         setSize(getWidth(), getWidth() / BaseGame.aspectRatio);
-        setPosition(restPosition.x, restPosition.y);
-    }
-
-    @Override
-    public void act(float delta) {
-        super.act(delta);
+        setPosition(restPosition.x, -getHeight());
+        moveUp();
     }
 
     @Override
     public void draw(Batch batch, float parentAlpha) {
         super.draw(batch, parentAlpha);
-        if (totalTime < 10f)
-            totalTime += Gdx.graphics.getDeltaTime();
+        totalTime += Gdx.graphics.getDeltaTime();
         batch.draw(shootAnimation.getKeyFrame(totalTime), getX(), getY(), getWidth(), getHeight());
     }
 
@@ -67,5 +62,15 @@ public class Weapon extends BaseActor {
             clearActions();
             addAction(Actions.moveTo(restPosition.x, restPosition.y, .5f));
         }
+    }
+
+    public void moveDown() {
+        clearActions();
+        addAction(Actions.moveBy(0, -getHeight(), 1f));
+    }
+
+    private void moveUp() {
+        clearActions();
+        addAction(Actions.moveTo(restPosition.x, restPosition.y, 1f));
     }
 }

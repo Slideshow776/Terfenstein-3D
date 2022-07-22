@@ -13,10 +13,11 @@ public class HUD extends BaseActor {
     private int armor = 25, health = 100, ammo = 50, score = 0;
     private int maxArmor = 200, maxHealth = 100;
     private float labelScale = 1.0f;
-    private boolean invulnerable = false;
     private float invulnerableCounter;
+    private final float invulnerableMaxCount = 10f;
+    private Face face;
 
-    public Face face;
+    public boolean invulnerable = false;
 
     public HUD(Stage stage) {
         super(0, 0, stage);
@@ -58,9 +59,10 @@ public class HUD extends BaseActor {
 
         if (invulnerable) {
             invulnerableCounter += delta;
-            if (invulnerableCounter > 1) {
+            if (invulnerableCounter > invulnerableMaxCount) {
                 invulnerable = false;
                 invulnerableCounter = 0;
+                face.setSTAnimation(getFaceHealth());
             }
         }
     }
@@ -73,6 +75,10 @@ public class HUD extends BaseActor {
         BaseGame.armorPickupSound.play(BaseGame.soundVolume);
     }
 
+    public int getHealth() {
+        return health;
+    }
+
     public void incrementHealth(int amount) {
         if (health + amount <= maxHealth) {
             health += amount;
@@ -82,20 +88,22 @@ public class HUD extends BaseActor {
         BaseGame.healthPickupSound.play(BaseGame.soundVolume);
     }
 
-    public int decrementHealth(int amount) {
+    public void decrementHealth(int amount) {
         if (!invulnerable) {
             if (health - amount < 0)
                 health = 0;
             else
                 health -= amount;
             healthLabel.setText(health + "%");
-            invulnerable = true;
-            if (health > 0)
-                face.setSTAnimation(getFaceHealth());
-            else
+            if (health > 0) {
+                if (amount >= 20)
+                    face.setOuch(getFaceHealth());
+                else
+                    face.setSTAnimation(getFaceHealth());
+            } else {
                 face.setDead();
+            }
         }
-        return health;
     }
 
     public void incrementAmmo(int amount) {
@@ -116,6 +124,15 @@ public class HUD extends BaseActor {
 
     public void setKillFace() {
         face.setKillFace(getFaceHealth());
+    }
+
+    public void setDeadFace() {
+        face.setDead();
+    }
+
+    public void setinvulnerable() {
+        face.setGod();
+        invulnerable = true;
     }
 
     private int getFaceHealth() {
