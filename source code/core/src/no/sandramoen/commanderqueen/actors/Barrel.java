@@ -46,6 +46,7 @@ public class Barrel extends BaseActor3D {
     @Override
     public void act(float dt) {
         super.act(dt);
+        totalTime += Gdx.graphics.getDeltaTime();
         setTurnAngle(GameUtils.getAngleTowardsPlayer(this, player));
     }
 
@@ -53,13 +54,13 @@ public class Barrel extends BaseActor3D {
     public void draw(ModelBatch batch, Environment env) {
         super.draw(batch, env);
         if (explode) {
-            totalTime += Gdx.graphics.getDeltaTime();
             loadImage(explodeAnimation.getKeyFrame(totalTime).toString());
         }
     }
 
     public void explode() {
         explode = true;
+        totalTime = 0;
         BaseGame.explosionSound.play(BaseGame.soundVolume);
         isCollisionEnabled = false;
     }

@@ -48,7 +48,7 @@ public class LevelScreen extends BaseScreen3D {
     private TilemapActor tilemap;
 
     public void initialize() {
-        GameUtils.playLoopingMusic(BaseGame.level0Music);
+        /*GameUtils.playLoopingMusic(BaseGame.level0Music);*/
         GameUtils.playLoopingMusic(BaseGame.metalWalkingMusic, 0);
         pickups = new Array();
         shootable = new Array();
@@ -77,6 +77,12 @@ public class LevelScreen extends BaseScreen3D {
             Gdx.app.exit();
         if (keycode == Keys.R)
             BaseGame.setActiveScreen(new LevelScreen());
+        if (keycode == Keys.NUM_1) {
+            if (hud.decrementHealth(10) == 0)
+                setGameOver();
+        }
+        if (keycode == Keys.NUM_2)
+            hud.incrementHealth(10);
         return super.keyDown(keycode);
     }
 
@@ -116,13 +122,13 @@ public class LevelScreen extends BaseScreen3D {
                 enemies.removeValue(ghoul, false);
                 statusLabel.setText("enemies left: " + enemies.size);
                 hud.incrementScore(10);
-                hud.face.happy();
+                hud.setKillFace();
             } else if (shootable.get(index).getClass().getSimpleName().equals("Barrel")) {
                 Barrel barrel = (Barrel) shootable.get(index);
                 barrel.explode();
                 explosionBlasts.add(new ExplosionBlast(barrel.position.y, barrel.position.z, 20, mainStage3D));
                 shootable.removeIndex(index);
-                hud.face.happy();
+                hud.setKillFace();
             }
         }
     }
@@ -140,7 +146,7 @@ public class LevelScreen extends BaseScreen3D {
             if (explosionBlast.overlaps(player)) {
                 explosionPushBack(player, explosionBlast);
                 if (hud.decrementHealth(50) <= 0)
-                    gameOver();
+                    setGameOver();
             }
             for (Enemy enemy : enemies) {
                 if (explosionBlast.overlaps(enemy)) {
@@ -157,7 +163,7 @@ public class LevelScreen extends BaseScreen3D {
         for (Enemy enemy : enemies) {
             if (player.overlaps(enemy)) {
                 player.preventOverlap(enemy);
-                gameOver();
+                setGameOver();
                 break;
             }
 
@@ -183,7 +189,7 @@ public class LevelScreen extends BaseScreen3D {
         }
     }
 
-    private void gameOver() {
+    private void setGameOver() {
         if (!isGameOver) {
             gameLabel.setText("G A M E   O V E R !");
             isGameOver = true;

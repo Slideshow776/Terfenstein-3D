@@ -20,12 +20,11 @@ public class HUD extends BaseActor {
 
     public HUD(Stage stage) {
         super(0, 0, stage);
-        loadImage("hud/hud");
         setWidth(Gdx.graphics.getWidth() * 1 / 3);
         setSize(getWidth(), getWidth() / (5 / 1));
         setPosition(Gdx.graphics.getWidth() * 1 / 2 - getWidth() / 2, 0f);
 
-        face = new Face(stage);
+        face = new Face(stage, 0);
 
         armorLabel = new Label(armor + "%", BaseGame.label26Style);
         armorLabel.setFontScale(labelScale);
@@ -50,6 +49,7 @@ public class HUD extends BaseActor {
         scoreLabel.setColor(new Color(0.647f, 0.188f, 0.188f, 1f));
         addActor(scoreLabel);
         scoreLabel.setPosition(getWidth() * 4 / 5 + scoreLabel.getWidth() / 4, getHeight() / 2 - scoreLabel.getHeight() / 2);
+        scoreLabel.setZIndex(20);
     }
 
     @Override
@@ -77,6 +77,7 @@ public class HUD extends BaseActor {
         if (health + amount <= maxHealth) {
             health += amount;
             healthLabel.setText(health + "%");
+            face.setSTAnimation(getFaceHealth());
         }
         BaseGame.healthPickupSound.play(BaseGame.soundVolume);
     }
@@ -89,6 +90,10 @@ public class HUD extends BaseActor {
                 health -= amount;
             healthLabel.setText(health + "%");
             invulnerable = true;
+            if (health > 0)
+                face.setSTAnimation(getFaceHealth());
+            else
+                face.setDead();
         }
         return health;
     }
@@ -107,5 +112,21 @@ public class HUD extends BaseActor {
     public void incrementScore(float amount) {
         score += amount;
         scoreLabel.setText(score + "");
+    }
+
+    public void setKillFace() {
+        face.setKillFace(getFaceHealth());
+    }
+
+    private int getFaceHealth() {
+        final int numIncrements = 5;
+        int i = numIncrements;
+        for (int j = 0; j <= maxHealth; j += maxHealth / numIncrements) {
+            if (health <= j)
+                return i;
+            i--;
+        }
+        Gdx.app.error(getClass().getSimpleName(), "Error: getFaceHealth could not determine face integer, integer is: " + i);
+        return -1;
     }
 }

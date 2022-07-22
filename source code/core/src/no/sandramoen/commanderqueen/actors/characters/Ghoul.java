@@ -46,6 +46,7 @@ public class Ghoul extends Enemy {
     @Override
     public void act(float dt) {
         super.act(dt);
+        totalTime += Gdx.graphics.getDeltaTime();
         if (isPause)
             return;
 
@@ -56,7 +57,6 @@ public class Ghoul extends Enemy {
     @Override
     public void draw(ModelBatch batch, Environment env) {
         super.draw(batch, env);
-        totalTime += Gdx.graphics.getDeltaTime();
         loadImage(currentAnimation.getKeyFrame(totalTime).toString());
     }
 

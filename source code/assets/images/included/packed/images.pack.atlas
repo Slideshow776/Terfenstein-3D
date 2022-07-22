@@ -158,36 +158,302 @@ enemies/ghoul walk 3
   index: -1
 
 images.pack4.png
-size: 1024, 64
+size: 1024, 256
 format: RGBA8888
 filter: Nearest, Nearest
 repeat: none
-hud/face happy
+hud/HUD-DEAD
+  rotate: false
+  xy: 2, 194
+  size: 160, 30
+  orig: 160, 30
+  offset: 0, 0
+  index: -1
+hud/HUD-EVL0
+  rotate: false
+  xy: 2, 162
+  size: 160, 30
+  orig: 160, 30
+  offset: 0, 0
+  index: -1
+hud/HUD-EVL1
+  rotate: false
+  xy: 164, 194
+  size: 160, 30
+  orig: 160, 30
+  offset: 0, 0
+  index: -1
+hud/HUD-EVL2
+  rotate: false
+  xy: 2, 130
+  size: 160, 30
+  orig: 160, 30
+  offset: 0, 0
+  index: -1
+hud/HUD-EVL3
+  rotate: false
+  xy: 164, 162
+  size: 160, 30
+  orig: 160, 30
+  offset: 0, 0
+  index: -1
+hud/HUD-EVL4
+  rotate: false
+  xy: 326, 194
+  size: 160, 30
+  orig: 160, 30
+  offset: 0, 0
+  index: -1
+hud/HUD-GOD
+  rotate: false
+  xy: 2, 98
+  size: 160, 30
+  orig: 160, 30
+  offset: 0, 0
+  index: -1
+hud/HUD-KILL0
+  rotate: false
+  xy: 164, 130
+  size: 160, 30
+  orig: 160, 30
+  offset: 0, 0
+  index: -1
+hud/HUD-KILL1
+  rotate: false
+  xy: 326, 162
+  size: 160, 30
+  orig: 160, 30
+  offset: 0, 0
+  index: -1
+hud/HUD-KILL2
+  rotate: false
+  xy: 488, 194
+  size: 160, 30
+  orig: 160, 30
+  offset: 0, 0
+  index: -1
+hud/HUD-KILL3
+  rotate: false
+  xy: 2, 66
+  size: 160, 30
+  orig: 160, 30
+  offset: 0, 0
+  index: -1
+hud/HUD-KILL4
+  rotate: false
+  xy: 164, 98
+  size: 160, 30
+  orig: 160, 30
+  offset: 0, 0
+  index: -1
+hud/HUD-OUCH0
+  rotate: false
+  xy: 326, 130
+  size: 160, 30
+  orig: 160, 30
+  offset: 0, 0
+  index: -1
+hud/HUD-OUCH1
+  rotate: false
+  xy: 488, 162
+  size: 160, 30
+  orig: 160, 30
+  offset: 0, 0
+  index: -1
+hud/HUD-OUCH2
+  rotate: false
+  xy: 650, 194
+  size: 160, 30
+  orig: 160, 30
+  offset: 0, 0
+  index: -1
+hud/HUD-OUCH3
+  rotate: false
+  xy: 2, 34
+  size: 160, 30
+  orig: 160, 30
+  offset: 0, 0
+  index: -1
+hud/HUD-OUCH4
+  rotate: false
+  xy: 164, 66
+  size: 160, 30
+  orig: 160, 30
+  offset: 0, 0
+  index: -1
+hud/HUD-ST00
+  rotate: false
+  xy: 326, 98
+  size: 160, 30
+  orig: 160, 30
+  offset: 0, 0
+  index: -1
+hud/HUD-ST01
+  rotate: false
+  xy: 488, 130
+  size: 160, 30
+  orig: 160, 30
+  offset: 0, 0
+  index: -1
+hud/HUD-ST02
+  rotate: false
+  xy: 650, 162
+  size: 160, 30
+  orig: 160, 30
+  offset: 0, 0
+  index: -1
+hud/HUD-ST10
+  rotate: false
+  xy: 812, 194
+  size: 160, 30
+  orig: 160, 30
+  offset: 0, 0
+  index: -1
+hud/HUD-ST11
   rotate: false
   xy: 2, 2
-  size: 160, 32
-  orig: 160, 32
+  size: 160, 30
+  orig: 160, 30
   offset: 0, 0
   index: -1
-hud/face idle 1
+hud/HUD-ST12
+  rotate: false
+  xy: 164, 34
+  size: 160, 30
+  orig: 160, 30
+  offset: 0, 0
+  index: -1
+hud/HUD-ST20
+  rotate: false
+  xy: 326, 66
+  size: 160, 30
+  orig: 160, 30
+  offset: 0, 0
+  index: -1
+hud/HUD-ST21
+  rotate: false
+  xy: 488, 98
+  size: 160, 30
+  orig: 160, 30
+  offset: 0, 0
+  index: -1
+hud/HUD-ST22
+  rotate: false
+  xy: 650, 130
+  size: 160, 30
+  orig: 160, 30
+  offset: 0, 0
+  index: -1
+hud/HUD-ST30
+  rotate: false
+  xy: 812, 162
+  size: 160, 30
+  orig: 160, 30
+  offset: 0, 0
+  index: -1
+hud/HUD-ST31
   rotate: false
   xy: 164, 2
-  size: 160, 32
-  orig: 160, 32
+  size: 160, 30
+  orig: 160, 30
   offset: 0, 0
   index: -1
-hud/face idle 2
+hud/HUD-ST32
+  rotate: false
+  xy: 326, 34
+  size: 160, 30
+  orig: 160, 30
+  offset: 0, 0
+  index: -1
+hud/HUD-ST40
+  rotate: false
+  xy: 488, 66
+  size: 160, 30
+  orig: 160, 30
+  offset: 0, 0
+  index: -1
+hud/HUD-ST41
+  rotate: false
+  xy: 650, 98
+  size: 160, 30
+  orig: 160, 30
+  offset: 0, 0
+  index: -1
+hud/HUD-ST42
+  rotate: false
+  xy: 812, 130
+  size: 160, 30
+  orig: 160, 30
+  offset: 0, 0
+  index: -1
+hud/HUD-TL0
   rotate: false
   xy: 326, 2
-  size: 160, 32
-  orig: 160, 32
+  size: 160, 30
+  orig: 160, 30
   offset: 0, 0
   index: -1
-hud/hud
+hud/HUD-TL1
+  rotate: false
+  xy: 488, 34
+  size: 160, 30
+  orig: 160, 30
+  offset: 0, 0
+  index: -1
+hud/HUD-TL2
+  rotate: false
+  xy: 650, 66
+  size: 160, 30
+  orig: 160, 30
+  offset: 0, 0
+  index: -1
+hud/HUD-TL3
+  rotate: false
+  xy: 812, 98
+  size: 160, 30
+  orig: 160, 30
+  offset: 0, 0
+  index: -1
+hud/HUD-TL4
   rotate: false
   xy: 488, 2
-  size: 160, 32
-  orig: 160, 32
+  size: 160, 30
+  orig: 160, 30
+  offset: 0, 0
+  index: -1
+hud/HUD-TR0
+  rotate: false
+  xy: 650, 34
+  size: 160, 30
+  orig: 160, 30
+  offset: 0, 0
+  index: -1
+hud/HUD-TR1
+  rotate: false
+  xy: 812, 66
+  size: 160, 30
+  orig: 160, 30
+  offset: 0, 0
+  index: -1
+hud/HUD-TR2
+  rotate: false
+  xy: 650, 2
+  size: 160, 30
+  orig: 160, 30
+  offset: 0, 0
+  index: -1
+hud/HUD-TR3
+  rotate: false
+  xy: 812, 34
+  size: 160, 30
+  orig: 160, 30
+  offset: 0, 0
+  index: -1
+hud/HUD-TR4
+  rotate: false
+  xy: 812, 2
+  size: 160, 30
+  orig: 160, 30
   offset: 0, 0
   index: -1
 
