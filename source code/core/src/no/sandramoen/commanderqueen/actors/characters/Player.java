@@ -53,12 +53,12 @@ public class Player extends BaseActor3D {
     }
 
     public void shoot() {
-        /*muzzleLight = new PointLight();
+        muzzleLight = new PointLight();
         Color lightColor = new Color(.3f, .1f, 0, 1);
         Vector3 lightVector = new Vector3(position.x, position.y, position.z);
         muzzleLight.set(lightColor, lightVector, 25f);
         stage3D.environment.add(muzzleLight);
-        muzzleCount = 0;*/
+        muzzleCount = 0;
     }
 
     private void turnOffMuzzleLight(float dt) {

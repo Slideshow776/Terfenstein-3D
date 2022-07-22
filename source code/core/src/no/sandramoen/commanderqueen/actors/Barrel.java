@@ -48,7 +48,7 @@ public class Barrel extends BaseActor3D {
         super.act(dt);
         totalTime += Gdx.graphics.getDeltaTime();
         setTurnAngle(GameUtils.getAngleTowardsPlayer(this, player));
-        turnOffMuzzleLight(dt);
+        turnOffBlastLight(dt);
     }
 
     @Override
@@ -74,9 +74,9 @@ public class Barrel extends BaseActor3D {
         blastCount = 0;
     }
 
-    private void turnOffMuzzleLight(float dt) {
+    private void turnOffBlastLight(float dt) {
         blastCount += dt;
-        if (blastCount > .1f)
+        if (blastCount > .2f)
             stage3D.environment.remove(blastLight);
     }
 }

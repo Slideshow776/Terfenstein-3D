@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g3d.environment.PointLight;
 import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.math.Vector3;
@@ -55,6 +56,7 @@ public class LevelScreen extends BaseScreen3D {
         explosionBlasts = new Array();
         tilemap = new TilemapActor(BaseGame.level0Map, mainStage3D);
         initializeActors();
+        initializeLights();
         initializeUI();
     }
 
@@ -238,21 +240,23 @@ public class LevelScreen extends BaseScreen3D {
                     MapProperties props = obj.getProperties();
                     float y = (Float) props.get("x") * BaseGame.unitScale;
                     float z = (Float) props.get("y") * BaseGame.unitScale;
-                    Tile tile = new Tile(0, y, z, mainStage3D);
-                    tile.loadImage("tiles/" + texture);
-
-                    if (type == "ceilings") {
-                        tile.position.x = Tile.height;
-                        tile.isCollisionEnabled = false;
-                    } else if (type == "floors") {
-                        tile.position.x = -Tile.height;
-                        tile.isCollisionEnabled = false;
-                    }
-
+                    Tile tile = new Tile(y, z, type, texture, mainStage3D);
                     tiles.add(tile);
                     shootable.add(tiles.get(tiles.size - 1));
                 }
             }
+        }
+    }
+
+    public void initializeLights() {
+        for (MapObject obj : tilemap.getTileList("actors", "light")) {
+            MapProperties props = obj.getProperties();
+            float y = (Float) props.get("x") * BaseGame.unitScale;
+            float z = (Float) props.get("y") * BaseGame.unitScale;
+
+            PointLight pLight = new PointLight();
+            pLight.set(new Color(.6f, .6f, .9f, 1f), new Vector3(Tile.height / 2, y, z), 50f);
+            mainStage3D.environment.add(pLight);
         }
     }
 

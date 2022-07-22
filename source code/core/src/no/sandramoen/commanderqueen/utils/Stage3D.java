@@ -27,18 +27,14 @@ public class Stage3D {
     public PerspectiveCamera camera;
 
     public Stage3D() {
-        environment = new Environment();
-        environment.set(new ColorAttribute(ColorAttribute.AmbientLight, 0.2f, 0.2f, 0.2f, 1f));
+        environment = new Environment();/*
+        environment.set(new ColorAttribute(ColorAttribute.AmbientLight, 0f, 0f, 0f, 0f));*/
 
         /*DirectionalLight dLight = new DirectionalLight();
         Color lightColor = new Color(0.0f, 0.0f, 0.9f, 1);
         Vector3 lightVector = new Vector3(Tile.height / 2, 28.25f, 10.35f);
         dLight.set(lightColor, lightVector);
         environment.add(dLight);*/
-
-        PointLight pLight = new PointLight();
-        pLight.set(new Color(.8f, .1f, .8f, 1f), new Vector3(Tile.height / 2, 22f, 8f), 50f);
-        environment.add(pLight);
 
         camera = new PerspectiveCamera(67, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         camera.rotate(-90, 0, 0, 1);

@@ -50,7 +50,6 @@ public class TilemapActor extends Actor {
         ArrayList<MapObject> list = new ArrayList();
 
         for (MapLayer layer : tiledMap.getLayers()) {
-            System.out.println(layer.getName());
             if (layer.getName().equalsIgnoreCase(layerName))
                 for (MapObject obj : layer.getObjects()) {
                     if (!(obj instanceof TiledMapTileMapObject))
