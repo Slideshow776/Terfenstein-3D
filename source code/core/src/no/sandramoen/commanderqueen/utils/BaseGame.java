@@ -9,6 +9,7 @@ import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.maps.tiled.TiledMap;
@@ -41,6 +42,9 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
     public static float soundVolume = .5f;
     public static float musicVolume = .1f;
     public static float unitScale = .0621f;
+    public static Color redColor = new Color(0.647f, 0.188f, 0.188f, 1f);
+    public static Color greenColor = new Color(0.459f, 0.655f, 0.263f, 1f);
+    public static Color yellowColor = new Color(0.91f, 0.757f, 0.439f, 1f);
 
     public BaseGame() {
         game = this;

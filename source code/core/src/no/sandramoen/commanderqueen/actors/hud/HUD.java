@@ -16,6 +16,7 @@ public class HUD extends BaseActor {
     private float invulnerableCounter;
     private final float invulnerableMaxCount = 10f;
     private Face face;
+    private OverlayIndicator overlayIndicator;
 
     public boolean invulnerable = false;
 
@@ -24,30 +25,31 @@ public class HUD extends BaseActor {
         setWidth(Gdx.graphics.getWidth() * 1 / 3);
         setSize(getWidth(), getWidth() / (5 / 1));
         setPosition(Gdx.graphics.getWidth() * 1 / 2 - getWidth() / 2, 0f);
+        overlayIndicator = new OverlayIndicator(stage);
 
         face = new Face(stage, 0);
 
         armorLabel = new Label(armor + "%", BaseGame.label26Style);
         armorLabel.setFontScale(labelScale);
-        armorLabel.setColor(new Color(0.647f, 0.188f, 0.188f, 1f));
+        armorLabel.setColor(BaseGame.redColor);
         addActor(armorLabel);
         armorLabel.setPosition(armorLabel.getWidth() / 4, getHeight() / 2 - armorLabel.getHeight() / 2);
 
         healthLabel = new Label(health + "%", BaseGame.label26Style);
         healthLabel.setFontScale(labelScale);
-        healthLabel.setColor(new Color(0.647f, 0.188f, 0.188f, 1f));
+        healthLabel.setColor(BaseGame.redColor);
         addActor(healthLabel);
         healthLabel.setPosition(getWidth() * 1 / 5 + healthLabel.getWidth() / 4, getHeight() / 2 - healthLabel.getHeight() / 2);
 
         ammoLabel = new Label(ammo + "", BaseGame.label26Style);
         ammoLabel.setFontScale(labelScale);
-        ammoLabel.setColor(new Color(0.647f, 0.188f, 0.188f, 1f));
+        ammoLabel.setColor(BaseGame.redColor);
         addActor(ammoLabel);
         ammoLabel.setPosition(getWidth() * 3 / 5 + ammoLabel.getWidth() / 4, getHeight() / 2 - ammoLabel.getHeight() / 2);
 
         scoreLabel = new Label(score + "", BaseGame.label26Style);
         scoreLabel.setFontScale(labelScale);
-        scoreLabel.setColor(new Color(0.647f, 0.188f, 0.188f, 1f));
+        scoreLabel.setColor(BaseGame.redColor);
         addActor(scoreLabel);
         scoreLabel.setPosition(getWidth() * 4 / 5 + scoreLabel.getWidth() / 4, getHeight() / 2 - scoreLabel.getHeight() / 2);
         scoreLabel.setZIndex(20);
@@ -72,6 +74,7 @@ public class HUD extends BaseActor {
             armor += amount;
             armorLabel.setText(armor + "%");
         }
+        overlayIndicator.flash(BaseGame.yellowColor, .1f);
         BaseGame.armorPickupSound.play(BaseGame.soundVolume);
     }
 
@@ -85,6 +88,7 @@ public class HUD extends BaseActor {
             healthLabel.setText(health + "%");
             face.setSTAnimation(getFaceHealth());
         }
+        overlayIndicator.flash(BaseGame.greenColor);
         BaseGame.healthPickupSound.play(BaseGame.soundVolume);
     }
 
@@ -95,6 +99,7 @@ public class HUD extends BaseActor {
             else
                 health -= amount;
             healthLabel.setText(health + "%");
+            overlayIndicator.flash(BaseGame.redColor, .5f * amount / 50);
             if (health > 0) {
                 if (amount >= 20)
                     face.setOuch(getFaceHealth());
@@ -110,6 +115,7 @@ public class HUD extends BaseActor {
         ammo += amount;
         ammoLabel.setText(ammo + "");
         BaseGame.ammoPickupSound.play(BaseGame.soundVolume);
+        overlayIndicator.flash(BaseGame.yellowColor, .1f);
     }
 
     public void decrementAmmo() {
@@ -117,9 +123,11 @@ public class HUD extends BaseActor {
         ammoLabel.setText(ammo + "");
     }
 
-    public void incrementScore(float amount) {
+    public void incrementScore(float amount, Boolean isPickup) {
         score += amount;
         scoreLabel.setText(score + "");
+        if (isPickup)
+            overlayIndicator.flash(BaseGame.yellowColor, .1f);
     }
 
     public void setKillFace() {
@@ -130,7 +138,7 @@ public class HUD extends BaseActor {
         face.setDead();
     }
 
-    public void setinvulnerable() {
+    public void setInvulnerable() {
         face.setGod();
         invulnerable = true;
     }

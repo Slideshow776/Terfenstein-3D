@@ -86,7 +86,7 @@ public class LevelScreen extends BaseScreen3D {
         if (keycode == Keys.NUM_2)
             hud.incrementHealth(10);
         if (keycode == Keys.NUM_3)
-            hud.setinvulnerable();
+            hud.setInvulnerable();
         return super.keyDown(keycode);
     }
 
@@ -125,7 +125,7 @@ public class LevelScreen extends BaseScreen3D {
                 shootable.removeValue(ghoul, false);
                 enemies.removeValue(ghoul, false);
                 statusLabel.setText("enemies left: " + enemies.size);
-                hud.incrementScore(10);
+                hud.incrementScore(10, false);
                 hud.setKillFace();
             } else if (shootable.get(index).getClass().getSimpleName().equals("Barrel")) {
                 Barrel barrel = (Barrel) shootable.get(index);
@@ -199,6 +199,8 @@ public class LevelScreen extends BaseScreen3D {
 
     private void setGameOver() {
         if (!isGameOver) {
+            player.isPause = true;
+            player.position.x = -Tile.height;
             hud.setDeadFace();
             BaseGame.metalWalkingMusic.stop();
             weapon.moveDown();
