@@ -199,7 +199,7 @@ public class LevelScreen extends BaseScreen3D {
 
     private void setGameOver() {
         if (!isGameOver) {
-            mainStage3D.camera.position.x = -Tile.height * 1 / 3;
+            mainStage3D.camera.position.x = -Tile.height * .48f;
             hud.setDeadFace();
             BaseGame.metalWalkingMusic.stop();
             weapon.moveDown();
@@ -227,37 +227,37 @@ public class LevelScreen extends BaseScreen3D {
 
     private void initializeTiles() {
         tiles = new Array();
-        for (MapObject obj : tilemap.getTileList("wall")) {
-            MapProperties props = obj.getProperties();
-            float x = (Float) props.get("x") * BaseGame.unitScale;
-            float y = (Float) props.get("y") * BaseGame.unitScale;
-            Tile tile = new Tile(x, y, mainStage3D);
-            tile.loadImage("tiles/research0");
-            tiles.add(tile);
-            shootable.add(tiles.get(tiles.size - 1));
-        }
-        for (MapObject obj : tilemap.getTileList("floor")) {
-            MapProperties props = obj.getProperties();
-            float x = (Float) props.get("x") * BaseGame.unitScale;
-            float y = (Float) props.get("y") * BaseGame.unitScale;
-            Tile tile = new Tile(-Tile.height, x, y, mainStage3D);
-            tile.loadImage("tiles/floor0");
-            tiles.add(tile);
-            tile.isCollisionEnabled = false;
-        }
-        for (MapObject obj : tilemap.getTileList("ceiling")) {
-            MapProperties props = obj.getProperties();
-            float x = (Float) props.get("x") * BaseGame.unitScale;
-            float y = (Float) props.get("y") * BaseGame.unitScale;
-            Tile tile = new Tile(Tile.height, x, y, mainStage3D);
-            tile.loadImage("tiles/floor0");
-            tiles.add(tile);
-            tile.isCollisionEnabled = false;
+        Array<String> tileTypes = new Array<>();
+        tileTypes.add("walls", "ceilings", "floors");
+        Array<String> tileTextures = new Array<>();
+        tileTextures.add("big plates", "lonplate");
+
+        for (String type : tileTypes) {
+            for (String texture : tileTextures) {
+                for (MapObject obj : tilemap.getTileList(type, texture)) {
+                    MapProperties props = obj.getProperties();
+                    float y = (Float) props.get("x") * BaseGame.unitScale;
+                    float z = (Float) props.get("y") * BaseGame.unitScale;
+                    Tile tile = new Tile(0, y, z, mainStage3D);
+                    tile.loadImage("tiles/" + texture);
+
+                    if (type == "ceilings") {
+                        tile.position.x = Tile.height;
+                        tile.isCollisionEnabled = false;
+                    } else if (type == "floors") {
+                        tile.position.x = -Tile.height;
+                        tile.isCollisionEnabled = false;
+                    }
+
+                    tiles.add(tile);
+                    shootable.add(tiles.get(tiles.size - 1));
+                }
+            }
         }
     }
 
     private void initializePlayer() {
-        MapObject startPoint = tilemap.getTileList("player start").get(0);
+        MapObject startPoint = tilemap.getTileList("actors", "player start").get(0);
         float playerX = (float) startPoint.getProperties().get("x") * BaseGame.unitScale;
         float playerY = (float) startPoint.getProperties().get("y") * BaseGame.unitScale;
         player = new Player(playerX, playerY, mainStage3D);
@@ -270,7 +270,7 @@ public class LevelScreen extends BaseScreen3D {
 
     private void initializeEnemies() {
         enemies = new Array();
-        for (MapObject obj : tilemap.getTileList("enemy")) {
+        for (MapObject obj : tilemap.getTileList("actors", "enemy")) {
             MapProperties props = obj.getProperties();
             float x = (Float) props.get("x") * BaseGame.unitScale;
             float y = (Float) props.get("y") * BaseGame.unitScale;

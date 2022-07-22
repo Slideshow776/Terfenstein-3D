@@ -14,7 +14,7 @@ public class Player extends BaseActor3D {
     private float speed = 8.0f;
     private float rotateSpeed = 90f * .05f;
     private float totalTime = 0;
-    private Stage3D stage3d;
+    private Stage3D stage3D;
 
     private PointLight muzzleLight;
     private float muzzleCount;
@@ -27,7 +27,7 @@ public class Player extends BaseActor3D {
 
     public Player(float y, float z, Stage3D stage3D) {
         super(0, y, z, stage3D);
-        this.stage3d = stage3D;
+        this.stage3D = stage3D;
         buildModel(1.5f, 1.5f, 1.5f);
         setBaseRectangle();
         loadImage("clearPixel");
@@ -53,18 +53,18 @@ public class Player extends BaseActor3D {
     }
 
     public void shoot() {
-        muzzleLight = new PointLight();
+        /*muzzleLight = new PointLight();
         Color lightColor = new Color(.3f, .1f, 0, 1);
         Vector3 lightVector = new Vector3(position.x, position.y, position.z);
         muzzleLight.set(lightColor, lightVector, 25f);
-        stage3d.environment.add(muzzleLight);
-        muzzleCount = 0;
+        stage3D.environment.add(muzzleLight);
+        muzzleCount = 0;*/
     }
 
     private void turnOffMuzzleLight(float dt) {
         muzzleCount += dt;
         if (muzzleCount > .1f)
-            stage3d.environment.remove(muzzleLight);
+            stage3D.environment.remove(muzzleLight);
     }
 
     private void headBobbing(float dt) {
@@ -77,8 +77,10 @@ public class Player extends BaseActor3D {
                 stage.moveCameraUp(bobAmount);
             else if (isMoving)
                 stage.moveCameraUp(-bobAmount);
-        } else
+        } else {
             position.x = 0;
+            stage3D.camera.position.x = 0;
+        }
     }
 
     private void movementPolling(float dt) {

@@ -12,6 +12,8 @@ public class OverlayIndicator extends BaseActor {
         super(0, 0, stage);
         loadImage("whitePixel");
         setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        setOpacity(0f);
+        setZIndex(0);
     }
 
     public void flash(Color color) {

@@ -11,6 +11,7 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTile;
 import com.badlogic.gdx.maps.tiled.objects.TiledMapTileMapObject;
 import com.badlogic.gdx.maps.tiled.renderers.OrthoCachedTiledMapRenderer;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -45,42 +46,44 @@ public class TilemapActor extends Actor {
         return list;
     }
 
-    public ArrayList<MapObject> getTileList(String propertyName) {
+    public ArrayList<MapObject> getTileList(String layerName, String propertyName) {
         ArrayList<MapObject> list = new ArrayList();
 
         for (MapLayer layer : tiledMap.getLayers()) {
-            for (MapObject obj : layer.getObjects()) {
-                if (!(obj instanceof TiledMapTileMapObject))
-                    continue;
-
-                MapProperties props = obj.getProperties();
-
-                // Default MapProperties are stored within associated Tile object
-                // Instance-specific overrides are stored in MapObject
-
-                TiledMapTileMapObject tmtmo = (TiledMapTileMapObject) obj;
-                TiledMapTile t = tmtmo.getTile();
-                MapProperties defaultProps = t.getProperties();
-
-                if (defaultProps.containsKey("name") && defaultProps.get("name").equals(propertyName))
-                    list.add(obj);
-
-                // get list of default property keys
-                Iterator<String> propertyKeys = defaultProps.getKeys();
-
-                // iterate over keys; copy default values into props if needed
-                while (propertyKeys.hasNext()) {
-                    String key = propertyKeys.next();
-
-                    // check if value already exists; if not, create property with default value
-                    if (props.containsKey(key))
+            System.out.println(layer.getName());
+            if (layer.getName().equalsIgnoreCase(layerName))
+                for (MapObject obj : layer.getObjects()) {
+                    if (!(obj instanceof TiledMapTileMapObject))
                         continue;
-                    else {
-                        Object value = defaultProps.get(key);
-                        props.put(key, value);
+
+                    MapProperties props = obj.getProperties();
+
+                    // Default MapProperties are stored within associated Tile object
+                    // Instance-specific overrides are stored in MapObject
+
+                    TiledMapTileMapObject tmtmo = (TiledMapTileMapObject) obj;
+                    TiledMapTile t = tmtmo.getTile();
+                    MapProperties defaultProps = t.getProperties();
+
+                    if (defaultProps.containsKey("name") && defaultProps.get("name").equals(propertyName))
+                        list.add(obj);
+
+                    // get list of default property keys
+                    Iterator<String> propertyKeys = defaultProps.getKeys();
+
+                    // iterate over keys; copy default values into props if needed
+                    while (propertyKeys.hasNext()) {
+                        String key = propertyKeys.next();
+
+                        // check if value already exists; if not, create property with default value
+                        if (props.containsKey(key))
+                            continue;
+                        else {
+                            Object value = defaultProps.get(key);
+                            props.put(key, value);
+                        }
                     }
                 }
-            }
         }
         return list;
     }

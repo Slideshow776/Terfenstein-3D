@@ -2,6 +2,7 @@ package no.sandramoen.commanderqueen.utils;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g3d.environment.PointLight;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.graphics.PerspectiveCamera;
 import com.badlogic.gdx.graphics.g3d.Environment;
@@ -12,6 +13,7 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 
 import java.util.ArrayList;
 
+import no.sandramoen.commanderqueen.actors.Tile;
 import no.sandramoen.commanderqueen.actors.utils.BaseActor3D;
 
 public class Stage3D {
@@ -26,13 +28,17 @@ public class Stage3D {
 
     public Stage3D() {
         environment = new Environment();
-        environment.set(new ColorAttribute(ColorAttribute.AmbientLight, 0.7f, 0.7f, 0.7f, 1f));
+        environment.set(new ColorAttribute(ColorAttribute.AmbientLight, 0.2f, 0.2f, 0.2f, 1f));
 
-        DirectionalLight dLight = new DirectionalLight();
-        Color lightColor = new Color(0.8f, 0.8f, 0.9f, 1);
-        Vector3 lightVector = new Vector3(-1.0f, -0.75f, -0.25f);
+        /*DirectionalLight dLight = new DirectionalLight();
+        Color lightColor = new Color(0.0f, 0.0f, 0.9f, 1);
+        Vector3 lightVector = new Vector3(Tile.height / 2, 28.25f, 10.35f);
         dLight.set(lightColor, lightVector);
-        environment.add(dLight);
+        environment.add(dLight);*/
+
+        PointLight pLight = new PointLight();
+        pLight.set(new Color(.8f, .1f, .8f, 1f), new Vector3(Tile.height / 2, 22f, 8f), 50f);
+        environment.add(pLight);
 
         camera = new PerspectiveCamera(67, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         camera.rotate(-90, 0, 0, 1);

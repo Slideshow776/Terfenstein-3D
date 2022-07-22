@@ -1,11 +1,14 @@
 package no.sandramoen.commanderqueen.actors;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.g3d.Environment;
 import com.badlogic.gdx.graphics.g3d.ModelBatch;
+import com.badlogic.gdx.graphics.g3d.environment.PointLight;
+import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.Array;
 
 import no.sandramoen.commanderqueen.actors.characters.Player;
@@ -21,6 +24,9 @@ public class Barrel extends BaseActor3D {
     private Animation<TextureRegion> explodeAnimation;
     private Stage3D stage3D;
 
+    private PointLight blastLight;
+    private float blastCount;
+
     public Barrel(float y, float z, Stage3D stage3D, Player player) {
         super(0, y, z, stage3D);
         this.player = player;
@@ -31,14 +37,8 @@ public class Barrel extends BaseActor3D {
         loadImage("barrel/barrel");
 
         Array<TextureAtlas.AtlasRegion> animationImages = new Array();
-        animationImages.add(BaseGame.textureAtlas.findRegion("barrel/barrel explode 1"));
-        animationImages.add(BaseGame.textureAtlas.findRegion("barrel/barrel explode 2"));
-        animationImages.add(BaseGame.textureAtlas.findRegion("barrel/barrel explode 3"));
-        animationImages.add(BaseGame.textureAtlas.findRegion("barrel/barrel explode 4"));
-        animationImages.add(BaseGame.textureAtlas.findRegion("barrel/barrel explode 5"));
-        animationImages.add(BaseGame.textureAtlas.findRegion("barrel/barrel explode 6"));
-        animationImages.add(BaseGame.textureAtlas.findRegion("barrel/barrel explode 7"));
-        animationImages.add(BaseGame.textureAtlas.findRegion("barrel/barrel explode 8"));
+        for (int i = 1; i <= 8; i++)
+            animationImages.add(BaseGame.textureAtlas.findRegion("barrel/barrel explode " + i));
         explodeAnimation = new Animation(.2f, animationImages, Animation.PlayMode.NORMAL);
         animationImages.clear();
     }
@@ -48,6 +48,7 @@ public class Barrel extends BaseActor3D {
         super.act(dt);
         totalTime += Gdx.graphics.getDeltaTime();
         setTurnAngle(GameUtils.getAngleTowardsPlayer(this, player));
+        turnOffMuzzleLight(dt);
     }
 
     @Override
@@ -63,5 +64,19 @@ public class Barrel extends BaseActor3D {
         totalTime = 0;
         BaseGame.explosionSound.play(BaseGame.soundVolume);
         isCollisionEnabled = false;
+
+
+        blastLight = new PointLight();
+        Color lightColor = new Color(.3f, .1f, 0, 1);
+        Vector3 lightVector = new Vector3(position.x, position.y, position.z);
+        blastLight.set(lightColor, lightVector, 1_000f);
+        stage3D.environment.add(blastLight);
+        blastCount = 0;
+    }
+
+    private void turnOffMuzzleLight(float dt) {
+        blastCount += dt;
+        if (blastCount > .1f)
+            stage3D.environment.remove(blastLight);
     }
 }
