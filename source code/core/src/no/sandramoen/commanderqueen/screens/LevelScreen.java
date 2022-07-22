@@ -199,8 +199,7 @@ public class LevelScreen extends BaseScreen3D {
 
     private void setGameOver() {
         if (!isGameOver) {
-            player.isPause = true;
-            player.position.x = -Tile.height;
+            mainStage3D.camera.position.x = -Tile.height * 1 / 3;
             hud.setDeadFace();
             BaseGame.metalWalkingMusic.stop();
             weapon.moveDown();
