@@ -1,19 +1,26 @@
 
 images.pack.png
-size: 16, 16
+size: 32, 32
 format: RGBA8888
 filter: Nearest, Nearest
 repeat: none
 clearPixel
   rotate: false
-  xy: 2, 5
+  xy: 2, 2
   size: 1, 1
   orig: 1, 1
   offset: 0, 0
   index: -1
+crosshair
+  rotate: false
+  xy: 2, 5
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
 redPixel
   rotate: false
-  xy: 2, 2
+  xy: 20, 20
   size: 1, 1
   orig: 1, 1
   offset: 0, 0

@@ -1,4 +1,4 @@
-package no.sandramoen.commanderqueen.actors;
+package no.sandramoen.commanderqueen.actors.hud;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Animation;
@@ -24,6 +24,7 @@ public class Weapon extends BaseActor {
 
     public Weapon(Stage stage) {
         super(0, 0, stage);
+        stage.addActor(new Crosshair(stage));
 
         Array<TextureAtlas.AtlasRegion> animationImages = new Array();
         animationImages.add(BaseGame.textureAtlas.findRegion("player/shooting 1"));
