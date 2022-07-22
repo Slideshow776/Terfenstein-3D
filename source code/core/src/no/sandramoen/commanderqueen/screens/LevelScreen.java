@@ -4,9 +4,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.g3d.environment.PointLight;
-import com.badlogic.gdx.maps.MapObject;
-import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.math.collision.Ray;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
@@ -20,11 +17,10 @@ import no.sandramoen.commanderqueen.actors.characters.Player;
 import no.sandramoen.commanderqueen.actors.Tile;
 import no.sandramoen.commanderqueen.actors.hud.Weapon;
 import no.sandramoen.commanderqueen.actors.pickups.Ammo;
-import no.sandramoen.commanderqueen.actors.pickups.Armor;
-import no.sandramoen.commanderqueen.actors.pickups.Health;
 import no.sandramoen.commanderqueen.actors.pickups.Pickup;
 import no.sandramoen.commanderqueen.actors.utils.BaseActor3D;
 import no.sandramoen.commanderqueen.actors.utils.Enemy;
+import no.sandramoen.commanderqueen.actors.utils.MapLoader;
 import no.sandramoen.commanderqueen.actors.utils.TilemapActor;
 import no.sandramoen.commanderqueen.utils.BaseGame;
 import no.sandramoen.commanderqueen.utils.BaseScreen3D;
@@ -48,15 +44,13 @@ public class LevelScreen extends BaseScreen3D {
     private boolean isGameOver = false;
     private TilemapActor tilemap;
 
+    private MapLoader mapLoader;
+
     public void initialize() {
         /*GameUtils.playLoopingMusic(BaseGame.level0Music);*/
         GameUtils.playLoopingMusic(BaseGame.metalWalkingMusic, 0);
-        pickups = new Array();
-        shootable = new Array();
-        explosionBlasts = new Array();
-        tilemap = new TilemapActor(BaseGame.level0Map, mainStage3D);
+        initializeMap();
         initializeActors();
-        initializeLights();
         initializeUI();
     }
 
@@ -219,68 +213,21 @@ public class LevelScreen extends BaseScreen3D {
         baseActor3D.moveBy(0f, moveY * .5f, moveZ * .5f);
     }
 
+    private void initializeMap() {
+        pickups = new Array();
+        shootable = new Array();
+        tiles = new Array();
+        enemies = new Array();
+        explosionBlasts = new Array();
+        tilemap = new TilemapActor(BaseGame.level0Map, mainStage3D);
+
+        mapLoader = new MapLoader(tilemap, tiles, mainStage3D, player, shootable, pickups, enemies);
+    }
+
     private void initializeActors() {
+        player = mapLoader.player;
         hud = new HUD(uiStage);
         weapon = new Weapon(uiStage);
-        initializeTiles();
-        initializePlayer();
-        initializeEnemies();
-    }
-
-    private void initializeTiles() {
-        tiles = new Array();
-        Array<String> tileTypes = new Array<>();
-        tileTypes.add("walls", "ceilings", "floors");
-        Array<String> tileTextures = new Array<>();
-        tileTextures.add("big plates", "lonplate");
-
-        for (String type : tileTypes) {
-            for (String texture : tileTextures) {
-                for (MapObject obj : tilemap.getTileList(type, texture)) {
-                    MapProperties props = obj.getProperties();
-                    float y = (Float) props.get("x") * BaseGame.unitScale;
-                    float z = (Float) props.get("y") * BaseGame.unitScale;
-                    Tile tile = new Tile(y, z, type, texture, mainStage3D);
-                    tiles.add(tile);
-                    shootable.add(tiles.get(tiles.size - 1));
-                }
-            }
-        }
-    }
-
-    public void initializeLights() {
-        for (MapObject obj : tilemap.getTileList("actors", "light")) {
-            MapProperties props = obj.getProperties();
-            float y = (Float) props.get("x") * BaseGame.unitScale;
-            float z = (Float) props.get("y") * BaseGame.unitScale;
-
-            PointLight pLight = new PointLight();
-            pLight.set(new Color(.6f, .6f, .9f, 1f), new Vector3(Tile.height / 2, y, z), 50f);
-            mainStage3D.environment.add(pLight);
-        }
-    }
-
-    private void initializePlayer() {
-        MapObject startPoint = tilemap.getTileList("actors", "player start").get(0);
-        float playerX = (float) startPoint.getProperties().get("x") * BaseGame.unitScale;
-        float playerY = (float) startPoint.getProperties().get("y") * BaseGame.unitScale;
-        player = new Player(playerX, playerY, mainStage3D);
-
-        pickups.add(new Armor(playerY, playerX + 1, mainStage3D, player));
-        pickups.add(new Health(playerY - 1, playerX, mainStage3D, player));
-
-        shootable.add(new Barrel(playerX + 5, playerY, mainStage3D, player));
-    }
-
-    private void initializeEnemies() {
-        enemies = new Array();
-        for (MapObject obj : tilemap.getTileList("actors", "enemy")) {
-            MapProperties props = obj.getProperties();
-            float x = (Float) props.get("x") * BaseGame.unitScale;
-            float y = (Float) props.get("y") * BaseGame.unitScale;
-            enemies.add(new Ghoul(x, y, mainStage3D, player));
-            shootable.add(enemies.get(enemies.size - 1));
-        }
     }
 
     private void initializeUI() {
