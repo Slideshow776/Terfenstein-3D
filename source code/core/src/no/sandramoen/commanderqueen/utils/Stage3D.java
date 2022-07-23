@@ -17,18 +17,20 @@ import no.sandramoen.commanderqueen.actors.Tile;
 import no.sandramoen.commanderqueen.actors.utils.BaseActor3D;
 
 public class Stage3D {
-    public Environment environment;
     private final ModelBatch modelBatch;
     private ArrayList<BaseActor3D> actorList3D;
     private ArrayList<Actor> actorList;
     private Vector3 position = new Vector3();
 
+    public Environment environment;
+    public LightManager lightManager;
     public int visibleCount = 0;
     public PerspectiveCamera camera;
 
     public Stage3D() {
-        environment = new Environment();/*
-        environment.set(new ColorAttribute(ColorAttribute.AmbientLight, 0f, 0f, 0f, 0f));*/
+        environment = new Environment();
+        lightManager = new LightManager(environment);
+        lightManager.setAmbient();
 
         /*DirectionalLight dLight = new DirectionalLight();
         Color lightColor = new Color(0.0f, 0.0f, 0.9f, 1);
@@ -51,6 +53,7 @@ public class Stage3D {
 
     public void act(float dt) {
         camera.update();
+        lightManager.update(dt);
         for (BaseActor3D ba : actorList3D)
             ba.act(dt);
     }

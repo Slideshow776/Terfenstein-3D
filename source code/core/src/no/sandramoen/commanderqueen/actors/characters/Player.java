@@ -8,6 +8,7 @@ import com.badlogic.gdx.math.Vector3;
 
 import no.sandramoen.commanderqueen.actors.utils.BaseActor3D;
 import no.sandramoen.commanderqueen.utils.BaseGame;
+import no.sandramoen.commanderqueen.utils.LightManager;
 import no.sandramoen.commanderqueen.utils.Stage3D;
 
 public class Player extends BaseActor3D {
@@ -15,9 +16,6 @@ public class Player extends BaseActor3D {
     private float rotateSpeed = 90f * .05f;
     private float totalTime = 0;
     private Stage3D stage3D;
-
-    private PointLight muzzleLight;
-    private float muzzleCount;
 
     private float bobFrequency = 4;
     private float bobAmount = .01f;
@@ -48,23 +46,10 @@ public class Player extends BaseActor3D {
             BaseGame.metalWalkingMusic.setVolume(BaseGame.soundVolume);
         else
             BaseGame.metalWalkingMusic.setVolume(0);
-
-        turnOffMuzzleLight(dt);
     }
 
     public void shoot() {
-        muzzleLight = new PointLight();
-        Color lightColor = new Color(.3f, .1f, 0, 1);
-        Vector3 lightVector = new Vector3(position.x, position.y, position.z);
-        muzzleLight.set(lightColor, lightVector, 25f);
-        stage3D.environment.add(muzzleLight);
-        muzzleCount = 0;
-    }
-
-    private void turnOffMuzzleLight(float dt) {
-        muzzleCount += dt;
-        if (muzzleCount > .1f)
-            stage3D.environment.remove(muzzleLight);
+        stage3D.lightManager.addPointLight(position, .3f, .1f, 0, 25, .1f, .1f / 3);
     }
 
     private void headBobbing(float dt) {

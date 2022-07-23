@@ -38,6 +38,10 @@ public class Face extends BaseActor {
     }
 
     public void setKillFace(int i) {
+        if (i < 0 || i > 4) {
+            Gdx.app.error(getClass().getSimpleName(), "Error: tried to create a face out of range [0, 4], i is: " + i);
+            return;
+        }
         clearActions();
         currentHealthIndecy = i;
         loadImage("hud/HUD-KILL" + i);

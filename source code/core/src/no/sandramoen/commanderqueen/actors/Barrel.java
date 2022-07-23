@@ -15,6 +15,7 @@ import no.sandramoen.commanderqueen.actors.characters.Player;
 import no.sandramoen.commanderqueen.actors.utils.BaseActor3D;
 import no.sandramoen.commanderqueen.utils.BaseGame;
 import no.sandramoen.commanderqueen.utils.GameUtils;
+import no.sandramoen.commanderqueen.utils.LightManager;
 import no.sandramoen.commanderqueen.utils.Stage3D;
 
 public class Barrel extends BaseActor3D {
@@ -23,9 +24,6 @@ public class Barrel extends BaseActor3D {
     private boolean explode = false;
     private Animation<TextureRegion> explodeAnimation;
     private Stage3D stage3D;
-
-    private PointLight blastLight;
-    private float blastCount;
 
     public Barrel(float y, float z, Stage3D stage3D, Player player) {
         super(0, y, z, stage3D);
@@ -48,7 +46,6 @@ public class Barrel extends BaseActor3D {
         super.act(dt);
         totalTime += Gdx.graphics.getDeltaTime();
         setTurnAngle(GameUtils.getAngleTowardsPlayer(this, player));
-        turnOffBlastLight(dt);
     }
 
     @Override
@@ -64,19 +61,6 @@ public class Barrel extends BaseActor3D {
         totalTime = 0;
         BaseGame.explosionSound.play(BaseGame.soundVolume);
         isCollisionEnabled = false;
-
-
-        blastLight = new PointLight();
-        Color lightColor = new Color(.3f, .1f, 0, 1);
-        Vector3 lightVector = new Vector3(position.x, position.y, position.z);
-        blastLight.set(lightColor, lightVector, 1_000f);
-        stage3D.environment.add(blastLight);
-        blastCount = 0;
-    }
-
-    private void turnOffBlastLight(float dt) {
-        blastCount += dt;
-        if (blastCount > .2f)
-            stage3D.environment.remove(blastLight);
+        stage3D.lightManager.addPointLight(position, .3f, .1f, 0, 1_000f, 1f, .2f);
     }
 }

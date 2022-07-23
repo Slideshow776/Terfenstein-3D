@@ -25,6 +25,7 @@ import no.sandramoen.commanderqueen.actors.utils.TilemapActor;
 import no.sandramoen.commanderqueen.utils.BaseGame;
 import no.sandramoen.commanderqueen.utils.BaseScreen3D;
 import no.sandramoen.commanderqueen.utils.GameUtils;
+import no.sandramoen.commanderqueen.utils.LightManager;
 
 public class LevelScreen extends BaseScreen3D {
     private Player player;

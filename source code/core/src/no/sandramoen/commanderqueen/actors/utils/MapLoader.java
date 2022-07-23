@@ -16,19 +16,21 @@ import no.sandramoen.commanderqueen.actors.pickups.Armor;
 import no.sandramoen.commanderqueen.actors.pickups.Health;
 import no.sandramoen.commanderqueen.actors.pickups.Pickup;
 import no.sandramoen.commanderqueen.utils.BaseGame;
+import no.sandramoen.commanderqueen.utils.LightManager;
 import no.sandramoen.commanderqueen.utils.Stage3D;
 
 public class MapLoader {
+    private Stage3D stage3D;
     private TilemapActor tilemap;
     private Array<Tile> tiles;
-    private Stage3D stage3D;
-    private Array<BaseActor3D> shootable;
-    public Player player;
-    private Array<Pickup> pickups;
     private Array<Enemy> enemies;
+    private Array<Pickup> pickups;
+    private Array<BaseActor3D> shootable;
 
-    // tilemap, tiles, mainStage3D.environment, player, shootable, pickups
-    public MapLoader(TilemapActor tilemap, Array<Tile> tiles, Stage3D stage3D, Player player, Array<BaseActor3D> shootable, Array<Pickup> pickups, Array<Enemy> enemies) {
+    public Player player;
+
+    public MapLoader(TilemapActor tilemap, Array<Tile> tiles, Stage3D stage3D, Player player, Array<BaseActor3D> shootable,
+                     Array<Pickup> pickups, Array<Enemy> enemies) {
         this.tilemap = tilemap;
         this.tiles = tiles;
         this.stage3D = stage3D;
