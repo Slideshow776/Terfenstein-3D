@@ -1,5 +1,6 @@
 package no.sandramoen.commanderqueen.actors.utils;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g3d.environment.PointLight;
 import com.badlogic.gdx.maps.MapObject;
@@ -53,7 +54,8 @@ public class MapLoader {
         Array<String> tileTypes = new Array<>();
         tileTypes.add("walls", "ceilings", "floors");
         Array<String> tileTextures = new Array<>();
-        tileTextures.add("big plates", "lonplate");
+        tileTextures.add("big plates", "lonplate", "light big plates", "light lonplate");
+        tileTextures.add("lights 0");
 
         for (String type : tileTypes)
             for (String texture : tileTextures)
@@ -68,6 +70,7 @@ public class MapLoader {
     }
 
     public void initializeLights() {
+        int i = 0;
         for (MapObject obj : tilemap.getTileList("actors", "light")) {
             MapProperties props = obj.getProperties();
             float y = (Float) props.get("x") * BaseGame.unitScale;
@@ -75,7 +78,9 @@ public class MapLoader {
             PointLight pLight = new PointLight();
             pLight.set(new Color(.6f, .6f, .9f, 1f), new Vector3(Tile.height / 2, y, z), 50f);
             stage3D.environment.add(pLight);
+            i++;
         }
+        Gdx.app.log(getClass().getSimpleName(), "added" + i + " pointLights to map");
     }
 
     private void initializePlayer() {

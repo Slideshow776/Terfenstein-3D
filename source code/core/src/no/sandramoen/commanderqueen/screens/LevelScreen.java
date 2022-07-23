@@ -99,6 +99,11 @@ public class LevelScreen extends BaseScreen3D {
         return super.touchDown(screenX, screenY, pointer, button);
     }
 
+    @Override
+    public void dispose() {
+        mainStage3D.dispose();
+    }
+
     private int rayPickBaseActor3DFromList(int screenX, int screenY, Array<BaseActor3D> list) {
         Ray ray = mainStage3D.camera.getPickRay(screenX, screenY);
         int result = -1;
@@ -119,8 +124,8 @@ public class LevelScreen extends BaseScreen3D {
                 Ghoul ghoul = (Ghoul) shootable.get(index);
                 pickups.add(new Ammo(ghoul.position.y, ghoul.position.z, mainStage3D, player));
                 ghoul.die();
-                shootable.removeValue(ghoul, false);
                 enemies.removeValue(ghoul, false);
+                shootable.removeValue(ghoul, false);
                 statusLabel.setText("enemies left: " + enemies.size);
                 hud.incrementScore(10, false);
                 hud.setKillFace();
@@ -136,7 +141,7 @@ public class LevelScreen extends BaseScreen3D {
 
     private void updateTiles() {
         for (Tile tile : tiles) {
-            if (player.overlaps(tile)) {
+            if (tile.type == "walls" && player.overlaps(tile)) {
                 player.preventOverlap(tile);
             }
         }
@@ -153,6 +158,7 @@ public class LevelScreen extends BaseScreen3D {
                     explosionPushBack(enemy, explosionBlast);
                     enemy.die();
                     enemies.removeValue(enemy, false);
+                    shootable.removeValue(enemy, false);
                     statusLabel.setText("enemies left: " + enemies.size);
                 }
             }
@@ -173,8 +179,14 @@ public class LevelScreen extends BaseScreen3D {
             }
 
             for (Tile tile : tiles) {
-                if (enemy.overlaps(tile))
+                if (tile.type == "walls" && enemy.overlaps(tile))
                     enemy.preventOverlap(tile);
+
+                if (enemy.overlaps(tile) && tile.type == "floors" && tile.illuminated)
+                    enemy.setColor(Color.WHITE);
+                else if (enemy.overlaps(tile) && tile.type == "floors")
+                    enemy.setColor(enemy.originalColor);
+
             }
         }
     }

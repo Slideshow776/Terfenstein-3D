@@ -14,6 +14,12 @@ public class LightManager {
     public LightManager(Environment environment) {
         this.environment = environment;
         pointLights = new Array();
+
+        /*DirectionalLight dLight = new DirectionalLight();
+        Color lightColor = new Color(0.0f, 0.0f, 0.9f, 1);
+        Vector3 lightVector = new Vector3(Tile.height / 2, 28.25f, 10.35f);
+        dLight.set(lightColor, lightVector);
+        environment.add(dLight);*/
     }
 
     public void update(float dt) {
@@ -33,7 +39,7 @@ public class LightManager {
     }
 
     public void setAmbient() {
-        environment.set(new ColorAttribute(ColorAttribute.AmbientLight, .05f, .05f, .05f, 1f));
+        environment.set(new ColorAttribute(ColorAttribute.AmbientLight, .4f, .4f, .5f, 1f));
     }
 
     private void updatePointLights(float dt) {

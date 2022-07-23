@@ -1,11 +1,13 @@
 package no.sandramoen.commanderqueen.actors.characters;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.g3d.Environment;
 import com.badlogic.gdx.graphics.g3d.ModelBatch;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.Array;
 
 import no.sandramoen.commanderqueen.actors.utils.Enemy;
@@ -73,8 +75,8 @@ public class Ghoul extends Enemy {
 
     @Override
     public void die() {
-        BaseGame.ghoulDeathSound.play(BaseGame.soundVolume);
         dead = true;
+        BaseGame.ghoulDeathSound.play(BaseGame.soundVolume);
         totalTime = 0f;
         currentAnimation = dieAnimation;
         isCollisionEnabled = false;

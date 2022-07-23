@@ -3,6 +3,9 @@ package no.sandramoen.commanderqueen.utils;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g3d.environment.PointLight;
+import com.badlogic.gdx.graphics.g3d.shaders.DefaultShader;
+import com.badlogic.gdx.graphics.g3d.utils.DefaultShaderProvider;
+import com.badlogic.gdx.graphics.g3d.utils.ShaderProvider;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.graphics.PerspectiveCamera;
 import com.badlogic.gdx.graphics.g3d.Environment;
@@ -32,12 +35,6 @@ public class Stage3D {
         lightManager = new LightManager(environment);
         lightManager.setAmbient();
 
-        /*DirectionalLight dLight = new DirectionalLight();
-        Color lightColor = new Color(0.0f, 0.0f, 0.9f, 1);
-        Vector3 lightVector = new Vector3(Tile.height / 2, 28.25f, 10.35f);
-        dLight.set(lightColor, lightVector);
-        environment.add(dLight);*/
-
         camera = new PerspectiveCamera(67, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         camera.rotate(-90, 0, 0, 1);
         camera.lookAt(0, 0, 0);
@@ -45,7 +42,13 @@ public class Stage3D {
         camera.far = 100f;
         camera.update();
 
-        modelBatch = new ModelBatch();
+        DefaultShader.Config config = new DefaultShader.Config();
+        config.numDirectionalLights = 1;
+        config.numPointLights = 50;
+        config.numSpotLights = 0;
+
+        ShaderProvider shaderProvider = new DefaultShaderProvider(config);
+        modelBatch = new ModelBatch(shaderProvider);
 
         actorList3D = new ArrayList();
         actorList = new ArrayList();
@@ -69,6 +72,10 @@ public class Stage3D {
             }
         }
         modelBatch.end();
+    }
+
+    public void dispose() {
+        modelBatch.dispose();
     }
 
     public void addActor(BaseActor3D ba) {

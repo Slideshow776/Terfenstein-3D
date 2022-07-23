@@ -53,9 +53,6 @@ public abstract class BaseScreen3D implements Screen, InputProcessor {
     public void resume() {
     }
 
-    public void dispose() {
-    }
-
     public void show() {
         InputMultiplexer im = (InputMultiplexer) Gdx.input.getInputProcessor();
         im.addProcessor(this);
