@@ -62,9 +62,10 @@ public class Player extends BaseActor3D {
                 stage.moveCameraUp(bobAmount);
             else if (isMoving)
                 stage.moveCameraUp(-bobAmount);
+            else
+                setXPosition();
         } else {
-            position.x = 0;
-            stage3D.camera.position.x = 0;
+            setXPosition();
         }
     }
 
@@ -72,6 +73,11 @@ public class Player extends BaseActor3D {
         keyboardPolling(dt);
         if (totalTime >= .15f)
             mousePolling();
+    }
+
+    private void setXPosition() {
+        position.x = 0;
+        stage3D.camera.position.x = 0;
     }
 
     private void keyboardPolling(float dt) {

@@ -24,7 +24,7 @@ public class Face extends BaseActor {
             for (int k = 0; k < 6; k++)
                 animationImages.add(BaseGame.textureAtlas.findRegion("hud/HUD-ST" + j + "1"));
             animationImages.add(BaseGame.textureAtlas.findRegion("hud/HUD-ST" + j + "2"));
-            stAnimations.add(new Animation(.5f, animationImages, Animation.PlayMode.LOOP));
+            stAnimations.add(new Animation(.5f, animationImages, Animation.PlayMode.LOOP_RANDOM));
             animationImages.clear();
         }
         setSTAnimation(i);

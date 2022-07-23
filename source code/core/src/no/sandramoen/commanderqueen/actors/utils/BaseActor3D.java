@@ -13,6 +13,7 @@ import com.badlogic.gdx.graphics.g3d.attributes.ColorAttribute;
 import com.badlogic.gdx.graphics.g3d.attributes.TextureAttribute;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g3d.utils.ModelBuilder;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.math.Quaternion;
 import com.badlogic.gdx.math.Matrix4;
@@ -173,6 +174,12 @@ public class BaseActor3D {
 
         if (polygonOverlap)
             this.moveBy(0, mtv.normal.x * mtv.depth, mtv.normal.y * mtv.depth);
+    }
+
+    public boolean isWithinDistance2(Float distance, BaseActor3D other) {
+        float distanceBetween =
+                (float) Math.sqrt(Math.pow(other.position.y - getPosition().y, 2.0) + (Math.pow(other.position.z - getPosition().z, 2.0)));
+        return distanceBetween <= distance;
     }
 
     public void remove() {
