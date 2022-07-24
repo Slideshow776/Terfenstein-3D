@@ -4,7 +4,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.math.collision.Ray;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.utils.Array;
@@ -38,7 +37,7 @@ public class LevelScreen extends BaseScreen3D {
     private Label statusLabel;
 
     private Array<BaseActor3D> shootable;
-    private Vector3 position = new Vector3();
+    private int index = -1;
     private boolean isGameOver = false;
     private TilemapActor tilemap;
 
@@ -67,6 +66,8 @@ public class LevelScreen extends BaseScreen3D {
 
         if (!Gdx.input.isCursorCatched())
             Gdx.input.setCursorCatched(true);
+
+        setCrosshairColorIfEnemy(rayPickBaseActor3DFromList(Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() / 2, shootable));
     }
 
     @Override
@@ -99,6 +100,13 @@ public class LevelScreen extends BaseScreen3D {
             determineConsequencesOfPick(index);
         }
         return super.touchDown(screenX, screenY, pointer, button);
+    }
+
+    private void setCrosshairColorIfEnemy(int index) {
+        if (shootable.get(index).getClass().getSimpleName().equals("Ghoul") || shootable.get(index).getClass().getSimpleName().equals("Barrel"))
+            weapon.crosshair.setColor(BaseGame.redColor);
+        else
+            weapon.crosshair.setColor(Color.WHITE);
     }
 
     private int rayPickBaseActor3DFromList(int screenX, int screenY, Array<BaseActor3D> list) {

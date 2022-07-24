@@ -22,9 +22,12 @@ public class Weapon extends BaseActor {
     private float swayAmount = .01f;
     private Vector2 restPosition = new Vector2(Gdx.graphics.getWidth() * 3 / 5 - getWidth() / 2, -Gdx.graphics.getHeight() * swayAmount);
 
+    public Crosshair crosshair;
+
     public Weapon(Stage stage) {
         super(0, 0, stage);
-        stage.addActor(new Crosshair(stage));
+        crosshair = new Crosshair(stage);
+        stage.addActor(crosshair);
 
         Array<TextureAtlas.AtlasRegion> animationImages = new Array();
         animationImages.add(BaseGame.textureAtlas.findRegion("player/shooting 1"));
