@@ -1,0 +1,135 @@
+d:assets:assets:0:application/unknown:1
+d:audio:audio:0:application/unknown:1
+d:audio/music:audio/music:0:application/unknown:1
+a:audio/music/342991__furbyguy__stuttering-guitar-metal.wav:audio/music/342991__furbyguy__stuttering-guitar-metal-8e12546c6b20ba41d7855ad87e85729b.wav:1411244:audio/x-wav:1
+a:audio/music/398937__mypantsfelldown__metal-footsteps.wav:audio/music/398937__mypantsfelldown__metal-footsteps-276ead41b43462800263987f1d64bf6b.wav:302092:audio/x-wav:1
+d:audio/sound:audio/sound:0:application/unknown:1
+a:audio/sound/244394__werra__bang-explosion-metallic.wav:audio/sound/244394__werra__bang-explosion-metallic-23b2980e107e490eff1b4dfa41fd03be.wav:1412692:audio/x-wav:1
+a:audio/sound/249686__cylon8472__cthulhu-growl.wav:audio/sound/249686__cylon8472__cthulhu-growl-15ce057c9152db377e3df65b3d8fef8f.wav:230996:audio/x-wav:1
+a:audio/sound/370220__eflexmusic__pistol-shot-close-mixed.wav:audio/sound/370220__eflexmusic__pistol-shot-close-mixed-2c3b8e64780244219ff34f0480f41448.wav:264146:audio/x-wav:1
+a:audio/sound/armor pickup.wav:audio/sound/armor pickup-97a25ef14c9e8248319ff62e3cae6bf8.wav:31038:audio/x-wav:1
+a:audio/sound/Explosion10.wav:audio/sound/Explosion10-fed76cf54ab3cc7c98e4499addb5cf41.wav:378908:audio/x-wav:1
+a:audio/sound/health pickup.wav:audio/sound/health pickup-e91d2ee75c9424383ef1cbf50aba2380.wav:37262:audio/x-wav:1
+a:audio/sound/Pickup_Coin45.wav:audio/sound/Pickup_Coin45-c0cd60035758b5f68a8c817f37dc34db.wav:22998:audio/x-wav:1
+d:effects:effects:0:application/unknown:1
+d:fonts:fonts:0:application/unknown:1
+t:fonts/arcade26.fnt:fonts/arcade26-d74d907ee9c165e7d7c4eb3b8aca0755.fnt:11128:application/unknown:1
+i:fonts/arcade26.png:fonts/arcade26-1193983ea9fb2db3b3af7c4617e120bf.png:14136:image/png:1
+t:fonts/arcadeRounded.fnt:fonts/arcadeRounded-2fb766c0ced21dc798c8038523fc0b3c.fnt:11133:application/unknown:1
+i:fonts/arcadeRounded.png:fonts/arcadeRounded-aff16db14644a83ada6bc5228b0dc532.png:19456:image/png:1
+d:i18n:i18n:0:application/unknown:1
+d:images:images:0:application/unknown:1
+d:images/excluded:images/excluded:0:application/unknown:1
+d:images/included:images/included:0:application/unknown:1
+d:images/included/barrel:images/included/barrel:0:application/unknown:1
+i:images/included/barrel/barrel explode 1.png:images/included/barrel/barrel explode 1-46fb76175f47bf9179e593a47fe065b1.png:1172:image/png:1
+i:images/included/barrel/barrel explode 2.png:images/included/barrel/barrel explode 2-52faeead1ce21cf2687a8c3b0c4cfe92.png:1171:image/png:1
+i:images/included/barrel/barrel explode 3.png:images/included/barrel/barrel explode 3-e493ba88cf990b5bbf61e6a4f87a99bd.png:1788:image/png:1
+i:images/included/barrel/barrel explode 4.png:images/included/barrel/barrel explode 4-c30800046adebec3b8dfdc3a854a7c0b.png:1660:image/png:1
+i:images/included/barrel/barrel explode 5.png:images/included/barrel/barrel explode 5-0d13704462c612fb78acc32347c5f22c.png:1217:image/png:1
+i:images/included/barrel/barrel explode 6.png:images/included/barrel/barrel explode 6-bfdd130fd3f53b52132061b637194466.png:975:image/png:1
+i:images/included/barrel/barrel explode 7.png:images/included/barrel/barrel explode 7-2b02542e5843469978bdce824008c88b.png:518:image/png:1
+i:images/included/barrel/barrel explode 8.png:images/included/barrel/barrel explode 8-cf3348f658f11cb33417edad3aa3e525.png:266:image/png:1
+i:images/included/barrel/barrel.png:images/included/barrel/barrel-4e2277196f22b70d3c4ea4beb204215a.png:907:image/png:1
+i:images/included/clearPixel.png:images/included/clearPixel-f5d53e23cd8ac4a125ab95b768d5f524.png:5331:image/png:1
+i:images/included/crosshair.png:images/included/crosshair-5c63e80cc107722a43f70482f8e90018.png:122:image/png:1
+d:images/included/enemies:images/included/enemies:0:application/unknown:1
+i:images/included/enemies/ghoul die 0.png:images/included/enemies/ghoul die 0-552096058f259546f0c6ba2bd502f87f.png:16306:image/png:1
+i:images/included/enemies/ghoul die 1.png:images/included/enemies/ghoul die 1-1288f3240feb71dbf4770aa95e567a8e.png:16211:image/png:1
+i:images/included/enemies/ghoul die 2.png:images/included/enemies/ghoul die 2-1dd6d0092c06d8fa29b1f8115397678e.png:15886:image/png:1
+i:images/included/enemies/ghoul die 3.png:images/included/enemies/ghoul die 3-64d71e34188d5bdc02042e657da1fd4a.png:17129:image/png:1
+i:images/included/enemies/ghoul die 4.png:images/included/enemies/ghoul die 4-b2a7c0bf95949155de3c86b278934790.png:7547:image/png:1
+i:images/included/enemies/ghoul walk 0.png:images/included/enemies/ghoul walk 0-148bb61d5b13c5a4b62696c5cf01d500.png:14322:image/png:1
+i:images/included/enemies/ghoul walk 1.png:images/included/enemies/ghoul walk 1-2335578024359e362360572966f5c68f.png:14480:image/png:1
+i:images/included/enemies/ghoul walk 2.png:images/included/enemies/ghoul walk 2-2b205cac03f3892707c06a459cc95a0b.png:15497:image/png:1
+i:images/included/enemies/ghoul walk 3.png:images/included/enemies/ghoul walk 3-9ad76982e266b13ed36b0cc8f5903036.png:14549:image/png:1
+d:images/included/hud:images/included/hud:0:application/unknown:1
+i:images/included/hud/HUD-DEAD.png:images/included/hud/HUD-DEAD-bbd0abaa8a5355f75a98f4c9ddb0bb09.png:1722:image/png:1
+i:images/included/hud/HUD-EVL0.png:images/included/hud/HUD-EVL0-45424b2b93c94410324b60c51c2d7c14.png:1640:image/png:1
+i:images/included/hud/HUD-EVL1.png:images/included/hud/HUD-EVL1-45c242b6f70d7c61e7ad2b11304b1ade.png:1714:image/png:1
+i:images/included/hud/HUD-EVL2.png:images/included/hud/HUD-EVL2-6ac06754ddca36cfb9e3a697ff112ad6.png:1743:image/png:1
+i:images/included/hud/HUD-EVL3.png:images/included/hud/HUD-EVL3-7988c338ceaf1675b7a8fab36f6122dc.png:1794:image/png:1
+i:images/included/hud/HUD-EVL4.png:images/included/hud/HUD-EVL4-8757078407adf4667db94e14be71a3f4.png:1791:image/png:1
+i:images/included/hud/HUD-GOD.png:images/included/hud/HUD-GOD-941a290015bdf8ac1fc7114568aea20d.png:1637:image/png:1
+i:images/included/hud/HUD-KILL0.png:images/included/hud/HUD-KILL0-2142f1a35e245d269da89f8e72871d3e.png:1636:image/png:1
+i:images/included/hud/HUD-KILL1.png:images/included/hud/HUD-KILL1-a3f9f6c706d6631bce69bee3dc94a111.png:1710:image/png:1
+i:images/included/hud/HUD-KILL2.png:images/included/hud/HUD-KILL2-0a6d60bf4a248b66cf9c9b84ff55d73d.png:1738:image/png:1
+i:images/included/hud/HUD-KILL3.png:images/included/hud/HUD-KILL3-f8caadf2fb373fc2214bd74465e285c6.png:1792:image/png:1
+i:images/included/hud/HUD-KILL4.png:images/included/hud/HUD-KILL4-2a88ecbfa33c294826824ccd5981692f.png:1795:image/png:1
+i:images/included/hud/HUD-OUCH0.png:images/included/hud/HUD-OUCH0-b6a0448c3561ec1804f5460dd8e4e7fd.png:1620:image/png:1
+i:images/included/hud/HUD-OUCH1.png:images/included/hud/HUD-OUCH1-7fb9ff9400268370d264c180b1044f4e.png:1689:image/png:1
+i:images/included/hud/HUD-OUCH2.png:images/included/hud/HUD-OUCH2-c0d928ce4126434c72daf1a465b19967.png:1723:image/png:1
+i:images/included/hud/HUD-OUCH3.png:images/included/hud/HUD-OUCH3-eb06d9b277a13b2e4e1805c4598c525d.png:1798:image/png:1
+i:images/included/hud/HUD-OUCH4.png:images/included/hud/HUD-OUCH4-b31f8dbecdbfa8d9dae785208876a58e.png:1816:image/png:1
+i:images/included/hud/HUD-ST00.png:images/included/hud/HUD-ST00-c81d51685a09a957dd49bb38e85013ab.png:1615:image/png:1
+i:images/included/hud/HUD-ST01.png:images/included/hud/HUD-ST01-cc85cafe80a3a40c5069c5337bf6d0db.png:1611:image/png:1
+i:images/included/hud/HUD-ST02.png:images/included/hud/HUD-ST02-cd1697d18883b36425e234851d357e68.png:1609:image/png:1
+i:images/included/hud/HUD-ST10.png:images/included/hud/HUD-ST10-650db54702e9ed8fc4352dd4fb871b4c.png:1685:image/png:1
+i:images/included/hud/HUD-ST11.png:images/included/hud/HUD-ST11-b21171b26ed5063637d3577bd322bf8f.png:1680:image/png:1
+i:images/included/hud/HUD-ST12.png:images/included/hud/HUD-ST12-f6ddce868a6fbde1d6df35362fb90877.png:1679:image/png:1
+i:images/included/hud/HUD-ST20.png:images/included/hud/HUD-ST20-03702962a430dd794b2b50cc578cfd81.png:1721:image/png:1
+i:images/included/hud/HUD-ST21.png:images/included/hud/HUD-ST21-fa89ee7c152a1bdcf06670aa8bbad880.png:1713:image/png:1
+i:images/included/hud/HUD-ST22.png:images/included/hud/HUD-ST22-c88a675f8ef78bc4a7c834a96922ee6b.png:1714:image/png:1
+i:images/included/hud/HUD-ST30.png:images/included/hud/HUD-ST30-76407ab5cf8ded8d36edbd73cecdb4bd.png:1770:image/png:1
+i:images/included/hud/HUD-ST31.png:images/included/hud/HUD-ST31-44d4876aa2491785bfa48f7824f6e5de.png:1767:image/png:1
+i:images/included/hud/HUD-ST32.png:images/included/hud/HUD-ST32-85322192356990363b303704ea4c9c60.png:1758:image/png:1
+i:images/included/hud/HUD-ST40.png:images/included/hud/HUD-ST40-bd0eb0d482727c9506474be1d1d55a14.png:1795:image/png:1
+i:images/included/hud/HUD-ST41.png:images/included/hud/HUD-ST41-67a95d54e09e4de7d26a2596a78a7060.png:1796:image/png:1
+i:images/included/hud/HUD-ST42.png:images/included/hud/HUD-ST42-92f8eef9bca0d5ec56654c48013e3e7a.png:1794:image/png:1
+i:images/included/hud/HUD-TL0.png:images/included/hud/HUD-TL0-10ea598cfb2b43c1cfbe1bb4daf1e12b.png:1589:image/png:1
+i:images/included/hud/HUD-TL1.png:images/included/hud/HUD-TL1-f8875510957a3525eee376002502973a.png:1656:image/png:1
+i:images/included/hud/HUD-TL2.png:images/included/hud/HUD-TL2-f09270f46309a3e72616afaffe9689c6.png:1692:image/png:1
+i:images/included/hud/HUD-TL3.png:images/included/hud/HUD-TL3-3a272b283e5ddfa0eb79a4fb3a81414f.png:1760:image/png:1
+i:images/included/hud/HUD-TL4.png:images/included/hud/HUD-TL4-7d222a15276ddc13f1ff6981d9d36365.png:1809:image/png:1
+i:images/included/hud/HUD-TR0.png:images/included/hud/HUD-TR0-9097fd073168763e8da51005ac191e19.png:1593:image/png:1
+i:images/included/hud/HUD-TR1.png:images/included/hud/HUD-TR1-e8927a65eed27d01dd4d9af5425ccefc.png:1643:image/png:1
+i:images/included/hud/HUD-TR2.png:images/included/hud/HUD-TR2-d6a9287d7e9580f44bc15d7cdff559ed.png:1683:image/png:1
+i:images/included/hud/HUD-TR3.png:images/included/hud/HUD-TR3-0660756c418fe41dbd6650165b093d26.png:1769:image/png:1
+i:images/included/hud/HUD-TR4.png:images/included/hud/HUD-TR4-aabbd922fbe93d13d7b6ef77a88f6ceb.png:1819:image/png:1
+d:images/included/packed:images/included/packed:0:application/unknown:1
+t:images/included/packed/images.pack.atlas:images/included/packed/images.pack-7eeee5f42b8596728ede474517563abf.atlas:8774:application/unknown:1
+i:images/included/packed/images.pack.png:images/included/packed/images.pack-3382913e3ec8d808bc2c2f96063d21d1.png:187:image/png:1
+i:images/included/packed/images.pack2.png:images/included/packed/images.pack2-9a88c6f29f815c98263dba60938ef868.png:11322:image/png:1
+i:images/included/packed/images.pack3.png:images/included/packed/images.pack3-fad161de293f9658ce752e7b9b98b603.png:73285:image/png:1
+i:images/included/packed/images.pack4.png:images/included/packed/images.pack4-b728fb80c76a460092780f41d3da47c7.png:32566:image/png:1
+i:images/included/packed/images.pack5.png:images/included/packed/images.pack5-4500b48a82c3464a13e7dc8d06200ad4.png:1492:image/png:1
+i:images/included/packed/images.pack6.png:images/included/packed/images.pack6-72ba17033a43ff2f4d0fba14c84741d4.png:32522:image/png:1
+i:images/included/packed/images.pack7.png:images/included/packed/images.pack7-6937211afa8fac2cd9ef5522cf5e120a.png:19096:image/png:1
+i:images/included/packed/images.pack8.png:images/included/packed/images.pack8-20857dd4ccfdb037d00546de0dc2bf42.png:15852:image/png:1
+i:images/included/packed/images.pack9.png:images/included/packed/images.pack9-447ef17b2032c0d32bc3aa5ea666a832.png:6489:image/png:1
+d:images/included/pickups:images/included/pickups:0:application/unknown:1
+i:images/included/pickups/ammo.png:images/included/pickups/ammo-85c4c72295b0c20677f45c64ad716bea.png:235:image/png:1
+i:images/included/pickups/armor.png:images/included/pickups/armor-b2bd78d7ceb9d013a33694ea4daafb4d.png:351:image/png:1
+i:images/included/pickups/health.png:images/included/pickups/health-89e3000dd966de615add3ca7694c7f74.png:877:image/png:1
+d:images/included/player:images/included/player:0:application/unknown:1
+i:images/included/player/shooting 0.png:images/included/player/shooting 0-46e066ee52625c7a3f5b6f3a2f10641b.png:19654:image/png:1
+i:images/included/player/shooting 1.png:images/included/player/shooting 1-12cb7229b7d52602511c3d18619cf754.png:29836:image/png:1
+i:images/included/player/shooting 2.png:images/included/player/shooting 2-03bae454cdfc3fe17c42ff46e9cbd3af.png:24887:image/png:1
+i:images/included/player/shooting 3.png:images/included/player/shooting 3-56cde11493049677cae6fcb12a1bb3b7.png:21912:image/png:1
+d:images/included/tiles:images/included/tiles:0:application/unknown:1
+i:images/included/tiles/big plates.png:images/included/tiles/big plates-2614968feaf75609656b9966ae3d3772.png:395:image/png:1
+i:images/included/tiles/circles0.png:images/included/tiles/circles0-585438c8bd0ccfd52bb7693bfa871a63.png:399:image/png:1
+i:images/included/tiles/cliff0.png:images/included/tiles/cliff0-2c850d0b4c4cf35a51962f27d514b78c.png:932:image/png:1
+i:images/included/tiles/light big plates.png:images/included/tiles/light big plates-f94f1b993733873ac423e10cfdaf9937.png:398:image/png:1
+i:images/included/tiles/light lonplate.png:images/included/tiles/light lonplate-83d89ed65b068c93889db6e73651cc97.png:321:image/png:1
+i:images/included/tiles/lights 0.png:images/included/tiles/lights 0-c80d7f8cdbd18ec50af9e4170d82b10c.png:502:image/png:1
+i:images/included/tiles/lonplate.png:images/included/tiles/lonplate-329c6ece7c6163e1225fb5bd5427d1c5.png:320:image/png:1
+i:images/included/whitePixel.png:images/included/whitePixel-de87a441c71a403f3db732f7870d5b10.png:1260:image/png:1
+d:maps:maps:0:application/unknown:1
+b:maps/level0.tmx:maps/level0-27bb394007880f4524c3d824b43dd136.tmx:57506:application/unknown:1
+i:maps/tileset.png:maps/tileset-8e375b25775058b8fb1a62588d615fb2.png:6714:image/png:1
+d:shaders:shaders:0:application/unknown:1
+d:skins:skins:0:application/unknown:1
+d:skins/default:skins/default:0:application/unknown:1
+t:skins/default/default.fnt:skins/default/default-c66eb731ba6a7b1e896cecaf20b19300.fnt:11626:application/unknown:1
+t:skins/default/uiskin.atlas:skins/default/uiskin-14e6a910e4dff35968680dd22b8cf502.atlas:3122:application/unknown:1
+t:skins/default/uiskin.json:skins/default/uiskin-1e1a38b6f3880177a383c01f95f215f7.json:2501:application/unknown:1
+i:skins/default/uiskin.png:skins/default/uiskin-34b28ea01f92a90fa485f007870f9eff.png:28299:image/png:1
+t:com/badlogic/gdx/graphics/g3d/particles/particles.fragment.glsl:particles.fragment-b90524761fdf09b0a836056d590c30b8.glsl:820:application/unknown:1
+t:com/badlogic/gdx/graphics/g3d/particles/particles.vertex.glsl:particles.vertex-f25b8b2fae10b9bfa09bfdd484923148.glsl:2886:application/unknown:1
+t:com/badlogic/gdx/graphics/g3d/shaders/default.fragment.glsl:default.fragment-e1c018bd48044c8b67c7bbc53145e540.glsl:5874:application/unknown:1
+t:com/badlogic/gdx/graphics/g3d/shaders/default.vertex.glsl:default.vertex-28b7e77ea3f282ebd5b066ba256692c3.glsl:9096:application/unknown:1
+t:com/badlogic/gdx/graphics/g3d/shaders/depth.fragment.glsl:depth.fragment-8341d5ce47fc398da575c9e294b6821b.glsl:869:application/unknown:1
+t:com/badlogic/gdx/graphics/g3d/shaders/depth.vertex.glsl:depth.vertex-98a450f1f747c05eedb7122779187316.glsl:2931:application/unknown:1
+t:com/badlogic/gdx/utils/lsans-15.fnt:lsans-15-5143ae9583bc43b1084f98062e054ae8.fnt:17711:application/unknown:1
+i:com/badlogic/gdx/utils/lsans-15.png:lsans-15-afe63790f9c73ea9a111fd9843835d21.png:14652:image/png:1
