@@ -1,6 +1,5 @@
 package no.sandramoen.commanderqueen.actors.characters;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -16,16 +15,13 @@ public class Ghoul extends Enemy {
     private Animation<TextureRegion> currentAnimation;
     private Animation<TextureRegion> walkAnimation;
     private Animation<TextureRegion> dieAnimation;
-    private float totalTime = 0;
-    private float movementSpeed = .05f;
     private float timeToStopMoving = 1.1f;
     private float attackCounter = 0f;
     private final float ATTACK_FREQUENCY = 2f;
 
-    public boolean isReadyToAttack = true;
-
     public Ghoul(float y, float z, Stage3D s, Player player) {
         super(y, z, s, player);
+        movementSpeed = .05f;
 
         Array<TextureAtlas.AtlasRegion> animationImages = new Array();
         animationImages.add(BaseGame.textureAtlas.findRegion("enemies/ghoul walk 0"));
@@ -44,17 +40,16 @@ public class Ghoul extends Enemy {
         animationImages.clear();
 
         currentAnimation = walkAnimation;
-        setBaseRectangle();
     }
 
     @Override
     public void act(float dt) {
         super.act(dt);
-        totalTime += Gdx.graphics.getDeltaTime();
         if (isPause)
             return;
-
-        if (!isDead || totalTime < timeToStopMoving)
+        if (isForcedToMove)
+            forceMove(dt);
+        else if (!isDead || totalTime < timeToStopMoving)
             moveForward(movementSpeed);
 
         if (attackCounter > ATTACK_FREQUENCY)

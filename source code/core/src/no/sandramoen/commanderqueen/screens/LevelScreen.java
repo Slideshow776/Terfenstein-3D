@@ -4,7 +4,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.math.collision.Ray;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.utils.Array;
@@ -32,13 +31,12 @@ public class LevelScreen extends BaseScreen3D {
     private Array<Tile> tiles;
     private Array<Enemy> enemies;
     private Array<Pickup> pickups;
+    private Array<BaseActor3D> shootable;
 
     private Label debugLabel;
     private Label gameLabel;
     private Label statusLabel;
 
-    private Array<BaseActor3D> shootable;
-    private Vector3 position = new Vector3();
     private boolean isGameOver = false;
     private TilemapActor tilemap;
 
@@ -67,6 +65,8 @@ public class LevelScreen extends BaseScreen3D {
 
         if (!Gdx.input.isCursorCatched())
             Gdx.input.setCursorCatched(true);
+
+        setCrosshairColorIfEnemy(rayPickBaseActor3DFromList(Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() / 2, shootable));
     }
 
     @Override
@@ -121,9 +121,7 @@ public class LevelScreen extends BaseScreen3D {
                 Ghoul ghoul = (Ghoul) shootable.get(index);
                 pickups.add(new Ammo(ghoul.position.y, ghoul.position.z, mainStage3D, player));
                 ghoul.die();
-                enemies.removeValue(ghoul, false);
-                shootable.removeValue(ghoul, false);
-                statusLabel.setText("enemies left: " + enemies.size);
+                removeEnemy(ghoul);
                 hud.incrementScore(10, false);
                 hud.setKillFace();
             } else if (shootable.get(index).getClass().getSimpleName().equals("Barrel")) {
@@ -132,6 +130,15 @@ public class LevelScreen extends BaseScreen3D {
                 barrel.explode();
                 shootable.removeValue(barrel, false);
             }
+        }
+    }
+
+    private void setCrosshairColorIfEnemy(int index) {
+        if (index >= 0) {
+            if (shootable.get(index).getClass().getSimpleName().equals("Ghoul") || shootable.get(index).getClass().getSimpleName().equals("Barrel"))
+                weapon.crosshair.setColor(BaseGame.redColor);
+            else
+                weapon.crosshair.setColor(Color.WHITE);
         }
     }
 
@@ -144,26 +151,31 @@ public class LevelScreen extends BaseScreen3D {
     }
 
     private void updateEnemies() {
-        for (Enemy enemy : enemies) {
-            if (player.overlaps(enemy)) {
-                player.preventOverlap(enemy);
-                if (enemy.getClass().getSimpleName().equals("Ghoul")) {
-                    Ghoul ghoul = (Ghoul) enemy;
+        for (int i = 0; i < enemies.size; i++) {
+            if (player.overlaps(enemies.get(i))) {
+                player.preventOverlap(enemies.get(i));
+                if (enemies.get(i).getClass().getSimpleName().equals("Ghoul")) {
+                    Ghoul ghoul = (Ghoul) enemies.get(i);
                     if (ghoul.isReadyToAttack()) {
                         hud.decrementHealth(10);
                         BaseGame.ghoulDeathSound.play(BaseGame.soundVolume, 1.5f, 0);
                     }
                 }
+
+                for (int j = 0; j < enemies.size; j++) {
+                    if (enemies.get(i) != enemies.get(j))
+                        enemies.get(i).preventOverlap(enemies.get(j));
+                }
             }
 
             for (Tile tile : tiles) {
-                if (tile.type == "walls" && enemy.overlaps(tile))
-                    enemy.preventOverlap(tile);
+                if (tile.type == "walls" && enemies.get(i).overlaps(tile))
+                    enemies.get(i).preventOverlap(tile);
 
-                if (enemy.overlaps(tile) && tile.type == "floors" && tile.illuminated)
-                    enemy.setColor(Color.WHITE);
-                else if (enemy.overlaps(tile) && tile.type == "floors")
-                    enemy.setColor(enemy.originalColor);
+                if (enemies.get(i).overlaps(tile) && tile.type == "floors" && tile.illuminated)
+                    enemies.get(i).setColor(Color.WHITE);
+                else if (enemies.get(i).overlaps(tile) && tile.type == "floors")
+                    enemies.get(i).setColor(enemies.get(i).originalColor);
             }
         }
     }
@@ -197,38 +209,38 @@ public class LevelScreen extends BaseScreen3D {
         }
     }
 
-    private void explosionPushBack(BaseActor3D baseActor3D, BaseActor3D explosion) {
-        float moveY = baseActor3D.position.y - explosion.position.y;
-        float moveZ = baseActor3D.position.z - explosion.position.z;
-        baseActor3D.moveBy(0f, moveY * .5f, moveZ * .5f);
-    }
-
     private void checkExplosionRange(final BaseActor3D source) {
-        if (player.isWithinDistance2(2f, source))
+        if (player.isWithinDistance2(3f, source))
             hud.decrementHealth(100);
         else if (player.isWithinDistance2(7f, source))
             hud.decrementHealth(50);
-        else if (player.isWithinDistance2(10f, source)) {
+        else if (player.isWithinDistance2(10f, source))
             hud.decrementHealth(25);
-            // player.position.z = 100; // TODO
-        } else
+        else
             hud.setKillFace();
 
-        for (final Enemy enemy : enemies) {
-            if (enemy.isWithinDistance2(2f, source)) {
-                enemy.decrementHealth(100);
-            } else if (enemy.isWithinDistance2(7f, source)) {
-                enemy.decrementHealth(50);
-            } else if (enemy.isWithinDistance2(10f, source)) {
-                enemy.decrementHealth(25);
-            } else
-                continue;
+        if (player.isWithinDistance2(10f, source))
+            player.forceMoveAwayFrom(source);
 
-            if (enemy.isDead) {
-                enemies.removeValue(enemy, false);
-                shootable.removeValue(enemy, false);
+        for (Enemy enemy : enemies) {
+            if (enemy.isWithinDistance2(3f, source))
+                enemy.decrementHealth(100);
+            else if (enemy.isWithinDistance2(7f, source))
+                enemy.decrementHealth(50);
+            else if (enemy.isWithinDistance2(10f, source)) {
+                enemy.decrementHealth(25);
             }
         }
+
+        for (Enemy enemy : enemies)
+            if (enemy.isDead)
+                removeEnemy(enemy);
+    }
+
+    private void removeEnemy(Enemy enemy) {
+        enemies.removeValue(enemy, false);
+        shootable.removeValue(enemy, false);
+        statusLabel.setText("enemies left: " + enemies.size);
     }
 
     private void initializeMap() {
