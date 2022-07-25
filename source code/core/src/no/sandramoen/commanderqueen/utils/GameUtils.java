@@ -14,9 +14,8 @@ public class GameUtils {
                         Math.abs(baseActor3D.position.y - player.position.y)
         ) * MathUtils.radiansToDegrees - 90;
 
-        if (baseActor3D.position.y - player.position.y > 0) {
+        if (baseActor3D.position.y - player.position.y > 0)
             angleTowardsPlayer *= -1;
-        }
 
         if (baseActor3D.position.z - player.position.z > 0) {
             angleTowardsPlayer *= -1;
