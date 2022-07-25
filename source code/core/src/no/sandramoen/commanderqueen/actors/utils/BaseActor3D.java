@@ -13,7 +13,6 @@ import com.badlogic.gdx.graphics.g3d.attributes.ColorAttribute;
 import com.badlogic.gdx.graphics.g3d.attributes.TextureAttribute;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g3d.utils.ModelBuilder;
-import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.math.Quaternion;
 import com.badlogic.gdx.math.Matrix4;
@@ -37,6 +36,10 @@ public class BaseActor3D {
     protected Polygon boundingPolygon;
     protected Stage3D stage;
     protected BoundingBox bounds = new BoundingBox();
+
+    protected float width;
+    protected float height;
+    protected float depth;
 
     public BaseActor3D(float x, float y, float z, Stage3D s) {
         modelData = null;
@@ -143,7 +146,7 @@ public class BaseActor3D {
         boundingPolygon.setPosition(position.y, position.z);
         boundingPolygon.setRotation(getTurnAngle());
         boundingPolygon.setScale(scale.y, scale.z);
-        return boundingPolygon;
+        return (Polygon) boundingPolygon;
     }
 
     public boolean overlaps(BaseActor3D other) {
@@ -177,8 +180,7 @@ public class BaseActor3D {
     }
 
     public boolean isWithinDistance2(Float distance, BaseActor3D other) {
-        float distanceBetween =
-                (float) Math.sqrt(Math.pow(other.position.y - getPosition().y, 2.0) + (Math.pow(other.position.z - getPosition().z, 2.0)));
+        float distanceBetween = (float) Math.sqrt(Math.pow(Math.abs(other.position.y - position.y), 2) + Math.pow(Math.abs(other.position.z - position.z), 2));
         return distanceBetween <= distance;
     }
 
@@ -193,6 +195,9 @@ public class BaseActor3D {
         boxMaterial.set(new BlendingAttribute(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA));
         int usageCode = VertexAttributes.Usage.Position + VertexAttributes.Usage.ColorPacked + VertexAttributes.Usage.Normal + VertexAttributes.Usage.TextureCoordinates;
 
+        this.width = width;
+        this.height = height;
+        this.depth = depth;
         Model boxModel = modelBuilder.createBox(height, width, depth, boxMaterial, usageCode);
         Vector3 position = new Vector3(0, 0, 0);
 

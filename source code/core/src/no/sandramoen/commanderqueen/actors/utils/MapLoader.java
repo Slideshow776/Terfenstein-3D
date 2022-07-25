@@ -80,7 +80,7 @@ public class MapLoader {
             stage3D.environment.add(pLight);
             i++;
         }
-        Gdx.app.log(getClass().getSimpleName(), "added" + i + " pointLights to map");
+        Gdx.app.log(getClass().getSimpleName(), "added " + i + " pointLights to map");
     }
 
     private void initializePlayer() {
