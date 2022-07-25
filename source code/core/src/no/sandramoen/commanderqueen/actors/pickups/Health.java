@@ -8,7 +8,7 @@ public class Health extends Pickup {
 
     public Health(float y, float z, Stage3D s, Player player) {
         super(y, z, s, player);
-        buildModel(1f, 1f, .001f);
+        buildModel(1f, 1f, .001f, true);
         loadImage("pickups/health");
         setPosition(GameUtils.getPositionRelativeToFloor(1f), y, z);
         setBaseRectangle();

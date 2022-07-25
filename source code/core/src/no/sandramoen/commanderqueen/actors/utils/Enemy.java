@@ -1,5 +1,6 @@
 package no.sandramoen.commanderqueen.actors.utils;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 
 import no.sandramoen.commanderqueen.actors.characters.Player;
@@ -15,26 +16,44 @@ public class Enemy extends BaseActor3D {
     protected float forceMoveZ = 8;
     protected float forceTime;
     protected float secondsForcedToMove = .25f;
+    protected BaseActor3D sprite;
+    protected float angleTowardPlayer;
+
+    protected enum Directions {FRONT, LEFT_FRONT, RIGHT_FRONT, LEFT_SIDE, RIGHT_SIDE, LEFT_BACK, RIGHT_BACK, BACK}
+
+    protected Directions direction;
 
     public boolean isDead = false;
     public Color originalColor = new Color(.4f, .4f, .4f, 1f);
     public boolean isReadyToAttack = true;
     public int health = 1;
 
-    public Enemy(float y, float z, Stage3D s, Player player) {
-        super(0, y, z, s);
+    public Enemy(float y, float z, Stage3D stage3D, Player player) {
+        super(0, y, z, stage3D);
         this.player = player;
-        buildModel(3, 3, 3f);
+        float size = 3;
+        buildModel(size, size, size, true);
         setBaseRectangle();
-        setPosition(GameUtils.getPositionRelativeToFloor(3), y, z);
-        setColor(originalColor);
+        setPosition(GameUtils.getPositionRelativeToFloor(size), y, z);
+        isVisible = false;
+
+        sprite = new BaseActor3D(0, 0, 0, stage3D);
+        sprite.buildModel(size, size, .001f, true);
+        sprite.setColor(originalColor);
     }
 
     @Override
     public void act(float dt) {
         super.act(dt);
         totalTime += dt;
-        setTurnAngle(GameUtils.getAngleTowardsPlayer(this, player));
+        handleSprite();
+        setDirection();
+    }
+
+    @Override
+    public void setColor(Color color) {
+        super.setColor(color);
+        sprite.setColor(color);
     }
 
     public void die() {
@@ -59,5 +78,34 @@ public class Enemy extends BaseActor3D {
             moveBy(0f, forceMoveY * dt, forceMoveZ * dt);
         else
             isForcedToMove = false;
+    }
+
+    private void handleSprite() {
+        sprite.setPosition(position);
+        angleTowardPlayer = GameUtils.getAngleTowardsPlayer(this, player);
+        sprite.setTurnAngle(angleTowardPlayer);
+    }
+
+    private void setDirection() {
+        float temp = angleTowardPlayer -getTurnAngle();
+        if (temp < 0)
+            temp += 360;
+
+        if (temp <= 22.5 || temp >= 337.5)
+            direction = Directions.FRONT;
+        else if (temp < 337.5 && temp > 292.5f)
+            direction = Directions.RIGHT_FRONT;
+        else if (temp <= 292.5 && temp >= 247.5)
+            direction = Directions.RIGHT_SIDE;
+        else if (temp < 247.5 && temp > 202.5f)
+            direction = Directions.RIGHT_BACK;
+        else if (temp <= 202.5f && temp >= 157.5f)
+            direction = Directions.BACK;
+        else if (temp < 157.5 && temp > 112.5f)
+            direction = Directions.LEFT_BACK;
+        else if (temp <= 112.5 && temp >= 67.5f)
+            direction = Directions.LEFT_SIDE;
+        else if (temp < 67.5 && temp > 22.5f)
+            direction = Directions.LEFT_FRONT;
     }
 }

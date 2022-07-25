@@ -169,6 +169,236 @@ size: 1024, 256
 format: RGBA8888
 filter: Nearest, Nearest
 repeat: none
+enemies/demo imp/back 0
+  rotate: false
+  xy: 2, 130
+  size: 54, 62
+  orig: 54, 62
+  offset: 0, 0
+  index: -1
+enemies/demo imp/back 1
+  rotate: false
+  xy: 2, 66
+  size: 54, 62
+  orig: 54, 62
+  offset: 0, 0
+  index: -1
+enemies/demo imp/back 2
+  rotate: false
+  xy: 58, 130
+  size: 54, 62
+  orig: 54, 62
+  offset: 0, 0
+  index: -1
+enemies/demo imp/back 3
+  rotate: false
+  xy: 2, 2
+  size: 54, 62
+  orig: 54, 62
+  offset: 0, 0
+  index: -1
+enemies/demo imp/back side left 0
+  rotate: false
+  xy: 58, 66
+  size: 54, 62
+  orig: 54, 62
+  offset: 0, 0
+  index: -1
+enemies/demo imp/back side left 1
+  rotate: false
+  xy: 114, 130
+  size: 54, 62
+  orig: 54, 62
+  offset: 0, 0
+  index: -1
+enemies/demo imp/back side left 2
+  rotate: false
+  xy: 58, 2
+  size: 54, 62
+  orig: 54, 62
+  offset: 0, 0
+  index: -1
+enemies/demo imp/back side left 3
+  rotate: false
+  xy: 114, 66
+  size: 54, 62
+  orig: 54, 62
+  offset: 0, 0
+  index: -1
+enemies/demo imp/back side right 0
+  rotate: false
+  xy: 170, 130
+  size: 54, 62
+  orig: 54, 62
+  offset: 0, 0
+  index: -1
+enemies/demo imp/back side right 1
+  rotate: false
+  xy: 114, 2
+  size: 54, 62
+  orig: 54, 62
+  offset: 0, 0
+  index: -1
+enemies/demo imp/back side right 2
+  rotate: false
+  xy: 170, 66
+  size: 54, 62
+  orig: 54, 62
+  offset: 0, 0
+  index: -1
+enemies/demo imp/back side right 3
+  rotate: false
+  xy: 226, 130
+  size: 54, 62
+  orig: 54, 62
+  offset: 0, 0
+  index: -1
+enemies/demo imp/front 0
+  rotate: false
+  xy: 170, 2
+  size: 54, 62
+  orig: 54, 62
+  offset: 0, 0
+  index: -1
+enemies/demo imp/front 1
+  rotate: false
+  xy: 226, 66
+  size: 54, 62
+  orig: 54, 62
+  offset: 0, 0
+  index: -1
+enemies/demo imp/front 2
+  rotate: false
+  xy: 282, 130
+  size: 54, 62
+  orig: 54, 62
+  offset: 0, 0
+  index: -1
+enemies/demo imp/front 3
+  rotate: false
+  xy: 226, 2
+  size: 54, 62
+  orig: 54, 62
+  offset: 0, 0
+  index: -1
+enemies/demo imp/front side left 0
+  rotate: false
+  xy: 282, 66
+  size: 54, 62
+  orig: 54, 62
+  offset: 0, 0
+  index: -1
+enemies/demo imp/front side left 1
+  rotate: false
+  xy: 338, 130
+  size: 54, 62
+  orig: 54, 62
+  offset: 0, 0
+  index: -1
+enemies/demo imp/front side left 2
+  rotate: false
+  xy: 282, 2
+  size: 54, 62
+  orig: 54, 62
+  offset: 0, 0
+  index: -1
+enemies/demo imp/front side left 3
+  rotate: false
+  xy: 338, 66
+  size: 54, 62
+  orig: 54, 62
+  offset: 0, 0
+  index: -1
+enemies/demo imp/front side right 0
+  rotate: false
+  xy: 394, 130
+  size: 54, 62
+  orig: 54, 62
+  offset: 0, 0
+  index: -1
+enemies/demo imp/front side right 3
+  rotate: false
+  xy: 394, 130
+  size: 54, 62
+  orig: 54, 62
+  offset: 0, 0
+  index: -1
+enemies/demo imp/front side right 1
+  rotate: false
+  xy: 338, 2
+  size: 54, 62
+  orig: 54, 62
+  offset: 0, 0
+  index: -1
+enemies/demo imp/front side right 2
+  rotate: false
+  xy: 394, 66
+  size: 54, 62
+  orig: 54, 62
+  offset: 0, 0
+  index: -1
+enemies/demo imp/side left 0
+  rotate: false
+  xy: 450, 130
+  size: 54, 62
+  orig: 54, 62
+  offset: 0, 0
+  index: -1
+enemies/demo imp/side left 1
+  rotate: false
+  xy: 394, 2
+  size: 54, 62
+  orig: 54, 62
+  offset: 0, 0
+  index: -1
+enemies/demo imp/side left 2
+  rotate: false
+  xy: 450, 66
+  size: 54, 62
+  orig: 54, 62
+  offset: 0, 0
+  index: -1
+enemies/demo imp/side left 3
+  rotate: false
+  xy: 506, 130
+  size: 54, 62
+  orig: 54, 62
+  offset: 0, 0
+  index: -1
+enemies/demo imp/side right 0
+  rotate: false
+  xy: 450, 2
+  size: 54, 62
+  orig: 54, 62
+  offset: 0, 0
+  index: -1
+enemies/demo imp/side right 1
+  rotate: false
+  xy: 506, 66
+  size: 54, 62
+  orig: 54, 62
+  offset: 0, 0
+  index: -1
+enemies/demo imp/side right 2
+  rotate: false
+  xy: 562, 130
+  size: 54, 62
+  orig: 54, 62
+  offset: 0, 0
+  index: -1
+enemies/demo imp/side right 3
+  rotate: false
+  xy: 506, 2
+  size: 54, 62
+  orig: 54, 62
+  offset: 0, 0
+  index: -1
+
+images.pack5.png
+size: 1024, 256
+format: RGBA8888
+filter: Nearest, Nearest
+repeat: none
 hud/HUD-DEAD
   rotate: false
   xy: 2, 194
@@ -464,7 +694,7 @@ hud/HUD-TR4
   offset: 0, 0
   index: -1
 
-images.pack5.png
+images.pack6.png
 size: 128, 64
 format: RGBA8888
 filter: Nearest, Nearest
@@ -491,7 +721,7 @@ pickups/health
   offset: 0, 0
   index: -1
 
-images.pack6.png
+images.pack7.png
 size: 1024, 1024
 format: RGBA8888
 filter: Nearest, Nearest
@@ -511,7 +741,7 @@ player/shooting 1
   offset: 0, 0
   index: -1
 
-images.pack7.png
+images.pack8.png
 size: 1024, 1024
 format: RGBA8888
 filter: Nearest, Nearest
@@ -524,7 +754,7 @@ player/shooting 2
   offset: 0, 0
   index: -1
 
-images.pack8.png
+images.pack9.png
 size: 1024, 1024
 format: RGBA8888
 filter: Nearest, Nearest
@@ -537,7 +767,7 @@ player/shooting 3
   offset: 0, 0
   index: -1
 
-images.pack9.png
+images.pack10.png
 size: 512, 128
 format: RGBA8888
 filter: Nearest, Nearest

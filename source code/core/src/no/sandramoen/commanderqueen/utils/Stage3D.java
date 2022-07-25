@@ -45,7 +45,8 @@ public class Stage3D {
         DefaultShader.Config config = new DefaultShader.Config();
         config.numDirectionalLights = 1;
         config.numPointLights = 50;
-        config.numSpotLights = 0;
+        config.numSpotLights = 0;/*
+        config.defaultCullFace = 0;*/
 
         ShaderProvider shaderProvider = new DefaultShaderProvider(config);
         modelBatch = new ModelBatch(shaderProvider);
@@ -67,8 +68,10 @@ public class Stage3D {
         for (int i = 0; i < actorList3D.size(); i++) {
             if (actorList3D.get(i).modelData.isVisible(camera)) {
                 actorList3D.get(i).draw(modelBatch, environment);
-                modelBatch.render(actorList3D.get(i).modelData, environment);
-                visibleCount++;
+                if (actorList3D.get(i).isVisible) {
+                    modelBatch.render(actorList3D.get(i).modelData, environment);
+                    visibleCount++;
+                }
             }
         }
         modelBatch.end();

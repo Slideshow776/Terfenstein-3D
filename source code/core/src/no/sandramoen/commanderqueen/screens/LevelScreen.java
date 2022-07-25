@@ -18,7 +18,7 @@ import no.sandramoen.commanderqueen.actors.pickups.Ammo;
 import no.sandramoen.commanderqueen.actors.pickups.Pickup;
 import no.sandramoen.commanderqueen.actors.utils.BaseActor3D;
 import no.sandramoen.commanderqueen.actors.utils.Enemy;
-import no.sandramoen.commanderqueen.actors.utils.MapLoader;
+import no.sandramoen.commanderqueen.utils.MapLoader;
 import no.sandramoen.commanderqueen.actors.utils.TilemapActor;
 import no.sandramoen.commanderqueen.utils.BaseGame;
 import no.sandramoen.commanderqueen.utils.BaseScreen3D;
@@ -230,6 +230,9 @@ public class LevelScreen extends BaseScreen3D {
             else if (enemy.isWithinDistance2(10f, source)) {
                 enemy.decrementHealth(25);
             }
+
+            if (enemy.isWithinDistance2(10f, source))
+                enemy.forceMoveAwayFrom(source);
         }
 
         for (Enemy enemy : enemies)

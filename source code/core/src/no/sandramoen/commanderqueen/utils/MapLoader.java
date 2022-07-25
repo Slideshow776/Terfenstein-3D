@@ -1,4 +1,4 @@
-package no.sandramoen.commanderqueen.actors.utils;
+package no.sandramoen.commanderqueen.utils;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -16,6 +16,9 @@ import no.sandramoen.commanderqueen.actors.pickups.Ammo;
 import no.sandramoen.commanderqueen.actors.pickups.Armor;
 import no.sandramoen.commanderqueen.actors.pickups.Health;
 import no.sandramoen.commanderqueen.actors.pickups.Pickup;
+import no.sandramoen.commanderqueen.actors.utils.BaseActor3D;
+import no.sandramoen.commanderqueen.actors.utils.Enemy;
+import no.sandramoen.commanderqueen.actors.utils.TilemapActor;
 import no.sandramoen.commanderqueen.utils.BaseGame;
 import no.sandramoen.commanderqueen.utils.LightManager;
 import no.sandramoen.commanderqueen.utils.Stage3D;

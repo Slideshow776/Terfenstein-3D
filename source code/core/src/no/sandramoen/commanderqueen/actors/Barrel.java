@@ -29,7 +29,7 @@ public class Barrel extends BaseActor3D {
         super(0, y, z, stage3D);
         this.player = player;
         this.stage3D = stage3D;
-        buildModel(2.8f, 3.5f, .001f);
+        buildModel(2.8f, 3.5f, .001f, true);
         setPosition(GameUtils.getPositionRelativeToFloor(3.5f), y, z);
         setBaseRectangle();
         loadImage("barrel/barrel");

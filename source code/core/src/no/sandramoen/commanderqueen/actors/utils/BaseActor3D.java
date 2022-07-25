@@ -30,6 +30,7 @@ public class BaseActor3D {
     public boolean isPreventOverlapEnabled = true;
     public final Vector3 position;
     public boolean isPause = false;
+    public boolean isVisible = true;
 
     protected final Quaternion rotation;
     protected final Vector3 scale;
@@ -114,7 +115,7 @@ public class BaseActor3D {
     }
 
     public float getTurnAngle() {
-        return rotation.getAngleAround(0, -1, 0);
+        return rotation.getAngleAround(1, 0, 0);
     }
 
     public void setTurnAngle(float degrees) {
@@ -188,11 +189,12 @@ public class BaseActor3D {
         stage.removeActor(this);
     }
 
-    public void buildModel(float width, float height, float depth) {
+    public void buildModel(float width, float height, float depth, boolean blending) {
         ModelBuilder modelBuilder = new ModelBuilder();
         Material boxMaterial = new Material();
 
-        boxMaterial.set(new BlendingAttribute(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA));
+        if (blending)
+            boxMaterial.set(new BlendingAttribute(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA));
         int usageCode = VertexAttributes.Usage.Position + VertexAttributes.Usage.ColorPacked + VertexAttributes.Usage.Normal + VertexAttributes.Usage.TextureCoordinates;
 
         this.width = width;

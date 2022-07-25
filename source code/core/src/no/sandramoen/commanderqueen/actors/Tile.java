@@ -11,14 +11,11 @@ public class Tile extends BaseActor3D {
     public Tile(float y, float z, String type, String texture, Stage3D s) {
         super(0, y, z, s);
         this.type = type;
-        buildModel(height, height, height);
+        buildModel(height, height, height, false);
         setBaseRectangle();
         loadImage("tiles/" + texture);
         if (texture.split(" ", 2)[0].equals("light"))
             illuminated = true;
-
-        if (illuminated && type.equals("floors"))
-            System.out.println("floor illuminated: " + illuminated);
 
         if (type == "ceilings") {
             position.x = Tile.height;

@@ -13,7 +13,14 @@ import no.sandramoen.commanderqueen.utils.Stage3D;
 
 public class Ghoul extends Enemy {
     private Animation<TextureRegion> currentAnimation;
-    private Animation<TextureRegion> walkAnimation;
+    private Animation<TextureRegion> walkFrontAnimation;
+    private Animation<TextureRegion> walkFrontSideLeftAnimation;
+    private Animation<TextureRegion> walkFrontSideRightAnimation;
+    private Animation<TextureRegion> walkSideLeftAnimation;
+    private Animation<TextureRegion> walkSideRightAnimation;
+    private Animation<TextureRegion> walkBackSideLeftAnimation;
+    private Animation<TextureRegion> walkBackSideRightAnimation;
+    private Animation<TextureRegion> walkBackAnimation;
     private Animation<TextureRegion> dieAnimation;
     private float timeToStopMoving = 1.1f;
     private float attackCounter = 0f;
@@ -22,24 +29,7 @@ public class Ghoul extends Enemy {
     public Ghoul(float y, float z, Stage3D s, Player player) {
         super(y, z, s, player);
         movementSpeed = .05f;
-
-        Array<TextureAtlas.AtlasRegion> animationImages = new Array();
-        animationImages.add(BaseGame.textureAtlas.findRegion("enemies/ghoul walk 0"));
-        animationImages.add(BaseGame.textureAtlas.findRegion("enemies/ghoul walk 1"));
-        animationImages.add(BaseGame.textureAtlas.findRegion("enemies/ghoul walk 2"));
-        animationImages.add(BaseGame.textureAtlas.findRegion("enemies/ghoul walk 3"));
-        walkAnimation = new Animation(.15f, animationImages, Animation.PlayMode.LOOP);
-        animationImages.clear();
-
-        animationImages.add(BaseGame.textureAtlas.findRegion("enemies/ghoul die 0"));
-        animationImages.add(BaseGame.textureAtlas.findRegion("enemies/ghoul die 1"));
-        animationImages.add(BaseGame.textureAtlas.findRegion("enemies/ghoul die 2"));
-        animationImages.add(BaseGame.textureAtlas.findRegion("enemies/ghoul die 3"));
-        animationImages.add(BaseGame.textureAtlas.findRegion("enemies/ghoul die 4"));
-        dieAnimation = new Animation(.2f, animationImages, Animation.PlayMode.NORMAL);
-        animationImages.clear();
-
-        currentAnimation = walkAnimation;
+        initializeAnimation();
     }
 
     @Override
@@ -49,21 +39,27 @@ public class Ghoul extends Enemy {
             return;
         if (isForcedToMove)
             forceMove(dt);
-        else if (!isDead || totalTime < timeToStopMoving)
+        else if (!isDead || totalTime < timeToStopMoving) {
+            setTurnAngle(angleTowardPlayer);
             moveForward(movementSpeed);
+        }
 
-        if (attackCounter > ATTACK_FREQUENCY)
+        if (isDead)
+            return;
+
+        if (attackCounter > ATTACK_FREQUENCY) {
             isReadyToAttack = true;
-        else {
+        } else {
             attackCounter += dt;
             isReadyToAttack = false;
         }
+
+        setDirectionalSprites();
     }
 
     @Override
     public void draw(ModelBatch batch, Environment env) {
-        super.draw(batch, env);
-        loadImage(currentAnimation.getKeyFrame(totalTime).toString());
+        sprite.loadImage(currentAnimation.getKeyFrame(totalTime).toString());
     }
 
     @Override
@@ -76,9 +72,77 @@ public class Ghoul extends Enemy {
     }
 
     public boolean isReadyToAttack() {
-        if (isReadyToAttack == true) {
+        if (isReadyToAttack == true)
             attackCounter = 0;
-        }
         return isReadyToAttack;
+    }
+
+    private void setDirectionalSprites() {
+        if (direction == Directions.FRONT)
+            currentAnimation = walkFrontAnimation;
+        else if (direction == Directions.LEFT_FRONT)
+            currentAnimation = walkFrontSideLeftAnimation;
+        else if (direction == Directions.LEFT_SIDE)
+            currentAnimation = walkSideLeftAnimation;
+        else if (direction == Directions.LEFT_BACK)
+            currentAnimation = walkBackSideLeftAnimation;
+        else if (direction == Directions.BACK)
+            currentAnimation = walkBackAnimation;
+        else if (direction == Directions.RIGHT_BACK)
+            currentAnimation = walkBackSideRightAnimation;
+        else if (direction == Directions.RIGHT_SIDE)
+            currentAnimation = walkSideRightAnimation;
+        else if (direction == Directions.RIGHT_FRONT)
+            currentAnimation = walkFrontSideRightAnimation;
+    }
+
+    private void initializeAnimation() {
+        Array<TextureAtlas.AtlasRegion> animationImages = new Array();
+        for (int i = 0; i < 4; i++)
+            animationImages.add(BaseGame.textureAtlas.findRegion("enemies/demo imp/front " + i));
+        walkFrontAnimation = new Animation(.2f, animationImages, Animation.PlayMode.LOOP);
+        animationImages.clear();
+
+        for (int i = 0; i < 4; i++)
+            animationImages.add(BaseGame.textureAtlas.findRegion("enemies/demo imp/front side left " + i));
+        walkFrontSideLeftAnimation = new Animation(.2f, animationImages, Animation.PlayMode.LOOP);
+        animationImages.clear();
+
+        for (int i = 0; i < 4; i++)
+            animationImages.add(BaseGame.textureAtlas.findRegion("enemies/demo imp/front side right " + i));
+        walkFrontSideRightAnimation = new Animation(.2f, animationImages, Animation.PlayMode.LOOP);
+        animationImages.clear();
+
+        for (int i = 0; i < 4; i++)
+            animationImages.add(BaseGame.textureAtlas.findRegion("enemies/demo imp/side left " + i));
+        walkSideLeftAnimation = new Animation(.2f, animationImages, Animation.PlayMode.LOOP);
+        animationImages.clear();
+
+        for (int i = 0; i < 4; i++)
+            animationImages.add(BaseGame.textureAtlas.findRegion("enemies/demo imp/side right " + i));
+        walkSideRightAnimation = new Animation(.2f, animationImages, Animation.PlayMode.LOOP);
+        animationImages.clear();
+
+        for (int i = 0; i < 4; i++)
+            animationImages.add(BaseGame.textureAtlas.findRegion("enemies/demo imp/back side left " + i));
+        walkBackSideLeftAnimation = new Animation(.2f, animationImages, Animation.PlayMode.LOOP);
+        animationImages.clear();
+
+        for (int i = 0; i < 4; i++)
+            animationImages.add(BaseGame.textureAtlas.findRegion("enemies/demo imp/back side right " + i));
+        walkBackSideRightAnimation = new Animation(.2f, animationImages, Animation.PlayMode.LOOP);
+        animationImages.clear();
+
+        for (int i = 0; i < 4; i++)
+            animationImages.add(BaseGame.textureAtlas.findRegion("enemies/demo imp/back " + i));
+        walkBackAnimation = new Animation(.2f, animationImages, Animation.PlayMode.LOOP);
+        animationImages.clear();
+
+        for (int i = 0; i < 5; i++)
+            animationImages.add(BaseGame.textureAtlas.findRegion("enemies/ghoul die " + i));
+        dieAnimation = new Animation(.2f, animationImages, Animation.PlayMode.NORMAL);
+        animationImages.clear();
+
+        currentAnimation = walkFrontAnimation;
     }
 }
