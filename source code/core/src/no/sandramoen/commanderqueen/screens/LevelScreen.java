@@ -92,18 +92,8 @@ public class LevelScreen extends BaseScreen3D {
 
     @Override
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-        if (button == Input.Buttons.LEFT && !isGameOver) {
-            player.shoot();
-            weapon.shoot();
-            hud.decrementAmmo();
-            int index = GameUtils.rayPickBaseActor3DFromList(
-                    Gdx.graphics.getWidth() / 2,
-                    Gdx.graphics.getHeight() / 2,
-                    shootable,
-                    mainStage3D.camera
-            );
-            determineConsequencesOfPick(index);
-        }
+        if (button == Input.Buttons.LEFT && !isGameOver)
+            shoot();
         return super.touchDown(screenX, screenY, pointer, button);
     }
 
@@ -114,13 +104,13 @@ public class LevelScreen extends BaseScreen3D {
                 removeEnemy(ghoul);
                 hud.incrementScore(10, false);
                 hud.setKillFace();
+                alertEnemies(10, ghoul);
             } else if (shootable.get(index).getClass().getSimpleName().equals("Barrel")) {
                 Barrel barrel = (Barrel) shootable.get(index);
                 checkExplosionRange(barrel);
                 barrel.explode();
                 shootable.removeValue(barrel, false);
-            } else if (shootable.get(index).getClass().getSimpleName().equals("Tile")) {
-                System.out.println("player shot a tile! " + MathUtils.random(1_000, 9_999));
+                alertEnemies(20, barrel);
             }
         }
     }
@@ -247,6 +237,26 @@ public class LevelScreen extends BaseScreen3D {
         enemies.removeValue(enemy, false);
         shootable.removeValue(enemy, false);
         statusLabel.setText("enemies left: " + enemies.size);
+    }
+
+    private void shoot() {
+        player.shoot();
+        weapon.shoot();
+        hud.decrementAmmo();
+        int index = GameUtils.rayPickBaseActor3DFromList(
+                Gdx.graphics.getWidth() / 2,
+                Gdx.graphics.getHeight() / 2,
+                shootable,
+                mainStage3D.camera
+        );
+        determineConsequencesOfPick(index);
+        alertEnemies(20, player);
+    }
+
+    private void alertEnemies(float range, BaseActor3D baseActor3D) {
+        for (Enemy enemy : enemies)
+            if (enemy.isWithinDistance2(range, baseActor3D))
+                enemy.activate();
     }
 
     private void initializeMap() {

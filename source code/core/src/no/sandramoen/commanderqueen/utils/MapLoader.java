@@ -91,7 +91,7 @@ public class MapLoader {
         float playerX = (float) startPoint.getProperties().get("x") * BaseGame.unitScale;
         float playerY = (float) startPoint.getProperties().get("y") * BaseGame.unitScale;
         float rotation = 0;
-        if (startPoint.getProperties().get("y") != null)
+        if (startPoint.getProperties().get("rotation") != null)
             rotation = (float) startPoint.getProperties().get("rotation");
         player = new Player(playerX, playerY, stage3D, rotation);
     }

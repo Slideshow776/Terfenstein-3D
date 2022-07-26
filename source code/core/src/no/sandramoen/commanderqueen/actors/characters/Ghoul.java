@@ -75,6 +75,14 @@ public class Ghoul extends Enemy {
         isCollisionEnabled = false;
     }
 
+    @Override
+    public void activate() {
+        super.activate();
+        if (isActive) return;
+        isActive = true;
+        BaseGame.ghoulDeathSound.play(BaseGame.soundVolume, .75f, 0);
+    }
+
     public boolean isReadyToAttack() {
         if (isReadyToAttack == true)
             attackCounter = 0;
@@ -86,10 +94,8 @@ public class Ghoul extends Enemy {
             oneSecondTimer += dt;
         else if (!isActive){
             oneSecondTimer = 0;
-            if (isPlayerVisible()) {
-                isActive = true;
-                BaseGame.ghoulDeathSound.play(BaseGame.soundVolume, .75f, 0);
-            }
+            if (isPlayerVisible())
+                activate();
         }
     }
 

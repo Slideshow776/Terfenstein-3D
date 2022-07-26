@@ -26,7 +26,7 @@ public class Enemy extends BaseActor3D {
     protected enum Directions {FRONT, LEFT_FRONT, RIGHT_FRONT, LEFT_SIDE, RIGHT_SIDE, LEFT_BACK, RIGHT_BACK, BACK}
 
     protected Directions direction;
-    protected boolean isActive = false;
+    public boolean isActive = false;
     protected Array<BaseActor3D> shootable;
 
     public boolean isDead = false;
@@ -109,6 +109,9 @@ public class Enemy extends BaseActor3D {
             if (baseActor3D != this)
                 this.shootable.add(baseActor3D);
         this.shootable.add(player);
+    }
+
+    public void activate() {
     }
 
     protected void forceMove(float dt) {
