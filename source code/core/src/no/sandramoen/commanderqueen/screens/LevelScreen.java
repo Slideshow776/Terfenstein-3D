@@ -4,7 +4,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.utils.Array;
 
@@ -104,13 +103,13 @@ public class LevelScreen extends BaseScreen3D {
                 removeEnemy(ghoul);
                 hud.incrementScore(10, false);
                 hud.setKillFace();
-                alertEnemies(10, ghoul);
+                activateEnemies(15, ghoul);
             } else if (shootable.get(index).getClass().getSimpleName().equals("Barrel")) {
                 Barrel barrel = (Barrel) shootable.get(index);
                 checkExplosionRange(barrel);
                 barrel.explode();
                 shootable.removeValue(barrel, false);
-                alertEnemies(20, barrel);
+                activateEnemies(45, barrel);
             }
         }
     }
@@ -179,7 +178,7 @@ public class LevelScreen extends BaseScreen3D {
 
     private void updateWeapon() {
         weapon.sway(player.isMoving);
-        setCrosshairColorIfEnemy(GameUtils.rayPickBaseActor3DFromList(
+        setCrosshairColorIfEnemy(GameUtils.getRayPickedListIndex(
                 Gdx.graphics.getWidth() / 2,
                 Gdx.graphics.getHeight() / 2,
                 shootable,
@@ -202,27 +201,27 @@ public class LevelScreen extends BaseScreen3D {
     }
 
     private void checkExplosionRange(final BaseActor3D source) {
-        if (player.isWithinDistance2(3f, source))
+        if (player.isWithinDistance(3f, source))
             hud.decrementHealth(100);
-        else if (player.isWithinDistance2(7f, source))
+        else if (player.isWithinDistance(7f, source))
             hud.decrementHealth(50);
-        else if (player.isWithinDistance2(10f, source))
+        else if (player.isWithinDistance(10f, source))
             hud.decrementHealth(25);
         else
             hud.setKillFace();
 
-        if (player.isWithinDistance2(10f, source))
+        if (player.isWithinDistance(10f, source))
             player.forceMoveAwayFrom(source);
 
         for (Enemy enemy : enemies) {
-            if (enemy.isWithinDistance2(3f, source))
+            if (enemy.isWithinDistance(3f, source))
                 enemy.decrementHealth(100);
-            else if (enemy.isWithinDistance2(7f, source))
+            else if (enemy.isWithinDistance(7f, source))
                 enemy.decrementHealth(50);
-            else if (enemy.isWithinDistance2(10f, source))
+            else if (enemy.isWithinDistance(10f, source))
                 enemy.decrementHealth(25);
 
-            if (enemy.isWithinDistance2(10f, source))
+            if (enemy.isWithinDistance(10f, source))
                 enemy.forceMoveAwayFrom(source);
         }
 
@@ -243,19 +242,19 @@ public class LevelScreen extends BaseScreen3D {
         player.shoot();
         weapon.shoot();
         hud.decrementAmmo();
-        int index = GameUtils.rayPickBaseActor3DFromList(
+        int index = GameUtils.getRayPickedListIndex(
                 Gdx.graphics.getWidth() / 2,
                 Gdx.graphics.getHeight() / 2,
                 shootable,
                 mainStage3D.camera
         );
         determineConsequencesOfPick(index);
-        alertEnemies(20, player);
+        activateEnemies(45, player);
     }
 
-    private void alertEnemies(float range, BaseActor3D baseActor3D) {
+    private void activateEnemies(float range, BaseActor3D baseActor3D) {
         for (Enemy enemy : enemies)
-            if (enemy.isWithinDistance2(range, baseActor3D))
+            if (enemy.isWithinDistance(range, baseActor3D))
                 enemy.activate();
     }
 

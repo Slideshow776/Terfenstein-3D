@@ -93,6 +93,7 @@ public class MapLoader {
         float rotation = 0;
         if (startPoint.getProperties().get("rotation") != null)
             rotation = (float) startPoint.getProperties().get("rotation");
+        rotation %= 360;
         player = new Player(playerX, playerY, stage3D, rotation);
     }
 
@@ -105,7 +106,6 @@ public class MapLoader {
             if (props.get("rotation") != null)
                 rotation = (Float) props.get("rotation");
             rotation %= 360;
-            System.out.println(rotation);
             enemies.add(new Ghoul(x, y, stage3D, player, rotation));
             shootable.add(enemies.get(enemies.size - 1));
         }

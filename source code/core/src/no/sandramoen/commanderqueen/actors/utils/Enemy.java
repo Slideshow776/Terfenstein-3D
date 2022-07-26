@@ -1,14 +1,11 @@
 package no.sandramoen.commanderqueen.actors.utils;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.PerspectiveCamera;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.Array;
 
+import no.sandramoen.commanderqueen.actors.Tile;
 import no.sandramoen.commanderqueen.actors.characters.Player;
-import no.sandramoen.commanderqueen.utils.BaseGame;
 import no.sandramoen.commanderqueen.utils.GameUtils;
 import no.sandramoen.commanderqueen.utils.Stage3D;
 
@@ -20,6 +17,7 @@ public class Enemy extends BaseActor3D {
     protected Vector2 forceMove = new Vector2(8f, 8f);
     protected float forceTime;
     protected final float SECONDS_FORCED_TO_MOVE = .25f;
+    protected final float VISIBILITY_RANGE = 20;
     protected BaseActor3D sprite;
     protected float angleTowardPlayer;
 
@@ -34,8 +32,6 @@ public class Enemy extends BaseActor3D {
     public boolean isReadyToAttack = true;
     public int health = 1;
 
-    PerspectiveCamera camera;
-
     public Enemy(float y, float z, Stage3D stage3D, Player player) {
         super(0, y, z, stage3D);
         this.player = player;
@@ -49,15 +45,7 @@ public class Enemy extends BaseActor3D {
         sprite = new BaseActor3D(0, 0, 0, stage3D);
         sprite.buildModel(size, size, .001f, true);
         sprite.setColor(originalColor);
-
-        camera = new PerspectiveCamera(135, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        camera.rotate(-90, 0, 0, 1);
-        camera.lookAt(0, 0, 0);
-        camera.near = .01f;
-        camera.far = 100f;
-        camera.update();
-
-        super.turnBy(180);
+        turnBy(-180);
     }
 
     @Override
@@ -68,17 +56,6 @@ public class Enemy extends BaseActor3D {
         if (isDead) return;
 
         setDirection();
-
-        camera.position.y = position.y;
-        camera.position.z = position.z;
-        camera.update();
-    }
-
-    @Override
-    public void turnBy(float degrees) {
-        if (degrees == 0) return;
-        super.turnBy(degrees);
-        camera.rotate(Vector3.X, -degrees);
     }
 
     @Override
@@ -122,11 +99,13 @@ public class Enemy extends BaseActor3D {
     }
 
     protected boolean isPlayerVisible() {
-        for (int i = 0; i < Gdx.graphics.getWidth(); i += Gdx.graphics.getWidth() / 135) {
-            int index = GameUtils.rayPickBaseActor3DFromList(i, Gdx.graphics.getHeight() / 2, shootable, camera);
-            if (index >= 0)
-                if (shootable.get(index).getClass().getSimpleName().equals("Player"))
-                    return true;
+        if (
+                (direction == Directions.LEFT_FRONT || direction == Directions.RIGHT_FRONT || direction == Directions.FRONT) &&
+                        isWithinDistance(VISIBILITY_RANGE * Tile.height, player)
+        ) {
+            int index = GameUtils.getRayPickedListIndex(position, player.position.cpy().sub(position), shootable);
+            if (index > -1 && shootable.get(index).getClass().getSimpleName().equalsIgnoreCase("player"))
+                return true;
         }
         return false;
     }
@@ -139,7 +118,7 @@ public class Enemy extends BaseActor3D {
 
     private void setDirection() {
         float temp = angleTowardPlayer - getTurnAngle();
-        if (temp < 0)
+        while (temp < 0)
             temp += 360;
 
         if (temp <= 22.5 || temp >= 337.5)

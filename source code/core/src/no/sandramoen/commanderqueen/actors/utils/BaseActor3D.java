@@ -180,7 +180,7 @@ public class BaseActor3D {
             this.moveBy(0, mtv.normal.x * mtv.depth, mtv.normal.y * mtv.depth);
     }
 
-    public boolean isWithinDistance2(Float distance, BaseActor3D other) {
+    public boolean isWithinDistance(Float distance, BaseActor3D other) {
         float distanceBetween = (float) Math.sqrt(Math.pow(Math.abs(other.position.y - position.y), 2) + Math.pow(Math.abs(other.position.z - position.z), 2));
         return distanceBetween <= distance;
     }
