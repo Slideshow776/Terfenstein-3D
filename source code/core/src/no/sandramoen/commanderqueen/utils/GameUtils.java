@@ -1,6 +1,7 @@
 package no.sandramoen.commanderqueen.utils;
 
 import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.PerspectiveCamera;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector3;
@@ -47,24 +48,36 @@ public class GameUtils {
 
     public static int getRayPickedListIndex(Vector3 origin, Vector3 direction, Array<BaseActor3D> list) {
         Ray ray = new Ray(origin, direction);
-        return getClosestListItem(ray, list);
+        return getClosestListIndex(ray, list);
     }
 
     public static int getRayPickedListIndex(int screenX, int screenY, Array<BaseActor3D> list, PerspectiveCamera camera) {
         Ray ray = camera.getPickRay(screenX, screenY);
-        return getClosestListItem(ray, list);
+        return getClosestListIndex(ray, list);
     }
 
-    private static int getClosestListItem(Ray ray, Array<BaseActor3D> list) {
-        int result = -1;
+    public static float normalizeValue(Float value, Float min, Float max) {
+        return (value - min) / (max - min);
+    }
+
+    public static void playSoundRelativeToDistance(Sound sound, Float distance, Float vocalRange) {
+        sound.play(BaseGame.soundVolume / GameUtils.normalizeValue(distance, 0f, vocalRange));
+    }
+
+    public static void playSoundRelativeToDistance(Sound sound, Float distance, Float vocalRange, Float pitch) {
+        sound.play(BaseGame.soundVolume / GameUtils.normalizeValue(distance, 0f, vocalRange), pitch, 0);
+    }
+
+    private static int getClosestListIndex(Ray ray, Array<BaseActor3D> list) {
+        int index = -1;
         float distance = -1;
         for (int i = 0; i < list.size; ++i) {
             final float dist2 = list.get(i).modelData.intersects(ray);
             if (dist2 >= 0f && (distance < 0f || dist2 <= distance)) {
-                result = i;
+                index = i;
                 distance = dist2;
             }
         }
-        return result;
+        return index;
     }
 }

@@ -139,7 +139,7 @@ public class LevelScreen extends BaseScreen3D {
                     Ghoul ghoul = (Ghoul) enemies.get(i);
                     if (ghoul.isReadyToAttack()) {
                         hud.decrementHealth(10);
-                        BaseGame.ghoulDeathSound.play(BaseGame.soundVolume, 1.5f, 0);
+                        GameUtils.playSoundRelativeToDistance(BaseGame.ghoulDeathSound, ghoul.distanceBetween(player), ghoul.VOCAL_RANGE, 1.5f);
                     }
                 }
 

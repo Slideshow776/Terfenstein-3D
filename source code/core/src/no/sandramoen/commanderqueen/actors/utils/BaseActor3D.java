@@ -31,6 +31,7 @@ public class BaseActor3D {
     public final Vector3 position;
     public boolean isPause = false;
     public boolean isVisible = true;
+    public final float VOCAL_RANGE = 20;
 
     protected final Quaternion rotation;
     protected final Vector3 scale;
@@ -181,8 +182,11 @@ public class BaseActor3D {
     }
 
     public boolean isWithinDistance(Float distance, BaseActor3D other) {
-        float distanceBetween = (float) Math.sqrt(Math.pow(Math.abs(other.position.y - position.y), 2) + Math.pow(Math.abs(other.position.z - position.z), 2));
-        return distanceBetween <= distance;
+        return distanceBetween(other) <= distance;
+    }
+
+    public float distanceBetween(BaseActor3D other) {
+        return (float) Math.sqrt(Math.pow(Math.abs(other.position.y - position.y), 2) + Math.pow(Math.abs(other.position.z - position.z), 2));
     }
 
     public void remove() {

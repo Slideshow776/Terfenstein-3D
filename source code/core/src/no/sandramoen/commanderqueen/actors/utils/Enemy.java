@@ -10,6 +10,13 @@ import no.sandramoen.commanderqueen.utils.GameUtils;
 import no.sandramoen.commanderqueen.utils.Stage3D;
 
 public class Enemy extends BaseActor3D {
+    public boolean isActive = false;
+    protected Array<BaseActor3D> shootable;
+    public boolean isDead = false;
+    public Color originalColor = new Color(.4f, .4f, .4f, 1f);
+    public boolean isReadyToAttack = true;
+    public int health = 1;
+
     protected float totalTime = 0;
     protected Player player;
     protected float movementSpeed;
@@ -17,20 +24,11 @@ public class Enemy extends BaseActor3D {
     protected Vector2 forceMove = new Vector2(8f, 8f);
     protected float forceTime;
     protected final float SECONDS_FORCED_TO_MOVE = .25f;
-    protected final float VISIBILITY_RANGE = 20;
+    protected final float VISIBILITY_RANGE = 100;
     protected BaseActor3D sprite;
     protected float angleTowardPlayer;
-
     protected enum Directions {FRONT, LEFT_FRONT, RIGHT_FRONT, LEFT_SIDE, RIGHT_SIDE, LEFT_BACK, RIGHT_BACK, BACK}
-
     protected Directions direction;
-    public boolean isActive = false;
-    protected Array<BaseActor3D> shootable;
-
-    public boolean isDead = false;
-    public Color originalColor = new Color(.4f, .4f, .4f, 1f);
-    public boolean isReadyToAttack = true;
-    public int health = 1;
 
     public Enemy(float y, float z, Stage3D stage3D, Player player) {
         super(0, y, z, stage3D);
@@ -101,7 +99,7 @@ public class Enemy extends BaseActor3D {
     protected boolean isPlayerVisible() {
         if (
                 (direction == Directions.LEFT_FRONT || direction == Directions.RIGHT_FRONT || direction == Directions.FRONT) &&
-                        isWithinDistance(VISIBILITY_RANGE * Tile.height, player)
+                        isWithinDistance(VISIBILITY_RANGE, player)
         ) {
             int index = GameUtils.getRayPickedListIndex(position, player.position.cpy().sub(position), shootable);
             if (index > -1 && shootable.get(index).getClass().getSimpleName().equalsIgnoreCase("player"))

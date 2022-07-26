@@ -9,6 +9,7 @@ import com.badlogic.gdx.utils.Array;
 
 import no.sandramoen.commanderqueen.actors.utils.Enemy;
 import no.sandramoen.commanderqueen.utils.BaseGame;
+import no.sandramoen.commanderqueen.utils.GameUtils;
 import no.sandramoen.commanderqueen.utils.Stage3D;
 
 public class Ghoul extends Enemy {
@@ -69,7 +70,7 @@ public class Ghoul extends Enemy {
     @Override
     public void die() {
         isDead = true;
-        BaseGame.ghoulDeathSound.play(BaseGame.soundVolume);
+        GameUtils.playSoundRelativeToDistance(BaseGame.ghoulDeathSound, distanceBetween(player), VOCAL_RANGE, .75f);
         totalTime = 0f;
         currentAnimation = dieAnimation;
         isCollisionEnabled = false;
@@ -80,7 +81,7 @@ public class Ghoul extends Enemy {
         super.activate();
         if (isActive) return;
         isActive = true;
-        BaseGame.ghoulDeathSound.play(BaseGame.soundVolume, .75f, 0);
+        GameUtils.playSoundRelativeToDistance(BaseGame.ghoulDeathSound, distanceBetween(player), VOCAL_RANGE, .75f);
     }
 
     public boolean isReadyToAttack() {
@@ -92,7 +93,7 @@ public class Ghoul extends Enemy {
     private void lookForPlayer(Float dt) {
         if (!isActive && oneSecondTimer < 1f)
             oneSecondTimer += dt;
-        else if (!isActive){
+        else if (!isActive) {
             oneSecondTimer = 0;
             if (isPlayerVisible())
                 activate();

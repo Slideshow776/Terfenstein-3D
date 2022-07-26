@@ -59,6 +59,7 @@ public class Barrel extends BaseActor3D {
     public void explode() {
         explode = true;
         totalTime = 0;
+        GameUtils.playSoundRelativeToDistance(BaseGame.ghoulDeathSound, distanceBetween(player), VOCAL_RANGE, .75f);
         BaseGame.explosionSound.play(BaseGame.soundVolume);
         isCollisionEnabled = false;
         stage3D.lightManager.addPointLight(position, .3f, .1f, 0, 1_000f, 1f, .2f);
