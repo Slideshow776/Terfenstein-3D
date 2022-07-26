@@ -1,7 +1,10 @@
 package no.sandramoen.commanderqueen.utils;
 
 import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.graphics.PerspectiveCamera;
 import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.math.collision.Ray;
+import com.badlogic.gdx.utils.Array;
 
 import no.sandramoen.commanderqueen.actors.characters.Player;
 import no.sandramoen.commanderqueen.actors.Tile;
@@ -39,5 +42,19 @@ public class GameUtils {
         music.setVolume(volume);
         music.setLooping(true);
         music.play();
+    }
+
+    public static int rayPickBaseActor3DFromList(int screenX, int screenY, Array<BaseActor3D> list, PerspectiveCamera camera) {
+        Ray ray = camera.getPickRay(screenX, screenY);
+        int result = -1;
+        float distance = -1;
+        for (int i = 0; i < list.size; ++i) {
+            final float dist2 = list.get(i).modelData.intersects(ray);
+            if (dist2 >= 0f && (distance < 0f || dist2 <= distance)) {
+                result = i;
+                distance = dist2;
+            }
+        }
+        return result;
     }
 }

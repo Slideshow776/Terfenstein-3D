@@ -35,21 +35,21 @@ public class BaseActor3D {
     protected final Quaternion rotation;
     protected final Vector3 scale;
     protected Polygon boundingPolygon;
-    protected Stage3D stage;
+    protected Stage3D stage3D;
     protected BoundingBox bounds = new BoundingBox();
 
     protected float width;
     protected float height;
     protected float depth;
 
-    public BaseActor3D(float x, float y, float z, Stage3D s) {
+    public BaseActor3D(float x, float y, float z, Stage3D stage3D) {
+        this.stage3D = stage3D;
+        this.stage3D.addActor(this);
         modelData = null;
         position = new Vector3(x, y, z);
         rotation = new Quaternion();
         scale = new Vector3(1, 1, 1);
         boundingPolygon = null;
-        stage = s;
-        s.addActor(this);
     }
 
     public void setModelInstance(GameObject m) {
@@ -186,7 +186,7 @@ public class BaseActor3D {
     }
 
     public void remove() {
-        stage.removeActor(this);
+        stage3D.removeActor(this);
     }
 
     public void buildModel(float width, float height, float depth, boolean blending) {

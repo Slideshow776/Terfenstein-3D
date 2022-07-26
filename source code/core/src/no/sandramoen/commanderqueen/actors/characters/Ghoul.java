@@ -25,11 +25,13 @@ public class Ghoul extends Enemy {
     private float timeToStopMoving = 1.1f;
     private float attackCounter = 0f;
     private final float ATTACK_FREQUENCY = 2f;
+    private float oneSecondTimer = 0;
 
-    public Ghoul(float y, float z, Stage3D s, Player player) {
+    public Ghoul(float y, float z, Stage3D s, Player player, Float rotation) {
         super(y, z, s, player);
         movementSpeed = .05f;
         initializeAnimation();
+        turnBy(rotation);
     }
 
     @Override
@@ -39,10 +41,12 @@ public class Ghoul extends Enemy {
             return;
         if (isForcedToMove)
             forceMove(dt);
-        else if (!isDead || totalTime < timeToStopMoving) {
+        else if (isActive && (!isDead || totalTime < timeToStopMoving)) {
             setTurnAngle(angleTowardPlayer);
             moveForward(movementSpeed);
         }
+
+        lookForPlayer(dt);
 
         if (isDead)
             return;
@@ -75,6 +79,18 @@ public class Ghoul extends Enemy {
         if (isReadyToAttack == true)
             attackCounter = 0;
         return isReadyToAttack;
+    }
+
+    private void lookForPlayer(Float dt) {
+        if (!isActive && oneSecondTimer < 1f)
+            oneSecondTimer += dt;
+        else if (!isActive){
+            oneSecondTimer = 0;
+            if (isPlayerVisible()) {
+                isActive = true;
+                BaseGame.ghoulDeathSound.play(BaseGame.soundVolume, .75f, 0);
+            }
+        }
     }
 
     private void setDirectionalSprites() {

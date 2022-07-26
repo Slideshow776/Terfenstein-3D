@@ -90,7 +90,10 @@ public class MapLoader {
         MapObject startPoint = tilemap.getTileList("actors", "player start").get(0);
         float playerX = (float) startPoint.getProperties().get("x") * BaseGame.unitScale;
         float playerY = (float) startPoint.getProperties().get("y") * BaseGame.unitScale;
-        player = new Player(playerX, playerY, stage3D);
+        float rotation = 0;
+        if (startPoint.getProperties().get("y") != null)
+            rotation = (float) startPoint.getProperties().get("rotation");
+        player = new Player(playerX, playerY, stage3D, rotation);
     }
 
     private void initializeEnemies() {
@@ -98,9 +101,17 @@ public class MapLoader {
             MapProperties props = obj.getProperties();
             float x = (Float) props.get("x") * BaseGame.unitScale;
             float y = (Float) props.get("y") * BaseGame.unitScale;
-            enemies.add(new Ghoul(x, y, stage3D, player));
+            float rotation = 0;
+            if (props.get("rotation") != null)
+                rotation = (Float) props.get("rotation");
+            rotation %= 360;
+            System.out.println(rotation);
+            enemies.add(new Ghoul(x, y, stage3D, player, rotation));
             shootable.add(enemies.get(enemies.size - 1));
         }
+
+        for (Enemy enemy : enemies)
+            enemy.setShootable(shootable);
     }
 
     private void initializeBarrels() {

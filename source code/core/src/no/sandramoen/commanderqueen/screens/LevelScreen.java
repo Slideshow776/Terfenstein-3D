@@ -4,7 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.math.collision.Ray;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.utils.Array;
 
@@ -42,6 +42,7 @@ public class LevelScreen extends BaseScreen3D {
 
     private MapLoader mapLoader;
 
+    @Override
     public void initialize() {
         /*GameUtils.playLoopingMusic(BaseGame.level0Music);*/
         GameUtils.playLoopingMusic(BaseGame.metalWalkingMusic, 0);
@@ -50,6 +51,7 @@ public class LevelScreen extends BaseScreen3D {
         initializeUI();
     }
 
+    @Override
     public void update(float dt) {
         if (isGameOver) return;
         if (hud.getHealth() == 0) {
@@ -59,14 +61,13 @@ public class LevelScreen extends BaseScreen3D {
         updateTiles();
         updateEnemies();
         updatePickups();
-        weapon.sway(player.isMoving);
+        updateWeapon();
 
         debugLabel.setText("FPS: " + Gdx.graphics.getFramesPerSecond() + "\nVisible: " + mainStage3D.visibleCount);
 
         if (!Gdx.input.isCursorCatched())
             Gdx.input.setCursorCatched(true);
 
-        setCrosshairColorIfEnemy(rayPickBaseActor3DFromList(Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() / 2, shootable));
     }
 
     @Override
@@ -95,32 +96,21 @@ public class LevelScreen extends BaseScreen3D {
             player.shoot();
             weapon.shoot();
             hud.decrementAmmo();
-            int index = rayPickBaseActor3DFromList(Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() / 2, shootable);
+            int index = GameUtils.rayPickBaseActor3DFromList(
+                    Gdx.graphics.getWidth() / 2,
+                    Gdx.graphics.getHeight() / 2,
+                    shootable,
+                    mainStage3D.camera
+            );
             determineConsequencesOfPick(index);
         }
         return super.touchDown(screenX, screenY, pointer, button);
-    }
-
-    private int rayPickBaseActor3DFromList(int screenX, int screenY, Array<BaseActor3D> list) {
-        Ray ray = mainStage3D.camera.getPickRay(screenX, screenY);
-        int result = -1;
-        float distance = -1;
-        for (int i = 0; i < list.size; ++i) {
-            final float dist2 = list.get(i).modelData.intersects(ray);
-            if (dist2 >= 0f && (distance < 0f || dist2 <= distance)) {
-                result = i;
-                distance = dist2;
-            }
-        }
-        return result;
     }
 
     private void determineConsequencesOfPick(int index) {
         if (index >= 0) {
             if (shootable.get(index).getClass().getSimpleName().equals("Ghoul")) {
                 Ghoul ghoul = (Ghoul) shootable.get(index);
-                pickups.add(new Ammo(ghoul.position.y, ghoul.position.z, mainStage3D, player));
-                ghoul.die();
                 removeEnemy(ghoul);
                 hud.incrementScore(10, false);
                 hud.setKillFace();
@@ -129,6 +119,8 @@ public class LevelScreen extends BaseScreen3D {
                 checkExplosionRange(barrel);
                 barrel.explode();
                 shootable.removeValue(barrel, false);
+            } else if (shootable.get(index).getClass().getSimpleName().equals("Tile")) {
+                System.out.println("player shot a tile! " + MathUtils.random(1_000, 9_999));
             }
         }
     }
@@ -195,6 +187,16 @@ public class LevelScreen extends BaseScreen3D {
         }
     }
 
+    private void updateWeapon() {
+        weapon.sway(player.isMoving);
+        setCrosshairColorIfEnemy(GameUtils.rayPickBaseActor3DFromList(
+                Gdx.graphics.getWidth() / 2,
+                Gdx.graphics.getHeight() / 2,
+                shootable,
+                mainStage3D.camera
+        ));
+    }
+
     private void setGameOver() {
         if (!isGameOver) {
             mainStage3D.camera.position.x = -Tile.height * .48f;
@@ -227,9 +229,8 @@ public class LevelScreen extends BaseScreen3D {
                 enemy.decrementHealth(100);
             else if (enemy.isWithinDistance2(7f, source))
                 enemy.decrementHealth(50);
-            else if (enemy.isWithinDistance2(10f, source)) {
+            else if (enemy.isWithinDistance2(10f, source))
                 enemy.decrementHealth(25);
-            }
 
             if (enemy.isWithinDistance2(10f, source))
                 enemy.forceMoveAwayFrom(source);
@@ -241,6 +242,8 @@ public class LevelScreen extends BaseScreen3D {
     }
 
     private void removeEnemy(Enemy enemy) {
+        enemy.die();
+        pickups.add(new Ammo(enemy.position.y, enemy.position.z, mainStage3D, player));
         enemies.removeValue(enemy, false);
         shootable.removeValue(enemy, false);
         statusLabel.setText("enemies left: " + enemies.size);

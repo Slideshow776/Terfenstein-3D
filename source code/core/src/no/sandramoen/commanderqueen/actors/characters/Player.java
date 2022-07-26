@@ -25,12 +25,13 @@ public class Player extends BaseActor3D {
 
     public boolean isMoving = false;
 
-    public Player(float y, float z, Stage3D stage3D) {
+    public Player(float y, float z, Stage3D stage3D, float rotation) {
         super(0, y, z, stage3D);
         this.stage3D = stage3D;
         buildModel(1.5f, 1.5f, 1.5f, true);
         setBaseRectangle();
         isVisible = false;
+        turnPlayer(rotation);
     }
 
     @Override
@@ -44,8 +45,8 @@ public class Player extends BaseActor3D {
         else
             movementPolling(dt);
 
-        stage.camera.position.y = position.y;
-        stage.camera.position.z = position.z;
+        this.stage3D.camera.position.y = position.y;
+        this.stage3D.camera.position.z = position.z;
         headBobbing(dt);
         if (isMoving)
             BaseGame.metalWalkingMusic.setVolume(BaseGame.soundVolume);
@@ -77,9 +78,9 @@ public class Player extends BaseActor3D {
         if (BaseGame.isHeadBobbing) {
             bobCounter += bobFrequency * dt;
             if ((int) bobCounter % 2 == 0 && isMoving)
-                stage.moveCameraUp(bobAmount);
+                this.stage3D.moveCameraUp(bobAmount);
             else if (isMoving)
-                stage.moveCameraUp(-bobAmount);
+                this.stage3D.moveCameraUp(-bobAmount);
             else
                 setXPosition();
         } else {
@@ -120,8 +121,13 @@ public class Player extends BaseActor3D {
             isMoving = false;
     }
 
+    private void turnPlayer(float angle) {
+        if (angle == 0) return;
+        this.stage3D.turnCamera(angle);
+        turnBy(angle);
+    }
+
     private void mousePolling() {
-        turnBy(rotateSpeed * Gdx.input.getDeltaX() * BaseGame.mouseMovementSensitivity);
-        stage.turnCamera(rotateSpeed * Gdx.input.getDeltaX() * BaseGame.mouseMovementSensitivity);
+        turnPlayer(rotateSpeed * Gdx.input.getDeltaX() * BaseGame.mouseMovementSensitivity);
     }
 }

@@ -24,6 +24,7 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
     // game assets
     public static TextureAtlas textureAtlas;
     public static Label.LabelStyle label26Style;
+    public static TiledMap testMap;
     public static TiledMap level0Map;
     public static Music level0Music;
     public static Music metalWalkingMusic;
@@ -99,6 +100,7 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
 
         // tiled maps
         assetManager.setLoader(TiledMap.class, new TmxMapLoader(new InternalFileHandleResolver()));
+        assetManager.load("maps/test.tmx", TiledMap.class);
         assetManager.load("maps/level0.tmx", TiledMap.class);
 
         assetManager.finishLoading();
@@ -116,6 +118,7 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
         explosionSound = assetManager.get("audio/sound/Explosion10.wav", Sound.class);
 
         // tiled maps
+        testMap = assetManager.get("maps/test.tmx", TiledMap.class);
         level0Map = assetManager.get("maps/level0.tmx", TiledMap.class);
 
         textureAtlas = assetManager.get("images/included/packed/images.pack.atlas");
