@@ -157,6 +157,14 @@ Tile maps were implemented [like so](https://github.com/Slideshow776/3D-shooting
 
 ![image](https://user-images.githubusercontent.com/4059636/179554378-55590c98-aa44-45e3-a6ce-30da743743ed.png)
 
+### Directional Sprites
+todo
+
+### Enemy Ray Picking
+todo
+
+### Pathfinding
+todo
 
 ## Other
 For other project specifics check out the [commits](https://github.com/Slideshow776/3D-shooting-game/commits/master).
