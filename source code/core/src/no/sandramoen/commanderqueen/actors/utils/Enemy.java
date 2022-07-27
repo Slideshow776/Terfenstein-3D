@@ -80,6 +80,7 @@ public class Enemy extends BaseActor3D {
     }
 
     public void setShootable(Array<BaseActor3D> shootable) {
+        this.shootable.clear();
         for (BaseActor3D baseActor3D : shootable)
             if (baseActor3D != this)
                 this.shootable.add(baseActor3D);
@@ -89,14 +90,7 @@ public class Enemy extends BaseActor3D {
     public void activate() {
     }
 
-    protected void forceMove(float dt) {
-        if (totalTime <= forceTime)
-            moveBy(0f, forceMove.x * dt, forceMove.y * dt);
-        else
-            isForcedToMove = false;
-    }
-
-    protected boolean isPlayerVisible() {
+    public boolean isPlayerVisible() {
         if (
                 (direction == Directions.LEFT_FRONT || direction == Directions.RIGHT_FRONT || direction == Directions.FRONT) &&
                         isWithinDistance(VISIBILITY_RANGE, player)
@@ -106,6 +100,13 @@ public class Enemy extends BaseActor3D {
                 return true;
         }
         return false;
+    }
+
+    protected void forceMove(float dt) {
+        if (totalTime <= forceTime)
+            moveBy(0f, forceMove.x * dt, forceMove.y * dt);
+        else
+            isForcedToMove = false;
     }
 
     private void handleSprite() {

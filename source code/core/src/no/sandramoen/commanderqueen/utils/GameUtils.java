@@ -56,11 +56,11 @@ public class GameUtils {
         return getClosestListIndex(ray, list);
     }
 
-    public static float normalizeValue(Float value, Float min, Float max) {
+    public static float normalizeValue(float value, float min, float max) {
         return (value - min) / (max - min);
     }
 
-    public static void playSoundRelativeToDistance(Sound sound, Float distance, Float vocalRange) {
+    public static void playSoundRelativeToDistance(Sound sound, float distance, float vocalRange) {
         sound.play(BaseGame.soundVolume / GameUtils.normalizeValue(distance, 0f, vocalRange));
     }
 

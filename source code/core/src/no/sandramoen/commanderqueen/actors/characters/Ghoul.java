@@ -47,8 +47,6 @@ public class Ghoul extends Enemy {
             moveForward(movementSpeed);
         }
 
-        lookForPlayer(dt);
-
         if (isDead)
             return;
 
@@ -88,16 +86,6 @@ public class Ghoul extends Enemy {
         if (isReadyToAttack == true)
             attackCounter = 0;
         return isReadyToAttack;
-    }
-
-    private void lookForPlayer(Float dt) {
-        if (!isActive && oneSecondTimer < 1f)
-            oneSecondTimer += dt;
-        else if (!isActive) {
-            oneSecondTimer = 0;
-            if (isPlayerVisible())
-                activate();
-        }
     }
 
     private void setDirectionalSprites() {
