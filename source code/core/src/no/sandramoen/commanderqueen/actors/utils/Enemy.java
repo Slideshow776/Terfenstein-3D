@@ -4,7 +4,6 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 
-import no.sandramoen.commanderqueen.actors.Tile;
 import no.sandramoen.commanderqueen.actors.characters.Player;
 import no.sandramoen.commanderqueen.utils.GameUtils;
 import no.sandramoen.commanderqueen.utils.Stage3D;
@@ -111,7 +110,7 @@ public class Enemy extends BaseActor3D {
 
     private void handleSprite() {
         sprite.setPosition(position);
-        angleTowardPlayer = GameUtils.getAngleTowardsPlayer(this, player);
+        angleTowardPlayer = GameUtils.getAngleTowardsBaseActor3D(this, player);
         sprite.setTurnAngle(angleTowardPlayer);
     }
 

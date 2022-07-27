@@ -8,26 +8,25 @@ import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.math.collision.Ray;
 import com.badlogic.gdx.utils.Array;
 
-import no.sandramoen.commanderqueen.actors.characters.Player;
 import no.sandramoen.commanderqueen.actors.Tile;
 import no.sandramoen.commanderqueen.actors.utils.BaseActor3D;
 
 public class GameUtils {
-    public static float getAngleTowardsPlayer(BaseActor3D baseActor3D, Player player) {
-        float angleTowardsPlayer = MathUtils.atan(
-                Math.abs(baseActor3D.position.z - player.position.z) /
-                        Math.abs(baseActor3D.position.y - player.position.y)
+    public static float getAngleTowardsBaseActor3D(BaseActor3D baseActor3DA, BaseActor3D baseActor3DB) {
+        float angle = MathUtils.atan(
+                Math.abs(baseActor3DA.position.z - baseActor3DB.position.z) /
+                        Math.abs(baseActor3DA.position.y - baseActor3DB.position.y)
         ) * MathUtils.radiansToDegrees - 90;
 
-        if (baseActor3D.position.y - player.position.y > 0)
-            angleTowardsPlayer *= -1;
+        if (baseActor3DA.position.y - baseActor3DB.position.y > 0)
+            angle *= -1;
 
-        if (baseActor3D.position.z - player.position.z > 0) {
-            angleTowardsPlayer *= -1;
-            angleTowardsPlayer += 180;
+        if (baseActor3DA.position.z - baseActor3DB.position.z > 0) {
+            angle *= -1;
+            angle += 180;
         }
 
-        return angleTowardsPlayer;
+        return angle;
     }
 
     public static float getPositionRelativeToFloor(float height) {

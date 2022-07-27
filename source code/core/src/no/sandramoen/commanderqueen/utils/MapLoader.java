@@ -19,9 +19,6 @@ import no.sandramoen.commanderqueen.actors.pickups.Pickup;
 import no.sandramoen.commanderqueen.actors.utils.BaseActor3D;
 import no.sandramoen.commanderqueen.actors.utils.Enemy;
 import no.sandramoen.commanderqueen.actors.utils.TilemapActor;
-import no.sandramoen.commanderqueen.utils.BaseGame;
-import no.sandramoen.commanderqueen.utils.LightManager;
-import no.sandramoen.commanderqueen.utils.Stage3D;
 
 public class MapLoader {
     private Stage3D stage3D;
@@ -32,6 +29,7 @@ public class MapLoader {
     private Array<BaseActor3D> shootable;
 
     public Player player;
+    public TileGraph tileGraph;
 
     public MapLoader(TilemapActor tilemap, Array<Tile> tiles, Stage3D stage3D, Player player, Array<BaseActor3D> shootable,
                      Array<Pickup> pickups, Array<Enemy> enemies) {
@@ -54,14 +52,20 @@ public class MapLoader {
     }
 
     private void initializeTiles() {
+        createTiles();
+        addTilesToAIGraph();
+        createAIGraphConnections();
+    }
+
+    private void createTiles() {
         Array<String> tileTypes = new Array<>();
         tileTypes.add("walls", "ceilings", "floors");
         Array<String> tileTextures = new Array<>();
         tileTextures.add("big plates", "lonplate", "light big plates", "light lonplate");
         tileTextures.add("lights 0");
 
-        for (String type : tileTypes)
-            for (String texture : tileTextures)
+        for (String type : tileTypes) {
+            for (String texture : tileTextures) {
                 for (MapObject obj : tilemap.getTileList(type, texture)) {
                     MapProperties props = obj.getProperties();
                     float y = (Float) props.get("x") * BaseGame.unitScale;
@@ -70,9 +74,40 @@ public class MapLoader {
                     tiles.add(tile);
                     shootable.add(tiles.get(tiles.size - 1));
                 }
+            }
+        }
     }
 
-    public void initializeLights() {
+    private void addTilesToAIGraph() {
+        tileGraph = new TileGraph();
+        for (int i = 0; i < tiles.size; i++)
+            tileGraph.addTile(tiles.get(i));
+    }
+
+    private void createAIGraphConnections() {
+        for (int i = 0; i < tiles.size; i++) {
+            for (int j = 0; j < tiles.size; j++) {
+                if (tiles.get(i) != tiles.get(j)) {
+                    if (tiles.get(i).position.dst(tiles.get(j).position) <= Tile.diagonalLength) {
+                        tileGraph.connectTiles(tiles.get(i), tiles.get(j));
+                    }
+                }
+            }
+        }
+    }
+
+    private void debugAIGraphConnection() {
+        int tileToBeExamined = 0;
+        tiles.get(tileToBeExamined).setColor(Color.GREEN);
+        // tileGraph.findPath(tiles.get(0), tiles.get(tiles.size - 1));
+        System.out.println("tileGraph.tiles.size: " + tileGraph.tiles.size);
+        System.out.println("tileGraph.getConnections(tiles.get(" + tileToBeExamined + ")): " + tileGraph.getConnections(tiles.get(tileToBeExamined)).size);
+        for (int i = 0; i < tileGraph.getConnections(tiles.get(tileToBeExamined)).size; i++) {
+            tileGraph.getConnections(tiles.get(tileToBeExamined)).get(i).getToNode().setColor(Color.YELLOW);
+        }
+    }
+
+    private void initializeLights() {
         int i = 0;
         for (MapObject obj : tilemap.getTileList("actors", "light")) {
             MapProperties props = obj.getProperties();
@@ -83,7 +118,7 @@ public class MapLoader {
             stage3D.environment.add(pLight);
             i++;
         }
-        Gdx.app.log(getClass().getSimpleName(), "added " + i + " pointLights to map");
+        if (i > 0) Gdx.app.log(getClass().getSimpleName(), "added " + i + " pointLights to map");
     }
 
     private void initializePlayer() {

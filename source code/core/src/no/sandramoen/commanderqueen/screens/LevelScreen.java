@@ -3,7 +3,9 @@ package no.sandramoen.commanderqueen.screens;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.ai.pfa.GraphPath;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.utils.Array;
 
@@ -22,6 +24,7 @@ import no.sandramoen.commanderqueen.actors.utils.TilemapActor;
 import no.sandramoen.commanderqueen.utils.BaseGame;
 import no.sandramoen.commanderqueen.utils.BaseScreen3D;
 import no.sandramoen.commanderqueen.utils.GameUtils;
+import no.sandramoen.commanderqueen.utils.TileGraph;
 
 public class LevelScreen extends BaseScreen3D {
     private HUD hud;
@@ -42,6 +45,12 @@ public class LevelScreen extends BaseScreen3D {
     private boolean isGameOver = false;
     private float oneSecondCounter = 0;
 
+    private TileGraph tileGraph;
+    private GraphPath<Tile> tilePath;
+    private Tile startTile;
+    private Tile goalTile;
+    private int pathCounter = 0;
+
     @Override
     public void initialize() {
         /*GameUtils.playLoopingMusic(BaseGame.level0Music);*/
@@ -49,12 +58,57 @@ public class LevelScreen extends BaseScreen3D {
         initializeMap();
         initializeActors();
         initializeUI();
+
+        /* -------------------------------------------------------- */
+
+        startTile = getTileBaseActor3DIsOn(enemies.get(0));
+        startTile.setColor(Color.RED);
+
+        goalTile = getTileBaseActor3DIsOn(player);
+        goalTile.setColor(Color.GREEN);
+
+        tilePath = tileGraph.findPath(startTile, goalTile);
+
+        for (Tile tile : tilePath)
+            tile.setColor(Color.YELLOW);
+
+        /*enemies.get(0).setPosition(GameUtils.getPositionRelativeToFloor(3), tilePath.get(7).position.y, tilePath.get(7).position.z);*/
+        /*Tile tilePathTile = tilePath.get(tilePath.getCount() - 1);*/
+        // enemies.get(0).setTurnAngle(GameUtils.getAngleTowardsBaseActor3D(enemies.get(0), tilePathTile));
+        enemies.get(0).setTurnAngle(GameUtils.getAngleTowardsBaseActor3D(enemies.get(0), goalTile));
+        /*tilePath.get(1).setColor(Color.RED);*/
+        /* -------------------------------------------------------- */
+    }
+
+    private Tile getTileBaseActor3DIsOn(BaseActor3D baseActor3D) {
+        for (Tile tile : tiles) {
+            if (tile.position.dst(baseActor3D.position) <= Tile.height)
+                return tile;
+            if (tile.position.dst(baseActor3D.position) <= Tile.diagonalLength)
+                return tile;
+        }
+        Gdx.app.error(getClass().getSimpleName(), "Error: could not find the tile the " + baseActor3D.getClass().getSimpleName() + " is standing on!");
+        return null;
     }
 
     @Override
     public void update(float dt) {
         if (isGameOver) return;
         checkGameOverCondition();
+
+        System.out.println(pathCounter);
+        if (pathCounter < tilePath.getCount()) {
+            if (!enemies.get(0).overlaps(tilePath.get(pathCounter))) {
+                enemies.get(0).setTurnAngle(GameUtils.getAngleTowardsBaseActor3D(enemies.get(0), tilePath.get(pathCounter)));
+                enemies.get(0).moveForward(.08f);
+            } else if (enemies.get(0).overlaps(tilePath.get(pathCounter))) {
+                if (pathCounter < tilePath.getCount())
+                    pathCounter++;
+            }
+        }
+
+        /*if (!enemies.get(0).overlaps(goalTile))
+            enemies.get(0).moveForward(.05f);*/
 
         updateTiles();
         updateEnemies(dt);
@@ -302,8 +356,9 @@ public class LevelScreen extends BaseScreen3D {
         shootable = new Array();
         tiles = new Array();
         enemies = new Array();
-        tilemap = new TilemapActor(BaseGame.level0Map, mainStage3D);
+        tilemap = new TilemapActor(BaseGame.testMap, mainStage3D);
         mapLoader = new MapLoader(tilemap, tiles, mainStage3D, player, shootable, pickups, enemies);
+        tileGraph = mapLoader.tileGraph;
     }
 
     private void initializeActors() {

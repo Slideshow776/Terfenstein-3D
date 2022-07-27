@@ -16,6 +16,6 @@ public class Pickup extends BaseActor3D {
     @Override
     public void act(float dt) {
         super.act(dt);
-        setTurnAngle(GameUtils.getAngleTowardsPlayer(this, player));
+        setTurnAngle(GameUtils.getAngleTowardsBaseActor3D(this, player));
     }
 }

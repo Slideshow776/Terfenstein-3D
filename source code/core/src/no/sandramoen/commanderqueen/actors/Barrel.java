@@ -1,21 +1,17 @@
 package no.sandramoen.commanderqueen.actors;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.g3d.Environment;
 import com.badlogic.gdx.graphics.g3d.ModelBatch;
-import com.badlogic.gdx.graphics.g3d.environment.PointLight;
-import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.Array;
 
 import no.sandramoen.commanderqueen.actors.characters.Player;
 import no.sandramoen.commanderqueen.actors.utils.BaseActor3D;
 import no.sandramoen.commanderqueen.utils.BaseGame;
 import no.sandramoen.commanderqueen.utils.GameUtils;
-import no.sandramoen.commanderqueen.utils.LightManager;
 import no.sandramoen.commanderqueen.utils.Stage3D;
 
 public class Barrel extends BaseActor3D {
@@ -45,7 +41,7 @@ public class Barrel extends BaseActor3D {
     public void act(float dt) {
         super.act(dt);
         totalTime += Gdx.graphics.getDeltaTime();
-        setTurnAngle(GameUtils.getAngleTowardsPlayer(this, player));
+        setTurnAngle(GameUtils.getAngleTowardsBaseActor3D(this, player));
     }
 
     @Override

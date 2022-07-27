@@ -42,10 +42,10 @@ public class Ghoul extends Enemy {
             return;
         if (isForcedToMove)
             forceMove(dt);
-        else if (isActive && (!isDead || totalTime < timeToStopMoving)) {
+        /*else if (isActive && (!isDead || totalTime < timeToStopMoving)) {
             setTurnAngle(angleTowardPlayer);
             moveForward(movementSpeed);
-        }
+        }*/
 
         if (isDead)
             return;
