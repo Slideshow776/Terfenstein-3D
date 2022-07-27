@@ -166,6 +166,10 @@ todo
 ### Pathfinding
 todo
 
+https://github.com/libgdx/gdx-ai
+
+https://happycoding.io/tutorials/libgdx/pathfinding
+
 ## Other
 For other project specifics check out the [commits](https://github.com/Slideshow776/3D-shooting-game/commits/master).
 
