@@ -12,16 +12,16 @@ import no.sandramoen.commanderqueen.actors.Tile;
 import no.sandramoen.commanderqueen.actors.utils.BaseActor3D;
 
 public class GameUtils {
-    public static float getAngleTowardsBaseActor3D(BaseActor3D baseActor3DA, BaseActor3D baseActor3DB) {
+    public static float getAngleTowardsBaseActor3D(BaseActor3D actorA, BaseActor3D actorB) {
         float angle = MathUtils.atan(
-                Math.abs(baseActor3DA.position.z - baseActor3DB.position.z) /
-                        Math.abs(baseActor3DA.position.y - baseActor3DB.position.y)
+                Math.abs(actorA.position.z - actorB.position.z) /
+                        Math.abs(actorA.position.y - actorB.position.y)
         ) * MathUtils.radiansToDegrees - 90;
 
-        if (baseActor3DA.position.y - baseActor3DB.position.y > 0)
+        if (actorA.position.y - actorB.position.y > 0)
             angle *= -1;
 
-        if (baseActor3DA.position.z - baseActor3DB.position.z > 0) {
+        if (actorA.position.z - actorB.position.z > 0) {
             angle *= -1;
             angle += 180;
         }

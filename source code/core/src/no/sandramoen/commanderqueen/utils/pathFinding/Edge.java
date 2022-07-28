@@ -1,4 +1,4 @@
-package no.sandramoen.commanderqueen.utils;
+package no.sandramoen.commanderqueen.utils.pathFinding;
 
 import com.badlogic.gdx.ai.pfa.Connection;
 import com.badlogic.gdx.math.Vector3;
@@ -6,9 +6,9 @@ import com.badlogic.gdx.math.Vector3;
 import no.sandramoen.commanderqueen.actors.Tile;
 
 public class Edge implements Connection<Tile> {
-    Tile fromTile;
-    Tile toTile;
-    float cost;
+    private float cost;
+    private Tile fromTile;
+    private Tile toTile;
 
     public Edge(Tile fromTile, Tile toTile) {
         this.fromTile = fromTile;

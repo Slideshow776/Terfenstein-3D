@@ -1,11 +1,10 @@
-package no.sandramoen.commanderqueen.screens;
+package no.sandramoen.commanderqueen.screens.gameplay;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Input.Keys;
-import com.badlogic.gdx.ai.pfa.GraphPath;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.math.Vector3;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.utils.Array;
 
@@ -19,12 +18,11 @@ import no.sandramoen.commanderqueen.actors.pickups.Ammo;
 import no.sandramoen.commanderqueen.actors.pickups.Pickup;
 import no.sandramoen.commanderqueen.actors.utils.BaseActor3D;
 import no.sandramoen.commanderqueen.actors.utils.Enemy;
-import no.sandramoen.commanderqueen.utils.MapLoader;
+import no.sandramoen.commanderqueen.utils.level.MapLoader;
 import no.sandramoen.commanderqueen.actors.utils.TilemapActor;
 import no.sandramoen.commanderqueen.utils.BaseGame;
 import no.sandramoen.commanderqueen.utils.BaseScreen3D;
 import no.sandramoen.commanderqueen.utils.GameUtils;
-import no.sandramoen.commanderqueen.utils.TileGraph;
 
 public class LevelScreen extends BaseScreen3D {
     private HUD hud;
@@ -43,13 +41,9 @@ public class LevelScreen extends BaseScreen3D {
     private Label statusLabel;
 
     private boolean isGameOver = false;
-    private float oneSecondCounter = 0;
-
-    private TileGraph tileGraph;
-    private GraphPath<Tile> tilePath;
-    private Tile startTile;
-    private Tile goalTile;
-    private int pathCounter = 0;
+    private boolean intervalFlag;
+    private float intervalCounter;
+    private final float INTERVAL_COUNTER_FREQUENCY = 1;
 
     @Override
     public void initialize() {
@@ -61,57 +55,17 @@ public class LevelScreen extends BaseScreen3D {
 
         /* -------------------------------------------------------- */
 
-        startTile = getTileBaseActor3DIsOn(enemies.get(0));
-        startTile.setColor(Color.RED);
-
-        goalTile = getTileBaseActor3DIsOn(player);
-        goalTile.setColor(Color.GREEN);
-
-        tilePath = tileGraph.findPath(startTile, goalTile);
-
-        for (Tile tile : tilePath)
-            tile.setColor(Color.YELLOW);
-
-        /*enemies.get(0).setPosition(GameUtils.getPositionRelativeToFloor(3), tilePath.get(7).position.y, tilePath.get(7).position.z);*/
-        /*Tile tilePathTile = tilePath.get(tilePath.getCount() - 1);*/
-        // enemies.get(0).setTurnAngle(GameUtils.getAngleTowardsBaseActor3D(enemies.get(0), tilePathTile));
-        enemies.get(0).setTurnAngle(GameUtils.getAngleTowardsBaseActor3D(enemies.get(0), goalTile));
-        /*tilePath.get(1).setColor(Color.RED);*/
         /* -------------------------------------------------------- */
-    }
-
-    private Tile getTileBaseActor3DIsOn(BaseActor3D baseActor3D) {
-        for (Tile tile : tiles) {
-            if (tile.position.dst(baseActor3D.position) <= Tile.height)
-                return tile;
-            if (tile.position.dst(baseActor3D.position) <= Tile.diagonalLength)
-                return tile;
-        }
-        Gdx.app.error(getClass().getSimpleName(), "Error: could not find the tile the " + baseActor3D.getClass().getSimpleName() + " is standing on!");
-        return null;
     }
 
     @Override
     public void update(float dt) {
         if (isGameOver) return;
         checkGameOverCondition();
-
-        System.out.println(pathCounter);
-        if (pathCounter < tilePath.getCount()) {
-            if (!enemies.get(0).overlaps(tilePath.get(pathCounter))) {
-                enemies.get(0).setTurnAngle(GameUtils.getAngleTowardsBaseActor3D(enemies.get(0), tilePath.get(pathCounter)));
-                enemies.get(0).moveForward(.08f);
-            } else if (enemies.get(0).overlaps(tilePath.get(pathCounter))) {
-                if (pathCounter < tilePath.getCount())
-                    pathCounter++;
-            }
-        }
-
-        /*if (!enemies.get(0).overlaps(goalTile))
-            enemies.get(0).moveForward(.05f);*/
+        setIntervalFlag(dt);
 
         updateTiles();
-        updateEnemies(dt);
+        updateEnemies();
         updatePickups();
         updateWeapon();
 
@@ -133,6 +87,10 @@ public class LevelScreen extends BaseScreen3D {
             hud.incrementHealth(10);
         if (keycode == Keys.NUM_3)
             hud.setInvulnerable();
+        if (keycode == Keys.NUM_4) {
+            player.isCollisionEnabled = !player.isCollisionEnabled;
+            Gdx.app.log(getClass().getSimpleName(), "player.isCollisionEnabled: " + player.isCollisionEnabled);
+        }
         return super.keyDown(keycode);
     }
 
@@ -144,7 +102,10 @@ public class LevelScreen extends BaseScreen3D {
     @Override
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
         if (button == Input.Buttons.LEFT && !isGameOver)
-            shoot();
+            if (hud.getAmmo() > 0)
+                shoot();
+            else
+                BaseGame.outOfAmmoSound.play(BaseGame.soundVolume, MathUtils.random(.8f, 1.2f), 0);
         return super.touchDown(screenX, screenY, pointer, button);
     }
 
@@ -152,16 +113,16 @@ public class LevelScreen extends BaseScreen3D {
         if (index >= 0) {
             if (shootable.get(index).getClass().getSimpleName().equals("Ghoul")) {
                 Ghoul ghoul = (Ghoul) shootable.get(index);
+                activateEnemies(45, ghoul);
                 removeEnemy(ghoul);
                 hud.incrementScore(10, false);
                 hud.setKillFace();
-                activateEnemies(15, ghoul);
             } else if (shootable.get(index).getClass().getSimpleName().equals("Barrel")) {
                 Barrel barrel = (Barrel) shootable.get(index);
+                activateEnemies(45, barrel);
                 checkExplosionRange(barrel);
                 barrel.explode();
                 shootable.removeValue(barrel, false);
-                activateEnemies(45, barrel);
             }
         }
     }
@@ -175,6 +136,16 @@ public class LevelScreen extends BaseScreen3D {
         }
     }
 
+    private void setIntervalFlag(float dt) {
+        if (intervalCounter > INTERVAL_COUNTER_FREQUENCY) {
+            intervalFlag = true;
+            intervalCounter = 0;
+        } else {
+            intervalFlag = false;
+            intervalCounter += dt;
+        }
+    }
+
     private void updateTiles() {
         for (Tile tile : tiles) {
             if (tile.type == "walls" && player.overlaps(tile))
@@ -182,22 +153,32 @@ public class LevelScreen extends BaseScreen3D {
         }
     }
 
-    private void updateEnemies(float dt) {
+    private void updateEnemies() {
         for (int i = 0; i < enemies.size; i++) {
-            lookForPlayer(i);
-            if (enemies.get(i).isActive)
-                tryToActivateOtherEnemiesEverySecond(i, dt);
-
-            if (player.overlaps(enemies.get(i))) {
-                player.preventOverlap(enemies.get(i));
-                enemyMeleeAttack(i);
-                preventOverlapWithOtherEnemies(i);
-            }
+            checkIfCanMeleeAttackPlayer(i);
+            tryToActivateOthers(i);
+            preventOverlapWithOtherEnemies(i);
 
             for (Tile tile : tiles) {
-                preventOverLapWithTile(tile, i);
+                preventEnemyOverLapWithTile(tile, i);
                 illuminateEnemy(tile, i);
             }
+        }
+    }
+
+    private void tryToActivateOthers(int i) {
+        if (intervalFlag && enemies.get(i).isActive) {
+            for (int j = 0; j < enemies.size; j++) {
+                if (enemies.get(i) != enemies.get(j))
+                    activateEnemies(45, player);
+            }
+        }
+    }
+
+    private void checkIfCanMeleeAttackPlayer(int i) {
+        if (player.overlaps(enemies.get(i))) {
+            player.preventOverlap(enemies.get(i));
+            enemyMeleeAttack(i);
         }
     }
 
@@ -247,15 +228,6 @@ public class LevelScreen extends BaseScreen3D {
         }
     }
 
-    private void tryToActivateOtherEnemiesEverySecond(int i, float dt) {
-        if (oneSecondCounter < 1) {
-            oneSecondCounter += dt;
-        } else {
-            oneSecondCounter = 0;
-            activateEnemies(15, enemies.get(i));
-        }
-    }
-
     private void enemyMeleeAttack(int i) {
         if (enemies.get(i).getClass().getSimpleName().equals("Ghoul")) {
             Ghoul ghoul = (Ghoul) enemies.get(i);
@@ -273,7 +245,7 @@ public class LevelScreen extends BaseScreen3D {
         }
     }
 
-    private void preventOverLapWithTile(Tile tile, int i) {
+    private void preventEnemyOverLapWithTile(Tile tile, int i) {
         if (tile.type == "walls" && enemies.get(i).overlaps(tile))
             enemies.get(i).preventOverlap(tile);
     }
@@ -283,12 +255,6 @@ public class LevelScreen extends BaseScreen3D {
             enemies.get(i).setColor(Color.WHITE);
         else if (enemies.get(i).overlaps(tile) && tile.type == "floors")
             enemies.get(i).setColor(enemies.get(i).originalColor);
-    }
-
-    private void lookForPlayer(int i) {
-        if (!enemies.get(i).isActive)
-            if (enemies.get(i).isPlayerVisible())
-                enemies.get(i).activate();
     }
 
     private void checkExplosionRange(final BaseActor3D source) {
@@ -326,14 +292,14 @@ public class LevelScreen extends BaseScreen3D {
         pickups.add(new Ammo(enemy.position.y, enemy.position.z, mainStage3D, player));
         enemies.removeValue(enemy, false);
         shootable.removeValue(enemy, false);
-        /*for (int i = 0; i < enemies.size; i++)
-            enemies.get(i).setShootable(shootable);*/
+        for (int i = 0; i < enemies.size; i++)
+            enemies.get(i).setShootable(shootable);
         statusLabel.setText("enemies left: " + enemies.size);
     }
 
     private void shoot() {
-        player.shoot();
         weapon.shoot();
+        player.muzzleLight();
         hud.decrementAmmo();
         int index = GameUtils.getRayPickedListIndex(
                 Gdx.graphics.getWidth() / 2,
@@ -346,9 +312,10 @@ public class LevelScreen extends BaseScreen3D {
     }
 
     private void activateEnemies(float range, BaseActor3D source) {
-        for (Enemy enemy : enemies)
+        for (Enemy enemy : enemies) {
             if (enemy.isWithinDistance(range, source))
-                enemy.activate();
+                enemy.activate(source);
+        }
     }
 
     private void initializeMap() {
@@ -356,9 +323,8 @@ public class LevelScreen extends BaseScreen3D {
         shootable = new Array();
         tiles = new Array();
         enemies = new Array();
-        tilemap = new TilemapActor(BaseGame.testMap, mainStage3D);
+        tilemap = new TilemapActor(BaseGame.level0Map, mainStage3D);
         mapLoader = new MapLoader(tilemap, tiles, mainStage3D, player, shootable, pickups, enemies);
-        tileGraph = mapLoader.tileGraph;
     }
 
     private void initializeActors() {

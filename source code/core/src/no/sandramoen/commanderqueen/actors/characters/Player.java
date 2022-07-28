@@ -54,7 +54,7 @@ public class Player extends BaseActor3D {
             BaseGame.metalWalkingMusic.setVolume(0);
     }
 
-    public void shoot() {
+    public void muzzleLight() {
         stage3D.lightManager.addPointLight(position, .3f, .1f, 0, 25, .1f, .1f / 3);
     }
 

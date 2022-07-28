@@ -1,4 +1,4 @@
-package no.sandramoen.commanderqueen.utils;
+package no.sandramoen.commanderqueen.utils.level;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -19,6 +19,9 @@ import no.sandramoen.commanderqueen.actors.pickups.Pickup;
 import no.sandramoen.commanderqueen.actors.utils.BaseActor3D;
 import no.sandramoen.commanderqueen.actors.utils.Enemy;
 import no.sandramoen.commanderqueen.actors.utils.TilemapActor;
+import no.sandramoen.commanderqueen.utils.BaseGame;
+import no.sandramoen.commanderqueen.utils.Stage3D;
+import no.sandramoen.commanderqueen.utils.pathFinding.TileGraph;
 
 public class MapLoader {
     private Stage3D stage3D;
@@ -31,6 +34,8 @@ public class MapLoader {
     public Player player;
     public TileGraph tileGraph;
 
+    private Array<Tile> floorTiles;
+
     public MapLoader(TilemapActor tilemap, Array<Tile> tiles, Stage3D stage3D, Player player, Array<BaseActor3D> shootable,
                      Array<Pickup> pickups, Array<Enemy> enemies) {
         this.tilemap = tilemap;
@@ -40,6 +45,8 @@ public class MapLoader {
         this.shootable = shootable;
         this.pickups = pickups;
         this.enemies = enemies;
+
+        floorTiles = new Array();
 
         initializeTiles();
         initializePlayer();
@@ -72,7 +79,7 @@ public class MapLoader {
                     float z = (Float) props.get("y") * BaseGame.unitScale;
                     Tile tile = new Tile(y, z, type, texture, stage3D);
                     tiles.add(tile);
-                    shootable.add(tiles.get(tiles.size - 1));
+                    shootable.add(tile);
                 }
             }
         }
@@ -80,35 +87,28 @@ public class MapLoader {
 
     private void addTilesToAIGraph() {
         tileGraph = new TileGraph();
-        for (int i = 0; i < tiles.size; i++)
-            tileGraph.addTile(tiles.get(i));
+        for (Tile tile : tiles)
+            if (tile.type == "floors") {
+                tileGraph.addTile(tile);
+                floorTiles.add(tile);
+            }
+        // tileGraph.debugConnections();
     }
 
     private void createAIGraphConnections() {
-        for (int i = 0; i < tiles.size; i++) {
-            for (int j = 0; j < tiles.size; j++) {
-                if (tiles.get(i) != tiles.get(j)) {
-                    if (tiles.get(i).position.dst(tiles.get(j).position) <= Tile.diagonalLength) {
-                        tileGraph.connectTiles(tiles.get(i), tiles.get(j));
+        for (int i = 0; i < tileGraph.tiles.size; i++) {
+            for (int j = 0; j < tileGraph.tiles.size; j++) {
+                if (tileGraph.tiles.get(i) != tileGraph.tiles.get(j)) {
+                    if (tileGraph.tiles.get(i).position.dst(tileGraph.tiles.get(j).position) <= Tile.height) {
+                        tileGraph.connectTiles(tileGraph.tiles.get(i), tileGraph.tiles.get(j));
                     }
                 }
             }
         }
     }
 
-    private void debugAIGraphConnection() {
-        int tileToBeExamined = 0;
-        tiles.get(tileToBeExamined).setColor(Color.GREEN);
-        // tileGraph.findPath(tiles.get(0), tiles.get(tiles.size - 1));
-        System.out.println("tileGraph.tiles.size: " + tileGraph.tiles.size);
-        System.out.println("tileGraph.getConnections(tiles.get(" + tileToBeExamined + ")): " + tileGraph.getConnections(tiles.get(tileToBeExamined)).size);
-        for (int i = 0; i < tileGraph.getConnections(tiles.get(tileToBeExamined)).size; i++) {
-            tileGraph.getConnections(tiles.get(tileToBeExamined)).get(i).getToNode().setColor(Color.YELLOW);
-        }
-    }
-
     private void initializeLights() {
-        int i = 0;
+        int lightCount = 0;
         for (MapObject obj : tilemap.getTileList("actors", "light")) {
             MapProperties props = obj.getProperties();
             float y = (Float) props.get("x") * BaseGame.unitScale;
@@ -116,9 +116,10 @@ public class MapLoader {
             PointLight pLight = new PointLight();
             pLight.set(new Color(.6f, .6f, .9f, 1f), new Vector3(Tile.height / 2, y, z), 50f);
             stage3D.environment.add(pLight);
-            i++;
+            lightCount++;
         }
-        if (i > 0) Gdx.app.log(getClass().getSimpleName(), "added " + i + " pointLights to map");
+        if (lightCount > 0)
+            Gdx.app.log(getClass().getSimpleName(), "added " + lightCount + " pointLights to map");
     }
 
     private void initializePlayer() {
@@ -141,7 +142,7 @@ public class MapLoader {
             if (props.get("rotation") != null)
                 rotation = (Float) props.get("rotation");
             rotation %= 360;
-            enemies.add(new Ghoul(x, y, stage3D, player, rotation));
+            enemies.add(new Ghoul((int) x, (int) y, stage3D, player, rotation, tileGraph, floorTiles));
             shootable.add(enemies.get(enemies.size - 1));
         }
 

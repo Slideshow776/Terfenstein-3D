@@ -123,6 +123,10 @@ public class HUD extends BaseActor {
         ammoLabel.setText(ammo + "");
     }
 
+    public int getAmmo() {
+        return ammo;
+    }
+
     public void incrementScore(float amount, Boolean isPickup) {
         score += amount;
         scoreLabel.setText(score + "");

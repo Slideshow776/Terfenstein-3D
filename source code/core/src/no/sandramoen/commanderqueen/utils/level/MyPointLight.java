@@ -1,4 +1,4 @@
-package no.sandramoen.commanderqueen.utils;
+package no.sandramoen.commanderqueen.utils.level;
 
 import com.badlogic.gdx.graphics.g3d.environment.PointLight;
 import com.badlogic.gdx.math.MathUtils;

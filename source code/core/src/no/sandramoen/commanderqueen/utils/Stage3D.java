@@ -1,8 +1,6 @@
 package no.sandramoen.commanderqueen.utils;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.g3d.environment.PointLight;
 import com.badlogic.gdx.graphics.g3d.shaders.DefaultShader;
 import com.badlogic.gdx.graphics.g3d.utils.DefaultShaderProvider;
 import com.badlogic.gdx.graphics.g3d.utils.ShaderProvider;
@@ -10,14 +8,12 @@ import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.graphics.PerspectiveCamera;
 import com.badlogic.gdx.graphics.g3d.Environment;
 import com.badlogic.gdx.graphics.g3d.ModelBatch;
-import com.badlogic.gdx.graphics.g3d.attributes.ColorAttribute;
-import com.badlogic.gdx.graphics.g3d.environment.DirectionalLight;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 
 import java.util.ArrayList;
 
-import no.sandramoen.commanderqueen.actors.Tile;
 import no.sandramoen.commanderqueen.actors.utils.BaseActor3D;
+import no.sandramoen.commanderqueen.utils.level.LightManager;
 
 public class Stage3D {
     private final ModelBatch modelBatch;

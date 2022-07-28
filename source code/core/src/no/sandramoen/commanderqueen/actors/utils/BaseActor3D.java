@@ -185,6 +185,11 @@ public class BaseActor3D {
         return distanceBetween(other) <= distance;
     }
 
+    public boolean isOnCenter(BaseActor3D other) {
+        return (int) position.y == (int) other.position.y &&
+                (int) position.z == (int) other.position.z;
+    }
+
     public float distanceBetween(BaseActor3D other) {
         return (float) Math.sqrt(Math.pow(Math.abs(other.position.y - position.y), 2) + Math.pow(Math.abs(other.position.z - position.z), 2));
     }

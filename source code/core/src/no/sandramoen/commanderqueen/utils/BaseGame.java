@@ -34,6 +34,7 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
     public static Sound armorPickupSound;
     public static Sound healthPickupSound;
     public static Sound explosionSound;
+    public static Sound outOfAmmoSound;
 
     // game state
     public static float mouseMovementSensitivity = .05f;
@@ -97,6 +98,7 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
         assetManager.load("audio/sound/armor pickup.wav", Sound.class);
         assetManager.load("audio/sound/health pickup.wav", Sound.class);
         assetManager.load("audio/sound/Explosion10.wav", Sound.class);
+        assetManager.load("audio/sound/566384__combatsfx4you__dry-fire-out-of-ammo.wav", Sound.class);
 
         // tiled maps
         assetManager.setLoader(TiledMap.class, new TmxMapLoader(new InternalFileHandleResolver()));
@@ -116,6 +118,7 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
         armorPickupSound = assetManager.get("audio/sound/armor pickup.wav", Sound.class);
         healthPickupSound = assetManager.get("audio/sound/health pickup.wav", Sound.class);
         explosionSound = assetManager.get("audio/sound/Explosion10.wav", Sound.class);
+        outOfAmmoSound = assetManager.get("audio/sound/566384__combatsfx4you__dry-fire-out-of-ammo.wav", Sound.class);
 
         // tiled maps
         testMap = assetManager.get("maps/test.tmx", TiledMap.class);

@@ -7,10 +7,12 @@ import com.badlogic.gdx.graphics.g3d.Environment;
 import com.badlogic.gdx.graphics.g3d.ModelBatch;
 import com.badlogic.gdx.utils.Array;
 
+import no.sandramoen.commanderqueen.actors.Tile;
 import no.sandramoen.commanderqueen.actors.utils.Enemy;
 import no.sandramoen.commanderqueen.utils.BaseGame;
 import no.sandramoen.commanderqueen.utils.GameUtils;
 import no.sandramoen.commanderqueen.utils.Stage3D;
+import no.sandramoen.commanderqueen.utils.pathFinding.TileGraph;
 
 public class Ghoul extends Enemy {
     private Animation<TextureRegion> currentAnimation;
@@ -26,13 +28,11 @@ public class Ghoul extends Enemy {
     private float timeToStopMoving = 1.1f;
     private float attackCounter = 0f;
     private final float ATTACK_FREQUENCY = 2f;
-    private float oneSecondTimer = 0;
 
-    public Ghoul(float y, float z, Stage3D s, Player player, Float rotation) {
-        super(y, z, s, player);
+    public Ghoul(float y, float z, Stage3D s, Player player, Float rotation, TileGraph tileGraph, Array<Tile> floorTiles) {
+        super(y, z, s, player, rotation, tileGraph, floorTiles);
         movementSpeed = .05f;
         initializeAnimation();
-        turnBy(rotation);
     }
 
     @Override
@@ -40,12 +40,13 @@ public class Ghoul extends Enemy {
         super.act(dt);
         if (isPause)
             return;
+
         if (isForcedToMove)
             forceMove(dt);
-        /*else if (isActive && (!isDead || totalTime < timeToStopMoving)) {
+        else if (isActive && isAttacking && (!isDead || totalTime < timeToStopMoving)) {
             setTurnAngle(angleTowardPlayer);
             moveForward(movementSpeed);
-        }*/
+        }
 
         if (isDead)
             return;
@@ -72,14 +73,6 @@ public class Ghoul extends Enemy {
         totalTime = 0f;
         currentAnimation = dieAnimation;
         isCollisionEnabled = false;
-    }
-
-    @Override
-    public void activate() {
-        super.activate();
-        if (isActive) return;
-        isActive = true;
-        GameUtils.playSoundRelativeToDistance(BaseGame.ghoulDeathSound, distanceBetween(player), VOCAL_RANGE, .75f);
     }
 
     public boolean isReadyToAttack() {

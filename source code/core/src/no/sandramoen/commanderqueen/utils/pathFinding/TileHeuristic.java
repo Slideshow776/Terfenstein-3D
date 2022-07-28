@@ -1,4 +1,4 @@
-package no.sandramoen.commanderqueen.utils;
+package no.sandramoen.commanderqueen.utils.pathFinding;
 
 import com.badlogic.gdx.ai.pfa.Heuristic;
 import com.badlogic.gdx.math.Vector3;
