@@ -20,10 +20,10 @@ public class Face extends BaseActor {
 
         Array<TextureAtlas.AtlasRegion> animationImages = new Array();
         for (int j = 0; j <= 4; j++) {
-            animationImages.add(BaseGame.textureAtlas.findRegion("hud/HUD-ST" + j + "0"));
+            animationImages.add(BaseGame.textureAtlas.findRegion("hud/ST" + j + " 0"));
             for (int k = 0; k < 6; k++)
-                animationImages.add(BaseGame.textureAtlas.findRegion("hud/HUD-ST" + j + "1"));
-            animationImages.add(BaseGame.textureAtlas.findRegion("hud/HUD-ST" + j + "2"));
+                animationImages.add(BaseGame.textureAtlas.findRegion("hud/ST" + j + " 1"));
+            animationImages.add(BaseGame.textureAtlas.findRegion("hud/ST" + j + " 2"));
             stAnimations.add(new Animation(.5f, animationImages, Animation.PlayMode.LOOP_RANDOM));
             animationImages.clear();
         }
@@ -44,7 +44,7 @@ public class Face extends BaseActor {
         }
         clearActions();
         currentHealthIndecy = i;
-        loadImage("hud/HUD-KILL" + i);
+        loadImage("hud/KILL" + i + " 0");
         setDimensions();
         setDelayedStAnimation();
     }
@@ -52,20 +52,28 @@ public class Face extends BaseActor {
     public void setOuch(int i) {
         clearActions();
         currentHealthIndecy = i;
-        loadImage("hud/HUD-OUCH" + i);
+        loadImage("hud/OUCH" + i + " 0");
+        setDimensions();
+        setDelayedStAnimation();
+    }
+
+    public void setPain(int i) {
+        clearActions();
+        currentHealthIndecy = i;
+        loadImage("hud/PAIN" + i + " 0");
         setDimensions();
         setDelayedStAnimation();
     }
 
     public void setDead() {
         clearActions();
-        loadImage("hud/HUD-DEAD");
+        loadImage("hud/DEAD 0");
         setDimensions();
     }
 
     public void setGod() {
         clearActions();
-        loadImage("hud/HUD-GOD");
+        loadImage("hud/GOD 0");
         setDimensions();
     }
 

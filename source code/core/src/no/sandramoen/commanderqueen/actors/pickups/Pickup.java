@@ -6,6 +6,7 @@ import no.sandramoen.commanderqueen.utils.GameUtils;
 import no.sandramoen.commanderqueen.utils.Stage3D;
 
 public class Pickup extends BaseActor3D {
+    public int amount;
     private Player player;
 
     public Pickup(float y, float z, Stage3D s, Player player) {

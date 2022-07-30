@@ -91,6 +91,8 @@ public class LevelScreen extends BaseScreen3D {
             player.isCollisionEnabled = !player.isCollisionEnabled;
             Gdx.app.log(getClass().getSimpleName(), "player.isCollisionEnabled: " + player.isCollisionEnabled);
         }
+        if (keycode == Keys.NUM_3)
+            hud.incrementArmor(100, false);
         return super.keyDown(keycode);
     }
 
@@ -185,14 +187,23 @@ public class LevelScreen extends BaseScreen3D {
     private void updatePickups() {
         for (Pickup pickup : pickups) {
             if (player.overlaps(pickup)) {
-                if (pickup.getClass().getSimpleName().equals("Ammo"))
+                if (pickup.getClass().getSimpleName().equals("Ammo")) {
                     hud.incrementAmmo(1);
-                if (pickup.getClass().getSimpleName().equals("Armor"))
-                    hud.incrementArmor(25);
-                if (pickup.getClass().getSimpleName().equals("Health"))
+                    pickups.removeValue(pickup, false);
+                    pickup.remove();
+                }
+                if (pickup.getClass().getSimpleName().equals("Armor")) {
+                    if (hud.incrementArmor(pickup.amount, false)) {
+                        pickups.removeValue(pickup, false);
+                        pickup.remove();
+                    }
+                }
+                if (pickup.getClass().getSimpleName().equals("Health")) {
                     hud.incrementHealth(10);
-                pickups.removeValue(pickup, false);
-                pickup.remove();
+                    pickups.removeValue(pickup, false);
+                    pickup.remove();
+                }
+
             }
         }
     }
