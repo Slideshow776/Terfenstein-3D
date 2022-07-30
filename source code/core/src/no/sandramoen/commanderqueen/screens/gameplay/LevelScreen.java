@@ -84,7 +84,7 @@ public class LevelScreen extends BaseScreen3D {
         if (keycode == Keys.NUM_1)
             hud.decrementHealth(10);
         if (keycode == Keys.NUM_2)
-            hud.incrementHealth(10);
+            hud.incrementHealth(1);
         if (keycode == Keys.NUM_3)
             hud.setInvulnerable();
         if (keycode == Keys.NUM_4) {
@@ -189,23 +189,24 @@ public class LevelScreen extends BaseScreen3D {
             if (player.overlaps(pickup)) {
                 if (pickup.getClass().getSimpleName().equals("Ammo")) {
                     hud.incrementAmmo(1);
-                    pickups.removeValue(pickup, false);
-                    pickup.remove();
+                    removePickup(pickup);
                 }
                 if (pickup.getClass().getSimpleName().equals("Armor")) {
-                    if (hud.incrementArmor(pickup.amount, false)) {
-                        pickups.removeValue(pickup, false);
-                        pickup.remove();
-                    }
+                    if (hud.incrementArmor(pickup.amount, false))
+                        removePickup(pickup);
                 }
                 if (pickup.getClass().getSimpleName().equals("Health")) {
-                    hud.incrementHealth(10);
-                    pickups.removeValue(pickup, false);
-                    pickup.remove();
+                    if (hud.incrementHealth(pickup.amount))
+                        removePickup(pickup);
                 }
 
             }
         }
+    }
+
+    private void removePickup(Pickup pickup) {
+        pickups.removeValue(pickup, false);
+        pickup.remove();
     }
 
     private void updateWeapon() {

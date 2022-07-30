@@ -160,11 +160,18 @@ public class MapLoader {
     }
 
     private void initializeHealth() {
-        for (MapObject obj : tilemap.getTileList("actors", "health")) {
+        for (MapObject obj : tilemap.getTileList("actors", "health small")) {
             MapProperties props = obj.getProperties();
             float x = (Float) props.get("x") * BaseGame.unitScale;
             float y = (Float) props.get("y") * BaseGame.unitScale;
-            pickups.add(new Health(x, y, stage3D, player));
+            pickups.add(new Health(x, y, stage3D, player, 1));
+        }
+
+        for (MapObject obj : tilemap.getTileList("actors", "health medium")) {
+            MapProperties props = obj.getProperties();
+            float x = (Float) props.get("x") * BaseGame.unitScale;
+            float y = (Float) props.get("y") * BaseGame.unitScale;
+            pickups.add(new Health(x, y, stage3D, player, 100));
         }
     }
 

@@ -736,42 +736,42 @@ filter: Nearest, Nearest
 repeat: none
 pickups/ammo
   rotate: false
-  xy: 2, 2
+  xy: 57, 5
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 pickups/armor big
   rotate: false
-  xy: 36, 2
-  size: 32, 32
-  orig: 32, 32
-  offset: 0, 0
-  index: -1
-pickups/armor d
-  rotate: false
-  xy: 36, 2
+  xy: 91, 5
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 pickups/armor medium
   rotate: false
-  xy: 70, 2
+  xy: 125, 5
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 pickups/armor small
   rotate: false
-  xy: 104, 2
+  xy: 159, 5
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-pickups/health
+pickups/health medium
   rotate: false
-  xy: 138, 2
+  xy: 2, 2
+  size: 53, 35
+  orig: 53, 35
+  offset: 0, 0
+  index: -1
+pickups/health small
+  rotate: false
+  xy: 193, 5
   size: 32, 32
   orig: 32, 32
   offset: 0, 0

@@ -9,7 +9,7 @@ import no.sandramoen.commanderqueen.utils.BaseGame;
 
 public class HUD extends BaseActor {
     private Label armorLabel, healthLabel, ammoLabel, scoreLabel;
-    private int armor = 0, health = 100, ammo = 50, score = 0, maxArmor = 200, maxHealth = 100;
+    private int armor = 0, health = 100, ammo = 50, score = 0, maxArmor = 200, maxHealth = 200;
     private float labelScale = 1.0f, invulnerableCounter, armorProtectionValue = 1 / 3f;
     private final float invulnerableMaxCount = 10f;
     private Face face;
@@ -67,33 +67,38 @@ public class HUD extends BaseActor {
     }
 
     public boolean incrementArmor(int amount, boolean improved) {
-        if ((amount == 100 && armor >= 100) || (amount == 200 && armor == maxArmor))
+        if ((amount == 100 && armor >= 100) || (amount == 200 && armor == 200))
             return false;
         setArmorProtectionValue(improved);
-
-        if (amount == 1 && amount + armor < 200)
-            armor++;
-        else if (amount == 100 || amount == maxArmor)
-            armor = amount;
-
+        armor = setStat(amount, armor);
         armorLabel.setText(armor + "%");
         overlayIndicator.flash(BaseGame.yellowColor, .1f);
         BaseGame.armorPickupSound.play(BaseGame.soundVolume);
         return true;
     }
 
+    private int setStat(int amount, int stat) {
+        if (amount == 1 && amount + stat < 200)
+            stat++;
+        else if (amount == 100 || amount == 200)
+            stat = amount;
+        return stat;
+    }
+
     public int getHealth() {
         return health;
     }
 
-    public void incrementHealth(int amount) {
-        if (health + amount <= maxHealth) {
-            health += amount;
-            healthLabel.setText(health + "%");
-            face.setSTAnimation(getFaceHealthIndex());
-        }
+    public boolean incrementHealth(int amount) {
+        if (amount == 100 && health >= 100)
+            return false;
+
+        health = setStat(amount, health);
+        healthLabel.setText(health + "%");
+        face.setSTAnimation(getFaceHealthIndex());
         overlayIndicator.flash(BaseGame.greenColor);
         BaseGame.healthPickupSound.play(BaseGame.soundVolume);
+        return true;
     }
 
     public void decrementHealth(int amount) {
@@ -178,9 +183,10 @@ public class HUD extends BaseActor {
     }
 
     private int getFaceHealthIndex() {
+        if (health >= 100) return 0;
         final int numIncrements = 5;
         int i = numIncrements;
-        for (int j = 0; j <= maxHealth; j += maxHealth / numIncrements) {
+        for (int j = 0; j <= 100; j += 100 / numIncrements) {
             if (health <= j)
                 return i;
             i--;
