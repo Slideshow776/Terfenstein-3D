@@ -8,6 +8,8 @@ import no.sandramoen.commanderqueen.utils.BaseGame;
 import no.sandramoen.commanderqueen.utils.Stage3D;
 
 public class Player extends BaseActor3D {
+    public boolean isMoving = false;
+
     private float movementSpeed = 8.0f;
     private float rotateSpeed = 90f * .05f;
     private float totalTime = 0;
@@ -22,8 +24,6 @@ public class Player extends BaseActor3D {
     private float forceMoveZ = movementSpeed;
     private float forceTime;
     private float secondsForcedToMove = .25f;
-
-    public boolean isMoving = false;
 
     public Player(float y, float z, Stage3D stage3D, float rotation) {
         super(0, y, z, stage3D);

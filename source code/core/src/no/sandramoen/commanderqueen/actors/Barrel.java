@@ -15,11 +15,11 @@ import no.sandramoen.commanderqueen.utils.GameUtils;
 import no.sandramoen.commanderqueen.utils.Stage3D;
 
 public class Barrel extends BaseActor3D {
-    private Player player;
-    private float totalTime = 0;
     private boolean explode = false;
-    private Animation<TextureRegion> explodeAnimation;
+    private float totalTime = 0;
+    private Player player;
     private Stage3D stage3D;
+    private Animation<TextureRegion> explodeAnimation;
 
     public Barrel(float y, float z, Stage3D stage3D, Player player) {
         super(0, y, z, stage3D);

@@ -15,6 +15,10 @@ import no.sandramoen.commanderqueen.utils.Stage3D;
 import no.sandramoen.commanderqueen.utils.pathFinding.TileGraph;
 
 public class Ghoul extends Enemy {
+    private float timeToStopMoving = 1.1f;
+    private float attackCounter = 0f;
+    private final float ATTACK_FREQUENCY = 2f;
+
     private Animation<TextureRegion> currentAnimation;
     private Animation<TextureRegion> walkFrontAnimation;
     private Animation<TextureRegion> walkFrontSideLeftAnimation;
@@ -25,9 +29,6 @@ public class Ghoul extends Enemy {
     private Animation<TextureRegion> walkBackSideRightAnimation;
     private Animation<TextureRegion> walkBackAnimation;
     private Animation<TextureRegion> dieAnimation;
-    private float timeToStopMoving = 1.1f;
-    private float attackCounter = 0f;
-    private final float ATTACK_FREQUENCY = 2f;
 
     public Ghoul(float y, float z, Stage3D s, Player player, Float rotation, TileGraph tileGraph, Array<Tile> floorTiles) {
         super(y, z, s, player, rotation, tileGraph, floorTiles);

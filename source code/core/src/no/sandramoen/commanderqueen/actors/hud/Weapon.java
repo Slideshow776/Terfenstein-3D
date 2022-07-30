@@ -16,27 +16,20 @@ import no.sandramoen.commanderqueen.actors.utils.BaseActor;
 import no.sandramoen.commanderqueen.utils.BaseGame;
 
 public class Weapon extends BaseActor {
-    private Animation<TextureRegion> shootAnimation;
-    private float totalTime = 5f;
-    private float swayFrequency = .5f;
-    private float swayAmount = .01f;
-    private Vector2 restPosition = new Vector2(Gdx.graphics.getWidth() * 3 / 5 - getWidth() / 2, -Gdx.graphics.getHeight() * swayAmount);
-
     public Crosshair crosshair;
+
+    private float totalTime = 5f;
+
+    private float swayAmount = .01f;
+    private float swayFrequency = .5f;
+
+    private Animation<TextureRegion> shootAnimation;
+    private Vector2 restPosition = new Vector2(Gdx.graphics.getWidth() * 3 / 5 - getWidth() / 2, -Gdx.graphics.getHeight() * swayAmount);
 
     public Weapon(Stage stage) {
         super(0, 0, stage);
         crosshair = new Crosshair(stage);
-        stage.addActor(crosshair);
-
-        Array<TextureAtlas.AtlasRegion> animationImages = new Array();
-        animationImages.add(BaseGame.textureAtlas.findRegion("player/shooting 1"));
-        animationImages.add(BaseGame.textureAtlas.findRegion("player/shooting 2"));
-        animationImages.add(BaseGame.textureAtlas.findRegion("player/shooting 3"));
-        animationImages.add(BaseGame.textureAtlas.findRegion("player/shooting 0"));
-        shootAnimation = new Animation(.1f, animationImages, Animation.PlayMode.NORMAL);
-        animationImages.clear();
-
+        initializeShootAnimation();
         setWidth(Gdx.graphics.getWidth() * .25f);
         setSize(getWidth(), getWidth() / BaseGame.aspectRatio);
         setPosition(restPosition.x, -getHeight());
@@ -57,11 +50,7 @@ public class Weapon extends BaseActor {
 
     public void sway(boolean isMoving) {
         if (!hasActions() && isMoving) {
-            addAction(Actions.forever(Actions.sequence(
-                    Actions.moveBy(Gdx.graphics.getWidth() * swayAmount, Gdx.graphics.getHeight() * swayAmount, swayFrequency),
-                    Actions.moveBy(-Gdx.graphics.getWidth() * 2 * swayAmount, -Gdx.graphics.getHeight() * 2 * swayAmount, 2 * swayFrequency),
-                    Actions.moveBy(Gdx.graphics.getWidth() * swayAmount, Gdx.graphics.getHeight() * swayAmount, swayFrequency)
-            )));
+            addAction(getSwayAction());
         } else if (!isMoving) {
             clearActions();
             addAction(Actions.moveTo(restPosition.x, restPosition.y, .5f));
@@ -73,8 +62,26 @@ public class Weapon extends BaseActor {
         addAction(Actions.moveBy(0, -getHeight(), 1f));
     }
 
+    private RepeatAction getSwayAction() {
+        return Actions.forever(Actions.sequence(
+                Actions.moveBy(Gdx.graphics.getWidth() * swayAmount, Gdx.graphics.getHeight() * swayAmount, swayFrequency),
+                Actions.moveBy(-Gdx.graphics.getWidth() * 2 * swayAmount, -Gdx.graphics.getHeight() * 2 * swayAmount, 2 * swayFrequency),
+                Actions.moveBy(Gdx.graphics.getWidth() * swayAmount, Gdx.graphics.getHeight() * swayAmount, swayFrequency)
+        ));
+    }
+
     private void moveUp() {
         clearActions();
         addAction(Actions.moveTo(restPosition.x, restPosition.y, 1f));
+    }
+
+    private void initializeShootAnimation() {
+        Array<TextureAtlas.AtlasRegion> animationImages = new Array();
+        animationImages.add(BaseGame.textureAtlas.findRegion("player/shooting 1"));
+        animationImages.add(BaseGame.textureAtlas.findRegion("player/shooting 2"));
+        animationImages.add(BaseGame.textureAtlas.findRegion("player/shooting 3"));
+        animationImages.add(BaseGame.textureAtlas.findRegion("player/shooting 0"));
+        shootAnimation = new Animation(.1f, animationImages, Animation.PlayMode.NORMAL);
+        animationImages.clear();
     }
 }

@@ -52,16 +52,12 @@ public class LevelScreen extends BaseScreen3D {
         initializeMap();
         initializeActors();
         initializeUI();
-
-        /* -------------------------------------------------------- */
-
-        /* -------------------------------------------------------- */
     }
 
     @Override
     public void update(float dt) {
-        if (isGameOver) return;
         checkGameOverCondition();
+        if (isGameOver) return;
         setIntervalFlag(dt);
 
         updateTiles();
@@ -220,23 +216,21 @@ public class LevelScreen extends BaseScreen3D {
     }
 
     private void checkGameOverCondition() {
-        if (hud.getHealth() == 0) {
+        if (hud.getHealth() == 0)
             setGameOver();
-            return;
-        }
     }
 
     private void setGameOver() {
         if (!isGameOver) {
-            mainStage3D.camera.position.x = -Tile.height * .48f;
+            isGameOver = true;
             hud.setDeadFace();
-            BaseGame.metalWalkingMusic.stop();
             weapon.moveDown();
-            gameLabel.setText("G A M E   O V E R !");
             player.isPause = true;
             for (Enemy enemy : enemies)
                 enemy.isPause = true;
-            isGameOver = true;
+            BaseGame.metalWalkingMusic.stop();
+            gameLabel.setText("G A M E   O V E R !");
+            mainStage3D.camera.position.x = -Tile.height * .48f;
         }
     }
 
@@ -366,7 +360,10 @@ public class LevelScreen extends BaseScreen3D {
         uiTable.add(gameLabel)
                 .expand()
                 .center()
-                .colspan(2);
+                .colspan(2)
+                .row();
+
+        uiTable.add(hud.getLabelTable()).colspan(2).size(hud.getWidth(), hud.getHeight());
 
         /*uiTable.setDebug(true);*/
     }

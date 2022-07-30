@@ -35,6 +35,8 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
     public static Sound healthPickupSound;
     public static Sound explosionSound;
     public static Sound outOfAmmoSound;
+    public static Sound invulnerableSound;
+    public static Sound vulnerableSound;
 
     // game state
     public static float mouseMovementSensitivity = .05f;
@@ -77,8 +79,9 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
 
     private void UI() {
         label26Style = new Label.LabelStyle();
-        BitmapFont myFont2 = new BitmapFont(Gdx.files.internal("fonts/arcade26.fnt"));
-        label26Style.font = myFont2;
+        BitmapFont font26 = new BitmapFont(Gdx.files.internal("fonts/arcade26.fnt"));
+        font26.getData().setScale(Gdx.graphics.getWidth() * .0005f);
+        label26Style.font = font26;
     }
 
     private void assetManager() {
@@ -99,6 +102,8 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
         assetManager.load("audio/sound/health pickup.wav", Sound.class);
         assetManager.load("audio/sound/Explosion10.wav", Sound.class);
         assetManager.load("audio/sound/566384__combatsfx4you__dry-fire-out-of-ammo.wav", Sound.class);
+        assetManager.load("audio/sound/invulnerable.wav", Sound.class);
+        assetManager.load("audio/sound/vulnerable.wav", Sound.class);
 
         // tiled maps
         assetManager.setLoader(TiledMap.class, new TmxMapLoader(new InternalFileHandleResolver()));
@@ -119,6 +124,8 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
         healthPickupSound = assetManager.get("audio/sound/health pickup.wav", Sound.class);
         explosionSound = assetManager.get("audio/sound/Explosion10.wav", Sound.class);
         outOfAmmoSound = assetManager.get("audio/sound/566384__combatsfx4you__dry-fire-out-of-ammo.wav", Sound.class);
+        invulnerableSound = assetManager.get("audio/sound/invulnerable.wav", Sound.class);
+        vulnerableSound = assetManager.get("audio/sound/vulnerable.wav", Sound.class);
 
         // tiled maps
         testMap = assetManager.get("maps/test.tmx", TiledMap.class);

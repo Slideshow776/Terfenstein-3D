@@ -25,23 +25,23 @@ import no.sandramoen.commanderqueen.utils.BaseGame;
 import no.sandramoen.commanderqueen.utils.Stage3D;
 
 public class BaseActor3D {
-    public GameObject modelData;
-    public boolean isCollisionEnabled = true;
-    public boolean isPreventOverlapEnabled = true;
-    public final Vector3 position;
     public boolean isPause = false;
     public boolean isVisible = true;
+    public boolean isCollisionEnabled = true;
+    public boolean isPreventOverlapEnabled = true;
+    public GameObject modelData;
+    public final Vector3 position;
     public final float VOCAL_RANGE = 20;
-
-    protected final Quaternion rotation;
-    protected final Vector3 scale;
-    protected Polygon boundingPolygon;
-    protected Stage3D stage3D;
-    protected BoundingBox bounds = new BoundingBox();
 
     protected float width;
     protected float height;
     protected float depth;
+
+    protected Polygon boundingPolygon;
+    protected Stage3D stage3D;
+    protected BoundingBox bounds = new BoundingBox();
+    protected final Quaternion rotation;
+    protected final Vector3 scale;
 
     public BaseActor3D(float x, float y, float z, Stage3D stage3D) {
         this.stage3D = stage3D;

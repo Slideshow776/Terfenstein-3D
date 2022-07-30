@@ -24,29 +24,32 @@ public class Enemy extends BaseActor3D {
 
     protected boolean isAttacking;
     protected boolean intervalFlag;
-    protected boolean isForcedToMove;
     protected boolean isReadyToAttack = true;
     protected int health = 1;
     protected int tilePathCounter;
+
+    protected boolean isForcedToMove;
     protected float forceTime;
+    protected final float SECONDS_FORCED_TO_MOVE = .25f;
+    protected Vector2 forceMove = new Vector2(8f, 8f);
+
     protected float totalTime = 0;
     protected float movementSpeed;
     protected float angleTowardPlayer;
     protected final float VISIBILITY_RANGE = 100;
-    protected final float SECONDS_FORCED_TO_MOVE = .25f;
     protected Player player;
     protected BaseActor3D sprite;
     protected Array<BaseActor3D> shootable;
-    protected Vector2 forceMove = new Vector2(8f, 8f);
 
     protected enum Directions {FRONT, LEFT_FRONT, RIGHT_FRONT, LEFT_SIDE, RIGHT_SIDE, LEFT_BACK, RIGHT_BACK, BACK}
-
     protected Directions direction;
 
     private boolean isPlayerVisible;
     private boolean isPlayerLastPositionKnown;
+
     private float intervalCounter;
     private final float INTERVAL_COUNTER_FREQUENCY = .9f;
+
     private TileGraph tileGraph;
     private Array<Tile> floorTiles;
 
@@ -66,9 +69,8 @@ public class Enemy extends BaseActor3D {
         sprite = new BaseActor3D(0, 0, 0, stage3D);
         sprite.buildModel(size, size, .001f, true);
         sprite.setColor(originalColor);
-        turnBy(-180);
+        turnBy(-180 + rotation);
         tilePath = null;
-        turnBy(rotation);
     }
 
     @Override

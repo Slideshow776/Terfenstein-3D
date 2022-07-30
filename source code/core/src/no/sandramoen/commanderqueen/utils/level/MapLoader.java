@@ -24,17 +24,17 @@ import no.sandramoen.commanderqueen.utils.Stage3D;
 import no.sandramoen.commanderqueen.utils.pathFinding.TileGraph;
 
 public class MapLoader {
-    private Stage3D stage3D;
-    private TilemapActor tilemap;
-    private Array<Tile> tiles;
-    private Array<Enemy> enemies;
-    private Array<Pickup> pickups;
-    private Array<BaseActor3D> shootable;
-
     public Player player;
     public TileGraph tileGraph;
 
+    private Stage3D stage3D;
+    private TilemapActor tilemap;
+
+    private Array<Tile> tiles;
+    private Array<Enemy> enemies;
+    private Array<Pickup> pickups;
     private Array<Tile> floorTiles;
+    private Array<BaseActor3D> shootable;
 
     public MapLoader(TilemapActor tilemap, Array<Tile> tiles, Stage3D stage3D, Player player, Array<BaseActor3D> shootable,
                      Array<Pickup> pickups, Array<Enemy> enemies) {

@@ -3,86 +3,60 @@ package no.sandramoen.commanderqueen.actors.hud;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.utils.Align;
 
 import no.sandramoen.commanderqueen.actors.utils.BaseActor;
 import no.sandramoen.commanderqueen.utils.BaseGame;
 
 public class HUD extends BaseActor {
-    private Label armorLabel, healthLabel, ammoLabel, scoreLabel;
-    private int armor = 0, health = 100, ammo = 50, score = 0, maxArmor = 200, maxHealth = 200;
-    private float labelScale = 1.0f, invulnerableCounter, armorProtectionValue = 1 / 3f;
-    private final float invulnerableMaxCount = 10f;
+    public boolean isInvulnerable;
+
+    private int armor = 0;
+    private int health = 100;
+    private int ammo = 25;
+    private int score = 0;
+
+    private float armorProtectionValue = 1 / 3f;
+
+    private float invulnerableCounter;
+    private final float INVULNERABLE_MAX_COUNT = 2f;
+
+    private Label armorLabel;
+    private Label healthLabel;
+    private Label ammoLabel;
+    private Label scoreLabel;
+
     private Face face;
     private OverlayIndicator overlayIndicator;
 
-    public boolean invulnerable = false;
-
     public HUD(Stage stage) {
         super(0, 0, stage);
-        setWidth(Gdx.graphics.getWidth() * 1 / 3);
-        setSize(getWidth(), getWidth() / (5 / 1));
-        setPosition(Gdx.graphics.getWidth() * 1 / 2 - getWidth() / 2, 0f);
+        initializeLabels();
+
+        setWidth(Gdx.graphics.getWidth() * 1 / 3f);
+        setSize(getWidth(), getWidth() / (5 / 1f));
+        setPosition(Gdx.graphics.getWidth() * 1 / 2f - getWidth() / 2f, 0f);
+
         overlayIndicator = new OverlayIndicator(stage);
+        face = new Face(stage, getFaceHealthIndex());
+    }
 
-        face = new Face(stage, 0);
-
-        armorLabel = new Label(armor + "%", BaseGame.label26Style);
-        armorLabel.setFontScale(labelScale);
-        armorLabel.setColor(BaseGame.redColor);
-        addActor(armorLabel);
-        armorLabel.setPosition(armorLabel.getWidth() / 4, getHeight() / 2 - armorLabel.getHeight() / 2);
-
-        healthLabel = new Label(health + "%", BaseGame.label26Style);
-        healthLabel.setFontScale(labelScale);
-        healthLabel.setColor(BaseGame.redColor);
-        addActor(healthLabel);
-        healthLabel.setPosition(getWidth() * 1 / 5 + healthLabel.getWidth() / 4, getHeight() / 2 - healthLabel.getHeight() / 2);
-
-        ammoLabel = new Label(ammo + "", BaseGame.label26Style);
-        ammoLabel.setFontScale(labelScale);
-        ammoLabel.setColor(BaseGame.redColor);
-        addActor(ammoLabel);
-        ammoLabel.setPosition(getWidth() * 3 / 5 + ammoLabel.getWidth() / 4, getHeight() / 2 - ammoLabel.getHeight() / 2);
-
-        scoreLabel = new Label(score + "", BaseGame.label26Style);
-        scoreLabel.setFontScale(labelScale);
-        scoreLabel.setColor(BaseGame.redColor);
-        addActor(scoreLabel);
-        scoreLabel.setPosition(getWidth() * 4 / 5 + scoreLabel.getWidth() / 4, getHeight() / 2 - scoreLabel.getHeight() / 2);
-        scoreLabel.setZIndex(20);
+    public Table getLabelTable() {
+        Table table = new Table();
+        table.defaults().width(getWidth() / 5);
+        table.add(armorLabel);
+        table.add(healthLabel).padRight(getWidth() / 5);
+        table.add(ammoLabel);
+        table.add(scoreLabel);
+        /*table.setDebug(true);*/
+        return table;
     }
 
     @Override
-    public void act(float delta) {
-        super.act(delta);
-
-        if (invulnerable) {
-            invulnerableCounter += delta;
-            if (invulnerableCounter > invulnerableMaxCount) {
-                invulnerable = false;
-                invulnerableCounter = 0;
-                face.setSTAnimation(getFaceHealthIndex());
-            }
-        }
-    }
-
-    public boolean incrementArmor(int amount, boolean improved) {
-        if ((amount == 100 && armor >= 100) || (amount == 200 && armor == 200))
-            return false;
-        setArmorProtectionValue(improved);
-        armor = setStat(amount, armor);
-        armorLabel.setText(armor + "%");
-        overlayIndicator.flash(BaseGame.yellowColor, .1f);
-        BaseGame.armorPickupSound.play(BaseGame.soundVolume);
-        return true;
-    }
-
-    private int setStat(int amount, int stat) {
-        if (amount == 1 && amount + stat < 200)
-            stat++;
-        else if (amount == 100 || amount == 200)
-            stat = amount;
-        return stat;
+    public void act(float dt) {
+        super.act(dt);
+        checkInvulnerability(dt);
     }
 
     public int getHealth() {
@@ -90,9 +64,8 @@ public class HUD extends BaseActor {
     }
 
     public boolean incrementHealth(int amount) {
-        if (amount == 100 && health >= 100)
+        if (isStatIgnore(amount, health))
             return false;
-
         health = setStat(amount, health);
         healthLabel.setText(health + "%");
         face.setSTAnimation(getFaceHealthIndex());
@@ -102,7 +75,7 @@ public class HUD extends BaseActor {
     }
 
     public void decrementHealth(int amount) {
-        if (invulnerable) return;
+        if (isInvulnerable) return;
 
         amount = decrementArmor(amount);
         if (health - amount < 0)
@@ -115,35 +88,15 @@ public class HUD extends BaseActor {
         overlayIndicator.flash(BaseGame.redColor, .5f * amount / 50);
     }
 
-    private int decrementArmor(int amount) {
-        int armorReduction = (int) (amount * armorProtectionValue);
-        for (int i = 0; i < armorReduction; i++) {
-            if (armor > 0) {
-                armor--;
-                amount--;
-            } else break;
-        }
-
+    public boolean incrementArmor(int amount, boolean improved) {
+        if (isStatIgnore(amount, armor))
+            return false;
+        setArmorProtectionValue(improved);
+        armor = setStat(amount, armor);
         armorLabel.setText(armor + "%");
-        return amount;
-    }
-
-    private void setArmorProtectionValue(boolean improved) {
-        if (improved)
-            armorProtectionValue = 1 / 2f;
-        if (!improved && armor == 0)
-            armorProtectionValue = 1 / 3f;
-    }
-
-    private void setHurtFace(int amount) {
-        if (health > 0) {
-            if (amount >= 20)
-                face.setOuch(getFaceHealthIndex());
-            else
-                face.setPain(getFaceHealthIndex());
-        } else {
-            face.setDead();
-        }
+        overlayIndicator.flash(BaseGame.yellowColor, .1f);
+        BaseGame.armorPickupSound.play(BaseGame.soundVolume);
+        return true;
     }
 
     public void incrementAmmo(int amount) {
@@ -179,7 +132,68 @@ public class HUD extends BaseActor {
 
     public void setInvulnerable() {
         face.setGod();
-        invulnerable = true;
+        isInvulnerable = true;
+        BaseGame.invulnerableSound.play(BaseGame.soundVolume);
+    }
+
+    private void checkInvulnerability(float delta) {
+        if (isInvulnerable) {
+            invulnerableCounter += delta;
+            if (invulnerableCounter > INVULNERABLE_MAX_COUNT)
+                setVulnerable();
+        }
+    }
+
+    private void setVulnerable() {
+        face.isLocked = false;
+        isInvulnerable = false;
+        invulnerableCounter = 0;
+        face.setSTAnimation(getFaceHealthIndex());
+        BaseGame.vulnerableSound.play(BaseGame.soundVolume);
+    }
+
+    private int setStat(int amount, int stat) {
+        if (amount == 1 && amount + stat <= 200)
+            stat++;
+        else if (amount == 100 || amount == 200)
+            stat = amount;
+        return stat;
+    }
+
+    private boolean isStatIgnore(int amount, int stat) {
+        if ((amount == 1 && stat >= 200) || (amount == 100 && stat >= 100) || (amount == 200 && stat == 200))
+            return true;
+        return false;
+    }
+
+    private int decrementArmor(int amount) {
+        int armorReduction = (int) (amount * armorProtectionValue);
+        for (int i = 0; i < armorReduction; i++) {
+            if (armor > 0) {
+                armor--;
+                amount--;
+            } else break;
+        }
+        armorLabel.setText(armor + "%");
+        return amount;
+    }
+
+    private void setArmorProtectionValue(boolean improved) {
+        if (improved)
+            armorProtectionValue = 1 / 2f;
+        if (!improved && armor == 0)
+            armorProtectionValue = 1 / 3f;
+    }
+
+    private void setHurtFace(int amount) {
+        if (health > 0) {
+            if (amount >= 20)
+                face.setOuch(getFaceHealthIndex());
+            else
+                face.setPain(getFaceHealthIndex());
+        } else {
+            face.setDead();
+        }
     }
 
     private int getFaceHealthIndex() {
@@ -193,5 +207,19 @@ public class HUD extends BaseActor {
         }
         Gdx.app.error(getClass().getSimpleName(), "Error: getFaceHealth could not determine face integer, integer is: " + i);
         return -1;
+    }
+
+    private Label initializeLabel(String text) {
+        Label label = new Label(text, BaseGame.label26Style);
+        label.setColor(BaseGame.redColor);
+        label.setAlignment(Align.center);
+        return label;
+    }
+
+    private void initializeLabels() {
+        armorLabel = initializeLabel(armor + "%");
+        healthLabel = initializeLabel(health + "%");
+        ammoLabel = initializeLabel(ammo + "");
+        scoreLabel = initializeLabel(score + "");
     }
 }

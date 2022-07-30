@@ -16,15 +16,14 @@ import no.sandramoen.commanderqueen.actors.utils.BaseActor3D;
 import no.sandramoen.commanderqueen.utils.level.LightManager;
 
 public class Stage3D {
-    private final ModelBatch modelBatch;
-    private ArrayList<BaseActor3D> actorList3D;
-    private ArrayList<Actor> actorList;
-    private Vector3 position = new Vector3();
-
-    public Environment environment;
-    public LightManager lightManager;
     public int visibleCount = 0;
+    public Environment environment;
     public PerspectiveCamera camera;
+    public LightManager lightManager;
+
+    private ArrayList<Actor> actorList;
+    private ArrayList<BaseActor3D> actorList3D;
+    private final ModelBatch modelBatch;
 
     public Stage3D() {
         environment = new Environment();
@@ -41,8 +40,7 @@ public class Stage3D {
         DefaultShader.Config config = new DefaultShader.Config();
         config.numDirectionalLights = 1;
         config.numPointLights = 50;
-        config.numSpotLights = 0;/*
-        config.defaultCullFace = 0;*/
+        config.numSpotLights = 0;
 
         ShaderProvider shaderProvider = new DefaultShaderProvider(config);
         modelBatch = new ModelBatch(shaderProvider);

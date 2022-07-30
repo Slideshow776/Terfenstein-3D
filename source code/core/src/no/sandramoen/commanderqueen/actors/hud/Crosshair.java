@@ -10,5 +10,6 @@ public class Crosshair extends BaseActor {
         super(0, 0, stage);
         loadImage("crosshair");
         centerAtPosition(Gdx.graphics.getWidth() / 2f, Gdx.graphics.getHeight() / 2f);
+        stage.addActor(this);
     }
 }

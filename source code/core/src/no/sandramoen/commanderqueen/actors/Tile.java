@@ -7,10 +7,9 @@ public class Tile extends BaseActor3D {
     public static float height = 4;
     public static float diagonalLength = (float) Math.sqrt(2 * Math.pow(height, 2));
 
+    public int index;
     public String type;
     public boolean illuminated = false;
-
-    public int index;
 
     public Tile(float y, float z, String type, String texture, Stage3D s) {
         super(0, y, z, s);

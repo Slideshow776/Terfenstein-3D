@@ -4,10 +4,14 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
+import com.badlogic.gdx.scenes.scene2d.actions.SequenceAction;
 
 import no.sandramoen.commanderqueen.actors.utils.BaseActor;
 
 public class OverlayIndicator extends BaseActor {
+    private final float MAX_ALPHA = .2f;
+    private final float FADE_IN_AND_OUT_DURATION = .25f;
+
     public OverlayIndicator(Stage stage) {
         super(0, 0, stage);
         loadImage("whitePixel");
@@ -18,21 +22,20 @@ public class OverlayIndicator extends BaseActor {
 
     public void flash(Color color) {
         setColor(color);
-        actionAlpha(.2f);
+        addAction(fadeInAndOut(MAX_ALPHA));
     }
 
     public void flash(Color color, float alpha) {
         setColor(color);
-        actionAlpha(alpha);
+        addAction(fadeInAndOut(alpha));
     }
 
-    private void actionAlpha(float maxAlpha) {
+    private SequenceAction fadeInAndOut(float maxAlpha) {
         setOpacity(0f);
-        float duration = .25f;
-        addAction(Actions.sequence(
+        return Actions.sequence(
                 Actions.alpha(0),
-                Actions.alpha(maxAlpha, duration / 2),
-                Actions.alpha(0f, duration / 2)
-        ));
+                Actions.alpha(maxAlpha, FADE_IN_AND_OUT_DURATION / 2),
+                Actions.alpha(0f, FADE_IN_AND_OUT_DURATION / 2)
+        );
     }
 }

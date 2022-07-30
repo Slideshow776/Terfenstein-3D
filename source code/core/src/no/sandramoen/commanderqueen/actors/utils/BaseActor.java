@@ -13,14 +13,14 @@ import com.badlogic.gdx.scenes.scene2d.Group;
 import no.sandramoen.commanderqueen.utils.BaseGame;
 
 public class BaseActor extends Group {
+    public boolean pause = false;
+    public boolean isFacingRight = true;
+    public float animationWidth = getWidth();
+    public float animationHeight = getWidth();
+
     private Animation<TextureRegion> animation;
     private float animationTime;
     private boolean animationPaused;
-
-    public boolean isFacingRight = true;
-    public boolean pause = false;
-    public float animationWidth = getWidth();
-    public float animationHeight = getWidth();
 
     public BaseActor(float x, float y, Stage stage) {
         super();

@@ -11,70 +11,67 @@ import no.sandramoen.commanderqueen.actors.utils.BaseActor;
 import no.sandramoen.commanderqueen.utils.BaseGame;
 
 public class Face extends BaseActor {
+    public boolean isLocked;
+
+    private int healthIndex;
     private Array<Animation> stAnimations = new Array();
-    private int currentHealthIndecy;
 
-    public Face(Stage stage, int i) {
+    public Face(Stage stage, int healthIndex) {
         super(0, 0, stage);
-        currentHealthIndecy = i;
-
-        Array<TextureAtlas.AtlasRegion> animationImages = new Array();
-        for (int j = 0; j <= 4; j++) {
-            animationImages.add(BaseGame.textureAtlas.findRegion("hud/ST" + j + " 0"));
-            for (int k = 0; k < 6; k++)
-                animationImages.add(BaseGame.textureAtlas.findRegion("hud/ST" + j + " 1"));
-            animationImages.add(BaseGame.textureAtlas.findRegion("hud/ST" + j + " 2"));
-            stAnimations.add(new Animation(.5f, animationImages, Animation.PlayMode.LOOP_RANDOM));
-            animationImages.clear();
-        }
-        setSTAnimation(i);
+        this.healthIndex = healthIndex;
+        initializeSTAnimations(healthIndex);
         setZIndex(0);
     }
 
-    public void setSTAnimation(int st) {
-        currentHealthIndecy = st;
-        setAnimation(stAnimations.get(st));
-        setDimensions();
-    }
-
-    public void setKillFace(int i) {
-        if (i < 0 || i > 4) {
-            Gdx.app.error(getClass().getSimpleName(), "Error: tried to create a face out of range [0, 4], i is: " + i);
+    public void setSTAnimation(int faceHealthIndex) {
+        if (isLocked)
             return;
-        }
-        clearActions();
-        currentHealthIndecy = i;
-        loadImage("hud/KILL" + i + " 0");
+        healthIndex = faceHealthIndex;
+        setAnimation(stAnimations.get(faceHealthIndex));
         setDimensions();
-        setDelayedStAnimation();
     }
 
-    public void setOuch(int i) {
-        clearActions();
-        currentHealthIndecy = i;
-        loadImage("hud/OUCH" + i + " 0");
-        setDimensions();
-        setDelayedStAnimation();
+    public void setOuch(int faceHealthIndex) {
+        setTemporaryFace(faceHealthIndex, "OUCH");
     }
 
-    public void setPain(int i) {
-        clearActions();
-        currentHealthIndecy = i;
-        loadImage("hud/PAIN" + i + " 0");
-        setDimensions();
-        setDelayedStAnimation();
+    public void setPain(int faceHealthIndex) {
+        setTemporaryFace(faceHealthIndex, "PAIN");
+    }
+
+    public void setKillFace(int faceHealthIndex) {
+        setTemporaryFace(faceHealthIndex, "KILL");
     }
 
     public void setDead() {
-        clearActions();
-        loadImage("hud/DEAD 0");
-        setDimensions();
+        setLockedFace("DEAD");
     }
 
     public void setGod() {
+        setLockedFace("GOD");
+    }
+
+    private void setLockedFace(String face) {
+        isLocked = true;
         clearActions();
-        loadImage("hud/GOD 0");
+        loadImage("hud/" + face + " 0");
         setDimensions();
+    }
+
+    private void setTemporaryFace(int faceHealthIndex, String face) {
+        if (isLocked)
+            return;
+
+        if (faceHealthIndex < 0 || faceHealthIndex > 4) {
+            Gdx.app.error(getClass().getSimpleName(), "Error: tried to create a face out of range [0, 4], i is: " + faceHealthIndex);
+            return;
+        }
+
+        clearActions();
+        healthIndex = faceHealthIndex;
+        loadImage("hud/" + face + faceHealthIndex + " 0");
+        setDimensions();
+        setDelayedStAnimation();
     }
 
     private void setDelayedStAnimation() {
@@ -83,15 +80,28 @@ public class Face extends BaseActor {
                 Actions.run(new Runnable() {
                     @Override
                     public void run() {
-                        setSTAnimation(currentHealthIndecy);
+                        setSTAnimation(healthIndex);
                     }
                 })
         ));
     }
 
     private void setDimensions() {
-        setWidth(Gdx.graphics.getWidth() * 1 / 3);
-        setSize(getWidth(), getWidth() / (5 / 1));
-        setPosition(Gdx.graphics.getWidth() * 1 / 2 - getWidth() / 2, 0f);
+        setWidth(Gdx.graphics.getWidth() * 1 / 3f);
+        setSize(getWidth(), getWidth() / (5 / 1f));
+        setPosition(Gdx.graphics.getWidth() * 1 / 2f - getWidth() / 2f, 0f);
+    }
+
+    private void initializeSTAnimations(int faceHealthIndex) {
+        Array<TextureAtlas.AtlasRegion> animationImages = new Array();
+        for (int i = 0; i <= 4; i++) {
+            animationImages.add(BaseGame.textureAtlas.findRegion("hud/ST" + i + " 0"));
+            for (int j = 0; j < 6; j++)
+                animationImages.add(BaseGame.textureAtlas.findRegion("hud/ST" + i + " 1"));
+            animationImages.add(BaseGame.textureAtlas.findRegion("hud/ST" + i + " 2"));
+            stAnimations.add(new Animation(.5f, animationImages, Animation.PlayMode.LOOP_RANDOM));
+            animationImages.clear();
+        }
+        setSTAnimation(faceHealthIndex);
     }
 }
