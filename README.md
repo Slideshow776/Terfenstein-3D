@@ -158,7 +158,7 @@ Tile maps were implemented [like so](https://github.com/Slideshow776/3D-shooting
 ![image](https://user-images.githubusercontent.com/4059636/179554378-55590c98-aa44-45e3-a6ce-30da743743ed.png)
 
 ### Directional Sprites
-Eight directional sprites was added in [this commit](https://github.com/Slideshow776/3D-shooting-game/commit/1191866abdba55cc8dbda692d030d859626b2033).
+Eight directional sprites were added in [this commit](https://github.com/Slideshow776/3D-shooting-game/commit/1191866abdba55cc8dbda692d030d859626b2033).
 The play can now circle an enemy and see it from behind, etc. This allows for gameplay where the enemy is not always facing the player ready to attack.
 
 ![eight directional sprites example](https://user-images.githubusercontent.com/4059636/181704832-6e015a4c-68b3-4573-94fe-c12480758664.gif)
@@ -195,8 +195,8 @@ Raypicking should be used sparingly, this game runs the algorithm for all enemie
 
 ### Pathfinding
 LibGDX's [AI library](https://github.com/libgdx/gdx-ai) was included in [this](https://github.com/Slideshow776/3D-shooting-game/commit/85b5b903a4aa80ca0621bc0a6462f40481b43761) and [this](https://github.com/Slideshow776/3D-shooting-game/commit/7aaa1c3a9080e70785d45faa4b5848deb7654dfc) commits following [this excellent tutorial](https://happycoding.io/tutorials/libgdx/pathfinding).
-The pathfinding is a directional improvedupon [Dijkstra's algorithm](https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm), and enables us to tell the enemies where to go.
-This algorithm is used sparingly whenever there is a sound the enemy should respond to, or to get the last position of the players last sighting. This opens up more interesting gameplay.
+The pathfinding is a directional improvement upon [Dijkstra's algorithm](https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm) and enables us to tell the enemies where to go.
+This algorithm is used sparingly whenever there is a sound the enemy should respond to or get the last position of the player's last sighting. This opens up more interesting gameplay.
 
 ![Dijkstra's improved algorithm A*](https://happycoding.io/tutorials/libgdx/images/dijkstra-search.gif)
 
