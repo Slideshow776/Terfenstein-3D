@@ -147,7 +147,7 @@ public class MapLoader {
         }
 
         for (Enemy enemy : enemies)
-            enemy.setShootable(shootable);
+            enemy.setShootableList(shootable);
     }
 
     private void initializeBarrels() {

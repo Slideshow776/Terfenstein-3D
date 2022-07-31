@@ -16,6 +16,7 @@ import no.sandramoen.commanderqueen.actors.utils.BaseActor3D;
 import no.sandramoen.commanderqueen.utils.level.LightManager;
 
 public class Stage3D {
+    public boolean intervalFlag;
     public int visibleCount = 0;
     public Environment environment;
     public PerspectiveCamera camera;
@@ -24,6 +25,9 @@ public class Stage3D {
     private ArrayList<Actor> actorList;
     private ArrayList<BaseActor3D> actorList3D;
     private final ModelBatch modelBatch;
+
+    private float intervalCounter;
+    private final float INTERVAL_COUNTER_FREQUENCY = 1;
 
     public Stage3D() {
         environment = new Environment();
@@ -54,6 +58,7 @@ public class Stage3D {
         lightManager.update(dt);
         for (BaseActor3D ba : actorList3D)
             ba.act(dt);
+        setIntervalFlag(dt);
     }
 
     public void draw() {
@@ -145,5 +150,15 @@ public class Stage3D {
     public void tiltCamera(float angle) {
         Vector3 side = new Vector3(camera.direction.z, 0, -camera.direction.x);
         camera.direction.rotate(side, angle);
+    }
+
+    private void setIntervalFlag(float dt) {
+        if (intervalCounter > INTERVAL_COUNTER_FREQUENCY) {
+            intervalFlag = true;
+            intervalCounter = 0;
+        } else {
+            intervalFlag = false;
+            intervalCounter += dt;
+        }
     }
 }

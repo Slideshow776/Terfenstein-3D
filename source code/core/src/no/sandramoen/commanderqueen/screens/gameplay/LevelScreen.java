@@ -5,6 +5,7 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.utils.Array;
 
@@ -16,6 +17,7 @@ import no.sandramoen.commanderqueen.actors.Tile;
 import no.sandramoen.commanderqueen.actors.hud.Weapon;
 import no.sandramoen.commanderqueen.actors.pickups.Ammo;
 import no.sandramoen.commanderqueen.actors.pickups.Pickup;
+import no.sandramoen.commanderqueen.actors.utils.BaseActor;
 import no.sandramoen.commanderqueen.actors.utils.BaseActor3D;
 import no.sandramoen.commanderqueen.actors.utils.Enemy;
 import no.sandramoen.commanderqueen.utils.level.MapLoader;
@@ -41,9 +43,6 @@ public class LevelScreen extends BaseScreen3D {
     private Label statusLabel;
 
     private boolean isGameOver = false;
-    private boolean intervalFlag;
-    private float intervalCounter;
-    private final float INTERVAL_COUNTER_FREQUENCY = 1;
 
     @Override
     public void initialize() {
@@ -57,8 +56,6 @@ public class LevelScreen extends BaseScreen3D {
     @Override
     public void update(float dt) {
         checkGameOverCondition();
-        if (isGameOver) return;
-        setIntervalFlag(dt);
 
         updateTiles();
         updateEnemies();
@@ -112,17 +109,35 @@ public class LevelScreen extends BaseScreen3D {
             if (shootable.get(index).getClass().getSimpleName().equals("Ghoul")) {
                 Ghoul ghoul = (Ghoul) shootable.get(index);
                 activateEnemies(45, ghoul);
-                removeEnemy(ghoul);
-                hud.incrementScore(10, false);
-                hud.setKillFace();
+                if (ghoul.isDeadAfterTakingDamage(1)) {
+                    removeEnemy(ghoul);
+                    hud.incrementScore(10, false);
+                    hud.setKillFace();
+                }
             } else if (shootable.get(index).getClass().getSimpleName().equals("Barrel")) {
                 Barrel barrel = (Barrel) shootable.get(index);
-                activateEnemies(45, barrel);
-                checkExplosionRange(barrel);
-                barrel.explode();
-                shootable.removeValue(barrel, false);
+                explodeBarrelWithDelay(barrel);
             }
         }
+    }
+
+    private void explodeBarrelWithDelay(final Barrel barrel) {
+        new BaseActor(0, 0, uiStage).addAction(Actions.sequence(
+                Actions.delay(MathUtils.random(0, .4f)),
+                Actions.run(new Runnable() {
+                    @Override
+                    public void run() {
+                        explodeBarrel(barrel);
+                    }
+                })
+        ));
+    }
+
+    private void explodeBarrel(Barrel barrel) {
+        activateEnemies(45, barrel);
+        shootable.removeValue(barrel, false);
+        checkExplosionRange(barrel);
+        barrel.explode();
     }
 
     private void setCrosshairColorIfEnemy(int index) {
@@ -131,16 +146,6 @@ public class LevelScreen extends BaseScreen3D {
                 weapon.crosshair.setColor(BaseGame.redColor);
             else
                 weapon.crosshair.setColor(Color.WHITE);
-        }
-    }
-
-    private void setIntervalFlag(float dt) {
-        if (intervalCounter > INTERVAL_COUNTER_FREQUENCY) {
-            intervalFlag = true;
-            intervalCounter = 0;
-        } else {
-            intervalFlag = false;
-            intervalCounter += dt;
         }
     }
 
@@ -165,7 +170,7 @@ public class LevelScreen extends BaseScreen3D {
     }
 
     private void tryToActivateOthers(int i) {
-        if (intervalFlag && enemies.get(i).isActive) {
+        if (mainStage3D.intervalFlag && enemies.get(i).isActive) {
             for (int j = 0; j < enemies.size; j++) {
                 if (enemies.get(i) != enemies.get(j))
                     activateEnemies(45, player);
@@ -263,7 +268,13 @@ public class LevelScreen extends BaseScreen3D {
             enemies.get(i).setColor(enemies.get(i).originalColor);
     }
 
-    private void checkExplosionRange(final BaseActor3D source) {
+    private void checkExplosionRange(BaseActor3D source) {
+        checkPlayerExplosionDamage(source);
+        checkEnemiesExplosionDamage(source);
+        checkBarrelsExplosionDamage(source);
+    }
+
+    private void checkPlayerExplosionDamage(BaseActor3D source) {
         if (player.isWithinDistance(3f, source))
             hud.decrementHealth(100);
         else if (player.isWithinDistance(7f, source))
@@ -275,14 +286,16 @@ public class LevelScreen extends BaseScreen3D {
 
         if (player.isWithinDistance(10f, source))
             player.forceMoveAwayFrom(source);
+    }
 
+    private void checkEnemiesExplosionDamage(BaseActor3D source) {
         for (Enemy enemy : enemies) {
             if (enemy.isWithinDistance(3f, source))
-                enemy.decrementHealth(100);
+                enemy.isDeadAfterTakingDamage(100);
             else if (enemy.isWithinDistance(7f, source))
-                enemy.decrementHealth(50);
+                enemy.isDeadAfterTakingDamage(50);
             else if (enemy.isWithinDistance(10f, source))
-                enemy.decrementHealth(25);
+                enemy.isDeadAfterTakingDamage(25);
 
             if (enemy.isWithinDistance(10f, source))
                 enemy.forceMoveAwayFrom(source);
@@ -293,13 +306,20 @@ public class LevelScreen extends BaseScreen3D {
                 removeEnemy(enemy);
     }
 
+    private void checkBarrelsExplosionDamage(BaseActor3D source) {
+        for (int i = 0; i < shootable.size; i++)
+            if (shootable.get(i).getClass().getSimpleName().equalsIgnoreCase("barrel"))
+                if (shootable.get(i).isWithinDistance(10f, source))
+                    explodeBarrelWithDelay((Barrel) shootable.get(i));
+    }
+
     private void removeEnemy(Enemy enemy) {
         enemy.die();
         pickups.add(new Ammo(enemy.position.y, enemy.position.z, mainStage3D, player));
         enemies.removeValue(enemy, false);
         shootable.removeValue(enemy, false);
         for (int i = 0; i < enemies.size; i++)
-            enemies.get(i).setShootable(shootable);
+            enemies.get(i).setShootableList(shootable);
         statusLabel.setText("enemies left: " + enemies.size);
     }
 

@@ -12,6 +12,7 @@ import no.sandramoen.commanderqueen.actors.Tile;
 import no.sandramoen.commanderqueen.actors.utils.BaseActor3D;
 
 public class GameUtils {
+
     public static float getAngleTowardsBaseActor3D(BaseActor3D actorA, BaseActor3D actorB) {
         float angle = MathUtils.atan(
                 Math.abs(actorA.position.z - actorB.position.z) /

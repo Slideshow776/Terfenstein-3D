@@ -3,6 +3,8 @@ package no.sandramoen.commanderqueen.actors.utils;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ai.pfa.GraphPath;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
@@ -23,7 +25,6 @@ public class Enemy extends BaseActor3D {
     public Color originalColor = new Color(.4f, .4f, .4f, 1f);
 
     protected boolean isAttacking;
-    protected boolean intervalFlag;
     protected boolean isReadyToAttack = true;
     protected int health = 1;
     protected int tilePathCounter;
@@ -39,16 +40,25 @@ public class Enemy extends BaseActor3D {
     protected final float VISIBILITY_RANGE = 100;
     protected Player player;
     protected BaseActor3D sprite;
-    protected Array<BaseActor3D> shootable;
+    protected Array<BaseActor3D> shootable = new Array();
 
     protected enum Directions {FRONT, LEFT_FRONT, RIGHT_FRONT, LEFT_SIDE, RIGHT_SIDE, LEFT_BACK, RIGHT_BACK, BACK}
+
     protected Directions direction;
+
+    protected Animation<TextureRegion> currentAnimation;
+    protected Animation<TextureRegion> walkFrontAnimation;
+    protected Animation<TextureRegion> walkFrontSideLeftAnimation;
+    protected Animation<TextureRegion> walkFrontSideRightAnimation;
+    protected Animation<TextureRegion> walkSideLeftAnimation;
+    protected Animation<TextureRegion> walkSideRightAnimation;
+    protected Animation<TextureRegion> walkBackSideLeftAnimation;
+    protected Animation<TextureRegion> walkBackSideRightAnimation;
+    protected Animation<TextureRegion> walkBackAnimation;
+    protected Animation<TextureRegion> dieAnimation;
 
     private boolean isPlayerVisible;
     private boolean isPlayerLastPositionKnown;
-
-    private float intervalCounter;
-    private final float INTERVAL_COUNTER_FREQUENCY = .9f;
 
     private TileGraph tileGraph;
     private Array<Tile> floorTiles;
@@ -61,16 +71,11 @@ public class Enemy extends BaseActor3D {
 
         float size = 3;
         buildModel(size, size, size, true);
-        setBaseRectangle();
-        setPosition(GameUtils.getPositionRelativeToFloor(size), y, z);
-        isVisible = false;
-        shootable = new Array();
-
-        sprite = new BaseActor3D(0, 0, 0, stage3D);
-        sprite.buildModel(size, size, .001f, true);
-        sprite.setColor(originalColor);
+        initializeSprite(size);
         turnBy(-180 + rotation);
-        tilePath = null;
+        setPosition(GameUtils.getPositionRelativeToFloor(size), y, z);
+        setBaseRectangle();
+        isVisible = false;
     }
 
     @Override
@@ -78,32 +83,26 @@ public class Enemy extends BaseActor3D {
         super.act(dt);
 
         totalTime += dt;
-        setIntervalFlag(dt);
         handleSprite();
 
         if (isDead) return;
 
         setDirection();
+        setDirectionalSprites();
 
-        if (intervalFlag) {
-            isPlayerVisible = isPlayerVisible();
-            if (isPlayerVisible) {
-                isActive = true;
-                isAttacking = true;
-                tilePathCounter = 0;
-                isPlayerLastPositionKnown = true;
-                tilePath = null;
-            }
-        }
-
-        if (!isPlayerVisible && isPlayerLastPositionKnown) {
-            tilePath = getPathTo(tileGraph, this, player, floorTiles);
-            isPlayerLastPositionKnown = false;
-        }
+        attackIfPlayerIsVisible();
+        setPathToLastKnownPlayerPosition();
 
         if (isActive && tilePath != null) {
             isAttacking = false;
             walkTilePath();
+        }
+    }
+
+    private void setPathToLastKnownPlayerPosition() {
+        if (!isPlayerVisible && isPlayerLastPositionKnown) {
+            tilePath = getPathTo(player);
+            isPlayerLastPositionKnown = false;
         }
     }
 
@@ -115,12 +114,19 @@ public class Enemy extends BaseActor3D {
 
     public void die() {
         if (isDead) return;
+        isDead = true;
+        totalTime = 0f;
+        isCollisionEnabled = false;
+        currentAnimation = dieAnimation;
     }
 
-    public void decrementHealth(int amount) {
+    public boolean isDeadAfterTakingDamage(int amount) {
         health -= amount;
-        if (health < 0)
+        if (health <= 0) {
             die();
+            return true;
+        }
+        return false;
     }
 
     public void forceMoveAwayFrom(BaseActor3D source) {
@@ -130,7 +136,7 @@ public class Enemy extends BaseActor3D {
         forceTime = totalTime + SECONDS_FORCED_TO_MOVE;
     }
 
-    public void setShootable(Array<BaseActor3D> shootable) {
+    public void setShootableList(Array<BaseActor3D> shootable) {
         this.shootable.clear();
         for (BaseActor3D baseActor3D : shootable)
             if (baseActor3D != this)
@@ -142,28 +148,12 @@ public class Enemy extends BaseActor3D {
         if (!isActive) {
             isActive = true;
             playActivateSound();
-            tilePath = getPathTo(tileGraph, this, source, floorTiles);
-            tilePathCounter = 0;
+            setNewAIPath(source);
         }
     }
 
-    public BaseActor3D tellWhereToGo() {
-        if (goalTile != null)
-            return goalTile;
-        else return this;
-    }
-
     protected boolean isPlayerVisible() {
-        if (
-                (
-                        direction == Directions.LEFT_FRONT ||
-                                direction == Directions.RIGHT_FRONT ||
-                                direction == Directions.FRONT ||
-                                direction == Directions.RIGHT_SIDE ||
-                                direction == Directions.LEFT_SIDE
-                ) &&
-                        isWithinDistance(VISIBILITY_RANGE, player)
-        ) {
+        if (isDirectionFrontOrSides() && isWithinDistance(VISIBILITY_RANGE, player)) {
             int index = GameUtils.getRayPickedListIndex(position, player.position.cpy().sub(position), shootable);
             if (index > -1 && shootable.get(index).getClass().getSimpleName().equalsIgnoreCase("player"))
                 return true;
@@ -181,15 +171,77 @@ public class Enemy extends BaseActor3D {
     protected void walkTilePath() {
         if (tilePath != null && tilePathCounter < tilePath.getCount()) {
             if (!isOnCenter(tilePath.get(tilePathCounter))) {
-                setTurnAngle(GameUtils.getAngleTowardsBaseActor3D(this, tilePath.get(tilePathCounter)));
-                moveForward(movementSpeed);
+                moveToward(tilePath.get(tilePathCounter));
             } else if (isOnCenter(tilePath.get(tilePathCounter))) {
                 if (tilePathCounter < tilePath.getCount())
                     tilePathCounter++;
             }
         } else if (tilePathCounter >= tilePath.getCount()) {
             isActive = false;
+            tilePath = null;
         }
+    }
+
+    protected void moveToward(BaseActor3D baseActor3D) {
+        setTurnAngle(GameUtils.getAngleTowardsBaseActor3D(this, baseActor3D));
+        moveForward(movementSpeed);
+    }
+
+    protected void moveToward(float angle) {
+        setTurnAngle(angle);
+        moveForward(movementSpeed);
+    }
+
+    protected void setDirectionalSprites() {
+        if (direction == Directions.FRONT)
+            currentAnimation = walkFrontAnimation;
+        else if (direction == Directions.LEFT_FRONT)
+            currentAnimation = walkFrontSideLeftAnimation;
+        else if (direction == Directions.LEFT_SIDE)
+            currentAnimation = walkSideLeftAnimation;
+        else if (direction == Directions.LEFT_BACK)
+            currentAnimation = walkBackSideLeftAnimation;
+        else if (direction == Directions.BACK)
+            currentAnimation = walkBackAnimation;
+        else if (direction == Directions.RIGHT_BACK)
+            currentAnimation = walkBackSideRightAnimation;
+        else if (direction == Directions.RIGHT_SIDE)
+            currentAnimation = walkSideRightAnimation;
+        else if (direction == Directions.RIGHT_FRONT)
+            currentAnimation = walkFrontSideRightAnimation;
+    }
+
+    private boolean isDirectionFrontOrSides() {
+        return direction == Directions.LEFT_FRONT ||
+                direction == Directions.RIGHT_FRONT ||
+                direction == Directions.FRONT ||
+                direction == Directions.RIGHT_SIDE ||
+                direction == Directions.LEFT_SIDE;
+    }
+
+    private void attackIfPlayerIsVisible() {
+        if (stage3D.intervalFlag) {
+            isPlayerVisible = isPlayerVisible();
+            if (isPlayerVisible)
+                attack();
+        }
+    }
+
+    private void attack() {
+        isActive = true;
+        isAttacking = true;
+        isPlayerLastPositionKnown = true;
+        resetAIPath();
+    }
+
+    private void setNewAIPath(BaseActor3D source) {
+        tilePath = getPathTo(source);
+        tilePathCounter = 0;
+    }
+
+    private void resetAIPath() {
+        tilePath = null;
+        tilePathCounter = 0;
     }
 
     private void playActivateSound() {
@@ -230,27 +282,23 @@ public class Enemy extends BaseActor3D {
             direction = Directions.LEFT_FRONT;
     }
 
-    private void setIntervalFlag(float dt) {
-        if (intervalCounter > INTERVAL_COUNTER_FREQUENCY) {
-            intervalFlag = true;
-            intervalCounter = 0;
-        } else {
-            intervalFlag = false;
-            intervalCounter += dt;
-        }
-    }
-
-    private GraphPath<Tile> getPathTo(TileGraph tileGraph, BaseActor3D actor, BaseActor3D source, Array<Tile> tiles) {
-        Tile startTile = getTileActorIsOn(actor, tiles);
-        goalTile = getTileActorIsOn(source, tiles);
+    private GraphPath<Tile> getPathTo(BaseActor3D source) {
+        Tile startTile = getTileActorIsOn(this, floorTiles);
+        goalTile = getTileActorIsOn(source, floorTiles);
         return tileGraph.findPath(startTile, goalTile);
     }
 
-    private Tile getTileActorIsOn(BaseActor3D baseActor3D, Array<Tile> tiles) {
+    private Tile getTileActorIsOn(BaseActor3D actor, Array<Tile> tiles) {
         for (Tile tile : tiles)
-            if (baseActor3D.overlaps(tile))
+            if (actor.overlaps(tile))
                 return tile;
-        Gdx.app.error(getClass().getSimpleName(), "Error: could not find the tile the " + baseActor3D.getClass().getSimpleName() + " is standing on!");
+        Gdx.app.error(getClass().getSimpleName(), "Error: could not find the tile the " + actor.getClass().getSimpleName() + " is standing on!");
         return null;
+    }
+
+    private void initializeSprite(float size) {
+        sprite = new BaseActor3D(0, 0, 0, stage3D);
+        sprite.buildModel(size, size, .001f, true);
+        sprite.setColor(originalColor);
     }
 }

@@ -2,7 +2,6 @@ package no.sandramoen.commanderqueen.actors.characters;
 
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.g3d.Environment;
 import com.badlogic.gdx.graphics.g3d.ModelBatch;
 import com.badlogic.gdx.utils.Array;
@@ -19,17 +18,6 @@ public class Ghoul extends Enemy {
     private float attackCounter = 0f;
     private final float ATTACK_FREQUENCY = 2f;
 
-    private Animation<TextureRegion> currentAnimation;
-    private Animation<TextureRegion> walkFrontAnimation;
-    private Animation<TextureRegion> walkFrontSideLeftAnimation;
-    private Animation<TextureRegion> walkFrontSideRightAnimation;
-    private Animation<TextureRegion> walkSideLeftAnimation;
-    private Animation<TextureRegion> walkSideRightAnimation;
-    private Animation<TextureRegion> walkBackSideLeftAnimation;
-    private Animation<TextureRegion> walkBackSideRightAnimation;
-    private Animation<TextureRegion> walkBackAnimation;
-    private Animation<TextureRegion> dieAnimation;
-
     public Ghoul(float y, float z, Stage3D s, Player player, Float rotation, TileGraph tileGraph, Array<Tile> floorTiles) {
         super(y, z, s, player, rotation, tileGraph, floorTiles);
         movementSpeed = .05f;
@@ -44,22 +32,13 @@ public class Ghoul extends Enemy {
 
         if (isForcedToMove)
             forceMove(dt);
-        else if (isActive && isAttacking && (!isDead || totalTime < timeToStopMoving)) {
-            setTurnAngle(angleTowardPlayer);
-            moveForward(movementSpeed);
-        }
+        else if (isActive && isAttacking && (!isDead || totalTime < timeToStopMoving))
+            moveToward(angleTowardPlayer);
 
         if (isDead)
             return;
 
-        if (attackCounter > ATTACK_FREQUENCY) {
-            isReadyToAttack = true;
-        } else {
-            attackCounter += dt;
-            isReadyToAttack = false;
-        }
-
-        setDirectionalSprites();
+        checkIfReadyToAttack(dt);
     }
 
     @Override
@@ -69,11 +48,8 @@ public class Ghoul extends Enemy {
 
     @Override
     public void die() {
-        isDead = true;
+        super.die();
         GameUtils.playSoundRelativeToDistance(BaseGame.ghoulDeathSound, distanceBetween(player), VOCAL_RANGE, .75f);
-        totalTime = 0f;
-        currentAnimation = dieAnimation;
-        isCollisionEnabled = false;
     }
 
     public boolean isReadyToAttack() {
@@ -82,23 +58,13 @@ public class Ghoul extends Enemy {
         return isReadyToAttack;
     }
 
-    private void setDirectionalSprites() {
-        if (direction == Directions.FRONT)
-            currentAnimation = walkFrontAnimation;
-        else if (direction == Directions.LEFT_FRONT)
-            currentAnimation = walkFrontSideLeftAnimation;
-        else if (direction == Directions.LEFT_SIDE)
-            currentAnimation = walkSideLeftAnimation;
-        else if (direction == Directions.LEFT_BACK)
-            currentAnimation = walkBackSideLeftAnimation;
-        else if (direction == Directions.BACK)
-            currentAnimation = walkBackAnimation;
-        else if (direction == Directions.RIGHT_BACK)
-            currentAnimation = walkBackSideRightAnimation;
-        else if (direction == Directions.RIGHT_SIDE)
-            currentAnimation = walkSideRightAnimation;
-        else if (direction == Directions.RIGHT_FRONT)
-            currentAnimation = walkFrontSideRightAnimation;
+    private void checkIfReadyToAttack(float dt) {
+        if (attackCounter > ATTACK_FREQUENCY) {
+            isReadyToAttack = true;
+        } else {
+            attackCounter += dt;
+            isReadyToAttack = false;
+        }
     }
 
     private void initializeAnimation() {

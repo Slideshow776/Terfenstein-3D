@@ -48,6 +48,9 @@ allprojects {
 project(":desktop") {
     apply plugin: "java-library"
 
+    apply plugin: "java"
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
 
     dependencies {
         implementation project(":core")
@@ -62,6 +65,8 @@ project(":desktop") {
 project(":android") {
     apply plugin: "com.android.application"
 
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
     configurations { natives }
 
     dependencies {
@@ -82,6 +87,9 @@ project(":html") {
     apply plugin: "war"
     apply plugin: "org.gretty"
 
+    apply plugin: "java"
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
 
     dependencies {
         implementation project(":core")
