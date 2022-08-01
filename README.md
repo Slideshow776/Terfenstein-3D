@@ -17,8 +17,12 @@ Read on below for project specifics.
 
 1. :blue_heart: Overall Vision 
     * **Write a short paragraph explaining the game:**
+    
+       This is a first person shooter (fps) about infiltrating gender fascists facility and disabling their weapons of mass destruction.       
             
     * **Describe the genre:**
+
+         > First-person shooter (FPS) is a sub-genre of shooter video games centered on gun and other weapon-based combat in a first-person perspective, with the player experiencing the action through the eyes of the protagonist and controlling the player character in a three-dimensional space. --[wikipedia](https://en.wikipedia.org/wiki/First-person_shooter)
         
     * **What is the target audience?**
         
