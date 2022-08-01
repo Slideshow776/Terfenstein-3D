@@ -11,7 +11,7 @@ import com.badlogic.gdx.utils.Array;
 
 import no.sandramoen.commanderqueen.actors.Barrel;
 import no.sandramoen.commanderqueen.actors.hud.HUD;
-import no.sandramoen.commanderqueen.actors.characters.Ghoul;
+import no.sandramoen.commanderqueen.actors.characters.Menig;
 import no.sandramoen.commanderqueen.actors.characters.Player;
 import no.sandramoen.commanderqueen.actors.Tile;
 import no.sandramoen.commanderqueen.actors.hud.Weapon;
@@ -106,15 +106,15 @@ public class LevelScreen extends BaseScreen3D {
 
     private void determineConsequencesOfPick(int index) {
         if (index >= 0) {
-            if (shootable.get(index).getClass().getSimpleName().equals("Ghoul")) {
-                Ghoul ghoul = (Ghoul) shootable.get(index);
-                activateEnemies(45, ghoul);
-                if (ghoul.isDeadAfterTakingDamage(1)) {
-                    removeEnemy(ghoul);
+            if (shootable.get(index).getClass().getSimpleName().equalsIgnoreCase("menig")) {
+                Menig menig = (Menig) shootable.get(index);
+                activateEnemies(45, menig);
+                if (menig.isDeadAfterTakingDamage(1)) {
+                    removeEnemy(menig);
                     hud.incrementScore(10, false);
                     hud.setKillFace();
                 }
-            } else if (shootable.get(index).getClass().getSimpleName().equals("Barrel")) {
+            } else if (shootable.get(index).getClass().getSimpleName().equalsIgnoreCase("barrel")) {
                 Barrel barrel = (Barrel) shootable.get(index);
                 explodeBarrelWithDelay(barrel);
             }
@@ -142,7 +142,7 @@ public class LevelScreen extends BaseScreen3D {
 
     private void setCrosshairColorIfEnemy(int index) {
         if (index >= 0) {
-            if (shootable.get(index).getClass().getSimpleName().equals("Ghoul") || shootable.get(index).getClass().getSimpleName().equals("Barrel"))
+            if (shootable.get(index).getClass().getSimpleName().equalsIgnoreCase("menig") || shootable.get(index).getClass().getSimpleName().equalsIgnoreCase("barrel"))
                 weapon.crosshair.setColor(BaseGame.redColor);
             else
                 weapon.crosshair.setColor(Color.WHITE);
@@ -240,12 +240,10 @@ public class LevelScreen extends BaseScreen3D {
     }
 
     private void enemyMeleeAttack(int i) {
-        if (enemies.get(i).getClass().getSimpleName().equals("Ghoul")) {
-            Ghoul ghoul = (Ghoul) enemies.get(i);
-            if (ghoul.isReadyToAttack()) {
+        if (enemies.get(i).getClass().getSimpleName().equalsIgnoreCase("menig")) {
+            Menig menig = (Menig) enemies.get(i);
+            if (menig.isReadyToAttack())
                 hud.decrementHealth(10);
-                GameUtils.playSoundRelativeToDistance(BaseGame.ghoulDeathSound, ghoul.distanceBetween(player), ghoul.VOCAL_RANGE, 1.5f);
-            }
         }
     }
 

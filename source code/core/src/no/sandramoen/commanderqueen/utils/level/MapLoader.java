@@ -10,7 +10,7 @@ import com.badlogic.gdx.utils.Array;
 
 import no.sandramoen.commanderqueen.actors.Barrel;
 import no.sandramoen.commanderqueen.actors.Tile;
-import no.sandramoen.commanderqueen.actors.characters.Ghoul;
+import no.sandramoen.commanderqueen.actors.characters.Menig;
 import no.sandramoen.commanderqueen.actors.characters.Player;
 import no.sandramoen.commanderqueen.actors.pickups.Ammo;
 import no.sandramoen.commanderqueen.actors.pickups.Armor;
@@ -130,7 +130,7 @@ public class MapLoader {
         if (startPoint.getProperties().get("rotation") != null)
             rotation = (float) startPoint.getProperties().get("rotation");
         rotation %= 360;
-        player = new Player(playerX, playerY, stage3D, rotation);
+        player = new Player((int) playerX, (int) playerY, stage3D, rotation);
     }
 
     private void initializeEnemies() {
@@ -142,7 +142,7 @@ public class MapLoader {
             if (props.get("rotation") != null)
                 rotation = (Float) props.get("rotation");
             rotation %= 360;
-            enemies.add(new Ghoul((int) x, (int) y, stage3D, player, rotation, tileGraph, floorTiles));
+            enemies.add(new Menig((int) x, (int) y, stage3D, player, rotation, tileGraph, floorTiles));
             shootable.add(enemies.get(enemies.size - 1));
         }
 

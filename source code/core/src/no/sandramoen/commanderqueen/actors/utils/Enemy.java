@@ -46,7 +46,19 @@ public class Enemy extends BaseActor3D {
 
     protected Directions direction;
 
+    protected enum State {IDLE, WALKING, HURT}
+
+    protected State state = State.IDLE;
+
     protected Animation<TextureRegion> currentAnimation;
+    protected Animation<TextureRegion> idleFrontAnimation;
+    protected Animation<TextureRegion> idleFrontSideLeftAnimation;
+    protected Animation<TextureRegion> idleFrontSideRightAnimation;
+    protected Animation<TextureRegion> idleSideLeftAnimation;
+    protected Animation<TextureRegion> idleSideRightAnimation;
+    protected Animation<TextureRegion> idleBackSideLeftAnimation;
+    protected Animation<TextureRegion> idleBackSideRightAnimation;
+    protected Animation<TextureRegion> idleBackAnimation;
     protected Animation<TextureRegion> walkFrontAnimation;
     protected Animation<TextureRegion> walkFrontSideLeftAnimation;
     protected Animation<TextureRegion> walkFrontSideRightAnimation;
@@ -55,6 +67,7 @@ public class Enemy extends BaseActor3D {
     protected Animation<TextureRegion> walkBackSideLeftAnimation;
     protected Animation<TextureRegion> walkBackSideRightAnimation;
     protected Animation<TextureRegion> walkBackAnimation;
+    protected Animation<TextureRegion> hurtAnimation;
     protected Animation<TextureRegion> dieAnimation;
 
     private boolean isPlayerVisible;
@@ -76,6 +89,7 @@ public class Enemy extends BaseActor3D {
         setPosition(GameUtils.getPositionRelativeToFloor(size), y, z);
         setBaseRectangle();
         isVisible = false;
+        setDirection();
     }
 
     @Override
@@ -87,14 +101,21 @@ public class Enemy extends BaseActor3D {
 
         if (isDead) return;
 
+        /*System.out.println("active: " + isActive + ", state: " + state + ", direction: " + direction);*/
+
         setDirection();
-        setDirectionalSprites();
+
+        if (state == State.HURT && !stage3D.intervalFlag)
+            state = State.WALKING; // TODO
+        else if (state != State.HURT && stage3D.intervalFlag)
+            setDirectionalSprites();
 
         attackIfPlayerIsVisible();
         setPathToLastKnownPlayerPosition();
 
         if (isActive && tilePath != null) {
             isAttacking = false;
+            state = State.WALKING;
             walkTilePath();
         }
     }
@@ -126,6 +147,14 @@ public class Enemy extends BaseActor3D {
             die();
             return true;
         }
+        currentAnimation = hurtAnimation;
+        state = State.HURT;
+
+        setTurnAngle(angleTowardPlayer);
+        setDirection();
+        if (isPlayerVisible())
+            setNewAIPath(player);
+
         return false;
     }
 
@@ -193,22 +222,41 @@ public class Enemy extends BaseActor3D {
     }
 
     protected void setDirectionalSprites() {
-        if (direction == Directions.FRONT)
-            currentAnimation = walkFrontAnimation;
-        else if (direction == Directions.LEFT_FRONT)
-            currentAnimation = walkFrontSideLeftAnimation;
-        else if (direction == Directions.LEFT_SIDE)
-            currentAnimation = walkSideLeftAnimation;
-        else if (direction == Directions.LEFT_BACK)
-            currentAnimation = walkBackSideLeftAnimation;
-        else if (direction == Directions.BACK)
-            currentAnimation = walkBackAnimation;
-        else if (direction == Directions.RIGHT_BACK)
-            currentAnimation = walkBackSideRightAnimation;
-        else if (direction == Directions.RIGHT_SIDE)
-            currentAnimation = walkSideRightAnimation;
-        else if (direction == Directions.RIGHT_FRONT)
-            currentAnimation = walkFrontSideRightAnimation;
+        if (state == State.WALKING) {
+            if (direction == Directions.FRONT)
+                currentAnimation = walkFrontAnimation;
+            else if (direction == Directions.LEFT_FRONT)
+                currentAnimation = walkFrontSideLeftAnimation;
+            else if (direction == Directions.LEFT_SIDE)
+                currentAnimation = walkSideLeftAnimation;
+            else if (direction == Directions.LEFT_BACK)
+                currentAnimation = walkBackSideLeftAnimation;
+            else if (direction == Directions.BACK)
+                currentAnimation = walkBackAnimation;
+            else if (direction == Directions.RIGHT_BACK)
+                currentAnimation = walkBackSideRightAnimation;
+            else if (direction == Directions.RIGHT_SIDE)
+                currentAnimation = walkSideRightAnimation;
+            else if (direction == Directions.RIGHT_FRONT)
+                currentAnimation = walkFrontSideRightAnimation;
+        } else if (state == State.IDLE) {
+            if (direction == Directions.FRONT)
+                currentAnimation = idleFrontAnimation;
+            else if (direction == Directions.LEFT_FRONT)
+                currentAnimation = idleFrontSideLeftAnimation;
+            else if (direction == Directions.LEFT_SIDE)
+                currentAnimation = idleSideLeftAnimation;
+            else if (direction == Directions.LEFT_BACK)
+                currentAnimation = idleBackSideLeftAnimation;
+            else if (direction == Directions.BACK)
+                currentAnimation = idleBackAnimation;
+            else if (direction == Directions.RIGHT_BACK)
+                currentAnimation = idleBackSideRightAnimation;
+            else if (direction == Directions.RIGHT_SIDE)
+                currentAnimation = idleSideRightAnimation;
+            else if (direction == Directions.RIGHT_FRONT)
+                currentAnimation = idleFrontSideRightAnimation;
+        }
     }
 
     private boolean isDirectionFrontOrSides() {
@@ -230,6 +278,7 @@ public class Enemy extends BaseActor3D {
     private void attack() {
         isActive = true;
         isAttacking = true;
+        state = State.WALKING;
         isPlayerLastPositionKnown = true;
         resetAIPath();
     }
@@ -245,8 +294,8 @@ public class Enemy extends BaseActor3D {
     }
 
     private void playActivateSound() {
-        if (thisEnemyIsA("Ghoul"))
-            GameUtils.playSoundRelativeToDistance(BaseGame.ghoulDeathSound, distanceBetween(player), VOCAL_RANGE, .75f);
+        if (thisEnemyIsA("menig"))
+            GameUtils.playSoundRelativeToDistance(BaseGame.menigActiveSound, distanceBetween(player) * 1.2f, VOCAL_RANGE);
     }
 
     private boolean thisEnemyIsA(String name) {
