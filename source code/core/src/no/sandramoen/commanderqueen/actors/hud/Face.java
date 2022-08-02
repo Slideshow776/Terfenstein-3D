@@ -77,12 +77,7 @@ public class Face extends BaseActor {
     private void setDelayedStAnimation() {
         addAction(Actions.sequence(
                 Actions.delay(1f),
-                Actions.run(new Runnable() {
-                    @Override
-                    public void run() {
-                        setSTAnimation(healthIndex);
-                    }
-                })
+                Actions.run(() -> setSTAnimation(healthIndex))
         ));
     }
 

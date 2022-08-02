@@ -23,7 +23,7 @@ public class Player extends BaseActor3D {
     private float forceMoveY = movementSpeed;
     private float forceMoveZ = movementSpeed;
     private float forceTime;
-    private float secondsForcedToMove = .25f;
+    private final float SECONDS_FORCED_TO_MOVE = .25f;
 
     public Player(float y, float z, Stage3D stage3D, float rotation) {
         super(0, y, z, stage3D);
@@ -55,14 +55,14 @@ public class Player extends BaseActor3D {
     }
 
     public void muzzleLight() {
-        stage3D.lightManager.addPointLight(position, .3f, .1f, 0, 25, .1f, .1f / 3);
+        stage3D.lightManager.addMuzzleLight(position);
     }
 
     public void forceMoveAwayFrom(BaseActor3D source) {
         isForcedToMove = true;
         if (position.y - source.position.y < 1) forceMoveY *= -1;
         if (position.z - source.position.z < 1) forceMoveZ *= -1;
-        forceTime = totalTime + secondsForcedToMove;
+        forceTime = totalTime + SECONDS_FORCED_TO_MOVE;
     }
 
     private void forceMove(float dt) {
@@ -128,6 +128,7 @@ public class Player extends BaseActor3D {
     }
 
     private void mousePolling() {
-        turnPlayer(rotateSpeed * Gdx.input.getDeltaX() * BaseGame.mouseMovementSensitivity);
+        if (Gdx.input.getDeltaX() < 300)
+            turnPlayer(rotateSpeed * Gdx.input.getDeltaX() * BaseGame.mouseMovementSensitivity);
     }
 }

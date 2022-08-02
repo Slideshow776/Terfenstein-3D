@@ -198,226 +198,254 @@ enemies/menig/idle side right 0
   orig: 48, 52
   offset: 0, 0
   index: -1
-enemies/menig/walk back 0
+enemies/menig/melee 0
   rotate: false
   xy: 102, 2
   size: 48, 52
   orig: 48, 52
   offset: 0, 0
   index: -1
-enemies/menig/walk back 1
+enemies/menig/melee 1
   rotate: false
   xy: 152, 56
   size: 48, 52
   orig: 48, 52
   offset: 0, 0
   index: -1
-enemies/menig/walk back 2
+enemies/menig/shoot 0
   rotate: false
   xy: 202, 110
   size: 48, 52
   orig: 48, 52
   offset: 0, 0
   index: -1
-enemies/menig/walk back 3
+enemies/menig/shoot 1
   rotate: false
   xy: 252, 164
   size: 48, 52
   orig: 48, 52
   offset: 0, 0
   index: -1
-enemies/menig/walk back side left 0
+enemies/menig/walk back 0
   rotate: false
   xy: 152, 2
   size: 48, 52
   orig: 48, 52
   offset: 0, 0
   index: -1
-enemies/menig/walk back side left 1
+enemies/menig/walk back 1
   rotate: false
   xy: 202, 56
   size: 48, 52
   orig: 48, 52
   offset: 0, 0
   index: -1
-enemies/menig/walk back side left 2
+enemies/menig/walk back 2
   rotate: false
   xy: 252, 110
   size: 48, 52
   orig: 48, 52
   offset: 0, 0
   index: -1
-enemies/menig/walk back side left 3
+enemies/menig/walk back 3
   rotate: false
   xy: 302, 164
   size: 48, 52
   orig: 48, 52
   offset: 0, 0
   index: -1
-enemies/menig/walk back side right 0
+enemies/menig/walk back side left 0
   rotate: false
   xy: 202, 2
   size: 48, 52
   orig: 48, 52
   offset: 0, 0
   index: -1
-enemies/menig/walk back side right 1
+enemies/menig/walk back side left 1
   rotate: false
   xy: 252, 56
   size: 48, 52
   orig: 48, 52
   offset: 0, 0
   index: -1
-enemies/menig/walk back side right 2
+enemies/menig/walk back side left 2
   rotate: false
   xy: 302, 110
   size: 48, 52
   orig: 48, 52
   offset: 0, 0
   index: -1
-enemies/menig/walk back side right 3
+enemies/menig/walk back side left 3
   rotate: false
   xy: 352, 164
   size: 48, 52
   orig: 48, 52
   offset: 0, 0
   index: -1
-enemies/menig/walk front 0
+enemies/menig/walk back side right 0
   rotate: false
   xy: 252, 2
   size: 48, 52
   orig: 48, 52
   offset: 0, 0
   index: -1
-enemies/menig/walk front 1
+enemies/menig/walk back side right 1
   rotate: false
   xy: 302, 56
   size: 48, 52
   orig: 48, 52
   offset: 0, 0
   index: -1
-enemies/menig/walk front 2
+enemies/menig/walk back side right 2
   rotate: false
   xy: 352, 110
   size: 48, 52
   orig: 48, 52
   offset: 0, 0
   index: -1
-enemies/menig/walk front 3
+enemies/menig/walk back side right 3
   rotate: false
   xy: 402, 164
   size: 48, 52
   orig: 48, 52
   offset: 0, 0
   index: -1
-enemies/menig/walk front side left 0
+enemies/menig/walk front 0
   rotate: false
   xy: 302, 2
   size: 48, 52
   orig: 48, 52
   offset: 0, 0
   index: -1
-enemies/menig/walk front side left 1
+enemies/menig/walk front 1
   rotate: false
   xy: 352, 56
   size: 48, 52
   orig: 48, 52
   offset: 0, 0
   index: -1
-enemies/menig/walk front side left 2
+enemies/menig/walk front 2
   rotate: false
   xy: 402, 110
   size: 48, 52
   orig: 48, 52
   offset: 0, 0
   index: -1
-enemies/menig/walk front side left 3
+enemies/menig/walk front 3
   rotate: false
   xy: 452, 164
   size: 48, 52
   orig: 48, 52
   offset: 0, 0
   index: -1
-enemies/menig/walk front side right 0
+enemies/menig/walk front side left 0
   rotate: false
   xy: 352, 2
   size: 48, 52
   orig: 48, 52
   offset: 0, 0
   index: -1
-enemies/menig/walk front side right 1
+enemies/menig/walk front side left 1
   rotate: false
   xy: 402, 56
   size: 48, 52
   orig: 48, 52
   offset: 0, 0
   index: -1
-enemies/menig/walk front side right 2
+enemies/menig/walk front side left 2
   rotate: false
   xy: 452, 110
   size: 48, 52
   orig: 48, 52
   offset: 0, 0
   index: -1
-enemies/menig/walk front side right 3
+enemies/menig/walk front side left 3
   rotate: false
   xy: 502, 164
   size: 48, 52
   orig: 48, 52
   offset: 0, 0
   index: -1
-enemies/menig/walk side left 0
+enemies/menig/walk front side right 0
   rotate: false
   xy: 402, 2
   size: 48, 52
   orig: 48, 52
   offset: 0, 0
   index: -1
-enemies/menig/walk side left 1
+enemies/menig/walk front side right 1
   rotate: false
   xy: 452, 56
   size: 48, 52
   orig: 48, 52
   offset: 0, 0
   index: -1
-enemies/menig/walk side left 2
+enemies/menig/walk front side right 2
   rotate: false
   xy: 502, 110
   size: 48, 52
   orig: 48, 52
   offset: 0, 0
   index: -1
-enemies/menig/walk side left 3
+enemies/menig/walk front side right 3
   rotate: false
   xy: 552, 164
   size: 48, 52
   orig: 48, 52
   offset: 0, 0
   index: -1
-enemies/menig/walk side right 0
+enemies/menig/walk side left 0
   rotate: false
   xy: 452, 2
   size: 48, 52
   orig: 48, 52
   offset: 0, 0
   index: -1
-enemies/menig/walk side right 1
+enemies/menig/walk side left 1
   rotate: false
   xy: 502, 56
   size: 48, 52
   orig: 48, 52
   offset: 0, 0
   index: -1
-enemies/menig/walk side right 2
+enemies/menig/walk side left 2
   rotate: false
   xy: 552, 110
   size: 48, 52
   orig: 48, 52
   offset: 0, 0
   index: -1
-enemies/menig/walk side right 3
+enemies/menig/walk side left 3
   rotate: false
   xy: 602, 164
+  size: 48, 52
+  orig: 48, 52
+  offset: 0, 0
+  index: -1
+enemies/menig/walk side right 0
+  rotate: false
+  xy: 502, 2
+  size: 48, 52
+  orig: 48, 52
+  offset: 0, 0
+  index: -1
+enemies/menig/walk side right 1
+  rotate: false
+  xy: 552, 56
+  size: 48, 52
+  orig: 48, 52
+  offset: 0, 0
+  index: -1
+enemies/menig/walk side right 2
+  rotate: false
+  xy: 602, 110
+  size: 48, 52
+  orig: 48, 52
+  offset: 0, 0
+  index: -1
+enemies/menig/walk side right 3
+  rotate: false
+  xy: 652, 164
   size: 48, 52
   orig: 48, 52
   offset: 0, 0

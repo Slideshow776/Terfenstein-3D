@@ -42,6 +42,10 @@ public class LightManager {
         environment.set(new ColorAttribute(ColorAttribute.AmbientLight, .4f, .4f, .5f, 1f));
     }
 
+    public void addMuzzleLight(Vector3 position) {
+        addPointLight(position, .3f, .1f, 0, 50, .1f, .1f / 3);
+    }
+
     private void updatePointLights(float dt) {
         for (MyPointLight light : pointLights) {
             light.counter += dt;

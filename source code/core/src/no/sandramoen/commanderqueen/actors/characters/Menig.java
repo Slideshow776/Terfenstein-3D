@@ -2,11 +2,11 @@ package no.sandramoen.commanderqueen.actors.characters;
 
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.graphics.g3d.Environment;
-import com.badlogic.gdx.graphics.g3d.ModelBatch;
+import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Array;
 
 import no.sandramoen.commanderqueen.actors.Tile;
+import no.sandramoen.commanderqueen.actors.hud.HUD;
 import no.sandramoen.commanderqueen.actors.utils.Enemy;
 import no.sandramoen.commanderqueen.utils.BaseGame;
 import no.sandramoen.commanderqueen.utils.GameUtils;
@@ -14,38 +14,14 @@ import no.sandramoen.commanderqueen.utils.Stage3D;
 import no.sandramoen.commanderqueen.utils.pathFinding.TileGraph;
 
 public class Menig extends Enemy {
-    private float timeToStopMoving = 1.1f;
-    private float attackCounter = 0f;
-    private final float ATTACK_FREQUENCY = 2f;
 
-    public Menig(float y, float z, Stage3D s, Player player, Float rotation, TileGraph tileGraph, Array<Tile> floorTiles) {
-        super(y, z, s, player, rotation, tileGraph, floorTiles);
+    public Menig(float y, float z, Stage3D s, Player player, Float rotation, TileGraph tileGraph, Array<Tile> floorTiles, Stage stage, HUD hud) {
+        super(y, z, s, player, rotation, tileGraph, floorTiles, stage, hud);
         movementSpeed = .05f;
         health = 2;
+        shootImageDelay = .25f;
 
         initializeAnimations();
-    }
-
-    @Override
-    public void act(float dt) {
-        super.act(dt);
-        if (isPause)
-            return;
-
-        if (isForcedToMove)
-            forceMove(dt);
-        else if (isActive && isAttacking && (!isDead || totalTime < timeToStopMoving))
-            moveToward(angleTowardPlayer);
-
-        if (isDead)
-            return;
-
-        checkIfReadyToAttack(dt);
-    }
-
-    @Override
-    public void draw(ModelBatch batch, Environment env) {
-        sprite.loadImage(currentAnimation.getKeyFrame(totalTime).toString());
     }
 
     @Override
@@ -61,27 +37,66 @@ public class Menig extends Enemy {
         return super.isDeadAfterTakingDamage(amount);
     }
 
-    public boolean isReadyToAttack() {
-        if (isReadyToAttack == true)
-            attackCounter = 0;
-        return isReadyToAttack;
+    @Override
+    protected void shootWeapon() {
+        super.shootWeapon();
+        BaseGame.pistolShotSound.play(BaseGame.soundVolume, .6f, 0);
     }
 
-    private void checkIfReadyToAttack(float dt) {
-        if (attackCounter > ATTACK_FREQUENCY) {
-            isReadyToAttack = true;
-        } else {
-            attackCounter += dt;
-            isReadyToAttack = false;
-        }
+    @Override
+    protected void meleeWeapon() {
+        super.meleeWeapon();
+        BaseGame.menigMeleeSound.play(BaseGame.soundVolume);
+    }
+
+    @Override
+    protected void playActivateSound() {
+        super.playActivateSound();
+        GameUtils.playSoundRelativeToDistance(BaseGame.menigActiveSound, distanceBetween(player) * 1.2f, VOCAL_RANGE);
     }
 
     private void initializeAnimations() {
         initializeIdleAnimations();
         initializeWalkingAnimations();
+        initializeShootAnimation();
         initializeHurtAnimation();
+        initializeMeleeAnimation();
         initializeDeathAnimation();
         setDirectionalSprites();
+    }
+
+    private void initializeIdleAnimations() {
+        Array<TextureAtlas.AtlasRegion> animationImages = new Array();
+        animationImages.add(BaseGame.textureAtlas.findRegion("enemies/menig/idle front 0"));
+        idleFrontAnimation = new Animation(.2f, animationImages, Animation.PlayMode.LOOP);
+        animationImages.clear();
+
+        animationImages.add(BaseGame.textureAtlas.findRegion("enemies/menig/idle front side left 0"));
+        idleFrontSideLeftAnimation = new Animation(.2f, animationImages, Animation.PlayMode.LOOP);
+        animationImages.clear();
+
+        animationImages.add(BaseGame.textureAtlas.findRegion("enemies/menig/idle front side right 0"));
+        idleFrontSideRightAnimation = new Animation(.2f, animationImages, Animation.PlayMode.LOOP);
+        animationImages.clear();
+
+        animationImages.add(BaseGame.textureAtlas.findRegion("enemies/menig/idle side left 0"));
+        idleSideLeftAnimation = new Animation(.2f, animationImages, Animation.PlayMode.LOOP);
+        animationImages.clear();
+
+        animationImages.add(BaseGame.textureAtlas.findRegion("enemies/menig/idle side right 0"));
+        idleSideRightAnimation = new Animation(.2f, animationImages, Animation.PlayMode.LOOP);
+        animationImages.clear();
+
+        animationImages.add(BaseGame.textureAtlas.findRegion("enemies/menig/idle back side left 0"));
+        idleBackSideLeftAnimation = new Animation(.2f, animationImages, Animation.PlayMode.LOOP);
+        animationImages.clear();
+
+        animationImages.add(BaseGame.textureAtlas.findRegion("enemies/menig/idle back side right 0"));
+        idleBackSideRightAnimation = new Animation(.2f, animationImages, Animation.PlayMode.LOOP);
+        animationImages.clear();
+
+        animationImages.add(BaseGame.textureAtlas.findRegion("enemies/menig/idle back 0"));
+        idleBackAnimation = new Animation(.2f, animationImages, Animation.PlayMode.LOOP);
     }
 
     private void initializeWalkingAnimations() {
@@ -127,38 +142,26 @@ public class Menig extends Enemy {
         animationImages.clear();
     }
 
-    private void initializeIdleAnimations() {
+    private void initializeShootAnimation() {
         Array<TextureAtlas.AtlasRegion> animationImages = new Array();
-        animationImages.add(BaseGame.textureAtlas.findRegion("enemies/menig/idle front 0"));
-        idleFrontAnimation = new Animation(.2f, animationImages, Animation.PlayMode.LOOP);
-        animationImages.clear();
+        animationImages.add(BaseGame.textureAtlas.findRegion("enemies/menig/shoot 0"));
+        animationImages.add(BaseGame.textureAtlas.findRegion("enemies/menig/shoot 1"));
+        animationImages.add(BaseGame.textureAtlas.findRegion("enemies/menig/shoot 0"));
+        shootAnimation = new Animation(shootImageDelay, animationImages, Animation.PlayMode.NORMAL);
+    }
 
-        animationImages.add(BaseGame.textureAtlas.findRegion("enemies/menig/idle front side left 0"));
-        idleFrontSideLeftAnimation = new Animation(.2f, animationImages, Animation.PlayMode.LOOP);
-        animationImages.clear();
+    private void initializeMeleeAnimation() {
+        Array<TextureAtlas.AtlasRegion> animationImages = new Array();
+        animationImages.add(BaseGame.textureAtlas.findRegion("enemies/menig/melee 0"));
+        animationImages.add(BaseGame.textureAtlas.findRegion("enemies/menig/melee 1"));
+        animationImages.add(BaseGame.textureAtlas.findRegion("enemies/menig/melee 0"));
+        meleeAnimation = new Animation(shootImageDelay, animationImages, Animation.PlayMode.NORMAL);
+    }
 
-        animationImages.add(BaseGame.textureAtlas.findRegion("enemies/menig/idle front side right 0"));
-        idleFrontSideRightAnimation = new Animation(.2f, animationImages, Animation.PlayMode.LOOP);
-        animationImages.clear();
-
-        animationImages.add(BaseGame.textureAtlas.findRegion("enemies/menig/idle side left 0"));
-        idleSideLeftAnimation = new Animation(.2f, animationImages, Animation.PlayMode.LOOP);
-        animationImages.clear();
-
-        animationImages.add(BaseGame.textureAtlas.findRegion("enemies/menig/idle side right 0"));
-        idleSideRightAnimation = new Animation(.2f, animationImages, Animation.PlayMode.LOOP);
-        animationImages.clear();
-
-        animationImages.add(BaseGame.textureAtlas.findRegion("enemies/menig/idle back side left 0"));
-        idleBackSideLeftAnimation = new Animation(.2f, animationImages, Animation.PlayMode.LOOP);
-        animationImages.clear();
-
-        animationImages.add(BaseGame.textureAtlas.findRegion("enemies/menig/idle back side right 0"));
-        idleBackSideRightAnimation = new Animation(.2f, animationImages, Animation.PlayMode.LOOP);
-        animationImages.clear();
-
-        animationImages.add(BaseGame.textureAtlas.findRegion("enemies/menig/idle back 0"));
-        idleBackAnimation = new Animation(.2f, animationImages, Animation.PlayMode.LOOP);
+    private void initializeHurtAnimation() {
+        Array<TextureAtlas.AtlasRegion> animationImages = new Array();
+        animationImages.add(BaseGame.textureAtlas.findRegion("enemies/menig/hurt 0"));
+        hurtAnimation = new Animation(.25f, animationImages, Animation.PlayMode.NORMAL);
     }
 
     private void initializeDeathAnimation() {
@@ -166,11 +169,5 @@ public class Menig extends Enemy {
         for (int i = 0; i < 5; i++)
             animationImages.add(BaseGame.textureAtlas.findRegion("enemies/menig/die " + i));
         dieAnimation = new Animation(.25f, animationImages, Animation.PlayMode.NORMAL);
-    }
-
-    private void initializeHurtAnimation() {
-        Array<TextureAtlas.AtlasRegion> animationImages = new Array();
-        animationImages.add(BaseGame.textureAtlas.findRegion("enemies/menig/hurt 0"));
-        hurtAnimation = new Animation(.25f, animationImages, Animation.PlayMode.NORMAL);
     }
 }

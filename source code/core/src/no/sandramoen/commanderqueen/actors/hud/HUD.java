@@ -20,7 +20,7 @@ public class HUD extends BaseActor {
     private float armorProtectionValue = 1 / 3f;
 
     private float invulnerableCounter;
-    private final float INVULNERABLE_MAX_COUNT = 2f;
+    private final float INVULNERABLE_MAX_COUNT = 30f;
 
     private Label armorLabel;
     private Label healthLabel;
@@ -78,7 +78,7 @@ public class HUD extends BaseActor {
         if (isInvulnerable) return;
 
         amount = decrementArmor(amount);
-        if (health - amount < 0)
+        if (health - amount <= 0)
             health = 0;
         else
             health -= amount;

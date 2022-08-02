@@ -84,7 +84,7 @@ public class LevelScreen extends BaseScreen3D {
             player.isCollisionEnabled = !player.isCollisionEnabled;
             Gdx.app.log(getClass().getSimpleName(), "player.isCollisionEnabled: " + player.isCollisionEnabled);
         }
-        if (keycode == Keys.NUM_3)
+        if (keycode == Keys.NUM_5)
             hud.incrementArmor(100, false);
         return super.keyDown(keycode);
     }
@@ -124,12 +124,7 @@ public class LevelScreen extends BaseScreen3D {
     private void explodeBarrelWithDelay(final Barrel barrel) {
         new BaseActor(0, 0, uiStage).addAction(Actions.sequence(
                 Actions.delay(MathUtils.random(0, .4f)),
-                Actions.run(new Runnable() {
-                    @Override
-                    public void run() {
-                        explodeBarrel(barrel);
-                    }
-                })
+                Actions.run(() -> explodeBarrel(barrel))
         ));
     }
 
@@ -158,7 +153,6 @@ public class LevelScreen extends BaseScreen3D {
 
     private void updateEnemies() {
         for (int i = 0; i < enemies.size; i++) {
-            checkIfCanMeleeAttackPlayer(i);
             tryToActivateOthers(i);
             preventOverlapWithOtherEnemies(i);
 
@@ -175,13 +169,6 @@ public class LevelScreen extends BaseScreen3D {
                 if (enemies.get(i) != enemies.get(j))
                     activateEnemies(45, player);
             }
-        }
-    }
-
-    private void checkIfCanMeleeAttackPlayer(int i) {
-        if (player.overlaps(enemies.get(i))) {
-            player.preventOverlap(enemies.get(i));
-            enemyMeleeAttack(i);
         }
     }
 
@@ -211,7 +198,8 @@ public class LevelScreen extends BaseScreen3D {
     }
 
     private void updateWeapon() {
-        weapon.sway(player.isMoving);
+        if (hud.getHealth() > 0)
+            weapon.sway(player.isMoving);
         setCrosshairColorIfEnemy(GameUtils.getRayPickedListIndex(
                 Gdx.graphics.getWidth() / 2,
                 Gdx.graphics.getHeight() / 2,
@@ -231,19 +219,19 @@ public class LevelScreen extends BaseScreen3D {
             hud.setDeadFace();
             weapon.moveDown();
             player.isPause = true;
+            new BaseActor(0, 0, uiStage).addAction(Actions.sequence(
+                    Actions.delay(5),
+                    Actions.run(() -> {
+                        for (Enemy enemy : enemies)
+                            enemy.isPause = true;
+                    })
+            ));
             for (Enemy enemy : enemies)
-                enemy.isPause = true;
+                enemy.isRanged = false;
             BaseGame.metalWalkingMusic.stop();
             gameLabel.setText("G A M E   O V E R !");
             mainStage3D.camera.position.x = -Tile.height * .48f;
-        }
-    }
-
-    private void enemyMeleeAttack(int i) {
-        if (enemies.get(i).getClass().getSimpleName().equalsIgnoreCase("menig")) {
-            Menig menig = (Menig) enemies.get(i);
-            if (menig.isReadyToAttack())
-                hud.decrementHealth(10);
+            weapon.crosshair.setVisible(false);
         }
     }
 
@@ -313,7 +301,7 @@ public class LevelScreen extends BaseScreen3D {
 
     private void removeEnemy(Enemy enemy) {
         enemy.die();
-        pickups.add(new Ammo(enemy.position.y, enemy.position.z, mainStage3D, player));
+        pickups.add(new Ammo(enemy.position.y + MathUtils.random(-1, 1), enemy.position.z + MathUtils.random(-1, 1), mainStage3D, player));
         enemies.removeValue(enemy, false);
         shootable.removeValue(enemy, false);
         for (int i = 0; i < enemies.size; i++)
@@ -347,13 +335,13 @@ public class LevelScreen extends BaseScreen3D {
         shootable = new Array();
         tiles = new Array();
         enemies = new Array();
+        hud = new HUD(uiStage);
         tilemap = new TilemapActor(BaseGame.level0Map, mainStage3D);
-        mapLoader = new MapLoader(tilemap, tiles, mainStage3D, player, shootable, pickups, enemies);
+        mapLoader = new MapLoader(tilemap, tiles, mainStage3D, player, shootable, pickups, enemies, uiStage, hud);
     }
 
     private void initializeActors() {
         player = mapLoader.player;
-        hud = new HUD(uiStage);
         weapon = new Weapon(uiStage);
     }
 
