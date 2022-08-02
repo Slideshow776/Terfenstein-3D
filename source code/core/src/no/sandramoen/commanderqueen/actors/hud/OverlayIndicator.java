@@ -14,8 +14,7 @@ public class OverlayIndicator extends BaseActor {
 
     public OverlayIndicator(Stage stage) {
         super(0, 0, stage);
-        loadImage("whitePixel");
-        setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        setImage("whitePixel");
         setOpacity(0f);
         setZIndex(0);
     }
@@ -30,12 +29,42 @@ public class OverlayIndicator extends BaseActor {
         addAction(fadeInAndOut(alpha));
     }
 
+    public void flashRight(Color color) {
+        setImage("overlayRight");
+        setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        flash(color);
+    }
+
+    public void flashRight(Color color, float alpha) {
+        setImage("overlayRight");
+        setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        flash(color, alpha);
+    }
+
+    public void flashLeft(Color color) {
+        setImage("overlayLeft");
+        setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        flash(color);
+    }
+
+    public void flashLeft(Color color, float alpha) {
+        setImage("overlayLeft");
+        setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        flash(color, alpha);
+    }
+
+    private void setImage(String name) {
+        loadImage(name);
+        setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+    }
+
     private SequenceAction fadeInAndOut(float maxAlpha) {
         setOpacity(0f);
         return Actions.sequence(
                 Actions.alpha(0),
                 Actions.alpha(maxAlpha, FADE_IN_AND_OUT_DURATION / 2),
-                Actions.alpha(0f, FADE_IN_AND_OUT_DURATION / 2)
+                Actions.alpha(0f, FADE_IN_AND_OUT_DURATION / 2),
+                Actions.run(() -> setImage("whitePixel"))
         );
     }
 }

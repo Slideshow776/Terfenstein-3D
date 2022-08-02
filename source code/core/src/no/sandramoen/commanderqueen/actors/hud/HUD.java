@@ -6,11 +6,15 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.Align;
 
+import no.sandramoen.commanderqueen.actors.characters.Player;
 import no.sandramoen.commanderqueen.actors.utils.BaseActor;
+import no.sandramoen.commanderqueen.actors.utils.BaseActor3D;
 import no.sandramoen.commanderqueen.utils.BaseGame;
+import no.sandramoen.commanderqueen.utils.GameUtils;
 
 public class HUD extends BaseActor {
     public boolean isInvulnerable;
+    public Player player;
 
     private int armor = 0;
     private int health = 100;
@@ -74,7 +78,7 @@ public class HUD extends BaseActor {
         return true;
     }
 
-    public void decrementHealth(int amount) {
+    public void decrementHealth(int amount, BaseActor3D source) {
         if (isInvulnerable) return;
 
         amount = decrementArmor(amount);
@@ -83,9 +87,10 @@ public class HUD extends BaseActor {
         else
             health -= amount;
 
-        setHurtFace(amount);
+        float angle = getAngleToSource(source);
+        setHurtFace(amount, angle);
+        setOverlayAngle(amount, angle);
         healthLabel.setText(health + "%");
-        overlayIndicator.flash(BaseGame.redColor, .5f * amount / 50);
     }
 
     public boolean incrementArmor(int amount, boolean improved) {
@@ -134,6 +139,15 @@ public class HUD extends BaseActor {
         face.setGod();
         isInvulnerable = true;
         BaseGame.invulnerableSound.play(BaseGame.soundVolume);
+    }
+
+    private float getAngleToSource(BaseActor3D source) {
+        float angleToSource = 0;
+        if (source != null)
+            angleToSource = GameUtils.getAngleTowardsBaseActor3D(player, source) - player.getTurnAngle();
+        while (angleToSource < 0)
+            angleToSource += 360;
+        return angleToSource;
     }
 
     private void checkInvulnerability(float delta) {
@@ -185,12 +199,27 @@ public class HUD extends BaseActor {
             armorProtectionValue = 1 / 3f;
     }
 
-    private void setHurtFace(int amount) {
+    private void setOverlayAngle(int amount, float angle) {
+        if (angle < 130)
+            overlayIndicator.flashRight(BaseGame.redColor, .5f * amount / 50);
+        else if (angle > 230)
+            overlayIndicator.flashLeft(BaseGame.redColor, .5f * amount / 50);
+        else
+            overlayIndicator.flash(BaseGame.redColor, .5f * amount / 50);
+    }
+
+    private void setHurtFace(int amount, float angle) {
         if (health > 0) {
             if (amount >= 20)
                 face.setOuch(getFaceHealthIndex());
-            else
-                face.setPain(getFaceHealthIndex());
+            else {
+                if (angle < 130)
+                    face.setTurnRight(getFaceHealthIndex());
+                else if (angle > 230)
+                    face.setTurnLeft(getFaceHealthIndex());
+                else
+                    face.setPain(getFaceHealthIndex());
+            }
         } else {
             face.setDead();
         }

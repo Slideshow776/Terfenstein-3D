@@ -31,6 +31,14 @@ public class Face extends BaseActor {
         setDimensions();
     }
 
+    public void setTurnLeft(int faceHealthIndex) {
+        setTemporaryFace(faceHealthIndex, "TL");
+    }
+
+    public void setTurnRight(int faceHealthIndex) {
+        setTemporaryFace(faceHealthIndex, "TR");
+    }
+
     public void setOuch(int faceHealthIndex) {
         setTemporaryFace(faceHealthIndex, "OUCH");
     }

@@ -75,7 +75,7 @@ public class LevelScreen extends BaseScreen3D {
         if (keycode == Keys.R)
             BaseGame.setActiveScreen(new LevelScreen());
         if (keycode == Keys.NUM_1)
-            hud.decrementHealth(10);
+            hud.decrementHealth(10, null);
         if (keycode == Keys.NUM_2)
             hud.incrementHealth(1);
         if (keycode == Keys.NUM_3)
@@ -262,11 +262,11 @@ public class LevelScreen extends BaseScreen3D {
 
     private void checkPlayerExplosionDamage(BaseActor3D source) {
         if (player.isWithinDistance(3f, source))
-            hud.decrementHealth(100);
+            hud.decrementHealth(100, source);
         else if (player.isWithinDistance(7f, source))
-            hud.decrementHealth(50);
+            hud.decrementHealth(50, source);
         else if (player.isWithinDistance(10f, source))
-            hud.decrementHealth(25);
+            hud.decrementHealth(25, source);
         else
             hud.setKillFace();
 
@@ -342,6 +342,7 @@ public class LevelScreen extends BaseScreen3D {
 
     private void initializeActors() {
         player = mapLoader.player;
+        hud.player = player;
         weapon = new Weapon(uiStage);
     }
 

@@ -235,7 +235,7 @@ public class Enemy extends BaseActor3D {
         new BaseActor(0, 0, stage).addAction(Actions.sequence(
                 Actions.delay(shootImageDelay),
                 Actions.run(() -> {
-                    hud.decrementHealth(shootDamage);
+                    hud.decrementHealth(shootDamage, this);
                     stage3D.lightManager.addMuzzleLight(position);
                 })
         ));
@@ -322,7 +322,7 @@ public class Enemy extends BaseActor3D {
         isShooting = true;
         currentAnimation = meleeAnimation;
         totalTime = 0;
-        hud.decrementHealth(10);
+        hud.decrementHealth(10, this);
         meleeWeapon();
     }
 

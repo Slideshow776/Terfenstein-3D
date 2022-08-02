@@ -305,7 +305,7 @@
  </objectgroup>
  <objectgroup id="12" name="ceilings" visible="0"/>
  <objectgroup id="8" name="actors">
-  <object id="57869" gid="2" x="192" y="128" width="64" height="64"/>
-  <object id="58243" gid="1" x="256" y="768" width="64" height="64" rotation="-178.941"/>
+  <object id="57869" gid="2" x="704" y="192" width="64" height="64"/>
+  <object id="58243" gid="1" x="768" y="384" width="64" height="64" rotation="-178.941"/>
  </objectgroup>
 </map>
