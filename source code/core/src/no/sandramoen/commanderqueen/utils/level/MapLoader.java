@@ -186,7 +186,7 @@ public class MapLoader {
             MapProperties props = obj.getProperties();
             float x = (Float) props.get("x") * BaseGame.unitScale;
             float y = (Float) props.get("y") * BaseGame.unitScale;
-            pickups.add(new Ammo((int) x, (int) y, stage3D, player));
+            pickups.add(new Ammo((int) x, (int) y, stage3D, player, 2));
         }
     }
 

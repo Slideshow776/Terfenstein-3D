@@ -2,6 +2,7 @@ package no.sandramoen.commanderqueen.actors.characters;
 
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Array;
 
@@ -17,9 +18,11 @@ public class Menig extends Enemy {
 
     public Menig(float y, float z, Stage3D s, Player player, Float rotation, TileGraph tileGraph, Array<Tile> floorTiles, Stage stage, HUD hud) {
         super(y, z, s, player, rotation, tileGraph, floorTiles, stage, hud);
-        movementSpeed = .05f;
-        health = 2;
+        movementSpeed = .06f;
+        health = 20;
         shootImageDelay = .25f;
+        damage = MathUtils.random(3, 15);
+        score = 10;
 
         initializeAnimations();
     }

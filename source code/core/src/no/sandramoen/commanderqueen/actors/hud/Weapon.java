@@ -17,6 +17,7 @@ import no.sandramoen.commanderqueen.utils.BaseGame;
 
 public class Weapon extends BaseActor {
     public Crosshair crosshair;
+    public int damage = MathUtils.random(5, 20);;
 
     private float totalTime = 5f;
 

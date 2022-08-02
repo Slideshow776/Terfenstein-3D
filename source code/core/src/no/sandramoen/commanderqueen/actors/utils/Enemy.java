@@ -24,36 +24,13 @@ public class Enemy extends BaseActor3D {
     public final int ID = MathUtils.random(1_000, 9_999);
     public boolean isDead;
     public boolean isActive;
-    public Tile goalTile;
-    public GraphPath<Tile> tilePath;
     public Color originalColor = new Color(.4f, .4f, .4f, 1f);
-
-    protected boolean isAttacking;
-    protected boolean isReadyToAttack = true;
-    protected int health = 1;
-    protected int tilePathCounter;
-
-    protected boolean isForcedToMove;
     public boolean isRanged = true;
-    protected float forceTime;
-    protected final float SECONDS_FORCED_TO_MOVE = .25f;
-    protected Vector2 forceMove = new Vector2(8f, 8f);
+    public int score = 0;
+    public int damage = 0;
 
-    protected float totalTime = 0;
-    protected float movementSpeed;
-    protected float angleTowardPlayer;
-    protected final float VISIBILITY_RANGE = 100;
     protected Player player;
-    protected BaseActor3D sprite;
-    protected Array<BaseActor3D> shootable = new Array();
-
-    protected enum Directions {FRONT, LEFT_FRONT, RIGHT_FRONT, LEFT_SIDE, RIGHT_SIDE, LEFT_BACK, RIGHT_BACK, BACK}
-
-    protected Directions direction;
-
-    protected enum State {IDLE, WALKING, HURT, ATTACKING}
-
-    protected State state = State.IDLE;
+    protected float movementSpeed;
 
     protected Animation<TextureRegion> currentAnimation;
     protected Animation<TextureRegion> idleFrontAnimation;
@@ -77,13 +54,27 @@ public class Enemy extends BaseActor3D {
     protected Animation<TextureRegion> hurtAnimation;
     protected Animation<TextureRegion> dieAnimation;
 
-    protected int shootDamage = 10;
-    protected float shootFrequency = 1f;
+    protected int health = 1;
     protected float shootImageDelay;
-    private float shootCounter = 0;
-    private boolean isShooting;
+    private float shootFrequency = 1f;
 
-    /**/
+    private boolean isForcedToMove;
+    private int tilePathCounter;
+    private float forceTime;
+    private float totalTime = 0;
+    private float angleTowardPlayer;
+    private final float SECONDS_FORCED_TO_MOVE = .25f;
+
+    private enum Directions {FRONT, LEFT_FRONT, RIGHT_FRONT, LEFT_SIDE, RIGHT_SIDE, LEFT_BACK, RIGHT_BACK, BACK}
+
+    private Directions direction;
+
+    private enum State {IDLE, WALKING, HURT, ATTACKING}
+
+    private State state = State.IDLE;
+    private float shootCounter = 0;
+    private final float VISIBILITY_RANGE = 100;
+    private boolean isAttacking;
 
     private float dogdeDirectionFrequency = 3;
     private float dogdeDirectionCounter = 0;
@@ -93,20 +84,18 @@ public class Enemy extends BaseActor3D {
     private float attackStateChangeCounter = 0;
 
     private boolean isAttackDodging;
-
-    /**/
-
     private boolean isPlayerVisible;
     private boolean isPlayerLastPositionKnown;
 
+    private HUD hud;
+    private Stage stage;
+    private Tile goalTile;
+    private BaseActor3D sprite;
     private TileGraph tileGraph;
     private Array<Tile> floorTiles;
-
-    private float timeToStopMoving = 1.1f;
-    private float attackCounter = 0f;
-    private final float ATTACK_FREQUENCY = 2f;
-    private Stage stage;
-    private HUD hud;
+    private GraphPath<Tile> tilePath;
+    private Array<BaseActor3D> shootable = new Array();
+    private Vector2 forceMove = new Vector2(8f, 8f);
 
     public Enemy(float y, float z, Stage3D stage3D, Player player, Float rotation, TileGraph tileGraph, Array<Tile> floorTiles, Stage stage, HUD hud) {
         super(0, y, z, stage3D);
@@ -135,7 +124,7 @@ public class Enemy extends BaseActor3D {
         handleSprite();
         if (isForcedToMove) forceMove(dt);
 
-        if (isDead) return;
+        if (isDead || state == State.HURT) return;
 
         setDirection();
         setDirectionalSprites();
@@ -201,8 +190,8 @@ public class Enemy extends BaseActor3D {
         if (!isActive) {
             isActive = true;
             playActivateSound();
-            setNewAIPath(source);
         }
+        setNewAIPath(source);
     }
 
     private boolean isPlayerVisible() {
@@ -235,7 +224,7 @@ public class Enemy extends BaseActor3D {
         new BaseActor(0, 0, stage).addAction(Actions.sequence(
                 Actions.delay(shootImageDelay),
                 Actions.run(() -> {
-                    hud.decrementHealth(shootDamage, this);
+                    hud.decrementHealth(damage, this);
                     stage3D.lightManager.addMuzzleLight(position);
                 })
         ));
@@ -255,21 +244,17 @@ public class Enemy extends BaseActor3D {
         } else if (tilePathCounter >= tilePath.getCount()) {
             isActive = false;
             tilePath = null;
-            /*if (state != State.HURT)
-            state = State.IDLE;*/
         }
     }
 
     private void attacking(float dt) {
         checkAttackStateChange(dt);
-
         if (isAttackDodging) {
-            isShooting = false;
             moveInZigZag(dt);
             if (state != State.HURT)
                 state = State.WALKING;
         } else {
-            shootOrMelee(dt);
+            attack(dt);
         }
     }
 
@@ -277,17 +262,19 @@ public class Enemy extends BaseActor3D {
         if (attackStateChangeCounter > atackStateChangeFrequency) {
             attackStateChangeCounter = 0;
             float temp = MathUtils.random(0f, 1f);
-            if ((temp < distanceBetween(player) / 45) || (!isRanged && !isWithinDistance(5f, player)))
+            if ((temp < distanceBetween(player) / 45) || (!isRanged && !isWithinDistance(5f, player))) {
                 isAttackDodging = true;
-            else
+            } else {
                 isAttackDodging = false;
-            shootCounter = shootFrequency + 1;
+                shootCounter = shootFrequency;
+            }
         } else {
             attackStateChangeCounter += dt;
         }
     }
 
     private void moveInZigZag(float dt) {
+        checkIfHitAWallAndShouldGoStraight();
         if (dogdeDirectionCounter > dogdeDirectionFrequency) {
             dodgeDirectionAngle *= -1;
             dogdeDirectionCounter = 0;
@@ -296,22 +283,44 @@ public class Enemy extends BaseActor3D {
         moveToward(angleTowardPlayer + dodgeDirectionAngle);
     }
 
-    private void shootOrMelee(float dt) {
+    private void checkIfHitAWallAndShouldGoStraight() {
+        for (BaseActor3D baseActor3D : shootable) {
+            if (baseActor3D.getClass().getSimpleName().equalsIgnoreCase("tile")) {
+                Tile temp = (Tile) baseActor3D;
+                if (temp.type == "walls" && overlaps(temp) && dodgeDirectionAngle != 0) {
+                    dodgeDirectionAngle = 0;
+                    resetDodgeDirectionAngleAfterDelay();
+                    break;
+                }
+            }
+        }
+    }
+
+    private void resetDodgeDirectionAngleAfterDelay() {
+        new BaseActor(0, 0, stage).addAction(Actions.sequence(
+                Actions.delay(3),
+                Actions.run(() -> dodgeDirectionAngle = 45)
+        ));
+    }
+
+    private void attack(float dt) {
         if (shootCounter > shootFrequency) {
-            if (isWithinDistance(5f, player))
-                melee();
-            else if (isRanged)
-                shoot();
-            else
-                return;
+            shootOrMelee();
             shootCounter = 0;
-        } else
+        } else {
             shootCounter += dt;
+        }
+    }
+
+    private void shootOrMelee() {
+        if (isWithinDistance(5f, player))
+            melee();
+        else if (isRanged)
+            shoot();
     }
 
     private void shoot() {
         state = State.ATTACKING;
-        isShooting = true;
         currentAnimation = shootAnimation;
         totalTime = 0;
         shootWeapon();
@@ -319,10 +328,9 @@ public class Enemy extends BaseActor3D {
 
     private void melee() {
         state = State.ATTACKING;
-        isShooting = true;
         currentAnimation = meleeAnimation;
         totalTime = 0;
-        hud.decrementHealth(10, this);
+        hud.decrementHealth(damage, this);
         meleeWeapon();
     }
 
@@ -330,7 +338,7 @@ public class Enemy extends BaseActor3D {
         State temp = state;
         state = State.HURT;
         new BaseActor(0, 0, stage).addAction(Actions.sequence(
-                Actions.delay(.5f),
+                Actions.delay(.4f),
                 Actions.run(() -> state = temp)
         ));
         currentAnimation = hurtAnimation;
@@ -364,7 +372,7 @@ public class Enemy extends BaseActor3D {
         isActive = true;
         isAttacking = true;
         isPlayerLastPositionKnown = true;
-        attackStateChangeCounter = atackStateChangeFrequency + 1;
+        attackStateChangeCounter = atackStateChangeFrequency / 2;
     }
 
     private void handleSprite() {
@@ -450,8 +458,11 @@ public class Enemy extends BaseActor3D {
     }
 
     private void setNewAIPath(BaseActor3D source) {
-        tilePath = getPathTo(source);
-        tilePathCounter = 0;
+        try {
+            tilePath = getPathTo(source);
+            tilePathCounter = 0;
+        } catch (Exception ex) {
+        }
     }
 
     private GraphPath<Tile> getPathTo(BaseActor3D source) {

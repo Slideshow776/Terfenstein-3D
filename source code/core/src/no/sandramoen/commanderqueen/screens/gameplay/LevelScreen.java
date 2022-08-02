@@ -109,9 +109,9 @@ public class LevelScreen extends BaseScreen3D {
             if (shootable.get(index).getClass().getSimpleName().equalsIgnoreCase("menig")) {
                 Menig menig = (Menig) shootable.get(index);
                 activateEnemies(45, menig);
-                if (menig.isDeadAfterTakingDamage(1)) {
+                if (menig.isDeadAfterTakingDamage(weapon.damage)) {
                     removeEnemy(menig);
-                    hud.incrementScore(10, false);
+                    hud.incrementScore(menig.score, false);
                     hud.setKillFace();
                 }
             } else if (shootable.get(index).getClass().getSimpleName().equalsIgnoreCase("barrel")) {
@@ -176,7 +176,7 @@ public class LevelScreen extends BaseScreen3D {
         for (Pickup pickup : pickups) {
             if (player.overlaps(pickup)) {
                 if (pickup.getClass().getSimpleName().equals("Ammo")) {
-                    hud.incrementAmmo(1);
+                    hud.incrementAmmo(pickup.amount);
                     removePickup(pickup);
                 }
                 if (pickup.getClass().getSimpleName().equals("Armor")) {
@@ -187,7 +187,6 @@ public class LevelScreen extends BaseScreen3D {
                     if (hud.incrementHealth(pickup.amount))
                         removePickup(pickup);
                 }
-
             }
         }
     }
@@ -301,7 +300,7 @@ public class LevelScreen extends BaseScreen3D {
 
     private void removeEnemy(Enemy enemy) {
         enemy.die();
-        pickups.add(new Ammo(enemy.position.y + MathUtils.random(-1, 1), enemy.position.z + MathUtils.random(-1, 1), mainStage3D, player));
+        pickups.add(new Ammo(enemy.position.y + MathUtils.random(-1, 1), enemy.position.z + MathUtils.random(-1, 1), mainStage3D, player, 2));
         enemies.removeValue(enemy, false);
         shootable.removeValue(enemy, false);
         for (int i = 0; i < enemies.size; i++)

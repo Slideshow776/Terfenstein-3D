@@ -46,7 +46,7 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
     public static boolean isHeadBobbing = true;
     public static float aspectRatio = 16 / 9;
     public static float voiceVolume = 1f;
-    public static float soundVolume = .5f;
+    public static float soundVolume = .05f;
     public static float musicVolume = .1f;
     public static float unitScale = .0621f;
     public static Color redColor = new Color(0.647f, 0.188f, 0.188f, 1f);
