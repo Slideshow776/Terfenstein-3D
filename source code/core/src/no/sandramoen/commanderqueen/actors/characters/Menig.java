@@ -34,10 +34,10 @@ public class Menig extends Enemy {
     }
 
     @Override
-    public boolean isDeadAfterTakingDamage(int amount) {
+    public void decrementHealth(int amount) {
+        super.decrementHealth(amount);
         if (health - amount > 0)
             BaseGame.menigHurtSound.play(BaseGame.soundVolume);
-        return super.isDeadAfterTakingDamage(amount);
     }
 
     @Override

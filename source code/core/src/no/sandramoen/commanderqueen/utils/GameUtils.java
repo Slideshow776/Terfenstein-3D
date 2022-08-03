@@ -46,16 +46,6 @@ public class GameUtils {
         music.play();
     }
 
-    public static int getRayPickedListIndex(Vector3 origin, Vector3 direction, Array<BaseActor3D> list) {
-        Ray ray = new Ray(origin, direction);
-        return getClosestListIndex(ray, list);
-    }
-
-    public static int getRayPickedListIndex(int screenX, int screenY, Array<BaseActor3D> list, PerspectiveCamera camera) {
-        Ray ray = camera.getPickRay(screenX, screenY);
-        return getClosestListIndex(ray, list);
-    }
-
     public static float normalizeValue(float value, float min, float max) {
         return (value - min) / (max - min);
     }
@@ -66,6 +56,16 @@ public class GameUtils {
 
     public static void playSoundRelativeToDistance(Sound sound, Float distance, Float vocalRange, Float pitch) {
         sound.play(BaseGame.soundVolume / GameUtils.normalizeValue(distance, 0f, vocalRange), pitch, 0);
+    }
+
+    public static int getRayPickedListIndex(Vector3 origin, Vector3 direction, Array<BaseActor3D> list) {
+        Ray ray = new Ray(origin, direction);
+        return getClosestListIndex(ray, list);
+    }
+
+    public static int getRayPickedListIndex(int screenX, int screenY, Array<BaseActor3D> list, PerspectiveCamera camera) {
+        Ray ray = camera.getPickRay(screenX, screenY);
+        return getClosestListIndex(ray, list);
     }
 
     private static int getClosestListIndex(Ray ray, Array<BaseActor3D> list) {

@@ -59,6 +59,7 @@ public class LevelScreen extends BaseScreen3D {
 
         updateTiles();
         updateEnemies();
+        updateBarrels();
         updatePickups();
         updateWeapon();
 
@@ -109,14 +110,10 @@ public class LevelScreen extends BaseScreen3D {
             if (shootable.get(index).getClass().getSimpleName().equalsIgnoreCase("menig")) {
                 Menig menig = (Menig) shootable.get(index);
                 activateEnemies(45, menig);
-                if (menig.isDeadAfterTakingDamage(weapon.damage)) {
-                    removeEnemy(menig);
-                    hud.incrementScore(menig.score, false);
-                    hud.setKillFace();
-                }
+                menig.decrementHealth(weapon.damage);
             } else if (shootable.get(index).getClass().getSimpleName().equalsIgnoreCase("barrel")) {
                 Barrel barrel = (Barrel) shootable.get(index);
-                explodeBarrelWithDelay(barrel);
+                barrel.decrementHealth(weapon.damage, player.distanceBetween(barrel));
             }
         }
     }
@@ -153,6 +150,11 @@ public class LevelScreen extends BaseScreen3D {
 
     private void updateEnemies() {
         for (int i = 0; i < enemies.size; i++) {
+            if (enemies.get(i).health <= 0) {
+                removeEnemy(enemies.get(i));
+                continue;
+            }
+
             tryToActivateOthers(i);
             preventOverlapWithOtherEnemies(i);
 
@@ -163,11 +165,12 @@ public class LevelScreen extends BaseScreen3D {
         }
     }
 
-    private void tryToActivateOthers(int i) {
-        if (mainStage3D.intervalFlag && enemies.get(i).isActive) {
-            for (int j = 0; j < enemies.size; j++) {
-                if (enemies.get(i) != enemies.get(j))
-                    activateEnemies(45, player);
+    private void updateBarrels() {
+        for (BaseActor3D baseActor3D : shootable) {
+            if (baseActor3D.getClass().getSimpleName().equalsIgnoreCase("barrel")) {
+                Barrel barrel = (Barrel) baseActor3D;
+                if (barrel.health <= 0)
+                    explodeBarrelWithDelay(barrel);
             }
         }
     }
@@ -187,6 +190,15 @@ public class LevelScreen extends BaseScreen3D {
                     if (hud.incrementHealth(pickup.amount))
                         removePickup(pickup);
                 }
+            }
+        }
+    }
+
+    private void tryToActivateOthers(int i) {
+        if (mainStage3D.intervalFlag && enemies.get(i).isActive) {
+            for (int j = 0; j < enemies.size; j++) {
+                if (enemies.get(i) != enemies.get(j))
+                    activateEnemies(45, player);
             }
         }
     }
@@ -260,42 +272,40 @@ public class LevelScreen extends BaseScreen3D {
     }
 
     private void checkPlayerExplosionDamage(BaseActor3D source) {
-        if (player.isWithinDistance(3f, source))
-            hud.decrementHealth(100, source);
-        else if (player.isWithinDistance(7f, source))
-            hud.decrementHealth(50, source);
-        else if (player.isWithinDistance(10f, source))
-            hud.decrementHealth(25, source);
-        else
-            hud.setKillFace();
+        if (source.getClass().getSimpleName().equalsIgnoreCase("barrel")) {
+            Barrel barrel = (Barrel) source;
+            hud.decrementHealth(barrel.getBlastDamage(source.distanceBetween(player)), source);
 
-        if (player.isWithinDistance(10f, source))
-            player.forceMoveAwayFrom(source);
+            if (player.isWithinDistance(barrel.BLAST_RANGE, source))
+                player.forceMoveAwayFrom(source);
+            else
+                hud.setKillFace();
+        }
     }
 
     private void checkEnemiesExplosionDamage(BaseActor3D source) {
-        for (Enemy enemy : enemies) {
-            if (enemy.isWithinDistance(3f, source))
-                enemy.isDeadAfterTakingDamage(100);
-            else if (enemy.isWithinDistance(7f, source))
-                enemy.isDeadAfterTakingDamage(50);
-            else if (enemy.isWithinDistance(10f, source))
-                enemy.isDeadAfterTakingDamage(25);
+        if (source.getClass().getSimpleName().equalsIgnoreCase("barrel")) {
+            Barrel barrel = (Barrel) source;
 
-            if (enemy.isWithinDistance(10f, source))
-                enemy.forceMoveAwayFrom(source);
+            for (Enemy enemy : enemies) {
+                enemy.decrementHealth(barrel.getBlastDamage(source.distanceBetween(enemy)));
+                if (enemy.isWithinDistance(barrel.BLAST_RANGE, source))
+                    enemy.forceMoveAwayFrom(source);
+            }
         }
-
-        for (Enemy enemy : enemies)
-            if (enemy.isDead)
-                removeEnemy(enemy);
     }
 
     private void checkBarrelsExplosionDamage(BaseActor3D source) {
-        for (int i = 0; i < shootable.size; i++)
-            if (shootable.get(i).getClass().getSimpleName().equalsIgnoreCase("barrel"))
-                if (shootable.get(i).isWithinDistance(10f, source))
-                    explodeBarrelWithDelay((Barrel) shootable.get(i));
+        if (source.getClass().getSimpleName().equalsIgnoreCase("barrel")) {
+            Barrel barrel = (Barrel) source;
+
+            for (BaseActor3D baseActor3D : shootable) {
+                if (baseActor3D.getClass().getSimpleName().equalsIgnoreCase("barrel")) {
+                    Barrel otherBarrel = (Barrel) baseActor3D;
+                    otherBarrel.decrementHealth(barrel.getBlastDamage(source.distanceBetween(otherBarrel)), 0);
+                }
+            }
+        }
     }
 
     private void removeEnemy(Enemy enemy) {
@@ -305,6 +315,8 @@ public class LevelScreen extends BaseScreen3D {
         shootable.removeValue(enemy, false);
         for (int i = 0; i < enemies.size; i++)
             enemies.get(i).setShootableList(shootable);
+        hud.incrementScore(enemy.score, false);
+        hud.setKillFace();
         statusLabel.setText("enemies left: " + enemies.size);
     }
 

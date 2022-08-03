@@ -46,6 +46,10 @@ public class LightManager {
         addPointLight(position, .3f, .1f, 0, 50, .1f, .1f / 3);
     }
 
+    public void addSmallExplosion(Vector3 position) {
+        addPointLight(position, .3f, .1f, 0, 1_000f, 1f, .2f);
+    }
+
     private void updatePointLights(float dt) {
         for (MyPointLight light : pointLights) {
             light.counter += dt;

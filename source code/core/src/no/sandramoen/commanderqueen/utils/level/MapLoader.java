@@ -56,8 +56,8 @@ public class MapLoader {
 
         initializeTiles();
         initializePlayer();
-        initializeEnemies();
         initializeBarrels();
+        initializeEnemies();
         initializeHealth();
         initializeAmmo();
         initializeArmor();

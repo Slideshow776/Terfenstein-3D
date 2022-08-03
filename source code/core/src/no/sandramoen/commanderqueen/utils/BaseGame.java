@@ -40,13 +40,14 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
     public static Sound outOfAmmoSound;
     public static Sound invulnerableSound;
     public static Sound vulnerableSound;
+    public static Sound metalSound;
 
     // game state
     public static float mouseMovementSensitivity = .05f;
     public static boolean isHeadBobbing = true;
     public static float aspectRatio = 16 / 9;
     public static float voiceVolume = 1f;
-    public static float soundVolume = .05f;
+    public static float soundVolume = .5f;
     public static float musicVolume = .1f;
     public static float unitScale = .0621f;
     public static Color redColor = new Color(0.647f, 0.188f, 0.188f, 1f);
@@ -110,6 +111,7 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
         assetManager.load("audio/sound/invulnerable.wav", Sound.class);
         assetManager.load("audio/sound/vulnerable.wav", Sound.class);
         assetManager.load("audio/sound/35213__abyssmal__slashkut.wav", Sound.class);
+        assetManager.load("audio/sound/488608__spacejoe__metal-bowl-7.wav", Sound.class);
 
         // tiled maps
         assetManager.setLoader(TiledMap.class, new TmxMapLoader(new InternalFileHandleResolver()));
@@ -135,6 +137,7 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
         invulnerableSound = assetManager.get("audio/sound/invulnerable.wav", Sound.class);
         vulnerableSound = assetManager.get("audio/sound/vulnerable.wav", Sound.class);
         menigMeleeSound = assetManager.get("audio/sound/35213__abyssmal__slashkut.wav", Sound.class);
+        metalSound = assetManager.get("audio/sound/488608__spacejoe__metal-bowl-7.wav", Sound.class);
 
         // tiled maps
         testMap = assetManager.get("maps/test.tmx", TiledMap.class);

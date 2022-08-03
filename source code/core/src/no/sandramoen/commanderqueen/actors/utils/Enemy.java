@@ -9,10 +9,12 @@ import com.badlogic.gdx.graphics.g3d.Environment;
 import com.badlogic.gdx.graphics.g3d.ModelBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.utils.Array;
 
+import no.sandramoen.commanderqueen.actors.Barrel;
 import no.sandramoen.commanderqueen.actors.Tile;
 import no.sandramoen.commanderqueen.actors.characters.Player;
 import no.sandramoen.commanderqueen.actors.hud.HUD;
@@ -22,6 +24,7 @@ import no.sandramoen.commanderqueen.utils.pathFinding.TileGraph;
 
 public class Enemy extends BaseActor3D {
     public final int ID = MathUtils.random(1_000, 9_999);
+    public int health = 1;
     public boolean isDead;
     public boolean isActive;
     public Color originalColor = new Color(.4f, .4f, .4f, 1f);
@@ -54,7 +57,6 @@ public class Enemy extends BaseActor3D {
     protected Animation<TextureRegion> hurtAnimation;
     protected Animation<TextureRegion> dieAnimation;
 
-    protected int health = 1;
     protected float shootImageDelay;
     private float shootFrequency = 1f;
 
@@ -63,7 +65,7 @@ public class Enemy extends BaseActor3D {
     private float forceTime;
     private float totalTime = 0;
     private float angleTowardPlayer;
-    private final float SECONDS_FORCED_TO_MOVE = .25f;
+    private final float SECONDS_FORCED_TO_MOVE = .3f;
 
     private enum Directions {FRONT, LEFT_FRONT, RIGHT_FRONT, LEFT_SIDE, RIGHT_SIDE, LEFT_BACK, RIGHT_BACK, BACK}
 
@@ -162,13 +164,12 @@ public class Enemy extends BaseActor3D {
         currentAnimation = dieAnimation;
     }
 
-    public boolean isDeadAfterTakingDamage(int amount) {
+    public void decrementHealth(int amount) {
         health -= amount;
-        if (health <= 0)
-            return true;
-        setTemporaryHurtState();
-        findPlayer();
-        return false;
+        if (health > 0) {
+            setTemporaryHurtState();
+            findPlayer();
+        }
     }
 
     public void forceMoveAwayFrom(BaseActor3D source) {
@@ -194,19 +195,6 @@ public class Enemy extends BaseActor3D {
         setNewAIPath(source);
     }
 
-    private boolean isPlayerVisible() {
-        if (isActive && isWithinDistance(VISIBILITY_RANGE, player)) {
-            int index = GameUtils.getRayPickedListIndex(position, player.position.cpy().sub(position), shootable);
-            if (index > -1 && shootable.get(index).getClass().getSimpleName().equalsIgnoreCase("player"))
-                return true;
-        } else if (isDirectionFrontOrSides() && isWithinDistance(VISIBILITY_RANGE, player)) {
-            int index = GameUtils.getRayPickedListIndex(position, player.position.cpy().sub(position), shootable);
-            if (index > -1 && shootable.get(index).getClass().getSimpleName().equalsIgnoreCase("player"))
-                return true;
-        }
-        return false;
-    }
-
     protected void moveToward(BaseActor3D baseActor3D) {
         setTurnAngle(GameUtils.getAngleTowardsBaseActor3D(this, baseActor3D));
         moveForward(movementSpeed);
@@ -224,13 +212,35 @@ public class Enemy extends BaseActor3D {
         new BaseActor(0, 0, stage).addAction(Actions.sequence(
                 Actions.delay(shootImageDelay),
                 Actions.run(() -> {
-                    hud.decrementHealth(damage, this);
+                    checkIfShotPlayerOrBarrel();
                     stage3D.lightManager.addMuzzleLight(position);
                 })
         ));
     }
 
     protected void playActivateSound() {
+    }
+
+    private void checkIfShotPlayerOrBarrel() {
+        int i = GameUtils.getRayPickedListIndex(position, player.position.cpy().sub(position), shootable);
+        if (i > -1 && is(shootable.get(i), "barrel")) {
+            Barrel barrel = (Barrel) shootable.get(i);
+            barrel.decrementHealth(damage, distanceBetween(barrel));
+        } else if (i > -1 && is(shootable.get(i), "player"))
+            hud.decrementHealth(damage, this);
+    }
+
+    private boolean isPlayerVisible() {
+        if (isWithinDistance(VISIBILITY_RANGE, player) && (isActive || isDirectionFrontOrSides())) {
+            int i = GameUtils.getRayPickedListIndex(position, player.position.cpy().sub(position), shootable);
+            if (i > -1) {
+                if (!is(shootable.get(i), "player") && !is(shootable.get(i), "barrel"))
+                    return false;
+                else
+                    return true;
+            }
+        }
+        return false;
     }
 
     private void walkTilePath() {
@@ -244,6 +254,7 @@ public class Enemy extends BaseActor3D {
         } else if (tilePathCounter >= tilePath.getCount()) {
             isActive = false;
             tilePath = null;
+            state = State.IDLE;
         }
     }
 
@@ -285,7 +296,7 @@ public class Enemy extends BaseActor3D {
 
     private void checkIfHitAWallAndShouldGoStraight() {
         for (BaseActor3D baseActor3D : shootable) {
-            if (baseActor3D.getClass().getSimpleName().equalsIgnoreCase("tile")) {
+            if (is(baseActor3D, "tile")) {
                 Tile temp = (Tile) baseActor3D;
                 if (temp.type == "walls" && overlaps(temp) && dodgeDirectionAngle != 0) {
                     dodgeDirectionAngle = 0;
@@ -335,17 +346,20 @@ public class Enemy extends BaseActor3D {
     }
 
     private void setTemporaryHurtState() {
-        State temp = state;
         state = State.HURT;
-        new BaseActor(0, 0, stage).addAction(Actions.sequence(
-                Actions.delay(.4f),
-                Actions.run(() -> state = temp)
-        ));
+        setStateToIdleAfterDelay(.4f);
         currentAnimation = hurtAnimation;
     }
 
+    private void setStateToIdleAfterDelay(float delay) {
+        new BaseActor(0, 0, stage).addAction(Actions.sequence(
+                Actions.delay(delay),
+                Actions.run(() -> state = State.IDLE)
+        ));
+    }
+
     private void forceMove(float dt) {
-        if (totalTime <= forceTime)
+        if (totalTime <= SECONDS_FORCED_TO_MOVE)
             moveBy(0f, forceMove.x * dt, forceMove.y * dt);
         else
             isForcedToMove = false;
