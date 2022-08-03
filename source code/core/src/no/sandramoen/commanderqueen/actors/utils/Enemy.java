@@ -9,7 +9,6 @@ import com.badlogic.gdx.graphics.g3d.Environment;
 import com.badlogic.gdx.graphics.g3d.ModelBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.utils.Array;
@@ -166,7 +165,7 @@ public class Enemy extends BaseActor3D {
 
     public void decrementHealth(int amount) {
         health -= amount;
-        if (health > 0) {
+        if (health > 0 && amount > 0) {
             setTemporaryHurtState();
             findPlayer();
         }

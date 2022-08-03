@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.3.1" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="20" height="20" tilewidth="64" tileheight="64" infinite="0" nextlayerid="13" nextobjectid="56398">
+<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="20" height="20" tilewidth="64" tileheight="64" infinite="0" nextlayerid="13" nextobjectid="56460">
  <tileset firstgid="1" name="test" tilewidth="64" tileheight="64" tilecount="64" columns="8">
   <image source="tileset.png" width="512" height="512"/>
   <tile id="0">
@@ -822,7 +822,7 @@
   <object id="2167" gid="1" x="512.086" y="511.915" width="64" height="64" rotation="90.153"/>
   <object id="2168" gid="1" x="256.043" y="640.043" width="64" height="64" rotation="-179.923"/>
   <object id="2169" gid="1" x="448" y="768" width="64" height="64"/>
-  <object id="2171" gid="1" x="768" y="1024" width="64" height="64"/>
+  <object id="2171" gid="1" x="769" y="973" width="64" height="64"/>
   <object id="2172" gid="1" x="576" y="896" width="64" height="64"/>
   <object id="2173" gid="1" x="640" y="960" width="64" height="64"/>
   <object id="2174" gid="1" x="166.988" y="332.712" width="64" height="64" rotation="306.117"/>
