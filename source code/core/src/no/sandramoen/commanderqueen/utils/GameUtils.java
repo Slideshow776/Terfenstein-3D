@@ -1,5 +1,6 @@
 package no.sandramoen.commanderqueen.utils;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.PerspectiveCamera;
@@ -58,6 +59,11 @@ public class GameUtils {
         sound.play(BaseGame.soundVolume / GameUtils.normalizeValue(distance, 0f, vocalRange), pitch, 0);
     }
 
+    public static void printLoadingTime(String tag, long startTime) {
+        long endTime = System.currentTimeMillis();
+        Gdx.app.log(tag, "took " + (endTime - startTime) + " ms to load.");
+    }
+
     public static int getRayPickedListIndex(Vector3 origin, Vector3 direction, Array<BaseActor3D> list) {
         Ray ray = new Ray(origin, direction);
         return getClosestListIndex(ray, list);
@@ -68,7 +74,7 @@ public class GameUtils {
         return getClosestListIndex(ray, list);
     }
 
-    private static int getClosestListIndex(Ray ray, Array<BaseActor3D> list) {
+    public static int getClosestListIndex(Ray ray, Array<BaseActor3D> list) {
         int index = -1;
         float distance = -1;
         for (int i = 0; i < list.size; ++i) {

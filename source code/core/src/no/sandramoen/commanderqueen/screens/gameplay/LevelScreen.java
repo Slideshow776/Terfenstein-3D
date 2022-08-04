@@ -5,11 +5,15 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.math.Vector3;
+import com.badlogic.gdx.math.collision.Ray;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.utils.Array;
 
 import no.sandramoen.commanderqueen.actors.Barrel;
+import no.sandramoen.commanderqueen.actors.utils.BulletPuffManager;
 import no.sandramoen.commanderqueen.actors.hud.HUD;
 import no.sandramoen.commanderqueen.actors.characters.Menig;
 import no.sandramoen.commanderqueen.actors.characters.Player;
@@ -42,15 +46,23 @@ public class LevelScreen extends BaseScreen3D {
     private Label gameLabel;
     private Label statusLabel;
 
-    private boolean isGameOver = false;
+    private boolean isGameOver;
+    private boolean holdingDown;
+
+    private BulletPuffManager bulletPuffManager;
 
     @Override
     public void initialize() {
+        long startTime = System.currentTimeMillis();
+
         /*GameUtils.playLoopingMusic(BaseGame.level0Music);*/
         GameUtils.playLoopingMusic(BaseGame.metalWalkingMusic, 0);
         initializeMap();
         initializeActors();
         initializeUI();
+        bulletPuffManager = new BulletPuffManager(mainStage3D.camera, decalBatch);
+
+        GameUtils.printLoadingTime(getClass().getSimpleName(), startTime);
     }
 
     @Override
@@ -67,6 +79,10 @@ public class LevelScreen extends BaseScreen3D {
 
         if (!Gdx.input.isCursorCatched())
             Gdx.input.setCursorCatched(true);
+
+        buttonPolling();
+
+        bulletPuffManager.render(dt);
     }
 
     @Override
@@ -96,26 +112,53 @@ public class LevelScreen extends BaseScreen3D {
     }
 
     @Override
-    public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-        if (button == Input.Buttons.LEFT && !isGameOver)
-            if (hud.getAmmo() > 0)
-                shoot();
-            else
-                BaseGame.outOfAmmoSound.play(BaseGame.soundVolume, MathUtils.random(.8f, 1.2f), 0);
-        return super.touchDown(screenX, screenY, pointer, button);
+    public boolean touchUp(int screenX, int screenY, int pointer, int button) {
+        holdingDown = false;
+        return super.touchUp(screenX, screenY, pointer, button);
     }
 
-    private void determineConsequencesOfPick(int index) {
-        if (index >= 0) {
-            if (shootable.get(index).getClass().getSimpleName().equalsIgnoreCase("menig")) {
-                Menig menig = (Menig) shootable.get(index);
+    private void buttonPolling() {
+        if (Gdx.input.isButtonPressed(Input.Buttons.LEFT) && !isGameOver) {
+            if (weapon.isReady)
+                shoot();
+            holdingDown = true;
+        }
+    }
+
+    private void rayPickTarget() {
+        Vector2 spread = getSpread();
+        int screenX = (int) (Gdx.graphics.getWidth() / 2 + MathUtils.random(-spread.x, spread.y));
+        int screenY = (int) (Gdx.graphics.getHeight() / 2 + MathUtils.random(-spread.y, spread.y));
+
+        Ray ray = mainStage3D.camera.getPickRay(screenX, screenY);
+        int i = GameUtils.getClosestListIndex(ray, shootable);
+
+        if (i >= 0) {
+            if (shootable.get(i).getClass().getSimpleName().equalsIgnoreCase("menig")) {
+                Menig menig = (Menig) shootable.get(i);
                 activateEnemies(45, menig);
                 menig.decrementHealth(weapon.damage);
-            } else if (shootable.get(index).getClass().getSimpleName().equalsIgnoreCase("barrel")) {
-                Barrel barrel = (Barrel) shootable.get(index);
+            } else if (shootable.get(i).getClass().getSimpleName().equalsIgnoreCase("barrel")) {
+                Barrel barrel = (Barrel) shootable.get(i);
                 barrel.decrementHealth(weapon.damage, player.distanceBetween(barrel));
+            } else if (shootable.get(i).getClass().getSimpleName().equalsIgnoreCase("tile") && hud.getAmmo() > 0) {
+                Tile tile = (Tile) shootable.get(i);
+                if (tile.type.equalsIgnoreCase("walls")) {
+                    Vector3 temp = new Vector3().set(ray.direction).scl(player.distanceBetween(tile) - (Tile.diagonalLength / 2)).add(ray.origin);
+                    bulletPuffManager.addNewBulletPuff(temp.x, temp.y, temp.z);
+                }
             }
         }
+    }
+
+    private Vector2 getSpread() {
+        int maxSpreadX = 0;
+        if (holdingDown)
+            maxSpreadX = (int) (Gdx.graphics.getWidth() / mainStage3D.camera.fieldOfView * weapon.SPREAD_ANGLE);
+        int maxSpreadY = 0;
+        if (holdingDown)
+            maxSpreadY = (int) (maxSpreadX / BaseGame.aspectRatio);
+        return new Vector2(maxSpreadX, maxSpreadY);
     }
 
     private void explodeBarrelWithDelay(final Barrel barrel) {
@@ -321,17 +364,13 @@ public class LevelScreen extends BaseScreen3D {
     }
 
     private void shoot() {
-        weapon.shoot();
-        player.muzzleLight();
-        hud.decrementAmmo();
-        int index = GameUtils.getRayPickedListIndex(
-                Gdx.graphics.getWidth() / 2,
-                Gdx.graphics.getHeight() / 2,
-                shootable,
-                mainStage3D.camera
-        );
-        determineConsequencesOfPick(index);
-        activateEnemies(45, player);
+        weapon.shoot(hud.getAmmo());
+        if (hud.getAmmo() > 0) {
+            player.muzzleLight();
+            hud.decrementAmmo();
+            rayPickTarget();
+            activateEnemies(45, player);
+        }
     }
 
     private void activateEnemies(float range, BaseActor3D source) {
@@ -370,7 +409,6 @@ public class LevelScreen extends BaseScreen3D {
                 .padTop(Gdx.graphics.getHeight() * .01f)
                 .padLeft(Gdx.graphics.getWidth() * .01f)
                 .row();
-
 
         gameLabel = new Label("", BaseGame.label26Style);
         gameLabel.setColor(Color.RED);

@@ -17,12 +17,16 @@ import no.sandramoen.commanderqueen.utils.BaseGame;
 
 public class Weapon extends BaseActor {
     public Crosshair crosshair;
-    public int damage = MathUtils.random(5, 20);;
+    public int damage = MathUtils.random(5, 20);
 
     private float totalTime = 5f;
-
     private float swayAmount = .01f;
     private float swayFrequency = .5f;
+
+    private final float RATE_OF_FIRE = 60 / 150f;
+    public final float SPREAD_ANGLE = 5.5f / 2;
+    public boolean isReady;
+    private float isReadyCounter;
 
     private Animation<TextureRegion> shootAnimation;
     private Vector2 restPosition = new Vector2(Gdx.graphics.getWidth() * 3 / 5 - getWidth() / 2, -Gdx.graphics.getHeight() * swayAmount);
@@ -31,10 +35,16 @@ public class Weapon extends BaseActor {
         super(0, 0, stage);
         crosshair = new Crosshair(stage);
         initializeShootAnimation();
-        setWidth(Gdx.graphics.getWidth() * .25f);
-        setSize(getWidth(), getWidth() / BaseGame.aspectRatio);
+
+        setSize(Gdx.graphics.getWidth() * .25f, Gdx.graphics.getWidth() * .25f);
         setPosition(restPosition.x, -getHeight());
         moveUp();
+    }
+
+    @Override
+    public void act(float dt) {
+        super.act(dt);
+        checkIfReadyToShoot(dt);
     }
 
     @Override
@@ -44,9 +54,18 @@ public class Weapon extends BaseActor {
         batch.draw(shootAnimation.getKeyFrame(totalTime), getX(), getY(), getWidth(), getHeight());
     }
 
-    public void shoot() {
-        totalTime = 0f;
-        BaseGame.pistolShotSound.play(BaseGame.soundVolume, MathUtils.random(.9f, 1.1f), 0f);
+    public void shoot(int ammo) {
+        if (isReady) {
+            isReady = false;
+            isReadyCounter = 0;
+
+            if (ammo > 0) {
+                totalTime = 0f;
+                BaseGame.pistolShotSound.play(BaseGame.soundVolume, MathUtils.random(.9f, 1.1f), 0f);
+            } else {
+                BaseGame.outOfAmmoSound.play(BaseGame.soundVolume, MathUtils.random(.8f, 1.2f), 0);
+            }
+        }
     }
 
     public void sway(boolean isMoving) {
@@ -61,6 +80,15 @@ public class Weapon extends BaseActor {
     public void moveDown() {
         clearActions();
         addAction(Actions.moveBy(0, -getHeight(), 1f));
+    }
+
+    private void checkIfReadyToShoot(float dt) {
+        if (isReadyCounter > RATE_OF_FIRE) {
+            isReady = true;
+            isReadyCounter = 0;
+        } else {
+            isReadyCounter += dt;
+        }
     }
 
     private RepeatAction getSwayAction() {

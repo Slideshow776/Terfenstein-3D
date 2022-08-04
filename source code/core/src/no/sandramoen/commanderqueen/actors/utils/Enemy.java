@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.g3d.Environment;
 import com.badlogic.gdx.graphics.g3d.ModelBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.utils.Array;
@@ -17,6 +18,7 @@ import no.sandramoen.commanderqueen.actors.Barrel;
 import no.sandramoen.commanderqueen.actors.Tile;
 import no.sandramoen.commanderqueen.actors.characters.Player;
 import no.sandramoen.commanderqueen.actors.hud.HUD;
+import no.sandramoen.commanderqueen.utils.BaseGame;
 import no.sandramoen.commanderqueen.utils.GameUtils;
 import no.sandramoen.commanderqueen.utils.Stage3D;
 import no.sandramoen.commanderqueen.utils.pathFinding.TileGraph;
@@ -29,10 +31,12 @@ public class Enemy extends BaseActor3D {
     public Color originalColor = new Color(.4f, .4f, .4f, 1f);
     public boolean isRanged = true;
     public int score = 0;
-    public int damage = 0;
 
     protected Player player;
     protected float movementSpeed;
+
+    protected int minDamage;
+    protected int maxDamage;
 
     protected Animation<TextureRegion> currentAnimation;
     protected Animation<TextureRegion> idleFrontAnimation;
@@ -54,7 +58,11 @@ public class Enemy extends BaseActor3D {
     protected Animation<TextureRegion> shootAnimation;
     protected Animation<TextureRegion> meleeAnimation;
     protected Animation<TextureRegion> hurtAnimation;
+    protected Animation<TextureRegion> gibAnimation;
     protected Animation<TextureRegion> dieAnimation;
+
+    private int gibThreshold;
+    private boolean isGibs;
 
     protected float shootImageDelay;
     private float shootFrequency = 1f;
@@ -107,7 +115,7 @@ public class Enemy extends BaseActor3D {
         this.hud = hud;
 
         float size = 3;
-        buildModel(size, size, size, true);
+        buildModel(2, size, 2, true);
         initializeSprite(size);
         turnBy(-180 + rotation);
         setPosition(GameUtils.getPositionRelativeToFloor(size), y, z);
@@ -160,11 +168,18 @@ public class Enemy extends BaseActor3D {
         isDead = true;
         totalTime = 0f;
         isCollisionEnabled = false;
-        currentAnimation = dieAnimation;
+        if (isGibs) {
+            currentAnimation = gibAnimation;
+            BaseGame.wetSplashSound.play(BaseGame.soundVolume);
+        } else {
+            currentAnimation = dieAnimation;
+        }
     }
 
     public void decrementHealth(int amount) {
         health -= amount;
+        if (health <= gibThreshold)
+            isGibs = true;
         if (health > 0 && amount > 0) {
             setTemporaryHurtState();
             findPlayer();
@@ -220,13 +235,26 @@ public class Enemy extends BaseActor3D {
     protected void playActivateSound() {
     }
 
+    protected void setHealth(int health) {
+        this.health = health;
+        gibThreshold = -health - 1;
+    }
+
+    private int getDamage() {
+        return MathUtils.random(minDamage, maxDamage);
+    }
+
     private void checkIfShotPlayerOrBarrel() {
-        int i = GameUtils.getRayPickedListIndex(position, player.position.cpy().sub(position), shootable);
+        Vector3 temp = player.position.cpy();
+        float maxSpread = 1.75f;
+        temp.y += MathUtils.random(-maxSpread, maxSpread);
+        temp.z += MathUtils.random(-maxSpread, maxSpread);
+        int i = GameUtils.getRayPickedListIndex(position, temp.cpy().sub(position), shootable);
         if (i > -1 && is(shootable.get(i), "barrel")) {
             Barrel barrel = (Barrel) shootable.get(i);
-            barrel.decrementHealth(damage, distanceBetween(barrel));
+            barrel.decrementHealth(getDamage(), distanceBetween(barrel));
         } else if (i > -1 && is(shootable.get(i), "player"))
-            hud.decrementHealth(damage, this);
+            hud.decrementHealth(getDamage(), this);
     }
 
     private boolean isPlayerVisible() {
@@ -340,7 +368,7 @@ public class Enemy extends BaseActor3D {
         state = State.ATTACKING;
         currentAnimation = meleeAnimation;
         totalTime = 0;
-        hud.decrementHealth(damage, this);
+        hud.decrementHealth(getDamage(), this);
         meleeWeapon();
     }
 

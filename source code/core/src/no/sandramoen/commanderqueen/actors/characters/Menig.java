@@ -18,10 +18,11 @@ public class Menig extends Enemy {
 
     public Menig(float y, float z, Stage3D s, Player player, Float rotation, TileGraph tileGraph, Array<Tile> floorTiles, Stage stage, HUD hud) {
         super(y, z, s, player, rotation, tileGraph, floorTiles, stage, hud);
-        movementSpeed = .06f;
-        health = 20;
+        movementSpeed = .065f;
+        setHealth(20);
         shootImageDelay = .25f;
-        damage = MathUtils.random(3, 15);
+        minDamage = 3;
+        maxDamage = 15;
         score = 10;
 
         initializeAnimations();
@@ -64,6 +65,7 @@ public class Menig extends Enemy {
         initializeShootAnimation();
         initializeHurtAnimation();
         initializeMeleeAnimation();
+        initializeGibAnimation();
         initializeDeathAnimation();
         setDirectionalSprites();
     }
@@ -159,6 +161,13 @@ public class Menig extends Enemy {
         animationImages.add(BaseGame.textureAtlas.findRegion("enemies/menig/melee 1"));
         animationImages.add(BaseGame.textureAtlas.findRegion("enemies/menig/melee 0"));
         meleeAnimation = new Animation(shootImageDelay, animationImages, Animation.PlayMode.NORMAL);
+    }
+
+    private void initializeGibAnimation() {
+        Array<TextureAtlas.AtlasRegion> animationImages = new Array();
+        for (int i = 0; i < 7; i++)
+            animationImages.add(BaseGame.textureAtlas.findRegion("enemies/menig/gib " + i));
+        gibAnimation = new Animation(.1f, animationImages, Animation.PlayMode.NORMAL);
     }
 
     private void initializeHurtAnimation() {

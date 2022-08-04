@@ -41,11 +41,12 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
     public static Sound invulnerableSound;
     public static Sound vulnerableSound;
     public static Sound metalSound;
+    public static Sound wetSplashSound;
 
     // game state
     public static float mouseMovementSensitivity = .05f;
     public static boolean isHeadBobbing = true;
-    public static float aspectRatio = 16 / 9;
+    public static float aspectRatio = 16 / 9f;
     public static float voiceVolume = 1f;
     public static float soundVolume = .5f;
     public static float musicVolume = .1f;
@@ -112,6 +113,7 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
         assetManager.load("audio/sound/vulnerable.wav", Sound.class);
         assetManager.load("audio/sound/35213__abyssmal__slashkut.wav", Sound.class);
         assetManager.load("audio/sound/488608__spacejoe__metal-bowl-7.wav", Sound.class);
+        assetManager.load("audio/sound/521958__kastenfrosch__wet-impact-2.ogg", Sound.class);
 
         // tiled maps
         assetManager.setLoader(TiledMap.class, new TmxMapLoader(new InternalFileHandleResolver()));
@@ -138,17 +140,13 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
         vulnerableSound = assetManager.get("audio/sound/vulnerable.wav", Sound.class);
         menigMeleeSound = assetManager.get("audio/sound/35213__abyssmal__slashkut.wav", Sound.class);
         metalSound = assetManager.get("audio/sound/488608__spacejoe__metal-bowl-7.wav", Sound.class);
+        wetSplashSound = assetManager.get("audio/sound/521958__kastenfrosch__wet-impact-2.ogg", Sound.class);
 
         // tiled maps
         testMap = assetManager.get("maps/test.tmx", TiledMap.class);
         level0Map = assetManager.get("maps/level0.tmx", TiledMap.class);
 
         textureAtlas = assetManager.get("images/included/packed/images.pack.atlas");
-        printLoadingTime(startTime);
-    }
-
-    private void printLoadingTime(long startTime) {
-        long endTime = System.currentTimeMillis();
-        Gdx.app.error(this.getClass().getSimpleName(), "Asset manager took " + (endTime - startTime) + " ms to load all game assets.");
+        GameUtils.printLoadingTime(getClass().getSimpleName(), startTime);
     }
 }

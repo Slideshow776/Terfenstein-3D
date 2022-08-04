@@ -54,12 +54,14 @@ public class Barrel extends BaseActor3D {
     }
 
     public void explode() {
-        explode = true;
-        health = 0;
-        totalTime = 0;
-        BaseGame.explosionSound.play(BaseGame.soundVolume);
-        isCollisionEnabled = false;
-        stage3D.lightManager.addSmallExplosion(position);
+        if (!explode) {
+            explode = true;
+            isCollisionEnabled = false;
+            health = 0;
+            totalTime = 0;
+            BaseGame.explosionSound.play(BaseGame.soundVolume);
+            stage3D.lightManager.addSmallExplosion(position);
+        }
     }
 
     public void decrementHealth(int amount, float distance) {

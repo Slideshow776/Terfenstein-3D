@@ -18,7 +18,7 @@ public class HUD extends BaseActor {
 
     private int armor = 0;
     private int health = 100;
-    private int ammo = 25;
+    private int ammo = 50;
     private int score = 0;
 
     private float armorProtectionValue = 1 / 3f;
@@ -112,8 +112,10 @@ public class HUD extends BaseActor {
     }
 
     public void decrementAmmo() {
-        ammo--;
-        ammoLabel.setText(ammo + "");
+        if (ammo > 0) {
+            ammo--;
+            ammoLabel.setText(ammo + "");
+        }
     }
 
     public int getAmmo() {
@@ -201,11 +203,11 @@ public class HUD extends BaseActor {
 
     private void setOverlayAngle(int amount, float angle) {
         if (angle < 130)
-            overlayIndicator.flashRight(BaseGame.redColor, .5f * amount / 50);
+            overlayIndicator.flashRight(BaseGame.redColor, .5f * amount / 25);
         else if (angle > 230)
-            overlayIndicator.flashLeft(BaseGame.redColor, .5f * amount / 50);
+            overlayIndicator.flashLeft(BaseGame.redColor, .5f * amount / 25);
         else
-            overlayIndicator.flash(BaseGame.redColor, .5f * amount / 50);
+            overlayIndicator.flash(BaseGame.redColor, .5f * amount / 40);
     }
 
     private void setHurtFace(int amount, float angle) {
