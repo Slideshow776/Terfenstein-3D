@@ -34,6 +34,7 @@ public class Enemy extends BaseActor3D {
 
     protected Player player;
     protected float movementSpeed;
+    protected float painChance;
 
     protected int minDamage;
     protected int maxDamage;
@@ -106,7 +107,7 @@ public class Enemy extends BaseActor3D {
     private Array<BaseActor3D> shootable = new Array();
     private Vector2 forceMove = new Vector2(8f, 8f);
 
-    public Enemy(float y, float z, Stage3D stage3D, Player player, Float rotation, TileGraph tileGraph, Array<Tile> floorTiles, Stage stage, HUD hud) {
+    public Enemy(float y, float z, Stage3D stage3D, Player player, float rotation, TileGraph tileGraph, Array<Tile> floorTiles, Stage stage, HUD hud) {
         super(0, y, z, stage3D);
         this.player = player;
         this.tileGraph = tileGraph;
@@ -115,7 +116,7 @@ public class Enemy extends BaseActor3D {
         this.hud = hud;
 
         float size = 3;
-        buildModel(2, size, 2, true);
+        buildModel(1.5f, size, 1.5f, true);
         initializeSprite(size);
         turnBy(-180 + rotation);
         setPosition(GameUtils.getPositionRelativeToFloor(size), y, z);
@@ -141,7 +142,11 @@ public class Enemy extends BaseActor3D {
 
         if (!isActive) return;
 
-        setPathToLastKnownPlayerPosition();
+        try {
+            setPathToLastKnownPlayerPosition();
+        } catch (Exception exception) {
+            Gdx.app.error(getClass().getSimpleName(), "setPathToLastKnownPlayerPosition() failed => " + exception);
+        }
 
         if (isAttacking && isPlayerVisible) {
             attacking(dt);
@@ -181,7 +186,9 @@ public class Enemy extends BaseActor3D {
         if (health <= gibThreshold)
             isGibs = true;
         if (health > 0 && amount > 0) {
-            setTemporaryHurtState();
+            float temp = MathUtils.random(0f, 1f);
+            if (temp > (1 - painChance))
+                setTemporaryHurtState();
             findPlayer();
         }
     }

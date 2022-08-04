@@ -110,34 +110,62 @@ barrel/barrel explode 8
   index: -1
 
 images.pack3.png
-size: 256, 64
+size: 128, 128
 format: RGBA8888
 filter: Nearest, Nearest
 repeat: none
-bullet puff/bullet puff 1
+decals/blood decal 1
+  rotate: false
+  xy: 2, 70
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+decals/blood decal 2
+  rotate: false
+  xy: 2, 36
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+decals/blood decal 3
+  rotate: false
+  xy: 36, 70
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+decals/blood decal 4
   rotate: false
   xy: 2, 2
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-bullet puff/bullet puff 2
+decals/bullet puff 1
+  rotate: false
+  xy: 36, 36
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+decals/bullet puff 2
+  rotate: false
+  xy: 70, 70
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+decals/bullet puff 3
   rotate: false
   xy: 36, 2
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-bullet puff/bullet puff 3
+decals/bullet puff 4
   rotate: false
-  xy: 70, 2
-  size: 32, 32
-  orig: 32, 32
-  offset: 0, 0
-  index: -1
-bullet puff/bullet puff 4
-  rotate: false
-  xy: 104, 2
+  xy: 70, 36
   size: 32, 32
   orig: 32, 32
   offset: 0, 0

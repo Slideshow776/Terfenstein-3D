@@ -83,7 +83,11 @@ public class MapLoader {
                     MapProperties props = obj.getProperties();
                     float y = (Float) props.get("x") * BaseGame.unitScale;
                     float z = (Float) props.get("y") * BaseGame.unitScale;
-                    Tile tile = new Tile(y, z, type, texture, stage3D);
+                    float rotation = 0;
+                    if (props.get("rotation") != null)
+                        rotation = (Float) props.get("rotation");
+                    rotation %= 360;
+                    Tile tile = new Tile(y, z, type, texture, stage3D, rotation);
                     tiles.add(tile);
                     shootable.add(tile);
                 }

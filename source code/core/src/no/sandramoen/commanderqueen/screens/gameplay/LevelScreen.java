@@ -13,7 +13,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.utils.Array;
 
 import no.sandramoen.commanderqueen.actors.Barrel;
-import no.sandramoen.commanderqueen.actors.utils.BulletPuffManager;
+import no.sandramoen.commanderqueen.actors.utils.BloodDecals;
+import no.sandramoen.commanderqueen.actors.utils.BulletDecals;
 import no.sandramoen.commanderqueen.actors.hud.HUD;
 import no.sandramoen.commanderqueen.actors.characters.Menig;
 import no.sandramoen.commanderqueen.actors.characters.Player;
@@ -49,7 +50,8 @@ public class LevelScreen extends BaseScreen3D {
     private boolean isGameOver;
     private boolean holdingDown;
 
-    private BulletPuffManager bulletPuffManager;
+    private BulletDecals bulletDecals;
+    private BloodDecals bloodDecals;
 
     @Override
     public void initialize() {
@@ -60,7 +62,8 @@ public class LevelScreen extends BaseScreen3D {
         initializeMap();
         initializeActors();
         initializeUI();
-        bulletPuffManager = new BulletPuffManager(mainStage3D.camera, decalBatch);
+        bulletDecals = new BulletDecals(mainStage3D.camera, decalBatch);
+        bloodDecals = new BloodDecals(mainStage3D.camera, decalBatch);
 
         GameUtils.printLoadingTime(getClass().getSimpleName(), startTime);
     }
@@ -82,7 +85,8 @@ public class LevelScreen extends BaseScreen3D {
 
         buttonPolling();
 
-        bulletPuffManager.render(dt);
+        bulletDecals.render(dt);
+        bloodDecals.render(dt);
     }
 
     @Override
@@ -138,14 +142,19 @@ public class LevelScreen extends BaseScreen3D {
                 Menig menig = (Menig) shootable.get(i);
                 activateEnemies(45, menig);
                 menig.decrementHealth(weapon.damage);
+
+                Vector3 temp = new Vector3().set(ray.direction).scl(player.distanceBetween(menig) - .2f).add(ray.origin);
+                bloodDecals.addDecal(temp.x, temp.y, temp.z);
+
             } else if (shootable.get(i).getClass().getSimpleName().equalsIgnoreCase("barrel")) {
                 Barrel barrel = (Barrel) shootable.get(i);
                 barrel.decrementHealth(weapon.damage, player.distanceBetween(barrel));
             } else if (shootable.get(i).getClass().getSimpleName().equalsIgnoreCase("tile") && hud.getAmmo() > 0) {
                 Tile tile = (Tile) shootable.get(i);
                 if (tile.type.equalsIgnoreCase("walls")) {
+
                     Vector3 temp = new Vector3().set(ray.direction).scl(player.distanceBetween(tile) - (Tile.diagonalLength / 2)).add(ray.origin);
-                    bulletPuffManager.addNewBulletPuff(temp.x, temp.y, temp.z);
+                    bulletDecals.addDecal(temp.x, temp.y, temp.z);
                 }
             }
         }

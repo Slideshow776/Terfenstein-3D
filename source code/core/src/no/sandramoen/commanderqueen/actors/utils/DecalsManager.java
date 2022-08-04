@@ -1,5 +1,6 @@
 package no.sandramoen.commanderqueen.actors.utils;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.PerspectiveCamera;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
@@ -11,12 +12,16 @@ import com.badlogic.gdx.utils.Array;
 
 import no.sandramoen.commanderqueen.utils.BaseGame;
 
-public class BulletPuffManager {
+public class DecalsManager {
+    protected Array<String> imagePaths;
+    protected float minAnimationSpeed;
+    protected float maxAnimationSpeed;
+
     private PerspectiveCamera camera;
     private DecalBatch batch;
     private Array<MyDecal> decals = new Array();
 
-    public BulletPuffManager(PerspectiveCamera camera, DecalBatch batch) {
+    public DecalsManager(PerspectiveCamera camera, DecalBatch batch) {
         this.camera = camera;
         this.batch = batch;
     }
@@ -34,7 +39,7 @@ public class BulletPuffManager {
         }
     }
 
-    public void addNewBulletPuff(float x, float y, float z) {
+    public void addDecal(float x, float y, float z) {
         MyDecal decal = new MyDecal(x, y, z);
         decals.add(decal);
     }
@@ -50,16 +55,20 @@ public class BulletPuffManager {
         }
 
         private void initializeDecal(float x, float y, float z) {
-            decal = Decal.newDecal(BaseGame.textureAtlas.findRegion("bullet puff/bullet puff 1"), true);
+            decal = Decal.newDecal(BaseGame.textureAtlas.findRegion(imagePaths.get(0)), true);
             decal.setDimensions(MathUtils.random(.8f, 1.2f), MathUtils.random(.8f, 1.2f));
-            decal.setPosition(x, y, z);
+            decal.setPosition(x, y, z);/*
+            decal.setScale(2);*/
         }
 
         private void initializeAnimation() {
+            if (imagePaths.size == 0)
+                Gdx.app.error(getClass().getSimpleName(), "Image path array was empty");
+
             Array<TextureAtlas.AtlasRegion> animationImages = new Array();
-            for (int i = 1; i < 5; i++)
-                animationImages.add(BaseGame.textureAtlas.findRegion("bullet puff/bullet puff " + i));
-            animation = new Animation(MathUtils.random(.1f, .3f), animationImages, Animation.PlayMode.NORMAL);
+            for (int i = 0; i < imagePaths.size; i++)
+                animationImages.add(BaseGame.textureAtlas.findRegion(imagePaths.get(i)));
+            animation = new Animation(MathUtils.random(minAnimationSpeed, maxAnimationSpeed), animationImages, Animation.PlayMode.NORMAL);
         }
     }
 }

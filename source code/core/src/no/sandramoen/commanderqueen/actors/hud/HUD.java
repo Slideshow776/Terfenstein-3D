@@ -207,7 +207,7 @@ public class HUD extends BaseActor {
         else if (angle > 230)
             overlayIndicator.flashLeft(BaseGame.redColor, .5f * amount / 25);
         else
-            overlayIndicator.flash(BaseGame.redColor, .5f * amount / 40);
+            overlayIndicator.flash(BaseGame.redColor, .5f * amount / 25);
     }
 
     private void setHurtFace(int amount, float angle) {

@@ -24,39 +24,40 @@ public class Menig extends Enemy {
         minDamage = 3;
         maxDamage = 15;
         score = 10;
+        painChance = .78f;
 
         initializeAnimations();
     }
 
     @Override
     public void die() {
-        super.die();
         GameUtils.playSoundRelativeToDistance(BaseGame.menigDeathSound, distanceBetween(player), VOCAL_RANGE);
+        super.die();
     }
 
     @Override
     public void decrementHealth(int amount) {
-        super.decrementHealth(amount);
         if (health - amount > 0 && amount > 0)
-            BaseGame.menigHurtSound.play(BaseGame.soundVolume);
+            GameUtils.playSoundRelativeToDistance(BaseGame.menigHurtSound, distanceBetween(player), VOCAL_RANGE);
+        super.decrementHealth(amount);
     }
 
     @Override
     protected void shootWeapon() {
+        GameUtils.playSoundRelativeToDistance(BaseGame.pistolShotSound, distanceBetween(player), VOCAL_RANGE, .6f);
         super.shootWeapon();
-        BaseGame.pistolShotSound.play(BaseGame.soundVolume, .6f, 0);
     }
 
     @Override
     protected void meleeWeapon() {
-        super.meleeWeapon();
         BaseGame.menigMeleeSound.play(BaseGame.soundVolume);
+        super.meleeWeapon();
     }
 
     @Override
     protected void playActivateSound() {
-        super.playActivateSound();
         GameUtils.playSoundRelativeToDistance(BaseGame.menigActiveSound, distanceBetween(player) * 1.2f, VOCAL_RANGE);
+        super.playActivateSound();
     }
 
     private void initializeAnimations() {
