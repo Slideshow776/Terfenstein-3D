@@ -206,6 +206,9 @@ This algorithm is used sparingly whenever there is a sound the enemy should resp
 
 ![Dijkstra's improved algorithm A*](https://happycoding.io/tutorials/libgdx/images/dijkstra-search.gif)
 
+### Decals
+// TODO:
+
 ## Other
 For other project specifics check out the [commits](https://github.com/Slideshow776/3D-shooting-game/commits/master).
 
