@@ -213,7 +213,8 @@ public class LevelScreen extends BaseScreen3D {
 
             for (Tile tile : tiles) {
                 preventEnemyOverLapWithTile(tile, i);
-                illuminateEnemy(tile, i);
+                if (mainStage3D.intervalFlag)
+                    illuminateEnemy(tile, i);
             }
         }
     }
@@ -306,7 +307,7 @@ public class LevelScreen extends BaseScreen3D {
         if (enemies.get(i).overlaps(tile) && tile.type == "floors" && tile.illuminated)
             enemies.get(i).setColor(Color.WHITE);
         else if (enemies.get(i).overlaps(tile) && tile.type == "floors")
-            enemies.get(i).setColor(enemies.get(i).originalColor);
+            enemies.get(i).setColor(enemies.get(i).darkColor);
     }
 
     private void checkExplosionRange(BaseActor3D source) {

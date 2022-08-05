@@ -158,6 +158,9 @@ public class MapLoader {
 
         for (Enemy enemy : enemies)
             enemy.setShootableList(shootable);
+
+        for (int i = 0; i < enemies.size; i++)
+            enemies.get(i).setEnemiesList(enemies);
     }
 
     private void initializeBarrels() {

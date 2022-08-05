@@ -28,7 +28,7 @@ public class Enemy extends BaseActor3D {
     public int health = 1;
     public boolean isDead;
     public boolean isActive;
-    public Color originalColor = new Color(.4f, .4f, .4f, 1f);
+    public Color darkColor = new Color(.4f, .4f, .4f, 1f);
     public boolean isRanged = true;
     public int score = 0;
 
@@ -248,12 +248,14 @@ public class Enemy extends BaseActor3D {
                         checkIfShotPlayerOrBarrel();
                         activateNearByEnemies();
                         stage3D.lightManager.addMuzzleLight(position);
+                        setColor(new Color(1, 1, .9f, 1));
                     }
                 })
         ));
     }
 
-    protected void shootSound() {}
+    protected void shootSound() {
+    }
 
     protected void playActivateSound() {
     }
@@ -530,7 +532,6 @@ public class Enemy extends BaseActor3D {
     private void setNewAIPath(BaseActor3D source) {
         try {
             goingTo = source;
-            System.out.println(ID + " going to: " + source.getClass().getSimpleName());
             tilePath = getPathTo(source);
             tilePathCounter = 0;
         } catch (Exception ex) {
@@ -554,6 +555,6 @@ public class Enemy extends BaseActor3D {
     private void initializeSprite(float size) {
         sprite = new BaseActor3D(0, 0, 0, stage3D);
         sprite.buildModel(size, size, .001f, true);
-        sprite.setColor(originalColor);
+        sprite.setColor(darkColor);
     }
 }
