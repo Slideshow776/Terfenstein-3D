@@ -141,14 +141,14 @@ public class LevelScreen extends BaseScreen3D {
             if (shootable.get(i).getClass().getSimpleName().equalsIgnoreCase("menig")) {
                 Menig menig = (Menig) shootable.get(i);
                 activateEnemies(45, player);
-                menig.decrementHealth(weapon.damage);
+                menig.decrementHealth(weapon.getDamage());
 
                 Vector3 temp = new Vector3().set(ray.direction).scl(player.distanceBetween(menig) - .2f).add(ray.origin);
                 bloodDecals.addDecal(temp.x, temp.y, temp.z);
 
             } else if (shootable.get(i).getClass().getSimpleName().equalsIgnoreCase("barrel")) {
                 Barrel barrel = (Barrel) shootable.get(i);
-                barrel.decrementHealth(weapon.damage, player.distanceBetween(barrel));
+                barrel.decrementHealth(weapon.getDamage(), player.distanceBetween(barrel));
             } else if (shootable.get(i).getClass().getSimpleName().equalsIgnoreCase("tile") && hud.getAmmo() > 0) {
                 Tile tile = (Tile) shootable.get(i);
                 if (tile.type.equalsIgnoreCase("walls")) {

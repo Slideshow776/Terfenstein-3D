@@ -17,7 +17,6 @@ import no.sandramoen.commanderqueen.utils.BaseGame;
 
 public class Weapon extends BaseActor {
     public Crosshair crosshair;
-    public int damage = MathUtils.random(5, 20);
 
     private float totalTime = 5f;
     private float swayAmount = .01f;
@@ -80,6 +79,10 @@ public class Weapon extends BaseActor {
     public void moveDown() {
         clearActions();
         addAction(Actions.moveBy(0, -getHeight(), 1f));
+    }
+
+    public int getDamage() {
+         return MathUtils.random(5, 20);
     }
 
     private void checkIfReadyToShoot(float dt) {
