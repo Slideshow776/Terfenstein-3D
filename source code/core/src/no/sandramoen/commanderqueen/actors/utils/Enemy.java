@@ -243,12 +243,17 @@ public class Enemy extends BaseActor3D {
         new BaseActor(0, 0, stage).addAction(Actions.sequence(
                 Actions.delay(shootImageDelay),
                 Actions.run(() -> {
-                    checkIfShotPlayerOrBarrel();
-                    activateNearByEnemies();
-                    stage3D.lightManager.addMuzzleLight(position);
+                    if (state != State.HURT) {
+                        shootSound();
+                        checkIfShotPlayerOrBarrel();
+                        activateNearByEnemies();
+                        stage3D.lightManager.addMuzzleLight(position);
+                    }
                 })
         ));
     }
+
+    protected void shootSound() {}
 
     protected void playActivateSound() {
     }

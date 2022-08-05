@@ -20,7 +20,7 @@ public class Menig extends Enemy {
         super(y, z, s, player, rotation, tileGraph, floorTiles, stage, hud);
         movementSpeed = .065f;
         setHealth(20);
-        shootImageDelay = .25f;
+        shootImageDelay = .5f;
         minDamage = 3;
         maxDamage = 15;
         score = 10;
@@ -43,9 +43,9 @@ public class Menig extends Enemy {
     }
 
     @Override
-    protected void shootWeapon() {
+    protected void shootSound() {
         GameUtils.playSoundRelativeToDistance(BaseGame.pistolShotSound, distanceBetween(player), VOCAL_RANGE, .6f);
-        super.shootWeapon();
+        super.shootSound();
     }
 
     @Override
