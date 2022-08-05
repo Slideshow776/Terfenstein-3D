@@ -97,6 +97,7 @@ public class Enemy extends BaseActor3D {
     private boolean isPlayerVisible;
     private boolean isPlayerLastPositionKnown;
 
+    private BaseActor3D goingTo;
     private HUD hud;
     private Stage stage;
     private Tile goalTile;
@@ -105,6 +106,7 @@ public class Enemy extends BaseActor3D {
     private Array<Tile> floorTiles;
     private GraphPath<Tile> tilePath;
     private Array<BaseActor3D> shootable = new Array();
+    private Array<Enemy> enemies = new Array();
     private Vector2 forceMove = new Vector2(8f, 8f);
 
     public Enemy(float y, float z, Stage3D stage3D, Player player, float rotation, TileGraph tileGraph, Array<Tile> floorTiles, Stage stage, HUD hud) {
@@ -208,12 +210,20 @@ public class Enemy extends BaseActor3D {
         this.shootable.add(player);
     }
 
+    public void setEnemiesList(Array<Enemy> enemies) {
+        this.enemies.clear();
+        for (Enemy enemy : enemies)
+            if (enemy != this)
+                this.enemies.add(enemy);
+    }
+
     public void activate(BaseActor3D source) {
         if (!isActive) {
             isActive = true;
             playActivateSound();
         }
-        setNewAIPath(source);
+        if (goingTo == null || source == player)
+            setNewAIPath(source);
     }
 
     protected void moveToward(BaseActor3D baseActor3D) {
@@ -234,6 +244,7 @@ public class Enemy extends BaseActor3D {
                 Actions.delay(shootImageDelay),
                 Actions.run(() -> {
                     checkIfShotPlayerOrBarrel();
+                    activateNearByEnemies();
                     stage3D.lightManager.addMuzzleLight(position);
                 })
         ));
@@ -245,6 +256,12 @@ public class Enemy extends BaseActor3D {
     protected void setHealth(int health) {
         this.health = health;
         gibThreshold = -health - 1;
+    }
+
+    private void activateNearByEnemies() {
+        for (Enemy enemy : enemies)
+            if (enemy.isWithinDistance(60f, this))
+                enemy.activate(player);
     }
 
     private int getDamage() {
@@ -507,6 +524,8 @@ public class Enemy extends BaseActor3D {
 
     private void setNewAIPath(BaseActor3D source) {
         try {
+            goingTo = source;
+            System.out.println(ID + " going to: " + source.getClass().getSimpleName());
             tilePath = getPathTo(source);
             tilePathCounter = 0;
         } catch (Exception ex) {

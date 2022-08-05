@@ -56,7 +56,7 @@ public class Barrel extends BaseActor3D {
     public void explode() {
         if (!explode) {
             explode = true;
-            isCollisionEnabled = false;
+            isPreventOverlapEnabled = false;
             health = 0;
             totalTime = 0;
             BaseGame.explosionSound.play(BaseGame.soundVolume);

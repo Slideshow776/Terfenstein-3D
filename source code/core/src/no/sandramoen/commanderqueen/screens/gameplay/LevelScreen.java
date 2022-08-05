@@ -140,7 +140,7 @@ public class LevelScreen extends BaseScreen3D {
         if (i >= 0) {
             if (shootable.get(i).getClass().getSimpleName().equalsIgnoreCase("menig")) {
                 Menig menig = (Menig) shootable.get(i);
-                activateEnemies(45, menig);
+                activateEnemies(45, player);
                 menig.decrementHealth(weapon.damage);
 
                 Vector3 temp = new Vector3().set(ray.direction).scl(player.distanceBetween(menig) - .2f).add(ray.origin);
@@ -180,6 +180,7 @@ public class LevelScreen extends BaseScreen3D {
     private void explodeBarrel(Barrel barrel) {
         activateEnemies(45, barrel);
         shootable.removeValue(barrel, false);
+        updateEnemiesShootableList();
         checkExplosionRange(barrel);
         barrel.explode();
     }
@@ -207,7 +208,7 @@ public class LevelScreen extends BaseScreen3D {
                 continue;
             }
 
-            tryToActivateOthers(i);
+            /*tryToActivateOthers(i);*/
             preventOverlapWithOtherEnemies(i);
 
             for (Tile tile : tiles) {
@@ -242,15 +243,6 @@ public class LevelScreen extends BaseScreen3D {
                     if (hud.incrementHealth(pickup.amount))
                         removePickup(pickup);
                 }
-            }
-        }
-    }
-
-    private void tryToActivateOthers(int i) {
-        if (mainStage3D.intervalFlag && enemies.get(i).isActive) {
-            for (int j = 0; j < enemies.size; j++) {
-                if (enemies.get(i) != enemies.get(j))
-                    activateEnemies(45, player);
             }
         }
     }
@@ -365,11 +357,21 @@ public class LevelScreen extends BaseScreen3D {
         pickups.add(new Ammo(enemy.position.y + MathUtils.random(-1, 1), enemy.position.z + MathUtils.random(-1, 1), mainStage3D, player, 2));
         enemies.removeValue(enemy, false);
         shootable.removeValue(enemy, false);
-        for (int i = 0; i < enemies.size; i++)
-            enemies.get(i).setShootableList(shootable);
+        updateEnemiesShootableList();
+        updateEnemiesEnemiesList();
         hud.incrementScore(enemy.score, false);
         hud.setKillFace();
         statusLabel.setText("enemies left: " + enemies.size);
+    }
+
+    private void updateEnemiesShootableList() {
+        for (int i = 0; i < enemies.size; i++)
+            enemies.get(i).setShootableList(shootable);
+    }
+
+    private void updateEnemiesEnemiesList() {
+        for (int i = 0; i < enemies.size; i++)
+            enemies.get(i).setEnemiesList(enemies);
     }
 
     private void shoot() {
