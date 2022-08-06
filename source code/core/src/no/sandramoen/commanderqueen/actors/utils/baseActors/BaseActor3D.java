@@ -131,10 +131,6 @@ public class BaseActor3D {
         scale.set(x, y, z);
     }
 
-    public boolean is(BaseActor3D baseActor3D, String a) {
-        return baseActor3D.getClass().getSimpleName().equalsIgnoreCase(a);
-    }
-
     // 2D collision detection
     public void setBaseRectangle() {
         BoundingBox modelBounds = modelData.calculateBoundingBox(new BoundingBox());

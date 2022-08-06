@@ -12,8 +12,12 @@ import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.actions.RepeatAction;
 import com.badlogic.gdx.utils.Array;
 
+import no.sandramoen.commanderqueen.actors.characters.Player;
 import no.sandramoen.commanderqueen.actors.utils.baseActors.BaseActor;
+import no.sandramoen.commanderqueen.actors.utils.baseActors.BaseActor3D;
 import no.sandramoen.commanderqueen.utils.BaseGame;
+import no.sandramoen.commanderqueen.utils.GameUtils;
+import no.sandramoen.commanderqueen.utils.Stage3D;
 
 public class Weapon extends BaseActor {
     public Crosshair crosshair;
@@ -53,6 +57,21 @@ public class Weapon extends BaseActor {
         batch.draw(shootAnimation.getKeyFrame(totalTime), getX(), getY(), getWidth(), getHeight());
     }
 
+    public void update(HUD hud, Player player, Array<BaseActor3D> shootable, Stage3D stage3D) {
+        if (hud.getHealth() > 0)
+            sway(player.isMoving);
+
+        crosshair.setColorIfShootable(
+                shootable,
+                GameUtils.getRayPickedListIndex(
+                        Gdx.graphics.getWidth() / 2,
+                        Gdx.graphics.getHeight() / 2,
+                        shootable,
+                        stage3D.camera
+                )
+        );
+    }
+
     public void shoot(int ammo) {
         if (isReady) {
             isReady = false;
@@ -65,6 +84,16 @@ public class Weapon extends BaseActor {
                 BaseGame.outOfAmmoSound.play(BaseGame.soundVolume, MathUtils.random(.8f, 1.2f), 0);
             }
         }
+    }
+
+    public Vector2 getSpread(boolean holdingDown, float fieldOfView) {
+        int maxSpreadX = 0;
+        int maxSpreadY = 0;
+        if (holdingDown) {
+            maxSpreadX = (int) (Gdx.graphics.getWidth() / fieldOfView * SPREAD_ANGLE);
+            maxSpreadY = (int) (maxSpreadX / BaseGame.aspectRatio);
+        }
+        return new Vector2(maxSpreadX, maxSpreadY);
     }
 
     public void sway(boolean isMoving) {

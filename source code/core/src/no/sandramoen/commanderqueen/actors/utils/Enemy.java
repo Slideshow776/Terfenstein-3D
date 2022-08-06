@@ -178,6 +178,7 @@ public class Enemy extends BaseActor3D {
         if (isDead) return;
         isDead = true;
         totalTime = 0f;
+        attackDelayActor.clearActions();
         isCollisionEnabled = false;
         if (isGibs) {
             currentAnimation = gibAnimation;
@@ -283,10 +284,10 @@ public class Enemy extends BaseActor3D {
         temp.y += MathUtils.random(-maxSpread, maxSpread);
         temp.z += MathUtils.random(-maxSpread, maxSpread);
         int i = GameUtils.getRayPickedListIndex(position, temp.cpy().sub(position), shootable);
-        if (i > -1 && is(shootable.get(i), "barrel")) {
+        if (i > -1 && GameUtils.isActor(shootable.get(i), "barrel")) {
             Barrel barrel = (Barrel) shootable.get(i);
             barrel.decrementHealth(getDamage(), distanceBetween(barrel));
-        } else if (i > -1 && is(shootable.get(i), "player"))
+        } else if (i > -1 && GameUtils.isActor(shootable.get(i), "player"))
             hud.decrementHealth(getDamage(), this);
     }
 
@@ -294,7 +295,7 @@ public class Enemy extends BaseActor3D {
         if (isWithinDistance(VISIBILITY_RANGE, player) && (isActive || isDirectionFrontOrSides())) {
             int i = GameUtils.getRayPickedListIndex(position, player.position.cpy().sub(position), shootable);
             if (i > -1) {
-                if (!is(shootable.get(i), "player") && !is(shootable.get(i), "barrel"))
+                if (!GameUtils.isActor(shootable.get(i), "player") && !GameUtils.isActor(shootable.get(i), "barrel"))
                     return false;
                 else
                     return true;
@@ -356,7 +357,7 @@ public class Enemy extends BaseActor3D {
 
     private void checkIfHitAWallAndShouldGoStraight() {
         for (BaseActor3D baseActor3D : shootable) {
-            if (is(baseActor3D, "tile")) {
+            if (GameUtils.isActor(baseActor3D, "tile")) {
                 Tile temp = (Tile) baseActor3D;
                 if (temp.type == "walls" && overlaps(temp) && dodgeDirectionAngle != 0) {
                     dodgeDirectionAngle = 0;

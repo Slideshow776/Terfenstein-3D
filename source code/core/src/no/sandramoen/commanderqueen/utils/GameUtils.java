@@ -64,6 +64,10 @@ public class GameUtils {
         Gdx.app.log(tag, "took " + (endTime - startTime) + " ms to load.");
     }
 
+    public static boolean isActor(BaseActor3D baseActor3D, String a) {
+        return baseActor3D.getClass().getSimpleName().equalsIgnoreCase(a);
+    }
+
     public static int getRayPickedListIndex(Vector3 origin, Vector3 direction, Array<BaseActor3D> list) {
         Ray ray = new Ray(origin, direction);
         return getClosestListIndex(ray, list);
