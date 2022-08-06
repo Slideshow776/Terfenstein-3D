@@ -5,6 +5,8 @@
 	<inherits name='com.badlogic.gdx.controllers' />
 	<inherits name='com.badlogic.gdx.controllers.controllers-gwt' />
 	<inherits name='com.badlogic.gdx.ai' />
+	<inherits name="regexodus" />
+	<inherits name="textratypist" />
 
 	<inherits name='MyGdxGame' />
 	<entry-point class='no.sandramoen.commanderqueen.client.HtmlLauncher' />
