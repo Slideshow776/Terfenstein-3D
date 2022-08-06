@@ -1,7 +1,7 @@
 package no.sandramoen.commanderqueen.actors.pickups;
 
 import no.sandramoen.commanderqueen.actors.characters.Player;
-import no.sandramoen.commanderqueen.actors.utils.BaseActor3D;
+import no.sandramoen.commanderqueen.actors.utils.baseActors.BaseActor3D;
 import no.sandramoen.commanderqueen.utils.GameUtils;
 import no.sandramoen.commanderqueen.utils.Stage3D;
 

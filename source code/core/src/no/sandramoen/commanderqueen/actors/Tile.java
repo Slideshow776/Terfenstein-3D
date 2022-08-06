@@ -1,6 +1,6 @@
 package no.sandramoen.commanderqueen.actors;
 
-import no.sandramoen.commanderqueen.actors.utils.BaseActor3D;
+import no.sandramoen.commanderqueen.actors.utils.baseActors.BaseActor3D;
 import no.sandramoen.commanderqueen.utils.Stage3D;
 
 public class Tile extends BaseActor3D {

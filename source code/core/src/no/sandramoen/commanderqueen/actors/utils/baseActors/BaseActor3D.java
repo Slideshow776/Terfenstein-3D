@@ -1,4 +1,4 @@
-package no.sandramoen.commanderqueen.actors.utils;
+package no.sandramoen.commanderqueen.actors.utils.baseActors;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;

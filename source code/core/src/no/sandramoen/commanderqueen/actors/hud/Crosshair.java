@@ -3,7 +3,7 @@ package no.sandramoen.commanderqueen.actors.hud;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 
-import no.sandramoen.commanderqueen.actors.utils.BaseActor;
+import no.sandramoen.commanderqueen.actors.utils.baseActors.BaseActor;
 
 public class Crosshair extends BaseActor {
     public Crosshair(Stage stage) {

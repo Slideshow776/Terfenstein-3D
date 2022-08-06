@@ -18,6 +18,8 @@ import no.sandramoen.commanderqueen.actors.Barrel;
 import no.sandramoen.commanderqueen.actors.Tile;
 import no.sandramoen.commanderqueen.actors.characters.Player;
 import no.sandramoen.commanderqueen.actors.hud.HUD;
+import no.sandramoen.commanderqueen.actors.utils.baseActors.BaseActor;
+import no.sandramoen.commanderqueen.actors.utils.baseActors.BaseActor3D;
 import no.sandramoen.commanderqueen.utils.BaseGame;
 import no.sandramoen.commanderqueen.utils.GameUtils;
 import no.sandramoen.commanderqueen.utils.Stage3D;
@@ -86,11 +88,11 @@ public class Enemy extends BaseActor3D {
     private final float VISIBILITY_RANGE = 100;
     private boolean isAttacking;
 
-    private float dogdeDirectionFrequency = 3;
-    private float dogdeDirectionCounter = 0;
+    private float dodgeDirectionFrequency = 3;
+    private float dodgeDirectionCounter = 0;
     private float dodgeDirectionAngle = 45;
 
-    private float atackStateChangeFrequency = 1.5f;
+    protected float attackStateChangeFrequency;
     private float attackStateChangeCounter = 0;
 
     private boolean isAttackDodging;
@@ -108,6 +110,7 @@ public class Enemy extends BaseActor3D {
     private Array<BaseActor3D> shootable = new Array();
     private Array<Enemy> enemies = new Array();
     private Vector2 forceMove = new Vector2(8f, 8f);
+    private BaseActor attackDelayActor;
 
     public Enemy(float y, float z, Stage3D stage3D, Player player, float rotation, TileGraph tileGraph, Array<Tile> floorTiles, Stage stage, HUD hud) {
         super(0, y, z, stage3D);
@@ -125,6 +128,7 @@ public class Enemy extends BaseActor3D {
         setBaseRectangle();
         isVisible = false;
         setDirection();
+        attackDelayActor = new BaseActor(0, 0, stage);
     }
 
     @Override
@@ -188,8 +192,7 @@ public class Enemy extends BaseActor3D {
         if (health <= gibThreshold)
             isGibs = true;
         if (health > 0 && amount > 0) {
-            float temp = MathUtils.random(0f, 1f);
-            if (temp > (1 - painChance))
+            if (MathUtils.random(0f, 1f) > (1 - painChance))
                 setTemporaryHurtState();
             findPlayer();
         }
@@ -236,22 +239,21 @@ public class Enemy extends BaseActor3D {
         moveForward(movementSpeed);
     }
 
-    protected void meleeWeapon() {
+    protected void meleeSound() {
     }
 
     protected void shootWeapon() {
-        new BaseActor(0, 0, stage).addAction(Actions.sequence(
-                Actions.delay(shootImageDelay),
-                Actions.run(() -> {
-                    if (state != State.HURT) {
+        if (attackDelayActor.getActions().size == 0)
+            attackDelayActor.addAction(Actions.sequence(
+                    Actions.delay(shootImageDelay),
+                    Actions.run(() -> {
                         shootSound();
                         checkIfShotPlayerOrBarrel();
                         activateNearByEnemies();
                         stage3D.lightManager.addMuzzleLight(position);
                         setColor(new Color(1, 1, .9f, 1));
-                    }
-                })
-        ));
+                    })
+            ));
     }
 
     protected void shootSound() {
@@ -328,7 +330,7 @@ public class Enemy extends BaseActor3D {
     }
 
     private void checkAttackStateChange(float dt) {
-        if (attackStateChangeCounter > atackStateChangeFrequency) {
+        if (attackStateChangeCounter > attackStateChangeFrequency) {
             attackStateChangeCounter = 0;
             float temp = MathUtils.random(0f, 1f);
             if ((temp < distanceBetween(player) / 45) || (!isRanged && !isWithinDistance(5f, player))) {
@@ -344,11 +346,11 @@ public class Enemy extends BaseActor3D {
 
     private void moveInZigZag(float dt) {
         checkIfHitAWallAndShouldGoStraight();
-        if (dogdeDirectionCounter > dogdeDirectionFrequency) {
+        if (dodgeDirectionCounter > dodgeDirectionFrequency) {
             dodgeDirectionAngle *= -1;
-            dogdeDirectionCounter = 0;
+            dodgeDirectionCounter = 0;
         } else
-            dogdeDirectionCounter += dt;
+            dodgeDirectionCounter += dt;
         moveToward(angleTowardPlayer + dodgeDirectionAngle);
     }
 
@@ -399,12 +401,23 @@ public class Enemy extends BaseActor3D {
         state = State.ATTACKING;
         currentAnimation = meleeAnimation;
         totalTime = 0;
-        hud.decrementHealth(getDamage(), this);
-        meleeWeapon();
+        useMeleeWeapon();
+    }
+
+    private void useMeleeWeapon() {
+        if (attackDelayActor.getActions().size == 0)
+            attackDelayActor.addAction(Actions.sequence(
+                    Actions.delay(shootImageDelay),
+                    Actions.run(() -> {
+                        hud.decrementHealth(getDamage(), this);
+                        meleeSound();
+                    })
+            ));
     }
 
     private void setTemporaryHurtState() {
         state = State.HURT;
+        attackDelayActor.clearActions();
         setStateToIdleAfterDelay(.4f);
         currentAnimation = hurtAnimation;
     }
@@ -412,7 +425,7 @@ public class Enemy extends BaseActor3D {
     private void setStateToIdleAfterDelay(float delay) {
         new BaseActor(0, 0, stage).addAction(Actions.sequence(
                 Actions.delay(delay),
-                Actions.run(() -> state = State.IDLE)
+                Actions.run(() -> state = State.ATTACKING)
         ));
     }
 
@@ -444,7 +457,7 @@ public class Enemy extends BaseActor3D {
         isActive = true;
         isAttacking = true;
         isPlayerLastPositionKnown = true;
-        attackStateChangeCounter = atackStateChangeFrequency / 2;
+        attackStateChangeCounter = attackStateChangeFrequency / 2;
     }
 
     private void handleSprite() {

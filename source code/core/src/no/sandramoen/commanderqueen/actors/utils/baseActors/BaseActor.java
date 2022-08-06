@@ -1,4 +1,4 @@
-package no.sandramoen.commanderqueen.actors.utils;
+package no.sandramoen.commanderqueen.actors.utils.baseActors;
 
 import static java.lang.Math.abs;
 

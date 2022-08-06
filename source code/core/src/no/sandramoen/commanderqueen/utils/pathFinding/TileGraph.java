@@ -1,5 +1,6 @@
 package no.sandramoen.commanderqueen.utils.pathFinding;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ai.pfa.Connection;
 import com.badlogic.gdx.ai.pfa.DefaultGraphPath;
 import com.badlogic.gdx.ai.pfa.GraphPath;
@@ -61,8 +62,8 @@ public class TileGraph implements IndexedGraph<Tile> {
 
     public void debugConnections() {
         int tileToBeExamined = 0;
-        System.out.println("tileGraph.tiles.size: " + tiles.size);
-        System.out.println("tileGraph.getConnections(tiles.get(" + tileToBeExamined + ")): " + getConnections(tiles.get(tileToBeExamined)).size);
+        Gdx.app.log(getClass().getSimpleName(), "tileGraph.tiles.size: " + tiles.size);
+        Gdx.app.log(getClass().getSimpleName(), "tileGraph.getConnections(tiles.get(" + tileToBeExamined + ")): " + getConnections(tiles.get(tileToBeExamined)).size);
 
         tiles.get(tileToBeExamined).setColor(Color.GREEN);
         for (int i = 0; i < getConnections(tiles.get(tileToBeExamined)).size; i++) {

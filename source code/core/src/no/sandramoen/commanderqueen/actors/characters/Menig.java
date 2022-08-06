@@ -2,7 +2,6 @@ package no.sandramoen.commanderqueen.actors.characters;
 
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Array;
 
@@ -21,6 +20,7 @@ public class Menig extends Enemy {
         movementSpeed = .065f;
         setHealth(20);
         shootImageDelay = .5f;
+        attackStateChangeFrequency = 3 * shootImageDelay;
         minDamage = 3;
         maxDamage = 15;
         score = 10;
@@ -49,9 +49,9 @@ public class Menig extends Enemy {
     }
 
     @Override
-    protected void meleeWeapon() {
+    protected void meleeSound() {
         BaseGame.menigMeleeSound.play(BaseGame.soundVolume);
-        super.meleeWeapon();
+        super.meleeSound();
     }
 
     @Override

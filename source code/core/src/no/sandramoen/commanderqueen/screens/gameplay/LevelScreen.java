@@ -13,8 +13,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.utils.Array;
 
 import no.sandramoen.commanderqueen.actors.Barrel;
-import no.sandramoen.commanderqueen.actors.utils.BloodDecals;
-import no.sandramoen.commanderqueen.actors.utils.BulletDecals;
+import no.sandramoen.commanderqueen.actors.decals.BloodDecals;
+import no.sandramoen.commanderqueen.actors.decals.BulletDecals;
 import no.sandramoen.commanderqueen.actors.hud.HUD;
 import no.sandramoen.commanderqueen.actors.characters.Menig;
 import no.sandramoen.commanderqueen.actors.characters.Player;
@@ -22,8 +22,8 @@ import no.sandramoen.commanderqueen.actors.Tile;
 import no.sandramoen.commanderqueen.actors.hud.Weapon;
 import no.sandramoen.commanderqueen.actors.pickups.Ammo;
 import no.sandramoen.commanderqueen.actors.pickups.Pickup;
-import no.sandramoen.commanderqueen.actors.utils.BaseActor;
-import no.sandramoen.commanderqueen.actors.utils.BaseActor3D;
+import no.sandramoen.commanderqueen.actors.utils.baseActors.BaseActor;
+import no.sandramoen.commanderqueen.actors.utils.baseActors.BaseActor3D;
 import no.sandramoen.commanderqueen.actors.utils.Enemy;
 import no.sandramoen.commanderqueen.utils.level.MapLoader;
 import no.sandramoen.commanderqueen.actors.utils.TilemapActor;
@@ -398,7 +398,7 @@ public class LevelScreen extends BaseScreen3D {
         tiles = new Array();
         enemies = new Array();
         hud = new HUD(uiStage);
-        tilemap = new TilemapActor(BaseGame.level0Map, mainStage3D);
+        tilemap = new TilemapActor(BaseGame.testMap, mainStage3D);
         mapLoader = new MapLoader(tilemap, tiles, mainStage3D, player, shootable, pickups, enemies, uiStage, hud);
     }
 

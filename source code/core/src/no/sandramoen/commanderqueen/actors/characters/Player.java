@@ -3,7 +3,7 @@ package no.sandramoen.commanderqueen.actors.characters;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 
-import no.sandramoen.commanderqueen.actors.utils.BaseActor3D;
+import no.sandramoen.commanderqueen.actors.utils.baseActors.BaseActor3D;
 import no.sandramoen.commanderqueen.utils.BaseGame;
 import no.sandramoen.commanderqueen.utils.Stage3D;
 
