@@ -2,12 +2,12 @@ package no.sandramoen.commanderqueen.actors.characters;
 
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.g3d.decals.DecalBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Array;
 
 import no.sandramoen.commanderqueen.actors.Tile;
 import no.sandramoen.commanderqueen.actors.hud.HUD;
-import no.sandramoen.commanderqueen.actors.utils.Enemy;
 import no.sandramoen.commanderqueen.utils.BaseGame;
 import no.sandramoen.commanderqueen.utils.GameUtils;
 import no.sandramoen.commanderqueen.utils.Stage3D;
@@ -15,8 +15,8 @@ import no.sandramoen.commanderqueen.utils.pathFinding.TileGraph;
 
 public class Menig extends Enemy {
 
-    public Menig(float y, float z, Stage3D s, Player player, Float rotation, TileGraph tileGraph, Array<Tile> floorTiles, Stage stage, HUD hud) {
-        super(y, z, s, player, rotation, tileGraph, floorTiles, stage, hud);
+    public Menig(float y, float z, Stage3D s, Player player, Float rotation, TileGraph tileGraph, Array<Tile> floorTiles, Stage stage, HUD hud, DecalBatch batch) {
+        super(y, z, s, player, rotation, tileGraph, floorTiles, stage, hud, batch);
         movementSpeed = .065f;
         setHealth(20);
         shootImageDelay = .5f;

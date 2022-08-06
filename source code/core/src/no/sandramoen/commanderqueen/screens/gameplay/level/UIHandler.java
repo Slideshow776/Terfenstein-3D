@@ -1,4 +1,4 @@
-package no.sandramoen.commanderqueen.utils.level;
+package no.sandramoen.commanderqueen.screens.gameplay.level;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -7,7 +7,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.Array;
 
 import no.sandramoen.commanderqueen.actors.hud.HUD;
-import no.sandramoen.commanderqueen.actors.utils.Enemy;
+import no.sandramoen.commanderqueen.actors.characters.Enemy;
 import no.sandramoen.commanderqueen.utils.BaseGame;
 
 public class UIHandler {

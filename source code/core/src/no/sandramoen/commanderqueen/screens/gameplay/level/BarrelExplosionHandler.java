@@ -1,11 +1,11 @@
-package no.sandramoen.commanderqueen.utils.level;
+package no.sandramoen.commanderqueen.screens.gameplay.level;
 
 import com.badlogic.gdx.utils.Array;
 
 import no.sandramoen.commanderqueen.actors.Barrel;
 import no.sandramoen.commanderqueen.actors.characters.Player;
 import no.sandramoen.commanderqueen.actors.hud.HUD;
-import no.sandramoen.commanderqueen.actors.utils.Enemy;
+import no.sandramoen.commanderqueen.actors.characters.Enemy;
 import no.sandramoen.commanderqueen.actors.utils.baseActors.BaseActor3D;
 import no.sandramoen.commanderqueen.utils.GameUtils;
 

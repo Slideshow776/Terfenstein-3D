@@ -4,8 +4,6 @@ import com.badlogic.gdx.graphics.PerspectiveCamera;
 import com.badlogic.gdx.graphics.g3d.decals.DecalBatch;
 import com.badlogic.gdx.utils.Array;
 
-import no.sandramoen.commanderqueen.actors.utils.DecalsManager;
-
 public class BloodDecals extends DecalsManager {
     public BloodDecals(PerspectiveCamera camera, DecalBatch batch) {
         super(camera, batch);

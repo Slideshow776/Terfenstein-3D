@@ -1,17 +1,15 @@
 package no.sandramoen.commanderqueen.actors;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.graphics.g3d.Environment;
-import com.badlogic.gdx.graphics.g3d.ModelBatch;
+import com.badlogic.gdx.graphics.g3d.decals.Decal;
+import com.badlogic.gdx.graphics.g3d.decals.DecalBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.Array;
 
-import no.sandramoen.commanderqueen.actors.characters.Player;
-import no.sandramoen.commanderqueen.actors.hud.HUD;
-import no.sandramoen.commanderqueen.actors.utils.Enemy;
 import no.sandramoen.commanderqueen.actors.utils.baseActors.BaseActor3D;
 import no.sandramoen.commanderqueen.utils.BaseGame;
 import no.sandramoen.commanderqueen.utils.GameUtils;
@@ -23,36 +21,36 @@ public class Barrel extends BaseActor3D {
 
     private boolean explode;
     private float totalTime;
-    private Player player;
     private Stage3D stage3D;
     private Animation<TextureRegion> explodeAnimation;
     private final float BLAST_DAMAGE_MODIFIER = 8.5f;
+    private Decal decal;
+    private DecalBatch decalBatch;
 
-    public Barrel(float y, float z, Stage3D stage3D, Player player) {
+    public Barrel(float y, float z, Stage3D stage3D, DecalBatch decalBatch, Array<Tile> tiles) {
         super(0, y, z, stage3D);
-        this.player = player;
         this.stage3D = stage3D;
+        this.decalBatch = decalBatch;
 
         buildModel(2.8f, 3.5f, 2.8f, true);
         setPosition(GameUtils.getPositionRelativeToFloor(3.5f), y, z);
         setBaseRectangle();
+        isVisible = false;
 
-        loadImage("barrel/barrel");
+        setColor(Color.MAGENTA);
+        initializeDecal(y, z);
         initializeExplosionAnimation();
+        checkIfIlluminated(tiles);
     }
 
     @Override
     public void act(float dt) {
         super.act(dt);
         totalTime += Gdx.graphics.getDeltaTime();
-        setTurnAngle(GameUtils.getAngleTowardsBaseActor3D(this, player));
-    }
-
-    @Override
-    public void draw(ModelBatch batch, Environment env) {
-        super.draw(batch, env);
+        GameUtils.lookAtCameraIn2D(decal, stage3D.camera);
         if (explode)
-            loadImage(explodeAnimation.getKeyFrame(totalTime).toString());
+            decal.setTextureRegion(explodeAnimation.getKeyFrame(totalTime));
+        decalBatch.add(decal);
     }
 
     public void explode() {
@@ -83,6 +81,21 @@ public class Barrel extends BaseActor3D {
             damage = 0;
 
         return (int) (damage * BLAST_DAMAGE_MODIFIER);
+    }
+
+    private void checkIfIlluminated(Array<Tile> tiles) {
+        for (Tile tile : tiles) {
+            if (overlaps(tile)) {
+                GameUtils.illuminateDecal(decal, tile);
+                break;
+            }
+        }
+    }
+
+    private void initializeDecal(float y, float z) {
+        decal = Decal.newDecal(BaseGame.textureAtlas.findRegion("barrel/barrel"), true);
+        decal.setDimensions(2.8f, 3.5f);
+        decal.setPosition(GameUtils.getPositionRelativeToFloor(3.5f), y, z);
     }
 
     private void initializeExplosionAnimation() {

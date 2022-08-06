@@ -1,10 +1,9 @@
-package no.sandramoen.commanderqueen.utils.level;
+package no.sandramoen.commanderqueen.screens.gameplay.level;
 
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.utils.Array;
 
 import no.sandramoen.commanderqueen.actors.Tile;
-import no.sandramoen.commanderqueen.actors.utils.Enemy;
+import no.sandramoen.commanderqueen.actors.characters.Enemy;
 import no.sandramoen.commanderqueen.actors.utils.baseActors.BaseActor3D;
 
 public class EnemyHandler {
@@ -21,12 +20,12 @@ public class EnemyHandler {
             enemies.get(i).preventOverlap(tile);
     }
 
-    public static void illuminateEnemy(Array<Enemy> enemies, Tile tile, int i) {
-        if (enemies.get(i).overlaps(tile) && tile.type == "floors" && tile.illuminated)
+    /*public static void illuminateEnemy(Array<Enemy> enemies, Tile tile, int i) {
+        if (tile.type == "floors" && tile.illuminated && enemies.get(i).overlaps(tile))
             enemies.get(i).setColor(Color.WHITE);
-        else if (enemies.get(i).overlaps(tile) && tile.type == "floors")
-            enemies.get(i).setColor(enemies.get(i).darkColor);
-    }
+        else if (tile.type == "floors" && enemies.get(i).overlaps(tile))
+            enemies.get(i).setColor(BaseGame.darkColor);
+    }*/
 
     public static void updateEnemiesShootableList(Array<Enemy> enemies, Array<BaseActor3D> shootable) {
         for (int i = 0; i < enemies.size; i++)

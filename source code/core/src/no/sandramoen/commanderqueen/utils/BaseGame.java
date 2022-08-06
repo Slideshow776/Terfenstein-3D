@@ -54,6 +54,7 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
     public static Color redColor = new Color(0.647f, 0.188f, 0.188f, 1f);
     public static Color greenColor = new Color(0.459f, 0.655f, 0.263f, 1f);
     public static Color yellowColor = new Color(0.91f, 0.757f, 0.439f, 1f);
+    public static Color darkColor = new Color(.4f, .4f, .4f, 1f);
 
     public BaseGame() {
         game = this;

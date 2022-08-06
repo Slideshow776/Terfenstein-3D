@@ -1,7 +1,8 @@
-package no.sandramoen.commanderqueen.utils.level;
+package no.sandramoen.commanderqueen.screens.gameplay.level;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g3d.decals.DecalBatch;
 import com.badlogic.gdx.graphics.g3d.environment.PointLight;
 import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.maps.MapProperties;
@@ -19,7 +20,7 @@ import no.sandramoen.commanderqueen.actors.pickups.Armor;
 import no.sandramoen.commanderqueen.actors.pickups.Health;
 import no.sandramoen.commanderqueen.actors.pickups.Pickup;
 import no.sandramoen.commanderqueen.actors.utils.baseActors.BaseActor3D;
-import no.sandramoen.commanderqueen.actors.utils.Enemy;
+import no.sandramoen.commanderqueen.actors.characters.Enemy;
 import no.sandramoen.commanderqueen.actors.utils.TilemapActor;
 import no.sandramoen.commanderqueen.utils.BaseGame;
 import no.sandramoen.commanderqueen.utils.Stage3D;
@@ -39,9 +40,10 @@ public class MapLoader {
     private Array<Pickup> pickups;
     private Array<Tile> floorTiles;
     private Array<BaseActor3D> shootable;
+    private DecalBatch decalBatch;
 
     public MapLoader(TilemapActor tilemap, Array<Tile> tiles, Stage3D stage3D, Player player, Array<BaseActor3D> shootable,
-                     Array<Pickup> pickups, Array<Enemy> enemies, Stage stage, HUD hud) {
+                     Array<Pickup> pickups, Array<Enemy> enemies, Stage stage, HUD hud, DecalBatch decalBatch) {
         this.tilemap = tilemap;
         this.tiles = tiles;
         this.stage3D = stage3D;
@@ -51,6 +53,7 @@ public class MapLoader {
         this.enemies = enemies;
         this.stage = stage;
         this.hud = hud;
+        this.decalBatch = decalBatch;
 
         floorTiles = new Array();
 
@@ -152,7 +155,7 @@ public class MapLoader {
             if (props.get("rotation") != null)
                 rotation = (Float) props.get("rotation");
             rotation %= 360;
-            enemies.add(new Menig((int) x, (int) y, stage3D, player, rotation, tileGraph, floorTiles, stage, hud));
+            enemies.add(new Menig((int) x, (int) y, stage3D, player, rotation, tileGraph, floorTiles, stage, hud, decalBatch));
             shootable.add(enemies.get(enemies.size - 1));
         }
 
@@ -168,7 +171,7 @@ public class MapLoader {
             MapProperties props = obj.getProperties();
             float x = (Float) props.get("x") * BaseGame.unitScale;
             float y = (Float) props.get("y") * BaseGame.unitScale;
-            shootable.add(new Barrel((int) x, (int) y, stage3D, player));
+            shootable.add(new Barrel((int) x, (int) y, stage3D, decalBatch, floorTiles));
         }
     }
 
@@ -177,14 +180,14 @@ public class MapLoader {
             MapProperties props = obj.getProperties();
             float x = (Float) props.get("x") * BaseGame.unitScale;
             float y = (Float) props.get("y") * BaseGame.unitScale;
-            pickups.add(new Health((int) x, (int) y, stage3D, player, 1));
+            pickups.add(new Health((int) x, (int) y, stage3D, 1, decalBatch, floorTiles));
         }
 
         for (MapObject obj : tilemap.getTileList("actors", "health medium")) {
             MapProperties props = obj.getProperties();
             float x = (Float) props.get("x") * BaseGame.unitScale;
             float y = (Float) props.get("y") * BaseGame.unitScale;
-            pickups.add(new Health((int) x, (int) y, stage3D, player, 100));
+            pickups.add(new Health((int) x, (int) y, stage3D, 100, decalBatch, floorTiles));
         }
     }
 
@@ -193,7 +196,7 @@ public class MapLoader {
             MapProperties props = obj.getProperties();
             float x = (Float) props.get("x") * BaseGame.unitScale;
             float y = (Float) props.get("y") * BaseGame.unitScale;
-            pickups.add(new Ammo((int) x, (int) y, stage3D, player, 2));
+            pickups.add(new Ammo((int) x, (int) y, stage3D, 2, decalBatch, floorTiles));
         }
     }
 
@@ -202,21 +205,21 @@ public class MapLoader {
             MapProperties props = obj.getProperties();
             float x = (Float) props.get("x") * BaseGame.unitScale;
             float y = (Float) props.get("y") * BaseGame.unitScale;
-            pickups.add(new Armor((int) x, (int) y, stage3D, player, 1));
+            pickups.add(new Armor((int) x, (int) y, stage3D, 1, decalBatch, floorTiles));
         }
 
         for (MapObject obj : tilemap.getTileList("actors", "armor medium")) {
             MapProperties props = obj.getProperties();
             float x = (Float) props.get("x") * BaseGame.unitScale;
             float y = (Float) props.get("y") * BaseGame.unitScale;
-            pickups.add(new Armor((int) x, (int) y, stage3D, player, 100));
+            pickups.add(new Armor((int) x, (int) y, stage3D, 100, decalBatch, floorTiles));
         }
 
         for (MapObject obj : tilemap.getTileList("actors", "armor big")) {
             MapProperties props = obj.getProperties();
             float x = (Float) props.get("x") * BaseGame.unitScale;
             float y = (Float) props.get("y") * BaseGame.unitScale;
-            pickups.add(new Armor((int) x, (int) y, stage3D, player, 200));
+            pickups.add(new Armor((int) x, (int) y, stage3D, 200, decalBatch, floorTiles));
         }
     }
 }

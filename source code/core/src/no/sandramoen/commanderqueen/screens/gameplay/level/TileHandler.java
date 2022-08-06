@@ -1,4 +1,4 @@
-package no.sandramoen.commanderqueen.utils.level;
+package no.sandramoen.commanderqueen.screens.gameplay.level;
 
 import com.badlogic.gdx.utils.Array;
 

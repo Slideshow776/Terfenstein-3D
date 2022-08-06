@@ -1,7 +1,8 @@
-package no.sandramoen.commanderqueen.utils.level;
+package no.sandramoen.commanderqueen.screens.gameplay.level;
 
 import com.badlogic.gdx.utils.Array;
 
+import no.sandramoen.commanderqueen.actors.Tile;
 import no.sandramoen.commanderqueen.actors.characters.Player;
 import no.sandramoen.commanderqueen.actors.hud.HUD;
 import no.sandramoen.commanderqueen.actors.pickups.Pickup;
@@ -9,7 +10,7 @@ import no.sandramoen.commanderqueen.utils.GameUtils;
 
 public class PickupHandler {
 
-    public static void updatePickups(Array<Pickup> pickups, Player player, HUD hud) {
+    public static void updatePickups(Array<Pickup> pickups, Player player, HUD hud, Array<Tile> tiles) {
         for (Pickup pickup : pickups) {
             if (player.overlaps(pickup)) {
                 if (GameUtils.isActor(pickup, "Ammo")) {

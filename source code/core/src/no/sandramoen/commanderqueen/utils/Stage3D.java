@@ -13,7 +13,7 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import java.util.ArrayList;
 
 import no.sandramoen.commanderqueen.actors.utils.baseActors.BaseActor3D;
-import no.sandramoen.commanderqueen.utils.level.LightManager;
+import no.sandramoen.commanderqueen.screens.gameplay.level.LightManager;
 
 public class Stage3D {
     public boolean intervalFlag;
@@ -65,12 +65,9 @@ public class Stage3D {
         modelBatch.begin(camera);
         visibleCount = 0;
         for (int i = 0; i < actorList3D.size(); i++) {
-            if (actorList3D.get(i).modelData.isVisible(camera)) {
+            if (actorList3D.get(i).modelData.isVisible(camera) && actorList3D.get(i).isVisible) {
                 actorList3D.get(i).draw(modelBatch, environment);
-                if (actorList3D.get(i).isVisible) {
-                    modelBatch.render(actorList3D.get(i).modelData, environment);
-                    visibleCount++;
-                }
+                visibleCount++;
             }
         }
         modelBatch.end();

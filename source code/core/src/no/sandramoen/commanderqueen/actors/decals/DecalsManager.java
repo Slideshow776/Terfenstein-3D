@@ -1,4 +1,4 @@
-package no.sandramoen.commanderqueen.actors.utils;
+package no.sandramoen.commanderqueen.actors.decals;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.PerspectiveCamera;
@@ -11,6 +11,7 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.Array;
 
 import no.sandramoen.commanderqueen.utils.BaseGame;
+import no.sandramoen.commanderqueen.utils.GameUtils;
 
 public class DecalsManager {
     protected Array<String> imagePaths;
@@ -33,7 +34,7 @@ public class DecalsManager {
                 decals.removeValue(decal, false);
             } else {
                 decal.decal.setTextureRegion((TextureRegion) decal.animation.getKeyFrame(decal.totalTime));
-                decal.decal.lookAt(camera.position, camera.up);
+                GameUtils.lookAtCameraIn2D(decal.decal, camera);
                 batch.add(decal.decal);
             }
         }

@@ -3,18 +3,27 @@ package no.sandramoen.commanderqueen.utils;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.PerspectiveCamera;
+import com.badlogic.gdx.graphics.g3d.decals.Decal;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.math.collision.Ray;
 import com.badlogic.gdx.utils.Array;
 
 import no.sandramoen.commanderqueen.actors.Tile;
+import no.sandramoen.commanderqueen.actors.pickups.Pickup;
 import no.sandramoen.commanderqueen.actors.utils.baseActors.BaseActor3D;
 
 public class GameUtils {
 
-    public static float getAngleTowardsBaseActor3D(BaseActor3D actorA, BaseActor3D actorB) {
+    public static void lookAtCameraIn2D(Decal decal, PerspectiveCamera camera) {
+        Vector3 temp = camera.position.cpy();
+        temp.x = decal.getX();
+        decal.lookAt(temp, camera.up);
+    }
+
+    public static float getAngleTowardsBaseActor3D(BaseActor3D actorA, BaseActor3D actorB) { // TODO: still using this?
         float angle = MathUtils.atan(
                 Math.abs(actorA.position.z - actorB.position.z) /
                         Math.abs(actorA.position.y - actorB.position.y)
@@ -29,6 +38,20 @@ public class GameUtils {
         }
 
         return angle;
+    }
+
+    public static void illuminateBaseActor(BaseActor3D baseActor3D, Tile tile) {
+        if (tile.type == "floors" && tile.illuminated)
+            baseActor3D.setColor(Color.WHITE);
+        else if (tile.type == "floors")
+            baseActor3D.setColor(BaseGame.darkColor);
+    }
+
+    public static void illuminateDecal(Decal decal, Tile tile) {
+        if (tile.type == "floors" && tile.illuminated)
+            decal.setColor(Color.WHITE);
+        else if (tile.type == "floors")
+            decal.setColor(BaseGame.darkColor);
     }
 
     public static float getPositionRelativeToFloor(float height) {

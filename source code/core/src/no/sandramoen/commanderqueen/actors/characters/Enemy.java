@@ -1,4 +1,4 @@
-package no.sandramoen.commanderqueen.actors.utils;
+package no.sandramoen.commanderqueen.actors.characters;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ai.pfa.GraphPath;
@@ -7,6 +7,8 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.g3d.Environment;
 import com.badlogic.gdx.graphics.g3d.ModelBatch;
+import com.badlogic.gdx.graphics.g3d.decals.Decal;
+import com.badlogic.gdx.graphics.g3d.decals.DecalBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
@@ -16,7 +18,6 @@ import com.badlogic.gdx.utils.Array;
 
 import no.sandramoen.commanderqueen.actors.Barrel;
 import no.sandramoen.commanderqueen.actors.Tile;
-import no.sandramoen.commanderqueen.actors.characters.Player;
 import no.sandramoen.commanderqueen.actors.hud.HUD;
 import no.sandramoen.commanderqueen.actors.utils.baseActors.BaseActor;
 import no.sandramoen.commanderqueen.actors.utils.baseActors.BaseActor3D;
@@ -30,7 +31,6 @@ public class Enemy extends BaseActor3D {
     public int health = 1;
     public boolean isDead;
     public boolean isActive;
-    public Color darkColor = new Color(.4f, .4f, .4f, 1f);
     public boolean isRanged = true;
     public int score = 0;
 
@@ -103,7 +103,7 @@ public class Enemy extends BaseActor3D {
     private HUD hud;
     private Stage stage;
     private Tile goalTile;
-    private BaseActor3D sprite;
+    private Decal decal;
     private TileGraph tileGraph;
     private Array<Tile> floorTiles;
     private GraphPath<Tile> tilePath;
@@ -111,14 +111,16 @@ public class Enemy extends BaseActor3D {
     private Array<Enemy> enemies = new Array();
     private Vector2 forceMove = new Vector2(8f, 8f);
     private BaseActor attackDelayActor;
+    private DecalBatch batch;
 
-    public Enemy(float y, float z, Stage3D stage3D, Player player, float rotation, TileGraph tileGraph, Array<Tile> floorTiles, Stage stage, HUD hud) {
+    public Enemy(float y, float z, Stage3D stage3D, Player player, float rotation, TileGraph tileGraph, Array<Tile> floorTiles, Stage stage, HUD hud, DecalBatch batch) {
         super(0, y, z, stage3D);
         this.player = player;
         this.tileGraph = tileGraph;
         this.floorTiles = floorTiles;
         this.stage = stage;
         this.hud = hud;
+        this.batch = batch;
 
         float size = 3;
         buildModel(1.5f, size, 1.5f, true);
@@ -126,7 +128,6 @@ public class Enemy extends BaseActor3D {
         turnBy(-180 + rotation);
         setPosition(GameUtils.getPositionRelativeToFloor(size), y, z);
         setBaseRectangle();
-        isVisible = false;
         setDirection();
         attackDelayActor = new BaseActor(0, 0, stage);
     }
@@ -166,12 +167,12 @@ public class Enemy extends BaseActor3D {
     @Override
     public void setColor(Color color) {
         super.setColor(color);
-        sprite.setColor(color);
+        decal.setColor(color);
     }
 
     @Override
     public void draw(ModelBatch batch, Environment env) {
-        sprite.loadImage(currentAnimation.getKeyFrame(totalTime).toString());
+        decal.setTextureRegion(currentAnimation.getKeyFrame(totalTime));
     }
 
     public void die() {
@@ -462,12 +463,13 @@ public class Enemy extends BaseActor3D {
     }
 
     private void handleSprite() {
-        sprite.setPosition(position);
-        angleTowardPlayer = GameUtils.getAngleTowardsBaseActor3D(this, player);
-        sprite.setTurnAngle(angleTowardPlayer);
+        decal.setPosition(position);
+        GameUtils.lookAtCameraIn2D(decal, stage3D.camera);
+        batch.add(decal);
     }
 
     private void setDirection() {
+        angleTowardPlayer = GameUtils.getAngleTowardsBaseActor3D(this, player);
         float temp = angleTowardPlayer - getTurnAngle();
         while (temp < 0)
             temp += 360;
@@ -567,8 +569,8 @@ public class Enemy extends BaseActor3D {
     }
 
     private void initializeSprite(float size) {
-        sprite = new BaseActor3D(0, 0, 0, stage3D);
-        sprite.buildModel(size, size, .001f, true);
-        sprite.setColor(darkColor);
+        decal = Decal.newDecal(BaseGame.textureAtlas.findRegion("whitePixel"), true);
+        decal.setDimensions(size, size);
+        decal.setColor(BaseGame.darkColor);
     }
 }

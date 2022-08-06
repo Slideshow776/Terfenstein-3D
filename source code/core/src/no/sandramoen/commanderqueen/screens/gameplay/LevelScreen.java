@@ -22,17 +22,17 @@ import no.sandramoen.commanderqueen.actors.pickups.Ammo;
 import no.sandramoen.commanderqueen.actors.pickups.Pickup;
 import no.sandramoen.commanderqueen.actors.utils.baseActors.BaseActor;
 import no.sandramoen.commanderqueen.actors.utils.baseActors.BaseActor3D;
-import no.sandramoen.commanderqueen.actors.utils.Enemy;
-import no.sandramoen.commanderqueen.utils.level.BarrelExplosionHandler;
-import no.sandramoen.commanderqueen.utils.level.EnemyHandler;
-import no.sandramoen.commanderqueen.utils.level.MapLoader;
+import no.sandramoen.commanderqueen.actors.characters.Enemy;
+import no.sandramoen.commanderqueen.screens.gameplay.level.BarrelExplosionHandler;
+import no.sandramoen.commanderqueen.screens.gameplay.level.EnemyHandler;
+import no.sandramoen.commanderqueen.screens.gameplay.level.MapLoader;
 import no.sandramoen.commanderqueen.actors.utils.TilemapActor;
 import no.sandramoen.commanderqueen.utils.BaseGame;
 import no.sandramoen.commanderqueen.utils.BaseScreen3D;
 import no.sandramoen.commanderqueen.utils.GameUtils;
-import no.sandramoen.commanderqueen.utils.level.PickupHandler;
-import no.sandramoen.commanderqueen.utils.level.TileHandler;
-import no.sandramoen.commanderqueen.utils.level.UIHandler;
+import no.sandramoen.commanderqueen.screens.gameplay.level.PickupHandler;
+import no.sandramoen.commanderqueen.screens.gameplay.level.TileHandler;
+import no.sandramoen.commanderqueen.screens.gameplay.level.UIHandler;
 
 public class LevelScreen extends BaseScreen3D {
     private HUD hud;
@@ -75,7 +75,7 @@ public class LevelScreen extends BaseScreen3D {
         TileHandler.updateTiles(tiles, player);
         updateEnemies();
         updateBarrels();
-        PickupHandler.updatePickups(pickups, player, hud);
+        PickupHandler.updatePickups(pickups, player, hud, tiles);
         weapon.update(hud, player, shootable, mainStage3D);
 
         uiHandler.debugLabel.setText("FPS: " + Gdx.graphics.getFramesPerSecond() + "\nVisible: " + mainStage3D.visibleCount);
@@ -182,15 +182,15 @@ public class LevelScreen extends BaseScreen3D {
 
             for (Tile tile : tiles) {
                 EnemyHandler.preventOverLapWithTile(enemies, tile, i);
-                if (mainStage3D.intervalFlag)
-                    EnemyHandler.illuminateEnemy(enemies, tile, i);
+                if (mainStage3D.intervalFlag && enemies.get(i).overlaps(tile))
+                    GameUtils.illuminateBaseActor(enemies.get(i), tile);
             }
         }
     }
 
     private void removeEnemy(Enemy enemy) {
         enemy.die();
-        pickups.add(new Ammo(enemy.position.y + MathUtils.random(-1, 1), enemy.position.z + MathUtils.random(-1, 1), mainStage3D, player, 2));
+        pickups.add(new Ammo(enemy.position.y + MathUtils.random(-1, 1), enemy.position.z + MathUtils.random(-1, 1), mainStage3D, 2, decalBatch, tiles));
         enemies.removeValue(enemy, false);
         shootable.removeValue(enemy, false);
         EnemyHandler.updateEnemiesShootableList(enemies, shootable);
@@ -259,10 +259,10 @@ public class LevelScreen extends BaseScreen3D {
         tilemap = new TilemapActor(BaseGame.level0Map, mainStage3D);
         tiles = new Array();
         shootable = new Array();
-        enemies = new Array();
         pickups = new Array();
+        enemies = new Array();
         hud = new HUD(uiStage);
-        mapLoader = new MapLoader(tilemap, tiles, mainStage3D, player, shootable, pickups, enemies, uiStage, hud);
+        mapLoader = new MapLoader(tilemap, tiles, mainStage3D, player, shootable, pickups, enemies, uiStage, hud, decalBatch);
     }
 
     private void initializePlayer() {
