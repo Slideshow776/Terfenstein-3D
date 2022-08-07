@@ -7,6 +7,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Array;
 
 import no.sandramoen.commanderqueen.actors.Tile;
+import no.sandramoen.commanderqueen.actors.characters.enemy.Enemy;
 import no.sandramoen.commanderqueen.actors.hud.HUD;
 import no.sandramoen.commanderqueen.utils.BaseGame;
 import no.sandramoen.commanderqueen.utils.GameUtils;
@@ -17,7 +18,8 @@ public class Menig extends Enemy {
 
     public Menig(float y, float z, Stage3D s, Player player, Float rotation, TileGraph tileGraph, Array<Tile> floorTiles, Stage stage, HUD hud, DecalBatch batch) {
         super(y, z, s, player, rotation, tileGraph, floorTiles, stage, hud, batch);
-        movementSpeed = .065f;
+        movementSpeed = Player.movementSpeed / 130f;
+        System.out.println(movementSpeed);
         setHealth(20);
         shootImageDelay = .5f;
         attackStateChangeFrequency = 3 * shootImageDelay;
@@ -68,7 +70,7 @@ public class Menig extends Enemy {
         initializeMeleeAnimation();
         initializeGibAnimation();
         initializeDeathAnimation();
-        setDirectionalSprites();
+        setDirectionalAnimation();
     }
 
     private void initializeIdleAnimations() {

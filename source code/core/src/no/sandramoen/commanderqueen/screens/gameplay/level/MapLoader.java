@@ -20,7 +20,7 @@ import no.sandramoen.commanderqueen.actors.pickups.Armor;
 import no.sandramoen.commanderqueen.actors.pickups.Health;
 import no.sandramoen.commanderqueen.actors.pickups.Pickup;
 import no.sandramoen.commanderqueen.actors.utils.baseActors.BaseActor3D;
-import no.sandramoen.commanderqueen.actors.characters.Enemy;
+import no.sandramoen.commanderqueen.actors.characters.enemy.Enemy;
 import no.sandramoen.commanderqueen.actors.utils.TilemapActor;
 import no.sandramoen.commanderqueen.utils.BaseGame;
 import no.sandramoen.commanderqueen.utils.Stage3D;

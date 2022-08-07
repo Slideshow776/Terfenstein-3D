@@ -10,7 +10,7 @@ import no.sandramoen.commanderqueen.utils.GameUtils;
 
 public class PickupHandler {
 
-    public static void updatePickups(Array<Pickup> pickups, Player player, HUD hud, Array<Tile> tiles) {
+    public static void update(Array<Pickup> pickups, Player player, HUD hud, Array<Tile> tiles) {
         for (Pickup pickup : pickups) {
             if (player.overlaps(pickup)) {
                 if (GameUtils.isActor(pickup, "Ammo")) {

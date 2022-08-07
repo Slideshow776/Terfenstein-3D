@@ -17,12 +17,12 @@ import no.sandramoen.commanderqueen.actors.hud.HUD;
 import no.sandramoen.commanderqueen.actors.characters.Menig;
 import no.sandramoen.commanderqueen.actors.characters.Player;
 import no.sandramoen.commanderqueen.actors.Tile;
-import no.sandramoen.commanderqueen.actors.hud.Weapon;
+import no.sandramoen.commanderqueen.actors.weapon.Weapon;
 import no.sandramoen.commanderqueen.actors.pickups.Ammo;
 import no.sandramoen.commanderqueen.actors.pickups.Pickup;
 import no.sandramoen.commanderqueen.actors.utils.baseActors.BaseActor;
 import no.sandramoen.commanderqueen.actors.utils.baseActors.BaseActor3D;
-import no.sandramoen.commanderqueen.actors.characters.Enemy;
+import no.sandramoen.commanderqueen.actors.characters.enemy.Enemy;
 import no.sandramoen.commanderqueen.screens.gameplay.level.BarrelExplosionHandler;
 import no.sandramoen.commanderqueen.screens.gameplay.level.EnemyHandler;
 import no.sandramoen.commanderqueen.screens.gameplay.level.MapLoader;
@@ -75,7 +75,7 @@ public class LevelScreen extends BaseScreen3D {
         TileHandler.updateTiles(tiles, player);
         updateEnemies();
         updateBarrels();
-        PickupHandler.updatePickups(pickups, player, hud, tiles);
+        PickupHandler.update(pickups, player, hud, tiles);
         weapon.update(hud, player, shootable, mainStage3D);
 
         uiHandler.debugLabel.setText("FPS: " + Gdx.graphics.getFramesPerSecond() + "\nVisible: " + mainStage3D.visibleCount);
@@ -177,14 +177,8 @@ public class LevelScreen extends BaseScreen3D {
                 removeEnemy(enemies.get(i));
                 continue;
             }
-
             EnemyHandler.preventOverlapWithOtherEnemies(enemies, i);
-
-            for (Tile tile : tiles) {
-                EnemyHandler.preventOverLapWithTile(enemies, tile, i);
-                if (mainStage3D.intervalFlag && enemies.get(i).overlaps(tile))
-                    GameUtils.illuminateBaseActor(enemies.get(i), tile);
-            }
+            EnemyHandler.illuminate(mainStage3D.intervalFlag, enemies, tiles, i);
         }
     }
 
@@ -209,9 +203,10 @@ public class LevelScreen extends BaseScreen3D {
     private void setGameOver() {
         if (!isGameOver) {
             isGameOver = true;
+            player.isPause = true;
             hud.setDeadFace();
             weapon.moveDown();
-            player.isPause = true;
+            weapon.crosshair.setVisible(false);
             new BaseActor(0, 0, uiStage).addAction(Actions.sequence(
                     Actions.delay(5),
                     Actions.run(() -> {
@@ -224,7 +219,6 @@ public class LevelScreen extends BaseScreen3D {
             BaseGame.metalWalkingMusic.stop();
             uiHandler.gameLabel.setText("G A M E   O V E R !");
             mainStage3D.camera.position.x = -Tile.height * .48f;
-            weapon.crosshair.setVisible(false);
         }
     }
 

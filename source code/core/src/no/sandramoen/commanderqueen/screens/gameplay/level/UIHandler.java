@@ -7,7 +7,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.Array;
 
 import no.sandramoen.commanderqueen.actors.hud.HUD;
-import no.sandramoen.commanderqueen.actors.characters.Enemy;
+import no.sandramoen.commanderqueen.actors.characters.enemy.Enemy;
 import no.sandramoen.commanderqueen.utils.BaseGame;
 
 public class UIHandler {

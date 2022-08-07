@@ -9,14 +9,14 @@ import no.sandramoen.commanderqueen.utils.Stage3D;
 
 public class Player extends BaseActor3D {
     public boolean isMoving = false;
+    public static float movementSpeed = 9.5f;
 
-    private float movementSpeed = 8.5f;
     private float rotateSpeed = 90f * .05f;
     private float totalTime = 0;
     private Stage3D stage3D;
 
     private float bobFrequency = 4;
-    private float bobAmount = .01f;
+    private float bobAmount = .015f;
     private float bobCounter = 0;
 
     private boolean isForcedToMove;

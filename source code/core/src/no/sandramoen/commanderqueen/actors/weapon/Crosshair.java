@@ -1,4 +1,4 @@
-package no.sandramoen.commanderqueen.actors.hud;
+package no.sandramoen.commanderqueen.actors.weapon;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
