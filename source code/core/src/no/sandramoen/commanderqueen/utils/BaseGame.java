@@ -42,6 +42,8 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
     public static Sound vulnerableSound;
     public static Sound metalSound;
     public static Sound wetSplashSound;
+    public static Sound bootAttackSound;
+    public static Sound bootMissSound;
 
     // game state
     public static float mouseMovementSensitivity = .05f;
@@ -115,6 +117,8 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
         assetManager.load("audio/sound/35213__abyssmal__slashkut.wav", Sound.class);
         assetManager.load("audio/sound/488608__spacejoe__metal-bowl-7.wav", Sound.class);
         assetManager.load("audio/sound/521958__kastenfrosch__wet-impact-2.ogg", Sound.class);
+        assetManager.load("audio/sound/493913__damnsatinist__heavy-punch.wav", Sound.class);
+        assetManager.load("audio/sound/632763__adh-dreaming__transition-swoosh.wav", Sound.class);
 
         // tiled maps
         assetManager.setLoader(TiledMap.class, new TmxMapLoader(new InternalFileHandleResolver()));
@@ -142,6 +146,8 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
         menigMeleeSound = assetManager.get("audio/sound/35213__abyssmal__slashkut.wav", Sound.class);
         metalSound = assetManager.get("audio/sound/488608__spacejoe__metal-bowl-7.wav", Sound.class);
         wetSplashSound = assetManager.get("audio/sound/521958__kastenfrosch__wet-impact-2.ogg", Sound.class);
+        bootAttackSound = assetManager.get("audio/sound/493913__damnsatinist__heavy-punch.wav", Sound.class);
+        bootMissSound = assetManager.get("audio/sound/632763__adh-dreaming__transition-swoosh.wav", Sound.class);
 
         // tiled maps
         testMap = assetManager.get("maps/test.tmx", TiledMap.class);

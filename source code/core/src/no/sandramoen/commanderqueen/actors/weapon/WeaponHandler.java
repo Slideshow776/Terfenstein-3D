@@ -1,10 +1,8 @@
 package no.sandramoen.commanderqueen.actors.weapon;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.PerspectiveCamera;
 import com.badlogic.gdx.graphics.g2d.Batch;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -16,61 +14,91 @@ import no.sandramoen.commanderqueen.actors.characters.Player;
 import no.sandramoen.commanderqueen.actors.hud.HUD;
 import no.sandramoen.commanderqueen.actors.utils.baseActors.BaseActor;
 import no.sandramoen.commanderqueen.actors.utils.baseActors.BaseActor3D;
+import no.sandramoen.commanderqueen.actors.weapon.weapons.Boot;
+import no.sandramoen.commanderqueen.actors.weapon.weapons.Pistol;
+import no.sandramoen.commanderqueen.actors.weapon.weapons.Weapon;
 import no.sandramoen.commanderqueen.utils.BaseGame;
 import no.sandramoen.commanderqueen.utils.GameUtils;
 import no.sandramoen.commanderqueen.utils.Stage3D;
 
-public class Weapon extends BaseActor {
+public class WeaponHandler extends BaseActor {
     public Crosshair crosshair;
+    public Weapon currentWeapon;
 
     private float totalTime = 5f;
     private float swayAmount = .01f;
     private float swayFrequency = .5f;
 
-    private final float RATE_OF_FIRE = 60 / 150f;
-    public final float SPREAD_ANGLE = 5.5f / 2;
     public boolean isReady;
     private float isReadyCounter;
 
-    private Animation<TextureRegion> shootAnimation;
-    private Vector2 restPosition = new Vector2(Gdx.graphics.getWidth() * 3 / 5 - getWidth() / 2, -Gdx.graphics.getHeight() * swayAmount);
+    private HUD hud;
+    private Player player;
+    private Stage3D stage3D;
+    private Vector2 restPosition;
+    private Array<BaseActor3D> shootable;
 
-    public Weapon(Stage stage) {
+    private Array<Weapon> weapons;
+
+    public WeaponHandler(Stage stage, HUD hud, Player player, Array<BaseActor3D> shootable, Stage3D stage3D) {
         super(0, 0, stage);
+        this.hud = hud;
+        this.player = player;
+        this.shootable = shootable;
+        this.stage3D = stage3D;
+
+        restPosition = new Vector2(Gdx.graphics.getWidth() * 3 / 5 - getWidth() / 2, -Gdx.graphics.getHeight() * swayAmount);
         crosshair = new Crosshair(stage);
-        initializeShootAnimation();
 
         setSize(Gdx.graphics.getWidth() * .25f, Gdx.graphics.getWidth() * .25f);
         setPosition(restPosition.x, -getHeight());
         moveUp();
+
+        weapons = new Array();
+        weapons.add(new Boot(), new Pistol());
+        currentWeapon = weapons.get(1);
     }
 
     @Override
     public void act(float dt) {
         super.act(dt);
+        totalTime += dt;
+
         checkIfReadyToShoot(dt);
+        if (hud.getHealth() > 0)
+            sway(player.isMoving);
+
+        setCrosshairColor(shootable, stage3D.camera);
     }
 
     @Override
     public void draw(Batch batch, float parentAlpha) {
         super.draw(batch, parentAlpha);
-        totalTime += Gdx.graphics.getDeltaTime();
-        batch.draw(shootAnimation.getKeyFrame(totalTime), getX(), getY(), getWidth(), getHeight());
+        if (currentWeapon.shootAnimation.isAnimationFinished(totalTime) && currentWeapon.restAnimation != null)
+            batch.draw(currentWeapon.restAnimation.getKeyFrame(totalTime), getX(), getY(), getWidth(), getHeight());
+        else if (!currentWeapon.shootAnimation.isAnimationFinished(totalTime))
+            batch.draw(currentWeapon.shootAnimation.getKeyFrame(totalTime), getX(), getY(), getWidth(), getHeight());
     }
 
-    public void update(HUD hud, Player player, Array<BaseActor3D> shootable, Stage3D stage3D) {
-        if (hud.getHealth() > 0)
-            sway(player.isMoving);
+    public void setWeapon(int i) {
+        if (i >= 0 && i < weapons.size)
+            currentWeapon = weapons.get(i);
+        else
+            Gdx.app.error(getClass().getSimpleName(), "Error: Weapon change to out of bounds => i: " + i + ", weapon size: " + weapons.size);
+    }
 
-        crosshair.setColorIfShootable(
-                shootable,
-                GameUtils.getRayPickedListIndex(
-                        Gdx.graphics.getWidth() / 2,
-                        Gdx.graphics.getHeight() / 2,
-                        shootable,
-                        stage3D.camera
-                )
-        );
+    public void scrollWeapon(float i) {
+        if (i < 0) { // up
+            if (currentWeapon.index + 1 < weapons.size)
+                setWeapon(currentWeapon.index + 1);
+            else
+                setWeapon(0);
+        } else if (i >= 0) { // down
+            if (currentWeapon.index - 1 >= 0)
+                setWeapon(currentWeapon.index - 1);
+            else
+                setWeapon(weapons.size - 1);
+        }
     }
 
     public void shoot(int ammo) {
@@ -78,11 +106,11 @@ public class Weapon extends BaseActor {
             isReady = false;
             isReadyCounter = 0;
 
-            if (ammo > 0) {
+            if (ammo > 0 || !currentWeapon.isAmmoDependent) {
                 totalTime = 0f;
-                BaseGame.pistolShotSound.play(BaseGame.soundVolume, MathUtils.random(.9f, 1.1f), 0f);
+                currentWeapon.attackSound();
             } else {
-                BaseGame.outOfAmmoSound.play(BaseGame.soundVolume, MathUtils.random(.8f, 1.2f), 0);
+                currentWeapon.emptySound();
             }
         }
     }
@@ -91,7 +119,7 @@ public class Weapon extends BaseActor {
         int maxSpreadX = 0;
         int maxSpreadY = 0;
         if (holdingDown) {
-            maxSpreadX = (int) (Gdx.graphics.getWidth() / fieldOfView * SPREAD_ANGLE);
+            maxSpreadX = (int) (Gdx.graphics.getWidth() / fieldOfView * currentWeapon.getSpreadAngle());
             maxSpreadY = (int) (maxSpreadX / BaseGame.aspectRatio);
         }
         return new Vector2(maxSpreadX, maxSpreadY);
@@ -112,11 +140,23 @@ public class Weapon extends BaseActor {
     }
 
     public int getDamage() {
-         return MathUtils.random(5, 20);
+        return MathUtils.random(5, 20);
+    }
+
+    private void setCrosshairColor(Array<BaseActor3D> shootable, PerspectiveCamera camera) {
+        crosshair.setColorIfShootable(
+                shootable,
+                GameUtils.getRayPickedListIndex(
+                        Gdx.graphics.getWidth() / 2,
+                        Gdx.graphics.getHeight() / 2,
+                        shootable,
+                        camera
+                )
+        );
     }
 
     private void checkIfReadyToShoot(float dt) {
-        if (isReadyCounter > RATE_OF_FIRE) {
+        if (isReadyCounter > currentWeapon.getRateOfFire()) {
             isReady = true;
             isReadyCounter = 0;
         } else {
@@ -135,15 +175,5 @@ public class Weapon extends BaseActor {
     private void moveUp() {
         clearActions();
         addAction(Actions.moveTo(restPosition.x, restPosition.y, 1f));
-    }
-
-    private void initializeShootAnimation() {
-        Array<TextureAtlas.AtlasRegion> animationImages = new Array();
-        animationImages.add(BaseGame.textureAtlas.findRegion("player/shooting 1"));
-        animationImages.add(BaseGame.textureAtlas.findRegion("player/shooting 2"));
-        animationImages.add(BaseGame.textureAtlas.findRegion("player/shooting 3"));
-        animationImages.add(BaseGame.textureAtlas.findRegion("player/shooting 0"));
-        shootAnimation = new Animation(.1f, animationImages, Animation.PlayMode.NORMAL);
-        animationImages.clear();
     }
 }

@@ -1,10 +1,14 @@
 package no.sandramoen.commanderqueen.actors.hud;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.Align;
+import com.badlogic.gdx.utils.Array;
 
 import no.sandramoen.commanderqueen.actors.characters.Player;
 import no.sandramoen.commanderqueen.actors.utils.baseActors.BaseActor;
@@ -34,6 +38,9 @@ public class HUD extends BaseActor {
     private Face face;
     private OverlayIndicator overlayIndicator;
 
+    private Table weaponsTable;
+    private Array<Image> weaponImages;
+
     public HUD(Stage stage) {
         super(0, 0, stage);
         initializeLabels();
@@ -44,6 +51,28 @@ public class HUD extends BaseActor {
 
         overlayIndicator = new OverlayIndicator(stage);
         face = new Face(stage, getFaceHealthIndex());
+    }
+
+    @Override
+    public void act(float dt) {
+        super.act(dt);
+        checkInvulnerability(dt);
+    }
+
+    public Table weaponsTable() {
+        weaponImages = new Array();
+        weaponImages.add(new Image(BaseGame.textureAtlas.findRegion("weapons/boot/icon")));
+        weaponImages.add(new Image(BaseGame.textureAtlas.findRegion("weapons/pistol/icon")));
+
+        Table table = new Table();
+        table.defaults().width(getWidth() / 5);
+        for (Image image : weaponImages)
+            table.add(image).grow().width(Gdx.graphics.getWidth() * .05f).height(Gdx.graphics.getHeight() * .05f);
+        /*table.setDebug(true);*/
+
+        weaponsTable = table;
+        weaponsTable.addAction(Actions.fadeOut(0));
+        return table;
     }
 
     public Table getLabelTable() {
@@ -57,11 +86,6 @@ public class HUD extends BaseActor {
         return table;
     }
 
-    @Override
-    public void act(float dt) {
-        super.act(dt);
-        checkInvulnerability(dt);
-    }
 
     public int getHealth() {
         return health;
@@ -93,16 +117,6 @@ public class HUD extends BaseActor {
         healthLabel.setText(health + "%");
     }
 
-    public boolean incrementArmor(int amount, boolean improved) {
-        if (isStatIgnore(amount, armor))
-            return false;
-        setArmorProtectionValue(improved);
-        armor = setStat(amount, armor);
-        armorLabel.setText(armor + "%");
-        overlayIndicator.flash(BaseGame.yellowColor, .1f);
-        BaseGame.armorPickupSound.play(BaseGame.soundVolume);
-        return true;
-    }
 
     public void incrementAmmo(int amount) {
         ammo += amount;
@@ -122,12 +136,33 @@ public class HUD extends BaseActor {
         return ammo;
     }
 
+    public void setAmmo(String type) {
+        if (type.equalsIgnoreCase("boot"))
+            ammoLabel.setText("");
+        else if (type.equalsIgnoreCase("pistol"))
+            ammoLabel.setText(ammo + "");
+        fadeWeaponsTableInAndOut(type);
+    }
+
+
+    public boolean incrementArmor(int amount, boolean improved) {
+        if (isStatIgnore(amount, armor))
+            return false;
+        setArmorProtectionValue(improved);
+        armor = setStat(amount, armor);
+        armorLabel.setText(armor + "%");
+        overlayIndicator.flash(BaseGame.yellowColor, .1f);
+        BaseGame.armorPickupSound.play(BaseGame.soundVolume);
+        return true;
+    }
+
     public void incrementScore(float amount, Boolean isPickup) {
         score += amount;
         scoreLabel.setText(score + "");
         if (isPickup)
             overlayIndicator.flash(BaseGame.yellowColor, .1f);
     }
+
 
     public void setKillFace() {
         face.setKillFace(getFaceHealthIndex());
@@ -142,6 +177,30 @@ public class HUD extends BaseActor {
         isInvulnerable = true;
         BaseGame.invulnerableSound.play(BaseGame.soundVolume);
     }
+
+    private void setVulnerable() {
+        face.isLocked = false;
+        isInvulnerable = false;
+        invulnerableCounter = 0;
+        face.setSTAnimation(getFaceHealthIndex());
+        BaseGame.vulnerableSound.play(BaseGame.soundVolume);
+    }
+
+    private void fadeWeaponsTableInAndOut(String type) {
+        weaponsTable.addAction(Actions.sequence(
+                Actions.fadeIn(.5f),
+                Actions.fadeOut(.5f)
+        ));
+
+        for (Image image : weaponImages)
+            image.setColor(Color.DARK_GRAY);
+
+        if (type.equalsIgnoreCase("boot"))
+            weaponImages.get(0).setColor(Color.WHITE);
+        else if (type.equalsIgnoreCase("pistol"))
+            weaponImages.get(1).setColor(Color.WHITE);
+    }
+
 
     private float getAngleToSource(BaseActor3D source) {
         float angleToSource = 0;
@@ -160,13 +219,6 @@ public class HUD extends BaseActor {
         }
     }
 
-    private void setVulnerable() {
-        face.isLocked = false;
-        isInvulnerable = false;
-        invulnerableCounter = 0;
-        face.setSTAnimation(getFaceHealthIndex());
-        BaseGame.vulnerableSound.play(BaseGame.soundVolume);
-    }
 
     private int setStat(int amount, int stat) {
         if (amount == 1 && amount + stat <= 200)
@@ -200,6 +252,7 @@ public class HUD extends BaseActor {
         if (!improved && armor == 0)
             armorProtectionValue = 1 / 3f;
     }
+
 
     private void setOverlayAngle(int amount, float angle) {
         if (angle < 130)
@@ -239,6 +292,7 @@ public class HUD extends BaseActor {
         Gdx.app.error(getClass().getSimpleName(), "Error: getFaceHealth could not determine face integer, integer is: " + i);
         return -1;
     }
+
 
     private Label initializeLabel(String text) {
         Label label = new Label(text, BaseGame.label26Style);

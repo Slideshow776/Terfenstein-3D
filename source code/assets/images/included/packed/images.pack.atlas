@@ -960,52 +960,6 @@ pickups/health small
   index: -1
 
 images.pack7.png
-size: 1024, 1024
-format: RGBA8888
-filter: Nearest, Nearest
-repeat: none
-player/shooting 0
-  rotate: false
-  xy: 2, 508
-  size: 512, 512
-  orig: 512, 512
-  offset: 0, 0
-  index: -1
-player/shooting 1
-  rotate: false
-  xy: 2, 2
-  size: 512, 504
-  orig: 512, 504
-  offset: 0, 0
-  index: -1
-
-images.pack8.png
-size: 1024, 1024
-format: RGBA8888
-filter: Nearest, Nearest
-repeat: none
-player/shooting 2
-  rotate: false
-  xy: 2, 2
-  size: 512, 512
-  orig: 512, 512
-  offset: 0, 0
-  index: -1
-
-images.pack9.png
-size: 1024, 1024
-format: RGBA8888
-filter: Nearest, Nearest
-repeat: none
-player/shooting 3
-  rotate: false
-  xy: 2, 2
-  size: 512, 512
-  orig: 512, 512
-  offset: 0, 0
-  index: -1
-
-images.pack10.png
 size: 512, 128
 format: RGBA8888
 filter: Nearest, Nearest
@@ -1057,5 +1011,85 @@ tiles/lonplate
   xy: 398, 2
   size: 64, 64
   orig: 64, 64
+  offset: 0, 0
+  index: -1
+
+images.pack8.png
+size: 256, 128
+format: RGBA8888
+filter: Nearest, Nearest
+repeat: none
+weapons/boot/1
+  rotate: false
+  xy: 2, 20
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+weapons/boot/2
+  rotate: false
+  xy: 68, 20
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+weapons/boot/icon
+  rotate: false
+  xy: 2, 2
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+
+images.pack9.png
+size: 1024, 1024
+format: RGBA8888
+filter: Nearest, Nearest
+repeat: none
+weapons/pistol/icon
+  rotate: false
+  xy: 516, 1004
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+weapons/pistol/shooting 0
+  rotate: false
+  xy: 2, 508
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: -1
+weapons/pistol/shooting 1
+  rotate: false
+  xy: 2, 2
+  size: 512, 504
+  orig: 512, 504
+  offset: 0, 0
+  index: -1
+
+images.pack10.png
+size: 1024, 1024
+format: RGBA8888
+filter: Nearest, Nearest
+repeat: none
+weapons/pistol/shooting 2
+  rotate: false
+  xy: 2, 2
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: -1
+
+images.pack11.png
+size: 1024, 1024
+format: RGBA8888
+filter: Nearest, Nearest
+repeat: none
+weapons/pistol/shooting 3
+  rotate: false
+  xy: 2, 2
+  size: 512, 512
+  orig: 512, 512
   offset: 0, 0
   index: -1

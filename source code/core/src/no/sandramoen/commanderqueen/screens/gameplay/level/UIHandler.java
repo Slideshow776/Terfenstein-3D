@@ -16,8 +16,14 @@ public class UIHandler {
     public Label statusLabel;
 
     public UIHandler(Table uiTable, Array<Enemy> enemies, HUD hud) {
+        uiTable.add(hud.weaponsTable()).colspan(2).size(hud.getWidth(), hud.getHeight())
+                .row();
+
         statusLabel = new Label("enemies left: " + enemies.size, BaseGame.label26Style);
         uiTable.add(statusLabel)
+                .expandX()
+                .left()
+                .padLeft(Gdx.graphics.getWidth() * .01f)
                 .row();
 
         debugLabel = new Label(" ", BaseGame.label26Style);
