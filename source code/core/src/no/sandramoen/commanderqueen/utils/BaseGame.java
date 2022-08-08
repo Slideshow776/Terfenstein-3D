@@ -44,13 +44,16 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
     public static Sound wetSplashSound;
     public static Sound bootAttackSound;
     public static Sound bootMissSound;
+    public static Sound hundMeleeSound;
+    public static Sound hundDieSound;
+    public static Sound hundActivateSound;
 
     // game state
     public static float mouseMovementSensitivity = .05f;
     public static boolean isHeadBobbing = true;
     public static float aspectRatio = 16 / 9f;
     public static float voiceVolume = 1f;
-    public static float soundVolume = .05f;
+    public static float soundVolume = .5f;
     public static float musicVolume = .1f;
     public static float unitScale = .0621f;
     public static Color redColor = new Color(0.647f, 0.188f, 0.188f, 1f);
@@ -119,6 +122,9 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
         assetManager.load("audio/sound/521958__kastenfrosch__wet-impact-2.ogg", Sound.class);
         assetManager.load("audio/sound/493913__damnsatinist__heavy-punch.wav", Sound.class);
         assetManager.load("audio/sound/632763__adh-dreaming__transition-swoosh.wav", Sound.class);
+        assetManager.load("audio/sound/418107__crazymonke9__single-dog-bark-1.wav", Sound.class);
+        assetManager.load("audio/sound/72724__moffet__impatient-whimpers-and-barks.wav", Sound.class);
+        assetManager.load("audio/sound/hund_activate.wav", Sound.class);
 
         // tiled maps
         assetManager.setLoader(TiledMap.class, new TmxMapLoader(new InternalFileHandleResolver()));
@@ -148,6 +154,9 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
         wetSplashSound = assetManager.get("audio/sound/521958__kastenfrosch__wet-impact-2.ogg", Sound.class);
         bootAttackSound = assetManager.get("audio/sound/493913__damnsatinist__heavy-punch.wav", Sound.class);
         bootMissSound = assetManager.get("audio/sound/632763__adh-dreaming__transition-swoosh.wav", Sound.class);
+        hundMeleeSound = assetManager.get("audio/sound/418107__crazymonke9__single-dog-bark-1.wav", Sound.class);
+        hundDieSound = assetManager.get("audio/sound/72724__moffet__impatient-whimpers-and-barks.wav", Sound.class);
+        hundActivateSound = assetManager.get("audio/sound/hund_activate.wav", Sound.class);
 
         // tiled maps
         testMap = assetManager.get("maps/test.tmx", TiledMap.class);

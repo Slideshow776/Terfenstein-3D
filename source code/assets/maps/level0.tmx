@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="40" height="20" tilewidth="64" tileheight="64" infinite="0" nextlayerid="13" nextobjectid="58645">
+<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="40" height="20" tilewidth="64" tileheight="64" infinite="0" nextlayerid="13" nextobjectid="58661">
  <tileset firstgid="1" name="test" tilewidth="64" tileheight="64" tilecount="64" columns="8">
   <image source="tileset.png" width="512" height="512"/>
   <tile id="0">
    <properties>
-    <property name="name" value="enemy"/>
+    <property name="name" value="menig"/>
    </properties>
   </tile>
   <tile id="1">
@@ -14,7 +14,7 @@
   </tile>
   <tile id="2">
    <properties>
-    <property name="name" value="lonplate"/>
+    <property name="name" value="hund"/>
    </properties>
   </tile>
   <tile id="8">
@@ -658,7 +658,7 @@
   <object id="58580" gid="44" x="2112" y="896" width="64" height="64"/>
   <object id="58581" gid="42" x="2304" y="832" width="64" height="64"/>
  </objectgroup>
- <objectgroup id="11" name="walls">
+ <objectgroup id="11" name="walls" visible="0">
   <object id="1234" gid="41" x="0" y="128" width="64" height="64"/>
   <object id="1235" gid="41" x="0" y="128" width="64" height="64"/>
   <object id="1236" gid="41" x="0" y="192" width="64" height="64"/>
@@ -945,7 +945,7 @@
   <object id="58144" gid="41" x="2368" y="512" width="64" height="64"/>
   <object id="58145" gid="41" x="2432" y="512" width="64" height="64"/>
  </objectgroup>
- <objectgroup id="12" name="ceilings">
+ <objectgroup id="12" name="ceilings" visible="0">
   <object id="1937" gid="42" x="1152" y="896" width="64" height="64"/>
   <object id="1938" gid="42" x="1152" y="832" width="64" height="64"/>
   <object id="1939" gid="42" x="1152" y="960" width="64" height="64"/>
@@ -1600,5 +1600,21 @@
   <object id="58642" gid="1" x="2432" y="1088" width="64" height="64"/>
   <object id="58643" gid="1" x="1664" y="1152" width="64" height="64"/>
   <object id="58644" gid="1" x="1728" y="1088" width="64" height="64"/>
+  <object id="58645" gid="3" x="256" y="896" width="64" height="64"/>
+  <object id="58646" gid="3" x="640" y="768" width="64" height="64"/>
+  <object id="58647" gid="3" x="704" y="256" width="64" height="64"/>
+  <object id="58648" gid="3" x="1024" y="192" width="64" height="64"/>
+  <object id="58649" gid="3" x="1152" y="384" width="64" height="64"/>
+  <object id="58650" gid="3" x="1024" y="384" width="64" height="64"/>
+  <object id="58651" gid="3" x="832" y="384" width="64" height="64"/>
+  <object id="58652" gid="3" x="1408" y="768" width="64" height="64"/>
+  <object id="58653" gid="3" x="1536" y="768" width="64" height="64"/>
+  <object id="58654" gid="3" x="1664" y="768" width="64" height="64"/>
+  <object id="58655" gid="3" x="1792" y="768" width="64" height="64"/>
+  <object id="58656" gid="3" x="1792" y="640" width="64" height="64"/>
+  <object id="58657" gid="3" x="1792" y="512" width="64" height="64"/>
+  <object id="58658" gid="3" x="1664" y="640" width="64" height="64"/>
+  <object id="58659" gid="3" x="1536" y="640" width="64" height="64"/>
+  <object id="58660" gid="3" x="1408" y="640" width="64" height="64"/>
  </objectgroup>
 </map>

@@ -176,6 +176,327 @@ size: 1024, 256
 format: RGBA8888
 filter: Nearest, Nearest
 repeat: none
+enemies/hund/die 0
+  rotate: false
+  xy: 2, 164
+  size: 58, 52
+  orig: 58, 52
+  offset: 0, 0
+  index: -1
+enemies/hund/die 1
+  rotate: false
+  xy: 2, 110
+  size: 58, 52
+  orig: 58, 52
+  offset: 0, 0
+  index: -1
+enemies/hund/die 2
+  rotate: false
+  xy: 62, 164
+  size: 58, 52
+  orig: 58, 52
+  offset: 0, 0
+  index: -1
+enemies/hund/die 3
+  rotate: false
+  xy: 2, 56
+  size: 58, 52
+  orig: 58, 52
+  offset: 0, 0
+  index: -1
+enemies/hund/gib 0
+  rotate: false
+  xy: 62, 110
+  size: 58, 52
+  orig: 58, 52
+  offset: 0, 0
+  index: -1
+enemies/hund/gib 1
+  rotate: false
+  xy: 122, 164
+  size: 58, 52
+  orig: 58, 52
+  offset: 0, 0
+  index: -1
+enemies/hund/gib 2
+  rotate: false
+  xy: 2, 2
+  size: 58, 52
+  orig: 58, 52
+  offset: 0, 0
+  index: -1
+enemies/hund/gib 3
+  rotate: false
+  xy: 62, 56
+  size: 58, 52
+  orig: 58, 52
+  offset: 0, 0
+  index: -1
+enemies/hund/gib 4
+  rotate: false
+  xy: 122, 110
+  size: 58, 52
+  orig: 58, 52
+  offset: 0, 0
+  index: -1
+enemies/hund/gib 5
+  rotate: false
+  xy: 182, 164
+  size: 58, 52
+  orig: 58, 52
+  offset: 0, 0
+  index: -1
+enemies/hund/melee 0
+  rotate: false
+  xy: 62, 2
+  size: 58, 52
+  orig: 58, 52
+  offset: 0, 0
+  index: -1
+enemies/hund/melee 1
+  rotate: false
+  xy: 122, 56
+  size: 58, 52
+  orig: 58, 52
+  offset: 0, 0
+  index: -1
+enemies/hund/melee 2
+  rotate: false
+  xy: 182, 110
+  size: 58, 52
+  orig: 58, 52
+  offset: 0, 0
+  index: -1
+enemies/hund/walk back 0
+  rotate: false
+  xy: 242, 164
+  size: 58, 52
+  orig: 58, 52
+  offset: 0, 0
+  index: -1
+enemies/hund/walk back 1
+  rotate: false
+  xy: 122, 2
+  size: 58, 52
+  orig: 58, 52
+  offset: 0, 0
+  index: -1
+enemies/hund/walk back 2
+  rotate: false
+  xy: 182, 56
+  size: 58, 52
+  orig: 58, 52
+  offset: 0, 0
+  index: -1
+enemies/hund/walk back 3
+  rotate: false
+  xy: 242, 110
+  size: 58, 52
+  orig: 58, 52
+  offset: 0, 0
+  index: -1
+enemies/hund/walk back side left 0
+  rotate: false
+  xy: 302, 164
+  size: 58, 52
+  orig: 58, 52
+  offset: 0, 0
+  index: -1
+enemies/hund/walk back side left 1
+  rotate: false
+  xy: 182, 2
+  size: 58, 52
+  orig: 58, 52
+  offset: 0, 0
+  index: -1
+enemies/hund/walk back side left 2
+  rotate: false
+  xy: 242, 56
+  size: 58, 52
+  orig: 58, 52
+  offset: 0, 0
+  index: -1
+enemies/hund/walk back side left 3
+  rotate: false
+  xy: 302, 110
+  size: 58, 52
+  orig: 58, 52
+  offset: 0, 0
+  index: -1
+enemies/hund/walk back side right 0
+  rotate: false
+  xy: 362, 164
+  size: 58, 52
+  orig: 58, 52
+  offset: 0, 0
+  index: -1
+enemies/hund/walk back side right 1
+  rotate: false
+  xy: 242, 2
+  size: 58, 52
+  orig: 58, 52
+  offset: 0, 0
+  index: -1
+enemies/hund/walk back side right 2
+  rotate: false
+  xy: 302, 56
+  size: 58, 52
+  orig: 58, 52
+  offset: 0, 0
+  index: -1
+enemies/hund/walk back side right 3
+  rotate: false
+  xy: 362, 110
+  size: 58, 52
+  orig: 58, 52
+  offset: 0, 0
+  index: -1
+enemies/hund/walk front 0
+  rotate: false
+  xy: 422, 164
+  size: 58, 52
+  orig: 58, 52
+  offset: 0, 0
+  index: -1
+enemies/hund/walk front 1
+  rotate: false
+  xy: 302, 2
+  size: 58, 52
+  orig: 58, 52
+  offset: 0, 0
+  index: -1
+enemies/hund/walk front 2
+  rotate: false
+  xy: 362, 56
+  size: 58, 52
+  orig: 58, 52
+  offset: 0, 0
+  index: -1
+enemies/hund/walk front 3
+  rotate: false
+  xy: 422, 110
+  size: 58, 52
+  orig: 58, 52
+  offset: 0, 0
+  index: -1
+enemies/hund/walk front side left 0
+  rotate: false
+  xy: 482, 164
+  size: 58, 52
+  orig: 58, 52
+  offset: 0, 0
+  index: -1
+enemies/hund/walk front side left 1
+  rotate: false
+  xy: 362, 2
+  size: 58, 52
+  orig: 58, 52
+  offset: 0, 0
+  index: -1
+enemies/hund/walk front side left 2
+  rotate: false
+  xy: 422, 56
+  size: 58, 52
+  orig: 58, 52
+  offset: 0, 0
+  index: -1
+enemies/hund/walk front side left 3
+  rotate: false
+  xy: 482, 110
+  size: 58, 52
+  orig: 58, 52
+  offset: 0, 0
+  index: -1
+enemies/hund/walk front side right 0
+  rotate: false
+  xy: 542, 164
+  size: 58, 52
+  orig: 58, 52
+  offset: 0, 0
+  index: -1
+enemies/hund/walk front side right 1
+  rotate: false
+  xy: 422, 2
+  size: 58, 52
+  orig: 58, 52
+  offset: 0, 0
+  index: -1
+enemies/hund/walk front side right 2
+  rotate: false
+  xy: 482, 56
+  size: 58, 52
+  orig: 58, 52
+  offset: 0, 0
+  index: -1
+enemies/hund/walk front side right 3
+  rotate: false
+  xy: 542, 110
+  size: 58, 52
+  orig: 58, 52
+  offset: 0, 0
+  index: -1
+enemies/hund/walk side left 0
+  rotate: false
+  xy: 602, 164
+  size: 58, 52
+  orig: 58, 52
+  offset: 0, 0
+  index: -1
+enemies/hund/walk side left 1
+  rotate: false
+  xy: 482, 2
+  size: 58, 52
+  orig: 58, 52
+  offset: 0, 0
+  index: -1
+enemies/hund/walk side left 2
+  rotate: false
+  xy: 542, 56
+  size: 58, 52
+  orig: 58, 52
+  offset: 0, 0
+  index: -1
+enemies/hund/walk side left 3
+  rotate: false
+  xy: 602, 110
+  size: 58, 52
+  orig: 58, 52
+  offset: 0, 0
+  index: -1
+enemies/hund/walk side right 0
+  rotate: false
+  xy: 662, 164
+  size: 58, 52
+  orig: 58, 52
+  offset: 0, 0
+  index: -1
+enemies/hund/walk side right 1
+  rotate: false
+  xy: 542, 2
+  size: 58, 52
+  orig: 58, 52
+  offset: 0, 0
+  index: -1
+enemies/hund/walk side right 2
+  rotate: false
+  xy: 602, 56
+  size: 58, 52
+  orig: 58, 52
+  offset: 0, 0
+  index: -1
+enemies/hund/walk side right 3
+  rotate: false
+  xy: 662, 110
+  size: 58, 52
+  orig: 58, 52
+  offset: 0, 0
+  index: -1
+
+images.pack5.png
+size: 1024, 256
+format: RGBA8888
+filter: Nearest, Nearest
+repeat: none
 enemies/menig/die 0
   rotate: false
   xy: 2, 164
@@ -576,7 +897,7 @@ enemies/menig/walk side right 3
   offset: 0, 0
   index: -1
 
-images.pack5.png
+images.pack6.png
 size: 1024, 512
 format: RGBA8888
 filter: Nearest, Nearest
@@ -911,7 +1232,7 @@ hud/TR4 0
   offset: 0, 0
   index: -1
 
-images.pack6.png
+images.pack7.png
 size: 256, 64
 format: RGBA8888
 filter: Nearest, Nearest
@@ -959,7 +1280,7 @@ pickups/health small
   offset: 0, 0
   index: -1
 
-images.pack7.png
+images.pack8.png
 size: 512, 128
 format: RGBA8888
 filter: Nearest, Nearest
@@ -1014,7 +1335,7 @@ tiles/lonplate
   offset: 0, 0
   index: -1
 
-images.pack8.png
+images.pack9.png
 size: 256, 128
 format: RGBA8888
 filter: Nearest, Nearest
@@ -1041,7 +1362,7 @@ weapons/boot/icon
   offset: 0, 0
   index: -1
 
-images.pack9.png
+images.pack10.png
 size: 1024, 1024
 format: RGBA8888
 filter: Nearest, Nearest
@@ -1068,7 +1389,7 @@ weapons/pistol/shooting 1
   offset: 0, 0
   index: -1
 
-images.pack10.png
+images.pack11.png
 size: 1024, 1024
 format: RGBA8888
 filter: Nearest, Nearest
@@ -1081,7 +1402,7 @@ weapons/pistol/shooting 2
   offset: 0, 0
   index: -1
 
-images.pack11.png
+images.pack12.png
 size: 1024, 1024
 format: RGBA8888
 filter: Nearest, Nearest

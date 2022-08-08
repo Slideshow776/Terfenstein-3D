@@ -9,12 +9,12 @@ import no.sandramoen.commanderqueen.utils.GameUtils;
 
 public class EnemyHandler {
 
-    public static void preventOverlapWithOtherEnemies(Array<Enemy> enemies, int i) {
+    /*public static void preventOverlapWithOtherEnemies(Array<Enemy> enemies, int i) {
         for (int j = 0; j < enemies.size; j++) {
             if (enemies.get(i) != enemies.get(j))
                 enemies.get(i).preventOverlap(enemies.get(j));
         }
-    }
+    }*/
 
     public static void preventOverLapWithTile(Array<Enemy> enemies, Tile tile, int i) {
         if (tile.type == "walls" && enemies.get(i).overlaps(tile))

@@ -37,7 +37,7 @@ import no.sandramoen.commanderqueen.screens.gameplay.level.UIHandler;
 public class LevelScreen extends BaseScreen3D {
     private HUD hud;
     private Player player;
-    private WeaponHandler weapon;
+    private WeaponHandler weaponHandler;
     private MapLoader mapLoader;
     private TilemapActor tilemap;
 
@@ -75,7 +75,7 @@ public class LevelScreen extends BaseScreen3D {
         TileHandler.updateTiles(tiles, player);
         updateEnemies();
         updateBarrels();
-        PickupHandler.update(pickups, player, hud, tiles);
+        PickupHandler.update(pickups, player, hud, weaponHandler);
 
         uiHandler.debugLabel.setText("FPS: " + Gdx.graphics.getFramesPerSecond() + "\nVisible: " + mainStage3D.visibleCount);
 
@@ -102,11 +102,11 @@ public class LevelScreen extends BaseScreen3D {
         }
         // ------------------------------------------
         else if (keycode == Keys.NUM_1) {
-            weapon.setWeapon(0);
-            hud.setAmmo(weapon.currentWeapon.getClass().getSimpleName());
+            weaponHandler.setWeapon(0);
+            hud.setAmmo(weaponHandler.currentWeapon.getClass().getSimpleName());
         } else if (keycode == Keys.NUM_2) {
-            weapon.setWeapon(1);
-            hud.setAmmo(weapon.currentWeapon.getClass().getSimpleName());
+            weaponHandler.setWeapon(1);
+            hud.setAmmo(weaponHandler.currentWeapon.getClass().getSimpleName());
         }
 
         return super.keyDown(keycode);
@@ -125,54 +125,57 @@ public class LevelScreen extends BaseScreen3D {
 
     @Override
     public boolean scrolled(float amountX, float amountY) {
-        weapon.scrollWeapon(amountY);
-        hud.setAmmo(weapon.currentWeapon.getClass().getSimpleName());
+        weaponHandler.scrollWeapon(amountY);
+        hud.setAmmo(weaponHandler.currentWeapon.getClass().getSimpleName());
         return super.scrolled(amountX, amountY);
     }
 
     private void buttonPolling() {
         if (Gdx.input.isButtonPressed(Input.Buttons.LEFT) && !isGameOver) {
-            if (weapon.isReady)
+            if (weaponHandler.isReady)
                 shoot();
             holdingDown = true;
         }
     }
 
     private void shoot() {
-        weapon.shoot(hud.getAmmo());
-        if (weapon.currentWeapon.isAmmoDependent && hud.getAmmo() > 0) {
+        weaponHandler.shoot(hud.getAmmo());
+        if (weaponHandler.currentWeapon.isAmmoDependent && hud.getAmmo() > 0) {
             if (hud.getAmmo() > 0) {
                 player.muzzleLight();
                 hud.decrementAmmo();
                 rayPickTarget();
                 EnemyHandler.activateEnemies(enemies, 45, player);
             }
-        } else if (!weapon.currentWeapon.isAmmoDependent)
+        } else if (!weaponHandler.currentWeapon.isAmmoDependent)
             rayPickTarget();
     }
 
     private void rayPickTarget() {
-        Vector2 spread = weapon.getSpread(holdingDown, mainStage3D.camera.fieldOfView);
+        Vector2 spread = weaponHandler.getSpread(holdingDown, mainStage3D.camera.fieldOfView);
         int screenX = (int) (Gdx.graphics.getWidth() / 2 + MathUtils.random(-spread.x, spread.y));
         int screenY = (int) (Gdx.graphics.getHeight() / 2 + MathUtils.random(-spread.y, spread.y));
 
         Ray ray = mainStage3D.camera.getPickRay(screenX, screenY);
         int i = GameUtils.getClosestListIndex(ray, shootable);
 
+        consequencesOfPick(ray, i);
+    }
+
+    private void consequencesOfPick(Ray ray, int i) {
         if (i >= 0) {
-            if (player.distanceBetween(shootable.get(i)) <= weapon.currentWeapon.range) {
-                if (GameUtils.isActor(shootable.get(i), "menig")) {
-                    Menig menig = (Menig) shootable.get(i);
+            if (player.distanceBetween(shootable.get(i)) <= weaponHandler.currentWeapon.range) {
+                if (GameUtils.isActor(shootable.get(i), "menig") || GameUtils.isActor(shootable.get(i), "hund")) {
+                    Enemy enemy = (Enemy) shootable.get(i);
                     EnemyHandler.activateEnemies(enemies, 45, player);
-                    menig.decrementHealth(weapon.getDamage());
+                    enemy.decrementHealth(weaponHandler.getDamage());
 
-                    Vector3 temp = new Vector3().set(ray.direction).scl(player.distanceBetween(menig) - .2f).add(ray.origin);
+                    Vector3 temp = new Vector3().set(ray.direction).scl(player.distanceBetween(enemy) - .2f).add(ray.origin);
                     bloodDecals.addDecal(temp.x, temp.y, temp.z);
-
                 } else if (GameUtils.isActor(shootable.get(i), "barrel")) {
                     Barrel barrel = (Barrel) shootable.get(i);
-                    barrel.decrementHealth(weapon.getDamage(), player.distanceBetween(barrel));
-                } else if (GameUtils.isActor(shootable.get(i), "tile") && hud.getAmmo() > 0 && !weapon.currentWeapon.isMelee) {
+                    barrel.decrementHealth(weaponHandler.getDamage(), player.distanceBetween(barrel));
+                } else if (GameUtils.isActor(shootable.get(i), "tile") && hud.getAmmo() > 0 && !weaponHandler.currentWeapon.isMelee) {
                     Tile tile = (Tile) shootable.get(i);
                     if (tile.type.equalsIgnoreCase("walls")) {
                         Vector3 temp = new Vector3().set(ray.direction).scl(player.distanceBetween(tile) - (Tile.diagonalLength / 2)).add(ray.origin);
@@ -190,14 +193,15 @@ public class LevelScreen extends BaseScreen3D {
                 removeEnemy(enemies.get(i));
                 continue;
             }
-            EnemyHandler.preventOverlapWithOtherEnemies(enemies, i);
+            // EnemyHandler.preventOverlapWithOtherEnemies(enemies, i);
             EnemyHandler.illuminate(mainStage3D.intervalFlag, enemies, tiles, i);
         }
     }
 
     private void removeEnemy(Enemy enemy) {
         enemy.die();
-        pickups.add(new Ammo(enemy.position.y + MathUtils.random(-1, 1), enemy.position.z + MathUtils.random(-1, 1), mainStage3D, 2, decalBatch, tiles));
+        if (enemy.getClass().getSimpleName().equalsIgnoreCase("menig"))
+            pickups.add(new Ammo(enemy.position.y + MathUtils.random(-1, 1), enemy.position.z + MathUtils.random(-1, 1), mainStage3D, 2, decalBatch, tiles));
         enemies.removeValue(enemy, false);
         shootable.removeValue(enemy, false);
         EnemyHandler.updateEnemiesShootableList(enemies, shootable);
@@ -218,8 +222,8 @@ public class LevelScreen extends BaseScreen3D {
             isGameOver = true;
             player.isPause = true;
             hud.setDeadFace();
-            weapon.moveDown();
-            weapon.crosshair.setVisible(false);
+            weaponHandler.moveDown();
+            weaponHandler.crosshair.setVisible(false);
             new BaseActor(0, 0, uiStage).addAction(Actions.sequence(
                     Actions.delay(5),
                     Actions.run(() -> {
@@ -263,7 +267,7 @@ public class LevelScreen extends BaseScreen3D {
 
 
     private void initializeMap() {
-        tilemap = new TilemapActor(BaseGame.testMap, mainStage3D);
+        tilemap = new TilemapActor(BaseGame.level0Map, mainStage3D);
         tiles = new Array();
         shootable = new Array();
         pickups = new Array();
@@ -275,6 +279,6 @@ public class LevelScreen extends BaseScreen3D {
     private void initializePlayer() {
         player = mapLoader.player;
         hud.player = player;
-        weapon = new WeaponHandler(uiStage, hud, player, shootable, mainStage3D);
+        weaponHandler = new WeaponHandler(uiStage, hud, player, shootable, mainStage3D);
     }
 }

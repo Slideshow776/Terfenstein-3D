@@ -9,7 +9,7 @@ import no.sandramoen.commanderqueen.utils.Stage3D;
 
 public class Player extends BaseActor3D {
     public boolean isMoving = false;
-    public static float movementSpeed = 9.5f;
+    public static float movementSpeed = 10f;
 
     private float rotateSpeed = 90f * .05f;
     private float totalTime = 0;

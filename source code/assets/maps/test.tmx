@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="15" height="15" tilewidth="64" tileheight="64" infinite="0" nextlayerid="13" nextobjectid="58892">
+<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="15" height="15" tilewidth="64" tileheight="64" infinite="0" nextlayerid="13" nextobjectid="58901">
  <tileset firstgid="1" name="test" tilewidth="64" tileheight="64" tilecount="64" columns="8">
   <image source="tileset.png" width="512" height="512"/>
   <tile id="0">
    <properties>
-    <property name="name" value="enemy"/>
+    <property name="name" value="menig"/>
    </properties>
   </tile>
   <tile id="1">
@@ -14,7 +14,7 @@
   </tile>
   <tile id="2">
    <properties>
-    <property name="name" value="lonplate"/>
+    <property name="name" value="hund"/>
    </properties>
   </tile>
   <tile id="8">
@@ -173,7 +173,6 @@
   <object id="58726" gid="43" x="320" y="576" width="64" height="64"/>
   <object id="58727" gid="43" x="320" y="512" width="64" height="64"/>
   <object id="58728" gid="43" x="320" y="448" width="64" height="64"/>
-  <object id="58729" gid="43" x="320" y="384" width="64" height="64"/>
   <object id="58730" gid="43" x="320" y="320" width="64" height="64"/>
   <object id="58731" gid="43" x="320" y="256" width="64" height="64"/>
   <object id="58732" gid="43" x="320" y="192" width="64" height="64"/>
@@ -188,7 +187,6 @@
   <object id="58741" gid="43" x="384" y="576" width="64" height="64"/>
   <object id="58742" gid="43" x="384" y="512" width="64" height="64"/>
   <object id="58743" gid="43" x="384" y="448" width="64" height="64"/>
-  <object id="58744" gid="43" x="384" y="384" width="64" height="64"/>
   <object id="58745" gid="43" x="384" y="320" width="64" height="64"/>
   <object id="58746" gid="43" x="384" y="256" width="64" height="64"/>
   <object id="58747" gid="43" x="384" y="192" width="64" height="64"/>
@@ -314,6 +312,8 @@
   <object id="58868" gid="43" x="896" y="128" width="64" height="64"/>
   <object id="58869" gid="43" x="896" y="64" width="64" height="64"/>
   <object id="58889" gid="41" x="448" y="512" width="64" height="64"/>
+  <object id="58899" gid="43" x="320" y="384" width="64" height="64"/>
+  <object id="58900" gid="43" x="384" y="384" width="64" height="64"/>
  </objectgroup>
  <objectgroup id="11" name="walls">
   <object id="58891" gid="41" x="256" y="384" width="64" height="64"/>
@@ -321,7 +321,6 @@
  <objectgroup id="12" name="ceilings"/>
  <objectgroup id="8" name="actors">
   <object id="58870" gid="2" x="448" y="256" width="64" height="64"/>
-  <object id="58878" gid="1" x="448" y="512" width="64" height="64"/>
   <object id="58879" gid="19" x="320" y="576" width="64" height="64"/>
   <object id="58880" gid="19" x="384" y="576" width="64" height="64"/>
   <object id="58881" gid="19" x="448" y="576" width="64" height="64"/>
@@ -332,5 +331,8 @@
   <object id="58886" gid="21" x="448" y="640" width="64" height="64"/>
   <object id="58887" gid="22" x="512" y="640" width="64" height="64"/>
   <object id="58888" gid="23" x="576" y="640" width="64" height="64"/>
+  <object id="58893" gid="1" x="384" y="512" width="64" height="64"/>
+  <object id="58894" gid="3" x="512" y="512" width="64" height="64"/>
+  <object id="58898" gid="17" x="448" y="512" width="64" height="64"/>
  </objectgroup>
 </map>

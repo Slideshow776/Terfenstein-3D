@@ -2,19 +2,19 @@ package no.sandramoen.commanderqueen.screens.gameplay.level;
 
 import com.badlogic.gdx.utils.Array;
 
-import no.sandramoen.commanderqueen.actors.Tile;
 import no.sandramoen.commanderqueen.actors.characters.Player;
 import no.sandramoen.commanderqueen.actors.hud.HUD;
 import no.sandramoen.commanderqueen.actors.pickups.Pickup;
+import no.sandramoen.commanderqueen.actors.weapon.WeaponHandler;
 import no.sandramoen.commanderqueen.utils.GameUtils;
 
 public class PickupHandler {
 
-    public static void update(Array<Pickup> pickups, Player player, HUD hud, Array<Tile> tiles) {
+    public static void update(Array<Pickup> pickups, Player player, HUD hud, WeaponHandler weaponHandler) {
         for (Pickup pickup : pickups) {
             if (player.overlaps(pickup)) {
                 if (GameUtils.isActor(pickup, "Ammo")) {
-                    hud.incrementAmmo(pickup.amount);
+                    hud.incrementAmmo(pickup.amount, weaponHandler.currentWeapon.getClass().getSimpleName());
                     removePickup(pickups, pickup);
                 }
                 if (GameUtils.isActor(pickup, "Armor")) {

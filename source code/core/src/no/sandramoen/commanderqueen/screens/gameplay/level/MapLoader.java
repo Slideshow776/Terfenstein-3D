@@ -12,6 +12,7 @@ import com.badlogic.gdx.utils.Array;
 
 import no.sandramoen.commanderqueen.actors.Barrel;
 import no.sandramoen.commanderqueen.actors.Tile;
+import no.sandramoen.commanderqueen.actors.characters.Hund;
 import no.sandramoen.commanderqueen.actors.characters.Menig;
 import no.sandramoen.commanderqueen.actors.characters.Player;
 import no.sandramoen.commanderqueen.actors.hud.HUD;
@@ -147,7 +148,12 @@ public class MapLoader {
     }
 
     private void initializeEnemies() {
-        for (MapObject obj : tilemap.getTileList("actors", "enemy")) {
+        initializeMeniger();
+        initializeHunder();
+    }
+
+    private void initializeMeniger() {
+        for (MapObject obj : tilemap.getTileList("actors", "menig")) {
             MapProperties props = obj.getProperties();
             float x = (Float) props.get("x") * BaseGame.unitScale;
             float y = (Float) props.get("y") * BaseGame.unitScale;
@@ -156,6 +162,26 @@ public class MapLoader {
                 rotation = (Float) props.get("rotation");
             rotation %= 360;
             enemies.add(new Menig((int) x, (int) y, stage3D, player, rotation, tileGraph, floorTiles, stage, hud, decalBatch));
+            shootable.add(enemies.get(enemies.size - 1));
+        }
+
+        for (Enemy enemy : enemies)
+            enemy.setShootableList(shootable);
+
+        for (int i = 0; i < enemies.size; i++)
+            enemies.get(i).setEnemiesList(enemies);
+    }
+
+    private void initializeHunder() {
+        for (MapObject obj : tilemap.getTileList("actors", "hund")) {
+            MapProperties props = obj.getProperties();
+            float x = (Float) props.get("x") * BaseGame.unitScale;
+            float y = (Float) props.get("y") * BaseGame.unitScale;
+            float rotation = 0;
+            if (props.get("rotation") != null)
+                rotation = (Float) props.get("rotation");
+            rotation %= 360;
+            enemies.add(new Hund((int) x, (int) y, stage3D, player, rotation, tileGraph, floorTiles, stage, hud, decalBatch));
             shootable.add(enemies.get(enemies.size - 1));
         }
 

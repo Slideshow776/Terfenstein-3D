@@ -7,7 +7,7 @@ import com.badlogic.gdx.math.Vector3;
 import no.sandramoen.commanderqueen.utils.BaseGame;
 import no.sandramoen.commanderqueen.utils.GameUtils;
 
-public class Decal {
+public class Sprite {
 
     public static com.badlogic.gdx.graphics.g3d.decals.Decal init(float size) {
         com.badlogic.gdx.graphics.g3d.decals.Decal decal = com.badlogic.gdx.graphics.g3d.decals.Decal.newDecal(BaseGame.textureAtlas.findRegion("whitePixel"), true);

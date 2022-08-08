@@ -118,11 +118,15 @@ public class HUD extends BaseActor {
     }
 
 
-    public void incrementAmmo(int amount) {
+    public void incrementAmmo(int amount, String type) {
         ammo += amount;
-        ammoLabel.setText(ammo + "");
         BaseGame.ammoPickupSound.play(BaseGame.soundVolume);
         overlayIndicator.flash(BaseGame.yellowColor, .1f);
+
+        if (type.equalsIgnoreCase("boot"))
+            ammoLabel.setText("");
+        else
+            ammoLabel.setText(ammo + "");
     }
 
     public void decrementAmmo() {
@@ -139,7 +143,7 @@ public class HUD extends BaseActor {
     public void setAmmo(String type) {
         if (type.equalsIgnoreCase("boot"))
             ammoLabel.setText("");
-        else if (type.equalsIgnoreCase("pistol"))
+        else
             ammoLabel.setText(ammo + "");
         fadeWeaponsTableInAndOut(type);
     }

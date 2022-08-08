@@ -19,10 +19,9 @@ public class Menig extends Enemy {
     public Menig(float y, float z, Stage3D s, Player player, Float rotation, TileGraph tileGraph, Array<Tile> floorTiles, Stage stage, HUD hud, DecalBatch batch) {
         super(y, z, s, player, rotation, tileGraph, floorTiles, stage, hud, batch);
         movementSpeed = Player.movementSpeed / 130f;
-        System.out.println(movementSpeed);
         setHealth(20);
         shootImageDelay = .5f;
-        attackStateChangeFrequency = 3 * shootImageDelay;
+        attackStateChangeFrequency = 1.5f * shootImageDelay;
         minDamage = 3;
         maxDamage = 15;
         score = 10;

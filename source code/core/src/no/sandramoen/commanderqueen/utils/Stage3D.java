@@ -38,7 +38,7 @@ public class Stage3D {
         camera.rotate(-90, 0, 0, 1);
         camera.lookAt(0, 0, 0);
         camera.near = .01f;
-        camera.far = 100f;
+        camera.far = 200f;
         camera.update();
 
         DefaultShader.Config config = new DefaultShader.Config();

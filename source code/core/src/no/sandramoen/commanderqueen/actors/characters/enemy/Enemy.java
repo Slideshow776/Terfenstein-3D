@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.g3d.Environment;
 import com.badlogic.gdx.graphics.g3d.ModelBatch;
+import com.badlogic.gdx.graphics.g3d.decals.Decal;
 import com.badlogic.gdx.graphics.g3d.decals.DecalBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
@@ -103,13 +104,13 @@ public class Enemy extends BaseActor3D {
     private HUD hud;
     private Stage stage;
     private Tile goalTile;
-    private com.badlogic.gdx.graphics.g3d.decals.Decal decal;
+    private Decal decal;
     private TileGraph tileGraph;
     private Array<Tile> floorTiles;
     private GraphPath<Tile> tilePath;
     private Array<BaseActor3D> shootable = new Array();
     private Array<Enemy> enemies = new Array();
-    private Vector2 forceMove = new Vector2(8f, 8f);
+    private Vector2 forceMove = new Vector2(3f, 3f);
     private BaseActor attackDelayActor;
     private DecalBatch decalBatch;
 
@@ -124,7 +125,7 @@ public class Enemy extends BaseActor3D {
 
         float size = 3;
         buildModel(1.5f, size, 1.5f, true);
-        decal = Decal.init(size);
+        decal = Sprite.init(size);
         turnBy(-180 + rotation);
         setPosition(GameUtils.getPositionRelativeToFloor(size), y, z);
         setBaseRectangle();
@@ -138,7 +139,7 @@ public class Enemy extends BaseActor3D {
         if (isPause) return;
 
         totalTime += dt;
-        Decal.update(decal, position, stage3D.camera, decalBatch);
+        Sprite.update(decal, position, stage3D.camera, decalBatch);
         if (isForcedToMove) forceMove(dt);
 
         if (isDead || state == State.HURT) return;
@@ -282,7 +283,7 @@ public class Enemy extends BaseActor3D {
     }
 
     private boolean isPlayerVisible() {
-        if (isWithinDistance(VISIBILITY_RANGE, player) && (isActive || isDirectionFrontOrSides())) {
+        if (isWithinDistance(VISIBILITY_RANGE, player) && (isActive || isDirectionFrontOrSides() || getClass().getSimpleName().equalsIgnoreCase("hund"))) {
             int i = GameUtils.getRayPickedListIndex(position, player.position.cpy().sub(position), shootable);
             if (i > -1) {
                 if (!GameUtils.isActor(shootable.get(i), "player") && !GameUtils.isActor(shootable.get(i), "barrel"))
@@ -295,7 +296,7 @@ public class Enemy extends BaseActor3D {
     }
 
     private void forceMove(float dt) {
-        if (totalTime <= SECONDS_FORCED_TO_MOVE)
+        if (totalTime <= forceTime)
             moveBy(0f, forceMove.x * dt, forceMove.y * dt);
         else
             isForcedToMove = false;
