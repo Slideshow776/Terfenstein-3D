@@ -28,6 +28,7 @@ import no.sandramoen.commanderqueen.utils.Stage3D;
 import no.sandramoen.commanderqueen.utils.pathFinding.TileGraph;
 
 public class Enemy extends BaseActor3D {
+    public static float activationRange = 60;
     public final int ID = MathUtils.random(1_000, 9_999);
     public int health = 1;
     public boolean isDead;
@@ -208,7 +209,8 @@ public class Enemy extends BaseActor3D {
             if (MathUtils.random(0f, 1f) > (1 - painChance))
                 setTemporaryHurtState();
             findPlayer();
-        }
+        } else if (health <= 0)
+            die();
     }
 
     public void forceMoveAwayFrom(BaseActor3D source) {
@@ -289,7 +291,7 @@ public class Enemy extends BaseActor3D {
         if (isWithinDistance(VISIBILITY_RANGE, player) && (isActive || isDirectionFrontOrSides() || getClass().getSimpleName().equalsIgnoreCase("hund"))) {
             int i = GameUtils.getRayPickedListIndex(position, player.position.cpy().sub(position), shootable);
             if (i > -1) {
-                if (!GameUtils.isActor(shootable.get(i), "player") && !GameUtils.isActor(shootable.get(i), "barrel"))
+                if (!(shootable.get(i) instanceof Player) && !(shootable.get(i) instanceof Barrel))
                     return false;
                 else
                     return true;
@@ -322,10 +324,10 @@ public class Enemy extends BaseActor3D {
         temp.y += MathUtils.random(-maxSpread, maxSpread);
         temp.z += MathUtils.random(-maxSpread, maxSpread);
         int i = GameUtils.getRayPickedListIndex(position, temp.cpy().sub(position), shootable);
-        if (i > -1 && GameUtils.isActor(shootable.get(i), "barrel")) {
+        if (i > -1 && shootable.get(i) instanceof Barrel) {
             Barrel barrel = (Barrel) shootable.get(i);
             barrel.decrementHealth(getDamage(), distanceBetween(barrel));
-        } else if (i > -1 && GameUtils.isActor(shootable.get(i), "player"))
+        } else if (i > -1 && shootable.get(i) instanceof Player)
             hud.decrementHealth(getDamage(), this);
     }
 
@@ -369,7 +371,7 @@ public class Enemy extends BaseActor3D {
 
     private void checkIfHitAWallAndShouldGoStraight() {
         for (BaseActor3D baseActor3D : shootable) {
-            if (GameUtils.isActor(baseActor3D, "tile")) {
+            if (baseActor3D instanceof Tile) {
                 Tile temp = (Tile) baseActor3D;
                 if (temp.type == "walls" && overlaps(temp) && dodgeDirectionAngle != 0) {
                     dodgeDirectionAngle = 0;

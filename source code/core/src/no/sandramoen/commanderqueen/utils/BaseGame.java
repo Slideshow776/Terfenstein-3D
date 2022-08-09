@@ -47,6 +47,7 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
     public static Sound hundMeleeSound;
     public static Sound hundDieSound;
     public static Sound hundActivateSound;
+    public static Sound shotgunSound;
 
     // game state
     public static float mouseMovementSensitivity = .05f;
@@ -125,6 +126,7 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
         assetManager.load("audio/sound/418107__crazymonke9__single-dog-bark-1.wav", Sound.class);
         assetManager.load("audio/sound/72724__moffet__impatient-whimpers-and-barks.wav", Sound.class);
         assetManager.load("audio/sound/hund_activate.wav", Sound.class);
+        assetManager.load("audio/sound/145209__lensflare8642__shotgun-sounds.wav", Sound.class);
 
         // tiled maps
         assetManager.setLoader(TiledMap.class, new TmxMapLoader(new InternalFileHandleResolver()));
@@ -157,6 +159,7 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
         hundMeleeSound = assetManager.get("audio/sound/418107__crazymonke9__single-dog-bark-1.wav", Sound.class);
         hundDieSound = assetManager.get("audio/sound/72724__moffet__impatient-whimpers-and-barks.wav", Sound.class);
         hundActivateSound = assetManager.get("audio/sound/hund_activate.wav", Sound.class);
+        shotgunSound = assetManager.get("audio/sound/145209__lensflare8642__shotgun-sounds.wav", Sound.class);
 
         // tiled maps
         testMap = assetManager.get("maps/test.tmx", TiledMap.class);

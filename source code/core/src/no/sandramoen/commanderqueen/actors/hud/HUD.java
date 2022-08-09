@@ -63,6 +63,7 @@ public class HUD extends BaseActor {
         weaponImages = new Array();
         weaponImages.add(new Image(BaseGame.textureAtlas.findRegion("weapons/boot/icon")));
         weaponImages.add(new Image(BaseGame.textureAtlas.findRegion("weapons/pistol/icon")));
+        weaponImages.add(new Image(BaseGame.textureAtlas.findRegion("weapons/shotgun/icon")));
 
         Table table = new Table();
         table.defaults().width(getWidth() / 5);
@@ -203,6 +204,8 @@ public class HUD extends BaseActor {
             weaponImages.get(0).setColor(Color.WHITE);
         else if (type.equalsIgnoreCase("pistol"))
             weaponImages.get(1).setColor(Color.WHITE);
+        else if (type.equalsIgnoreCase("shotgun"))
+            weaponImages.get(2).setColor(Color.WHITE);
     }
 
 
@@ -260,11 +263,11 @@ public class HUD extends BaseActor {
 
     private void setOverlayAngle(int amount, float angle) {
         if (angle < 130)
-            overlayIndicator.flashRight(BaseGame.redColor, .5f * amount / 25);
+            overlayIndicator.flashRight(BaseGame.redColor, .5f * amount / 12);
         else if (angle > 230)
-            overlayIndicator.flashLeft(BaseGame.redColor, .5f * amount / 25);
+            overlayIndicator.flashLeft(BaseGame.redColor, .5f * amount / 12);
         else
-            overlayIndicator.flash(BaseGame.redColor, .5f * amount / 25);
+            overlayIndicator.flash(BaseGame.redColor, .5f * amount / 12);
     }
 
     private void setHurtFace(int amount, float angle) {

@@ -7,7 +7,6 @@ import no.sandramoen.commanderqueen.actors.characters.Player;
 import no.sandramoen.commanderqueen.actors.hud.HUD;
 import no.sandramoen.commanderqueen.actors.characters.enemy.Enemy;
 import no.sandramoen.commanderqueen.actors.utils.baseActors.BaseActor3D;
-import no.sandramoen.commanderqueen.utils.GameUtils;
 
 public class BarrelExplosionHandler {
 
@@ -18,7 +17,7 @@ public class BarrelExplosionHandler {
     }
 
     private static void checkPlayerExplosionDamage(HUD hud, Player player, BaseActor3D source) {
-        if (GameUtils.isActor(source, "barrel")) {
+        if (source instanceof Barrel) {
             Barrel barrel = (Barrel) source;
             hud.decrementHealth(barrel.getBlastDamage(source.distanceBetween(player)), source);
 
@@ -30,7 +29,7 @@ public class BarrelExplosionHandler {
     }
 
     private static void checkEnemiesExplosionDamage(Array<Enemy> enemies, BaseActor3D source) {
-        if (GameUtils.isActor(source, "barrel")) {
+        if (source instanceof Barrel) {
             Barrel barrel = (Barrel) source;
 
             for (Enemy enemy : enemies) {
@@ -42,11 +41,11 @@ public class BarrelExplosionHandler {
     }
 
     private static void checkBarrelsExplosionDamage(Array<BaseActor3D> shootable, BaseActor3D source) {
-        if (GameUtils.isActor(source, "barrel")) {
+        if (source instanceof Barrel) {
             Barrel barrel = (Barrel) source;
 
             for (BaseActor3D baseActor3D : shootable) {
-                if (GameUtils.isActor(baseActor3D, "barrel")) {
+                if (baseActor3D instanceof Barrel) {
                     Barrel otherBarrel = (Barrel) baseActor3D;
                     otherBarrel.decrementHealth(barrel.getBlastDamage(source.distanceBetween(otherBarrel)), 0);
                 }

@@ -9,21 +9,16 @@ import no.sandramoen.commanderqueen.utils.GameUtils;
 
 public class EnemyHandler {
 
-    public static void preventOverlapWithOtherEnemies(Array<Enemy> enemies, int i) {
-        for (int j = 0; j < enemies.size; j++) {
-            if (enemies.get(i) != enemies.get(j))
-                enemies.get(i).preventOverlap(enemies.get(j));
+    public static void update(boolean intervalFlag, Array<Enemy> enemies, Array<Tile> tiles) {
+        for (int i = 0; i < enemies.size; i++) {
+            preventOverlapWithOtherEnemies(enemies, i);
+            illuminate(intervalFlag, enemies, tiles, i);
+            preventOverLapWithTile(tiles, enemies.get(i));
         }
-    }
-
-    public static void preventOverLapWithTile(Array<Enemy> enemies, Tile tile, int i) {
-        if (tile.type == "walls" && enemies.get(i).overlaps(tile))
-            enemies.get(i).preventOverlap(tile);
     }
 
     public static void illuminate(boolean intervalFlag, Array<Enemy> enemies, Array<Tile> tiles, int i) {
         for (Tile tile : tiles) {
-            EnemyHandler.preventOverLapWithTile(enemies, tile, i);
             if (intervalFlag && enemies.get(i).overlaps(tile))
                 GameUtils.illuminateBaseActor(enemies.get(i), tile);
         }
@@ -43,6 +38,20 @@ public class EnemyHandler {
         for (Enemy enemy : enemies) {
             if (enemy.isWithinDistance(range, source))
                 enemy.activate(source);
+        }
+    }
+
+    private static void preventOverlapWithOtherEnemies(Array<Enemy> enemies, int i) {
+        for (int j = 0; j < enemies.size; j++) {
+            if (enemies.get(i) != enemies.get(j))
+                enemies.get(i).preventOverlap(enemies.get(j));
+        }
+    }
+
+    private static void preventOverLapWithTile(Array<Tile> tiles, Enemy enemy) {
+        for (Tile tile : tiles) {
+            if (tile.type == "walls" && enemy.overlaps(tile))
+                enemy.preventOverlap(tile);
         }
     }
 }

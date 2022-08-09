@@ -2,7 +2,6 @@ package no.sandramoen.commanderqueen.actors.weapon.weapons;
 
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.Array;
 
@@ -16,7 +15,8 @@ public class Pistol extends Weapon {
         minDamage = 5;
         maxDamage = 20;
         isAmmoDependent = true;
-        index = 1;
+        isAvailable = true;
+        inventoryIndex = 1;
         initializeAnimations();
     }
 
@@ -32,14 +32,13 @@ public class Pistol extends Weapon {
 
     private void initializeAnimations() {
         Array<TextureAtlas.AtlasRegion> animationImages = new Array();
-        animationImages.add(BaseGame.textureAtlas.findRegion("weapons/pistol/shooting 1"));
-        animationImages.add(BaseGame.textureAtlas.findRegion("weapons/pistol/shooting 2"));
-        animationImages.add(BaseGame.textureAtlas.findRegion("weapons/pistol/shooting 3"));
+        for (int i = 1; i <= 3; i++)
+            animationImages.add(BaseGame.textureAtlas.findRegion("weapons/pistol/shooting " + i));
         shootAnimation = new Animation(.1f, animationImages, Animation.PlayMode.NORMAL);
 
         animationImages.clear();
         animationImages.add(BaseGame.textureAtlas.findRegion("weapons/pistol/shooting 0"));
-        restAnimation = new Animation(.1f, animationImages, Animation.PlayMode.NORMAL);
+        idleAnimation = new Animation(.1f, animationImages, Animation.PlayMode.NORMAL);
     }
 }
 

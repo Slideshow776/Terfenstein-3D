@@ -32,7 +32,8 @@ public class Menig extends Enemy {
 
     @Override
     public void die() {
-        GameUtils.playSoundRelativeToDistance(BaseGame.menigDeathSound, distanceBetween(player), VOCAL_RANGE);
+        if (!isDead)
+            GameUtils.playSoundRelativeToDistance(BaseGame.menigDeathSound, distanceBetween(player), VOCAL_RANGE);
         super.die();
     }
 

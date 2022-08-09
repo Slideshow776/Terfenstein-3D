@@ -16,6 +16,7 @@ import no.sandramoen.commanderqueen.actors.utils.baseActors.BaseActor;
 import no.sandramoen.commanderqueen.actors.utils.baseActors.BaseActor3D;
 import no.sandramoen.commanderqueen.actors.weapon.weapons.Boot;
 import no.sandramoen.commanderqueen.actors.weapon.weapons.Pistol;
+import no.sandramoen.commanderqueen.actors.weapon.weapons.Shotgun;
 import no.sandramoen.commanderqueen.actors.weapon.weapons.Weapon;
 import no.sandramoen.commanderqueen.utils.BaseGame;
 import no.sandramoen.commanderqueen.utils.GameUtils;
@@ -55,8 +56,8 @@ public class WeaponHandler extends BaseActor {
         moveUp();
 
         weapons = new Array();
-        weapons.add(new Boot(), new Pistol());
-        currentWeapon = weapons.get(1);
+        weapons.add(new Boot(), new Pistol(), new Shotgun());
+        currentWeapon = weapons.get(2);
     }
 
     @Override
@@ -74,10 +75,16 @@ public class WeaponHandler extends BaseActor {
     @Override
     public void draw(Batch batch, float parentAlpha) {
         super.draw(batch, parentAlpha);
-        if (currentWeapon.shootAnimation.isAnimationFinished(totalTime) && currentWeapon.restAnimation != null)
-            batch.draw(currentWeapon.restAnimation.getKeyFrame(totalTime), getX(), getY(), getWidth(), getHeight());
+        if (currentWeapon.shootAnimation.isAnimationFinished(totalTime) && currentWeapon.idleAnimation != null)
+            batch.draw(currentWeapon.idleAnimation.getKeyFrame(totalTime), getX(), getY(), getWidth(), getHeight());
         else if (!currentWeapon.shootAnimation.isAnimationFinished(totalTime))
             batch.draw(currentWeapon.shootAnimation.getKeyFrame(totalTime), getX(), getY(), getWidth(), getHeight());
+    }
+
+    public void playerDied() {
+        moveDown();
+        crosshair.setVisible(false);
+        totalTime = 5f;
     }
 
     public void setWeapon(int i) {
@@ -89,16 +96,17 @@ public class WeaponHandler extends BaseActor {
 
     public void scrollWeapon(float i) {
         if (i < 0) { // up
-            if (currentWeapon.index + 1 < weapons.size)
-                setWeapon(currentWeapon.index + 1);
+            if (currentWeapon.inventoryIndex + 1 < weapons.size)
+                setWeapon(currentWeapon.inventoryIndex + 1);
             else
                 setWeapon(0);
         } else if (i >= 0) { // down
-            if (currentWeapon.index - 1 >= 0)
-                setWeapon(currentWeapon.index - 1);
+            if (currentWeapon.inventoryIndex - 1 >= 0)
+                setWeapon(currentWeapon.inventoryIndex - 1);
             else
                 setWeapon(weapons.size - 1);
         }
+        totalTime = 5f;
     }
 
     public void shoot(int ammo) {
@@ -131,7 +139,7 @@ public class WeaponHandler extends BaseActor {
     public Vector2 getSpread(boolean holdingDown, float fieldOfView) {
         int maxSpreadX = 0;
         int maxSpreadY = 0;
-        if (holdingDown) {
+        if (holdingDown || currentWeapon instanceof Shotgun) {
             maxSpreadX = (int) (Gdx.graphics.getWidth() / fieldOfView * currentWeapon.getSpreadAngle());
             maxSpreadY = (int) (maxSpreadX / BaseGame.aspectRatio);
         }
@@ -154,6 +162,15 @@ public class WeaponHandler extends BaseActor {
 
     public int getDamage() {
         return MathUtils.random(5, 20);
+    }
+
+    public void makeAvailable(String weapon) {
+        if (weapon.equalsIgnoreCase("boot"))
+            weapons.get(0).isAvailable = true;
+        else if (weapon.equalsIgnoreCase("pistol"))
+            weapons.get(1).isAvailable = true;
+        else if (weapon.equalsIgnoreCase("shotgun"))
+            weapons.get(2).isAvailable = true;
     }
 
     private void setCrosshairColor(Array<BaseActor3D> shootable, PerspectiveCamera camera) {

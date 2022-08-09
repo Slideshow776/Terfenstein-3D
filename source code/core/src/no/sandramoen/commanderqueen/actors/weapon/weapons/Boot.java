@@ -13,8 +13,9 @@ public class Boot extends Weapon {
         minDamage = 2;
         maxDamage = 20;
         isMelee = true;
+        isAvailable = true;
         range = 4;
-        index = 0;
+        inventoryIndex = 0;
         initializeAnimations();
     }
 

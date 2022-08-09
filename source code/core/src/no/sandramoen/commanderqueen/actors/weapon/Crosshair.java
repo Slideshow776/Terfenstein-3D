@@ -5,6 +5,8 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Array;
 
+import no.sandramoen.commanderqueen.actors.Barrel;
+import no.sandramoen.commanderqueen.actors.characters.Menig;
 import no.sandramoen.commanderqueen.actors.utils.baseActors.BaseActor;
 import no.sandramoen.commanderqueen.actors.utils.baseActors.BaseActor3D;
 import no.sandramoen.commanderqueen.utils.BaseGame;
@@ -20,7 +22,7 @@ public class Crosshair extends BaseActor {
 
     public void setColorIfShootable(Array<BaseActor3D> shootable, int index) {
         if (index >= 0) {
-            if (GameUtils.isActor(shootable.get(index), "menig") || GameUtils.isActor(shootable.get(index), "barrel"))
+            if (shootable.get(index) instanceof Menig || shootable.get(index) instanceof Barrel)
                 setColor(BaseGame.redColor);
             else
                 setColor(Color.WHITE);

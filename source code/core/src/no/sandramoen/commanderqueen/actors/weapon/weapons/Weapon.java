@@ -6,11 +6,13 @@ import com.badlogic.gdx.math.MathUtils;
 
 public abstract class Weapon {
     public Animation<TextureRegion> shootAnimation = null;
-    public Animation<TextureRegion> restAnimation = null;
+    public Animation<TextureRegion> idleAnimation = null;
     public boolean isAmmoDependent;
     public boolean isMelee;
+    public boolean isAvailable;
     public float range = 100f;
-    public int index;
+    public int inventoryIndex;
+    public int numShotsFired = 1;
 
     protected float RATE_OF_FIRE = 0;
     protected float SPREAD_ANGLE = 0;
