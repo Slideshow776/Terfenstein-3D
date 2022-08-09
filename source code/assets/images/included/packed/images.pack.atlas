@@ -1430,35 +1430,35 @@ weapons/shotgun/icon
 weapons/shotgun/shooting 0
   rotate: false
   xy: 2, 20
-  size: 194, 128
-  orig: 194, 128
+  size: 194, 140
+  orig: 194, 140
   offset: 0, 0
   index: -1
 weapons/shotgun/shooting 1
   rotate: false
   xy: 198, 20
-  size: 194, 128
-  orig: 194, 128
+  size: 194, 140
+  orig: 194, 140
   offset: 0, 0
   index: -1
 weapons/shotgun/shooting 2
   rotate: false
   xy: 394, 20
-  size: 194, 128
-  orig: 194, 128
+  size: 194, 140
+  orig: 194, 140
   offset: 0, 0
   index: -1
 weapons/shotgun/shooting 3
   rotate: false
   xy: 590, 20
-  size: 194, 128
-  orig: 194, 128
+  size: 194, 140
+  orig: 194, 140
   offset: 0, 0
   index: -1
 weapons/shotgun/shooting 4
   rotate: false
   xy: 786, 20
-  size: 194, 128
-  orig: 194, 128
+  size: 194, 140
+  orig: 194, 140
   offset: 0, 0
   index: -1

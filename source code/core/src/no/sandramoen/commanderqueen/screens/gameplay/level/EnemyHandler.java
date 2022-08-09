@@ -44,7 +44,8 @@ public class EnemyHandler {
     private static void preventOverlapWithOtherEnemies(Array<Enemy> enemies, int i) {
         for (int j = 0; j < enemies.size; j++) {
             if (enemies.get(i) != enemies.get(j))
-                enemies.get(i).preventOverlap(enemies.get(j));
+                if (enemies.get(i).getClass() == enemies.get(j).getClass())
+                    enemies.get(i).preventOverlap(enemies.get(j));
         }
     }
 

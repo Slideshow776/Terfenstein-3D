@@ -34,11 +34,16 @@ public class Shotgun extends Weapon {
     private void initializeAnimations() {
         Array<TextureAtlas.AtlasRegion> animationImages = new Array();
             animationImages.add(BaseGame.textureAtlas.findRegion("weapons/shotgun/shooting 1"));
+            animationImages.add(BaseGame.textureAtlas.findRegion("weapons/shotgun/shooting 1"));
+            animationImages.add(BaseGame.textureAtlas.findRegion("weapons/shotgun/shooting 2"));
             animationImages.add(BaseGame.textureAtlas.findRegion("weapons/shotgun/shooting 2"));
             animationImages.add(BaseGame.textureAtlas.findRegion("weapons/shotgun/shooting 3"));
+            animationImages.add(BaseGame.textureAtlas.findRegion("weapons/shotgun/shooting 3"));
+            animationImages.add(BaseGame.textureAtlas.findRegion("weapons/shotgun/shooting 4"));
             animationImages.add(BaseGame.textureAtlas.findRegion("weapons/shotgun/shooting 4"));
             animationImages.add(BaseGame.textureAtlas.findRegion("weapons/shotgun/shooting 3"));
-        shootAnimation = new Animation(RATE_OF_FIRE / 5f, animationImages, Animation.PlayMode.NORMAL);
+            animationImages.add(BaseGame.textureAtlas.findRegion("weapons/shotgun/shooting 3"));
+        shootAnimation = new Animation(RATE_OF_FIRE / animationImages.size, animationImages, Animation.PlayMode.NORMAL);
 
         animationImages.clear();
         animationImages.add(BaseGame.textureAtlas.findRegion("weapons/shotgun/shooting 0"));
