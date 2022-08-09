@@ -130,7 +130,7 @@ public class Hund extends Enemy {
         Array<TextureAtlas.AtlasRegion> animationImages = new Array();
         for (int i = 0; i < 6; i++)
             animationImages.add(BaseGame.textureAtlas.findRegion("enemies/hund/gib " + i));
-        gibAnimation = new Animation(.1f, animationImages, Animation.PlayMode.NORMAL);
+        gibAnimation = new Animation(.15f, animationImages, Animation.PlayMode.NORMAL);
     }
 
     private void initializeDeathAnimation() {

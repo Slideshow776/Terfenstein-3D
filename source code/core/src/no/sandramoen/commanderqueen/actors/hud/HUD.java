@@ -192,8 +192,8 @@ public class HUD extends BaseActor {
 
     private void fadeWeaponsTableInAndOut(String type) {
         weaponsTable.addAction(Actions.sequence(
-                Actions.fadeIn(.5f),
-                Actions.fadeOut(.5f)
+                Actions.fadeIn(.75f),
+                Actions.fadeOut(.75f)
         ));
 
         for (Image image : weaponImages)

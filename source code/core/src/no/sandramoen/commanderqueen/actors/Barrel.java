@@ -37,7 +37,6 @@ public class Barrel extends BaseActor3D {
         setBaseRectangle();
         isVisible = false;
 
-        setColor(Color.MAGENTA);
         initializeDecal(y, z);
         initializeExplosionAnimation();
         checkIfIlluminated(tiles);
@@ -68,7 +67,7 @@ public class Barrel extends BaseActor3D {
         if (!explode) {
             health -= amount;
             if (health > 0 && amount > 0)
-                GameUtils.playSoundRelativeToDistance(BaseGame.metalSound, distance, MathUtils.random(.7f, 1.4f));
+                GameUtils.playSoundRelativeToDistance(BaseGame.metalSound, distance, 15f, MathUtils.random(.7f, 1.4f));
         }
     }
 

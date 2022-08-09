@@ -18,7 +18,7 @@ public class Menig extends Enemy {
 
     public Menig(float y, float z, Stage3D s, Player player, Float rotation, TileGraph tileGraph, Array<Tile> floorTiles, Stage stage, HUD hud, DecalBatch batch) {
         super(y, z, s, player, rotation, tileGraph, floorTiles, stage, hud, batch);
-        movementSpeed = Player.movementSpeed / 130f;
+        movementSpeed = Player.movementSpeed / 150f;
         setHealth(20);
         shootImageDelay = .5f;
         attackStateChangeFrequency = 1.5f * shootImageDelay;
@@ -169,7 +169,7 @@ public class Menig extends Enemy {
         Array<TextureAtlas.AtlasRegion> animationImages = new Array();
         for (int i = 0; i < 7; i++)
             animationImages.add(BaseGame.textureAtlas.findRegion("enemies/menig/gib " + i));
-        gibAnimation = new Animation(.1f, animationImages, Animation.PlayMode.NORMAL);
+        gibAnimation = new Animation(.15f, animationImages, Animation.PlayMode.NORMAL);
     }
 
     private void initializeHurtAnimation() {

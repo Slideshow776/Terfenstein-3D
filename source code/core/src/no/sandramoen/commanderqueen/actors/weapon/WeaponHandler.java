@@ -106,12 +106,25 @@ public class WeaponHandler extends BaseActor {
             isReady = false;
             isReadyCounter = 0;
 
-            if (ammo > 0 || !currentWeapon.isAmmoDependent) {
+            if (ammo > 0 && currentWeapon.isAmmoDependent) {
                 totalTime = 0f;
                 currentWeapon.attackSound();
-            } else {
+            } else if (currentWeapon.isAmmoDependent) {
                 currentWeapon.emptySound();
             }
+        }
+    }
+
+    public void melee(boolean isHit) {
+        if (isReady) {
+            isReady = false;
+            isReadyCounter = 0;
+            totalTime = 0f;
+
+            if (isHit)
+                currentWeapon.attackSound();
+            else
+                currentWeapon.emptySound();
         }
     }
 

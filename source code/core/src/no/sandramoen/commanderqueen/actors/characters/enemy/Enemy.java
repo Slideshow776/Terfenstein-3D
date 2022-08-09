@@ -69,14 +69,15 @@ public class Enemy extends BaseActor3D {
     private boolean isGibs;
 
     protected float shootImageDelay;
-    private float shootFrequency = 1f;
+    protected float shootFrequency = 1.5f;
+    protected float rangeThreshold = 45f;
 
     private boolean isForcedToMove;
     private int tilePathCounter;
     private float forceTime;
     private float totalTime = 0;
     private float angleTowardPlayer;
-    private final float SECONDS_FORCED_TO_MOVE = .3f;
+    private final float SECONDS_FORCED_TO_MOVE = .02f;
 
     enum Direction {FRONT, LEFT_FRONT, RIGHT_FRONT, LEFT_SIDE, RIGHT_SIDE, LEFT_BACK, RIGHT_BACK, BACK}
 
@@ -124,13 +125,14 @@ public class Enemy extends BaseActor3D {
         this.decalBatch = batch;
 
         float size = 3;
-        buildModel(1.5f, size, 1.5f, true);
+        buildModel(1.5f, size, 1.5f, false);
         decal = Sprite.init(size);
         turnBy(-180 + rotation);
         setPosition(GameUtils.getPositionRelativeToFloor(size), y, z);
         setBaseRectangle();
         setDirection();
         attackDelayActor = new BaseActor(0, 0, stage);
+        checkIllumination();
     }
 
     @Override
@@ -163,14 +165,15 @@ public class Enemy extends BaseActor3D {
     }
 
     @Override
-    public void setColor(Color color) {
-        super.setColor(color);
-        decal.setColor(color);
+    public void draw(ModelBatch batch, Environment env) {
+        decal.setTextureRegion(currentAnimation.getKeyFrame(totalTime));
+        // batch.render(modelData, env);
     }
 
     @Override
-    public void draw(ModelBatch batch, Environment env) {
-        decal.setTextureRegion(currentAnimation.getKeyFrame(totalTime));
+    public void setColor(Color color) {
+        super.setColor(color);
+        decal.setColor(color);
     }
 
     public void die() {
@@ -343,7 +346,7 @@ public class Enemy extends BaseActor3D {
         if (attackStateChangeCounter > attackStateChangeFrequency) {
             attackStateChangeCounter = 0;
             float temp = MathUtils.random(0f, 1f);
-            if ((temp < distanceBetween(player) / 45) || (!isRanged && !isWithinDistance(5f, player))) {
+            if ((temp < distanceBetween(player) / rangeThreshold) || (!isRanged && !isWithinDistance(5f, player))) {
                 isAttackDodging = true;
             } else {
                 isAttackDodging = false;

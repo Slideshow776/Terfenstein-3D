@@ -14,7 +14,6 @@ import no.sandramoen.commanderqueen.actors.Barrel;
 import no.sandramoen.commanderqueen.actors.decals.BloodDecals;
 import no.sandramoen.commanderqueen.actors.decals.BulletDecals;
 import no.sandramoen.commanderqueen.actors.hud.HUD;
-import no.sandramoen.commanderqueen.actors.characters.Menig;
 import no.sandramoen.commanderqueen.actors.characters.Player;
 import no.sandramoen.commanderqueen.actors.Tile;
 import no.sandramoen.commanderqueen.actors.weapon.WeaponHandler;
@@ -99,6 +98,8 @@ public class LevelScreen extends BaseScreen3D {
         else if (keycode == Keys.F) {
             player.isCollisionEnabled = !player.isCollisionEnabled;
             Gdx.app.log(getClass().getSimpleName(), "player.isCollisionEnabled: " + player.isCollisionEnabled);
+        } else if (keycode == Keys.V) {
+            hud.setInvulnerable();
         }
         // ------------------------------------------
         else if (keycode == Keys.NUM_1) {
@@ -139,19 +140,22 @@ public class LevelScreen extends BaseScreen3D {
     }
 
     private void shoot() {
-        weaponHandler.shoot(hud.getAmmo());
-        if (weaponHandler.currentWeapon.isAmmoDependent && hud.getAmmo() > 0) {
-            if (hud.getAmmo() > 0) {
-                player.muzzleLight();
-                hud.decrementAmmo();
-                rayPickTarget();
-                EnemyHandler.activateEnemies(enemies, 45, player);
+        if (!weaponHandler.currentWeapon.isMelee) {
+            weaponHandler.shoot(hud.getAmmo());
+            if (weaponHandler.currentWeapon.isAmmoDependent && hud.getAmmo() > 0) {
+                if (hud.getAmmo() > 0) {
+                    player.muzzleLight();
+                    hud.decrementAmmo();
+                    rayPickTarget();
+                    EnemyHandler.activateEnemies(enemies, 45, player);
+                }
             }
-        } else if (!weaponHandler.currentWeapon.isAmmoDependent)
-            rayPickTarget();
+        } else {
+            weaponHandler.melee(rayPickTarget());
+        }
     }
 
-    private void rayPickTarget() {
+    private boolean rayPickTarget() {
         Vector2 spread = weaponHandler.getSpread(holdingDown, mainStage3D.camera.fieldOfView);
         int screenX = (int) (Gdx.graphics.getWidth() / 2 + MathUtils.random(-spread.x, spread.y));
         int screenY = (int) (Gdx.graphics.getHeight() / 2 + MathUtils.random(-spread.y, spread.y));
@@ -159,10 +163,10 @@ public class LevelScreen extends BaseScreen3D {
         Ray ray = mainStage3D.camera.getPickRay(screenX, screenY);
         int i = GameUtils.getClosestListIndex(ray, shootable);
 
-        consequencesOfPick(ray, i);
+        return consequencesOfPick(ray, i);
     }
 
-    private void consequencesOfPick(Ray ray, int i) {
+    private boolean consequencesOfPick(Ray ray, int i) {
         if (i >= 0) {
             if (player.distanceBetween(shootable.get(i)) <= weaponHandler.currentWeapon.range) {
                 if (GameUtils.isActor(shootable.get(i), "menig") || GameUtils.isActor(shootable.get(i), "hund")) {
@@ -182,8 +186,10 @@ public class LevelScreen extends BaseScreen3D {
                         bulletDecals.addDecal(temp.x, temp.y, temp.z);
                     }
                 }
+                return true;
             }
         }
+        return false;
     }
 
 
@@ -193,7 +199,7 @@ public class LevelScreen extends BaseScreen3D {
                 removeEnemy(enemies.get(i));
                 continue;
             }
-            // EnemyHandler.preventOverlapWithOtherEnemies(enemies, i);
+            EnemyHandler.preventOverlapWithOtherEnemies(enemies, i);
             EnemyHandler.illuminate(mainStage3D.intervalFlag, enemies, tiles, i);
         }
     }
@@ -267,7 +273,7 @@ public class LevelScreen extends BaseScreen3D {
 
 
     private void initializeMap() {
-        tilemap = new TilemapActor(BaseGame.level0Map, mainStage3D);
+        tilemap = new TilemapActor(BaseGame.testMap, mainStage3D);
         tiles = new Array();
         shootable = new Array();
         pickups = new Array();
