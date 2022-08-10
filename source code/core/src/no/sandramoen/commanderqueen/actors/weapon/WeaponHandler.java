@@ -88,10 +88,12 @@ public class WeaponHandler extends BaseActor {
     }
 
     public void setWeapon(int i) {
-        if (i >= 0 && i < weapons.size)
+        if (i >= 0 && i < weapons.size) {
+            totalTime = 5f;
             currentWeapon = weapons.get(i);
-        else
+        } else {
             Gdx.app.error(getClass().getSimpleName(), "Error: Weapon change to out of bounds => i: " + i + ", weapon size: " + weapons.size);
+        }
     }
 
     public void scrollWeapon(float i) {

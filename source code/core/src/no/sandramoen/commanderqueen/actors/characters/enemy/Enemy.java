@@ -12,6 +12,7 @@ import com.badlogic.gdx.graphics.g3d.decals.DecalBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
+import com.badlogic.gdx.math.collision.Ray;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.utils.Array;
@@ -19,6 +20,7 @@ import com.badlogic.gdx.utils.Array;
 import no.sandramoen.commanderqueen.actors.Barrel;
 import no.sandramoen.commanderqueen.actors.Tile;
 import no.sandramoen.commanderqueen.actors.characters.Player;
+import no.sandramoen.commanderqueen.actors.decals.BulletDecals;
 import no.sandramoen.commanderqueen.actors.hud.HUD;
 import no.sandramoen.commanderqueen.actors.utils.baseActors.BaseActor;
 import no.sandramoen.commanderqueen.actors.utils.baseActors.BaseActor3D;
@@ -73,12 +75,13 @@ public class Enemy extends BaseActor3D {
     protected float shootFrequency = 1.5f;
     protected float rangeThreshold = 45f;
 
-    private boolean isForcedToMove;
+    public boolean isForcedToMove;
     private int tilePathCounter;
     private float forceTime;
     private float totalTime = 0;
     private float angleTowardPlayer;
     private final float SECONDS_FORCED_TO_MOVE = .02f;
+    private final float SHOOT_SPREAD_ANGLE = 5.5f / 2;
 
     enum Direction {FRONT, LEFT_FRONT, RIGHT_FRONT, LEFT_SIDE, RIGHT_SIDE, LEFT_BACK, RIGHT_BACK, BACK}
 
@@ -115,6 +118,7 @@ public class Enemy extends BaseActor3D {
     private Vector2 forceMove = new Vector2(3f, 3f);
     private BaseActor attackDelayActor;
     private DecalBatch decalBatch;
+    private BulletDecals bulletDecals;
 
     public Enemy(float y, float z, Stage3D stage3D, Player player, float rotation, TileGraph tileGraph, Array<Tile> floorTiles, Stage stage, HUD hud, DecalBatch batch) {
         super(0, y, z, stage3D);
@@ -128,6 +132,7 @@ public class Enemy extends BaseActor3D {
         float size = 3;
         buildModel(1.5f, size, 1.5f, false);
         decal = Sprite.init(size);
+        bulletDecals = new BulletDecals(stage3D.camera, decalBatch);
         turnBy(-180 + rotation);
         setPosition(GameUtils.getPositionRelativeToFloor(size), y, z);
         setBaseRectangle();
@@ -139,10 +144,10 @@ public class Enemy extends BaseActor3D {
     @Override
     public void act(float dt) {
         super.act(dt);
+        Sprite.update(decal, position, stage3D.camera, decalBatch);
         if (isPause) return;
 
         totalTime += dt;
-        Sprite.update(decal, position, stage3D.camera, decalBatch);
         if (isForcedToMove) forceMove(dt);
 
         if (isDead || state == State.HURT) return;
@@ -154,6 +159,7 @@ public class Enemy extends BaseActor3D {
 
         if (!isActive) return;
 
+        bulletDecals.render(dt);
         setPathToLastKnownPlayerPosition();
 
         if (isAttacking && isPlayerVisible) {
@@ -319,16 +325,25 @@ public class Enemy extends BaseActor3D {
 
 
     private void checkIfShotPlayerOrBarrel() {
-        Vector3 temp = player.position.cpy();
-        float maxSpread = 1.75f;
-        temp.y += MathUtils.random(-maxSpread, maxSpread);
-        temp.z += MathUtils.random(-maxSpread, maxSpread);
-        int i = GameUtils.getRayPickedListIndex(position, temp.cpy().sub(position), shootable);
+        Vector3 playerPosition = player.position.cpy();
+        playerPosition.y += MathUtils.random(-SHOOT_SPREAD_ANGLE, SHOOT_SPREAD_ANGLE);
+        playerPosition.z += MathUtils.random(-SHOOT_SPREAD_ANGLE, SHOOT_SPREAD_ANGLE);
+        Ray ray = new Ray(position, playerPosition.sub(position));
+        int i = GameUtils.getClosestListIndex(ray, shootable);
+
+        consequencesOfPick(ray, i);
+    }
+
+    private void consequencesOfPick(Ray ray, int i) {
         if (i > -1 && shootable.get(i) instanceof Barrel) {
             Barrel barrel = (Barrel) shootable.get(i);
             barrel.decrementHealth(getDamage(), distanceBetween(barrel));
-        } else if (i > -1 && shootable.get(i) instanceof Player)
+        } else if (i > -1 && shootable.get(i) instanceof Player) {
             hud.decrementHealth(getDamage(), this);
+        } else if (i > -1 && shootable.get(i) instanceof Tile && (((Tile) shootable.get(i)).type.equalsIgnoreCase("walls"))) {
+            Vector3 temp = new Vector3().set(ray.direction).scl(distanceBetween(shootable.get(i)) - (Tile.diagonalLength / 2)).add(ray.origin);
+            bulletDecals.addDecal(temp.x, temp.y, temp.z);
+        }
     }
 
     private void attacking(float dt) {

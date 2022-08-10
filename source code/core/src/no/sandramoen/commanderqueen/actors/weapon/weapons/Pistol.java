@@ -32,9 +32,12 @@ public class Pistol extends Weapon {
 
     private void initializeAnimations() {
         Array<TextureAtlas.AtlasRegion> animationImages = new Array();
-        for (int i = 1; i <= 3; i++)
-            animationImages.add(BaseGame.textureAtlas.findRegion("weapons/pistol/shooting " + i));
-        shootAnimation = new Animation(.1f, animationImages, Animation.PlayMode.NORMAL);
+        animationImages.add(BaseGame.textureAtlas.findRegion("weapons/pistol/shooting 0"));
+        animationImages.add(BaseGame.textureAtlas.findRegion("weapons/pistol/shooting 1"));
+        animationImages.add(BaseGame.textureAtlas.findRegion("weapons/pistol/shooting 2"));
+        animationImages.add(BaseGame.textureAtlas.findRegion("weapons/pistol/shooting 3"));
+        animationImages.add(BaseGame.textureAtlas.findRegion("weapons/pistol/shooting 2"));
+        shootAnimation = new Animation(RATE_OF_FIRE / animationImages.size, animationImages, Animation.PlayMode.NORMAL);
 
         animationImages.clear();
         animationImages.add(BaseGame.textureAtlas.findRegion("weapons/pistol/shooting 0"));

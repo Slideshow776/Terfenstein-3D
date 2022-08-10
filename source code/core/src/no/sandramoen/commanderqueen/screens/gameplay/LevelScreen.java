@@ -75,6 +75,8 @@ public class LevelScreen extends BaseScreen3D {
 
         TileHandler.updateTiles(tiles, player);
         EnemyHandler.update(mainStage3D.intervalFlag, enemies, tiles);
+        for (int i = 0; i < enemies.size; i++)
+            if (enemies.get(i).isDead) removeEnemy(enemies.get(i));
         updateBarrels();
         PickupHandler.update(pickups, player, hud, weaponHandler);
 
@@ -163,7 +165,7 @@ public class LevelScreen extends BaseScreen3D {
 
     private boolean rayPickTarget() {
         Vector2 spread = weaponHandler.getSpread(holdingDown, mainStage3D.camera.fieldOfView);
-        int screenX = (int) (Gdx.graphics.getWidth() / 2 + MathUtils.random(-spread.x, spread.y));
+        int screenX = (int) (Gdx.graphics.getWidth() / 2 + MathUtils.random(-spread.x, spread.x));
         int screenY = (int) (Gdx.graphics.getHeight() / 2 + MathUtils.random(-spread.y, spread.y));
 
         Ray ray = mainStage3D.camera.getPickRay(screenX, screenY);
