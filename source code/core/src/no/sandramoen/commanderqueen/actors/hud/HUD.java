@@ -11,8 +11,15 @@ import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Array;
 
 import no.sandramoen.commanderqueen.actors.characters.Player;
+import no.sandramoen.commanderqueen.actors.pickups.Bullets;
+import no.sandramoen.commanderqueen.actors.pickups.Pickup;
+import no.sandramoen.commanderqueen.actors.pickups.Shells;
 import no.sandramoen.commanderqueen.actors.utils.baseActors.BaseActor;
 import no.sandramoen.commanderqueen.actors.utils.baseActors.BaseActor3D;
+import no.sandramoen.commanderqueen.actors.weapon.weapons.Boot;
+import no.sandramoen.commanderqueen.actors.weapon.weapons.Pistol;
+import no.sandramoen.commanderqueen.actors.weapon.weapons.Shotgun;
+import no.sandramoen.commanderqueen.actors.weapon.weapons.Weapon;
 import no.sandramoen.commanderqueen.utils.BaseGame;
 import no.sandramoen.commanderqueen.utils.GameUtils;
 
@@ -22,7 +29,8 @@ public class HUD extends BaseActor {
 
     private int armor = 0;
     private int health = 100;
-    private int ammo = 50;
+    private int bullets = 50;
+    private int shells = 10;
     private int score = 0;
 
     private float armorProtectionValue = 1 / 3f;
@@ -119,34 +127,50 @@ public class HUD extends BaseActor {
     }
 
 
-    public void incrementAmmo(int amount, String type) {
-        ammo += amount;
+    public void incrementAmmo(Pickup pickup, Weapon currentWeapon) {
+        if (pickup instanceof Bullets)
+            bullets += pickup.amount;
+        else if (pickup instanceof Shells)
+            shells += pickup.amount;
+
         BaseGame.ammoPickupSound.play(BaseGame.soundVolume);
         overlayIndicator.flash(BaseGame.yellowColor, .1f);
 
-        if (type.equalsIgnoreCase("boot"))
-            ammoLabel.setText("");
-        else
-            ammoLabel.setText(ammo + "");
+        if (currentWeapon instanceof Pistol)
+            ammoLabel.setText(bullets + "");
+        else if (currentWeapon instanceof Shotgun)
+            ammoLabel.setText(shells + "");
     }
 
-    public void decrementAmmo() {
-        if (ammo > 0) {
-            ammo--;
-            ammoLabel.setText(ammo + "");
+    public void decrementAmmo(Weapon currentWeapon) {
+        if (currentWeapon instanceof Pistol && bullets > 0) {
+            bullets--;
+            ammoLabel.setText(bullets + "");
+        } else if (currentWeapon instanceof Shotgun && shells > 0) {
+            shells--;
+            ammoLabel.setText(shells + "");
         }
     }
 
-    public int getAmmo() {
-        return ammo;
+    public int getAmmo(Weapon currentWeapon) {
+        if (currentWeapon instanceof Pistol)
+            return bullets;
+        else if (currentWeapon instanceof Shotgun)
+            return shells;
+        Gdx.app.error(getClass().getSimpleName(), "Error: couldn't get ammo, current weapon is unknown => " + currentWeapon.getClass().getSimpleName());
+        return -1;
     }
 
-    public void setAmmo(String type) {
-        if (type.equalsIgnoreCase("boot"))
+    public void setAmmo(Weapon currentWeapon) {
+        if (currentWeapon instanceof Boot)
             ammoLabel.setText("");
+        else if (currentWeapon instanceof Pistol)
+            ammoLabel.setText(bullets + "");
+        else if (currentWeapon instanceof Shotgun)
+            ammoLabel.setText(shells + "");
         else
-            ammoLabel.setText(ammo + "");
-        fadeWeaponsTableInAndOut(type);
+            Gdx.app.error(getClass().getSimpleName(), "Error could not set ammo label, unrecognized weapon => " + currentWeapon);
+        fadeWeaponsTableInAndOut(currentWeapon);
     }
 
 
@@ -191,7 +215,7 @@ public class HUD extends BaseActor {
         BaseGame.vulnerableSound.play(BaseGame.soundVolume);
     }
 
-    private void fadeWeaponsTableInAndOut(String type) {
+    private void fadeWeaponsTableInAndOut(Weapon currentWeapon) {
         weaponsTable.addAction(Actions.sequence(
                 Actions.fadeIn(.75f),
                 Actions.fadeOut(.75f)
@@ -200,11 +224,11 @@ public class HUD extends BaseActor {
         for (Image image : weaponImages)
             image.setColor(Color.DARK_GRAY);
 
-        if (type.equalsIgnoreCase("boot"))
+        if (currentWeapon instanceof Boot)
             weaponImages.get(0).setColor(Color.WHITE);
-        else if (type.equalsIgnoreCase("pistol"))
+        else if (currentWeapon instanceof Pistol)
             weaponImages.get(1).setColor(Color.WHITE);
-        else if (type.equalsIgnoreCase("shotgun"))
+        else if (currentWeapon instanceof Shotgun)
             weaponImages.get(2).setColor(Color.WHITE);
     }
 
@@ -311,7 +335,7 @@ public class HUD extends BaseActor {
     private void initializeLabels() {
         armorLabel = initializeLabel(armor + "%");
         healthLabel = initializeLabel(health + "%");
-        ammoLabel = initializeLabel(ammo + "");
         scoreLabel = initializeLabel(score + "");
+        ammoLabel = initializeLabel("");
     }
 }

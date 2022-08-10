@@ -19,7 +19,7 @@ import no.sandramoen.commanderqueen.actors.hud.HUD;
 import no.sandramoen.commanderqueen.actors.characters.Player;
 import no.sandramoen.commanderqueen.actors.Tile;
 import no.sandramoen.commanderqueen.actors.weapon.WeaponHandler;
-import no.sandramoen.commanderqueen.actors.pickups.Ammo;
+import no.sandramoen.commanderqueen.actors.pickups.Bullets;
 import no.sandramoen.commanderqueen.actors.pickups.Pickup;
 import no.sandramoen.commanderqueen.actors.utils.baseActors.BaseActor;
 import no.sandramoen.commanderqueen.actors.utils.baseActors.BaseActor3D;
@@ -63,6 +63,7 @@ public class LevelScreen extends BaseScreen3D {
         initializeMap();
         initializePlayer();
         uiHandler = new UIHandler(uiTable, enemies, hud);
+        hud.setAmmo(weaponHandler.currentWeapon);
         bulletDecals = new BulletDecals(mainStage3D.camera, decalBatch);
         bloodDecals = new BloodDecals(mainStage3D.camera, decalBatch);
 
@@ -108,13 +109,13 @@ public class LevelScreen extends BaseScreen3D {
         // ------------------------------------------
         else if (keycode == Keys.NUM_1) {
             weaponHandler.setWeapon(0);
-            hud.setAmmo(weaponHandler.currentWeapon.getClass().getSimpleName());
+            hud.setAmmo(weaponHandler.currentWeapon);
         } else if (keycode == Keys.NUM_2) {
             weaponHandler.setWeapon(1);
-            hud.setAmmo(weaponHandler.currentWeapon.getClass().getSimpleName());
+            hud.setAmmo(weaponHandler.currentWeapon);
         } else if (keycode == Keys.NUM_3) {
             weaponHandler.setWeapon(2);
-            hud.setAmmo(weaponHandler.currentWeapon.getClass().getSimpleName());
+            hud.setAmmo(weaponHandler.currentWeapon);
         }
 
         return super.keyDown(keycode);
@@ -134,7 +135,7 @@ public class LevelScreen extends BaseScreen3D {
     @Override
     public boolean scrolled(float amountX, float amountY) {
         weaponHandler.scrollWeapon(amountY);
-        hud.setAmmo(weaponHandler.currentWeapon.getClass().getSimpleName());
+        hud.setAmmo(weaponHandler.currentWeapon);
         return super.scrolled(amountX, amountY);
     }
 
@@ -148,11 +149,11 @@ public class LevelScreen extends BaseScreen3D {
 
     private void shoot() {
         if (!weaponHandler.currentWeapon.isMelee) {
-            weaponHandler.shoot(hud.getAmmo());
-            if (weaponHandler.currentWeapon.isAmmoDependent && hud.getAmmo() > 0) {
-                if (hud.getAmmo() > 0) {
+            weaponHandler.shoot(hud.getAmmo(weaponHandler.currentWeapon));
+            if (weaponHandler.currentWeapon.isAmmoDependent && hud.getAmmo(weaponHandler.currentWeapon) > 0) {
+                if (hud.getAmmo(weaponHandler.currentWeapon) > 0) {
                     player.muzzleLight();
-                    hud.decrementAmmo();
+                    hud.decrementAmmo(weaponHandler.currentWeapon);
                     for (int i = 0; i < weaponHandler.currentWeapon.numShotsFired; i++)
                         rayPickTarget();
                     EnemyHandler.activateEnemies(enemies, Enemy.activationRange, player);
@@ -188,7 +189,7 @@ public class LevelScreen extends BaseScreen3D {
                 } else if (shootable.get(i) instanceof Barrel) {
                     Barrel barrel = (Barrel) shootable.get(i);
                     barrel.decrementHealth(weaponHandler.getDamage(), player.distanceBetween(barrel));
-                } else if (shootable.get(i) instanceof Tile && hud.getAmmo() > 0 && !weaponHandler.currentWeapon.isMelee) {
+                } else if (shootable.get(i) instanceof Tile && !weaponHandler.currentWeapon.isMelee) {
                     Tile tile = (Tile) shootable.get(i);
                     if (tile.type.equalsIgnoreCase("walls")) {
                         Vector3 temp = new Vector3().set(ray.direction).scl(player.distanceBetween(tile) - (Tile.diagonalLength / 2)).add(ray.origin);
@@ -204,7 +205,7 @@ public class LevelScreen extends BaseScreen3D {
     private void removeEnemy(Enemy enemy) {
         enemy.die();
         if (enemy.getClass().getSimpleName().equalsIgnoreCase("menig"))
-            pickups.add(new Ammo(enemy.position.y + MathUtils.random(-1, 1), enemy.position.z + MathUtils.random(-1, 1), mainStage3D, 2, decalBatch, tiles));
+            pickups.add(new Bullets(enemy.position.y + MathUtils.random(-1, 1), enemy.position.z + MathUtils.random(-1, 1), mainStage3D, 2, decalBatch, tiles));
         enemies.removeValue(enemy, false);
         shootable.removeValue(enemy, false);
         EnemyHandler.updateEnemiesShootableList(enemies, shootable);

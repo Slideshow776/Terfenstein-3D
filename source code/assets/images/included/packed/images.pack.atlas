@@ -1237,46 +1237,53 @@ size: 256, 64
 format: RGBA8888
 filter: Nearest, Nearest
 repeat: none
-pickups/ammo
-  rotate: false
-  xy: 57, 5
-  size: 32, 32
-  orig: 32, 32
-  offset: 0, 0
-  index: -1
 pickups/armor big
   rotate: false
-  xy: 91, 5
+  xy: 57, 28
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 pickups/armor medium
   rotate: false
-  xy: 125, 5
+  xy: 91, 28
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 pickups/armor small
   rotate: false
-  xy: 159, 5
+  xy: 125, 28
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+pickups/bullet
+  rotate: false
+  xy: 159, 28
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 pickups/health medium
   rotate: false
-  xy: 2, 2
+  xy: 2, 25
   size: 53, 35
   orig: 53, 35
   offset: 0, 0
   index: -1
 pickups/health small
   rotate: false
-  xy: 193, 5
+  xy: 193, 28
   size: 32, 32
   orig: 32, 32
+  offset: 0, 0
+  index: -1
+pickups/shells
+  rotate: false
+  xy: 57, 2
+  size: 35, 24
+  orig: 35, 24
   offset: 0, 0
   index: -1
 

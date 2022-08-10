@@ -7,15 +7,15 @@ import no.sandramoen.commanderqueen.actors.Tile;
 import no.sandramoen.commanderqueen.utils.GameUtils;
 import no.sandramoen.commanderqueen.utils.Stage3D;
 
-public class Ammo extends Pickup {
+public class Shells extends Pickup {
 
-    public Ammo(float y, float z, Stage3D s, int amount, DecalBatch batch, Array<Tile> tiles) {
+    public Shells(float y, float z, Stage3D s, int amount, DecalBatch batch, Array<Tile> tiles) {
         super(y, z, s, batch, tiles);
         this.amount = amount;
 
-        setImage("pickups/ammo");
+        setImage("pickups/shells");
 
-        decal.setDimensions(.5f, .5f);
+        decal.setDimensions(1f, .5f);
         decal.setPosition(GameUtils.getPositionRelativeToFloor(.5f), y, z);
     }
 }

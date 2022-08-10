@@ -16,10 +16,11 @@ import no.sandramoen.commanderqueen.actors.characters.Hund;
 import no.sandramoen.commanderqueen.actors.characters.Menig;
 import no.sandramoen.commanderqueen.actors.characters.Player;
 import no.sandramoen.commanderqueen.actors.hud.HUD;
-import no.sandramoen.commanderqueen.actors.pickups.Ammo;
+import no.sandramoen.commanderqueen.actors.pickups.Bullets;
 import no.sandramoen.commanderqueen.actors.pickups.Armor;
 import no.sandramoen.commanderqueen.actors.pickups.Health;
 import no.sandramoen.commanderqueen.actors.pickups.Pickup;
+import no.sandramoen.commanderqueen.actors.pickups.Shells;
 import no.sandramoen.commanderqueen.actors.utils.baseActors.BaseActor3D;
 import no.sandramoen.commanderqueen.actors.characters.enemy.Enemy;
 import no.sandramoen.commanderqueen.actors.utils.TilemapActor;
@@ -218,11 +219,18 @@ public class MapLoader {
     }
 
     private void initializeAmmo() {
-        for (MapObject obj : tilemap.getTileList("actors", "ammo")) {
+        for (MapObject obj : tilemap.getTileList("actors", "bullets")) {
             MapProperties props = obj.getProperties();
             float x = (Float) props.get("x") * BaseGame.unitScale;
             float y = (Float) props.get("y") * BaseGame.unitScale;
-            pickups.add(new Ammo((int) x, (int) y, stage3D, 2, decalBatch, floorTiles));
+            pickups.add(new Bullets((int) x, (int) y, stage3D, 2, decalBatch, floorTiles));
+        }
+
+        for (MapObject obj : tilemap.getTileList("actors", "shells")) {
+            MapProperties props = obj.getProperties();
+            float x = (Float) props.get("x") * BaseGame.unitScale;
+            float y = (Float) props.get("y") * BaseGame.unitScale;
+            pickups.add(new Shells((int) x, (int) y, stage3D, 2, decalBatch, floorTiles));
         }
     }
 

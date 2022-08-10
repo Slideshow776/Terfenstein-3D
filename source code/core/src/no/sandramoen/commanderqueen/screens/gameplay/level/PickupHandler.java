@@ -4,10 +4,11 @@ import com.badlogic.gdx.utils.Array;
 
 import no.sandramoen.commanderqueen.actors.characters.Player;
 import no.sandramoen.commanderqueen.actors.hud.HUD;
-import no.sandramoen.commanderqueen.actors.pickups.Ammo;
+import no.sandramoen.commanderqueen.actors.pickups.Bullets;
 import no.sandramoen.commanderqueen.actors.pickups.Armor;
 import no.sandramoen.commanderqueen.actors.pickups.Health;
 import no.sandramoen.commanderqueen.actors.pickups.Pickup;
+import no.sandramoen.commanderqueen.actors.pickups.Shells;
 import no.sandramoen.commanderqueen.actors.weapon.WeaponHandler;
 
 public class PickupHandler {
@@ -15,15 +16,13 @@ public class PickupHandler {
     public static void update(Array<Pickup> pickups, Player player, HUD hud, WeaponHandler weaponHandler) {
         for (Pickup pickup : pickups) {
             if (player.overlaps(pickup)) {
-                if (pickup instanceof Ammo) {
-                    hud.incrementAmmo(pickup.amount, weaponHandler.currentWeapon.getClass().getSimpleName());
+                if (pickup instanceof Bullets || pickup instanceof Shells) {
+                    hud.incrementAmmo(pickup, weaponHandler.currentWeapon);
                     removePickup(pickups, pickup);
-                }
-                if (pickup instanceof Armor) {
+                } else if (pickup instanceof Armor) {
                     if (hud.incrementArmor(pickup.amount, false))
                         removePickup(pickups, pickup);
-                }
-                if (pickup instanceof Health) {
+                } else if (pickup instanceof Health) {
                     if (hud.incrementHealth(pickup.amount))
                         removePickup(pickups, pickup);
                 }
