@@ -22,6 +22,7 @@ import no.sandramoen.commanderqueen.actors.pickups.Armor;
 import no.sandramoen.commanderqueen.actors.pickups.Health;
 import no.sandramoen.commanderqueen.actors.pickups.Pickup;
 import no.sandramoen.commanderqueen.actors.pickups.Shells;
+import no.sandramoen.commanderqueen.actors.pickups.Shotgun;
 import no.sandramoen.commanderqueen.actors.utils.baseActors.BaseActor3D;
 import no.sandramoen.commanderqueen.actors.characters.enemy.Enemy;
 import no.sandramoen.commanderqueen.actors.utils.TilemapActor;
@@ -195,6 +196,7 @@ public class MapLoader {
         initializePickup("armor small", 1);
         initializePickup("armor medium", 100);
         initializePickup("armor big", 200);
+        initializePickup("shotgun", 8);
     }
 
     private void initializePickup(String type, int amount) {
@@ -210,6 +212,9 @@ public class MapLoader {
                 pickups.add(new Bullets(x, y, stage3D, amount, player, floorTiles));
             else if (type.equalsIgnoreCase("shells"))
                 pickups.add(new Shells(x, y, stage3D, amount, player, floorTiles));
+
+            else if (type.equalsIgnoreCase("shotgun"))
+                pickups.add(new Shotgun(x, y, stage3D, amount, player, floorTiles));
 
             else if (type.equalsIgnoreCase("armor small") || type.equalsIgnoreCase("armor medium") || type.equalsIgnoreCase("armor big"))
                 pickups.add(new Armor(x, y, stage3D, amount, player, floorTiles));

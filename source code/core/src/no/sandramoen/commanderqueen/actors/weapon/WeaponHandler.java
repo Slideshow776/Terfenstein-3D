@@ -57,7 +57,7 @@ public class WeaponHandler extends BaseActor {
 
         weapons = new Array();
         weapons.add(new Boot(), new Pistol(), new Shotgun());
-        currentWeapon = weapons.get(2);
+        currentWeapon = weapons.get(1);
     }
 
     @Override
@@ -87,26 +87,45 @@ public class WeaponHandler extends BaseActor {
         totalTime = 5f;
     }
 
-    public void setWeapon(int i) {
-        if (i >= 0 && i < weapons.size) {
+    public boolean setWeapon(int i) {
+        if (i >= 0 && i < weapons.size && weapons.get(i).isAvailable) {
             totalTime = 5f;
             currentWeapon = weapons.get(i);
+            return true;
+        } else if (!weapons.get(i).isAvailable) {
+            Gdx.app.error(getClass().getSimpleName(), "Error: " + weapons.get(i).getClass().getSimpleName() + " is not available");
         } else {
             Gdx.app.error(getClass().getSimpleName(), "Error: Weapon change to out of bounds => i: " + i + ", weapon size: " + weapons.size);
         }
+        return false;
     }
 
     public void scrollWeapon(float i) {
         if (i < 0) { // up
-            if (currentWeapon.inventoryIndex + 1 < weapons.size)
-                setWeapon(currentWeapon.inventoryIndex + 1);
-            else
+            if (currentWeapon.inventoryIndex + 1 < weapons.size) {
+                int j = 0;
+                while (currentWeapon.inventoryIndex + 1 + j < weapons.size) {
+                    if (setWeapon(currentWeapon.inventoryIndex + 1 + j))
+                        return;
+                    j++;
+                }
+                setWeapon(0);
+            } else
                 setWeapon(0);
         } else if (i >= 0) { // down
-            if (currentWeapon.inventoryIndex - 1 >= 0)
-                setWeapon(currentWeapon.inventoryIndex - 1);
-            else
-                setWeapon(weapons.size - 1);
+            int j = 0;
+            while (currentWeapon.inventoryIndex - 1 - j >= 0) {
+                if (setWeapon(currentWeapon.inventoryIndex - 1 - j))
+                    return;
+                j++;
+            }
+
+            j = 0;
+            while (weapons.size - 1 - j > 0) {
+                if (setWeapon(weapons.size - 1 - j))
+                    return;
+                j++;
+            }
         }
         totalTime = 5f;
     }

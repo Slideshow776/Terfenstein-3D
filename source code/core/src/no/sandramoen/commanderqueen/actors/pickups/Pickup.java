@@ -1,6 +1,5 @@
 package no.sandramoen.commanderqueen.actors.pickups;
 
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.PerspectiveCamera;
 import com.badlogic.gdx.utils.Array;
 
@@ -28,6 +27,10 @@ public class Pickup extends BaseActor3D {
     public void act(float dt) {
         super.act(dt);
         setTurnAngle(GameUtils.getAngleTowardsBaseActor3D(this, player));
+    }
+
+    public void playSound() {
+
     }
 
     protected void checkIfIlluminated(Array<Tile> tiles) {

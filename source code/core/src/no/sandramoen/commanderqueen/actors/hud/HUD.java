@@ -107,7 +107,6 @@ public class HUD extends BaseActor {
         healthLabel.setText(health + "%");
         face.setSTAnimation(getFaceHealthIndex());
         overlayIndicator.flash(BaseGame.greenColor);
-        BaseGame.healthPickupSound.play(BaseGame.soundVolume);
         return true;
     }
 
@@ -133,7 +132,6 @@ public class HUD extends BaseActor {
         else if (pickup instanceof Shells)
             shells += pickup.amount;
 
-        BaseGame.ammoPickupSound.play(BaseGame.soundVolume);
         overlayIndicator.flash(BaseGame.yellowColor, .1f);
 
         if (currentWeapon instanceof Pistol)
@@ -181,7 +179,6 @@ public class HUD extends BaseActor {
         armor = setStat(amount, armor);
         armorLabel.setText(armor + "%");
         overlayIndicator.flash(BaseGame.yellowColor, .1f);
-        BaseGame.armorPickupSound.play(BaseGame.soundVolume);
         return true;
     }
 

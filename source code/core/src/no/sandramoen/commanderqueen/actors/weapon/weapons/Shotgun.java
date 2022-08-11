@@ -16,7 +16,7 @@ public class Shotgun extends Weapon {
         maxDamage = 15;
         numShotsFired = 7;
         isAmmoDependent = true;
-        isAvailable = true;
+        isAvailable = false;
         inventoryIndex = 2;
         initializeAnimations();
     }

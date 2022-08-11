@@ -4,6 +4,7 @@ import com.badlogic.gdx.utils.Array;
 
 import no.sandramoen.commanderqueen.actors.Tile;
 import no.sandramoen.commanderqueen.actors.characters.Player;
+import no.sandramoen.commanderqueen.utils.BaseGame;
 import no.sandramoen.commanderqueen.utils.GameUtils;
 import no.sandramoen.commanderqueen.utils.Stage3D;
 
@@ -24,5 +25,11 @@ public class Armor extends Pickup {
         setPosition(GameUtils.getPositionRelativeToFloor(1f), y, z);
         checkIfIlluminated(tiles);
         setBaseRectangle();
+    }
+
+    @Override
+    public void playSound() {
+        super.playSound();
+        BaseGame.armorPickupSound.play(BaseGame.soundVolume);
     }
 }

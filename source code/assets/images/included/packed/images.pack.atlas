@@ -1691,6 +1691,13 @@ pickups/shells
   orig: 35, 24
   offset: 0, 0
   index: -1
+pickups/shotgun
+  rotate: false
+  xy: 2, 7
+  size: 32, 16
+  orig: 32, 16
+  offset: 0, 0
+  index: -1
 
 images.pack9.png
 size: 512, 128

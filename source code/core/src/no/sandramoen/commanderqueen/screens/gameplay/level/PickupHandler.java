@@ -9,6 +9,7 @@ import no.sandramoen.commanderqueen.actors.pickups.Armor;
 import no.sandramoen.commanderqueen.actors.pickups.Health;
 import no.sandramoen.commanderqueen.actors.pickups.Pickup;
 import no.sandramoen.commanderqueen.actors.pickups.Shells;
+import no.sandramoen.commanderqueen.actors.pickups.Shotgun;
 import no.sandramoen.commanderqueen.actors.weapon.WeaponHandler;
 
 public class PickupHandler {
@@ -25,6 +26,9 @@ public class PickupHandler {
                 } else if (pickup instanceof Health) {
                     if (hud.incrementHealth(pickup.amount))
                         removePickup(pickups, pickup);
+                } else if (pickup instanceof Shotgun) {
+                    weaponHandler.makeAvailable("shotgun");
+                    removePickup(pickups, pickup);
                 }
             }
         }
@@ -32,6 +36,7 @@ public class PickupHandler {
 
     private static void removePickup(Array<Pickup> pickups, Pickup pickup) {
         pickups.removeValue(pickup, false);
+        pickup.playSound();
         pickup.remove();
     }
 }
