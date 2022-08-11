@@ -82,8 +82,9 @@ public class Enemy extends BaseActor3D {
     private float angleTowardPlayer;
     private final float SECONDS_FORCED_TO_MOVE = .02f;
     private final float SHOOT_SPREAD_ANGLE = 5.5f / 2;
+    protected Decal decal;
 
-    enum Direction {FRONT, LEFT_FRONT, RIGHT_FRONT, LEFT_SIDE, RIGHT_SIDE, LEFT_BACK, RIGHT_BACK, BACK}
+    private enum Direction {FRONT, LEFT_FRONT, RIGHT_FRONT, LEFT_SIDE, RIGHT_SIDE, LEFT_BACK, RIGHT_BACK, BACK}
 
     private Direction direction;
 
@@ -109,7 +110,6 @@ public class Enemy extends BaseActor3D {
     private HUD hud;
     private Stage stage;
     private Tile goalTile;
-    private Decal decal;
     private TileGraph tileGraph;
     private Array<Tile> floorTiles;
     private GraphPath<Tile> tilePath;
@@ -282,6 +282,16 @@ public class Enemy extends BaseActor3D {
         gibThreshold = -health - 1;
     }
 
+    protected void checkIllumination() {
+        attackDelayActor.clearActions();
+        for (Tile tile : floorTiles) {
+            if (overlaps(tile)) {
+                GameUtils.illuminateBaseActor(this, tile);
+                break;
+            }
+        }
+    }
+
 
     private void activateNearByEnemies() {
         for (Enemy enemy : enemies)
@@ -311,16 +321,6 @@ public class Enemy extends BaseActor3D {
             moveBy(0f, forceMove.x * dt, forceMove.y * dt);
         else
             isForcedToMove = false;
-    }
-
-    private void checkIllumination() {
-        attackDelayActor.clearActions();
-        for (Tile tile : floorTiles) {
-            if (overlaps(tile)) {
-                GameUtils.illuminateBaseActor(this, tile);
-                break;
-            }
-        }
     }
 
 
