@@ -74,6 +74,7 @@ public class Enemy extends BaseActor3D {
     protected float shootImageDelay;
     protected float shootFrequency = 1.5f;
     protected float rangeThreshold = 45f;
+    protected int numShots = 1;
 
     public boolean isForcedToMove;
     private int tilePathCounter;
@@ -82,7 +83,7 @@ public class Enemy extends BaseActor3D {
     private float angleTowardPlayer;
     private final float SECONDS_FORCED_TO_MOVE = .02f;
     private final float SHOOT_SPREAD_ANGLE = 5.5f / 2;
-    protected Decal decal;
+    protected BaseActor3D sprite;
 
     private enum Direction {FRONT, LEFT_FRONT, RIGHT_FRONT, LEFT_SIDE, RIGHT_SIDE, LEFT_BACK, RIGHT_BACK, BACK}
 
@@ -131,12 +132,13 @@ public class Enemy extends BaseActor3D {
 
         float size = 3;
         buildModel(1.5f, size, 1.5f, false);
-        decal = Sprite.init(size);
-        bulletDecals = new BulletDecals(stage3D.camera, decalBatch);
+        initializeSprite(size);
         turnBy(-180 + rotation);
         setPosition(GameUtils.getPositionRelativeToFloor(size), y, z);
         setBaseRectangle();
+
         setDirection();
+        bulletDecals = new BulletDecals(stage3D.camera, decalBatch);
         attackDelayActor = new BaseActor(0, 0, stage);
         checkIllumination();
     }
@@ -144,7 +146,7 @@ public class Enemy extends BaseActor3D {
     @Override
     public void act(float dt) {
         super.act(dt);
-        Sprite.update(decal, position, stage3D.camera, decalBatch);
+        handleSprite();
         if (isPause) return;
 
         totalTime += dt;
@@ -173,14 +175,14 @@ public class Enemy extends BaseActor3D {
 
     @Override
     public void draw(ModelBatch batch, Environment env) {
-        decal.setTextureRegion(currentAnimation.getKeyFrame(totalTime));
+        sprite.loadImage(currentAnimation.getKeyFrame(totalTime).toString());
         // batch.render(modelData, env);
     }
 
     @Override
     public void setColor(Color color) {
         super.setColor(color);
-        decal.setColor(color);
+        sprite.setColor(color);
     }
 
     public void die() {
@@ -292,6 +294,17 @@ public class Enemy extends BaseActor3D {
         }
     }
 
+    private void handleSprite() {
+        sprite.setPosition(position);
+        angleTowardPlayer = GameUtils.getAngleTowardsBaseActor3D(this, player);
+        sprite.setTurnAngle(angleTowardPlayer);
+    }
+
+    protected void initializeSprite(float size) {
+        sprite = new BaseActor3D(0, 0, 0, stage3D);
+        sprite.buildModel(size, size, .001f, true);
+    }
+
 
     private void activateNearByEnemies() {
         for (Enemy enemy : enemies)
@@ -325,13 +338,14 @@ public class Enemy extends BaseActor3D {
 
 
     private void checkIfShotPlayerOrBarrel() {
-        Vector3 playerPosition = player.position.cpy();
-        playerPosition.y += MathUtils.random(-SHOOT_SPREAD_ANGLE, SHOOT_SPREAD_ANGLE);
-        playerPosition.z += MathUtils.random(-SHOOT_SPREAD_ANGLE, SHOOT_SPREAD_ANGLE);
-        Ray ray = new Ray(position, playerPosition.sub(position));
-        int i = GameUtils.getClosestListIndex(ray, shootable);
+        for (int i = 0; i < numShots; i++) {
+            Vector3 playerPosition = player.position.cpy();
+            playerPosition.y += MathUtils.random(-SHOOT_SPREAD_ANGLE, SHOOT_SPREAD_ANGLE);
+            playerPosition.z += MathUtils.random(-SHOOT_SPREAD_ANGLE, SHOOT_SPREAD_ANGLE);
 
-        consequencesOfPick(ray, i);
+            Ray ray = new Ray(position, playerPosition.sub(position));
+            consequencesOfPick(ray, GameUtils.getClosestListIndex(ray, shootable));
+        }
     }
 
     private void consequencesOfPick(Ray ray, int i) {

@@ -30,7 +30,7 @@ public class HUD extends BaseActor {
     private int armor = 0;
     private int health = 100;
     private int bullets = 50;
-    private int shells = 10;
+    private int shells = 20;
     private int score = 0;
 
     private float armorProtectionValue = 1 / 3f;

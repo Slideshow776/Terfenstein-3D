@@ -13,11 +13,13 @@ import com.badlogic.gdx.utils.Array;
 import no.sandramoen.commanderqueen.actors.Barrel;
 import no.sandramoen.commanderqueen.actors.characters.Hund;
 import no.sandramoen.commanderqueen.actors.characters.Menig;
+import no.sandramoen.commanderqueen.actors.characters.Sersjant;
 import no.sandramoen.commanderqueen.actors.decals.BloodDecals;
 import no.sandramoen.commanderqueen.actors.decals.BulletDecals;
 import no.sandramoen.commanderqueen.actors.hud.HUD;
 import no.sandramoen.commanderqueen.actors.characters.Player;
 import no.sandramoen.commanderqueen.actors.Tile;
+import no.sandramoen.commanderqueen.actors.pickups.Shells;
 import no.sandramoen.commanderqueen.actors.weapon.WeaponHandler;
 import no.sandramoen.commanderqueen.actors.pickups.Bullets;
 import no.sandramoen.commanderqueen.actors.pickups.Pickup;
@@ -103,8 +105,11 @@ public class LevelScreen extends BaseScreen3D {
         else if (keycode == Keys.F) {
             player.isCollisionEnabled = !player.isCollisionEnabled;
             Gdx.app.log(getClass().getSimpleName(), "player.isCollisionEnabled: " + player.isCollisionEnabled);
-        } else if (keycode == Keys.V) {
+        } else if (keycode == Keys.V)
             hud.setInvulnerable();
+        else if (keycode == Keys.G) {
+            for (Tile tile : tiles)
+                tile.isVisible = !tile.isVisible;
         }
         // ------------------------------------------
         else if (keycode == Keys.NUM_1) {
@@ -178,7 +183,7 @@ public class LevelScreen extends BaseScreen3D {
     private boolean consequencesOfPick(Ray ray, int i) {
         if (i >= 0) {
             if (player.distanceBetween(shootable.get(i)) <= weaponHandler.currentWeapon.range) {
-                if ((shootable.get(i) instanceof Menig || shootable.get(i) instanceof Hund)) {
+                if (shootable.get(i) instanceof Enemy) {
                     Enemy enemy = (Enemy) shootable.get(i);
                     EnemyHandler.activateEnemies(enemies, Enemy.activationRange, player);
                     enemy.decrementHealth(weaponHandler.getDamage());
@@ -204,8 +209,10 @@ public class LevelScreen extends BaseScreen3D {
 
     private void removeEnemy(Enemy enemy) {
         enemy.die();
-        if (enemy.getClass().getSimpleName().equalsIgnoreCase("menig"))
-            pickups.add(new Bullets(enemy.position.y + MathUtils.random(-1, 1), enemy.position.z + MathUtils.random(-1, 1), mainStage3D, 2, decalBatch, tiles));
+        if (enemy instanceof Menig)
+            pickups.add(new Bullets(enemy.position.y + MathUtils.random(-1, 1), enemy.position.z + MathUtils.random(-1, 1), mainStage3D, 2, player, tiles));
+        if (enemy instanceof Sersjant)
+            pickups.add(new Shells(enemy.position.y + MathUtils.random(-1, 1), enemy.position.z + MathUtils.random(-1, 1), mainStage3D, 2, player, tiles));
         enemies.removeValue(enemy, false);
         shootable.removeValue(enemy, false);
         EnemyHandler.updateEnemiesShootableList(enemies, shootable);

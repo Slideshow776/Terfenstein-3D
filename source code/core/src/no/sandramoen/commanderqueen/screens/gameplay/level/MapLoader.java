@@ -15,6 +15,7 @@ import no.sandramoen.commanderqueen.actors.Tile;
 import no.sandramoen.commanderqueen.actors.characters.Hund;
 import no.sandramoen.commanderqueen.actors.characters.Menig;
 import no.sandramoen.commanderqueen.actors.characters.Player;
+import no.sandramoen.commanderqueen.actors.characters.Sersjant;
 import no.sandramoen.commanderqueen.actors.hud.HUD;
 import no.sandramoen.commanderqueen.actors.pickups.Bullets;
 import no.sandramoen.commanderqueen.actors.pickups.Armor;
@@ -63,9 +64,7 @@ public class MapLoader {
         initializePlayer();
         initializeBarrels();
         initializeEnemies();
-        initializeHealth();
-        initializeAmmo();
-        initializeArmor();
+        initializePickups();
         initializeLights();
     }
 
@@ -145,16 +144,17 @@ public class MapLoader {
         if (startPoint.getProperties().get("rotation") != null)
             rotation = (float) startPoint.getProperties().get("rotation");
         rotation %= 360;
-        player = new Player((int) playerX, (int) playerY, stage3D, rotation);
+        player = new Player(playerX, playerY, stage3D, rotation);
     }
 
     private void initializeEnemies() {
-        initializeMeniger();
-        initializeHunder();
+        initializeEnemy("hund");
+        initializeEnemy("menig");
+        initializeEnemy("sersjant");
     }
 
-    private void initializeMeniger() {
-        for (MapObject obj : tilemap.getTileList("actors", "menig")) {
+    private void initializeEnemy(String type) {
+        for (MapObject obj : tilemap.getTileList("actors", type)) {
             MapProperties props = obj.getProperties();
             float x = (Float) props.get("x") * BaseGame.unitScale;
             float y = (Float) props.get("y") * BaseGame.unitScale;
@@ -162,27 +162,12 @@ public class MapLoader {
             if (props.get("rotation") != null)
                 rotation = (Float) props.get("rotation");
             rotation %= 360;
-            enemies.add(new Menig((int) x, (int) y, stage3D, player, rotation, tileGraph, floorTiles, stage, hud, decalBatch));
-            shootable.add(enemies.get(enemies.size - 1));
-        }
-
-        for (Enemy enemy : enemies)
-            enemy.setShootableList(shootable);
-
-        for (int i = 0; i < enemies.size; i++)
-            enemies.get(i).setEnemiesList(enemies);
-    }
-
-    private void initializeHunder() {
-        for (MapObject obj : tilemap.getTileList("actors", "hund")) {
-            MapProperties props = obj.getProperties();
-            float x = (Float) props.get("x") * BaseGame.unitScale;
-            float y = (Float) props.get("y") * BaseGame.unitScale;
-            float rotation = 0;
-            if (props.get("rotation") != null)
-                rotation = (Float) props.get("rotation");
-            rotation %= 360;
-            enemies.add(new Hund((int) x, (int) y, stage3D, player, rotation, tileGraph, floorTiles, stage, hud, decalBatch));
+            if (type.equalsIgnoreCase("hund"))
+                enemies.add(new Hund(x, y, stage3D, player, rotation, tileGraph, floorTiles, stage, hud, decalBatch));
+            if (type.equalsIgnoreCase("menig"))
+                enemies.add(new Menig(x, y, stage3D, player, rotation, tileGraph, floorTiles, stage, hud, decalBatch));
+            if (type.equalsIgnoreCase("sersjant"))
+                enemies.add(new Sersjant(x, y, stage3D, player, rotation, tileGraph, floorTiles, stage, hud, decalBatch));
             shootable.add(enemies.get(enemies.size - 1));
         }
 
@@ -198,62 +183,36 @@ public class MapLoader {
             MapProperties props = obj.getProperties();
             float x = (Float) props.get("x") * BaseGame.unitScale;
             float y = (Float) props.get("y") * BaseGame.unitScale;
-            shootable.add(new Barrel((int) x, (int) y, stage3D, decalBatch, floorTiles));
+            shootable.add(new Barrel(x, y, stage3D, player, floorTiles));
         }
     }
 
-    private void initializeHealth() {
-        for (MapObject obj : tilemap.getTileList("actors", "health small")) {
-            MapProperties props = obj.getProperties();
-            float x = (Float) props.get("x") * BaseGame.unitScale;
-            float y = (Float) props.get("y") * BaseGame.unitScale;
-            pickups.add(new Health((int) x, (int) y, stage3D, 1, decalBatch, floorTiles));
-        }
-
-        for (MapObject obj : tilemap.getTileList("actors", "health medium")) {
-            MapProperties props = obj.getProperties();
-            float x = (Float) props.get("x") * BaseGame.unitScale;
-            float y = (Float) props.get("y") * BaseGame.unitScale;
-            pickups.add(new Health((int) x, (int) y, stage3D, 100, decalBatch, floorTiles));
-        }
+    private void initializePickups() {
+        initializePickup("health small", 1);
+        initializePickup("health medium", 100);
+        initializePickup("bullets", 2);
+        initializePickup("shells", 2);
+        initializePickup("armor small", 1);
+        initializePickup("armor medium", 100);
+        initializePickup("armor big", 200);
     }
 
-    private void initializeAmmo() {
-        for (MapObject obj : tilemap.getTileList("actors", "bullets")) {
+    private void initializePickup(String type, int amount) {
+        for (MapObject obj : tilemap.getTileList("actors", type)) {
             MapProperties props = obj.getProperties();
             float x = (Float) props.get("x") * BaseGame.unitScale;
             float y = (Float) props.get("y") * BaseGame.unitScale;
-            pickups.add(new Bullets((int) x, (int) y, stage3D, 2, decalBatch, floorTiles));
-        }
 
-        for (MapObject obj : tilemap.getTileList("actors", "shells")) {
-            MapProperties props = obj.getProperties();
-            float x = (Float) props.get("x") * BaseGame.unitScale;
-            float y = (Float) props.get("y") * BaseGame.unitScale;
-            pickups.add(new Shells((int) x, (int) y, stage3D, 2, decalBatch, floorTiles));
-        }
-    }
+            if (type.equalsIgnoreCase("health small") || type.equalsIgnoreCase("health medium"))
+                pickups.add(new Health(x, y, stage3D, amount, player, floorTiles));
 
-    private void initializeArmor() {
-        for (MapObject obj : tilemap.getTileList("actors", "armor small")) {
-            MapProperties props = obj.getProperties();
-            float x = (Float) props.get("x") * BaseGame.unitScale;
-            float y = (Float) props.get("y") * BaseGame.unitScale;
-            pickups.add(new Armor((int) x, (int) y, stage3D, 1, decalBatch, floorTiles));
-        }
+            else if (type.equalsIgnoreCase("bullets"))
+                pickups.add(new Bullets(x, y, stage3D, amount, player, floorTiles));
+            else if (type.equalsIgnoreCase("shells"))
+                pickups.add(new Shells(x, y, stage3D, amount, player, floorTiles));
 
-        for (MapObject obj : tilemap.getTileList("actors", "armor medium")) {
-            MapProperties props = obj.getProperties();
-            float x = (Float) props.get("x") * BaseGame.unitScale;
-            float y = (Float) props.get("y") * BaseGame.unitScale;
-            pickups.add(new Armor((int) x, (int) y, stage3D, 100, decalBatch, floorTiles));
-        }
-
-        for (MapObject obj : tilemap.getTileList("actors", "armor big")) {
-            MapProperties props = obj.getProperties();
-            float x = (Float) props.get("x") * BaseGame.unitScale;
-            float y = (Float) props.get("y") * BaseGame.unitScale;
-            pickups.add(new Armor((int) x, (int) y, stage3D, 200, decalBatch, floorTiles));
+            else if (type.equalsIgnoreCase("armor small") || type.equalsIgnoreCase("armor medium") || type.equalsIgnoreCase("armor big"))
+                pickups.add(new Armor(x, y, stage3D, amount, player, floorTiles));
         }
     }
 }

@@ -3,6 +3,7 @@ package no.sandramoen.commanderqueen.screens.gameplay.level;
 import com.badlogic.gdx.utils.Array;
 
 import no.sandramoen.commanderqueen.actors.Tile;
+import no.sandramoen.commanderqueen.actors.characters.Hund;
 import no.sandramoen.commanderqueen.actors.characters.enemy.Enemy;
 import no.sandramoen.commanderqueen.actors.utils.baseActors.BaseActor3D;
 import no.sandramoen.commanderqueen.utils.GameUtils;
@@ -44,7 +45,7 @@ public class EnemyHandler {
     private static void preventOverlapWithOtherEnemies(Array<Enemy> enemies, int i) {
         for (int j = 0; j < enemies.size; j++) {
             if (enemies.get(i) != enemies.get(j))
-                if (enemies.get(i).getClass() == enemies.get(j).getClass())
+                if (!(enemies.get(i) instanceof Hund) || !(enemies.get(j) instanceof Hund))
                     enemies.get(i).preventOverlap(enemies.get(j));
         }
     }

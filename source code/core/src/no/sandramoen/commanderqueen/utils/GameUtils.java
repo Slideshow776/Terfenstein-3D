@@ -47,13 +47,6 @@ public class GameUtils {
             baseActor3D.setColor(BaseGame.darkColor);
     }
 
-    public static void illuminateDecal(Decal decal, Tile tile) {
-        if (tile.type == "floors" && tile.illuminated)
-            decal.setColor(Color.WHITE);
-        else if (tile.type == "floors")
-            decal.setColor(BaseGame.darkColor);
-    }
-
     public static float getPositionRelativeToFloor(float height) {
         return (Tile.height - height) / -2;
     }

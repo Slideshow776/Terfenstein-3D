@@ -898,6 +898,411 @@ enemies/menig/walk side right 3
   index: -1
 
 images.pack6.png
+size: 1024, 256
+format: RGBA8888
+filter: Nearest, Nearest
+repeat: none
+enemies/sersjant/die 0
+  rotate: false
+  xy: 2, 164
+  size: 48, 52
+  orig: 48, 52
+  offset: 0, 0
+  index: -1
+enemies/sersjant/die 1
+  rotate: false
+  xy: 2, 110
+  size: 48, 52
+  orig: 48, 52
+  offset: 0, 0
+  index: -1
+enemies/sersjant/die 2
+  rotate: false
+  xy: 52, 164
+  size: 48, 52
+  orig: 48, 52
+  offset: 0, 0
+  index: -1
+enemies/sersjant/die 3
+  rotate: false
+  xy: 2, 56
+  size: 48, 52
+  orig: 48, 52
+  offset: 0, 0
+  index: -1
+enemies/sersjant/die 4
+  rotate: false
+  xy: 52, 110
+  size: 48, 52
+  orig: 48, 52
+  offset: 0, 0
+  index: -1
+enemies/sersjant/gib 0
+  rotate: false
+  xy: 102, 164
+  size: 48, 52
+  orig: 48, 52
+  offset: 0, 0
+  index: -1
+enemies/sersjant/gib 1
+  rotate: false
+  xy: 2, 2
+  size: 48, 52
+  orig: 48, 52
+  offset: 0, 0
+  index: -1
+enemies/sersjant/gib 2
+  rotate: false
+  xy: 52, 56
+  size: 48, 52
+  orig: 48, 52
+  offset: 0, 0
+  index: -1
+enemies/sersjant/gib 3
+  rotate: false
+  xy: 102, 110
+  size: 48, 52
+  orig: 48, 52
+  offset: 0, 0
+  index: -1
+enemies/sersjant/gib 4
+  rotate: false
+  xy: 152, 164
+  size: 48, 52
+  orig: 48, 52
+  offset: 0, 0
+  index: -1
+enemies/sersjant/gib 5
+  rotate: false
+  xy: 52, 2
+  size: 48, 52
+  orig: 48, 52
+  offset: 0, 0
+  index: -1
+enemies/sersjant/gib 6
+  rotate: false
+  xy: 102, 56
+  size: 48, 52
+  orig: 48, 52
+  offset: 0, 0
+  index: -1
+enemies/sersjant/hurt 0
+  rotate: false
+  xy: 152, 110
+  size: 48, 52
+  orig: 48, 52
+  offset: 0, 0
+  index: -1
+enemies/sersjant/idle back 0
+  rotate: false
+  xy: 202, 164
+  size: 48, 52
+  orig: 48, 52
+  offset: 0, 0
+  index: -1
+enemies/sersjant/idle back side left 0
+  rotate: false
+  xy: 102, 2
+  size: 48, 52
+  orig: 48, 52
+  offset: 0, 0
+  index: -1
+enemies/sersjant/idle back side right 0
+  rotate: false
+  xy: 152, 56
+  size: 48, 52
+  orig: 48, 52
+  offset: 0, 0
+  index: -1
+enemies/sersjant/idle front 0
+  rotate: false
+  xy: 202, 110
+  size: 48, 52
+  orig: 48, 52
+  offset: 0, 0
+  index: -1
+enemies/sersjant/idle front side left 0
+  rotate: false
+  xy: 252, 164
+  size: 48, 52
+  orig: 48, 52
+  offset: 0, 0
+  index: -1
+enemies/sersjant/idle front side right 0
+  rotate: false
+  xy: 152, 2
+  size: 48, 52
+  orig: 48, 52
+  offset: 0, 0
+  index: -1
+enemies/sersjant/idle side left 0
+  rotate: false
+  xy: 202, 56
+  size: 48, 52
+  orig: 48, 52
+  offset: 0, 0
+  index: -1
+enemies/sersjant/idle side right 0
+  rotate: false
+  xy: 252, 110
+  size: 48, 52
+  orig: 48, 52
+  offset: 0, 0
+  index: -1
+enemies/sersjant/melee 0
+  rotate: false
+  xy: 302, 164
+  size: 48, 52
+  orig: 48, 52
+  offset: 0, 0
+  index: -1
+enemies/sersjant/melee 1
+  rotate: false
+  xy: 202, 2
+  size: 48, 52
+  orig: 48, 52
+  offset: 0, 0
+  index: -1
+enemies/sersjant/shoot 0
+  rotate: false
+  xy: 252, 56
+  size: 48, 52
+  orig: 48, 52
+  offset: 0, 0
+  index: -1
+enemies/sersjant/shoot 1
+  rotate: false
+  xy: 302, 110
+  size: 48, 52
+  orig: 48, 52
+  offset: 0, 0
+  index: -1
+enemies/sersjant/walk back 0
+  rotate: false
+  xy: 352, 164
+  size: 48, 52
+  orig: 48, 52
+  offset: 0, 0
+  index: -1
+enemies/sersjant/walk back 1
+  rotate: false
+  xy: 252, 2
+  size: 48, 52
+  orig: 48, 52
+  offset: 0, 0
+  index: -1
+enemies/sersjant/walk back 2
+  rotate: false
+  xy: 302, 56
+  size: 48, 52
+  orig: 48, 52
+  offset: 0, 0
+  index: -1
+enemies/sersjant/walk back 3
+  rotate: false
+  xy: 352, 110
+  size: 48, 52
+  orig: 48, 52
+  offset: 0, 0
+  index: -1
+enemies/sersjant/walk back side left 0
+  rotate: false
+  xy: 402, 164
+  size: 48, 52
+  orig: 48, 52
+  offset: 0, 0
+  index: -1
+enemies/sersjant/walk back side left 1
+  rotate: false
+  xy: 302, 2
+  size: 48, 52
+  orig: 48, 52
+  offset: 0, 0
+  index: -1
+enemies/sersjant/walk back side left 2
+  rotate: false
+  xy: 352, 56
+  size: 48, 52
+  orig: 48, 52
+  offset: 0, 0
+  index: -1
+enemies/sersjant/walk back side left 3
+  rotate: false
+  xy: 402, 110
+  size: 48, 52
+  orig: 48, 52
+  offset: 0, 0
+  index: -1
+enemies/sersjant/walk back side right 0
+  rotate: false
+  xy: 452, 164
+  size: 48, 52
+  orig: 48, 52
+  offset: 0, 0
+  index: -1
+enemies/sersjant/walk back side right 1
+  rotate: false
+  xy: 352, 2
+  size: 48, 52
+  orig: 48, 52
+  offset: 0, 0
+  index: -1
+enemies/sersjant/walk back side right 2
+  rotate: false
+  xy: 402, 56
+  size: 48, 52
+  orig: 48, 52
+  offset: 0, 0
+  index: -1
+enemies/sersjant/walk back side right 3
+  rotate: false
+  xy: 452, 110
+  size: 48, 52
+  orig: 48, 52
+  offset: 0, 0
+  index: -1
+enemies/sersjant/walk front 0
+  rotate: false
+  xy: 502, 164
+  size: 48, 52
+  orig: 48, 52
+  offset: 0, 0
+  index: -1
+enemies/sersjant/walk front 1
+  rotate: false
+  xy: 402, 2
+  size: 48, 52
+  orig: 48, 52
+  offset: 0, 0
+  index: -1
+enemies/sersjant/walk front 2
+  rotate: false
+  xy: 452, 56
+  size: 48, 52
+  orig: 48, 52
+  offset: 0, 0
+  index: -1
+enemies/sersjant/walk front 3
+  rotate: false
+  xy: 502, 110
+  size: 48, 52
+  orig: 48, 52
+  offset: 0, 0
+  index: -1
+enemies/sersjant/walk front side left 0
+  rotate: false
+  xy: 552, 164
+  size: 48, 52
+  orig: 48, 52
+  offset: 0, 0
+  index: -1
+enemies/sersjant/walk front side left 1
+  rotate: false
+  xy: 452, 2
+  size: 48, 52
+  orig: 48, 52
+  offset: 0, 0
+  index: -1
+enemies/sersjant/walk front side left 2
+  rotate: false
+  xy: 502, 56
+  size: 48, 52
+  orig: 48, 52
+  offset: 0, 0
+  index: -1
+enemies/sersjant/walk front side left 3
+  rotate: false
+  xy: 552, 110
+  size: 48, 52
+  orig: 48, 52
+  offset: 0, 0
+  index: -1
+enemies/sersjant/walk front side right 0
+  rotate: false
+  xy: 602, 164
+  size: 48, 52
+  orig: 48, 52
+  offset: 0, 0
+  index: -1
+enemies/sersjant/walk front side right 1
+  rotate: false
+  xy: 502, 2
+  size: 48, 52
+  orig: 48, 52
+  offset: 0, 0
+  index: -1
+enemies/sersjant/walk front side right 2
+  rotate: false
+  xy: 552, 56
+  size: 48, 52
+  orig: 48, 52
+  offset: 0, 0
+  index: -1
+enemies/sersjant/walk front side right 3
+  rotate: false
+  xy: 602, 110
+  size: 48, 52
+  orig: 48, 52
+  offset: 0, 0
+  index: -1
+enemies/sersjant/walk side left 0
+  rotate: false
+  xy: 652, 164
+  size: 48, 52
+  orig: 48, 52
+  offset: 0, 0
+  index: -1
+enemies/sersjant/walk side left 1
+  rotate: false
+  xy: 552, 2
+  size: 48, 52
+  orig: 48, 52
+  offset: 0, 0
+  index: -1
+enemies/sersjant/walk side left 2
+  rotate: false
+  xy: 602, 56
+  size: 48, 52
+  orig: 48, 52
+  offset: 0, 0
+  index: -1
+enemies/sersjant/walk side left 3
+  rotate: false
+  xy: 652, 110
+  size: 48, 52
+  orig: 48, 52
+  offset: 0, 0
+  index: -1
+enemies/sersjant/walk side right 0
+  rotate: false
+  xy: 702, 164
+  size: 48, 52
+  orig: 48, 52
+  offset: 0, 0
+  index: -1
+enemies/sersjant/walk side right 1
+  rotate: false
+  xy: 602, 2
+  size: 48, 52
+  orig: 48, 52
+  offset: 0, 0
+  index: -1
+enemies/sersjant/walk side right 2
+  rotate: false
+  xy: 652, 56
+  size: 48, 52
+  orig: 48, 52
+  offset: 0, 0
+  index: -1
+enemies/sersjant/walk side right 3
+  rotate: false
+  xy: 702, 110
+  size: 48, 52
+  orig: 48, 52
+  offset: 0, 0
+  index: -1
+
+images.pack7.png
 size: 1024, 512
 format: RGBA8888
 filter: Nearest, Nearest
@@ -1232,7 +1637,7 @@ hud/TR4 0
   offset: 0, 0
   index: -1
 
-images.pack7.png
+images.pack8.png
 size: 256, 64
 format: RGBA8888
 filter: Nearest, Nearest
@@ -1287,7 +1692,7 @@ pickups/shells
   offset: 0, 0
   index: -1
 
-images.pack8.png
+images.pack9.png
 size: 512, 128
 format: RGBA8888
 filter: Nearest, Nearest
@@ -1342,7 +1747,7 @@ tiles/lonplate
   offset: 0, 0
   index: -1
 
-images.pack9.png
+images.pack10.png
 size: 256, 128
 format: RGBA8888
 filter: Nearest, Nearest
@@ -1369,7 +1774,7 @@ weapons/boot/icon
   offset: 0, 0
   index: -1
 
-images.pack10.png
+images.pack11.png
 size: 1024, 256
 format: RGBA8888
 filter: Nearest, Nearest
@@ -1417,7 +1822,7 @@ weapons/pistol/shooting 3
   offset: 0, 0
   index: -1
 
-images.pack11.png
+images.pack12.png
 size: 1024, 256
 format: RGBA8888
 filter: Nearest, Nearest
