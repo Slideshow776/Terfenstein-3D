@@ -15,8 +15,12 @@ public class UIHandler {
     public Label gameLabel;
     public Label statusLabel;
 
+    public boolean isReset;
+
     public UIHandler(Table uiTable, Array<Enemy> enemies, HUD hud) {
-        uiTable.add(hud.weaponsTable()).colspan(2).size(hud.getWidth(), hud.getHeight())
+        uiTable.add(hud.weaponsTable)
+                .colspan(2)
+                .size(hud.getWidth(), hud.getHeight())
                 .row();
 
         statusLabel = new Label("enemies left: " + enemies.size, BaseGame.label26Style);
@@ -44,7 +48,9 @@ public class UIHandler {
                 .colspan(2)
                 .row();
 
-        uiTable.add(hud.getLabelTable()).colspan(2).size(hud.getWidth(), hud.getHeight());
+        uiTable.add(hud.getLabelTable())
+                .colspan(2)
+                .size(hud.getWidth(), hud.getHeight());
 
         /*uiTable.setDebug(true);*/
     }

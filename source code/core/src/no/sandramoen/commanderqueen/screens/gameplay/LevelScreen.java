@@ -11,7 +11,6 @@ import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.utils.Array;
 
 import no.sandramoen.commanderqueen.actors.Barrel;
-import no.sandramoen.commanderqueen.actors.characters.Hund;
 import no.sandramoen.commanderqueen.actors.characters.Menig;
 import no.sandramoen.commanderqueen.actors.characters.Sersjant;
 import no.sandramoen.commanderqueen.actors.decals.BloodDecals;
@@ -81,9 +80,9 @@ public class LevelScreen extends BaseScreen3D {
         for (int i = 0; i < enemies.size; i++)
             if (enemies.get(i).isDead) removeEnemy(enemies.get(i));
         updateBarrels();
-        PickupHandler.update(pickups, player, hud, weaponHandler);
+        PickupHandler.update(pickups, player, hud, weaponHandler, uiTable, uiHandler, enemies);
 
-        uiHandler.debugLabel.setText("FPS: " + Gdx.graphics.getFramesPerSecond() + "\nVisible: " + mainStage3D.visibleCount);
+        updateUI();
 
         if (!Gdx.input.isCursorCatched())
             Gdx.input.setCursorCatched(true);
@@ -260,6 +259,14 @@ public class LevelScreen extends BaseScreen3D {
         }
     }
 
+    private void updateUI() {
+        if (uiHandler.isReset) {
+            uiHandler = new UIHandler(uiTable, enemies, hud);
+            uiHandler.isReset = false;
+        }
+        uiHandler.debugLabel.setText("FPS: " + Gdx.graphics.getFramesPerSecond() + "\nVisible: " + mainStage3D.visibleCount);
+    }
+
     private void explodeBarrelWithDelay(final Barrel barrel) {
         new BaseActor(0, 0, uiStage).addAction(Actions.sequence(
                 Actions.delay(MathUtils.random(0, .4f)),
@@ -290,5 +297,6 @@ public class LevelScreen extends BaseScreen3D {
         player = mapLoader.player;
         hud.player = player;
         weaponHandler = new WeaponHandler(uiStage, hud, player, shootable, mainStage3D);
+        hud.setWeaponsTable(weaponHandler);
     }
 }

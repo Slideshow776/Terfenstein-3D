@@ -25,12 +25,13 @@ import no.sandramoen.commanderqueen.utils.Stage3D;
 public class WeaponHandler extends BaseActor {
     public Crosshair crosshair;
     public Weapon currentWeapon;
+    public Array<Weapon> weapons;
+    public boolean isReady;
 
     private float totalTime = 5f;
     private float swayAmount = .01f;
     private float swayFrequency = .5f;
 
-    public boolean isReady;
     private float isReadyCounter;
 
     private HUD hud;
@@ -38,8 +39,6 @@ public class WeaponHandler extends BaseActor {
     private Stage3D stage3D;
     private Vector2 restPosition;
     private Array<BaseActor3D> shootable;
-
-    private Array<Weapon> weapons;
 
     public WeaponHandler(Stage stage, HUD hud, Player player, Array<BaseActor3D> shootable, Stage3D stage3D) {
         super(0, 0, stage);

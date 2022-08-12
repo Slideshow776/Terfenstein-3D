@@ -16,6 +16,7 @@ import no.sandramoen.commanderqueen.actors.pickups.Pickup;
 import no.sandramoen.commanderqueen.actors.pickups.Shells;
 import no.sandramoen.commanderqueen.actors.utils.baseActors.BaseActor;
 import no.sandramoen.commanderqueen.actors.utils.baseActors.BaseActor3D;
+import no.sandramoen.commanderqueen.actors.weapon.WeaponHandler;
 import no.sandramoen.commanderqueen.actors.weapon.weapons.Boot;
 import no.sandramoen.commanderqueen.actors.weapon.weapons.Pistol;
 import no.sandramoen.commanderqueen.actors.weapon.weapons.Shotgun;
@@ -24,8 +25,9 @@ import no.sandramoen.commanderqueen.utils.BaseGame;
 import no.sandramoen.commanderqueen.utils.GameUtils;
 
 public class HUD extends BaseActor {
-    public boolean isInvulnerable;
     public Player player;
+    public Table weaponsTable;
+    public boolean isInvulnerable;
 
     private int armor = 0;
     private int health = 100;
@@ -46,7 +48,6 @@ public class HUD extends BaseActor {
     private Face face;
     private OverlayIndicator overlayIndicator;
 
-    private Table weaponsTable;
     private Array<Image> weaponImages;
 
     public HUD(Stage stage) {
@@ -67,21 +68,21 @@ public class HUD extends BaseActor {
         checkInvulnerability(dt);
     }
 
-    public Table weaponsTable() {
+    public void setWeaponsTable(WeaponHandler weaponHandler) {
         weaponImages = new Array();
         weaponImages.add(new Image(BaseGame.textureAtlas.findRegion("weapons/boot/icon")));
         weaponImages.add(new Image(BaseGame.textureAtlas.findRegion("weapons/pistol/icon")));
         weaponImages.add(new Image(BaseGame.textureAtlas.findRegion("weapons/shotgun/icon")));
 
         Table table = new Table();
-        table.defaults().width(getWidth() / 5);
-        for (Image image : weaponImages)
-            table.add(image).grow().width(Gdx.graphics.getWidth() * .05f).height(Gdx.graphics.getHeight() * .05f);
+        table.defaults().grow().width(Gdx.graphics.getWidth() * .05f).height(Gdx.graphics.getHeight() * .05f);
+        for (int i = 0; i < weaponImages.size; i++)
+            if (weaponHandler.weapons.get(i).isAvailable)
+                table.add(weaponImages.get(i));
         /*table.setDebug(true);*/
 
         weaponsTable = table;
-        weaponsTable.addAction(Actions.fadeOut(0));
-        return table;
+        fadeWeaponsTableInAndOut(weaponHandler.currentWeapon);
     }
 
     public Table getLabelTable() {
