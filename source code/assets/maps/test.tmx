@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="15" height="15" tilewidth="64" tileheight="64" infinite="0" nextlayerid="14" nextobjectid="59606">
+<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="15" height="15" tilewidth="64" tileheight="64" infinite="0" nextlayerid="14" nextobjectid="59620">
  <tileset firstgid="1" name="test" tilewidth="64" tileheight="64" tilecount="128" columns="16" objectalignment="center">
   <image source="tileset.png" width="1024" height="512"/>
   <tile id="0">
@@ -158,8 +158,23 @@
   <object id="59600" gid="83" x="320" y="192" width="64" height="64"/>
   <object id="59601" gid="83" x="320" y="128" width="64" height="64"/>
   <object id="59602" gid="83" x="320" y="64" width="64" height="64"/>
+  <object id="59606" gid="84" x="806.25" y="472.583" width="64" height="64" rotation="62.9691"/>
+  <object id="59607" gid="84" x="860" y="445.083" width="64" height="64" rotation="62.9691"/>
+  <object id="59608" gid="84" x="916" y="416.583" width="64" height="64" rotation="62.9691"/>
+  <object id="59609" gid="84" x="887.5" y="360.833" width="64" height="64" rotation="62.9691"/>
+  <object id="59610" gid="84" x="858" y="303.083" width="64" height="64" rotation="62.9691"/>
+  <object id="59612" gid="84" x="757.5" y="663.5" width="64" height="64" rotation="321.024"/>
+  <object id="59613" gid="84" x="798.5" y="712" width="64" height="64" rotation="321.024"/>
+  <object id="59614" gid="84" x="820" y="755" width="64" height="64" rotation="343.879"/>
+  <object id="59615" gid="84" x="820.5" y="797" width="64" height="64" rotation="15.2296"/>
+  <object id="59616" gid="84" x="802" y="858.5" width="64" height="64" rotation="15.2296"/>
+  <object id="59617" gid="84" x="781.5" y="875.5" width="64" height="64" rotation="71.8076"/>
+  <object id="59618" gid="84" x="741" y="876.5" width="64" height="64" rotation="101.808"/>
+  <object id="59619" gid="84" x="680.5" y="862" width="64" height="64" rotation="101.808"/>
  </objectgroup>
- <objectgroup id="11" name="walls"/>
+ <objectgroup id="11" name="walls">
+  <object id="59611" gid="83" x="831.5" y="389" width="64" height="64" rotation="331.969"/>
+ </objectgroup>
  <objectgroup id="12" name="ceilings"/>
  <objectgroup id="13" name="props">
   <object id="59603" gid="113" x="384" y="64" width="64" height="64"/>
@@ -167,11 +182,11 @@
   <object id="59605" gid="114" x="320" y="64" width="64" height="64"/>
  </objectgroup>
  <objectgroup id="8" name="actors">
-  <object id="59559" gid="4" x="512" y="960" width="64" height="64"/>
+  <object id="59559" gid="4" x="674.5" y="862" width="64" height="64"/>
   <object id="59577" gid="2" x="320" y="320" width="64" height="64"/>
   <object id="59580" gid="65" x="512" y="640" width="64" height="64">
    <properties>
-    <property name="isLocked" type="bool" value="true"/>
+    <property name="isLocked" type="bool" value="false"/>
    </properties>
   </object>
   <object id="59581" gid="65" x="512" y="320" width="64" height="64"/>

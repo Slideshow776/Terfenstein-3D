@@ -30,7 +30,7 @@ import no.sandramoen.commanderqueen.utils.Stage3D;
 import no.sandramoen.commanderqueen.utils.pathFinding.TileGraph;
 
 public class Enemy extends BaseActor3D {
-    public static float activationRange = 60;
+    public static float activationRange = 30;
     public final int ID = MathUtils.random(1_000, 9_999);
     public int health = 1;
     public boolean isDead;
@@ -120,6 +120,7 @@ public class Enemy extends BaseActor3D {
     private BaseActor attackDelayActor;
     private DecalBatch decalBatch;
     private BulletDecals bulletDecals;
+    private Tile startingPosition;
 
     public Enemy(float y, float z, Stage3D stage3D, Player player, float rotation, TileGraph tileGraph, Array<Tile> floorTiles, Stage stage, HUD hud, DecalBatch batch) {
         super(0, y, z, stage3D);
@@ -141,6 +142,8 @@ public class Enemy extends BaseActor3D {
         bulletDecals = new BulletDecals(stage3D.camera, decalBatch);
         attackDelayActor = new BaseActor(0, 0, stage);
         checkIllumination();
+
+        startingPosition = getTileActorIsOn(this, floorTiles);
     }
 
     @Override
@@ -566,9 +569,19 @@ public class Enemy extends BaseActor3D {
                     tilePathCounter++;
             }
         } else if (tilePathCounter >= tilePath.getCount()) {
-            isActive = false;
-            tilePath = null;
-            state = State.IDLE;
+            if (getTileActorIsOn(this, floorTiles) != startingPosition) {
+                isActive = false;
+                state = State.IDLE;
+                tilePath = null;
+                new BaseActor(0, 0, stage).addAction(Actions.sequence(
+                        Actions.delay(5f),
+                        Actions.run(() -> {
+                            setNewAIPath(startingPosition);
+                            isActive = true;
+                            state = State.WALKING;
+                        })
+                ));
+            }
         }
     }
 

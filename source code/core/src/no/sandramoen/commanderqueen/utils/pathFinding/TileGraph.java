@@ -31,7 +31,7 @@ public class TileGraph implements IndexedGraph<Tile> {
     public void connectTiles(Tile fromTile, Tile toTile) {
         Edge edge = new Edge(fromTile, toTile);
         if (!edgesMap.containsKey(fromTile))
-            edgesMap.put(fromTile, new Array<Connection<Tile>>());
+            edgesMap.put(fromTile, new Array());
         edgesMap.get(fromTile).add(edge);
         edges.add(edge);
     }

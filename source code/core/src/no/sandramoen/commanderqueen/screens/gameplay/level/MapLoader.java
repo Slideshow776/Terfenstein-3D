@@ -120,7 +120,7 @@ public class MapLoader {
         for (int i = 0; i < tileGraph.tiles.size; i++) {
             for (int j = 0; j < tileGraph.tiles.size; j++) {
                 if (tileGraph.tiles.get(i) != tileGraph.tiles.get(j)) {
-                    if (tileGraph.tiles.get(i).position.dst(tileGraph.tiles.get(j).position) <= Tile.height) {
+                    if (tileGraph.tiles.get(i).position.dst(tileGraph.tiles.get(j).position) <= Tile.height * 1.1f) {
                         tileGraph.connectTiles(tileGraph.tiles.get(i), tileGraph.tiles.get(j));
                     }
                 }
