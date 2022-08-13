@@ -51,6 +51,10 @@ public class Face extends BaseActor {
         setTemporaryFace(faceHealthIndex, "KILL");
     }
 
+    public void setEvilFace(int faceHealthIndex) {
+        setTemporaryFace(faceHealthIndex, "EVL");
+    }
+
     public void setDead() {
         setLockedFace("DEAD");
     }

@@ -30,6 +30,7 @@ public class PickupHandler {
                         removePickup(pickups, pickup);
                 } else if (pickup instanceof Shotgun) {
                     weaponHandler.makeAvailable("shotgun");
+                    hud.setEvilFace();
                     removePickup(pickups, pickup);
 
                     hud.setWeaponsTable(weaponHandler);

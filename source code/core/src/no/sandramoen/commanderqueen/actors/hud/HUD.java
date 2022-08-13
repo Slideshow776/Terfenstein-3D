@@ -195,6 +195,10 @@ public class HUD extends BaseActor {
         face.setKillFace(getFaceHealthIndex());
     }
 
+    public void setEvilFace() {
+        face.setEvilFace(getFaceHealthIndex());
+    }
+
     public void setDeadFace() {
         face.setDead();
     }

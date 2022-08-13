@@ -157,7 +157,7 @@ public class Enemy extends BaseActor3D {
         angleTowardPlayer = GameUtils.getAngleTowardsBaseActor3D(this, player);
         setDirection();
         setDirectionalAnimation();
-        /*attackIfPlayerIsVisible();*/
+        attackIfPlayerIsVisible();
 
         if (!isActive) return;
 
