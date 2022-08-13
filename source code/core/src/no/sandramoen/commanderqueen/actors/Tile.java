@@ -11,10 +11,10 @@ public class Tile extends BaseActor3D {
     public String type;
     public boolean illuminated = false;
 
-    public Tile(float y, float z, String type, String texture, Stage3D s, float rotation) {
+    public Tile(float y, float z, float width, float height, float depth, String type, String texture, Stage3D s, float rotation) {
         super(0, y, z, s);
         this.type = type;
-        buildModel(height, height, height, false);
+        buildModel(width, height, depth, false);
         setBaseRectangle();
         loadImage("tiles/" + texture);
         turnBy(-180 + rotation);
