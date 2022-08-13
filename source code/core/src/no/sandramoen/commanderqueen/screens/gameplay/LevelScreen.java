@@ -11,6 +11,7 @@ import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.utils.Array;
 
 import no.sandramoen.commanderqueen.actors.Barrel;
+import no.sandramoen.commanderqueen.actors.Door;
 import no.sandramoen.commanderqueen.actors.characters.Menig;
 import no.sandramoen.commanderqueen.actors.characters.Sersjant;
 import no.sandramoen.commanderqueen.actors.decals.BloodDecals;
@@ -44,6 +45,7 @@ public class LevelScreen extends BaseScreen3D {
     private TilemapActor tilemap;
 
     private Array<Tile> tiles;
+    private Array<Door> doors;
     private Array<Enemy> enemies;
     private Array<Pickup> pickups;
     private Array<BaseActor3D> shootable;
@@ -76,13 +78,15 @@ public class LevelScreen extends BaseScreen3D {
         checkGameOverCondition();
 
         TileHandler.updateTiles(tiles, player);
-        EnemyHandler.update(mainStage3D.intervalFlag, enemies, tiles);
+        EnemyHandler.update(mainStage3D.intervalFlag, enemies, tiles, doors);
         for (int i = 0; i < enemies.size; i++)
             if (enemies.get(i).isDead) removeEnemy(enemies.get(i));
         updateBarrels();
         PickupHandler.update(pickups, player, hud, weaponHandler, uiTable, uiHandler, enemies);
 
         updateUI();
+        for (Door door : doors)
+            player.preventOverlap(door);
 
         if (!Gdx.input.isCursorCatched())
             Gdx.input.setCursorCatched(true);
@@ -120,6 +124,10 @@ public class LevelScreen extends BaseScreen3D {
         } else if (keycode == Keys.NUM_3) {
             weaponHandler.setWeapon(2);
             hud.setAmmo(weaponHandler.currentWeapon);
+        } else if (keycode == Keys.SPACE) {
+            for (Door door : doors)
+                if (player.isWithinDistance(Tile.height * .8f, door))
+                    door.openAndClose();
         }
 
         return super.keyDown(keycode);
@@ -193,12 +201,9 @@ public class LevelScreen extends BaseScreen3D {
                 } else if (shootable.get(i) instanceof Barrel) {
                     Barrel barrel = (Barrel) shootable.get(i);
                     barrel.decrementHealth(weaponHandler.getDamage(), player.distanceBetween(barrel));
-                } else if (shootable.get(i) instanceof Tile && !weaponHandler.currentWeapon.isMelee) {
-                    Tile tile = (Tile) shootable.get(i);
-                    if (tile.type.equalsIgnoreCase("walls")) {
-                        Vector3 temp = new Vector3().set(ray.direction).scl(player.distanceBetween(tile) - (Tile.diagonalLength / 2)).add(ray.origin);
-                        bulletDecals.addDecal(temp.x, temp.y, temp.z);
-                    }
+                } else if (!weaponHandler.currentWeapon.isMelee) {
+                    Vector3 temp = new Vector3().set(ray.direction).scl(player.distanceBetween(shootable.get(i)) - (Tile.diagonalLength / 2)).add(ray.origin);
+                    bulletDecals.addDecal(temp.x, temp.y, temp.z);
                 }
                 return true;
             }
@@ -289,8 +294,9 @@ public class LevelScreen extends BaseScreen3D {
         shootable = new Array();
         pickups = new Array();
         enemies = new Array();
+        doors = new Array();
         hud = new HUD(uiStage);
-        mapLoader = new MapLoader(tilemap, tiles, mainStage3D, player, shootable, pickups, enemies, uiStage, hud, decalBatch);
+        mapLoader = new MapLoader(tilemap, tiles, mainStage3D, player, shootable, pickups, enemies, uiStage, hud, decalBatch, doors);
     }
 
     private void initializePlayer() {

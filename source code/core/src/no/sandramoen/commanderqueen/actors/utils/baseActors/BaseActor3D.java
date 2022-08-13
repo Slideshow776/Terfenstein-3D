@@ -138,7 +138,7 @@ public class BaseActor3D {
         Vector3 min = modelBounds.min;
 
         float[] vertices =
-                {max.z, max.y, min.z, max.y, min.z, min.y, max.z, min.y};
+                {max.y, max.z, min.y, max.z, min.y, min.z, max.y, min.z};
 
         boundingPolygon = new Polygon(vertices);
         boundingPolygon.setOrigin(0, 0);
@@ -165,7 +165,7 @@ public class BaseActor3D {
     }
 
     public void preventOverlap(BaseActor3D other) {
-        if (!isPreventOverlapEnabled || !other.isPreventOverlapEnabled || !isCollisionEnabled || !other.isCollisionEnabled)
+        if (!isPreventOverlapEnabled || !other.isPreventOverlapEnabled)
             return;
         Polygon poly1 = this.getBoundaryPolygon();
         Polygon poly2 = other.getBoundaryPolygon();

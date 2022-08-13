@@ -26,7 +26,7 @@ public class LightManager {
         updatePointLights(dt);
     }
 
-    public void addPointLight(Vector3 position, float r, float g, float b, float intensity, float duration, float brightnessFalloff) {
+    public void addTemporaryPointLight(Vector3 position, float r, float g, float b, float intensity, float duration, float brightnessFalloff) {
         if (duration <= brightnessFalloff)
             Gdx.app.error(getClass().getSimpleName(), "Warning: a light was added where duration is less than or equal to the brightness falloff!");
         MyPointLight pointLight = new MyPointLight();
@@ -43,11 +43,11 @@ public class LightManager {
     }
 
     public void addMuzzleLight(Vector3 position) {
-        addPointLight(position, .3f, .1f, 0, 50, .1f, .1f / 3);
+        addTemporaryPointLight(position, .3f, .1f, 0, 50, .1f, .1f / 3);
     }
 
     public void addSmallExplosion(Vector3 position) {
-        addPointLight(position, .3f, .1f, 0, 1_000f, 1f, .2f);
+        addTemporaryPointLight(position, .3f, .1f, 0, 1_000f, 1f, .2f);
     }
 
     private void updatePointLights(float dt) {

@@ -11,6 +11,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Array;
 
 import no.sandramoen.commanderqueen.actors.Barrel;
+import no.sandramoen.commanderqueen.actors.Door;
 import no.sandramoen.commanderqueen.actors.Tile;
 import no.sandramoen.commanderqueen.actors.characters.Hund;
 import no.sandramoen.commanderqueen.actors.characters.Menig;
@@ -44,10 +45,11 @@ public class MapLoader {
     private Array<Pickup> pickups;
     private Array<Tile> floorTiles;
     private Array<BaseActor3D> shootable;
+    private Array<Door> doors;
     private DecalBatch decalBatch;
 
     public MapLoader(TilemapActor tilemap, Array<Tile> tiles, Stage3D stage3D, Player player, Array<BaseActor3D> shootable,
-                     Array<Pickup> pickups, Array<Enemy> enemies, Stage stage, HUD hud, DecalBatch decalBatch) {
+                     Array<Pickup> pickups, Array<Enemy> enemies, Stage stage, HUD hud, DecalBatch decalBatch, Array<Door> doors) {
         this.tilemap = tilemap;
         this.tiles = tiles;
         this.stage3D = stage3D;
@@ -58,11 +60,13 @@ public class MapLoader {
         this.stage = stage;
         this.hud = hud;
         this.decalBatch = decalBatch;
+        this.doors = doors;
 
         floorTiles = new Array();
 
         initializeTiles();
         initializePlayer();
+        initializeDoors();
         initializeBarrels();
         initializeEnemies();
         initializePickups();
@@ -119,6 +123,24 @@ public class MapLoader {
                     }
                 }
             }
+        }
+    }
+
+    private void initializeDoors() {
+        for (MapObject obj : tilemap.getTileList("actors", "door")) {
+            MapProperties props = obj.getProperties();
+            float x = (Float) props.get("x") * BaseGame.unitScale;
+            float y = (Float) props.get("y") * BaseGame.unitScale;
+            float rotation = 0;
+            if (props.get("rotation") != null)
+                rotation = (Float) props.get("rotation");
+            rotation %= 360;
+
+            Door door = new Door(x, y, stage3D, stage, rotation, player);
+            door.isLocked = (boolean) props.get("isLocked");
+
+            doors.add(door);
+            shootable.add(door);
         }
     }
 

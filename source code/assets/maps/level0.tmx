@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="40" height="20" tilewidth="64" tileheight="64" infinite="0" nextlayerid="13" nextobjectid="58847">
+<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="40" height="20" tilewidth="64" tileheight="64" infinite="0" nextlayerid="13" nextobjectid="58854">
  <tileset firstgid="1" name="test" tilewidth="64" tileheight="64" tilecount="128" columns="16" objectalignment="center">
   <image source="tileset.png" width="1024" height="512"/>
   <tile id="0">
@@ -76,6 +76,12 @@
   <tile id="40">
    <properties>
     <property name="name" value="shotgun"/>
+   </properties>
+  </tile>
+  <tile id="64">
+   <properties>
+    <property name="isLocked" type="bool" value="false"/>
+    <property name="name" value="door"/>
    </properties>
   </tile>
   <tile id="80">
@@ -1530,7 +1536,7 @@
   <object id="58621" gid="97" x="2112" y="1152" width="64" height="64"/>
   <object id="58622" gid="97" x="2112" y="1024" width="64" height="64"/>
  </objectgroup>
- <objectgroup id="8" name="actors" visible="0">
+ <objectgroup id="8" name="actors">
   <object id="2161" gid="2" x="128.393" y="1215.6" width="64" height="64" rotation="269.293"/>
   <object id="2162" gid="1" x="192" y="1024" width="64" height="64" rotation="-180.128"/>
   <object id="2163" gid="1" x="1010.67" y="697.333" width="64" height="64"/>
@@ -1606,5 +1612,16 @@
   <object id="58669" gid="4" x="1536" y="960" width="64" height="64"/>
   <object id="58670" gid="4" x="1600" y="960" width="64" height="64"/>
   <object id="58676" gid="41" x="128" y="1216" width="64" height="64"/>
+  <object id="58847" gid="65" x="1216" y="192" width="64" height="64" rotation="90"/>
+  <object id="58848" gid="65" x="896" y="1216" width="64" height="64" rotation="90"/>
+  <object id="58849" gid="65" x="1152" y="576" width="64" height="64"/>
+  <object id="58850" gid="65" x="832" y="640" width="64" height="64"/>
+  <object id="58851" gid="65" x="320" y="640" width="64" height="64"/>
+  <object id="58852" gid="65" x="2176" y="576" width="64" height="64"/>
+  <object id="58853" gid="65" x="448" y="128" width="64" height="64" rotation="90">
+   <properties>
+    <property name="isLocked" type="bool" value="true"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

@@ -2,6 +2,10 @@ package no.sandramoen.commanderqueen.actors.characters;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g3d.environment.DirectionalLight;
+import com.badlogic.gdx.graphics.g3d.environment.PointLight;
+import com.badlogic.gdx.math.Vector3;
 
 import no.sandramoen.commanderqueen.actors.utils.baseActors.BaseActor3D;
 import no.sandramoen.commanderqueen.utils.BaseGame;
@@ -24,6 +28,8 @@ public class Player extends BaseActor3D {
     private float forceMoveZ = movementSpeed;
     private float forceTime;
     private final float SECONDS_FORCED_TO_MOVE = .25f;
+
+    private DirectionalLight followLight;
 
     public Player(float y, float z, Stage3D stage3D, float rotation) {
         super(0, y, z, stage3D);

@@ -2,6 +2,7 @@ package no.sandramoen.commanderqueen.screens.gameplay.level;
 
 import com.badlogic.gdx.utils.Array;
 
+import no.sandramoen.commanderqueen.actors.Door;
 import no.sandramoen.commanderqueen.actors.Tile;
 import no.sandramoen.commanderqueen.actors.characters.Hund;
 import no.sandramoen.commanderqueen.actors.characters.enemy.Enemy;
@@ -10,11 +11,12 @@ import no.sandramoen.commanderqueen.utils.GameUtils;
 
 public class EnemyHandler {
 
-    public static void update(boolean intervalFlag, Array<Enemy> enemies, Array<Tile> tiles) {
+    public static void update(boolean intervalFlag, Array<Enemy> enemies, Array<Tile> tiles, Array<Door> doors) {
         for (int i = 0; i < enemies.size; i++) {
             preventOverlapWithOtherEnemies(enemies, i);
             illuminate(intervalFlag, enemies, tiles, i);
             preventOverLapWithTile(tiles, enemies.get(i));
+            preventOverlapWithDoors(doors, enemies.get(i));
         }
     }
 
@@ -54,6 +56,16 @@ public class EnemyHandler {
         for (Tile tile : tiles) {
             if (tile.type == "walls" && enemy.overlaps(tile)) {
                 enemy.preventOverlap(tile);
+                enemy.isForcedToMove = false;
+            }
+        }
+    }
+
+    private static void preventOverlapWithDoors(Array<Door> doors, Enemy enemy) {
+        for (Door door : doors) {
+            if (enemy.overlaps(door)) {
+                door.openAndClose();
+                enemy.preventOverlap(door);
                 enemy.isForcedToMove = false;
             }
         }

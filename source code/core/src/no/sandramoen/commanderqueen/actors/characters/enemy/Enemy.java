@@ -157,7 +157,7 @@ public class Enemy extends BaseActor3D {
         angleTowardPlayer = GameUtils.getAngleTowardsBaseActor3D(this, player);
         setDirection();
         setDirectionalAnimation();
-        attackIfPlayerIsVisible();
+        /*attackIfPlayerIsVisible();*/
 
         if (!isActive) return;
 
@@ -272,7 +272,6 @@ public class Enemy extends BaseActor3D {
             ));
     }
 
-
     protected void shootSound() {
     }
 
@@ -294,15 +293,15 @@ public class Enemy extends BaseActor3D {
         }
     }
 
+    protected void initializeSprite(float size) {
+        sprite = new BaseActor3D(0, 0, 0, stage3D);
+        sprite.buildModel(size, size, .001f, true);
+    }
+
     private void handleSprite() {
         sprite.setPosition(position);
         angleTowardPlayer = GameUtils.getAngleTowardsBaseActor3D(this, player);
         sprite.setTurnAngle(angleTowardPlayer);
-    }
-
-    protected void initializeSprite(float size) {
-        sprite = new BaseActor3D(0, 0, 0, stage3D);
-        sprite.buildModel(size, size, .001f, true);
     }
 
 
