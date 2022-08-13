@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="15" height="15" tilewidth="64" tileheight="64" infinite="0" nextlayerid="13" nextobjectid="59587">
+<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="15" height="15" tilewidth="64" tileheight="64" infinite="0" nextlayerid="14" nextobjectid="59606">
  <tileset firstgid="1" name="test" tilewidth="64" tileheight="64" tilecount="128" columns="16" objectalignment="center">
   <image source="tileset.png" width="1024" height="512"/>
   <tile id="0">
@@ -105,9 +105,24 @@
     <property name="name" value="light lonplate"/>
    </properties>
   </tile>
+  <tile id="84">
+   <properties>
+    <property name="name" value="flag 0"/>
+   </properties>
+  </tile>
   <tile id="96">
    <properties>
     <property name="name" value="lights 0"/>
+   </properties>
+  </tile>
+  <tile id="112">
+   <properties>
+    <property name="name" value="computer 0"/>
+   </properties>
+  </tile>
+  <tile id="113">
+   <properties>
+    <property name="name" value="suitcase 0"/>
    </properties>
   </tile>
  </tileset>
@@ -130,9 +145,27 @@
   <object id="59582" gid="84" x="192" y="512" width="64" height="64" rotation="45"/>
   <object id="59583" gid="84" x="236.667" y="467.583" width="64" height="64" rotation="45"/>
   <object id="59584" gid="84" x="146.75" y="557.5" width="64" height="64" rotation="45"/>
+  <object id="59590" gid="84" x="716.667" y="532" width="64" height="64" rotation="31.0339"/>
+  <object id="59591" gid="84" x="704" y="576" width="64" height="64"/>
+  <object id="59592" gid="84" x="750" y="501.333" width="64" height="64" rotation="62.9691"/>
+  <object id="59593" gid="84" x="718" y="614" width="64" height="64" rotation="321.024"/>
+  <object id="59594" gid="83" x="448" y="192" width="64" height="64"/>
+  <object id="59595" gid="83" x="448" y="128" width="64" height="64"/>
+  <object id="59596" gid="83" x="448" y="64" width="64" height="64"/>
+  <object id="59597" gid="83" x="384" y="64" width="64" height="64"/>
+  <object id="59598" gid="83" x="384" y="128" width="64" height="64"/>
+  <object id="59599" gid="83" x="384" y="192" width="64" height="64"/>
+  <object id="59600" gid="83" x="320" y="192" width="64" height="64"/>
+  <object id="59601" gid="83" x="320" y="128" width="64" height="64"/>
+  <object id="59602" gid="83" x="320" y="64" width="64" height="64"/>
  </objectgroup>
  <objectgroup id="11" name="walls"/>
  <objectgroup id="12" name="ceilings"/>
+ <objectgroup id="13" name="props">
+  <object id="59603" gid="113" x="384" y="64" width="64" height="64"/>
+  <object id="59604" gid="114" x="448" y="64" width="64" height="64"/>
+  <object id="59605" gid="114" x="320" y="64" width="64" height="64"/>
+ </objectgroup>
  <objectgroup id="8" name="actors">
   <object id="59559" gid="4" x="512" y="960" width="64" height="64"/>
   <object id="59577" gid="2" x="320" y="320" width="64" height="64"/>

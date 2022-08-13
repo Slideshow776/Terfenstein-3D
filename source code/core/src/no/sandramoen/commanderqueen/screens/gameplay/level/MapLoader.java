@@ -24,6 +24,7 @@ import no.sandramoen.commanderqueen.actors.pickups.Health;
 import no.sandramoen.commanderqueen.actors.pickups.Pickup;
 import no.sandramoen.commanderqueen.actors.pickups.Shells;
 import no.sandramoen.commanderqueen.actors.pickups.Shotgun;
+import no.sandramoen.commanderqueen.actors.props.Prop;
 import no.sandramoen.commanderqueen.actors.utils.baseActors.BaseActor3D;
 import no.sandramoen.commanderqueen.actors.characters.enemy.Enemy;
 import no.sandramoen.commanderqueen.actors.utils.TilemapActor;
@@ -71,6 +72,7 @@ public class MapLoader {
         initializeEnemies();
         initializePickups();
         initializeLights();
+        initializeProps();
     }
 
     private void initializeTiles() {
@@ -84,7 +86,7 @@ public class MapLoader {
         tileTypes.add("walls", "ceilings", "floors");
         Array<String> tileTextures = new Array<>();
         tileTextures.add("big plates", "lonplate", "light big plates", "light lonplate");
-        tileTextures.add("lights 0");
+        tileTextures.add("lights 0", "flag 0");
 
         for (String type : tileTypes) {
             for (String texture : tileTextures) {
@@ -240,6 +242,20 @@ public class MapLoader {
 
             else if (type.equalsIgnoreCase("armor small") || type.equalsIgnoreCase("armor medium") || type.equalsIgnoreCase("armor big"))
                 pickups.add(new Armor(x, y, stage3D, amount, player, floorTiles));
+        }
+    }
+
+    private void initializeProps() {
+        Array<String> types = new Array<>();
+        types.add("computer 0", "suitcase 0");
+
+        for (String type : types) {
+            for (MapObject obj : tilemap.getTileList("props", type)) {
+                MapProperties props = obj.getProperties();
+                float y = (Float) props.get("x") * BaseGame.unitScale;
+                float z = (Float) props.get("y") * BaseGame.unitScale;
+                new Prop(y, z, stage3D, type, player);
+            }
         }
     }
 }
