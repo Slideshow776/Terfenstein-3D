@@ -12,6 +12,7 @@ import com.badlogic.gdx.utils.Array;
 
 import no.sandramoen.commanderqueen.actors.Barrel;
 import no.sandramoen.commanderqueen.actors.Door;
+import no.sandramoen.commanderqueen.actors.Elevator;
 import no.sandramoen.commanderqueen.actors.characters.Menig;
 import no.sandramoen.commanderqueen.actors.characters.Sersjant;
 import no.sandramoen.commanderqueen.actors.decals.BloodDecals;
@@ -87,6 +88,8 @@ public class LevelScreen extends BaseScreen3D {
         updateUI();
         for (Door door : doors)
             player.preventOverlap(door);
+        for (Elevator elevator : mapLoader.elevators)
+            player.preventOverlap(elevator);
 
         if (!Gdx.input.isCursorCatched())
             Gdx.input.setCursorCatched(true);
@@ -128,6 +131,11 @@ public class LevelScreen extends BaseScreen3D {
             for (Door door : doors)
                 if (player.isWithinDistance(Tile.height * .8f, door))
                     door.openAndClose();
+            for (Elevator elevator : mapLoader.elevators)
+                if (player.isWithinDistance(Tile.height * 1.1f, elevator)) {
+                    System.out.println("level complete! " + MathUtils.random(1_000, 9_999));
+                    BaseGame.elevatorSound.play(BaseGame.soundVolume);
+                }
         }
 
         return super.keyDown(keycode);
@@ -289,7 +297,7 @@ public class LevelScreen extends BaseScreen3D {
 
 
     private void initializeMap() {
-        tilemap = new TilemapActor(BaseGame.testMap, mainStage3D);
+        tilemap = new TilemapActor(BaseGame.level0Map, mainStage3D);
         tiles = new Array();
         shootable = new Array();
         pickups = new Array();

@@ -12,6 +12,7 @@ import com.badlogic.gdx.utils.Array;
 
 import no.sandramoen.commanderqueen.actors.Barrel;
 import no.sandramoen.commanderqueen.actors.Door;
+import no.sandramoen.commanderqueen.actors.Elevator;
 import no.sandramoen.commanderqueen.actors.Tile;
 import no.sandramoen.commanderqueen.actors.characters.Hund;
 import no.sandramoen.commanderqueen.actors.characters.Menig;
@@ -35,6 +36,7 @@ import no.sandramoen.commanderqueen.utils.pathFinding.TileGraph;
 public class MapLoader {
     public Player player;
     public TileGraph tileGraph;
+    public Array<Elevator> elevators = new Array();
 
     private Stage3D stage3D;
     private TilemapActor tilemap;
@@ -70,6 +72,7 @@ public class MapLoader {
         initializeTiles();
         initializePlayer();
         initializeDoors();
+        initializeElevator();
         initializeBarrels();
         initializeEnemies();
         initializePickups();
@@ -88,7 +91,7 @@ public class MapLoader {
         tileTypes.add("walls", "ceilings", "floors");
         Array<String> tileTextures = new Array<>();
         tileTextures.add("big plates", "lonplate", "light big plates", "light lonplate");
-        tileTextures.add("lights 0", "flag 0");
+        tileTextures.add("lights 0", "flag 0", "elevator wall", "light lonplate 2");
 
         for (String type : tileTypes) {
             for (String texture : tileTextures) {
@@ -159,6 +162,22 @@ public class MapLoader {
 
             doors.add(door);
             shootable.add(door);
+        }
+    }
+
+    private void initializeElevator() {
+        for (MapObject obj : tilemap.getTileList("actors", "elevator")) {
+            MapProperties props = obj.getProperties();
+            float x = (Float) props.get("x") * BaseGame.unitScale;
+            float y = (Float) props.get("y") * BaseGame.unitScale;
+            float rotation = 0;
+            if (props.get("rotation") != null)
+                rotation = (Float) props.get("rotation");
+            rotation %= 360;
+
+            Elevator elevator = new Elevator(x, y, stage3D, stage, rotation, player);
+            shootable.add(elevator);
+            elevators.add(elevator);
         }
     }
 

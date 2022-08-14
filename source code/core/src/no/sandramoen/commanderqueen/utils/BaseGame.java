@@ -50,6 +50,7 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
     public static Sound shotgunSound;
     public static Sound door0OpeningSound;
     public static Sound door0ClosingSound;
+    public static Sound elevatorSound;
 
     // game state
     public static float mouseMovementSensitivity = .05f;
@@ -131,6 +132,7 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
         assetManager.load("audio/sound/145209__lensflare8642__shotgun-sounds.wav", Sound.class);
         assetManager.load("audio/sound/door0 opening.wav", Sound.class);
         assetManager.load("audio/sound/door0 closing.wav", Sound.class);
+        assetManager.load("audio/sound/502341__universodemalaonda__elevator-03.wav", Sound.class);
 
         // tiled maps
         assetManager.setLoader(TiledMap.class, new TmxMapLoader(new InternalFileHandleResolver()));
@@ -166,6 +168,7 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
         shotgunSound = assetManager.get("audio/sound/145209__lensflare8642__shotgun-sounds.wav", Sound.class);
         door0OpeningSound = assetManager.get("audio/sound/door0 opening.wav", Sound.class);
         door0ClosingSound = assetManager.get("audio/sound/door0 closing.wav", Sound.class);
+        elevatorSound = assetManager.get("audio/sound/502341__universodemalaonda__elevator-03.wav", Sound.class);
 
         // tiled maps
         testMap = assetManager.get("maps/test.tmx", TiledMap.class);

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="15" height="15" tilewidth="64" tileheight="64" infinite="0" nextlayerid="15" nextobjectid="60462">
+<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="15" height="15" tilewidth="64" tileheight="64" infinite="0" nextlayerid="15" nextobjectid="60494">
  <tileset firstgid="1" name="test" tilewidth="64" tileheight="64" tilecount="128" columns="16" objectalignment="center">
   <image source="tileset.png" width="1024" height="512"/>
   <tile id="0">
@@ -82,6 +82,23 @@
    <properties>
     <property name="isLocked" type="bool" value="false"/>
     <property name="name" value="door"/>
+   </properties>
+  </tile>
+  <tile id="65">
+   <properties>
+    <property name="name" value="elevator"/>
+   </properties>
+  </tile>
+  <tile id="66">
+   <properties>
+    <property name="depth" type="float" value="4"/>
+    <property name="name" value="elevator wall"/>
+   </properties>
+  </tile>
+  <tile id="67">
+   <properties>
+    <property name="depth" type="float" value="4"/>
+    <property name="name" value="light lonplate 2"/>
    </properties>
   </tile>
   <tile id="80">
@@ -296,6 +313,19 @@
     <property name="patrol" value="a"/>
    </properties>
   </object>
+  <object id="60462" gid="83" x="512" y="128" width="64" height="64"/>
+  <object id="60463" gid="83" x="512" y="64" width="64" height="64"/>
+  <object id="60464" gid="83" x="512" y="128" width="64" height="64"/>
+  <object id="60465" gid="83" x="576" y="128" width="64" height="64"/>
+  <object id="60466" gid="83" x="448" y="128" width="64" height="64"/>
+  <object id="60467" gid="83" x="384" y="128" width="64" height="64"/>
+  <object id="60468" gid="83" x="448" y="128" width="64" height="64"/>
+  <object id="60469" gid="83" x="576" y="128" width="64" height="64"/>
+  <object id="60470" gid="83" x="512" y="128" width="64" height="64"/>
+  <object id="60471" gid="83" x="512" y="64" width="64" height="64"/>
+  <object id="60472" gid="83" x="512" y="0" width="64" height="64"/>
+  <object id="60484" gid="68" x="-64" y="384" width="64" height="64"/>
+  <object id="60485" gid="83" x="0" y="384" width="64" height="64"/>
  </objectgroup>
  <objectgroup id="11" name="walls">
   <object id="60092" gid="83" x="320" y="704" width="64" height="64"/>
@@ -326,15 +356,22 @@
   <object id="60152" gid="83" x="704" y="320" width="64" height="64"/>
   <object id="60153" gid="83" x="704" y="256" width="64" height="64"/>
   <object id="60154" gid="83" x="704" y="192" width="64" height="64"/>
+  <object id="60479" gid="83" x="0" y="448" width="64" height="64"/>
+  <object id="60480" gid="83" x="0" y="320" width="64" height="64"/>
+  <object id="60481" gid="67" x="-64" y="448" width="64" height="64"/>
+  <object id="60482" gid="67" x="-64" y="320" width="64" height="64"/>
  </objectgroup>
- <objectgroup id="12" name="ceilings"/>
+ <objectgroup id="12" name="ceilings">
+  <object id="60487" gid="68" x="-64" y="384" width="64" height="64"/>
+  <object id="60489" gid="83" x="0" y="448" width="64" height="64"/>
+  <object id="60490" gid="83" x="0" y="320" width="64" height="64"/>
+  <object id="60491" gid="83" x="0" y="384" width="64" height="64"/>
+  <object id="60492" gid="83" x="0" y="384" width="64" height="64"/>
+ </objectgroup>
  <objectgroup id="13" name="props"/>
  <objectgroup id="8" name="actors">
-  <object id="59662" gid="2" x="192" y="384" width="64" height="64"/>
-  <object id="59886" gid="4" x="448" y="768" width="64" height="64">
-   <properties>
-    <property name="patrol" value="a"/>
-   </properties>
-  </object>
+  <object id="59662" gid="2" x="192" y="384" width="64" height="64" rotation="90.2815"/>
+  <object id="60486" gid="65" x="-33.3333" y="383.333" width="64" height="64" rotation="90"/>
+  <object id="60488" gid="66" x="-128" y="384" width="64" height="64"/>
  </objectgroup>
 </map>

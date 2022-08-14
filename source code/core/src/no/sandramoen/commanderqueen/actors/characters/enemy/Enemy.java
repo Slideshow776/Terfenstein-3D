@@ -162,7 +162,7 @@ public class Enemy extends BaseActor3D {
         angleTowardPlayer = GameUtils.getAngleTowardsBaseActor3D(this, player);
         setDirection();
         setDirectionalAnimation();
-        /*attackIfPlayerIsVisible();*/
+        attackIfPlayerIsVisible();
 
         if (!isActive) return;
 
@@ -584,10 +584,10 @@ public class Enemy extends BaseActor3D {
                 new BaseActor(0, 0, stage).addAction(Actions.sequence(
                         Actions.delay(5f),
                         Actions.run(() -> {
-                            if (patrol == null)
-                                setNewAIPath(startingPosition);
-                            else
+                            if (patrol.size > 0)
                                 setNewAIPath(patrol.get(getPatrolIndex()));
+                            else
+                                setNewAIPath(startingPosition);
                             isActive = true;
                             state = State.WALKING;
                         })

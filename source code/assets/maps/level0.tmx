@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="50" height="20" tilewidth="64" tileheight="64" infinite="0" nextlayerid="14" nextobjectid="58924">
+<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="50" height="20" tilewidth="64" tileheight="64" infinite="0" nextlayerid="14" nextobjectid="58933">
  <tileset firstgid="1" name="test" tilewidth="64" tileheight="64" tilecount="128" columns="16" objectalignment="center">
   <image source="tileset.png" width="1024" height="512"/>
   <tile id="0">
@@ -82,6 +82,23 @@
    <properties>
     <property name="isLocked" type="bool" value="false"/>
     <property name="name" value="door"/>
+   </properties>
+  </tile>
+  <tile id="65">
+   <properties>
+    <property name="name" value="elevator"/>
+   </properties>
+  </tile>
+  <tile id="66">
+   <properties>
+    <property name="depth" type="float" value="4"/>
+    <property name="name" value="elevator wall"/>
+   </properties>
+  </tile>
+  <tile id="67">
+   <properties>
+    <property name="depth" type="float" value="4"/>
+    <property name="name" value="light lonplate 2"/>
    </properties>
   </tile>
   <tile id="80">
@@ -704,6 +721,8 @@
   <object id="58914" gid="82" x="1344" y="192" width="64" height="64"/>
   <object id="58915" gid="82" x="1408" y="192" width="64" height="64"/>
   <object id="58916" gid="82" x="1472" y="192" width="64" height="64"/>
+  <object id="58927" gid="68" x="2816" y="320" width="64" height="64"/>
+  <object id="58929" gid="82" x="2752" y="320" width="64" height="64"/>
  </objectgroup>
  <objectgroup id="11" name="walls">
   <object id="1234" gid="81" x="0" y="128" width="64" height="64"/>
@@ -910,7 +929,6 @@
   <object id="58074" gid="81" x="2752" y="128" width="64" height="64"/>
   <object id="58075" gid="81" x="2752" y="192" width="64" height="64"/>
   <object id="58076" gid="81" x="2752" y="256" width="64" height="64"/>
-  <object id="58077" gid="81" x="2752" y="320" width="64" height="64"/>
   <object id="58078" gid="81" x="2752" y="384" width="64" height="64"/>
   <object id="58079" gid="81" x="2752" y="448" width="64" height="64"/>
   <object id="58081" gid="81" x="2752" y="576" width="64" height="64"/>
@@ -1020,6 +1038,8 @@
   <object id="58910" gid="81" x="1472" y="384" width="64" height="64"/>
   <object id="58911" gid="81" x="1472" y="384" width="64" height="64"/>
   <object id="58912" gid="81" x="1472" y="320" width="64" height="64"/>
+  <object id="58924" gid="67" x="2816" y="256" width="64" height="64"/>
+  <object id="58925" gid="67" x="2816" y="384" width="64" height="64"/>
  </objectgroup>
  <objectgroup id="12" name="ceilings">
   <object id="1937" gid="82" x="1152" y="896" width="64" height="64"/>
@@ -1594,6 +1614,8 @@
   <object id="58920" gid="82" x="1344" y="192" width="64" height="64"/>
   <object id="58921" gid="82" x="1408" y="192" width="64" height="64"/>
   <object id="58922" gid="82" x="1472" y="192" width="64" height="64"/>
+  <object id="58928" gid="68" x="2816" y="320" width="64" height="64"/>
+  <object id="58930" gid="82" x="2752" y="320" width="64" height="64"/>
  </objectgroup>
  <objectgroup id="13" name="props">
   <object id="58854" gid="113" x="132" y="111.5" width="64" height="64"/>
@@ -1699,5 +1721,7 @@
   <object id="58875" gid="33" x="1152" y="128" width="64" height="64"/>
   <object id="58876" gid="33" x="2240" y="832" width="64" height="64"/>
   <object id="58885" gid="65" x="1472" y="192" width="64" height="64" rotation="90"/>
+  <object id="58931" gid="65" x="2784.3" y="320" width="64" height="64" rotation="90"/>
+  <object id="58932" gid="66" x="2880" y="320" width="64" height="64"/>
  </objectgroup>
 </map>

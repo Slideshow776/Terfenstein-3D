@@ -32,7 +32,7 @@ public class Player extends BaseActor3D {
     public Player(float y, float z, Stage3D stage3D, float rotation) {
         super(0, y, z, stage3D);
         this.stage3D = stage3D;
-        buildModel(1.5f, 3f, 1.5f, true);
+        buildModel(1.7f, 3f, 1.7f, true);
         setBaseRectangle();
         isVisible = false;
         turnPlayer(rotation);
