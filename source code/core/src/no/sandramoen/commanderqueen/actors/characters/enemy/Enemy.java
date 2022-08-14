@@ -37,6 +37,8 @@ public class Enemy extends BaseActor3D {
     public boolean isActive;
     public boolean isRanged = true;
     public int score = 0;
+    public Array<Tile> patrol = new Array();
+    private int patrolIndex = 0;
 
     protected Player player;
     protected float movementSpeed;
@@ -160,7 +162,7 @@ public class Enemy extends BaseActor3D {
         angleTowardPlayer = GameUtils.getAngleTowardsBaseActor3D(this, player);
         setDirection();
         setDirectionalAnimation();
-        attackIfPlayerIsVisible();
+        /*attackIfPlayerIsVisible();*/
 
         if (!isActive) return;
 
@@ -244,6 +246,12 @@ public class Enemy extends BaseActor3D {
         for (Enemy enemy : enemies)
             if (enemy != this)
                 this.enemies.add(enemy);
+    }
+
+    public void setPatrol(Array<Tile> path) {
+        patrol = path;
+        setNewAIPath(patrol.get(getPatrolIndex()));
+        isActive = true;
     }
 
 
@@ -576,13 +584,23 @@ public class Enemy extends BaseActor3D {
                 new BaseActor(0, 0, stage).addAction(Actions.sequence(
                         Actions.delay(5f),
                         Actions.run(() -> {
-                            setNewAIPath(startingPosition);
+                            if (patrol == null)
+                                setNewAIPath(startingPosition);
+                            else
+                                setNewAIPath(patrol.get(getPatrolIndex()));
                             isActive = true;
                             state = State.WALKING;
                         })
                 ));
             }
         }
+    }
+
+    private int getPatrolIndex() {
+        patrolIndex++;
+        if (patrolIndex >= patrol.size)
+            patrolIndex = 0;
+        return patrolIndex;
     }
 
     private void setPathToLastKnownPlayerPosition() {

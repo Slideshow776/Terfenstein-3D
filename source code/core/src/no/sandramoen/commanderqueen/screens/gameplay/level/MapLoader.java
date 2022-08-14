@@ -49,6 +49,8 @@ public class MapLoader {
     private Array<Door> doors;
     private DecalBatch decalBatch;
 
+    private Array<Array<Tile>> patrols = new Array();
+
     public MapLoader(TilemapActor tilemap, Array<Tile> tiles, Stage3D stage3D, Player player, Array<BaseActor3D> shootable,
                      Array<Pickup> pickups, Array<Enemy> enemies, Stage stage, HUD hud, DecalBatch decalBatch, Array<Door> doors) {
         this.tilemap = tilemap;
@@ -94,16 +96,27 @@ public class MapLoader {
                     MapProperties props = obj.getProperties();
                     float y = (Float) props.get("x") * BaseGame.unitScale;
                     float z = (Float) props.get("y") * BaseGame.unitScale;
+
                     float width = (Float) props.get("width") * BaseGame.unitScale;
                     float height = (Float) props.get("height") * BaseGame.unitScale;
+
                     float rotation = 0;
                     if (props.get("rotation") != null)
                         rotation = (Float) props.get("rotation");
                     rotation %= 360;
+
                     float depth = (float) props.get("depth");
+
                     Tile tile = new Tile(y, z, width, depth, height, type, texture, stage3D, rotation);
                     tiles.add(tile);
                     shootable.add(tile);
+
+                    String patrol = (String) props.get("patrol");
+                    if (patrol != null && patrol.length() > 0 && patrol.equalsIgnoreCase("a")) {
+                        if (patrols.size == 0)
+                            patrols.add(new Array());
+                        patrols.get(0).add(tile);
+                    }
                 }
             }
         }
@@ -197,6 +210,10 @@ public class MapLoader {
             if (type.equalsIgnoreCase("sersjant"))
                 enemies.add(new Sersjant(x, y, stage3D, player, rotation, tileGraph, floorTiles, stage, hud, decalBatch));
             shootable.add(enemies.get(enemies.size - 1));
+
+            String patrol = (String) props.get("patrol");
+            if (patrol != null && patrol.equalsIgnoreCase("a") && patrols.size > 0)
+                enemies.get(enemies.size - 1).setPatrol(patrols.get(0));
         }
 
         for (Enemy enemy : enemies)
