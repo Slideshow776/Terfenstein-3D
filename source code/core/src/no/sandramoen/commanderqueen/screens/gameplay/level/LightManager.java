@@ -43,7 +43,7 @@ public class LightManager {
     }
 
     public void addMuzzleLight(Vector3 position) {
-        addTemporaryPointLight(position, .3f, .1f, 0, 50, .1f, .1f / 3);
+        addTemporaryPointLight(position, .3f, .1f, 0, 60, .1f, .1f / 3);
     }
 
     public void addSmallExplosion(Vector3 position) {

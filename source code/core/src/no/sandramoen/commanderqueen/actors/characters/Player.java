@@ -29,12 +29,10 @@ public class Player extends BaseActor3D {
     private float forceTime;
     private final float SECONDS_FORCED_TO_MOVE = .25f;
 
-    private DirectionalLight followLight;
-
     public Player(float y, float z, Stage3D stage3D, float rotation) {
         super(0, y, z, stage3D);
         this.stage3D = stage3D;
-        buildModel(1.5f, 1.5f, 1.5f, true);
+        buildModel(1.5f, 3f, 1.5f, true);
         setBaseRectangle();
         isVisible = false;
         turnPlayer(rotation);
@@ -53,7 +51,9 @@ public class Player extends BaseActor3D {
 
         this.stage3D.camera.position.y = position.y;
         this.stage3D.camera.position.z = position.z;
+
         headBobbing(dt);
+
         if (isMoving)
             BaseGame.metalWalkingMusic.setVolume(BaseGame.soundVolume);
         else

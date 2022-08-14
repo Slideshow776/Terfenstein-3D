@@ -86,32 +86,38 @@
   </tile>
   <tile id="80">
    <properties>
+    <property name="depth" type="float" value="4"/>
     <property name="illuminated" type="bool" value="false"/>
     <property name="name" value="big plates"/>
    </properties>
   </tile>
   <tile id="81">
    <properties>
+    <property name="depth" type="float" value="4"/>
     <property name="name" value="lonplate"/>
    </properties>
   </tile>
   <tile id="82">
    <properties>
+    <property name="depth" type="float" value="4"/>
     <property name="name" value="light big plates"/>
    </properties>
   </tile>
   <tile id="83">
    <properties>
+    <property name="depth" type="float" value="4"/>
     <property name="name" value="light lonplate"/>
    </properties>
   </tile>
   <tile id="84">
    <properties>
+    <property name="depth" type="float" value="4"/>
     <property name="name" value="flag 0"/>
    </properties>
   </tile>
   <tile id="96">
    <properties>
+    <property name="depth" type="float" value="4"/>
     <property name="name" value="lights 0"/>
    </properties>
   </tile>
