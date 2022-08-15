@@ -6,9 +6,12 @@ import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.PerspectiveCamera;
 import com.badlogic.gdx.graphics.g3d.decals.Decal;
+import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.math.collision.Ray;
+import com.badlogic.gdx.scenes.scene2d.Event;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.utils.Array;
 
 import no.sandramoen.commanderqueen.actors.Tile;
@@ -65,6 +68,18 @@ public class GameUtils {
 
     public static float normalizeValue(float value, float min, float max) {
         return (value - min) / (max - min);
+    }
+
+    public static boolean isTouchDownEvent(Event event) {
+        return event instanceof InputEvent && ((InputEvent) event).getType() == InputEvent.Type.touchDown;
+    }
+
+    public static ShaderProgram initShaderProgram(String vertexShader, String fragmentShader) {
+        ShaderProgram.pedantic = false;
+        ShaderProgram shaderProgram = new ShaderProgram(vertexShader, fragmentShader);
+        if (!shaderProgram.isCompiled())
+            Gdx.app.error(GameUtils.class.getSimpleName(), "Error: Couldn't compile shader => " + shaderProgram.getLog());
+        return shaderProgram;
     }
 
     public static void playSoundRelativeToDistance(Sound sound, float distance, float vocalRange) {

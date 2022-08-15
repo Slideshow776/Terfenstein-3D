@@ -24,10 +24,16 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
     // game assets
     public static TextureAtlas textureAtlas;
     public static Label.LabelStyle label26Style;
+
+    public static String defaultShader;
+    public static String shockwaveShader;
+
     public static TiledMap testMap;
     public static TiledMap level0Map;
+
     public static Music level0Music;
     public static Music metalWalkingMusic;
+
     public static Sound pistolShotSound;
     public static Sound menigActiveSound;
     public static Sound menigHurtSound;
@@ -53,6 +59,7 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
     public static Sound elevatorSound;
 
     // game state
+    public static boolean isCustomShadersEnabled = true;
     public static float mouseMovementSensitivity = .05f;
     public static boolean isHeadBobbing = true;
     public static float aspectRatio = 16 / 9f;
@@ -73,6 +80,10 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
         Gdx.input.setInputProcessor(new InputMultiplexer());
         UI();
         assetManager();
+    }
+
+    public static void setActiveScreen(BaseScreen screen) {
+        game.setScreen(screen);
     }
 
     public static void setActiveScreen(BaseScreen3D screen) {
@@ -103,7 +114,12 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
         long startTime = System.currentTimeMillis();
         assetManager = new AssetManager();
         assetManager.setErrorListener(this);
+        assetManager.setLoader(Text.class, new TextLoader(new InternalFileHandleResolver()));
         assetManager.load("images/included/packed/images.pack.atlas", TextureAtlas.class);
+
+        // shaders
+        assetManager.load(new AssetDescriptor("shaders/default.vs", Text.class, new TextLoader.TextParameter()));
+        assetManager.load(new AssetDescriptor("shaders/shockwave.fs", Text.class, new TextLoader.TextParameter()));
 
         // music
         assetManager.load("audio/music/342991__furbyguy__stuttering-guitar-metal.wav", Music.class);
@@ -140,6 +156,11 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
         assetManager.load("maps/level0.tmx", TiledMap.class);
 
         assetManager.finishLoading();
+
+
+        // shaders
+        defaultShader = assetManager.get("shaders/default.vs", Text.class).getString();
+        shockwaveShader = assetManager.get("shaders/shockwave.fs", Text.class).getString();
 
         // music
         level0Music = assetManager.get("audio/music/342991__furbyguy__stuttering-guitar-metal.wav", Music.class);

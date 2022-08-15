@@ -3,12 +3,14 @@ package no.sandramoen.commanderqueen.actors.utils.baseActors;
 import static java.lang.Math.abs;
 
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.Group;
+import com.badlogic.gdx.utils.Array;
 
 import no.sandramoen.commanderqueen.utils.BaseGame;
 
@@ -99,6 +101,36 @@ public class BaseActor extends Group {
 
     public Boolean isAnimationFinished() {
         return animation.isAnimationFinished(animationTime);
+    }
+
+    public Animation<TextureRegion> loadTexture(String fileName) {
+        if (fileName.isEmpty())
+            Gdx.app.error(getClass().getSimpleName(), "Error: Texture path is invalid: " + fileName);
+        Array<String> fileNames = new Array(1);
+        fileNames.add(fileName);
+        return loadAnimationFromFiles(fileNames, 1f, true);
+    }
+
+    private Animation<TextureRegion> loadAnimationFromFiles(Array<String> fileNames, Float frameDuration, Boolean loop) {
+        Array<TextureRegion> textureArray = new Array();
+
+        for (int i = 0; i < fileNames.size; i++) {
+            Texture texture = new Texture(Gdx.files.internal(fileNames.get(i)));
+            texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+            textureArray.add(new TextureRegion(texture));
+        }
+
+        Animation<TextureRegion> anim = new Animation(frameDuration, textureArray);
+
+        if (loop)
+            anim.setPlayMode(Animation.PlayMode.LOOP);
+        else
+            anim.setPlayMode(Animation.PlayMode.NORMAL);
+
+        if (animation == null)
+            setAnimation(anim);
+
+        return anim;
     }
 
     public void setAnimation(Animation<TextureRegion> anim) {
