@@ -87,7 +87,7 @@ public class SplashScreen extends BaseScreen {
     private void disposeAndSetActiveScreen() {
         blackOverlay.addAction(Actions.after(Actions.run(() -> {
             dispose();
-            BaseGame.setActiveScreen(new LevelScreen());
+            BaseGame.setActiveScreen(new MenuScreen());
         })));
     }
 }

@@ -23,14 +23,14 @@ public class UIHandler {
                 .size(hud.getWidth(), hud.getHeight())
                 .row();
 
-        statusLabel = new Label("enemies left: " + enemies.size, BaseGame.label26Style);
+        statusLabel = new Label("enemies left: " + enemies.size, BaseGame.mySkin);
         uiTable.add(statusLabel)
                 .expandX()
                 .left()
                 .padLeft(Gdx.graphics.getWidth() * .01f)
                 .row();
 
-        debugLabel = new Label(" ", BaseGame.label26Style);
+        debugLabel = new Label(" ", BaseGame.mySkin);
         uiTable.add(debugLabel)
                 .expandX()
                 .top()
@@ -39,7 +39,7 @@ public class UIHandler {
                 .padLeft(Gdx.graphics.getWidth() * .01f)
                 .row();
 
-        gameLabel = new Label("", BaseGame.label26Style);
+        gameLabel = new Label("", BaseGame.mySkin);
         gameLabel.setColor(Color.RED);
         gameLabel.setFontScale(2f);
         uiTable.add(gameLabel)

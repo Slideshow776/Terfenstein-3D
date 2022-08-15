@@ -328,7 +328,7 @@ public class HUD extends BaseActor {
 
 
     private Label initializeLabel(String text) {
-        Label label = new Label(text, BaseGame.label26Style);
+        Label label = new Label(text, BaseGame.mySkin);
         label.setColor(BaseGame.redColor);
         label.setAlignment(Align.center);
         return label;

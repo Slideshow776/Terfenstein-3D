@@ -10,11 +10,10 @@ import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 
 public abstract class BaseGame extends Game implements AssetErrorListener {
 
@@ -22,8 +21,9 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
     public static AssetManager assetManager;
 
     // game assets
-    public static TextureAtlas textureAtlas;
-    public static Label.LabelStyle label26Style;
+    public static TextureAtlas textureAtlas;/*
+    public static Label.LabelStyle label26Style;*/
+    public static Skin mySkin;
 
     public static String defaultShader;
     public static String shockwaveShader;
@@ -90,6 +90,7 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
         game.setScreen(screen);
     }
 
+    @Override
     public void dispose() {
         super.dispose();
         try {
@@ -104,10 +105,8 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
     }
 
     private void UI() {
-        label26Style = new Label.LabelStyle();
-        BitmapFont font26 = new BitmapFont(Gdx.files.internal("fonts/arcade26.fnt"));
-        font26.getData().setScale(Gdx.graphics.getWidth() * .0005f);
-        label26Style.font = font26;
+        mySkin = new Skin(Gdx.files.internal("skins/mySkin/mySkin.json"));
+        mySkin.getFont("arcade26").getData().setScale(Gdx.graphics.getWidth() * .0005f);
     }
 
     private void assetManager() {
