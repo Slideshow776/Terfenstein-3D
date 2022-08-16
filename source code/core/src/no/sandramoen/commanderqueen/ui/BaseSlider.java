@@ -22,7 +22,7 @@ public class BaseSlider extends Table {
 
     public BaseSlider(String labelText, float min, float max, float stepSize) {
         label = new TypingLabel(labelText, new Label.LabelStyle(BaseGame.mySkin.get("arcade26", BitmapFont.class), null));
-        setWidgetHoverColor(label);
+        GameUtils.setWidgetHoverColor(label);
         add(label).growX().left().padRight(Gdx.graphics.getWidth() * .05f);
 
         slider = initializeSlider(labelText, min, max, stepSize);
@@ -103,23 +103,6 @@ public class BaseSlider extends Table {
             public void exit(InputEvent event, float x, float y, int pointer, Actor toActor) {
                 super.exit(event, x, y, pointer, toActor);
                 label.setColor(BaseGame.whiteColor);
-            }
-        });
-    }
-
-    private void setWidgetHoverColor(Widget widget) {
-        widget.addListener(new ClickListener() {
-            @Override
-            public void enter(InputEvent event, float x, float y, int pointer, Actor fromActor) {
-                super.enter(event, x, y, pointer, fromActor);
-                widget.setColor(BaseGame.redColor);
-                BaseGame.hoverOverEnterSound.play(BaseGame.soundVolume);
-            }
-
-            @Override
-            public void exit(InputEvent event, float x, float y, int pointer, Actor toActor) {
-                super.exit(event, x, y, pointer, toActor);
-                widget.setColor(BaseGame.whiteColor);
             }
         });
     }
