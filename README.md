@@ -1,4 +1,4 @@
-# 3D-shooting-game
+# Terfenstein 3D
 
 [Try it](https://slideshow776.github.io/3D-shooting-game/)
 [![image](https://user-images.githubusercontent.com/4059636/180185920-df0b8e69-6390-43dd-83d7-99acd720655a.gif)
