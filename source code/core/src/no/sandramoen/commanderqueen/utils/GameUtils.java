@@ -10,8 +10,11 @@ import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.math.collision.Ray;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Event;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.ui.Widget;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Array;
 
 import no.sandramoen.commanderqueen.actors.Tile;
@@ -36,6 +39,23 @@ public class GameUtils {
         BaseGame.soundVolume = BaseGame.preferences.getFloat("soundVolume");
         BaseGame.voiceVolume = BaseGame.preferences.getFloat("voiceVolume");
         BaseGame.mouseMovementSensitivity = BaseGame.preferences.getFloat("mouseMovementSensitivity");
+    }
+
+    public static void setWidgetHoverColor(Widget widget) {
+        widget.addListener(new ClickListener() {
+            @Override
+            public void enter(InputEvent event, float x, float y, int pointer, Actor fromActor) {
+                super.enter(event, x, y, pointer, fromActor);
+                widget.setColor(BaseGame.redColor);
+                BaseGame.hoverOverEnterSound.play(BaseGame.soundVolume);
+            }
+
+            @Override
+            public void exit(InputEvent event, float x, float y, int pointer, Actor toActor) {
+                super.exit(event, x, y, pointer, toActor);
+                widget.setColor(BaseGame.whiteColor);
+            }
+        });
     }
 
     public static void lookAtCameraIn2D(Decal decal, PerspectiveCamera camera) {

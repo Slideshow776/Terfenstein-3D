@@ -10,6 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.github.tommyettinger.textra.TypingLabel;
 
 import no.sandramoen.commanderqueen.screens.gameplay.LevelScreen;
+import no.sandramoen.commanderqueen.ui.MadeByLabel;
 import no.sandramoen.commanderqueen.utils.BaseGame;
 import no.sandramoen.commanderqueen.utils.BaseScreen;
 import no.sandramoen.commanderqueen.utils.GameUtils;
@@ -22,37 +23,11 @@ public class MenuScreen extends BaseScreen {
                 .padBottom(Gdx.graphics.getHeight() * .09f)
                 .row();
 
-        uiTable.defaults().width(Gdx.graphics.getWidth() * .125f).height(Gdx.graphics.getHeight() * .075f).spaceTop(Gdx.graphics.getHeight() * .01f);
+        addTextButtons();
 
-        TextButton startButton = new TextButton("Start", BaseGame.mySkin);
-        startButton.addListener(
-                (Event event) -> {
-                    if (GameUtils.isTouchDownEvent(event))
-                        BaseGame.setActiveScreen(new LevelScreen());
-                    return false;
-                }
-        );
-        uiTable.add(startButton).row();
+        uiTable.add(new MadeByLabel()).padTop(Gdx.graphics.getHeight() * .09f);
 
-        TextButton optionsButton = new TextButton("Options", BaseGame.mySkin);
-        optionsButton.addListener(
-                (Event event) -> {
-                    if (GameUtils.isTouchDownEvent(event))
-                        BaseGame.setActiveScreen(new OptionsScreen());
-                    return false;
-                }
-        );
-        uiTable.add(optionsButton).row();
-
-        TextButton exitButton = new TextButton("Exit", BaseGame.mySkin);
-        exitButton.addListener(
-                (Event event) -> {
-                    if (GameUtils.isTouchDownEvent(event))
-                        Gdx.app.exit();
-                    return false;
-                }
-        );
-        uiTable.add(exitButton);
+        /*uiTable.setDebug(true);*/
     }
 
     @Override
@@ -65,5 +40,45 @@ public class MenuScreen extends BaseScreen {
         if (keycode == Input.Keys.ESCAPE || keycode == Input.Keys.Q)
             Gdx.app.exit();
         return super.keyDown(keycode);
+    }
+
+    private void addTextButtons() {
+        uiTable.defaults()
+                .width(Gdx.graphics.getWidth() * .125f)
+                .height(Gdx.graphics.getHeight() * .075f)
+                .spaceTop(Gdx.graphics.getHeight() * .01f);
+
+        TextButton startButton = new TextButton("Start", BaseGame.mySkin);
+        startButton.addListener(
+                (Event event) -> {
+                    if (GameUtils.isTouchDownEvent(event))
+                        BaseGame.setActiveScreen(new LevelScreen());
+                    return false;
+                }
+        );
+        uiTable.add(startButton)
+                .row();
+
+        TextButton optionsButton = new TextButton("Options", BaseGame.mySkin);
+        optionsButton.addListener(
+                (Event event) -> {
+                    if (GameUtils.isTouchDownEvent(event))
+                        BaseGame.setActiveScreen(new OptionsScreen());
+                    return false;
+                }
+        );
+        uiTable.add(optionsButton)
+                .row();
+
+        TextButton exitButton = new TextButton("Exit", BaseGame.mySkin);
+        exitButton.addListener(
+                (Event event) -> {
+                    if (GameUtils.isTouchDownEvent(event))
+                        Gdx.app.exit();
+                    return false;
+                }
+        );
+        uiTable.add(exitButton)
+                .row();
     }
 }
