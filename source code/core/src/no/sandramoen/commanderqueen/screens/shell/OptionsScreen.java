@@ -32,7 +32,7 @@ public class OptionsScreen extends BaseScreen {
         soundSlider = new BaseSlider("Sound", 0, 1, .1f);
         musicSlider = new BaseSlider("Music", 0, 1, .1f);
         voiceSlider = new BaseSlider("Voice", 0, 1, .1f);
-        mouseSensitivitySlider = new BaseSlider("Mouse Sensitivity", 0, .1f, .01f);
+        mouseSensitivitySlider = new BaseSlider("Mouse Sensitivity", .01f, .1f, .01f);
 
         optionsTable.defaults().spaceTop(Gdx.graphics.getHeight() * .05f).width(Gdx.graphics.getWidth() * .6f);
         optionsTable.add(soundSlider).row();

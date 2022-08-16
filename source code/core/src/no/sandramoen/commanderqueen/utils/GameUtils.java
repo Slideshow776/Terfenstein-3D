@@ -20,6 +20,24 @@ import no.sandramoen.commanderqueen.actors.utils.baseActors.BaseActor3D;
 
 public class GameUtils {
 
+    public static void saveGameState() {
+        BaseGame.preferences.putBoolean("loadPersonalParameters", true);
+        BaseGame.preferences.putFloat("musicVolume", BaseGame.musicVolume);
+        BaseGame.preferences.putFloat("soundVolume", BaseGame.soundVolume);
+        BaseGame.preferences.putFloat("voiceVolume", BaseGame.voiceVolume);
+        BaseGame.preferences.putFloat("mouseMovementSensitivity", BaseGame.mouseMovementSensitivity);
+        BaseGame.preferences.flush();
+    }
+
+    public static void loadGameState() {
+        BaseGame.preferences = Gdx.app.getPreferences("Terfenstein3DGameState");
+        BaseGame.loadPersonalParameters = BaseGame.preferences.getBoolean("loadPersonalParameters");
+        BaseGame.musicVolume = BaseGame.preferences.getFloat("musicVolume");
+        BaseGame.soundVolume = BaseGame.preferences.getFloat("soundVolume");
+        BaseGame.voiceVolume = BaseGame.preferences.getFloat("voiceVolume");
+        BaseGame.mouseMovementSensitivity = BaseGame.preferences.getFloat("mouseMovementSensitivity");
+    }
+
     public static void lookAtCameraIn2D(Decal decal, PerspectiveCamera camera) {
         Vector3 temp = camera.position.cpy();
         temp.x = decal.getX();

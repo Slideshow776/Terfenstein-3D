@@ -32,7 +32,6 @@ public class ShockwaveBackground extends BaseActor {
                     if (GameUtils.isTouchDownEvent(event)) {
                         float xNormalized = Gdx.input.getX() / (float) Gdx.graphics.getWidth();
                         float yNormalized = Gdx.input.getY() / (float) Gdx.graphics.getHeight();
-                        System.out.println("x: " + xNormalized + ", y: " + yNormalized);
                         start(xNormalized, yNormalized);
                     }
                     return false;

@@ -3,6 +3,7 @@ package no.sandramoen.commanderqueen.utils;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
+import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.assets.AssetDescriptor;
 import com.badlogic.gdx.assets.AssetErrorListener;
 import com.badlogic.gdx.assets.AssetManager;
@@ -61,6 +62,8 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
     public static Sound hoverOverEnterSound;
 
     // game state
+    public static Preferences preferences;
+    public static boolean loadPersonalParameters;
     public static boolean isCustomShadersEnabled = true;
     public static float mouseMovementSensitivity = .05f;
     public static boolean isHeadBobbing = true;
@@ -81,6 +84,7 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
 
     public void create() {
         Gdx.input.setInputProcessor(new InputMultiplexer());
+        loadGameState();
         UI();
         assetManager();
     }
@@ -105,6 +109,16 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
 
     public void error(AssetDescriptor asset, Throwable throwable) {
         Gdx.app.error(this.getClass().getSimpleName(), "Could not load asset: " + asset.fileName, throwable);
+    }
+
+    private void loadGameState() {
+        GameUtils.loadGameState();
+        if (!loadPersonalParameters) {
+            soundVolume = .3f;
+            musicVolume = .7f;
+            voiceVolume = 1f;
+            mouseMovementSensitivity = .05f;
+        }
     }
 
     private void UI() {

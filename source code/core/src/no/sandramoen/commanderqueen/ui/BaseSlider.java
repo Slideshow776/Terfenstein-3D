@@ -67,7 +67,7 @@ public class BaseSlider extends Table {
                     BaseGame.voiceVolume = slider.getValue();
                 else if (value.equalsIgnoreCase("mouse sensitivity"))
                     BaseGame.mouseMovementSensitivity = slider.getValue();
-                /*GameUtils.saveGameState(); // TODO*/
+                GameUtils.saveGameState();
             }
         });
     }
