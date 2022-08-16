@@ -31,6 +31,7 @@ import no.sandramoen.commanderqueen.screens.gameplay.level.BarrelExplosionHandle
 import no.sandramoen.commanderqueen.screens.gameplay.level.EnemyHandler;
 import no.sandramoen.commanderqueen.screens.gameplay.level.MapLoader;
 import no.sandramoen.commanderqueen.actors.utils.TilemapActor;
+import no.sandramoen.commanderqueen.screens.shell.MenuScreen;
 import no.sandramoen.commanderqueen.utils.BaseGame;
 import no.sandramoen.commanderqueen.utils.BaseScreen3D;
 import no.sandramoen.commanderqueen.utils.GameUtils;
@@ -71,6 +72,9 @@ public class LevelScreen extends BaseScreen3D {
         bulletDecals = new BulletDecals(mainStage3D.camera, decalBatch);
         bloodDecals = new BloodDecals(mainStage3D.camera, decalBatch);
 
+        if (!Gdx.input.isCursorCatched())
+            Gdx.input.setCursorCatched(true);
+
         GameUtils.printLoadingTime(getClass().getSimpleName(), startTime);
     }
 
@@ -91,9 +95,6 @@ public class LevelScreen extends BaseScreen3D {
         for (Elevator elevator : mapLoader.elevators)
             player.preventOverlap(elevator);
 
-        if (!Gdx.input.isCursorCatched())
-            Gdx.input.setCursorCatched(true);
-
         buttonPolling();
 
         bulletDecals.render(dt);
@@ -103,7 +104,7 @@ public class LevelScreen extends BaseScreen3D {
     @Override
     public boolean keyDown(int keycode) {
         if (keycode == Keys.ESCAPE || keycode == Keys.Q)
-            Gdx.app.exit();
+            BaseGame.setActiveScreen(new MenuScreen());
         else if (keycode == Keys.R)
             BaseGame.setActiveScreen(new LevelScreen());
         else if (keycode == Keys.Q)

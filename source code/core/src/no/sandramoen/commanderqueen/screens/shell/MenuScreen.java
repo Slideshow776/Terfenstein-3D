@@ -28,6 +28,9 @@ public class MenuScreen extends BaseScreen {
         uiTable.add(new MadeByLabel()).padTop(Gdx.graphics.getHeight() * .09f);
 
         /*uiTable.setDebug(true);*/
+
+        if (Gdx.input.isCursorCatched())
+            Gdx.input.setCursorCatched(false);
     }
 
     @Override
