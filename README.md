@@ -1,7 +1,7 @@
 # Terfenstein 3D
 
 [Try it](https://slideshow776.github.io/3D-shooting-game/)
-[![image](https://user-images.githubusercontent.com/4059636/180185920-df0b8e69-6390-43dd-83d7-99acd720655a.gif)
+[![image](https://user-images.githubusercontent.com/4059636/184866741-be475fb3-9945-4740-a251-5781a98a6eea.gif)
 ](https://slideshow776.github.io/3D-shooting-game/)
 
 
