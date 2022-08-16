@@ -31,6 +31,7 @@ import no.sandramoen.commanderqueen.screens.gameplay.level.BarrelExplosionHandle
 import no.sandramoen.commanderqueen.screens.gameplay.level.EnemyHandler;
 import no.sandramoen.commanderqueen.screens.gameplay.level.MapLoader;
 import no.sandramoen.commanderqueen.actors.utils.TilemapActor;
+import no.sandramoen.commanderqueen.screens.shell.LevelFinishScreen;
 import no.sandramoen.commanderqueen.screens.shell.MenuScreen;
 import no.sandramoen.commanderqueen.utils.BaseGame;
 import no.sandramoen.commanderqueen.utils.BaseScreen3D;
@@ -59,6 +60,8 @@ public class LevelScreen extends BaseScreen3D {
     private BulletDecals bulletDecals;
     private BloodDecals bloodDecals;
 
+    private int numEnemies;
+
     @Override
     public void initialize() {
         long startTime = System.currentTimeMillis();
@@ -74,6 +77,8 @@ public class LevelScreen extends BaseScreen3D {
 
         if (!Gdx.input.isCursorCatched())
             Gdx.input.setCursorCatched(true);
+
+        numEnemies = enemies.size;
 
         GameUtils.printLoadingTime(getClass().getSimpleName(), startTime);
     }
@@ -103,9 +108,10 @@ public class LevelScreen extends BaseScreen3D {
 
     @Override
     public boolean keyDown(int keycode) {
-        if (keycode == Keys.ESCAPE || keycode == Keys.Q)
+        if (keycode == Keys.ESCAPE || keycode == Keys.Q) {
+            stopLevel();
             BaseGame.setActiveScreen(new MenuScreen());
-        else if (keycode == Keys.R)
+        } else if (keycode == Keys.R)
             BaseGame.setActiveScreen(new LevelScreen());
         else if (keycode == Keys.Q)
             hud.setInvulnerable();
@@ -134,8 +140,16 @@ public class LevelScreen extends BaseScreen3D {
                     door.openAndClose();
             for (Elevator elevator : mapLoader.elevators)
                 if (player.isWithinDistance(Tile.height * 1.1f, elevator)) {
-                    System.out.println("level complete! " + MathUtils.random(1_000, 9_999));
                     BaseGame.elevatorSound.play(BaseGame.soundVolume);
+                    stopLevel();
+                    Array levelData = new Array();
+                    levelData.add("Hangar");
+                    levelData.add((int) ((1 - (enemies.size / (float) numEnemies)) * 100));
+                    levelData.add(2);
+                    levelData.add(0);
+                    levelData.add(64f);
+                    levelData.add(50f);
+                    BaseGame.setActiveScreen(new LevelFinishScreen(levelData));
                 }
         }
 
@@ -313,5 +327,10 @@ public class LevelScreen extends BaseScreen3D {
         hud.player = player;
         weaponHandler = new WeaponHandler(uiStage, hud, player, shootable, mainStage3D);
         hud.setWeaponsTable(weaponHandler);
+    }
+
+    private void stopLevel() {
+        BaseGame.metalWalkingMusic.stop();
+        BaseGame.level0Music.stop();
     }
 }
