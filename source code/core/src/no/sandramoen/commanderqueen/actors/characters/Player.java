@@ -2,35 +2,40 @@ package no.sandramoen.commanderqueen.actors.characters;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g3d.environment.DirectionalLight;
+import com.badlogic.gdx.graphics.g3d.environment.PointLight;
+import com.badlogic.gdx.math.Vector3;
 
-import no.sandramoen.commanderqueen.actors.utils.BaseActor3D;
+import no.sandramoen.commanderqueen.actors.utils.baseActors.BaseActor3D;
 import no.sandramoen.commanderqueen.utils.BaseGame;
 import no.sandramoen.commanderqueen.utils.Stage3D;
 
 public class Player extends BaseActor3D {
-    private float movementSpeed = 8.0f;
+    public boolean isMoving = false;
+    public static float movementSpeed = 10f;
+
     private float rotateSpeed = 90f * .05f;
     private float totalTime = 0;
     private Stage3D stage3D;
 
     private float bobFrequency = 4;
-    private float bobAmount = .01f;
+    private float bobAmount = .015f;
     private float bobCounter = 0;
 
     private boolean isForcedToMove;
     private float forceMoveY = movementSpeed;
     private float forceMoveZ = movementSpeed;
     private float forceTime;
-    private float secondsForcedToMove = .25f;
+    private final float SECONDS_FORCED_TO_MOVE = .25f;
 
-    public boolean isMoving = false;
-
-    public Player(float y, float z, Stage3D stage3D) {
+    public Player(float y, float z, Stage3D stage3D, float rotation) {
         super(0, y, z, stage3D);
         this.stage3D = stage3D;
-        buildModel(1.5f, 1.5f, 1.5f);
+        buildModel(1.7f, 3f, 1.7f, true);
         setBaseRectangle();
-        loadImage("clearPixel");
+        isVisible = false;
+        turnPlayer(rotation);
     }
 
     @Override
@@ -44,24 +49,26 @@ public class Player extends BaseActor3D {
         else
             movementPolling(dt);
 
-        stage.camera.position.y = position.y;
-        stage.camera.position.z = position.z;
+        this.stage3D.camera.position.y = position.y;
+        this.stage3D.camera.position.z = position.z;
+
         headBobbing(dt);
+
         if (isMoving)
             BaseGame.metalWalkingMusic.setVolume(BaseGame.soundVolume);
         else
             BaseGame.metalWalkingMusic.setVolume(0);
     }
 
-    public void shoot() {
-        stage3D.lightManager.addPointLight(position, .3f, .1f, 0, 25, .1f, .1f / 3);
+    public void muzzleLight() {
+        stage3D.lightManager.addMuzzleLight(position);
     }
 
     public void forceMoveAwayFrom(BaseActor3D source) {
         isForcedToMove = true;
         if (position.y - source.position.y < 1) forceMoveY *= -1;
         if (position.z - source.position.z < 1) forceMoveZ *= -1;
-        forceTime = totalTime + secondsForcedToMove;
+        forceTime = totalTime + SECONDS_FORCED_TO_MOVE;
     }
 
     private void forceMove(float dt) {
@@ -77,9 +84,9 @@ public class Player extends BaseActor3D {
         if (BaseGame.isHeadBobbing) {
             bobCounter += bobFrequency * dt;
             if ((int) bobCounter % 2 == 0 && isMoving)
-                stage.moveCameraUp(bobAmount);
+                this.stage3D.moveCameraUp(bobAmount);
             else if (isMoving)
-                stage.moveCameraUp(-bobAmount);
+                this.stage3D.moveCameraUp(-bobAmount);
             else
                 setXPosition();
         } else {
@@ -120,8 +127,14 @@ public class Player extends BaseActor3D {
             isMoving = false;
     }
 
+    private void turnPlayer(float angle) {
+        if (angle == 0) return;
+        this.stage3D.turnCamera(angle);
+        turnBy(angle);
+    }
+
     private void mousePolling() {
-        turnBy(rotateSpeed * Gdx.input.getDeltaX() * BaseGame.mouseMovementSensitivity);
-        stage.turnCamera(rotateSpeed * Gdx.input.getDeltaX() * BaseGame.mouseMovementSensitivity);
+        if (Gdx.input.getDeltaX() < 300)
+            turnPlayer(rotateSpeed * Gdx.input.getDeltaX() * BaseGame.mouseMovementSensitivity);
     }
 }

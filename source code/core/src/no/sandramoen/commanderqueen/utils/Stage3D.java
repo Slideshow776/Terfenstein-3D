@@ -1,8 +1,6 @@
 package no.sandramoen.commanderqueen.utils;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.g3d.environment.PointLight;
 import com.badlogic.gdx.graphics.g3d.shaders.DefaultShader;
 import com.badlogic.gdx.graphics.g3d.utils.DefaultShaderProvider;
 import com.badlogic.gdx.graphics.g3d.utils.ShaderProvider;
@@ -10,25 +8,26 @@ import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.graphics.PerspectiveCamera;
 import com.badlogic.gdx.graphics.g3d.Environment;
 import com.badlogic.gdx.graphics.g3d.ModelBatch;
-import com.badlogic.gdx.graphics.g3d.attributes.ColorAttribute;
-import com.badlogic.gdx.graphics.g3d.environment.DirectionalLight;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 
 import java.util.ArrayList;
 
-import no.sandramoen.commanderqueen.actors.Tile;
-import no.sandramoen.commanderqueen.actors.utils.BaseActor3D;
+import no.sandramoen.commanderqueen.actors.utils.baseActors.BaseActor3D;
+import no.sandramoen.commanderqueen.screens.gameplay.level.LightManager;
 
 public class Stage3D {
-    private final ModelBatch modelBatch;
-    private ArrayList<BaseActor3D> actorList3D;
-    private ArrayList<Actor> actorList;
-    private Vector3 position = new Vector3();
-
-    public Environment environment;
-    public LightManager lightManager;
+    public boolean intervalFlag;
     public int visibleCount = 0;
+    public Environment environment;
     public PerspectiveCamera camera;
+    public LightManager lightManager;
+
+    private ArrayList<Actor> actorList;
+    private ArrayList<BaseActor3D> actorList3D;
+    private final ModelBatch modelBatch;
+
+    private float intervalCounter;
+    private final float INTERVAL_COUNTER_FREQUENCY = 1;
 
     public Stage3D() {
         environment = new Environment();
@@ -39,7 +38,7 @@ public class Stage3D {
         camera.rotate(-90, 0, 0, 1);
         camera.lookAt(0, 0, 0);
         camera.near = .01f;
-        camera.far = 100f;
+        camera.far = 200f;
         camera.update();
 
         DefaultShader.Config config = new DefaultShader.Config();
@@ -59,15 +58,15 @@ public class Stage3D {
         lightManager.update(dt);
         for (BaseActor3D ba : actorList3D)
             ba.act(dt);
+        setIntervalFlag(dt);
     }
 
     public void draw() {
         modelBatch.begin(camera);
         visibleCount = 0;
         for (int i = 0; i < actorList3D.size(); i++) {
-            if (actorList3D.get(i).modelData.isVisible(camera)) {
+            if (actorList3D.get(i).modelData.isVisible(camera) && actorList3D.get(i).isVisible) {
                 actorList3D.get(i).draw(modelBatch, environment);
-                modelBatch.render(actorList3D.get(i).modelData, environment);
                 visibleCount++;
             }
         }
@@ -148,5 +147,15 @@ public class Stage3D {
     public void tiltCamera(float angle) {
         Vector3 side = new Vector3(camera.direction.z, 0, -camera.direction.x);
         camera.direction.rotate(side, angle);
+    }
+
+    private void setIntervalFlag(float dt) {
+        if (intervalCounter > INTERVAL_COUNTER_FREQUENCY) {
+            intervalFlag = true;
+            intervalCounter = 0;
+        } else {
+            intervalFlag = false;
+            intervalCounter += dt;
+        }
     }
 }

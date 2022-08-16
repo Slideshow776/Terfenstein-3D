@@ -10,7 +10,7 @@ public class DesktopLauncher {
 	public static void main (String[] arg) {
 		Lwjgl3ApplicationConfiguration config = new Lwjgl3ApplicationConfiguration();
 		config.setForegroundFPS(60);
-		config.setTitle("Commander Queen");
+		config.setTitle("Terfenstein 3D");
 		setWindowedMode(.8f, config);
 		new Lwjgl3Application(new MyGdxGame(), config);
 	}

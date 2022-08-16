@@ -14,7 +14,7 @@ buildscript {
         classpath 'org.gretty:gretty:3.0.7'
         classpath 'com.android.tools.build:gradle:7.0.4'
         classpath "com.badlogicgames.gdx:gdx-tools:1.11.0"
-        
+
 
     }
 }
@@ -31,6 +31,7 @@ allprojects {
         ashleyVersion = '1.7.4'
         aiVersion = '1.8.2'
         gdxControllersVersion = '2.2.1'
+        aiVersion = '1.8.2'
     }
 
     repositories {
@@ -47,12 +48,16 @@ allprojects {
 project(":desktop") {
     apply plugin: "java-library"
 
+    apply plugin: "java"
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
 
     dependencies {
         implementation project(":core")
         api "com.badlogicgames.gdx:gdx-backend-lwjgl3:$gdxVersion"
         api "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
         api "com.badlogicgames.gdx-controllers:gdx-controllers-desktop:$gdxControllersVersion"
+        api "com.badlogicgames.gdx:gdx-ai:$aiVersion"
         
     }
 }
@@ -60,6 +65,8 @@ project(":desktop") {
 project(":android") {
     apply plugin: "com.android.application"
 
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
     configurations { natives }
 
     dependencies {
@@ -80,6 +87,9 @@ project(":html") {
     apply plugin: "war"
     apply plugin: "org.gretty"
 
+    apply plugin: "java"
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
 
     dependencies {
         implementation project(":core")
@@ -89,6 +99,9 @@ project(":html") {
         api "com.badlogicgames.gdx-controllers:gdx-controllers-core:$gdxControllersVersion:sources"
         api "com.badlogicgames.gdx-controllers:gdx-controllers-gwt:$gdxControllersVersion"
         api "com.badlogicgames.gdx-controllers:gdx-controllers-gwt:$gdxControllersVersion:sources"
+        api "com.badlogicgames.gdx:gdx-ai:$aiVersion:sources"
+        implementation "com.github.tommyettinger:textratypist:0.6.3:sources"
+        implementation "com.github.tommyettinger:regexodus:0.1.13:sources"
         
     }
 }
@@ -100,6 +113,8 @@ project(":core") {
     dependencies {
         api "com.badlogicgames.gdx:gdx:$gdxVersion"
         api "com.badlogicgames.gdx-controllers:gdx-controllers-core:$gdxControllersVersion"
+        api "com.badlogicgames.gdx:gdx-ai:$aiVersion"
+        implementation "com.github.tommyettinger:textratypist:0.6.3"
         
     }
 

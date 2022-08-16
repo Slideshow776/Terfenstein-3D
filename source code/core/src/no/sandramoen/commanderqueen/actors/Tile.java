@@ -1,24 +1,25 @@
 package no.sandramoen.commanderqueen.actors;
 
-import no.sandramoen.commanderqueen.actors.utils.BaseActor3D;
+import no.sandramoen.commanderqueen.actors.utils.baseActors.BaseActor3D;
 import no.sandramoen.commanderqueen.utils.Stage3D;
 
 public class Tile extends BaseActor3D {
     public static float height = 4;
+    public static float diagonalLength = (float) Math.sqrt(2 * Math.pow(height, 2));
+
+    public int index;
     public String type;
     public boolean illuminated = false;
 
-    public Tile(float y, float z, String type, String texture, Stage3D s) {
+    public Tile(float y, float z, float width, float height, float depth, String type, String texture, Stage3D s, float rotation) {
         super(0, y, z, s);
         this.type = type;
-        buildModel(height, height, height);
+        buildModel(width, height, depth, false);
         setBaseRectangle();
         loadImage("tiles/" + texture);
+        turnBy(-180 + rotation);
         if (texture.split(" ", 2)[0].equals("light"))
             illuminated = true;
-
-        if (illuminated && type.equals("floors"))
-            System.out.println("floor illuminated: " + illuminated);
 
         if (type == "ceilings") {
             position.x = Tile.height;
