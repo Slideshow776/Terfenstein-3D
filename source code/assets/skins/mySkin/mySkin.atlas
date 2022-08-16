@@ -1,33 +1,40 @@
 
 mySkin.png
-size: 1024, 1024
+size: 2048, 2048
 format: RGBA8888
 filter: Linear, Linear
 repeat: none
 arcade26
   rotate: false
-  xy: 1, 475
+  xy: 1, 873
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: -1
+arcade64
+  rotate: false
+  xy: 1, 359
   size: 512, 512
   orig: 512, 512
   offset: 0, 0
   index: -1
 checkbox
   rotate: false
-  xy: 145, 140
+  xy: 778, 1269
   size: 18, 18
   orig: 18, 18
   offset: 0, 0
   index: -1
 checkbox-on
   rotate: false
-  xy: 193, 188
+  xy: 826, 1317
   size: 18, 18
   orig: 18, 18
   offset: 0, 0
   index: -1
 cursor
   rotate: false
-  xy: 718, 912
+  xy: 270, 347
   size: 4, 7
   split: 1, 1, 2, 2
   pad: 0, 0, 0, 0
@@ -36,21 +43,21 @@ cursor
   index: -1
 font-export
   rotate: false
-  xy: 1, 63
+  xy: 515, 975
   size: 142, 143
   orig: 142, 143
   offset: 0, 0
   index: -1
 font-title-export
   rotate: false
-  xy: 1, 208
+  xy: 515, 1120
   size: 261, 265
   orig: 261, 265
   offset: 0, 0
   index: -1
 horizontal-split-pane
   rotate: false
-  xy: 581, 770
+  xy: 242, 280
   size: 5, 11
   split: 2, 2, 2, 2
   orig: 5, 11
@@ -58,7 +65,7 @@ horizontal-split-pane
   index: -1
 list
   rotate: false
-  xy: 1, 49
+  xy: 659, 1106
   size: 51, 12
   split: 2, 2, 2, 2
   pad: 5, 5, 5, 5
@@ -67,21 +74,21 @@ list
   index: -1
 minus
   rotate: false
-  xy: 337, 416
+  xy: 45, 48
   size: 12, 13
   orig: 12, 13
   offset: 0, 0
   index: -1
 plus
   rotate: false
-  xy: 381, 460
+  xy: 74, 97
   size: 12, 13
   orig: 12, 13
   offset: 0, 0
   index: -1
 progress-bar
   rotate: false
-  xy: 145, 160
+  xy: 778, 1289
   size: 46, 46
   split: 10, 10, 10, 10
   pad: 6, 6, 6, 6
@@ -90,35 +97,35 @@ progress-bar
   index: -1
 progress-bar-fill
   rotate: false
-  xy: 1, 1
+  xy: 515, 871
   size: 1, 34
   orig: 1, 34
   offset: 0, 0
   index: -1
 progress-bar-fill-vert
   rotate: false
-  xy: 581, 783
+  xy: 270, 356
   size: 34, 1
   orig: 34, 1
   offset: 0, 0
   index: -1
 radio
   rotate: false
-  xy: 264, 320
+  xy: 912, 1369
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
   index: -1
 radio-on
   rotate: false
-  xy: 308, 364
+  xy: 1, 1
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
   index: -1
 round-gray
   rotate: false
-  xy: 264, 338
+  xy: 868, 1343
   size: 42, 42
   split: 13, 13, 13, 13
   pad: 9, 9, 5, 5
@@ -127,7 +134,7 @@ round-gray
   index: -1
 round-white
   rotate: false
-  xy: 337, 431
+  xy: 1, 19
   size: 42, 42
   split: 13, 13, 13, 13
   pad: 9, 9, 5, 5
@@ -136,7 +143,7 @@ round-white
   index: -1
 round-white-small
   rotate: false
-  xy: 771, 963
+  xy: 568, 949
   size: 24, 24
   split: 10, 10, 10, 10
   pad: 10, 10, 2, 2
@@ -145,7 +152,7 @@ round-white-small
   index: -1
 selectbox
   rotate: false
-  xy: 718, 947
+  xy: 515, 933
   size: 51, 40
   split: 2, 31, 2, 27
   pad: 2, 35, 2, 2
@@ -154,7 +161,7 @@ selectbox
   index: -1
 selection
   rotate: false
-  xy: 559, 709
+  xy: 204, 244
   size: 9, 9
   split: 2, 1, 2, 1
   pad: 4, 3, 4, 3
@@ -163,23 +170,39 @@ selection
   index: -1
 slider-horizontal
   rotate: false
-  xy: 1, 37
+  xy: 659, 1094
   size: 20, 10
   split: 4, 4, 4, 4
   pad: 1, 2, 2, 2
   orig: 20, 10
   offset: 0, 0
   index: -1
+slider-horizontal.9.bigwhite
+  rotate: false
+  xy: 778, 1337
+  size: 88, 48
+  split: 7, 7, 21, 21
+  pad: 0, 0, 0, 0
+  orig: 88, 48
+  offset: 0, 0
+  index: -1
 slider-knob
   rotate: false
-  xy: 718, 921
+  xy: 515, 907
   size: 24, 24
   orig: 24, 24
   offset: 0, 0
   index: -1
+slider-knob.white
+  rotate: false
+  xy: 204, 255
+  size: 36, 36
+  orig: 36, 36
+  offset: 0, 0
+  index: -1
 slider-vertical
   rotate: false
-  xy: 515, 654
+  xy: 118, 134
   size: 9, 20
   split: 4, 3, 3, 3
   pad: 3, 3, 2, 2
@@ -188,7 +211,7 @@ slider-vertical
   index: -1
 textfield
   rotate: false
-  xy: 515, 676
+  xy: 74, 112
   size: 42, 42
   split: 8, 8, 8, 8
   orig: 42, 42
@@ -196,21 +219,21 @@ textfield
   index: -1
 touchpad
   rotate: false
-  xy: 515, 786
+  xy: 1, 156
   size: 201, 201
   orig: 201, 201
   offset: 0, 0
   index: -1
 touchpad-knob
   rotate: false
-  xy: 515, 720
+  xy: 204, 293
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 vertical-split-pane
   rotate: false
-  xy: 54, 56
+  xy: 712, 1113
   size: 11, 5
   split: 2, 2, 1, 1
   pad: 1, 1, 1, 1
@@ -219,14 +242,14 @@ vertical-split-pane
   index: -1
 white
   rotate: false
-  xy: 617, 783
+  xy: 868, 1340
   size: 1, 1
   orig: 1, 1
   offset: 0, 0
   index: -1
 window
   rotate: false
-  xy: 264, 382
+  xy: 1, 63
   size: 71, 91
   split: 15, 15, 35, 15
   pad: 9, 10, 37, 5

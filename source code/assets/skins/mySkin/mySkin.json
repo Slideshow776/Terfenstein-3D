@@ -3,6 +3,9 @@ com.badlogic.gdx.graphics.g2d.BitmapFont: {
 	arcade26: {
 		file: arcade26.fnt
 	}
+	arcade64: {
+		file: arcade64.fnt
+	}
 	font: {
 		file: font-export.fnt
 	}
@@ -132,8 +135,8 @@ com.badlogic.gdx.scenes.scene2d.ui.ImageTextButton$ImageTextButtonStyle: {
 }
 com.badlogic.gdx.scenes.scene2d.ui.Label$LabelStyle: {
 	default: {
-		font: arcade26
-		fontColor: white
+		font: font
+		fontColor: black
 	}
 	title: {
 		font: title
@@ -177,8 +180,8 @@ com.badlogic.gdx.scenes.scene2d.ui.SelectBox$SelectBoxStyle: {
 }
 com.badlogic.gdx.scenes.scene2d.ui.Slider$SliderStyle: {
 	default-horizontal: {
-		background: slider-horizontal
-		knob: slider-knob
+		background: slider-horizontal.9.bigwhite
+		knob: slider-knob.white
 	}
 	default-vertical: {
 		background: slider-vertical

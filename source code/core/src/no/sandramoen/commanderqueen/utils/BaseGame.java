@@ -57,6 +57,8 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
     public static Sound door0OpeningSound;
     public static Sound door0ClosingSound;
     public static Sound elevatorSound;
+    public static Sound click1Sound;
+    public static Sound hoverOverEnterSound;
 
     // game state
     public static boolean isCustomShadersEnabled = true;
@@ -71,6 +73,7 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
     public static Color greenColor = new Color(0.459f, 0.655f, 0.263f, 1f);
     public static Color yellowColor = new Color(0.91f, 0.757f, 0.439f, 1f);
     public static Color darkColor = new Color(.4f, .4f, .4f, 1f);
+    public static Color whiteColor = new Color(0.922f, 0.929f, 0.914f, 1f);
 
     public BaseGame() {
         game = this;
@@ -107,6 +110,7 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
     private void UI() {
         mySkin = new Skin(Gdx.files.internal("skins/mySkin/mySkin.json"));
         mySkin.getFont("arcade26").getData().setScale(Gdx.graphics.getWidth() * .0005f);
+        mySkin.getFont("arcade64").getData().setScale(Gdx.graphics.getWidth() * .0005f);
     }
 
     private void assetManager() {
@@ -148,6 +152,8 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
         assetManager.load("audio/sound/door0 opening.wav", Sound.class);
         assetManager.load("audio/sound/door0 closing.wav", Sound.class);
         assetManager.load("audio/sound/502341__universodemalaonda__elevator-03.wav", Sound.class);
+        assetManager.load("audio/sound/click1.wav", Sound.class);
+        assetManager.load("audio/sound/hoverOverEnter.wav", Sound.class);
 
         // tiled maps
         assetManager.setLoader(TiledMap.class, new TmxMapLoader(new InternalFileHandleResolver()));
@@ -189,6 +195,8 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
         door0OpeningSound = assetManager.get("audio/sound/door0 opening.wav", Sound.class);
         door0ClosingSound = assetManager.get("audio/sound/door0 closing.wav", Sound.class);
         elevatorSound = assetManager.get("audio/sound/502341__universodemalaonda__elevator-03.wav", Sound.class);
+        click1Sound = assetManager.get("audio/sound/click1.wav", Sound.class);
+        hoverOverEnterSound = assetManager.get("audio/sound/hoverOverEnter.wav", Sound.class);
 
         // tiled maps
         testMap = assetManager.get("maps/test.tmx", TiledMap.class);

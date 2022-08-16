@@ -2,6 +2,7 @@ package no.sandramoen.commanderqueen.screens.gameplay.level;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.Array;
@@ -23,14 +24,14 @@ public class UIHandler {
                 .size(hud.getWidth(), hud.getHeight())
                 .row();
 
-        statusLabel = new Label("enemies left: " + enemies.size, BaseGame.mySkin);
+        statusLabel = new Label("enemies left: " + enemies.size, new Label.LabelStyle(BaseGame.mySkin.get("arcade26", BitmapFont.class), null));
         uiTable.add(statusLabel)
                 .expandX()
                 .left()
                 .padLeft(Gdx.graphics.getWidth() * .01f)
                 .row();
 
-        debugLabel = new Label(" ", BaseGame.mySkin);
+        debugLabel = new Label(" ", new Label.LabelStyle(BaseGame.mySkin.get("arcade26", BitmapFont.class), null));
         uiTable.add(debugLabel)
                 .expandX()
                 .top()
@@ -39,7 +40,7 @@ public class UIHandler {
                 .padLeft(Gdx.graphics.getWidth() * .01f)
                 .row();
 
-        gameLabel = new Label("", BaseGame.mySkin);
+        gameLabel = new Label("", new Label.LabelStyle(BaseGame.mySkin.get("arcade26", BitmapFont.class), null));
         gameLabel.setColor(Color.RED);
         gameLabel.setFontScale(2f);
         uiTable.add(gameLabel)

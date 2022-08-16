@@ -2,6 +2,7 @@ package no.sandramoen.commanderqueen.actors.hud;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
@@ -328,7 +329,7 @@ public class HUD extends BaseActor {
 
 
     private Label initializeLabel(String text) {
-        Label label = new Label(text, BaseGame.mySkin);
+        Label label = new Label(text, new Label.LabelStyle(BaseGame.mySkin.get("arcade26", BitmapFont.class), null));
         label.setColor(BaseGame.redColor);
         label.setAlignment(Align.center);
         return label;
