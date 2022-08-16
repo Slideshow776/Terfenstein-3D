@@ -1,0 +1,368 @@
+d:assets:assets:0:application/unknown:1
+d:audio:audio:0:application/unknown:1
+d:audio/music:audio/music:0:application/unknown:1
+a:audio/music/342991__furbyguy__stuttering-guitar-metal.wav:audio/music/342991__furbyguy__stuttering-guitar-metal-8e12546c6b20ba41d7855ad87e85729b.wav:1411244:audio/x-wav:1
+a:audio/music/398937__mypantsfelldown__metal-footsteps.wav:audio/music/398937__mypantsfelldown__metal-footsteps-276ead41b43462800263987f1d64bf6b.wav:302092:audio/x-wav:1
+d:audio/sound:audio/sound:0:application/unknown:1
+a:audio/sound/145209__lensflare8642__shotgun-sounds.wav:audio/sound/145209__lensflare8642__shotgun-sounds-9d06060f19e4d559c954c31ead0d239c.wav:184356:audio/x-wav:1
+a:audio/sound/244394__werra__bang-explosion-metallic.wav:audio/sound/244394__werra__bang-explosion-metallic-09a4123a6f30cf5b09587e9066fbdb47.wav:406684:audio/x-wav:1
+a:audio/sound/35213__abyssmal__slashkut.wav:audio/sound/35213__abyssmal__slashkut-524fe3eb12d8563666b3af987122dc14.wav:83696:audio/x-wav:1
+a:audio/sound/370220__eflexmusic__pistol-shot-close-mixed.wav:audio/sound/370220__eflexmusic__pistol-shot-close-mixed-2c3b8e64780244219ff34f0480f41448.wav:264146:audio/x-wav:1
+a:audio/sound/418107__crazymonke9__single-dog-bark-1.wav:audio/sound/418107__crazymonke9__single-dog-bark-1-928e8e28b644c66216f9e713a286481b.wav:66404:audio/x-wav:1
+a:audio/sound/488608__spacejoe__metal-bowl-7.wav:audio/sound/488608__spacejoe__metal-bowl-7-f082d44332c05a95b6f13beddebd426b.wav:129684:audio/x-wav:1
+a:audio/sound/493913__damnsatinist__heavy-punch.wav:audio/sound/493913__damnsatinist__heavy-punch-e8f8602237998cbd3b5cbb29db4c387c.wav:180158:audio/x-wav:1
+a:audio/sound/502341__universodemalaonda__elevator-03.wav:audio/sound/502341__universodemalaonda__elevator-03-2945f6a8d7d414ae781730877aa29356.wav:103762:audio/x-wav:1
+a:audio/sound/521958__kastenfrosch__wet-impact-2.ogg:audio/sound/521958__kastenfrosch__wet-impact-2-a44efec93199f10b3b000e7ca358e2fc.ogg:25735:audio/ogg:1
+a:audio/sound/566384__combatsfx4you__dry-fire-out-of-ammo.wav:audio/sound/566384__combatsfx4you__dry-fire-out-of-ammo-d7ecdf446f996a63e02158c5f437084e.wav:29636:audio/x-wav:1
+a:audio/sound/632763__adh-dreaming__transition-swoosh.wav:audio/sound/632763__adh-dreaming__transition-swoosh-098ed2bf2edc60422166d565ab0b3781.wav:44602:audio/x-wav:1
+a:audio/sound/72724__moffet__impatient-whimpers-and-barks.wav:audio/sound/72724__moffet__impatient-whimpers-and-barks-b6a81cb556cba8723d665479159e7202.wav:226396:audio/x-wav:1
+a:audio/sound/armor pickup.wav:audio/sound/armor pickup-97a25ef14c9e8248319ff62e3cae6bf8.wav:31038:audio/x-wav:1
+a:audio/sound/click1.wav:audio/sound/click1-875500060ec14b2c9bda1530a9999586.wav:5592:audio/x-wav:1
+a:audio/sound/door0 closing.wav:audio/sound/door0 closing-75329f515ec2541b6768f406f3426a5c.wav:164536:audio/x-wav:1
+a:audio/sound/door0 opening.wav:audio/sound/door0 opening-069f30dd4a748a277c441c3d21010bcf.wav:164536:audio/x-wav:1
+a:audio/sound/Explosion10.wav:audio/sound/Explosion10-fed76cf54ab3cc7c98e4499addb5cf41.wav:378908:audio/x-wav:1
+a:audio/sound/health pickup.wav:audio/sound/health pickup-e91d2ee75c9424383ef1cbf50aba2380.wav:37262:audio/x-wav:1
+a:audio/sound/hoverOverEnter.wav:audio/sound/hoverOverEnter-406cc26f4f8ed61d794d1a41951963e8.wav:39982:audio/x-wav:1
+a:audio/sound/hund_activate.wav:audio/sound/hund_activate-c05f49f4b40d06f77cb13e67eccb5e1a.wav:142804:audio/x-wav:1
+a:audio/sound/invulnerable.wav:audio/sound/invulnerable-60f43b61a22b2326aee6d902c2d314b0.wav:48684:audio/x-wav:1
+a:audio/sound/menig_active.wav:audio/sound/menig_active-8a949d89b47cf92c9a58972b16dd4914.wav:43564:audio/x-wav:1
+a:audio/sound/menig_ai.wav:audio/sound/menig_ai-254be5f6722308ae8ba7311468fbe917.wav:25140:audio/x-wav:1
+a:audio/sound/menig_ugh.wav:audio/sound/menig_ugh-0ce0d91d40846e3e7cabc88dace75dc7.wav:16432:audio/x-wav:1
+a:audio/sound/Pickup_Coin45.wav:audio/sound/Pickup_Coin45-c0cd60035758b5f68a8c817f37dc34db.wav:22998:audio/x-wav:1
+a:audio/sound/vulnerable.wav:audio/sound/vulnerable-98942e42334ed37971e57dd44b3e5740.wav:48684:audio/x-wav:1
+d:effects:effects:0:application/unknown:1
+d:fonts:fonts:0:application/unknown:1
+t:fonts/arcade26.fnt:fonts/arcade26-d74d907ee9c165e7d7c4eb3b8aca0755.fnt:11128:application/unknown:1
+i:fonts/arcade26.png:fonts/arcade26-1193983ea9fb2db3b3af7c4617e120bf.png:14136:image/png:1
+t:fonts/arcadeRounded.fnt:fonts/arcadeRounded-2fb766c0ced21dc798c8038523fc0b3c.fnt:11133:application/unknown:1
+i:fonts/arcadeRounded.png:fonts/arcadeRounded-aff16db14644a83ada6bc5228b0dc532.png:19456:image/png:1
+d:i18n:i18n:0:application/unknown:1
+d:images:images:0:application/unknown:1
+d:images/excluded:images/excluded:0:application/unknown:1
+i:images/excluded/splash.jpg:images/excluded/splash-b58b72b977c60fcec850b237eb4ae481.jpg:603279:image/jpeg:1
+d:images/included:images/included:0:application/unknown:1
+d:images/included/barrel:images/included/barrel:0:application/unknown:1
+i:images/included/barrel/barrel explode 1.png:images/included/barrel/barrel explode 1-46fb76175f47bf9179e593a47fe065b1.png:1172:image/png:1
+i:images/included/barrel/barrel explode 2.png:images/included/barrel/barrel explode 2-52faeead1ce21cf2687a8c3b0c4cfe92.png:1171:image/png:1
+i:images/included/barrel/barrel explode 3.png:images/included/barrel/barrel explode 3-e493ba88cf990b5bbf61e6a4f87a99bd.png:1788:image/png:1
+i:images/included/barrel/barrel explode 4.png:images/included/barrel/barrel explode 4-c30800046adebec3b8dfdc3a854a7c0b.png:1660:image/png:1
+i:images/included/barrel/barrel explode 5.png:images/included/barrel/barrel explode 5-0d13704462c612fb78acc32347c5f22c.png:1217:image/png:1
+i:images/included/barrel/barrel explode 6.png:images/included/barrel/barrel explode 6-bfdd130fd3f53b52132061b637194466.png:975:image/png:1
+i:images/included/barrel/barrel explode 7.png:images/included/barrel/barrel explode 7-2b02542e5843469978bdce824008c88b.png:518:image/png:1
+i:images/included/barrel/barrel explode 8.png:images/included/barrel/barrel explode 8-cf3348f658f11cb33417edad3aa3e525.png:266:image/png:1
+i:images/included/barrel/barrel.png:images/included/barrel/barrel-4e2277196f22b70d3c4ea4beb204215a.png:907:image/png:1
+i:images/included/button-pressed.png:images/included/button-pressed-7f6438a9845094d99f626f4a2abc792c.png:7880:image/png:1
+i:images/included/button.png:images/included/button-db68f940918d44ef1b39a23919110da5.png:8302:image/png:1
+i:images/included/clearPixel.png:images/included/clearPixel-f5d53e23cd8ac4a125ab95b768d5f524.png:5331:image/png:1
+i:images/included/crosshair.png:images/included/crosshair-5c63e80cc107722a43f70482f8e90018.png:122:image/png:1
+d:images/included/decals:images/included/decals:0:application/unknown:1
+i:images/included/decals/blood decal 1.png:images/included/decals/blood decal 1-25cd84565e1b175fedbf413332cd0d82.png:186:image/png:1
+i:images/included/decals/blood decal 2.png:images/included/decals/blood decal 2-efc37a4c46f100255458997aca25cddd.png:186:image/png:1
+i:images/included/decals/blood decal 3.png:images/included/decals/blood decal 3-6f05d1ba5b84cc8836664e23b608e4b1.png:181:image/png:1
+i:images/included/decals/blood decal 4.png:images/included/decals/blood decal 4-1a7a750970b6c87a36bbb1dde2718e2f.png:180:image/png:1
+i:images/included/decals/bullet puff 1.png:images/included/decals/bullet puff 1-5a091d0dda13dd0d3e11edb14d408c2c.png:307:image/png:1
+i:images/included/decals/bullet puff 2.png:images/included/decals/bullet puff 2-246ae3c6e3a8374ad6ab38ba6a04e0e3.png:197:image/png:1
+i:images/included/decals/bullet puff 3.png:images/included/decals/bullet puff 3-f2faa9ced2264dab3991ac07c344b783.png:187:image/png:1
+i:images/included/decals/bullet puff 4.png:images/included/decals/bullet puff 4-aa1ccbd7c09df7114d6f0a1c32bbfd4e.png:135:image/png:1
+i:images/included/door0.png:images/included/door0-75dfcb18e02cf09a5016c12203c5e603.png:711:image/png:1
+i:images/included/elevator.png:images/included/elevator-92ee87563294847eb6964be14f5bff9b.png:742:image/png:1
+d:images/included/enemies:images/included/enemies:0:application/unknown:1
+d:images/included/enemies/hund:images/included/enemies/hund:0:application/unknown:1
+i:images/included/enemies/hund/die 0.png:images/included/enemies/hund/die 0-52bdff5ff798e52a2f8e7745f0d8e4ce.png:921:image/png:1
+i:images/included/enemies/hund/die 1.png:images/included/enemies/hund/die 1-7898a84924664ae144b2fdb0db262f44.png:903:image/png:1
+i:images/included/enemies/hund/die 2.png:images/included/enemies/hund/die 2-210d6d63a9b15f4a33962166669ad847.png:872:image/png:1
+i:images/included/enemies/hund/die 3.png:images/included/enemies/hund/die 3-eaefbea6ecd0fddf4eae9c98eb8cbb5d.png:610:image/png:1
+i:images/included/enemies/hund/gib 0.png:images/included/enemies/hund/gib 0-94dffedf2c9ce412e4fe4f48d947a265.png:577:image/png:1
+i:images/included/enemies/hund/gib 1.png:images/included/enemies/hund/gib 1-60640d6fe8e05f463864c0bba8405b5e.png:1780:image/png:1
+i:images/included/enemies/hund/gib 2.png:images/included/enemies/hund/gib 2-d589415bad69a9b4f07e480ec7ea1b0a.png:2279:image/png:1
+i:images/included/enemies/hund/gib 3.png:images/included/enemies/hund/gib 3-4fe2359959f143131ec2c16ec9f10798.png:2518:image/png:1
+i:images/included/enemies/hund/gib 4.png:images/included/enemies/hund/gib 4-c1e1dc8142249a29eb86113e1b780024.png:2430:image/png:1
+i:images/included/enemies/hund/gib 5.png:images/included/enemies/hund/gib 5-fce86b27e8f24bc24e13e966d13ef8f7.png:849:image/png:1
+i:images/included/enemies/hund/melee 0.png:images/included/enemies/hund/melee 0-c1534393d0ce72c233642578263e1972.png:519:image/png:1
+i:images/included/enemies/hund/melee 1.png:images/included/enemies/hund/melee 1-ad15043f7379761327cb5f94d0d916a3.png:632:image/png:1
+i:images/included/enemies/hund/melee 2.png:images/included/enemies/hund/melee 2-9a52353926b26e2e9dac88be02d492e8.png:1001:image/png:1
+i:images/included/enemies/hund/walk back 0.png:images/included/enemies/hund/walk back 0-ccc970066cef7ff3a3ccd1a770c27221.png:358:image/png:1
+i:images/included/enemies/hund/walk back 1.png:images/included/enemies/hund/walk back 1-2c1ddadd2e6ba0b72a71c71154a0c69e.png:346:image/png:1
+i:images/included/enemies/hund/walk back 2.png:images/included/enemies/hund/walk back 2-3afbe323a890f5a3ca234a3c42731046.png:368:image/png:1
+i:images/included/enemies/hund/walk back 3.png:images/included/enemies/hund/walk back 3-1f2008370dd05b8995b1d293e1e39b0f.png:362:image/png:1
+i:images/included/enemies/hund/walk back side left 0.png:images/included/enemies/hund/walk back side left 0-e34e5dca556cbb7eff86618efffa150b.png:569:image/png:1
+i:images/included/enemies/hund/walk back side left 1.png:images/included/enemies/hund/walk back side left 1-6a1eec571693b7d710623736147dc814.png:533:image/png:1
+i:images/included/enemies/hund/walk back side left 2.png:images/included/enemies/hund/walk back side left 2-6a3066dedc82f0efd06755e02377064e.png:529:image/png:1
+i:images/included/enemies/hund/walk back side left 3.png:images/included/enemies/hund/walk back side left 3-ef989fb0119e0436494718244b28d770.png:465:image/png:1
+i:images/included/enemies/hund/walk back side right 0.png:images/included/enemies/hund/walk back side right 0-a3b2a7abc6aeebcd24c3fff447e54783.png:559:image/png:1
+i:images/included/enemies/hund/walk back side right 1.png:images/included/enemies/hund/walk back side right 1-2adc43c5c3a207d9c1dffcb893afc867.png:516:image/png:1
+i:images/included/enemies/hund/walk back side right 2.png:images/included/enemies/hund/walk back side right 2-65f1ae491407832204db381368b0513d.png:550:image/png:1
+i:images/included/enemies/hund/walk back side right 3.png:images/included/enemies/hund/walk back side right 3-ad0c272c47973c2aa038182c6034f368.png:469:image/png:1
+i:images/included/enemies/hund/walk front 0.png:images/included/enemies/hund/walk front 0-01b7dcd9a1875df23af8ac3aedabfcde.png:423:image/png:1
+i:images/included/enemies/hund/walk front 1.png:images/included/enemies/hund/walk front 1-d3ed4a49b5e475b47a9110bdf436d82d.png:419:image/png:1
+i:images/included/enemies/hund/walk front 2.png:images/included/enemies/hund/walk front 2-c8589494aac141f9b44309bcfccd1482.png:400:image/png:1
+i:images/included/enemies/hund/walk front 3.png:images/included/enemies/hund/walk front 3-619f16de4e94cd6d052db019827283d1.png:446:image/png:1
+i:images/included/enemies/hund/walk front side left 0.png:images/included/enemies/hund/walk front side left 0-a486fe74b547dd56b920d5fcc6044487.png:600:image/png:1
+i:images/included/enemies/hund/walk front side left 1.png:images/included/enemies/hund/walk front side left 1-8e12310e171d2b201156bdf583b628f7.png:606:image/png:1
+i:images/included/enemies/hund/walk front side left 2.png:images/included/enemies/hund/walk front side left 2-d7d6ffa6d5ff475fad2c4e63cd8181c9.png:594:image/png:1
+i:images/included/enemies/hund/walk front side left 3.png:images/included/enemies/hund/walk front side left 3-66ec111402dd7ebdd7076e1008133d44.png:539:image/png:1
+i:images/included/enemies/hund/walk front side right 0.png:images/included/enemies/hund/walk front side right 0-6de968e34b65b7f14e51dbef2ddc8d5a.png:583:image/png:1
+i:images/included/enemies/hund/walk front side right 1.png:images/included/enemies/hund/walk front side right 1-699c0cd6f1b6665e079ca46101add8d2.png:603:image/png:1
+i:images/included/enemies/hund/walk front side right 2.png:images/included/enemies/hund/walk front side right 2-5845553dfff0fe043fb3eb8dae015bfa.png:583:image/png:1
+i:images/included/enemies/hund/walk front side right 3.png:images/included/enemies/hund/walk front side right 3-ce3a7b48e58e01f6be92bba9e168e3e5.png:539:image/png:1
+i:images/included/enemies/hund/walk side left 0.png:images/included/enemies/hund/walk side left 0-5c75c2e939626038b7adfe6185648874.png:573:image/png:1
+i:images/included/enemies/hund/walk side left 1.png:images/included/enemies/hund/walk side left 1-aa541648fd541419e3674dcccf74b87b.png:587:image/png:1
+i:images/included/enemies/hund/walk side left 2.png:images/included/enemies/hund/walk side left 2-a3a79fa49d29c66c99886e9d170751d1.png:572:image/png:1
+i:images/included/enemies/hund/walk side left 3.png:images/included/enemies/hund/walk side left 3-e5854dacc6e15f587a803849a7d473c6.png:518:image/png:1
+i:images/included/enemies/hund/walk side right 0.png:images/included/enemies/hund/walk side right 0-c8ceb198e72b5ea52b560c66f6a1c997.png:569:image/png:1
+i:images/included/enemies/hund/walk side right 1.png:images/included/enemies/hund/walk side right 1-cddec4e11e6f0cd4be1b18c6525be60d.png:582:image/png:1
+i:images/included/enemies/hund/walk side right 2.png:images/included/enemies/hund/walk side right 2-0a4ce362a7b7f262812dd1ef45297b2e.png:562:image/png:1
+i:images/included/enemies/hund/walk side right 3.png:images/included/enemies/hund/walk side right 3-48815a5f56336688103db390d42fb49d.png:518:image/png:1
+d:images/included/enemies/menig:images/included/enemies/menig:0:application/unknown:1
+i:images/included/enemies/menig/die 0.png:images/included/enemies/menig/die 0-aecef34df43219de4b7aefe5ff3d6dfe.png:886:image/png:1
+i:images/included/enemies/menig/die 1.png:images/included/enemies/menig/die 1-01a2e305eefa74637c5fe8c3a9847e1f.png:907:image/png:1
+i:images/included/enemies/menig/die 2.png:images/included/enemies/menig/die 2-73100c27ec88ff06173d1d2c5da1865e.png:738:image/png:1
+i:images/included/enemies/menig/die 3.png:images/included/enemies/menig/die 3-fa098b44e853d916a7a63847914cc7eb.png:725:image/png:1
+i:images/included/enemies/menig/die 4.png:images/included/enemies/menig/die 4-2f3bac131fad606947d36ba6e376e074.png:627:image/png:1
+i:images/included/enemies/menig/gib 0.png:images/included/enemies/menig/gib 0-51d430a517c6a652b738fe195b6b2ab1.png:759:image/png:1
+i:images/included/enemies/menig/gib 1.png:images/included/enemies/menig/gib 1-654a233a9f5c2617d600c76d02b9e544.png:1649:image/png:1
+i:images/included/enemies/menig/gib 2.png:images/included/enemies/menig/gib 2-f5dbc0c14c4f3d5d4e6bc3f55f998e2c.png:1862:image/png:1
+i:images/included/enemies/menig/gib 3.png:images/included/enemies/menig/gib 3-7b7fb48c642c1ed0eebb4f8e3144528d.png:2221:image/png:1
+i:images/included/enemies/menig/gib 4.png:images/included/enemies/menig/gib 4-481f639d16f5d25b75a2bb3a0b42da67.png:1919:image/png:1
+i:images/included/enemies/menig/gib 5.png:images/included/enemies/menig/gib 5-d1da51d2665116075ee95f43d19a357b.png:1287:image/png:1
+i:images/included/enemies/menig/gib 6.png:images/included/enemies/menig/gib 6-b05d0ab62901624a76a5b9ab567bbd34.png:852:image/png:1
+i:images/included/enemies/menig/hurt 0.png:images/included/enemies/menig/hurt 0-f15094846ae006041cee4ea8c153f606.png:899:image/png:1
+i:images/included/enemies/menig/idle back 0.png:images/included/enemies/menig/idle back 0-56956ac6b1ff40a6e7fcde1fd461b29b.png:634:image/png:1
+i:images/included/enemies/menig/idle back side left 0.png:images/included/enemies/menig/idle back side left 0-b50f8d48f2dbdbc4f17ebca077564b9f.png:644:image/png:1
+i:images/included/enemies/menig/idle back side right 0.png:images/included/enemies/menig/idle back side right 0-0b4085bcf85106437d8f2d734105c13a.png:576:image/png:1
+i:images/included/enemies/menig/idle front 0.png:images/included/enemies/menig/idle front 0-29da8fe39f6aa235d64353ecc2408ccd.png:694:image/png:1
+i:images/included/enemies/menig/idle front side left 0.png:images/included/enemies/menig/idle front side left 0-62d9ff144937bc793aadb7d1f415de0c.png:678:image/png:1
+i:images/included/enemies/menig/idle front side right 0.png:images/included/enemies/menig/idle front side right 0-a3b5c0f8a38af587beeff7f06159f99a.png:690:image/png:1
+i:images/included/enemies/menig/idle side left 0.png:images/included/enemies/menig/idle side left 0-69777f211339431acb80603df6b2f5f3.png:629:image/png:1
+i:images/included/enemies/menig/idle side right 0.png:images/included/enemies/menig/idle side right 0-21892549ad2d55b6676df99b77480fa8.png:596:image/png:1
+i:images/included/enemies/menig/melee 0.png:images/included/enemies/menig/melee 0-c6b24aee2b48d0622febd9f934de7892.png:841:image/png:1
+i:images/included/enemies/menig/melee 1.png:images/included/enemies/menig/melee 1-6f76818c98670f4f468a024b4c79fbfe.png:1254:image/png:1
+i:images/included/enemies/menig/shoot 0.png:images/included/enemies/menig/shoot 0-50438de77b62eeda93d5282dea20ee3b.png:714:image/png:1
+i:images/included/enemies/menig/shoot 1.png:images/included/enemies/menig/shoot 1-8c30b5dbfc6ca63c1afc415cc0ba19f5.png:745:image/png:1
+i:images/included/enemies/menig/walk back 0.png:images/included/enemies/menig/walk back 0-d4e095d5444b010de015aa0b5129e02e.png:642:image/png:1
+i:images/included/enemies/menig/walk back 1.png:images/included/enemies/menig/walk back 1-e112042cae1934b29ef91ec0bb81cfc0.png:617:image/png:1
+i:images/included/enemies/menig/walk back 2.png:images/included/enemies/menig/walk back 2-fbdad292818f5dcc5432e6a6c2899e09.png:663:image/png:1
+i:images/included/enemies/menig/walk back 3.png:images/included/enemies/menig/walk back 3-ff381ee26761716f408a4223121ae482.png:643:image/png:1
+i:images/included/enemies/menig/walk back side left 0.png:images/included/enemies/menig/walk back side left 0-dce420aebbeb50ca405a8ab38def5ccb.png:735:image/png:1
+i:images/included/enemies/menig/walk back side left 1.png:images/included/enemies/menig/walk back side left 1-a8360cb6a3d6b7f1692410b8771a42fb.png:673:image/png:1
+i:images/included/enemies/menig/walk back side left 2.png:images/included/enemies/menig/walk back side left 2-e9e8494e652aa8450e3d0ef0dffbe0c9.png:783:image/png:1
+i:images/included/enemies/menig/walk back side left 3.png:images/included/enemies/menig/walk back side left 3-3a3f7d01a30d2e9cc33dfe68c1ad6ebb.png:673:image/png:1
+i:images/included/enemies/menig/walk back side right 0.png:images/included/enemies/menig/walk back side right 0-9a3100e10f23d3280e98a13341dd3aba.png:688:image/png:1
+i:images/included/enemies/menig/walk back side right 1.png:images/included/enemies/menig/walk back side right 1-b4e8a8cb31cf89f7324365c99707af46.png:654:image/png:1
+i:images/included/enemies/menig/walk back side right 2.png:images/included/enemies/menig/walk back side right 2-a80da3914d16f07b1ddaa581c05115d7.png:756:image/png:1
+i:images/included/enemies/menig/walk back side right 3.png:images/included/enemies/menig/walk back side right 3-18c460022778397cecd0e294237d20d5.png:664:image/png:1
+i:images/included/enemies/menig/walk front 0.png:images/included/enemies/menig/walk front 0-ddf736e16ebe63e0d8ad16555f4f124e.png:685:image/png:1
+i:images/included/enemies/menig/walk front 1.png:images/included/enemies/menig/walk front 1-306197dab8300050df5741ac518ad2a5.png:713:image/png:1
+i:images/included/enemies/menig/walk front 2.png:images/included/enemies/menig/walk front 2-8947380f703a3bf5cc1b542f7c121a90.png:701:image/png:1
+i:images/included/enemies/menig/walk front 3.png:images/included/enemies/menig/walk front 3-5b95543982702b446608376efa7c112a.png:725:image/png:1
+i:images/included/enemies/menig/walk front side left 0.png:images/included/enemies/menig/walk front side left 0-67e8cd9e81d5600cae37b0be13eb852c.png:827:image/png:1
+i:images/included/enemies/menig/walk front side left 1.png:images/included/enemies/menig/walk front side left 1-6bb537f031ceedad189b736d4e83454e.png:757:image/png:1
+i:images/included/enemies/menig/walk front side left 2.png:images/included/enemies/menig/walk front side left 2-c91045a0d41c82ce64425019b2ade51e.png:701:image/png:1
+i:images/included/enemies/menig/walk front side left 3.png:images/included/enemies/menig/walk front side left 3-c2cce6e691451b512b3749b3ac9a05b4.png:747:image/png:1
+i:images/included/enemies/menig/walk front side right 0.png:images/included/enemies/menig/walk front side right 0-1d5de2881b1e6af44f5e2240cbfbb445.png:808:image/png:1
+i:images/included/enemies/menig/walk front side right 1.png:images/included/enemies/menig/walk front side right 1-e6a1746bb2e344625249ecb13fab1219.png:702:image/png:1
+i:images/included/enemies/menig/walk front side right 2.png:images/included/enemies/menig/walk front side right 2-c85a429e5de773a0a5a1fac52208ccc2.png:691:image/png:1
+i:images/included/enemies/menig/walk front side right 3.png:images/included/enemies/menig/walk front side right 3-4ab94d801d79e078096841293d172a21.png:705:image/png:1
+i:images/included/enemies/menig/walk side left 0.png:images/included/enemies/menig/walk side left 0-7e5bb0ef00458949c4bb67e0377c6e00.png:755:image/png:1
+i:images/included/enemies/menig/walk side left 1.png:images/included/enemies/menig/walk side left 1-4d6773f7ca9e280adf8a6ba92ea3b1bd.png:681:image/png:1
+i:images/included/enemies/menig/walk side left 2.png:images/included/enemies/menig/walk side left 2-6d8218551ea1300a9c3bd776894b24ac.png:697:image/png:1
+i:images/included/enemies/menig/walk side left 3.png:images/included/enemies/menig/walk side left 3-314de92371c848f354f4dd9c15665628.png:688:image/png:1
+i:images/included/enemies/menig/walk side right 0.png:images/included/enemies/menig/walk side right 0-674d84e8bd3a91c5f402ef330448b6c0.png:755:image/png:1
+i:images/included/enemies/menig/walk side right 1.png:images/included/enemies/menig/walk side right 1-1deb3e36868afcc3adcc40ffc2cde6b2.png:664:image/png:1
+i:images/included/enemies/menig/walk side right 2.png:images/included/enemies/menig/walk side right 2-f969247e7e34a9cff11b837e4af15dd0.png:693:image/png:1
+i:images/included/enemies/menig/walk side right 3.png:images/included/enemies/menig/walk side right 3-6ed513a05a4695fabe6b6200bee7629e.png:686:image/png:1
+d:images/included/enemies/sersjant:images/included/enemies/sersjant:0:application/unknown:1
+i:images/included/enemies/sersjant/die 0.png:images/included/enemies/sersjant/die 0-0ff47427cc585aa3dbb0762d2b72a965.png:1571:image/png:1
+i:images/included/enemies/sersjant/die 1.png:images/included/enemies/sersjant/die 1-87561af4c6c4fdadf023d8bde1e4d04c.png:1595:image/png:1
+i:images/included/enemies/sersjant/die 2.png:images/included/enemies/sersjant/die 2-ed984bd033e31d66e8ebb45c9becd46c.png:1396:image/png:1
+i:images/included/enemies/sersjant/die 3.png:images/included/enemies/sersjant/die 3-daee3a3f2ac60597d886f61003f8f87f.png:1347:image/png:1
+i:images/included/enemies/sersjant/die 4.png:images/included/enemies/sersjant/die 4-c1e13cdf8ee1623e7500a1ace8a97530.png:1026:image/png:1
+i:images/included/enemies/sersjant/gib 0.png:images/included/enemies/sersjant/gib 0-cfef02a2245896d3e502683619a8e0a9.png:1224:image/png:1
+i:images/included/enemies/sersjant/gib 1.png:images/included/enemies/sersjant/gib 1-1072f70293dd7453196569cb59674ac1.png:2484:image/png:1
+i:images/included/enemies/sersjant/gib 2.png:images/included/enemies/sersjant/gib 2-ce31897b91e3e7291c10e98018187b28.png:3084:image/png:1
+i:images/included/enemies/sersjant/gib 3.png:images/included/enemies/sersjant/gib 3-b064528e5b5c79ce23dc1a96bd201111.png:3797:image/png:1
+i:images/included/enemies/sersjant/gib 4.png:images/included/enemies/sersjant/gib 4-e3d7b2332a798cc68502a487b10789b0.png:3075:image/png:1
+i:images/included/enemies/sersjant/gib 5.png:images/included/enemies/sersjant/gib 5-02142caa7a4fe2a2e666a2549ac36a72.png:1973:image/png:1
+i:images/included/enemies/sersjant/gib 6.png:images/included/enemies/sersjant/gib 6-7d8cfe178da58c8777a0c10838ed3319.png:1063:image/png:1
+i:images/included/enemies/sersjant/hurt 0.png:images/included/enemies/sersjant/hurt 0-8c8f87461e7452354e0b6d2fb8db8d45.png:1442:image/png:1
+i:images/included/enemies/sersjant/idle back 0.png:images/included/enemies/sersjant/idle back 0-d34e0e2634dcca5d05252a3bd97a0ce8.png:747:image/png:1
+i:images/included/enemies/sersjant/idle back side left 0.png:images/included/enemies/sersjant/idle back side left 0-c2d861caa12a10dd741440d52371ea44.png:841:image/png:1
+i:images/included/enemies/sersjant/idle back side right 0.png:images/included/enemies/sersjant/idle back side right 0-a08545d02e7055799bdeb896ec7e3731.png:777:image/png:1
+i:images/included/enemies/sersjant/idle front 0.png:images/included/enemies/sersjant/idle front 0-4dd7e1dfea0a698ed519939c6ce6665c.png:1159:image/png:1
+i:images/included/enemies/sersjant/idle front side left 0.png:images/included/enemies/sersjant/idle front side left 0-05e4f07669d0b1f2d9cee9c0c99c2073.png:1058:image/png:1
+i:images/included/enemies/sersjant/idle front side right 0.png:images/included/enemies/sersjant/idle front side right 0-08af12621efbea13c9c0dac207ec8dc5.png:1078:image/png:1
+i:images/included/enemies/sersjant/idle side left 0.png:images/included/enemies/sersjant/idle side left 0-e4952b00aa118abcf2c5da76c7042267.png:829:image/png:1
+i:images/included/enemies/sersjant/idle side right 0.png:images/included/enemies/sersjant/idle side right 0-e76cf96e0ad5ea7cfa39b8ce0c7ac242.png:854:image/png:1
+i:images/included/enemies/sersjant/melee 0.png:images/included/enemies/sersjant/melee 0-ad9c9732696cd12c8cf2a4eb5d6dd435.png:1262:image/png:1
+i:images/included/enemies/sersjant/melee 1.png:images/included/enemies/sersjant/melee 1-ac81174ebc60e15785dfa0abfc74aa35.png:1806:image/png:1
+i:images/included/enemies/sersjant/shoot 0.png:images/included/enemies/sersjant/shoot 0-8de97526e16496b5cad5f8d6d610598f.png:928:image/png:1
+i:images/included/enemies/sersjant/shoot 1.png:images/included/enemies/sersjant/shoot 1-43fe5b346d0426b8044d46b43b9617d9.png:1097:image/png:1
+i:images/included/enemies/sersjant/walk back 0.png:images/included/enemies/sersjant/walk back 0-b3cf6dcbfc00a39950119815ec6647f9.png:759:image/png:1
+i:images/included/enemies/sersjant/walk back 1.png:images/included/enemies/sersjant/walk back 1-b339403f17c8058069bc182c0f124a23.png:824:image/png:1
+i:images/included/enemies/sersjant/walk back 2.png:images/included/enemies/sersjant/walk back 2-af64d21729bff7c7feb805ad617a11fd.png:771:image/png:1
+i:images/included/enemies/sersjant/walk back 3.png:images/included/enemies/sersjant/walk back 3-f4f8fed72139964a5ebbc2d82fad9074.png:786:image/png:1
+i:images/included/enemies/sersjant/walk back side left 0.png:images/included/enemies/sersjant/walk back side left 0-503e06ab07e45634858b2c79538fd5b0.png:945:image/png:1
+i:images/included/enemies/sersjant/walk back side left 1.png:images/included/enemies/sersjant/walk back side left 1-8a83b1f931ade065b3066ce94b6d7a90.png:906:image/png:1
+i:images/included/enemies/sersjant/walk back side left 2.png:images/included/enemies/sersjant/walk back side left 2-79ab97ff8c763d410171b111072abce1.png:1085:image/png:1
+i:images/included/enemies/sersjant/walk back side left 3.png:images/included/enemies/sersjant/walk back side left 3-57147aaa934803730e692d790e6bc91f.png:948:image/png:1
+i:images/included/enemies/sersjant/walk back side right 0.png:images/included/enemies/sersjant/walk back side right 0-e5cade893ba5c498b9507235a2137650.png:970:image/png:1
+i:images/included/enemies/sersjant/walk back side right 1.png:images/included/enemies/sersjant/walk back side right 1-7051432773a1a13d41d6fabcdb7f8d2c.png:855:image/png:1
+i:images/included/enemies/sersjant/walk back side right 2.png:images/included/enemies/sersjant/walk back side right 2-6499b762c4bf81fba9456a1b3dd4f006.png:963:image/png:1
+i:images/included/enemies/sersjant/walk back side right 3.png:images/included/enemies/sersjant/walk back side right 3-7cc9489ff9509a56cc87af1ce534f0bc.png:920:image/png:1
+i:images/included/enemies/sersjant/walk front 0.png:images/included/enemies/sersjant/walk front 0-b3d333a0193096180db7213d0e71ce3c.png:1043:image/png:1
+i:images/included/enemies/sersjant/walk front 1.png:images/included/enemies/sersjant/walk front 1-727cb593fa226567683f9d7733507155.png:1133:image/png:1
+i:images/included/enemies/sersjant/walk front 2.png:images/included/enemies/sersjant/walk front 2-6f4b8a4e1c94947a1668d66546ecc2d5.png:1057:image/png:1
+i:images/included/enemies/sersjant/walk front 3.png:images/included/enemies/sersjant/walk front 3-22f613d531bf61ef183a03c750c348bb.png:1130:image/png:1
+i:images/included/enemies/sersjant/walk front side left 0.png:images/included/enemies/sersjant/walk front side left 0-e5d38738967f2287d12827ef3be814e1.png:1133:image/png:1
+i:images/included/enemies/sersjant/walk front side left 1.png:images/included/enemies/sersjant/walk front side left 1-c825b48009697c2e2fa9ed895b25d0df.png:944:image/png:1
+i:images/included/enemies/sersjant/walk front side left 2.png:images/included/enemies/sersjant/walk front side left 2-0b96ffdd7e74def9a81155e2295ff838.png:1280:image/png:1
+i:images/included/enemies/sersjant/walk front side left 3.png:images/included/enemies/sersjant/walk front side left 3-9dfae6e56184f48f3f219f60e225e4f1.png:1101:image/png:1
+i:images/included/enemies/sersjant/walk front side right 0.png:images/included/enemies/sersjant/walk front side right 0-9ba54846b3c840ee283dbb2cbd013758.png:1104:image/png:1
+i:images/included/enemies/sersjant/walk front side right 1.png:images/included/enemies/sersjant/walk front side right 1-ab06c2b4fa059989b71daf5bc09db8c6.png:1028:image/png:1
+i:images/included/enemies/sersjant/walk front side right 2.png:images/included/enemies/sersjant/walk front side right 2-939831a69d16ef1dffb9dfb6b4274c83.png:1056:image/png:1
+i:images/included/enemies/sersjant/walk front side right 3.png:images/included/enemies/sersjant/walk front side right 3-df4c3b6eb946288dd34f7d1ae38e3de2.png:1077:image/png:1
+i:images/included/enemies/sersjant/walk side left 0.png:images/included/enemies/sersjant/walk side left 0-caa9d7be0900ca82a6e3aa58cc8e79c3.png:1208:image/png:1
+i:images/included/enemies/sersjant/walk side left 1.png:images/included/enemies/sersjant/walk side left 1-7ca55de3dbcd18b47ab42b3659ef1e33.png:944:image/png:1
+i:images/included/enemies/sersjant/walk side left 2.png:images/included/enemies/sersjant/walk side left 2-710010e41f37e07ae127370270e874c3.png:1051:image/png:1
+i:images/included/enemies/sersjant/walk side left 3.png:images/included/enemies/sersjant/walk side left 3-8d8f1375da51ccb6bd3a6b4aba6aeeee.png:890:image/png:1
+i:images/included/enemies/sersjant/walk side right 0.png:images/included/enemies/sersjant/walk side right 0-d461a6074da8364ee4fa185bee9f2238.png:1140:image/png:1
+i:images/included/enemies/sersjant/walk side right 1.png:images/included/enemies/sersjant/walk side right 1-5c9ce99bead5ad6dc0fec1bd47bfdfe2.png:975:image/png:1
+i:images/included/enemies/sersjant/walk side right 2.png:images/included/enemies/sersjant/walk side right 2-a0d35e0a494e7933493b5b696a5844a1.png:1011:image/png:1
+i:images/included/enemies/sersjant/walk side right 3.png:images/included/enemies/sersjant/walk side right 3-8c39821aafdba29fb13d5aa45876af4f.png:937:image/png:1
+d:images/included/hud:images/included/hud:0:application/unknown:1
+i:images/included/hud/DEAD 0.png:images/included/hud/DEAD 0-09d72e1eaa239f7a8d00092df9342922.png:1709:image/png:1
+i:images/included/hud/EVL0 0.png:images/included/hud/EVL0 0-64a01f929095448bc6c5a2ceb1bc2091.png:1627:image/png:1
+i:images/included/hud/EVL1 0.png:images/included/hud/EVL1 0-32c5f30da4f54b2c4be7dfb3ab86af70.png:1701:image/png:1
+i:images/included/hud/EVL2 0.png:images/included/hud/EVL2 0-8a896c9bb3eddcc625f115f5fbb8378b.png:1730:image/png:1
+i:images/included/hud/EVL3 0.png:images/included/hud/EVL3 0-9fb374459d77d23f0ae79b2a935305cf.png:1781:image/png:1
+i:images/included/hud/EVL4 0.png:images/included/hud/EVL4 0-e714f66e20efbf85675a63c825573cad.png:1778:image/png:1
+i:images/included/hud/GOD 0.png:images/included/hud/GOD 0-7c4b3550a2863627ce1885c4e8d6e046.png:1624:image/png:1
+i:images/included/hud/KILL0 0.png:images/included/hud/KILL0 0-64517b9f768ac50c5f38f34f90c72d4a.png:1623:image/png:1
+i:images/included/hud/KILL1 0.png:images/included/hud/KILL1 0-f305727077e69a05f9028dd12f9a6b34.png:1697:image/png:1
+i:images/included/hud/KILL2 0.png:images/included/hud/KILL2 0-d2f0090ee233c897772441a82b1b60d9.png:1725:image/png:1
+i:images/included/hud/KILL3 0.png:images/included/hud/KILL3 0-06ac3985b8c9d11a2c2df7602253d063.png:1779:image/png:1
+i:images/included/hud/KILL4 0.png:images/included/hud/KILL4 0-34b19776a463cd933bdd46f5563a29c5.png:1782:image/png:1
+i:images/included/hud/OUCH0 0.png:images/included/hud/OUCH0 0-e2721a3cd2150391f2a79d11e05daddc.png:1607:image/png:1
+i:images/included/hud/OUCH1 0.png:images/included/hud/OUCH1 0-d395eff151914970adbe971f37e1aed5.png:1676:image/png:1
+i:images/included/hud/OUCH2 0.png:images/included/hud/OUCH2 0-1ade46dc0b41263a074cf85be3a99146.png:1710:image/png:1
+i:images/included/hud/OUCH3 0.png:images/included/hud/OUCH3 0-ef66fe1c1e1273a8eae98fed003dbfb9.png:1785:image/png:1
+i:images/included/hud/OUCH4 0.png:images/included/hud/OUCH4 0-594ff078a77da652000b14e55e806852.png:1803:image/png:1
+i:images/included/hud/PAIN0 0.png:images/included/hud/PAIN0 0-697be8f96d39494fb26d3d169cb81832.png:1630:image/png:1
+i:images/included/hud/PAIN1 0.png:images/included/hud/PAIN1 0-ccfa73f8ef639202cce0de07175a440e.png:1702:image/png:1
+i:images/included/hud/PAIN2 0.png:images/included/hud/PAIN2 0-b1d6062d5c299a2744b74538cfac090d.png:1729:image/png:1
+i:images/included/hud/PAIN3 0.png:images/included/hud/PAIN3 0-1e0d8b08cab9a9dbb514438ed17eaa43.png:1776:image/png:1
+i:images/included/hud/PAIN4 0.png:images/included/hud/PAIN4 0-ffe23bf640f982502efd20e4a00bf7f4.png:1781:image/png:1
+i:images/included/hud/ST0 0.png:images/included/hud/ST0 0-08f5119152d9738286c60e732dee42dc.png:1602:image/png:1
+i:images/included/hud/ST0 1.png:images/included/hud/ST0 1-a5f86095b81d5b46b5292cc42372ada3.png:1598:image/png:1
+i:images/included/hud/ST0 2.png:images/included/hud/ST0 2-f0fac3f9f3a9ee16aba41cdd204b3fd9.png:1596:image/png:1
+i:images/included/hud/ST1 0.png:images/included/hud/ST1 0-5409e34099cc74ed7e461343a4779081.png:1672:image/png:1
+i:images/included/hud/ST1 1.png:images/included/hud/ST1 1-86b86296eb4c7a3943fe0517a3cb1b74.png:1667:image/png:1
+i:images/included/hud/ST1 2.png:images/included/hud/ST1 2-d2943bdaccd969c667453ab988ceed52.png:1666:image/png:1
+i:images/included/hud/ST2 0.png:images/included/hud/ST2 0-563d43af8c41ffa16c8a5039c5b48b63.png:1708:image/png:1
+i:images/included/hud/ST2 1.png:images/included/hud/ST2 1-400853bd355e9445df6ad48a6de58d46.png:1700:image/png:1
+i:images/included/hud/ST2 2.png:images/included/hud/ST2 2-bd85cc29615c82b4e192d67e353ba5b5.png:1701:image/png:1
+i:images/included/hud/ST3 0.png:images/included/hud/ST3 0-45f7621643cbe28e4e328951a7a7e5b1.png:1757:image/png:1
+i:images/included/hud/ST3 1.png:images/included/hud/ST3 1-2b9062cdb0e3e16ce8827a9fb553eeca.png:1754:image/png:1
+i:images/included/hud/ST3 2.png:images/included/hud/ST3 2-e6c92c3e650ee349a838cf10cc20e40c.png:1745:image/png:1
+i:images/included/hud/ST4 0.png:images/included/hud/ST4 0-eed42a99f8f0270a5adef3f3bcc50e58.png:1782:image/png:1
+i:images/included/hud/ST4 1.png:images/included/hud/ST4 1-453febf25663398e65d532a2d85a14ad.png:1783:image/png:1
+i:images/included/hud/ST4 2.png:images/included/hud/ST4 2-4dc734923566f78af8c09700eeb147ef.png:1781:image/png:1
+i:images/included/hud/TL0 0.png:images/included/hud/TL0 0-e556438567c964e0b6243361645b48b6.png:1576:image/png:1
+i:images/included/hud/TL1 0.png:images/included/hud/TL1 0-1fda09ca88573ffcebe53739dce252cd.png:1643:image/png:1
+i:images/included/hud/TL2 0.png:images/included/hud/TL2 0-27e597ad08811e005c63abbaf4a9f738.png:1679:image/png:1
+i:images/included/hud/TL3 0.png:images/included/hud/TL3 0-3d2e42ade400e46da484c1cd8c42194a.png:1747:image/png:1
+i:images/included/hud/TL4 0.png:images/included/hud/TL4 0-3a21ca6c1642a6ee1d1f24cfa2818421.png:1796:image/png:1
+i:images/included/hud/TR0 0.png:images/included/hud/TR0 0-6590da166df7480399e570565101b669.png:1580:image/png:1
+i:images/included/hud/TR1 0.png:images/included/hud/TR1 0-3a84c482c2e2b815d1573ed81255e9e1.png:1630:image/png:1
+i:images/included/hud/TR2 0.png:images/included/hud/TR2 0-412632dc26219fdb4b017d72746a27ae.png:1670:image/png:1
+i:images/included/hud/TR3 0.png:images/included/hud/TR3 0-2fd5202e4da8149d93d7f417866c164e.png:1756:image/png:1
+i:images/included/hud/TR4 0.png:images/included/hud/TR4 0-94a6244d843c7228bc9a8ae38b844ed5.png:1806:image/png:1
+i:images/included/overlayLeft.png:images/included/overlayLeft-cf12502057dc3c0d12306f63f9a44ff2.png:86:image/png:1
+i:images/included/overlayRight.png:images/included/overlayRight-79bd1e9c2a40ae53c518562d3b98ca31.png:86:image/png:1
+d:images/included/packed:images/included/packed:0:application/unknown:1
+t:images/included/packed/images.pack.atlas:images/included/packed/images.pack-a22ce662f4e78211b54c183f400820b4.atlas:30922:application/unknown:1
+i:images/included/packed/images.pack.png:images/included/packed/images.pack-b58d4a33859fc1ee58356e12d36c2075.png:7744:image/png:1
+i:images/included/packed/images.pack10.png:images/included/packed/images.pack10-a3276af1cb5e334585b7e5036972413a.png:9257:image/png:1
+i:images/included/packed/images.pack11.png:images/included/packed/images.pack11-e05d9b070e42f0ec7a7dbada2956aa2d.png:1179:image/png:1
+i:images/included/packed/images.pack12.png:images/included/packed/images.pack12-3f984094f64278f25d52904c9df40eb3.png:7575:image/png:1
+i:images/included/packed/images.pack13.png:images/included/packed/images.pack13-d36c4a1c861656b6c5570e3f9cde4903.png:10795:image/png:1
+i:images/included/packed/images.pack2.png:images/included/packed/images.pack2-9a88c6f29f815c98263dba60938ef868.png:11322:image/png:1
+i:images/included/packed/images.pack3.png:images/included/packed/images.pack3-c99536aeb8174edeb945ce06cbf0ff81.png:2850:image/png:1
+i:images/included/packed/images.pack4.png:images/included/packed/images.pack4-bff104ecb5844df3b3275ad2ab65d11a.png:42667:image/png:1
+i:images/included/packed/images.pack5.png:images/included/packed/images.pack5-826e24a0a8ec8732c2acd2cda6739c8f.png:49136:image/png:1
+i:images/included/packed/images.pack6.png:images/included/packed/images.pack6-52a4c0ff897fb776d296468989680da8.png:54148:image/png:1
+i:images/included/packed/images.pack7.png:images/included/packed/images.pack7-1edc0b0916e2c078bcfcedc27c32c9a1.png:46087:image/png:1
+i:images/included/packed/images.pack8.png:images/included/packed/images.pack8-18eb94937cbd0b98f47defae0bb5311e.png:2720:image/png:1
+i:images/included/packed/images.pack9.png:images/included/packed/images.pack9-c1bd178487d814be00148cf2907e27a7.png:1034:image/png:1
+d:images/included/pickups:images/included/pickups:0:application/unknown:1
+i:images/included/pickups/armor big.png:images/included/pickups/armor big-b2bd78d7ceb9d013a33694ea4daafb4d.png:351:image/png:1
+i:images/included/pickups/armor medium.png:images/included/pickups/armor medium-b87c4ab86d1f55c0c3f836f02a5f9c4c.png:344:image/png:1
+i:images/included/pickups/armor small.png:images/included/pickups/armor small-7178cd78572a87f87c7c81282642dfd6.png:462:image/png:1
+i:images/included/pickups/bullet.png:images/included/pickups/bullet-85c4c72295b0c20677f45c64ad716bea.png:235:image/png:1
+i:images/included/pickups/health medium.png:images/included/pickups/health medium-47ca828023d9f66ad93fc7f94d70d2d6.png:288:image/png:1
+i:images/included/pickups/health small.png:images/included/pickups/health small-99887a2e3f13f426ac78bb326b51e2eb.png:186:image/png:1
+i:images/included/pickups/shells.png:images/included/pickups/shells-a74adde1a011768b51a580508b940c0e.png:221:image/png:1
+i:images/included/pickups/shotgun.png:images/included/pickups/shotgun-63269a6ec32d28835ee603230bb5746d.png:157:image/png:1
+d:images/included/props:images/included/props:0:application/unknown:1
+i:images/included/props/computer 0.png:images/included/props/computer 0-e70bbbcd880a463080d85b45696f1bef.png:333:image/png:1
+i:images/included/props/suitcase 0.png:images/included/props/suitcase 0-ff64852a394ac3847718509a4ee01c01.png:568:image/png:1
+d:images/included/tiles:images/included/tiles:0:application/unknown:1
+i:images/included/tiles/big plates.png:images/included/tiles/big plates-2614968feaf75609656b9966ae3d3772.png:395:image/png:1
+i:images/included/tiles/circles0.png:images/included/tiles/circles0-585438c8bd0ccfd52bb7693bfa871a63.png:399:image/png:1
+i:images/included/tiles/cliff0.png:images/included/tiles/cliff0-2c850d0b4c4cf35a51962f27d514b78c.png:932:image/png:1
+i:images/included/tiles/elevator wall.png:images/included/tiles/elevator wall-80bace7e3bea9e845db4cd41c0dfae7f.png:406:image/png:1
+i:images/included/tiles/flag 0.png:images/included/tiles/flag 0-ce90054732d00a172156b0162521a863.png:1011:image/png:1
+i:images/included/tiles/light big plates.png:images/included/tiles/light big plates-f94f1b993733873ac423e10cfdaf9937.png:398:image/png:1
+i:images/included/tiles/light lonplate 2.png:images/included/tiles/light lonplate 2-e312fc6a58f300b3585872acbb821bc8.png:323:image/png:1
+i:images/included/tiles/light lonplate.png:images/included/tiles/light lonplate-83d89ed65b068c93889db6e73651cc97.png:321:image/png:1
+i:images/included/tiles/lights 0.png:images/included/tiles/lights 0-c80d7f8cdbd18ec50af9e4170d82b10c.png:502:image/png:1
+i:images/included/tiles/lonplate.png:images/included/tiles/lonplate-329c6ece7c6163e1225fb5bd5427d1c5.png:320:image/png:1
+d:images/included/weapons:images/included/weapons:0:application/unknown:1
+d:images/included/weapons/boot:images/included/weapons/boot:0:application/unknown:1
+i:images/included/weapons/boot/1.png:images/included/weapons/boot/1-eeecf89671ed0895adfb0b136666010d.png:308:image/png:1
+i:images/included/weapons/boot/2.png:images/included/weapons/boot/2-05bddd628c2b9feb77e63e087a0fb7c7.png:443:image/png:1
+i:images/included/weapons/boot/icon.png:images/included/weapons/boot/icon-a58a0188bf788e1aea2abbb9fa39fe4a.png:163:image/png:1
+d:images/included/weapons/pistol:images/included/weapons/pistol:0:application/unknown:1
+i:images/included/weapons/pistol/icon.png:images/included/weapons/pistol/icon-b34c957eef12814a740d92336bbddd4a.png:163:image/png:1
+i:images/included/weapons/pistol/shooting 0.png:images/included/weapons/pistol/shooting 0-d14e8d9ee37b4c4f9122bb3b3ad69a1b.png:1211:image/png:1
+i:images/included/weapons/pistol/shooting 1.png:images/included/weapons/pistol/shooting 1-8bbcba471e45fbb5797b4bc3daab77a2.png:1832:image/png:1
+i:images/included/weapons/pistol/shooting 2.png:images/included/weapons/pistol/shooting 2-9065d613a439f079d52a27002908340b.png:1178:image/png:1
+i:images/included/weapons/pistol/shooting 3.png:images/included/weapons/pistol/shooting 3-aa1ddca4ae7067508d475f3cc498ec14.png:1191:image/png:1
+i:images/included/weapons/pistol/shooting 4.png:images/included/weapons/pistol/shooting 4-9065d613a439f079d52a27002908340b.png:1178:image/png:1
+d:images/included/weapons/shotgun:images/included/weapons/shotgun:0:application/unknown:1
+i:images/included/weapons/shotgun/icon.png:images/included/weapons/shotgun/icon-63269a6ec32d28835ee603230bb5746d.png:157:image/png:1
+i:images/included/weapons/shotgun/shooting 0.png:images/included/weapons/shotgun/shooting 0-098065208942e43fee68aa97b549819a.png:1558:image/png:1
+i:images/included/weapons/shotgun/shooting 1.png:images/included/weapons/shotgun/shooting 1-26330dcb5a9d8dad23f6c9815bf149c2.png:3206:image/png:1
+i:images/included/weapons/shotgun/shooting 2.png:images/included/weapons/shotgun/shooting 2-ffb73f1e0bbb2fee9d58d7dfa784f408.png:1303:image/png:1
+i:images/included/weapons/shotgun/shooting 3.png:images/included/weapons/shotgun/shooting 3-ef7552c279250f18253d6bf4f3b09bec.png:1585:image/png:1
+i:images/included/weapons/shotgun/shooting 4.png:images/included/weapons/shotgun/shooting 4-cf60eb3da7a4f9b552dd48b6915f82a1.png:1465:image/png:1
+i:images/included/whitePixel.png:images/included/whitePixel-de87a441c71a403f3db732f7870d5b10.png:1260:image/png:1
+d:maps:maps:0:application/unknown:1
+b:maps/level0.tmx:maps/level0-3e924cc7890fa70ea5a184915faff488.tmx:117648:application/unknown:1
+b:maps/test.tmx:maps/test-d86add1dd1e68990bba45ccc93344a33.tmx:19221:application/unknown:1
+i:maps/tileset.png:maps/tileset-d457cfa3a8b60480c39c7784f64af034.png:14742:image/png:1
+d:shaders:shaders:0:application/unknown:1
+b:shaders/default.vs:shaders/default-68e90e6d21aae79a11e06f464cc4341a.vs:283:application/unknown:1
+b:shaders/shockwave.fs:shaders/shockwave-618f36b652315b0e9d2b992b7a1a18d3.fs:829:application/unknown:1
+d:skins:skins:0:application/unknown:1
+d:skins/default:skins/default:0:application/unknown:1
+t:skins/default/default.fnt:skins/default/default-c66eb731ba6a7b1e896cecaf20b19300.fnt:11626:application/unknown:1
+t:skins/default/uiskin.atlas:skins/default/uiskin-14e6a910e4dff35968680dd22b8cf502.atlas:3122:application/unknown:1
+t:skins/default/uiskin.json:skins/default/uiskin-1e1a38b6f3880177a383c01f95f215f7.json:2501:application/unknown:1
+i:skins/default/uiskin.png:skins/default/uiskin-34b28ea01f92a90fa485f007870f9eff.png:28299:image/png:1
+d:skins/mySkin:skins/mySkin:0:application/unknown:1
+t:skins/mySkin/arcade26.fnt:skins/mySkin/arcade26-d74d907ee9c165e7d7c4eb3b8aca0755.fnt:11128:application/unknown:1
+t:skins/mySkin/arcade64.fnt:skins/mySkin/arcade64-04603c999c36022036fbb967c936d5ae.fnt:11128:application/unknown:1
+t:skins/mySkin/font-export.fnt:skins/mySkin/font-export-9fdfafd3d809ad618b37d288ff0f82b4.fnt:9942:application/unknown:1
+t:skins/mySkin/font-title-export.fnt:skins/mySkin/font-title-export-837c7b239c7f56dd6b4cdae46a54be62.fnt:10103:application/unknown:1
+t:skins/mySkin/mySkin.atlas:skins/mySkin/mySkin-d46cc07c8694333c783b064bbc5e7723.atlas:4110:application/unknown:1
+t:skins/mySkin/mySkin.json:skins/mySkin/mySkin-06424bbcbebaf481360f5383a7949b83.json:4864:application/unknown:1
+i:skins/mySkin/mySkin.png:skins/mySkin/mySkin-6d2fb54bb6e6195d34631f186260a012.png:138433:image/png:1
+t:com/badlogic/gdx/graphics/g3d/particles/particles.fragment.glsl:particles.fragment-b90524761fdf09b0a836056d590c30b8.glsl:820:application/unknown:1
+t:com/badlogic/gdx/graphics/g3d/particles/particles.vertex.glsl:particles.vertex-f25b8b2fae10b9bfa09bfdd484923148.glsl:2886:application/unknown:1
+t:com/badlogic/gdx/graphics/g3d/shaders/default.fragment.glsl:default.fragment-e1c018bd48044c8b67c7bbc53145e540.glsl:5874:application/unknown:1
+t:com/badlogic/gdx/graphics/g3d/shaders/default.vertex.glsl:default.vertex-28b7e77ea3f282ebd5b066ba256692c3.glsl:9096:application/unknown:1
+t:com/badlogic/gdx/graphics/g3d/shaders/depth.fragment.glsl:depth.fragment-8341d5ce47fc398da575c9e294b6821b.glsl:869:application/unknown:1
+t:com/badlogic/gdx/graphics/g3d/shaders/depth.vertex.glsl:depth.vertex-98a450f1f747c05eedb7122779187316.glsl:2931:application/unknown:1
+t:com/badlogic/gdx/utils/lsans-15.fnt:lsans-15-5143ae9583bc43b1084f98062e054ae8.fnt:17711:application/unknown:1
+i:com/badlogic/gdx/utils/lsans-15.png:lsans-15-afe63790f9c73ea9a111fd9843835d21.png:14652:image/png:1
