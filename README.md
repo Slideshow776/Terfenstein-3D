@@ -1,8 +1,8 @@
 # Terfenstein 3D
 
-[Try it](https://slideshow776.github.io/3D-shooting-game/)
+[Try it](https://slideshow776.github.io/Terfenstein-3D/)
 [![image](https://user-images.githubusercontent.com/4059636/184866741-be475fb3-9945-4740-a251-5781a98a6eea.gif)
-](https://slideshow776.github.io/3D-shooting-game/)
+](https://slideshow776.github.io/Terfenstein-3D/)
 
 
 Read on below for project specifics.
