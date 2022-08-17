@@ -11,9 +11,9 @@ public class MyGdxGame extends BaseGame {
 	@Override
 	public void create() {
 		super.create();
-		// setActiveScreen(new SplashScreen());
+		setActiveScreen(new SplashScreen());
 		// setActiveScreen(new MenuScreen());
 		// setActiveScreen(new OptionsScreen());
-		setActiveScreen(new LevelScreen());
+		// setActiveScreen(new LevelScreen());
 	}
 }
