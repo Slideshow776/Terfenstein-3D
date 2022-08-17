@@ -373,7 +373,6 @@
   <object id="59662" gid="2" x="-64" y="384" width="64" height="64" rotation="90.2815"/>
   <object id="60486" gid="65" x="-33.3333" y="383.333" width="64" height="64" rotation="90"/>
   <object id="60488" gid="66" x="-128" y="384" width="64" height="64"/>
-  <object id="60494" gid="4" x="64" y="384" width="64" height="64" rotation="271.67"/>
   <object id="60497" gid="41" x="192" y="512" width="64" height="64"/>
  </objectgroup>
 </map>

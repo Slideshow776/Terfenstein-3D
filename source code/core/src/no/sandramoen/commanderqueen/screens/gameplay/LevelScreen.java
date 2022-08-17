@@ -50,7 +50,8 @@ public class LevelScreen extends BaseScreen3D {
     private Array<Tile> tiles;
     private Array<Door> doors;
     private Array<Enemy> enemies;
-    private Array<Pickup> pickups;
+    private Array<Pickup> originalPickups;
+    private Array<Pickup> newPickups;
     private Array<BaseActor3D> shootable;
 
     private boolean isGameOver;
@@ -61,6 +62,9 @@ public class LevelScreen extends BaseScreen3D {
     private BloodDecals bloodDecals;
 
     private int numEnemies;
+    private int numPickups;
+    private float PAR_TIME = 50;
+    private float totalTime;
 
     @Override
     public void initialize() {
@@ -79,12 +83,14 @@ public class LevelScreen extends BaseScreen3D {
             Gdx.input.setCursorCatched(true);
 
         numEnemies = enemies.size;
+        numPickups = originalPickups.size;
 
         GameUtils.printLoadingTime(getClass().getSimpleName(), startTime);
     }
 
     @Override
     public void update(float dt) {
+        totalTime += dt;
         checkGameOverCondition();
 
         TileHandler.updateTiles(tiles, player);
@@ -92,7 +98,8 @@ public class LevelScreen extends BaseScreen3D {
         for (int i = 0; i < enemies.size; i++)
             if (enemies.get(i).isDead) removeEnemy(enemies.get(i));
         updateBarrels();
-        PickupHandler.update(pickups, player, hud, weaponHandler, uiTable, uiHandler, enemies);
+        PickupHandler.update(originalPickups, player, hud, weaponHandler, uiTable, uiHandler, enemies);
+        PickupHandler.update(newPickups, player, hud, weaponHandler, uiTable, uiHandler, enemies);
 
         updateUI();
         for (Door door : doors)
@@ -145,10 +152,10 @@ public class LevelScreen extends BaseScreen3D {
                     Array levelData = new Array();
                     levelData.add("Hangar");
                     levelData.add((int) ((1 - (enemies.size / (float) numEnemies)) * 100));
-                    levelData.add(2);
+                    levelData.add((int) ((1 - (originalPickups.size / (float) numPickups)) * 100));
                     levelData.add(0);
-                    levelData.add(64f);
-                    levelData.add(50f);
+                    levelData.add(totalTime);
+                    levelData.add(PAR_TIME);
                     BaseGame.setActiveScreen(new LevelFinishScreen(levelData));
                 }
         }
@@ -237,9 +244,9 @@ public class LevelScreen extends BaseScreen3D {
     private void removeEnemy(Enemy enemy) {
         enemy.die();
         if (enemy instanceof Menig)
-            pickups.add(new Bullets(enemy.position.y + MathUtils.random(-1, 1), enemy.position.z + MathUtils.random(-1, 1), mainStage3D, 2, player, tiles));
+            newPickups.add(new Bullets(enemy.position.y + MathUtils.random(-1, 1), enemy.position.z + MathUtils.random(-1, 1), mainStage3D, 2, player, tiles));
         if (enemy instanceof Sersjant)
-            pickups.add(new Shells(enemy.position.y + MathUtils.random(-1, 1), enemy.position.z + MathUtils.random(-1, 1), mainStage3D, 2, player, tiles));
+            newPickups.add(new Shells(enemy.position.y + MathUtils.random(-1, 1), enemy.position.z + MathUtils.random(-1, 1), mainStage3D, 2, player, tiles));
         enemies.removeValue(enemy, false);
         shootable.removeValue(enemy, false);
         EnemyHandler.updateEnemiesShootableList(enemies, shootable);
@@ -315,11 +322,12 @@ public class LevelScreen extends BaseScreen3D {
         tilemap = new TilemapActor(BaseGame.level0Map, mainStage3D);
         tiles = new Array();
         shootable = new Array();
-        pickups = new Array();
+        originalPickups = new Array();
+        newPickups = new Array();
         enemies = new Array();
         doors = new Array();
         hud = new HUD(uiStage);
-        mapLoader = new MapLoader(tilemap, tiles, mainStage3D, player, shootable, pickups, enemies, uiStage, hud, decalBatch, doors);
+        mapLoader = new MapLoader(tilemap, tiles, mainStage3D, player, shootable, originalPickups, enemies, uiStage, hud, decalBatch, doors);
     }
 
     private void initializePlayer() {
