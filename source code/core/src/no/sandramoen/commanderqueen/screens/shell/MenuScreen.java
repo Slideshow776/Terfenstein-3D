@@ -9,6 +9,9 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.github.tommyettinger.textra.TypingLabel;
 
+import java.lang.reflect.Array;
+
+import no.sandramoen.commanderqueen.actors.weapon.weapons.Weapon;
 import no.sandramoen.commanderqueen.screens.gameplay.LevelScreen;
 import no.sandramoen.commanderqueen.ui.MadeByLabel;
 import no.sandramoen.commanderqueen.utils.BaseGame;
@@ -54,8 +57,10 @@ public class MenuScreen extends BaseScreen {
         TextButton startButton = new TextButton("Start", BaseGame.mySkin);
         startButton.addListener(
                 (Event event) -> {
-                    if (GameUtils.isTouchDownEvent(event))
-                        BaseGame.setActiveScreen(new LevelScreen());
+                    if (GameUtils.isTouchDownEvent(event)) {
+                        System.out.println(BaseGame.level0Map.getClass().getSimpleName());
+                        BaseGame.setActiveScreen(new LevelScreen(40, BaseGame.level0Map, "level 0", 100, 0, 50, 20, null));
+                    }
                     return false;
                 }
         );

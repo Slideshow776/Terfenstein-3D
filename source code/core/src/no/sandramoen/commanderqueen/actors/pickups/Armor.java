@@ -23,7 +23,6 @@ public class Armor extends Pickup {
             loadImage("pickups/armor big");
 
         setPosition(GameUtils.getPositionRelativeToFloor(1f), y, z);
-        checkIfIlluminated(tiles);
         setBaseRectangle();
     }
 

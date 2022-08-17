@@ -218,6 +218,6 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
         level0Map = assetManager.get("maps/level0.tmx", TiledMap.class);
 
         textureAtlas = assetManager.get("images/included/packed/images.pack.atlas");
-        GameUtils.printLoadingTime(getClass().getSimpleName(), startTime);
+        GameUtils.printLoadingTime(getClass().getSimpleName(),"Assetmanager", startTime);
     }
 }

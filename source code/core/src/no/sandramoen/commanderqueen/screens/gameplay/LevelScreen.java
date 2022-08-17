@@ -3,6 +3,7 @@ package no.sandramoen.commanderqueen.screens.gameplay;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
@@ -27,6 +28,7 @@ import no.sandramoen.commanderqueen.actors.pickups.Pickup;
 import no.sandramoen.commanderqueen.actors.utils.baseActors.BaseActor;
 import no.sandramoen.commanderqueen.actors.utils.baseActors.BaseActor3D;
 import no.sandramoen.commanderqueen.actors.characters.enemy.Enemy;
+import no.sandramoen.commanderqueen.actors.weapon.weapons.Weapon;
 import no.sandramoen.commanderqueen.screens.gameplay.level.BarrelExplosionHandler;
 import no.sandramoen.commanderqueen.screens.gameplay.level.EnemyHandler;
 import no.sandramoen.commanderqueen.screens.gameplay.level.MapLoader;
@@ -63,17 +65,23 @@ public class LevelScreen extends BaseScreen3D {
 
     private int numEnemies;
     private int numPickups;
-    private float PAR_TIME = 50;
     private float totalTime;
 
-    @Override
-    public void initialize() {
+    private float PAR_TIME;
+    private TiledMap tiledMap;
+    private String numLevel;
+
+    public LevelScreen(float parTime, TiledMap map, String numLevel, int health, int armor, int bullets, int shells, Array<Weapon> weapons) {
+        this.numLevel = numLevel;
         long startTime = System.currentTimeMillis();
+
+        PAR_TIME = parTime;
+        tiledMap = map;
 
         /*GameUtils.playLoopingMusic(BaseGame.level0Music);*/
         GameUtils.playLoopingMusic(BaseGame.metalWalkingMusic, 0);
-        initializeMap();
-        initializePlayer();
+        initializeMap(health, armor, bullets, shells);
+        initializePlayer(weapons);
         uiHandler = new UIHandler(uiTable, enemies, hud);
         hud.setAmmo(weaponHandler.currentWeapon);
         bulletDecals = new BulletDecals(mainStage3D.camera, decalBatch);
@@ -85,7 +93,11 @@ public class LevelScreen extends BaseScreen3D {
         numEnemies = enemies.size;
         numPickups = originalPickups.size;
 
-        GameUtils.printLoadingTime(getClass().getSimpleName(), startTime);
+        GameUtils.printLoadingTime(getClass().getSimpleName(), "Level", startTime);
+    }
+
+    @Override
+    public void initialize() {
     }
 
     @Override
@@ -98,8 +110,8 @@ public class LevelScreen extends BaseScreen3D {
         for (int i = 0; i < enemies.size; i++)
             if (enemies.get(i).isDead) removeEnemy(enemies.get(i));
         updateBarrels();
-        PickupHandler.update(originalPickups, player, hud, weaponHandler, uiTable, uiHandler, enemies);
-        PickupHandler.update(newPickups, player, hud, weaponHandler, uiTable, uiHandler, enemies);
+        PickupHandler.update(originalPickups, player, hud, weaponHandler, uiTable, uiHandler, mainStage3D, tiles);
+        PickupHandler.update(newPickups, player, hud, weaponHandler, uiTable, uiHandler, mainStage3D, tiles);
 
         updateUI();
         for (Door door : doors)
@@ -119,7 +131,7 @@ public class LevelScreen extends BaseScreen3D {
             stopLevel();
             BaseGame.setActiveScreen(new MenuScreen());
         } else if (keycode == Keys.R)
-            BaseGame.setActiveScreen(new LevelScreen());
+            BaseGame.setActiveScreen(new LevelScreen(PAR_TIME, BaseGame.testMap, "test", 100, 0, 50, 50, null));
         else if (keycode == Keys.Q)
             hud.setInvulnerable();
         else if (keycode == Keys.F) {
@@ -146,18 +158,8 @@ public class LevelScreen extends BaseScreen3D {
                 if (player.isWithinDistance(Tile.height * .8f, door))
                     door.openAndClose();
             for (Elevator elevator : mapLoader.elevators)
-                if (player.isWithinDistance(Tile.height * 1.1f, elevator)) {
-                    BaseGame.elevatorSound.play(BaseGame.soundVolume);
-                    stopLevel();
-                    Array levelData = new Array();
-                    levelData.add("Hangar");
-                    levelData.add((int) ((1 - (enemies.size / (float) numEnemies)) * 100));
-                    levelData.add((int) ((1 - (originalPickups.size / (float) numPickups)) * 100));
-                    levelData.add(0);
-                    levelData.add(totalTime);
-                    levelData.add(PAR_TIME);
-                    BaseGame.setActiveScreen(new LevelFinishScreen(levelData));
-                }
+                if (player.isWithinDistance(Tile.height * 1.1f, elevator))
+                    levelFinished();
         }
 
         return super.keyDown(keycode);
@@ -318,27 +320,48 @@ public class LevelScreen extends BaseScreen3D {
     }
 
 
-    private void initializeMap() {
-        tilemap = new TilemapActor(BaseGame.level0Map, mainStage3D);
+    private void initializeMap(int health, int armor, int bullets, int shells) {
+        tilemap = new TilemapActor(tiledMap, mainStage3D);
         tiles = new Array();
         shootable = new Array();
         originalPickups = new Array();
         newPickups = new Array();
         enemies = new Array();
         doors = new Array();
-        hud = new HUD(uiStage);
+        hud = new HUD(uiStage, health, armor, bullets, shells);
         mapLoader = new MapLoader(tilemap, tiles, mainStage3D, player, shootable, originalPickups, enemies, uiStage, hud, decalBatch, doors);
     }
 
-    private void initializePlayer() {
+    private void initializePlayer(Array<Weapon> weapons) {
         player = mapLoader.player;
         hud.player = player;
         weaponHandler = new WeaponHandler(uiStage, hud, player, shootable, mainStage3D);
         hud.setWeaponsTable(weaponHandler);
+        if (weapons != null)
+            for (Weapon weapon : weapons)
+                if (weapon.isAvailable)
+                    weaponHandler.makeAvailable(weapon.getClass().getSimpleName());
     }
 
     private void stopLevel() {
         BaseGame.metalWalkingMusic.stop();
         BaseGame.level0Music.stop();
+    }
+
+    private void levelFinished() {
+        BaseGame.elevatorSound.play(BaseGame.soundVolume);
+        stopLevel();
+        Array levelData = new Array();
+        if (numLevel.equalsIgnoreCase("test"))
+            levelData.add("Test");
+        else if (numLevel.equalsIgnoreCase("level 0"))
+            levelData.add("Hangar");
+        levelData.add((int) ((1 - (enemies.size / (float) numEnemies)) * 100));
+        levelData.add((int) ((1 - (originalPickups.size / (float) numPickups)) * 100));
+        levelData.add(0);
+        levelData.add(totalTime);
+        levelData.add(PAR_TIME);
+
+        BaseGame.setActiveScreen(new LevelFinishScreen(levelData, numLevel, hud.health, hud.armor, hud.bullets, hud.shells, weaponHandler.weapons));
     }
 }

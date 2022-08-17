@@ -30,11 +30,11 @@ public class HUD extends BaseActor {
     public Table weaponsTable;
     public boolean isInvulnerable;
 
-    private int armor = 0;
-    private int health = 100;
-    private int bullets = 50;
-    private int shells = 20;
-    private int score = 0;
+    public int armor;
+    public int health;
+    public int bullets;
+    public int shells;
+    private int score;
 
     private float armorProtectionValue = 1 / 3f;
 
@@ -51,8 +51,12 @@ public class HUD extends BaseActor {
 
     private Array<Image> weaponImages;
 
-    public HUD(Stage stage) {
+    public HUD(Stage stage, int health, int armor, int bullets, int shells) {
         super(0, 0, stage);
+        this.health = health;
+        this.armor = armor;
+        this.bullets = bullets;
+        this.shells = shells;
         initializeLabels();
 
         setWidth(Gdx.graphics.getWidth() * 1 / 3f);

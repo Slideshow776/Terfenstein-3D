@@ -21,6 +21,7 @@ public class Pickup extends BaseActor3D {
         this.player = player;
 
         initializeModel(y, z);
+        checkIfIlluminated(tiles);
     }
 
     @Override

@@ -17,7 +17,6 @@ public class Bullets extends Pickup {
         loadImage("pickups/bullet");
 
         setPosition(GameUtils.getPositionRelativeToFloor(.5f), y, z);
-        checkIfIlluminated(tiles);
         setBaseRectangle();
     }
 

@@ -8,6 +8,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.utils.Array;
 import com.github.tommyettinger.textra.TypingLabel;
 
+import no.sandramoen.commanderqueen.actors.weapon.weapons.Weapon;
+import no.sandramoen.commanderqueen.screens.gameplay.LevelScreen;
 import no.sandramoen.commanderqueen.utils.BaseGame;
 import no.sandramoen.commanderqueen.utils.BaseScreen;
 
@@ -47,7 +49,21 @@ public class LevelFinishScreen extends BaseScreen {
     private float par;
     private float parCount = -1;
 
-    public LevelFinishScreen(Array args) {
+    private int health;
+    private int armor;
+    private int bullets;
+    private int shells;
+    private Array<Weapon> weapons;
+    private String numLevel;
+
+    public LevelFinishScreen(Array args, String numLevel, int health, int armor, int bullets, int shells, Array<Weapon> weapons) {
+        this.numLevel = numLevel;
+        this.health = health;
+        this.armor = armor;
+        this.bullets = bullets;
+        this.shells = shells;
+        this.weapons = weapons;
+
         if (args.size != 6)
             Gdx.app.error(getClass().getSimpleName(), "Error: Missing level data, size is " + args.size);
 
@@ -125,7 +141,7 @@ public class LevelFinishScreen extends BaseScreen {
         else if (!isEnteringState)
             showEnteringState();
         else
-            setNewScreen(new MenuScreen());
+            setNewScreen();
     }
 
     private TypingLabel initializeTypingLabel(String string) {
@@ -185,9 +201,13 @@ public class LevelFinishScreen extends BaseScreen {
         pistolSoundID = BaseGame.pistolShotSound.play(BaseGame.soundVolume, .5f, 0);
     }
 
-    private void setNewScreen(BaseScreen baseScreen) {
+    private void setNewScreen() {
         BaseGame.pistolShotSound.play(BaseGame.soundVolume, .5f, 0);
-        BaseGame.setActiveScreen(baseScreen);
+
+        if (numLevel.equalsIgnoreCase("test"))
+            BaseGame.setActiveScreen(new LevelScreen(65, BaseGame.testMap, "test", health, armor, bullets, shells, weapons));
+        else if (numLevel.equalsIgnoreCase("level 0"))
+            BaseGame.setActiveScreen(new LevelScreen(95, BaseGame.level0Map, "level 0", health, armor, bullets, shells, weapons));
     }
 
     private String formatTime(float time) {
@@ -239,7 +259,7 @@ public class LevelFinishScreen extends BaseScreen {
         timeLabel = initializeLabel("Time");
         time = (float) args.get(4);
 
-        parLabel = initializeLabel("Par");
+        parLabel = initializeLabel("Par         ");
         par = (float) args.get(5);
 
         uiTable.add(nameLabel).colspan(2).center().row();

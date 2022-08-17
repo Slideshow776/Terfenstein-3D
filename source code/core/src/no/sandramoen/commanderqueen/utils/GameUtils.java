@@ -127,9 +127,9 @@ public class GameUtils {
         return sound.play(BaseGame.soundVolume / GameUtils.normalizeValue(distance, 0f, vocalRange), pitch, 0);
     }
 
-    public static void printLoadingTime(String tag, long startTime) {
+    public static void printLoadingTime(String tag, String string,  long startTime) {
         long endTime = System.currentTimeMillis();
-        Gdx.app.log(tag, "took " + (endTime - startTime) + " ms to load.");
+        Gdx.app.log(tag, string + " took " + (endTime - startTime) + " ms to load.");
     }
 
     public static int getRayPickedListIndex(Vector3 origin, Vector3 direction, Array<BaseActor3D> list) {

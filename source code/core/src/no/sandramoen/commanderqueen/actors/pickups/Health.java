@@ -21,7 +21,6 @@ public class Health extends Pickup {
             loadImage("pickups/health medium");
 
         setPosition(GameUtils.getPositionRelativeToFloor(1f), y, z);
-        checkIfIlluminated(tiles);
         setBaseRectangle();
     }
 

@@ -17,7 +17,6 @@ public class Shells extends Pickup {
         loadImage("pickups/shells");
 
         setPosition(GameUtils.getPositionRelativeToFloor(.5f), y, z);
-        checkIfIlluminated(tiles);
         setBaseRectangle();
     }
 

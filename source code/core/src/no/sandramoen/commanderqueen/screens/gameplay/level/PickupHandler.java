@@ -3,6 +3,7 @@ package no.sandramoen.commanderqueen.screens.gameplay.level;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.Array;
 
+import no.sandramoen.commanderqueen.actors.Tile;
 import no.sandramoen.commanderqueen.actors.characters.Player;
 import no.sandramoen.commanderqueen.actors.characters.enemy.Enemy;
 import no.sandramoen.commanderqueen.actors.hud.HUD;
@@ -13,10 +14,13 @@ import no.sandramoen.commanderqueen.actors.pickups.Pickup;
 import no.sandramoen.commanderqueen.actors.pickups.Shells;
 import no.sandramoen.commanderqueen.actors.pickups.Shotgun;
 import no.sandramoen.commanderqueen.actors.weapon.WeaponHandler;
+import no.sandramoen.commanderqueen.utils.Stage3D;
 
 public class PickupHandler {
 
-    public static void update(Array<Pickup> pickups, Player player, HUD hud, WeaponHandler weaponHandler, Table uiTable, UIHandler uiHandler, Array<Enemy> enemies) {
+    public static void update(
+            Array<Pickup> pickups, Player player, HUD hud, WeaponHandler weaponHandler, Table uiTable, UIHandler uiHandler, Stage3D stage3D, Array<Tile> tiles
+    ) {
         for (Pickup pickup : pickups) {
             if (player.overlaps(pickup)) {
                 if (pickup instanceof Bullets || pickup instanceof Shells) {
@@ -36,6 +40,10 @@ public class PickupHandler {
                     hud.setWeaponsTable(weaponHandler);
                     uiTable.reset();
                     uiHandler.isReset = true;
+
+                    Shells shells = new Shells(0, 0, stage3D, 8, player, tiles);
+                    hud.incrementAmmo(shells, weaponHandler.currentWeapon);
+                    shells.remove();
                 }
             }
         }
