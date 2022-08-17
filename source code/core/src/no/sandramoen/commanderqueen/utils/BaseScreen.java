@@ -21,7 +21,7 @@ public abstract class BaseScreen implements Screen, InputProcessor, ControllerLi
 
     public BaseScreen() {
         mainStage = new Stage();
-        mainStage.setViewport(new ExtendViewport(30, 30));
+        mainStage.setViewport(new ScreenViewport());
 
         uiTable = new Table();
         uiTable.setFillParent(true);
@@ -70,7 +70,7 @@ public abstract class BaseScreen implements Screen, InputProcessor, ControllerLi
 
     @Override
     public void resize(int width, int height) {
-        mainStage.getViewport().update(width, height);
+        mainStage.getViewport().update(width, height, true);
         uiStage.getViewport().update(width, height, true);
     }
 

@@ -18,6 +18,7 @@ import no.sandramoen.commanderqueen.utils.pathFinding.TileGraph;
 
 public class Sersjant extends Enemy {
     private Sound shootSound = BaseGame.shotgunSound;
+    private long shootSoundID;
 
     public Sersjant(float y, float z, Stage3D s, Player player, Float rotation, TileGraph tileGraph, Array<Tile> floorTiles, Stage stage, HUD hud, DecalBatch batch) {
         super(y, z, s, player, rotation, tileGraph, floorTiles, stage, hud, batch);
@@ -38,7 +39,7 @@ public class Sersjant extends Enemy {
     public void die() {
         if (!isDead) {
             GameUtils.playSoundRelativeToDistance(BaseGame.menigDeathSound, distanceBetween(player), VOCAL_RANGE);
-            shootSound.stop();
+            shootSound.stop(shootSoundID);
         }
         super.die();
     }
@@ -52,7 +53,7 @@ public class Sersjant extends Enemy {
 
     @Override
     protected void shootSound() {
-        GameUtils.playSoundRelativeToDistance(shootSound, distanceBetween(player), VOCAL_RANGE, .6f);
+        shootSoundID = GameUtils.playSoundRelativeToDistance(shootSound, distanceBetween(player), VOCAL_RANGE, .6f);
         super.shootSound();
     }
 

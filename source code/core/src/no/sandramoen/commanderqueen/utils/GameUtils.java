@@ -18,7 +18,6 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Array;
 
 import no.sandramoen.commanderqueen.actors.Tile;
-import no.sandramoen.commanderqueen.actors.pickups.Pickup;
 import no.sandramoen.commanderqueen.actors.utils.baseActors.BaseActor3D;
 
 public class GameUtils {
@@ -124,8 +123,8 @@ public class GameUtils {
         sound.play(BaseGame.soundVolume / GameUtils.normalizeValue(distance, 0f, vocalRange));
     }
 
-    public static void playSoundRelativeToDistance(Sound sound, Float distance, Float vocalRange, Float pitch) {
-        sound.play(BaseGame.soundVolume / GameUtils.normalizeValue(distance, 0f, vocalRange), pitch, 0);
+    public static long playSoundRelativeToDistance(Sound sound, Float distance, Float vocalRange, Float pitch) {
+        return sound.play(BaseGame.soundVolume / GameUtils.normalizeValue(distance, 0f, vocalRange), pitch, 0);
     }
 
     public static void printLoadingTime(String tag, long startTime) {

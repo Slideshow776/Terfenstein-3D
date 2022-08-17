@@ -109,22 +109,30 @@ public class Player extends BaseActor3D {
         if (Gdx.input.isKeyPressed(Input.Keys.W)) {
             moveForward(-movementSpeed * dt);
             isMoving = true;
+        } else {
+            isMoving = false;
         }
+
         if (Gdx.input.isKeyPressed(Input.Keys.A)) {
             moveRight(movementSpeed * dt);
             isMoving = true;
+        } else {
+            isMoving = false;
         }
+
         if (Gdx.input.isKeyPressed(Input.Keys.S)) {
             moveForward(movementSpeed * dt);
             isMoving = true;
+        } else {
+            isMoving = false;
         }
+
         if (Gdx.input.isKeyPressed(Input.Keys.D)) {
             moveRight(-movementSpeed * dt);
             isMoving = true;
-        }
-
-        if (!Gdx.input.isKeyPressed(Input.Keys.ANY_KEY))
+        } else {
             isMoving = false;
+        }
     }
 
     private void turnPlayer(float angle) {

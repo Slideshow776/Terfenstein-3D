@@ -1666,6 +1666,33 @@ hud/TR4 0
   index: -1
 
 images.pack8.png
+size: 256, 128
+format: RGBA8888
+filter: Nearest, Nearest
+repeat: none
+level finished/explosion
+  rotate: false
+  xy: 132, 65
+  size: 26, 27
+  orig: 26, 27
+  offset: 0, 0
+  index: -1
+level finished/map0
+  rotate: false
+  xy: 2, 20
+  size: 128, 72
+  orig: 128, 72
+  offset: 0, 0
+  index: -1
+level finished/you are here
+  rotate: false
+  xy: 2, 2
+  size: 73, 16
+  orig: 73, 16
+  offset: 0, 0
+  index: -1
+
+images.pack9.png
 size: 256, 64
 format: RGBA8888
 filter: Nearest, Nearest
@@ -1727,7 +1754,7 @@ pickups/shotgun
   offset: 0, 0
   index: -1
 
-images.pack9.png
+images.pack10.png
 size: 128, 64
 format: RGBA8888
 filter: Nearest, Nearest
@@ -1747,7 +1774,7 @@ props/suitcase 0
   offset: 0, 0
   index: -1
 
-images.pack10.png
+images.pack11.png
 size: 1024, 128
 format: RGBA8888
 filter: Nearest, Nearest
@@ -1823,7 +1850,7 @@ tiles/lonplate
   offset: 0, 0
   index: -1
 
-images.pack11.png
+images.pack12.png
 size: 256, 128
 format: RGBA8888
 filter: Nearest, Nearest
@@ -1850,7 +1877,7 @@ weapons/boot/icon
   offset: 0, 0
   index: -1
 
-images.pack12.png
+images.pack13.png
 size: 1024, 256
 format: RGBA8888
 filter: Nearest, Nearest
@@ -1898,7 +1925,7 @@ weapons/pistol/shooting 3
   offset: 0, 0
   index: -1
 
-images.pack13.png
+images.pack14.png
 size: 1024, 256
 format: RGBA8888
 filter: Nearest, Nearest
