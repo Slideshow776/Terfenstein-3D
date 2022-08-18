@@ -3,7 +3,7 @@ atlasData: {
 	atlasCurrent: true
 	drawables: [
 		{
-			file: C:/Users/Sandra Moen/dev/Commander Queen/raw assets/mySkin/mySkin_data/minus.png
+			file: C:/Users/Sandra Moen/dev/Terfenstein 3D/raw assets/mySkin/mySkin_data/minus.png
 			bgColor: {
 				r: 1
 				g: 1
@@ -22,7 +22,7 @@ atlasData: {
 			hidden: false
 		}
 		{
-			file: C:/Users/Sandra Moen/dev/Commander Queen/raw assets/mySkin/mySkin_data/plus.png
+			file: C:/Users/Sandra Moen/dev/Terfenstein 3D/raw assets/mySkin/mySkin_data/plus.png
 			bgColor: {
 				r: 1
 				g: 1
@@ -41,7 +41,7 @@ atlasData: {
 			hidden: false
 		}
 		{
-			file: C:/Users/Sandra Moen/dev/Commander Queen/raw assets/mySkin/mySkin_data/progress-bar.9.png
+			file: C:/Users/Sandra Moen/dev/Terfenstein 3D/raw assets/mySkin/mySkin_data/progress-bar.9.png
 			bgColor: {
 				r: 1
 				g: 1
@@ -60,7 +60,7 @@ atlasData: {
 			hidden: false
 		}
 		{
-			file: C:/Users/Sandra Moen/dev/Commander Queen/raw assets/mySkin/mySkin_data/progress-bar-fill.png
+			file: C:/Users/Sandra Moen/dev/Terfenstein 3D/raw assets/mySkin/mySkin_data/progress-bar-fill.png
 			bgColor: {
 				r: 0
 				g: 0
@@ -79,7 +79,7 @@ atlasData: {
 			hidden: false
 		}
 		{
-			file: C:/Users/Sandra Moen/dev/Commander Queen/raw assets/mySkin/mySkin_data/radio.png
+			file: C:/Users/Sandra Moen/dev/Terfenstein 3D/raw assets/mySkin/mySkin_data/radio.png
 			bgColor: {
 				r: 1
 				g: 1
@@ -98,7 +98,7 @@ atlasData: {
 			hidden: false
 		}
 		{
-			file: C:/Users/Sandra Moen/dev/Commander Queen/raw assets/mySkin/mySkin_data/radio-on.png
+			file: C:/Users/Sandra Moen/dev/Terfenstein 3D/raw assets/mySkin/mySkin_data/radio-on.png
 			bgColor: {
 				r: 1
 				g: 1
@@ -117,7 +117,7 @@ atlasData: {
 			hidden: false
 		}
 		{
-			file: C:/Users/Sandra Moen/dev/Commander Queen/raw assets/mySkin/mySkin_data/round-gray.9.png
+			file: C:/Users/Sandra Moen/dev/Terfenstein 3D/raw assets/mySkin/mySkin_data/round-gray.9.png
 			bgColor: {
 				r: 1
 				g: 1
@@ -136,7 +136,7 @@ atlasData: {
 			hidden: false
 		}
 		{
-			file: C:/Users/Sandra Moen/dev/Commander Queen/raw assets/mySkin/mySkin_data/round-white.9.png
+			file: C:/Users/Sandra Moen/dev/Terfenstein 3D/raw assets/mySkin/mySkin_data/round-white.9.png
 			bgColor: {
 				r: 1
 				g: 1
@@ -155,7 +155,7 @@ atlasData: {
 			hidden: false
 		}
 		{
-			file: C:/Users/Sandra Moen/dev/Commander Queen/raw assets/mySkin/mySkin_data/selectbox.9.png
+			file: C:/Users/Sandra Moen/dev/Terfenstein 3D/raw assets/mySkin/mySkin_data/selectbox.9.png
 			bgColor: {
 				r: 1
 				g: 1
@@ -174,7 +174,7 @@ atlasData: {
 			hidden: false
 		}
 		{
-			file: C:/Users/Sandra Moen/dev/Commander Queen/raw assets/mySkin/mySkin_data/slider-horizontal.9.png
+			file: C:/Users/Sandra Moen/dev/Terfenstein 3D/raw assets/mySkin/mySkin_data/slider-horizontal.9.png
 			bgColor: {
 				r: 1
 				g: 1
@@ -193,7 +193,7 @@ atlasData: {
 			hidden: false
 		}
 		{
-			file: C:/Users/Sandra Moen/dev/Commander Queen/raw assets/mySkin/mySkin_data/slider-knob.png
+			file: C:/Users/Sandra Moen/dev/Terfenstein 3D/raw assets/mySkin/mySkin_data/slider-knob.png
 			bgColor: {
 				r: 1
 				g: 1
@@ -212,7 +212,7 @@ atlasData: {
 			hidden: false
 		}
 		{
-			file: C:/Users/Sandra Moen/dev/Commander Queen/raw assets/mySkin/mySkin_data/slider-vertical.9.png
+			file: C:/Users/Sandra Moen/dev/Terfenstein 3D/raw assets/mySkin/mySkin_data/slider-vertical.9.png
 			bgColor: {
 				r: 1
 				g: 1
@@ -231,7 +231,7 @@ atlasData: {
 			hidden: false
 		}
 		{
-			file: C:/Users/Sandra Moen/dev/Commander Queen/raw assets/mySkin/mySkin_data/textfield.9.png
+			file: C:/Users/Sandra Moen/dev/Terfenstein 3D/raw assets/mySkin/mySkin_data/textfield.9.png
 			bgColor: {
 				r: 1
 				g: 1
@@ -250,7 +250,7 @@ atlasData: {
 			hidden: false
 		}
 		{
-			file: C:/Users/Sandra Moen/dev/Commander Queen/raw assets/mySkin/mySkin_data/vertical-split-pane.9.png
+			file: C:/Users/Sandra Moen/dev/Terfenstein 3D/raw assets/mySkin/mySkin_data/vertical-split-pane.9.png
 			bgColor: {
 				r: 1
 				g: 1
@@ -269,7 +269,7 @@ atlasData: {
 			hidden: false
 		}
 		{
-			file: C:/Users/Sandra Moen/dev/Commander Queen/raw assets/mySkin/mySkin_data/window.9.png
+			file: C:/Users/Sandra Moen/dev/Terfenstein 3D/raw assets/mySkin/mySkin_data/window.9.png
 			bgColor: {
 				r: 1
 				g: 1
@@ -288,45 +288,7 @@ atlasData: {
 			hidden: false
 		}
 		{
-			file: C:/Users/Sandra Moen/dev/Commander Queen/raw assets/mySkin/mySkin_data/checkbox.png
-			bgColor: {
-				r: 1
-				g: 1
-				b: 1
-				a: 1
-			}
-			tint: null
-			tintName: null
-			name: checkbox
-			tiled: false
-			minWidth: -1
-			minHeight: -1
-			customized: false
-			tenPatchData: null
-			type: TEXTURE
-			hidden: false
-		}
-		{
-			file: C:/Users/Sandra Moen/dev/Commander Queen/raw assets/mySkin/mySkin_data/checkbox-on.png
-			bgColor: {
-				r: 1
-				g: 1
-				b: 1
-				a: 1
-			}
-			tint: null
-			tintName: null
-			name: checkbox-on
-			tiled: false
-			minWidth: -1
-			minHeight: -1
-			customized: false
-			tenPatchData: null
-			type: TEXTURE
-			hidden: false
-		}
-		{
-			file: C:/Users/Sandra Moen/dev/Commander Queen/raw assets/mySkin/mySkin_data/cursor.9.png
+			file: C:/Users/Sandra Moen/dev/Terfenstein 3D/raw assets/mySkin/mySkin_data/cursor.9.png
 			bgColor: {
 				r: 1
 				g: 1
@@ -345,7 +307,7 @@ atlasData: {
 			hidden: false
 		}
 		{
-			file: C:/Users/Sandra Moen/dev/Commander Queen/raw assets/mySkin/mySkin_data/horizontal-split-pane.9.png
+			file: C:/Users/Sandra Moen/dev/Terfenstein 3D/raw assets/mySkin/mySkin_data/horizontal-split-pane.9.png
 			bgColor: {
 				r: 1
 				g: 1
@@ -364,7 +326,7 @@ atlasData: {
 			hidden: false
 		}
 		{
-			file: C:/Users/Sandra Moen/dev/Commander Queen/raw assets/mySkin/mySkin_data/list.9.png
+			file: C:/Users/Sandra Moen/dev/Terfenstein 3D/raw assets/mySkin/mySkin_data/list.9.png
 			bgColor: {
 				r: 1
 				g: 1
@@ -383,7 +345,7 @@ atlasData: {
 			hidden: false
 		}
 		{
-			file: C:/Users/Sandra Moen/dev/Commander Queen/raw assets/mySkin/mySkin_data/round-white.9.png
+			file: C:/Users/Sandra Moen/dev/Terfenstein 3D/raw assets/mySkin/mySkin_data/round-white.9.png
 			bgColor: {
 				r: 1
 				g: 1
@@ -407,7 +369,7 @@ atlasData: {
 			hidden: false
 		}
 		{
-			file: C:/Users/Sandra Moen/dev/Commander Queen/raw assets/mySkin/mySkin_data/round-white.9.png
+			file: C:/Users/Sandra Moen/dev/Terfenstein 3D/raw assets/mySkin/mySkin_data/round-white.9.png
 			bgColor: {
 				r: 1
 				g: 1
@@ -431,7 +393,7 @@ atlasData: {
 			hidden: false
 		}
 		{
-			file: C:/Users/Sandra Moen/dev/Commander Queen/raw assets/mySkin/mySkin_data/selection.9.png
+			file: C:/Users/Sandra Moen/dev/Terfenstein 3D/raw assets/mySkin/mySkin_data/selection.9.png
 			bgColor: {
 				r: 0
 				g: 0
@@ -450,7 +412,7 @@ atlasData: {
 			hidden: false
 		}
 		{
-			file: C:/Users/Sandra Moen/dev/Commander Queen/raw assets/mySkin/mySkin_data/round-white-small.9.png
+			file: C:/Users/Sandra Moen/dev/Terfenstein 3D/raw assets/mySkin/mySkin_data/round-white-small.9.png
 			bgColor: {
 				r: 1
 				g: 1
@@ -469,7 +431,7 @@ atlasData: {
 			hidden: false
 		}
 		{
-			file: C:/Users/Sandra Moen/dev/Commander Queen/raw assets/mySkin/mySkin_data/round-white-small.9.png
+			file: C:/Users/Sandra Moen/dev/Terfenstein 3D/raw assets/mySkin/mySkin_data/round-white-small.9.png
 			bgColor: {
 				r: 1
 				g: 1
@@ -493,7 +455,7 @@ atlasData: {
 			hidden: false
 		}
 		{
-			file: C:/Users/Sandra Moen/dev/Commander Queen/raw assets/mySkin/mySkin_data/round-white-small.9.png
+			file: C:/Users/Sandra Moen/dev/Terfenstein 3D/raw assets/mySkin/mySkin_data/round-white-small.9.png
 			bgColor: {
 				r: 1
 				g: 1
@@ -517,7 +479,7 @@ atlasData: {
 			hidden: false
 		}
 		{
-			file: C:/Users/Sandra Moen/dev/Commander Queen/raw assets/mySkin/mySkin_data/white.png
+			file: C:/Users/Sandra Moen/dev/Terfenstein 3D/raw assets/mySkin/mySkin_data/white.png
 			bgColor: {
 				r: 0
 				g: 0
@@ -536,7 +498,7 @@ atlasData: {
 			hidden: false
 		}
 		{
-			file: C:/Users/Sandra Moen/dev/Commander Queen/raw assets/mySkin/mySkin_data/white.png
+			file: C:/Users/Sandra Moen/dev/Terfenstein 3D/raw assets/mySkin/mySkin_data/white.png
 			bgColor: {
 				r: 0
 				g: 0
@@ -560,7 +522,7 @@ atlasData: {
 			hidden: false
 		}
 		{
-			file: C:/Users/Sandra Moen/dev/Commander Queen/raw assets/mySkin/mySkin_data/progress-bar-fill-vert.png
+			file: C:/Users/Sandra Moen/dev/Terfenstein 3D/raw assets/mySkin/mySkin_data/progress-bar-fill-vert.png
 			bgColor: {
 				r: 0
 				g: 0
@@ -579,7 +541,7 @@ atlasData: {
 			hidden: false
 		}
 		{
-			file: C:/Users/Sandra Moen/dev/Commander Queen/raw assets/mySkin/mySkin_data/touchpad.png
+			file: C:/Users/Sandra Moen/dev/Terfenstein 3D/raw assets/mySkin/mySkin_data/touchpad.png
 			bgColor: {
 				r: 1
 				g: 1
@@ -598,7 +560,7 @@ atlasData: {
 			hidden: false
 		}
 		{
-			file: C:/Users/Sandra Moen/dev/Commander Queen/raw assets/mySkin/mySkin_data/touchpad-knob.png
+			file: C:/Users/Sandra Moen/dev/Terfenstein 3D/raw assets/mySkin/mySkin_data/touchpad-knob.png
 			bgColor: {
 				r: 1
 				g: 1
@@ -617,26 +579,7 @@ atlasData: {
 			hidden: false
 		}
 		{
-			file: C:/Users/Sandra Moen/dev/Commander Queen/raw assets/mySkin/mySkin_data/slider-horizontal.9.bigwhite.9.png
-			bgColor: {
-				r: 0
-				g: 0
-				b: 0
-				a: 1
-			}
-			tint: null
-			tintName: null
-			name: slider-horizontal.9.bigwhite
-			tiled: false
-			minWidth: -1
-			minHeight: -1
-			customized: false
-			tenPatchData: null
-			type: NINE_PATCH
-			hidden: false
-		}
-		{
-			file: C:/Users/Sandra Moen/dev/Commander Queen/raw assets/mySkin/mySkin_data/slider-knob.white.png
+			file: C:/Users/Sandra Moen/dev/Terfenstein 3D/raw assets/mySkin/mySkin_data/slider-knob.white.png
 			bgColor: {
 				r: 0
 				g: 0
@@ -654,10 +597,67 @@ atlasData: {
 			type: TEXTURE
 			hidden: false
 		}
+		{
+			file: C:/Users/Sandra Moen/dev/Terfenstein 3D/raw assets/mySkin/mySkin_data/slider-horizontal..bigwhite.9.png
+			bgColor: {
+				r: 0
+				g: 0
+				b: 0
+				a: 1
+			}
+			tint: null
+			tintName: null
+			name: slider-horizontal..bigwhite
+			tiled: false
+			minWidth: -1
+			minHeight: -1
+			customized: false
+			tenPatchData: null
+			type: NINE_PATCH
+			hidden: false
+		}
+		{
+			file: C:/Users/Sandra Moen/dev/Terfenstein 3D/raw assets/mySkin/mySkin_data/checkbox.png
+			bgColor: {
+				r: 0
+				g: 0
+				b: 0
+				a: 1
+			}
+			tint: null
+			tintName: null
+			name: checkbox
+			tiled: false
+			minWidth: -1
+			minHeight: -1
+			customized: false
+			tenPatchData: null
+			type: TEXTURE
+			hidden: false
+		}
+		{
+			file: C:/Users/Sandra Moen/dev/Terfenstein 3D/raw assets/mySkin/mySkin_data/checkbox-on.png
+			bgColor: {
+				r: 0
+				g: 0
+				b: 0
+				a: 1
+			}
+			tint: null
+			tintName: null
+			name: checkbox-on
+			tiled: false
+			minWidth: -1
+			minHeight: -1
+			customized: false
+			tenPatchData: null
+			type: TEXTURE
+			hidden: false
+		}
 	]
 	fontDrawables: [
 		{
-			file: C:/Users/Sandra Moen/dev/Commander Queen/raw assets/mySkin/mySkin_data/arcade26.png
+			file: C:/Users/Sandra Moen/dev/Terfenstein 3D/raw assets/mySkin/mySkin_data/arcade26.png
 			bgColor: {
 				r: 1
 				g: 1
@@ -676,7 +676,7 @@ atlasData: {
 			hidden: false
 		}
 		{
-			file: C:/Users/Sandra Moen/dev/Commander Queen/raw assets/mySkin/mySkin_data/arcade64.png
+			file: C:/Users/Sandra Moen/dev/Terfenstein 3D/raw assets/mySkin/mySkin_data/arcade64.png
 			bgColor: {
 				r: 0
 				g: 0
@@ -695,7 +695,7 @@ atlasData: {
 			hidden: false
 		}
 		{
-			file: C:/Users/Sandra Moen/dev/Commander Queen/raw assets/mySkin/mySkin_data/font-export.png
+			file: C:/Users/Sandra Moen/dev/Terfenstein 3D/raw assets/mySkin/mySkin_data/font-export.png
 			bgColor: {
 				r: 0
 				g: 0
@@ -714,7 +714,7 @@ atlasData: {
 			hidden: false
 		}
 		{
-			file: C:/Users/Sandra Moen/dev/Commander Queen/raw assets/mySkin/mySkin_data/font-title-export.png
+			file: C:/Users/Sandra Moen/dev/Terfenstein 3D/raw assets/mySkin/mySkin_data/font-title-export.png
 			bgColor: {
 				r: 0
 				g: 0
@@ -759,9 +759,9 @@ jsonData: {
 		{
 			class: com.ray3k.skincomposer.data.ColorData
 			color: {
-				r: 1
-				g: 1
-				b: 1
+				r: 0.92156863
+				g: 0.92941177
+				b: 0.9137255
 				a: 1
 			}
 			name: white
@@ -771,22 +771,22 @@ jsonData: {
 		{
 			class: com.ray3k.skincomposer.data.FontData
 			name: arcade26
-			file: C:/Users/Sandra Moen/dev/Commander Queen/raw assets/mySkin/mySkin_data/arcade26.fnt
+			file: C:/Users/Sandra Moen/dev/Terfenstein 3D/raw assets/mySkin/mySkin_data/arcade26.fnt
 		}
 		{
 			class: com.ray3k.skincomposer.data.FontData
 			name: arcade64
-			file: C:/Users/Sandra Moen/dev/Commander Queen/raw assets/mySkin/mySkin_data/arcade64.fnt
+			file: C:/Users/Sandra Moen/dev/Terfenstein 3D/raw assets/mySkin/mySkin_data/arcade64.fnt
 		}
 		{
 			class: com.ray3k.skincomposer.data.FontData
 			name: font
-			file: C:/Users/Sandra Moen/dev/Commander Queen/raw assets/mySkin/mySkin_data/font-export.fnt
+			file: C:/Users/Sandra Moen/dev/Terfenstein 3D/raw assets/mySkin/mySkin_data/font-export.fnt
 		}
 		{
 			class: com.ray3k.skincomposer.data.FontData
 			name: title
-			file: C:/Users/Sandra Moen/dev/Commander Queen/raw assets/mySkin/mySkin_data/font-title-export.fnt
+			file: C:/Users/Sandra Moen/dev/Terfenstein 3D/raw assets/mySkin/mySkin_data/font-title-export.fnt
 		}
 	]
 	freeTypeFonts: []
@@ -831,13 +831,13 @@ jsonData: {
 						type: com.badlogic.gdx.graphics.g2d.BitmapFont
 						name: font
 						optional: false
-						value: font
+						value: arcade26
 					}
 					fontColor: {
 						type: com.badlogic.gdx.graphics.Color
 						name: fontColor
 						optional: true
-						value: black
+						value: white
 					}
 					downFontColor: {
 						type: com.badlogic.gdx.graphics.Color
@@ -1036,7 +1036,7 @@ jsonData: {
 						type: com.badlogic.gdx.scenes.scene2d.utils.Drawable
 						name: background
 						optional: false
-						value: slider-horizontal.9.bigwhite
+						value: slider-horizontal..bigwhite
 					}
 					disabledBackground: {
 						type: com.badlogic.gdx.scenes.scene2d.utils.Drawable
@@ -1530,7 +1530,7 @@ jsonData: {
 						type: com.badlogic.gdx.graphics.Color
 						name: fontColorSelected
 						optional: false
-						value: white
+						value: null
 					}
 					fontColorUnselected: {
 						type: com.badlogic.gdx.graphics.Color
@@ -2417,7 +2417,7 @@ jsonData: {
 						type: com.badlogic.gdx.graphics.Color
 						name: fontColor
 						optional: true
-						value: white
+						value: null
 					}
 					downFontColor: {
 						type: com.badlogic.gdx.graphics.Color
@@ -2801,7 +2801,7 @@ preferences: {
 	}
 	last-import-export-path: {
 		class: java.lang.String
-		value: C:/Users/Sandra Moen/dev/Commander Queen/source code/assets/skins/mySkin/mySkin.json
+		value: C:/Users/Sandra Moen/dev/Terfenstein 3D/source code/assets/skins/mySkin/mySkin.json
 	}
 	resources-relative: {
 		class: java.lang.Boolean
@@ -2812,7 +2812,7 @@ preferences: {
 		value: 30
 	}
 }
-saveFile: C:/Users/Sandra Moen/dev/Commander Queen/raw assets/mySkin/mySkin.scmp
+saveFile: C:/Users/Sandra Moen/dev/Terfenstein 3D/raw assets/mySkin/mySkin.scmp
 version: 45
 sceneComposer: null
 }

@@ -27,9 +27,9 @@ com.badlogic.gdx.graphics.Color: {
 		a: 1
 	}
 	white: {
-		r: 1
-		g: 1
-		b: 1
+		r: 0.92156863
+		g: 0.92941177
+		b: 0.9137255
 		a: 1
 	}
 }
@@ -98,8 +98,8 @@ com.badlogic.gdx.scenes.scene2d.ui.CheckBox$CheckBoxStyle: {
 	default: {
 		checkboxOn: checkbox-on
 		checkboxOff: checkbox
-		font: font
-		fontColor: black
+		font: arcade26
+		fontColor: white
 	}
 }
 com.badlogic.gdx.scenes.scene2d.ui.ImageButton$ImageButtonStyle: {
@@ -143,14 +143,6 @@ com.badlogic.gdx.scenes.scene2d.ui.Label$LabelStyle: {
 		fontColor: black
 	}
 }
-com.badlogic.gdx.scenes.scene2d.ui.List$ListStyle: {
-	default: {
-		font: font
-		fontColorSelected: white
-		fontColorUnselected: black
-		selection: selection
-	}
-}
 com.badlogic.gdx.scenes.scene2d.ui.ProgressBar$ProgressBarStyle: {
 	default-horizontal: {
 		background: progress-bar
@@ -170,17 +162,9 @@ com.badlogic.gdx.scenes.scene2d.ui.ScrollPane$ScrollPaneStyle: {
 		vScrollKnob: round-gray-small
 	}
 }
-com.badlogic.gdx.scenes.scene2d.ui.SelectBox$SelectBoxStyle: {
-	default: {
-		font: font
-		fontColor: black
-		scrollStyle: default
-		listStyle: default
-	}
-}
 com.badlogic.gdx.scenes.scene2d.ui.Slider$SliderStyle: {
 	default-horizontal: {
-		background: slider-horizontal.9.bigwhite
+		background: slider-horizontal..bigwhite
 		knob: slider-knob.white
 	}
 	default-vertical: {
@@ -199,7 +183,6 @@ com.badlogic.gdx.scenes.scene2d.ui.SplitPane$SplitPaneStyle: {
 com.badlogic.gdx.scenes.scene2d.ui.TextButton$TextButtonStyle: {
 	default: {
 		font: arcade26
-		fontColor: white
 		up: round-gray
 		down: round-dark-gray
 		over: round-light-gray

@@ -66,7 +66,7 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
     public static boolean loadPersonalParameters;
     public static boolean isCustomShadersEnabled = true;
     public static float mouseMovementSensitivity = .05f;
-    public static boolean isHeadBobbing = true;
+    public static boolean isHeadBobbing;
     public static float aspectRatio = 16 / 9f;
     public static float voiceVolume = 1f;
     public static float soundVolume = .5f;
@@ -119,6 +119,7 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
             musicVolume = .7f;
             voiceVolume = 1f;
             mouseMovementSensitivity = .05f;
+            isHeadBobbing = true;
         }
     }
 

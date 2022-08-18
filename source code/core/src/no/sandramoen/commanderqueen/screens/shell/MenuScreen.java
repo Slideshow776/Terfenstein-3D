@@ -2,16 +2,12 @@ package no.sandramoen.commanderqueen.screens.shell;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.Event;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.github.tommyettinger.textra.TypingLabel;
 
-import java.lang.reflect.Array;
-
-import no.sandramoen.commanderqueen.actors.weapon.weapons.Weapon;
 import no.sandramoen.commanderqueen.screens.gameplay.LevelScreen;
 import no.sandramoen.commanderqueen.ui.MadeByLabel;
 import no.sandramoen.commanderqueen.utils.BaseGame;
@@ -38,7 +34,6 @@ public class MenuScreen extends BaseScreen {
 
     @Override
     public void update(float delta) {
-
     }
 
     @Override
@@ -54,19 +49,24 @@ public class MenuScreen extends BaseScreen {
                 .height(Gdx.graphics.getHeight() * .075f)
                 .spaceTop(Gdx.graphics.getHeight() * .01f);
 
+        uiTable.add(startButton()).row();
+        uiTable.add(optionsButton()).row();
+        uiTable.add(exitButton()).row();
+    }
+
+    private TextButton startButton() {
         TextButton startButton = new TextButton("Start", BaseGame.mySkin);
         startButton.addListener(
                 (Event event) -> {
-                    if (GameUtils.isTouchDownEvent(event)) {
-                        System.out.println(BaseGame.level0Map.getClass().getSimpleName());
+                    if (GameUtils.isTouchDownEvent(event))
                         BaseGame.setActiveScreen(new LevelScreen(40, BaseGame.level0Map, "level 0", 100, 0, 50, 20, null));
-                    }
                     return false;
                 }
         );
-        uiTable.add(startButton)
-                .row();
+        return startButton;
+    }
 
+    private TextButton optionsButton() {
         TextButton optionsButton = new TextButton("Options", BaseGame.mySkin);
         optionsButton.addListener(
                 (Event event) -> {
@@ -75,9 +75,10 @@ public class MenuScreen extends BaseScreen {
                     return false;
                 }
         );
-        uiTable.add(optionsButton)
-                .row();
+        return optionsButton;
+    }
 
+    private TextButton exitButton() {
         TextButton exitButton = new TextButton("Exit", BaseGame.mySkin);
         exitButton.addListener(
                 (Event event) -> {
@@ -86,7 +87,6 @@ public class MenuScreen extends BaseScreen {
                     return false;
                 }
         );
-        uiTable.add(exitButton)
-                .row();
+        return exitButton;
     }
 }

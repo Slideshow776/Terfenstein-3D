@@ -28,6 +28,7 @@ public class GameUtils {
         BaseGame.preferences.putFloat("soundVolume", BaseGame.soundVolume);
         BaseGame.preferences.putFloat("voiceVolume", BaseGame.voiceVolume);
         BaseGame.preferences.putFloat("mouseMovementSensitivity", BaseGame.mouseMovementSensitivity);
+        BaseGame.preferences.putBoolean("isHeadBobbing", BaseGame.isHeadBobbing);
         BaseGame.preferences.flush();
     }
 
@@ -38,6 +39,7 @@ public class GameUtils {
         BaseGame.soundVolume = BaseGame.preferences.getFloat("soundVolume");
         BaseGame.voiceVolume = BaseGame.preferences.getFloat("voiceVolume");
         BaseGame.mouseMovementSensitivity = BaseGame.preferences.getFloat("mouseMovementSensitivity");
+        BaseGame.isHeadBobbing = BaseGame.preferences.getBoolean("isHeadBobbing");
     }
 
     public static void setWidgetHoverColor(Widget widget) {
