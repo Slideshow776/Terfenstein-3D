@@ -22,8 +22,7 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
     public static AssetManager assetManager;
 
     // game assets
-    public static TextureAtlas textureAtlas;/*
-    public static Label.LabelStyle label26Style;*/
+    public static TextureAtlas textureAtlas;
     public static Skin mySkin;
 
     public static String defaultShader;
@@ -60,6 +59,8 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
     public static Sound elevatorSound;
     public static Sound click1Sound;
     public static Sound hoverOverEnterSound;
+    public static Sound playerUgh;
+    public static Sound secretWallSound;
 
     // game state
     public static Preferences preferences;
@@ -170,6 +171,8 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
         assetManager.load("audio/sound/502341__universodemalaonda__elevator-03.wav", Sound.class);
         assetManager.load("audio/sound/click1.wav", Sound.class);
         assetManager.load("audio/sound/hoverOverEnter.wav", Sound.class);
+        assetManager.load("audio/sound/player_ugh.wav", Sound.class);
+        assetManager.load("audio/sound/243699__ertfelda__hidden-wall-opening.wav", Sound.class);
 
         // tiled maps
         assetManager.setLoader(TiledMap.class, new TmxMapLoader(new InternalFileHandleResolver()));
@@ -213,6 +216,8 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
         elevatorSound = assetManager.get("audio/sound/502341__universodemalaonda__elevator-03.wav", Sound.class);
         click1Sound = assetManager.get("audio/sound/click1.wav", Sound.class);
         hoverOverEnterSound = assetManager.get("audio/sound/hoverOverEnter.wav", Sound.class);
+        playerUgh = assetManager.get("audio/sound/player_ugh.wav", Sound.class);
+        secretWallSound = assetManager.get("audio/sound/243699__ertfelda__hidden-wall-opening.wav", Sound.class);
 
         // tiled maps
         testMap = assetManager.get("maps/test.tmx", TiledMap.class);

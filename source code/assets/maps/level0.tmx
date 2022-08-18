@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="50" height="20" tilewidth="64" tileheight="64" infinite="0" nextlayerid="14" nextobjectid="58933">
+<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="50" height="20" tilewidth="64" tileheight="64" infinite="0" nextlayerid="14" nextobjectid="58944">
  <tileset firstgid="1" name="test" tilewidth="64" tileheight="64" tilecount="128" columns="16" objectalignment="center">
   <image source="tileset.png" width="1024" height="512"/>
   <tile id="0">
@@ -93,12 +93,16 @@
    <properties>
     <property name="depth" type="float" value="4"/>
     <property name="name" value="elevator wall"/>
+    <property name="secret" value=""/>
+    <property name="secret length" type="int" value="0"/>
    </properties>
   </tile>
   <tile id="67">
    <properties>
     <property name="depth" type="float" value="4"/>
     <property name="name" value="light lonplate 2"/>
+    <property name="secret" value=""/>
+    <property name="secret length" type="int" value="0"/>
    </properties>
   </tile>
   <tile id="80">
@@ -106,36 +110,48 @@
     <property name="depth" type="float" value="4"/>
     <property name="illuminated" type="bool" value="false"/>
     <property name="name" value="big plates"/>
+    <property name="secret" value=""/>
+    <property name="secret length" type="int" value="0"/>
    </properties>
   </tile>
   <tile id="81">
    <properties>
     <property name="depth" type="float" value="4"/>
     <property name="name" value="lonplate"/>
+    <property name="secret" value=""/>
+    <property name="secret length" type="int" value="0"/>
    </properties>
   </tile>
   <tile id="82">
    <properties>
     <property name="depth" type="float" value="4"/>
     <property name="name" value="light big plates"/>
+    <property name="secret" value=""/>
+    <property name="secret length" type="int" value="0"/>
    </properties>
   </tile>
   <tile id="83">
    <properties>
     <property name="depth" type="float" value="4"/>
     <property name="name" value="light lonplate"/>
+    <property name="secret" value=""/>
+    <property name="secret length" type="int" value="0"/>
    </properties>
   </tile>
   <tile id="84">
    <properties>
     <property name="depth" type="float" value="4"/>
     <property name="name" value="flag 0"/>
+    <property name="secret" value=""/>
+    <property name="secret length" type="int" value="0"/>
    </properties>
   </tile>
   <tile id="96">
    <properties>
     <property name="depth" type="float" value="4"/>
     <property name="name" value="lights 0"/>
+    <property name="secret" value=""/>
+    <property name="secret length" type="int" value="0"/>
    </properties>
   </tile>
   <tile id="112">
@@ -149,7 +165,7 @@
    </properties>
   </tile>
  </tileset>
- <objectgroup id="7" name="floors">
+ <objectgroup id="7" name="floors" visible="0">
   <object id="1455" gid="82" x="64" y="1216" width="64" height="64"/>
   <object id="1456" gid="82" x="128" y="1216" width="64" height="64"/>
   <object id="1457" gid="82" x="192" y="1216" width="64" height="64"/>
@@ -188,7 +204,6 @@
   <object id="2181" gid="82" x="1152" y="896" width="64" height="64"/>
   <object id="2182" gid="82" x="1152" y="832" width="64" height="64"/>
   <object id="2183" gid="82" x="1152" y="960" width="64" height="64"/>
-  <object id="2184" gid="82" x="1152" y="1024" width="64" height="64"/>
   <object id="2185" gid="82" x="1152" y="1088" width="64" height="64"/>
   <object id="2186" gid="82" x="1152" y="1152" width="64" height="64"/>
   <object id="2187" gid="82" x="1152" y="1216" width="64" height="64"/>
@@ -723,6 +738,7 @@
   <object id="58916" gid="82" x="1472" y="192" width="64" height="64"/>
   <object id="58927" gid="68" x="2816" y="320" width="64" height="64"/>
   <object id="58929" gid="82" x="2752" y="320" width="64" height="64"/>
+  <object id="58943" gid="82" x="1152" y="1024" width="64" height="64"/>
  </objectgroup>
  <objectgroup id="11" name="walls">
   <object id="1234" gid="81" x="0" y="128" width="64" height="64"/>
@@ -1023,8 +1039,6 @@
   <object id="58895" gid="81" x="1472" y="1024" width="64" height="64"/>
   <object id="58896" gid="81" x="1472" y="1024" width="64" height="64"/>
   <object id="58897" gid="81" x="1472" y="960" width="64" height="64"/>
-  <object id="58898" gid="81" x="1472" y="896" width="64" height="64"/>
-  <object id="58899" gid="81" x="1472" y="896" width="64" height="64"/>
   <object id="58900" gid="81" x="1472" y="832" width="64" height="64"/>
   <object id="58901" gid="81" x="1472" y="832" width="64" height="64"/>
   <object id="58902" gid="81" x="1472" y="768" width="64" height="64"/>
@@ -1040,12 +1054,24 @@
   <object id="58912" gid="81" x="1472" y="320" width="64" height="64"/>
   <object id="58924" gid="67" x="2816" y="256" width="64" height="64"/>
   <object id="58925" gid="67" x="2816" y="384" width="64" height="64"/>
+  <object id="58933" gid="81" x="1152" y="1152" width="64" height="64">
+   <properties>
+    <property name="secret" value="up"/>
+   </properties>
+  </object>
+  <object id="58936" gid="33" x="1536" y="1216" width="64" height="64"/>
+  <object id="58938" gid="81" x="64" y="640" width="64" height="64"/>
+  <object id="58939" gid="81" x="128" y="640" width="64" height="64">
+   <properties>
+    <property name="secret" value="east"/>
+   </properties>
+  </object>
+  <object id="58940" gid="81" x="192" y="640" width="64" height="64"/>
  </objectgroup>
- <objectgroup id="12" name="ceilings">
+ <objectgroup id="12" name="ceilings" visible="0">
   <object id="1937" gid="82" x="1152" y="896" width="64" height="64"/>
   <object id="1938" gid="82" x="1152" y="832" width="64" height="64"/>
   <object id="1939" gid="82" x="1152" y="960" width="64" height="64"/>
-  <object id="1940" gid="82" x="1152" y="1024" width="64" height="64"/>
   <object id="1941" gid="82" x="1152" y="1088" width="64" height="64"/>
   <object id="1942" gid="82" x="1152" y="1152" width="64" height="64"/>
   <object id="1943" gid="82" x="1152" y="1216" width="64" height="64"/>
@@ -1616,6 +1642,7 @@
   <object id="58922" gid="82" x="1472" y="192" width="64" height="64"/>
   <object id="58928" gid="68" x="2816" y="320" width="64" height="64"/>
   <object id="58930" gid="82" x="2752" y="320" width="64" height="64"/>
+  <object id="58942" gid="82" x="1152" y="1024" width="64" height="64"/>
  </objectgroup>
  <objectgroup id="13" name="props">
   <object id="58854" gid="113" x="132" y="111.5" width="64" height="64"/>
@@ -1633,7 +1660,6 @@
   <object id="58866" gid="114" x="2605.33" y="1226" width="64" height="64"/>
  </objectgroup>
  <objectgroup id="8" name="actors">
-  <object id="2161" gid="2" x="128.393" y="1215.6" width="64" height="64" rotation="269.293"/>
   <object id="2162" gid="1" x="192" y="1024" width="64" height="64" rotation="-180.128"/>
   <object id="2163" gid="1" x="1010.67" y="697.333" width="64" height="64"/>
   <object id="2165" gid="1" x="1088.47" y="435.535" width="64" height="64" rotation="90.838"/>
@@ -1703,7 +1729,7 @@
   <object id="58664" gid="40" x="960" y="640" width="64" height="64"/>
   <object id="58665" gid="40" x="1024" y="640" width="64" height="64"/>
   <object id="58667" gid="4" x="320" y="384" width="64" height="64"/>
-  <object id="58668" gid="4" x="1152" y="1152" width="64" height="64" rotation="178.345"/>
+  <object id="58668" gid="4" x="1152" y="1088" width="64" height="64" rotation="178.345"/>
   <object id="58669" gid="4" x="1792" y="960" width="64" height="64"/>
   <object id="58670" gid="4" x="1856" y="960" width="64" height="64"/>
   <object id="58676" gid="41" x="128" y="1216" width="64" height="64"/>
@@ -1723,5 +1749,6 @@
   <object id="58885" gid="65" x="1472" y="192" width="64" height="64" rotation="90"/>
   <object id="58931" gid="65" x="2784.3" y="320" width="64" height="64" rotation="90"/>
   <object id="58932" gid="66" x="2880" y="320" width="64" height="64"/>
+  <object id="58941" gid="2" x="64" y="1216" width="64" height="64" rotation="269.831"/>
  </objectgroup>
 </map>

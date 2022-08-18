@@ -65,6 +65,9 @@ public class LevelScreen extends BaseScreen3D {
 
     private int numEnemies;
     private int numPickups;
+
+    public static int numSecrets;
+    public static int foundSecrets;
     private float totalTime;
 
     private float PAR_TIME;
@@ -72,8 +75,10 @@ public class LevelScreen extends BaseScreen3D {
     private String numLevel;
 
     public LevelScreen(float parTime, TiledMap map, String numLevel, int health, int armor, int bullets, int shells, Array<Weapon> weapons) {
-        this.numLevel = numLevel;
         long startTime = System.currentTimeMillis();
+        this.numLevel = numLevel;
+        numSecrets = 0;
+        foundSecrets = 0;
 
         PAR_TIME = parTime;
         tiledMap = map;
@@ -105,7 +110,7 @@ public class LevelScreen extends BaseScreen3D {
         totalTime += dt;
         checkGameOverCondition();
 
-        TileHandler.updateTiles(tiles, player);
+        TileHandler.updateTiles(dt, tiles, player);
         EnemyHandler.update(mainStage3D.intervalFlag, enemies, tiles, doors);
         for (int i = 0; i < enemies.size; i++)
             if (enemies.get(i).isDead) removeEnemy(enemies.get(i));
@@ -358,7 +363,7 @@ public class LevelScreen extends BaseScreen3D {
             levelData.add("Hangar");
         levelData.add((int) ((1 - (enemies.size / (float) numEnemies)) * 100));
         levelData.add((int) ((1 - (originalPickups.size / (float) numPickups)) * 100));
-        levelData.add(0);
+        levelData.add((int) ((foundSecrets / (float) numSecrets) * 100));
         levelData.add(totalTime);
         levelData.add(PAR_TIME);
 

@@ -29,6 +29,7 @@ import no.sandramoen.commanderqueen.actors.props.Prop;
 import no.sandramoen.commanderqueen.actors.utils.baseActors.BaseActor3D;
 import no.sandramoen.commanderqueen.actors.characters.enemy.Enemy;
 import no.sandramoen.commanderqueen.actors.utils.TilemapActor;
+import no.sandramoen.commanderqueen.screens.gameplay.LevelScreen;
 import no.sandramoen.commanderqueen.utils.BaseGame;
 import no.sandramoen.commanderqueen.utils.Stage3D;
 import no.sandramoen.commanderqueen.utils.pathFinding.TileGraph;
@@ -109,8 +110,13 @@ public class MapLoader {
                     rotation %= 360;
 
                     float depth = (float) props.get("depth");
+                    String secret = (String) props.get("secret");
+                    int secretLength = (int) props.get("secret length");
+                    if (secretLength == 0) secretLength = 1;
+                    if (!secret.isEmpty())
+                        LevelScreen.numSecrets++;
 
-                    Tile tile = new Tile(y, z, width, depth, height, type, texture, stage3D, rotation);
+                    Tile tile = new Tile(y, z, width, depth, height, type, texture, stage3D, rotation, secret, secretLength);
                     tiles.add(tile);
                     shootable.add(tile);
 
