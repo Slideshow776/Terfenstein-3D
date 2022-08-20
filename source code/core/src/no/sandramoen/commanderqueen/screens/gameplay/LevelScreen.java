@@ -14,7 +14,10 @@ import com.badlogic.gdx.utils.Array;
 import no.sandramoen.commanderqueen.actors.Barrel;
 import no.sandramoen.commanderqueen.actors.Door;
 import no.sandramoen.commanderqueen.actors.Elevator;
+import no.sandramoen.commanderqueen.actors.characters.HolyBall;
+import no.sandramoen.commanderqueen.actors.characters.Hund;
 import no.sandramoen.commanderqueen.actors.characters.Menig;
+import no.sandramoen.commanderqueen.actors.characters.Prest;
 import no.sandramoen.commanderqueen.actors.characters.Sersjant;
 import no.sandramoen.commanderqueen.actors.decals.BloodDecals;
 import no.sandramoen.commanderqueen.actors.decals.BulletDecals;
@@ -55,6 +58,7 @@ public class LevelScreen extends BaseScreen3D {
     private Array<Pickup> originalPickups;
     private Array<Pickup> newPickups;
     private Array<BaseActor3D> shootable;
+    private Array<BaseActor3D> projectiles;
 
     private boolean isGameOver;
     private boolean holdingDown;
@@ -111,7 +115,7 @@ public class LevelScreen extends BaseScreen3D {
         checkGameOverCondition();
 
         TileHandler.updateTiles(dt, tiles, player);
-        EnemyHandler.update(mainStage3D.intervalFlag, enemies, tiles, doors);
+        EnemyHandler.update(mainStage3D.intervalFlag, enemies, tiles, doors, projectiles, player, shootable, hud);
         for (int i = 0; i < enemies.size; i++)
             if (enemies.get(i).isDead) removeEnemy(enemies.get(i));
         updateBarrels();
@@ -333,8 +337,9 @@ public class LevelScreen extends BaseScreen3D {
         newPickups = new Array();
         enemies = new Array();
         doors = new Array();
+        projectiles = new Array();
         hud = new HUD(uiStage, health, armor, bullets, shells);
-        mapLoader = new MapLoader(tilemap, tiles, mainStage3D, player, shootable, originalPickups, enemies, uiStage, hud, decalBatch, doors);
+        mapLoader = new MapLoader(tilemap, tiles, mainStage3D, player, shootable, originalPickups, enemies, uiStage, hud, decalBatch, doors, projectiles);
     }
 
     private void initializePlayer(Array<Weapon> weapons) {

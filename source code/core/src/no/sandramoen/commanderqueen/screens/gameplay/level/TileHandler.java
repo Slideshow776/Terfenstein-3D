@@ -21,7 +21,7 @@ public class TileHandler {
                 player.preventOverlap(tile);
 
             if (player.isWithinDistance(Tile.height, tile) && tile.type == "walls" && isPlayerReadyToPush && Gdx.input.isKeyPressed(Input.Keys.SPACE)) {
-                if (!tile.secret.isEmpty() && tile.triggerSecret())
+                if (!tile.secretMovementDirection.isEmpty() && !tile.isSecretTriggered())
                     LevelScreen.foundSecrets++;
                 BaseGame.playerUgh.play(BaseGame.soundVolume, MathUtils.random(.9f, 1.1f), 0);
                 isPlayerReadyToPush = false;

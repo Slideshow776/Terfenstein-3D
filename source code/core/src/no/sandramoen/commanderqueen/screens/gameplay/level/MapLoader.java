@@ -17,6 +17,7 @@ import no.sandramoen.commanderqueen.actors.Tile;
 import no.sandramoen.commanderqueen.actors.characters.Hund;
 import no.sandramoen.commanderqueen.actors.characters.Menig;
 import no.sandramoen.commanderqueen.actors.characters.Player;
+import no.sandramoen.commanderqueen.actors.characters.Prest;
 import no.sandramoen.commanderqueen.actors.characters.Sersjant;
 import no.sandramoen.commanderqueen.actors.hud.HUD;
 import no.sandramoen.commanderqueen.actors.pickups.Bullets;
@@ -38,6 +39,7 @@ public class MapLoader {
     public Player player;
     public TileGraph tileGraph;
     public Array<Elevator> elevators = new Array();
+    public Array<Tile> floorTiles;
 
     private Stage3D stage3D;
     private TilemapActor tilemap;
@@ -47,15 +49,15 @@ public class MapLoader {
     private Array<Tile> tiles;
     private Array<Enemy> enemies;
     private Array<Pickup> pickups;
-    private Array<Tile> floorTiles;
     private Array<BaseActor3D> shootable;
     private Array<Door> doors;
+    private Array<BaseActor3D> projectiles;
     private DecalBatch decalBatch;
 
     private Array<Array<Tile>> patrols = new Array();
 
     public MapLoader(TilemapActor tilemap, Array<Tile> tiles, Stage3D stage3D, Player player, Array<BaseActor3D> shootable,
-                     Array<Pickup> pickups, Array<Enemy> enemies, Stage stage, HUD hud, DecalBatch decalBatch, Array<Door> doors) {
+                     Array<Pickup> pickups, Array<Enemy> enemies, Stage stage, HUD hud, DecalBatch decalBatch, Array<Door> doors, Array<BaseActor3D> projectiles) {
         this.tilemap = tilemap;
         this.tiles = tiles;
         this.stage3D = stage3D;
@@ -67,6 +69,7 @@ public class MapLoader {
         this.hud = hud;
         this.decalBatch = decalBatch;
         this.doors = doors;
+        this.projectiles = projectiles;
 
         floorTiles = new Array();
 
@@ -110,13 +113,13 @@ public class MapLoader {
                     rotation %= 360;
 
                     float depth = (float) props.get("depth");
-                    String secret = (String) props.get("secret");
+                    String secretMovementDirection = (String) props.get("secret");
                     int secretLength = (int) props.get("secret length");
                     if (secretLength == 0) secretLength = 1;
-                    if (!secret.isEmpty())
+                    if (!secretMovementDirection.isEmpty())
                         LevelScreen.numSecrets++;
 
-                    Tile tile = new Tile(y, z, width, depth, height, type, texture, stage3D, rotation, secret, secretLength);
+                    Tile tile = new Tile(y, z, width, depth, height, type, texture, stage3D, rotation, secretMovementDirection, secretLength);
                     tiles.add(tile);
                     shootable.add(tile);
 
@@ -217,6 +220,7 @@ public class MapLoader {
         initializeEnemy("hund");
         initializeEnemy("menig");
         initializeEnemy("sersjant");
+        initializeEnemy("prest");
     }
 
     private void initializeEnemy(String type) {
@@ -234,6 +238,8 @@ public class MapLoader {
                 enemies.add(new Menig(x, y, stage3D, player, rotation, tileGraph, floorTiles, stage, hud, decalBatch));
             if (type.equalsIgnoreCase("sersjant"))
                 enemies.add(new Sersjant(x, y, stage3D, player, rotation, tileGraph, floorTiles, stage, hud, decalBatch));
+            if (type.equalsIgnoreCase("prest"))
+                enemies.add(new Prest(x, y, stage3D, player, rotation, tileGraph, floorTiles, stage, hud, decalBatch, projectiles));
             shootable.add(enemies.get(enemies.size - 1));
 
             String patrol = (String) props.get("patrol");

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="50" height="20" tilewidth="64" tileheight="64" infinite="0" nextlayerid="14" nextobjectid="58944">
+<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="50" height="20" tilewidth="64" tileheight="64" infinite="0" nextlayerid="14" nextobjectid="58955">
  <tileset firstgid="1" name="test" tilewidth="64" tileheight="64" tilecount="128" columns="16" objectalignment="center">
   <image source="tileset.png" width="1024" height="512"/>
   <tile id="0">
@@ -20,6 +20,11 @@
   <tile id="3">
    <properties>
     <property name="name" value="sersjant"/>
+   </properties>
+  </tile>
+  <tile id="4">
+   <properties>
+    <property name="name" value="prest"/>
    </properties>
   </tile>
   <tile id="16">
@@ -1671,9 +1676,6 @@
   <object id="2173" gid="1" x="648" y="957.333" width="64" height="64"/>
   <object id="2174" gid="1" x="166.988" y="332.712" width="64" height="64" rotation="306.117"/>
   <object id="2175" gid="1" x="336" y="193.333" width="64" height="64"/>
-  <object id="2176" gid="1" x="576" y="256" width="64" height="64"/>
-  <object id="2177" gid="1" x="768" y="192" width="64" height="64"/>
-  <object id="2178" gid="1" x="1024" y="256" width="64" height="64"/>
   <object id="2476" gid="33" x="512" y="1088" width="64" height="64"/>
   <object id="2477" gid="33" x="384" y="448" width="64" height="64"/>
   <object id="2478" gid="33" x="896" y="320" width="64" height="64"/>
@@ -1702,17 +1704,12 @@
   <object id="58519" gid="35" x="1536" y="448" width="64" height="64"/>
   <object id="58534" gid="1" x="2304" y="960" width="64" height="64"/>
   <object id="58623" gid="1" x="1667.58" y="1028.03" width="64" height="64" rotation="186.834"/>
-  <object id="58625" gid="1" x="2112" y="1088" width="64" height="64"/>
   <object id="58626" gid="1" x="2240" y="576" width="64" height="64"/>
   <object id="58627" gid="1" x="2176" y="192" width="64" height="64"/>
   <object id="58628" gid="1" x="2112" y="448" width="64" height="64"/>
   <object id="58629" gid="1" x="1856" y="704" width="64" height="64"/>
-  <object id="58630" gid="1" x="2496" y="256" width="64" height="64"/>
   <object id="58631" gid="1" x="2624" y="192" width="64" height="64"/>
   <object id="58632" gid="1" x="2688" y="320" width="64" height="64"/>
-  <object id="58633" gid="1" x="2560" y="384" width="64" height="64"/>
-  <object id="58640" gid="1" x="2546.87" y="1116.58" width="64" height="64" rotation="49.337"/>
-  <object id="58641" gid="1" x="2547.37" y="1143.1" width="64" height="64" rotation="160.339"/>
   <object id="58642" gid="1" x="2688" y="1024" width="64" height="64" rotation="175.691"/>
   <object id="58644" gid="1" x="2050.7" y="1026.96" width="64" height="64" rotation="185.073"/>
   <object id="58645" gid="3" x="256" y="896" width="64" height="64"/>
@@ -1750,5 +1747,15 @@
   <object id="58931" gid="65" x="2784.3" y="320" width="64" height="64" rotation="90"/>
   <object id="58932" gid="66" x="2880" y="320" width="64" height="64"/>
   <object id="58941" gid="2" x="64" y="1216" width="64" height="64" rotation="269.831"/>
+  <object id="58945" gid="5" x="64" y="1088" width="64" height="64" rotation="200.715"/>
+  <object id="58946" gid="5" x="1024" y="256" width="64" height="64"/>
+  <object id="58947" gid="5" x="768" y="192" width="64" height="64"/>
+  <object id="58948" gid="5" x="576" y="256" width="64" height="64"/>
+  <object id="58949" gid="5" x="2560" y="1088" width="64" height="64" rotation="162.461"/>
+  <object id="58950" gid="5" x="2368" y="1088" width="64" height="64" rotation="162.461"/>
+  <object id="58951" gid="5" x="1536" y="128" width="64" height="64"/>
+  <object id="58952" gid="5" x="2688" y="704" width="64" height="64" rotation="90.4842"/>
+  <object id="58953" gid="5" x="2560" y="320" width="64" height="64"/>
+  <object id="58954" gid="5" x="2432" y="128" width="64" height="64"/>
  </objectgroup>
 </map>

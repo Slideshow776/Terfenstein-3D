@@ -65,7 +65,7 @@ public class GameUtils {
         decal.lookAt(temp, camera.up);
     }
 
-    public static float getAngleTowardsBaseActor3D(BaseActor3D actorA, BaseActor3D actorB) { // TODO: still using this?
+    public static float getAngleTowardsBaseActor3D(BaseActor3D actorA, BaseActor3D actorB) {
         float angle = MathUtils.atan(
                 Math.abs(actorA.position.z - actorB.position.z) /
                         Math.abs(actorA.position.y - actorB.position.y)

@@ -35,7 +35,9 @@ public class Enemy extends BaseActor3D {
     public boolean isDead;
     public boolean isActive;
     public boolean isRanged = true;
+    public boolean isHitscan = true;
     public int score = 0;
+
     public Array<Tile> patrol = new Array();
     private int patrolIndex = 0;
 
@@ -123,6 +125,11 @@ public class Enemy extends BaseActor3D {
     private BulletDecals bulletDecals;
     private Tile startingPosition;
 
+
+    private boolean intervalFlag;
+    private final float INTERVAL_COUNTER_FREQUENCY = 1;
+    private float intervalCounter = MathUtils.random(0, INTERVAL_COUNTER_FREQUENCY);
+
     public Enemy(float y, float z, Stage3D stage3D, Player player, float rotation, TileGraph tileGraph, Array<Tile> floorTiles, Stage stage, HUD hud, DecalBatch batch) {
         super(0, y, z, stage3D);
         this.player = player;
@@ -161,6 +168,7 @@ public class Enemy extends BaseActor3D {
         angleTowardPlayer = GameUtils.getAngleTowardsBaseActor3D(this, player);
         setDirection();
         setDirectionalAnimation();
+        setIntervalFlag(dt);
         attackIfPlayerIsVisible();
 
         if (!isActive) return;
@@ -274,12 +282,16 @@ public class Enemy extends BaseActor3D {
                     Actions.delay(shootImageDelay),
                     Actions.run(() -> {
                         shootSound();
-                        checkIfShotPlayerOrBarrel();
+                        if (isHitscan) checkIfShotPlayerOrBarrel();
+                        else generateProjectile();
                         activateNearByEnemies();
                         stage3D.lightManager.addMuzzleLight(position);
                         setColor(new Color(1, 1, .9f, 1));
                     })
             ));
+    }
+
+    protected void generateProjectile() {
     }
 
     protected void shootSound() {
@@ -483,7 +495,7 @@ public class Enemy extends BaseActor3D {
     }
 
     private void attackIfPlayerIsVisible() {
-        if (stage3D.intervalFlag) {
+        if (intervalFlag) {
             isPlayerVisible = isPlayerVisible();
             if (isPlayerVisible)
                 setAttackState();
@@ -610,6 +622,16 @@ public class Enemy extends BaseActor3D {
             }
         } catch (Exception exception) {
             Gdx.app.error(getClass().getSimpleName(), "setPathToLastKnownPlayerPosition() failed => " + exception);
+        }
+    }
+
+    private void setIntervalFlag(float dt) {
+        if (intervalCounter > INTERVAL_COUNTER_FREQUENCY) {
+            intervalFlag = true;
+            intervalCounter = 0;
+        } else {
+            intervalFlag = false;
+            intervalCounter += dt;
         }
     }
 
