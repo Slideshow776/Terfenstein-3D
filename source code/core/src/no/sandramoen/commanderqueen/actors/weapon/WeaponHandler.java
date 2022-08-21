@@ -97,6 +97,7 @@ public class WeaponHandler extends BaseActor {
             else
                 setWidth(originalWidth);
 
+            isReadyCounter = -.25f;
             setPosition();
             return true;
         } else if (i >= 0 && i < weapons.size && !weapons.get(i).isAvailable) {
