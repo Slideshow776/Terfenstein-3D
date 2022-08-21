@@ -13,11 +13,12 @@ public class Shells extends Pickup {
     public Shells(float y, float z, Stage3D s, int amount, Player player, Array<Tile> tiles) {
         super(y, z, s, player, tiles);
         this.amount = amount;
-        buildModel(.8f, .5f, .001f, true);
-        loadImage("pickups/shells");
 
+        buildModel(.8f, .5f, .001f, true);
         setPosition(GameUtils.getPositionRelativeToFloor(.5f), y, z);
         setBaseRectangle();
+
+        loadImage("pickups/shells");
     }
 
     @Override

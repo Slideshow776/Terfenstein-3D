@@ -63,6 +63,8 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
     public static Sound secretWallSound;
     public static Sound holyBallSpawnSound;
     public static Sound holyBallExplosionSound;
+    public static Sound caseDroppingSound;
+    public static Sound chaingunPowerDownSound;
 
     // game state
     public static Preferences preferences;
@@ -177,6 +179,8 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
         assetManager.load("audio/sound/243699__ertfelda__hidden-wall-opening.wav", Sound.class);
         assetManager.load("audio/sound/557194__pip__lightsaber-ignition.wav", Sound.class);
         assetManager.load("audio/sound/Laser_Shoot24.wav", Sound.class);
+        assetManager.load("audio/sound/414436__inspectorj__dropping-metal-pin-on-wood-b.wav", Sound.class);
+        assetManager.load("audio/sound/395378__skylar1146__machinepoweroff.wav", Sound.class);
 
         // tiled maps
         assetManager.setLoader(TiledMap.class, new TmxMapLoader(new InternalFileHandleResolver()));
@@ -224,6 +228,8 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
         secretWallSound = assetManager.get("audio/sound/243699__ertfelda__hidden-wall-opening.wav", Sound.class);
         holyBallSpawnSound = assetManager.get("audio/sound/557194__pip__lightsaber-ignition.wav", Sound.class);
         holyBallExplosionSound = assetManager.get("audio/sound/Laser_Shoot24.wav", Sound.class);
+        caseDroppingSound = assetManager.get("audio/sound/414436__inspectorj__dropping-metal-pin-on-wood-b.wav", Sound.class);
+        chaingunPowerDownSound = assetManager.get("audio/sound/395378__skylar1146__machinepoweroff.wav", Sound.class);
 
         // tiled maps
         testMap = assetManager.get("maps/test.tmx", TiledMap.class);

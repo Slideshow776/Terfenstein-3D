@@ -31,6 +31,7 @@ import no.sandramoen.commanderqueen.actors.pickups.Pickup;
 import no.sandramoen.commanderqueen.actors.utils.baseActors.BaseActor;
 import no.sandramoen.commanderqueen.actors.utils.baseActors.BaseActor3D;
 import no.sandramoen.commanderqueen.actors.characters.enemy.Enemy;
+import no.sandramoen.commanderqueen.actors.weapon.weapons.Chaingun;
 import no.sandramoen.commanderqueen.actors.weapon.weapons.Weapon;
 import no.sandramoen.commanderqueen.screens.gameplay.level.BarrelExplosionHandler;
 import no.sandramoen.commanderqueen.screens.gameplay.level.EnemyHandler;
@@ -162,6 +163,9 @@ public class LevelScreen extends BaseScreen3D {
         } else if (keycode == Keys.NUM_3) {
             weaponHandler.setWeapon(2);
             hud.setAmmo(weaponHandler.currentWeapon);
+        } else if (keycode == Keys.NUM_4) {
+            weaponHandler.setWeapon(3);
+            hud.setAmmo(weaponHandler.currentWeapon);
         } else if (keycode == Keys.SPACE) {
             for (Door door : doors)
                 if (player.isWithinDistance(Tile.height * .8f, door))
@@ -182,6 +186,9 @@ public class LevelScreen extends BaseScreen3D {
     @Override
     public boolean touchUp(int screenX, int screenY, int pointer, int button) {
         holdingDown = false;
+        player.isShaking = false;
+        if (weaponHandler.currentWeapon instanceof Chaingun)
+            BaseGame.chaingunPowerDownSound.play(BaseGame.soundVolume * .5f);
         return super.touchUp(screenX, screenY, pointer, button);
     }
 
@@ -197,6 +204,8 @@ public class LevelScreen extends BaseScreen3D {
             if (weaponHandler.isReady)
                 shoot();
             holdingDown = true;
+            if (weaponHandler.currentWeapon instanceof Chaingun && hud.getAmmo(weaponHandler.currentWeapon) > 0)
+                player.isShaking = true;
         }
     }
 
@@ -211,6 +220,8 @@ public class LevelScreen extends BaseScreen3D {
                         rayPickTarget();
                     EnemyHandler.activateEnemies(enemies, Enemy.activationRange, player);
                 }
+            } else {
+                player.isShaking = false;
             }
         } else {
             weaponHandler.melee(rayPickTarget());

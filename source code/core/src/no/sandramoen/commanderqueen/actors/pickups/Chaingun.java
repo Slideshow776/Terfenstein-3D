@@ -8,9 +8,9 @@ import no.sandramoen.commanderqueen.utils.BaseGame;
 import no.sandramoen.commanderqueen.utils.GameUtils;
 import no.sandramoen.commanderqueen.utils.Stage3D;
 
-public class Shotgun extends Pickup {
+public class Chaingun extends Pickup {
 
-    public Shotgun(float y, float z, Stage3D s, int amount, Player player, Array<Tile> tiles) {
+    public Chaingun(float y, float z, Stage3D s, int amount, Player player, Array<Tile> tiles) {
         super(y, z, s, player, tiles);
         this.amount = amount;
 
@@ -18,7 +18,7 @@ public class Shotgun extends Pickup {
         setPosition(GameUtils.getPositionRelativeToFloor(1f), y, z);
         setBaseRectangle();
 
-        loadImage("pickups/shotgun");
+        loadImage("pickups/chaingun");
     }
 
     @Override

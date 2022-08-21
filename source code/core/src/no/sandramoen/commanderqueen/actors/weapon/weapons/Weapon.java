@@ -5,8 +5,8 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.MathUtils;
 
 public abstract class Weapon {
-    public Animation<TextureRegion> shootAnimation = null;
-    public Animation<TextureRegion> idleAnimation = null;
+    public Animation<TextureRegion> shootAnimation;
+    public Animation<TextureRegion> idleAnimation;
     public boolean isAmmoDependent;
     public boolean isMelee;
     public boolean isAvailable;

@@ -19,6 +19,7 @@ import no.sandramoen.commanderqueen.actors.utils.baseActors.BaseActor;
 import no.sandramoen.commanderqueen.actors.utils.baseActors.BaseActor3D;
 import no.sandramoen.commanderqueen.actors.weapon.WeaponHandler;
 import no.sandramoen.commanderqueen.actors.weapon.weapons.Boot;
+import no.sandramoen.commanderqueen.actors.weapon.weapons.Chaingun;
 import no.sandramoen.commanderqueen.actors.weapon.weapons.Pistol;
 import no.sandramoen.commanderqueen.actors.weapon.weapons.Shotgun;
 import no.sandramoen.commanderqueen.actors.weapon.weapons.Weapon;
@@ -78,6 +79,7 @@ public class HUD extends BaseActor {
         weaponImages.add(new Image(BaseGame.textureAtlas.findRegion("weapons/boot/icon")));
         weaponImages.add(new Image(BaseGame.textureAtlas.findRegion("weapons/pistol/icon")));
         weaponImages.add(new Image(BaseGame.textureAtlas.findRegion("weapons/shotgun/icon")));
+        weaponImages.add(new Image(BaseGame.textureAtlas.findRegion("weapons/chaingun/icon")));
 
         Table table = new Table();
         table.defaults().grow().width(Gdx.graphics.getWidth() * .05f).height(Gdx.graphics.getHeight() * .05f);
@@ -140,14 +142,14 @@ public class HUD extends BaseActor {
 
         overlayIndicator.flash(BaseGame.yellowColor, .1f);
 
-        if (currentWeapon instanceof Pistol)
+        if (currentWeapon instanceof Pistol || currentWeapon instanceof Chaingun)
             ammoLabel.setText(bullets + "");
         else if (currentWeapon instanceof Shotgun)
             ammoLabel.setText(shells + "");
     }
 
     public void decrementAmmo(Weapon currentWeapon) {
-        if (currentWeapon instanceof Pistol && bullets > 0) {
+        if ((currentWeapon instanceof Pistol || currentWeapon instanceof Chaingun) && bullets > 0) {
             bullets--;
             ammoLabel.setText(bullets + "");
         } else if (currentWeapon instanceof Shotgun && shells > 0) {
@@ -157,7 +159,7 @@ public class HUD extends BaseActor {
     }
 
     public int getAmmo(Weapon currentWeapon) {
-        if (currentWeapon instanceof Pistol)
+        if (currentWeapon instanceof Pistol || currentWeapon instanceof Chaingun)
             return bullets;
         else if (currentWeapon instanceof Shotgun)
             return shells;
@@ -168,7 +170,7 @@ public class HUD extends BaseActor {
     public void setAmmo(Weapon currentWeapon) {
         if (currentWeapon instanceof Boot)
             ammoLabel.setText("");
-        else if (currentWeapon instanceof Pistol)
+        else if (currentWeapon instanceof Pistol || currentWeapon instanceof Chaingun)
             ammoLabel.setText(bullets + "");
         else if (currentWeapon instanceof Shotgun)
             ammoLabel.setText(shells + "");
@@ -237,6 +239,8 @@ public class HUD extends BaseActor {
             weaponImages.get(1).setColor(Color.WHITE);
         else if (currentWeapon instanceof Shotgun)
             weaponImages.get(2).setColor(Color.WHITE);
+        else if (currentWeapon instanceof Chaingun)
+            weaponImages.get(3).setColor(Color.WHITE);
     }
 
 

@@ -5,10 +5,10 @@ import com.badlogic.gdx.utils.Array;
 
 import no.sandramoen.commanderqueen.actors.Tile;
 import no.sandramoen.commanderqueen.actors.characters.Player;
-import no.sandramoen.commanderqueen.actors.characters.enemy.Enemy;
 import no.sandramoen.commanderqueen.actors.hud.HUD;
 import no.sandramoen.commanderqueen.actors.pickups.Bullets;
 import no.sandramoen.commanderqueen.actors.pickups.Armor;
+import no.sandramoen.commanderqueen.actors.pickups.Chaingun;
 import no.sandramoen.commanderqueen.actors.pickups.Health;
 import no.sandramoen.commanderqueen.actors.pickups.Pickup;
 import no.sandramoen.commanderqueen.actors.pickups.Shells;
@@ -34,16 +34,18 @@ public class PickupHandler {
                         removePickup(pickups, pickup);
                 } else if (pickup instanceof Shotgun) {
                     weaponHandler.makeAvailable("shotgun");
-                    hud.setEvilFace();
-                    removePickup(pickups, pickup);
-
-                    hud.setWeaponsTable(weaponHandler);
-                    uiTable.reset();
-                    uiHandler.isReset = true;
-
                     Shells shells = new Shells(0, 0, stage3D, 8, player, tiles);
                     hud.incrementAmmo(shells, weaponHandler.currentWeapon);
                     shells.remove();
+
+                    pickUpWeapon(hud, pickups, pickup, weaponHandler, uiTable, uiHandler);
+                } else if (pickup instanceof Chaingun) {
+                    weaponHandler.makeAvailable("chaingun");
+                    Bullets bullets = new Bullets(0, 0, stage3D, 20, player, tiles);
+                    hud.incrementAmmo(bullets, weaponHandler.currentWeapon);
+                    bullets.remove();
+
+                    pickUpWeapon(hud, pickups, pickup, weaponHandler, uiTable, uiHandler);
                 }
             }
         }
@@ -53,5 +55,14 @@ public class PickupHandler {
         pickups.removeValue(pickup, false);
         pickup.playSound();
         pickup.remove();
+    }
+
+    private static void pickUpWeapon(HUD hud, Array<Pickup> pickups, Pickup pickup, WeaponHandler weaponHandler, Table uiTable, UIHandler uiHandler) {
+        hud.setEvilFace();
+        removePickup(pickups, pickup);
+
+        hud.setWeaponsTable(weaponHandler);
+        uiTable.reset();
+        uiHandler.isReset = true;
     }
 }

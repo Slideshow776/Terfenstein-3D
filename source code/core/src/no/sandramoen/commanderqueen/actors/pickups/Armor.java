@@ -13,7 +13,10 @@ public class Armor extends Pickup {
     public Armor(float y, float z, Stage3D s, int amount, Player player, Array<Tile> tiles) {
         super(y, z, s, player, tiles);
         this.amount = amount;
+
         buildModel(1f, 1f, .001f, true);
+        setPosition(GameUtils.getPositionRelativeToFloor(1f), y, z);
+        setBaseRectangle();
 
         if (amount == 1)
             loadImage("pickups/armor small");
@@ -21,9 +24,6 @@ public class Armor extends Pickup {
             loadImage("pickups/armor medium");
         else if (amount == 200)
             loadImage("pickups/armor big");
-
-        setPosition(GameUtils.getPositionRelativeToFloor(1f), y, z);
-        setBaseRectangle();
     }
 
     @Override

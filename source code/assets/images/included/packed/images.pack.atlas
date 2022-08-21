@@ -2143,6 +2143,13 @@ pickups/bullet
   orig: 32, 32
   offset: 0, 0
   index: -1
+pickups/chaingun
+  rotate: false
+  xy: 2, 7
+  size: 32, 16
+  orig: 32, 16
+  offset: 0, 0
+  index: -1
 pickups/health medium
   rotate: false
   xy: 2, 25
@@ -2166,7 +2173,7 @@ pickups/shells
   index: -1
 pickups/shotgun
   rotate: false
-  xy: 2, 7
+  xy: 94, 10
   size: 32, 16
   orig: 32, 16
   offset: 0, 0
@@ -2296,6 +2303,40 @@ weapons/boot/icon
   index: -1
 
 images.pack15.png
+size: 256, 512
+format: RGBA8888
+filter: Nearest, Nearest
+repeat: none
+weapons/chaingun/icon
+  rotate: false
+  xy: 198, 410
+  size: 32, 16
+  orig: 32, 16
+  offset: 0, 0
+  index: -1
+weapons/chaingun/shooting 0
+  rotate: false
+  xy: 2, 286
+  size: 194, 140
+  orig: 194, 140
+  offset: 0, 0
+  index: -1
+weapons/chaingun/shooting 1
+  rotate: false
+  xy: 2, 144
+  size: 194, 140
+  orig: 194, 140
+  offset: 0, 0
+  index: -1
+weapons/chaingun/shooting 2
+  rotate: false
+  xy: 2, 2
+  size: 194, 140
+  orig: 194, 140
+  offset: 0, 0
+  index: -1
+
+images.pack16.png
 size: 1024, 256
 format: RGBA8888
 filter: Nearest, Nearest
@@ -2343,7 +2384,7 @@ weapons/pistol/shooting 3
   offset: 0, 0
   index: -1
 
-images.pack16.png
+images.pack17.png
 size: 1024, 256
 format: RGBA8888
 filter: Nearest, Nearest

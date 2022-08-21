@@ -5,6 +5,7 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g3d.environment.DirectionalLight;
 import com.badlogic.gdx.graphics.g3d.environment.PointLight;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector3;
 
 import no.sandramoen.commanderqueen.actors.utils.baseActors.BaseActor3D;
@@ -12,7 +13,8 @@ import no.sandramoen.commanderqueen.utils.BaseGame;
 import no.sandramoen.commanderqueen.utils.Stage3D;
 
 public class Player extends BaseActor3D {
-    public boolean isMoving = false;
+    public boolean isMoving;
+    public boolean isShaking;
     public static float movementSpeed = 10f;
 
     private float rotateSpeed = 90f * .05f;
@@ -52,7 +54,11 @@ public class Player extends BaseActor3D {
         this.stage3D.camera.position.y = position.y;
         this.stage3D.camera.position.z = position.z;
 
-        headBobbing(dt);
+        if (isShaking && !isForcedToMove)
+            shake();
+        else
+            headBobbing(dt);
+
 
         if (isMoving)
             BaseGame.metalWalkingMusic.setVolume(BaseGame.soundVolume);
@@ -69,6 +75,14 @@ public class Player extends BaseActor3D {
         if (position.y - source.position.y < 1) forceMoveY *= -1;
         if (position.z - source.position.z < 1) forceMoveZ *= -1;
         forceTime = totalTime + SECONDS_FORCED_TO_MOVE;
+    }
+
+    private void shake() {
+        this.stage3D.camera.position.set(
+                position.x + MathUtils.random(0f, .1f),
+                position.y + MathUtils.random(0f, .1f),
+                position.z + MathUtils.random(0f, .1f)
+        );
     }
 
     private void forceMove(float dt) {
