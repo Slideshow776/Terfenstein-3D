@@ -375,7 +375,7 @@ public class Enemy extends BaseActor3D {
             barrel.decrementHealth(getDamage(), distanceBetween(barrel));
         } else if (i > -1 && shootable.get(i) instanceof Player) {
             hud.decrementHealth(getDamage(), this);
-        } else if (i > -1 && shootable.get(i) instanceof Tile && (((Tile) shootable.get(i)).type.equalsIgnoreCase("walls"))) {
+        } else if (i > -1 && shootable.get(i) instanceof Tile && (((Tile) shootable.get(i)).type.equalsIgnoreCase("1st floor"))) {
             Vector3 temp = new Vector3().set(ray.direction).scl(distanceBetween(shootable.get(i)) - (Tile.diagonalLength / 2)).add(ray.origin);
             bulletDecals.addDecal(temp.x, temp.y, temp.z);
         }
@@ -423,7 +423,7 @@ public class Enemy extends BaseActor3D {
         for (BaseActor3D baseActor3D : shootable) {
             if (baseActor3D instanceof Tile) {
                 Tile temp = (Tile) baseActor3D;
-                if (temp.type == "walls" && overlaps(temp) && dodgeDirectionAngle != 0) {
+                if (temp.type.equalsIgnoreCase("1st floor") && overlaps(temp) && dodgeDirectionAngle != 0) {
                     dodgeDirectionAngle = 0;
                     resetDodgeDirectionAngleAfterDelay();
                     break;

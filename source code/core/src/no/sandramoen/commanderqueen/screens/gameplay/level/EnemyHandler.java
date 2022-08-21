@@ -59,7 +59,7 @@ public class EnemyHandler {
 
     private static void preventOverLapWithTile(Array<Tile> tiles, Enemy enemy) {
         for (Tile tile : tiles) {
-            if (tile.type == "walls" && enemy.overlaps(tile)) {
+            if (tile.type.equalsIgnoreCase("1st floor") && enemy.overlaps(tile)) {
                 enemy.preventOverlap(tile);
                 enemy.isForcedToMove = false;
             }

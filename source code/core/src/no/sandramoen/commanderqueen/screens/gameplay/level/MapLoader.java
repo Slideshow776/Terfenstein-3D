@@ -93,7 +93,7 @@ public class MapLoader {
 
     private void createTiles() {
         Array<String> tileTypes = new Array<>();
-        tileTypes.add("walls", "ceilings", "floors");
+        tileTypes.add("U1", "1st floor", "2nd floor");
         Array<String> tileTextures = new Array<>();
         tileTextures.add("big plates", "lonplate", "light big plates", "light lonplate");
         tileTextures.add("lights 0", "flag 0", "elevator wall", "light lonplate 2");
@@ -138,7 +138,7 @@ public class MapLoader {
     private void addTilesToAIGraph() {
         tileGraph = new TileGraph();
         for (Tile tile : tiles)
-            if (tile.type == "floors") {
+            if (tile.type == "U1") {
                 tileGraph.addTile(tile);
                 floorTiles.add(tile);
             }

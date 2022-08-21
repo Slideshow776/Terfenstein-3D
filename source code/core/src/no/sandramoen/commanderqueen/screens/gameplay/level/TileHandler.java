@@ -19,10 +19,10 @@ public class TileHandler {
 
     public static void updateTiles(float dt, Array<Tile> tiles, Player player) {
         for (Tile tile : tiles) {
-            if (tile.type == "walls" && player.overlaps(tile))
+            if (tile.type.equalsIgnoreCase("1st floor") && player.overlaps(tile))
                 player.preventOverlap(tile);
 
-            if (player.isWithinDistance(Tile.height, tile) && tile.type == "walls" && isPlayerReadyToPush && Gdx.input.isKeyPressed(Input.Keys.SPACE)) {
+            if (player.isWithinDistance(Tile.height, tile) && tile.type.equalsIgnoreCase("1st floor") && isPlayerReadyToPush && Gdx.input.isKeyPressed(Input.Keys.SPACE)) {
                 if (!tile.secretMovementDirection.isEmpty() && !tile.isSecretTriggered()) {
                     LevelScreen.foundSecrets++;
                     player.shakeyCam(1.5f, .2f);

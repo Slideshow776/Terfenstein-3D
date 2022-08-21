@@ -34,10 +34,10 @@ public class Tile extends BaseActor3D {
         if (texture.split(" ", 2)[0].equals("light"))
             illuminated = true;
 
-        if (type == "ceilings") {
+        if (type == "2nd floor") {
             position.x = Tile.height;
             isCollisionEnabled = false;
-        } else if (type == "floors") {
+        } else if (type == "U1") {
             position.x = -Tile.height;
         }
         originalPosition = getPosition().cpy();

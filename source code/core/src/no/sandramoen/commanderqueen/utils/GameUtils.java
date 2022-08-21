@@ -83,9 +83,9 @@ public class GameUtils {
     }
 
     public static void illuminateBaseActor(BaseActor3D baseActor3D, Tile tile) {
-        if (tile.type == "floors" && tile.illuminated)
+        if (tile.type == "U1" && tile.illuminated)
             baseActor3D.setColor(Color.WHITE);
-        else if (tile.type == "floors")
+        else if (tile.type == "U1")
             baseActor3D.setColor(BaseGame.darkColor);
     }
 
