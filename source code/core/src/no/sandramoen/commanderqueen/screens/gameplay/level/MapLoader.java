@@ -214,7 +214,7 @@ public class MapLoader {
         if (startPoint.getProperties().get("rotation") != null)
             rotation = (float) startPoint.getProperties().get("rotation");
         rotation %= 360;
-        player = new Player(playerX, playerY, stage3D, rotation);
+        player = new Player(playerX, playerY, stage3D, rotation, stage);
     }
 
     private void initializeEnemies() {

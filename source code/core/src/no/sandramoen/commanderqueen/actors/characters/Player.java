@@ -7,6 +7,8 @@ import com.badlogic.gdx.graphics.g3d.environment.DirectionalLight;
 import com.badlogic.gdx.graphics.g3d.environment.PointLight;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector3;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 
 import no.sandramoen.commanderqueen.actors.utils.baseActors.BaseActor3D;
 import no.sandramoen.commanderqueen.utils.BaseGame;
@@ -14,12 +16,12 @@ import no.sandramoen.commanderqueen.utils.Stage3D;
 
 public class Player extends BaseActor3D {
     public boolean isMoving;
-    public boolean isShaking;
     public static float movementSpeed = 10f;
 
     private float rotateSpeed = 90f * .05f;
     private float totalTime = 0;
     private Stage3D stage3D;
+    private Stage stage;
 
     private float bobFrequency = 4;
     private float bobAmount = .015f;
@@ -31,9 +33,14 @@ public class Player extends BaseActor3D {
     private float forceTime;
     private final float SECONDS_FORCED_TO_MOVE = .25f;
 
-    public Player(float y, float z, Stage3D stage3D, float rotation) {
+    public boolean isShaking;
+    private float shakeAmount;
+
+    public Player(float y, float z, Stage3D stage3D, float rotation, Stage stage) {
         super(0, y, z, stage3D);
         this.stage3D = stage3D;
+        this.stage = stage;
+
         buildModel(1.7f, 3f, 1.7f, true);
         setBaseRectangle();
         isVisible = false;
@@ -77,11 +84,20 @@ public class Player extends BaseActor3D {
         forceTime = totalTime + SECONDS_FORCED_TO_MOVE;
     }
 
+    public void shakeyCam(float duration, float amount) {
+        isShaking = true;
+        shakeAmount = amount;
+        stage.addAction(Actions.sequence(
+                Actions.delay(duration),
+                Actions.run(() -> isShaking = false)
+        ));
+    }
+
     private void shake() {
         this.stage3D.camera.position.set(
-                position.x + MathUtils.random(0f, .1f),
-                position.y + MathUtils.random(0f, .1f),
-                position.z + MathUtils.random(0f, .1f)
+                position.x + MathUtils.random(0f, shakeAmount),
+                position.y + MathUtils.random(0f, shakeAmount),
+                position.z + MathUtils.random(0f, shakeAmount)
         );
     }
 

@@ -145,6 +145,7 @@ public class WeaponHandler extends BaseActor {
             if (ammo > 0 && currentWeapon.isAmmoDependent) {
                 totalTime = 0f;
                 currentWeapon.attackSound();
+                shakyCam();
             } else if (currentWeapon.isAmmoDependent) {
                 currentWeapon.emptySound();
             }
@@ -240,5 +241,14 @@ public class WeaponHandler extends BaseActor {
     private void setPosition() {
         restPosition = new Vector2(Gdx.graphics.getWidth() * 4 / 5 - getWidth() / 2, -Gdx.graphics.getHeight() * swayAmount);
         setPosition(restPosition.x, -getHeight());
+    }
+
+    private void shakyCam() {
+        if (currentWeapon instanceof Pistol)
+            player.shakeyCam(.1f, .05f);
+        else if (currentWeapon instanceof Shotgun)
+            player.shakeyCam(.1f, .3f);
+        else if (currentWeapon instanceof Chaingun)
+            player.shakeyCam(.1f, .2f);
     }
 }

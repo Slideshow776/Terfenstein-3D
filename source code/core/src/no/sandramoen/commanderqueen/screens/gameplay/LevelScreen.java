@@ -186,7 +186,6 @@ public class LevelScreen extends BaseScreen3D {
     @Override
     public boolean touchUp(int screenX, int screenY, int pointer, int button) {
         holdingDown = false;
-        player.isShaking = false;
         if (weaponHandler.currentWeapon instanceof Chaingun)
             BaseGame.chaingunPowerDownSound.play(BaseGame.soundVolume * .5f);
         return super.touchUp(screenX, screenY, pointer, button);
@@ -204,8 +203,6 @@ public class LevelScreen extends BaseScreen3D {
             if (weaponHandler.isReady)
                 shoot();
             holdingDown = true;
-            if (weaponHandler.currentWeapon instanceof Chaingun && hud.getAmmo(weaponHandler.currentWeapon) > 0)
-                player.isShaking = true;
         }
     }
 
@@ -220,8 +217,6 @@ public class LevelScreen extends BaseScreen3D {
                         rayPickTarget();
                     EnemyHandler.activateEnemies(enemies, Enemy.activationRange, player);
                 }
-            } else {
-                player.isShaking = false;
             }
         } else {
             weaponHandler.melee(rayPickTarget());

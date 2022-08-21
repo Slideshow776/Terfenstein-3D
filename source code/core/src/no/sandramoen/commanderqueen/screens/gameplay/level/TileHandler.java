@@ -3,10 +3,12 @@ package no.sandramoen.commanderqueen.screens.gameplay.level;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Array;
 
 import no.sandramoen.commanderqueen.actors.Tile;
 import no.sandramoen.commanderqueen.actors.characters.Player;
+import no.sandramoen.commanderqueen.actors.hud.HUD;
 import no.sandramoen.commanderqueen.screens.gameplay.LevelScreen;
 import no.sandramoen.commanderqueen.utils.BaseGame;
 
@@ -21,8 +23,10 @@ public class TileHandler {
                 player.preventOverlap(tile);
 
             if (player.isWithinDistance(Tile.height, tile) && tile.type == "walls" && isPlayerReadyToPush && Gdx.input.isKeyPressed(Input.Keys.SPACE)) {
-                if (!tile.secretMovementDirection.isEmpty() && !tile.isSecretTriggered())
+                if (!tile.secretMovementDirection.isEmpty() && !tile.isSecretTriggered()) {
                     LevelScreen.foundSecrets++;
+                    player.shakeyCam(1.5f, .2f);
+                }
                 BaseGame.playerUgh.play(BaseGame.soundVolume, MathUtils.random(.9f, 1.1f), 0);
                 isPlayerReadyToPush = false;
             }

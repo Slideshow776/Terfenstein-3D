@@ -12,8 +12,8 @@ public class BarrelExplosionHandler {
 
     public static void checkExplosionRange(HUD hud, Player player, Array<Enemy> enemies, Array<BaseActor3D> shootable, BaseActor3D source) {
         checkPlayerExplosionDamage(hud, player, source);
-        checkEnemiesExplosionDamage(enemies, source);
-        checkBarrelsExplosionDamage(shootable, source);
+        checkEnemiesExplosionDamage(enemies, source, player);
+        checkBarrelsExplosionDamage(shootable, source, player);
     }
 
     private static void checkPlayerExplosionDamage(HUD hud, Player player, BaseActor3D source) {
@@ -28,7 +28,7 @@ public class BarrelExplosionHandler {
         }
     }
 
-    private static void checkEnemiesExplosionDamage(Array<Enemy> enemies, BaseActor3D source) {
+    private static void checkEnemiesExplosionDamage(Array<Enemy> enemies, BaseActor3D source, Player player) {
         if (source instanceof Barrel) {
             Barrel barrel = (Barrel) source;
 
@@ -37,10 +37,14 @@ public class BarrelExplosionHandler {
                 if (enemy.isWithinDistance(barrel.BLAST_RANGE, source))
                     enemy.forceMoveAwayFrom(source);
             }
+
+            player.shakeyCam(1, .2f);
         }
     }
 
-    private static void checkBarrelsExplosionDamage(Array<BaseActor3D> shootable, BaseActor3D source) {
+
+
+    private static void checkBarrelsExplosionDamage(Array<BaseActor3D> shootable, BaseActor3D source, Player player) {
         if (source instanceof Barrel) {
             Barrel barrel = (Barrel) source;
 
@@ -50,6 +54,8 @@ public class BarrelExplosionHandler {
                     otherBarrel.decrementHealth(barrel.getBlastDamage(source.distanceBetween(otherBarrel)), 0);
                 }
             }
+
+            player.shakeyCam(1, .2f);
         }
     }
 }

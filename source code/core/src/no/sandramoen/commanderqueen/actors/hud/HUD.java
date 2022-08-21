@@ -131,6 +131,7 @@ public class HUD extends BaseActor {
         setHurtFace(amount, angle);
         setOverlayAngle(amount, angle);
         healthLabel.setText(health + "%");
+        player.shakeyCam(.1f, .1f);
     }
 
 
