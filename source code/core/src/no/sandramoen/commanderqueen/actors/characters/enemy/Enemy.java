@@ -149,7 +149,6 @@ public class Enemy extends BaseActor3D {
         setDirection();
         bulletDecals = new BulletDecals(stage3D.camera, decalBatch);
         attackDelayActor = new BaseActor(0, 0, stage);
-        checkIllumination();
 
         startingPosition = getTileActorIsOn(this, floorTiles);
     }
@@ -202,7 +201,6 @@ public class Enemy extends BaseActor3D {
         isDead = true;
         totalTime = 0f;
         attackDelayActor.clearActions();
-        checkIllumination();
         isCollisionEnabled = false;
         if (isGibs) {
             currentAnimation = gibAnimation;
@@ -305,16 +303,6 @@ public class Enemy extends BaseActor3D {
         gibThreshold = -health - 1;
     }
 
-    protected void checkIllumination() {
-        attackDelayActor.clearActions();
-        for (Tile tile : floorTiles) {
-            if (overlaps(tile)) {
-                GameUtils.illuminateBaseActor(this, tile);
-                break;
-            }
-        }
-    }
-
     protected void initializeSprite(float size) {
         sprite = new BaseActor3D(0, 0, 0, stage3D);
         sprite.buildModel(size, size, .001f, true);
@@ -385,10 +373,8 @@ public class Enemy extends BaseActor3D {
         checkAttackStateChange(dt);
         if (isAttackDodging) {
             moveInZigZag(dt);
-            if (state != State.HURT && state != State.WALKING) {
+            if (state != State.HURT && state != State.WALKING)
                 state = State.WALKING;
-                checkIllumination();
-            }
         } else {
             attack(dt);
         }
@@ -482,7 +468,6 @@ public class Enemy extends BaseActor3D {
 
     private void setTemporaryHurtState() {
         state = State.HURT;
-        checkIllumination();
         setStateToIdleAfterDelay(.4f);
         currentAnimation = hurtAnimation;
     }

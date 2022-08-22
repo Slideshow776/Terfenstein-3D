@@ -4,6 +4,13 @@ size: 512, 128
 format: RGBA8888
 filter: Nearest, Nearest
 repeat: none
+alphaPixel
+  rotate: false
+  xy: 2, 2
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
 button
   rotate: false
   xy: 2, 23
@@ -20,7 +27,7 @@ button-pressed
   index: -1
 clearPixel
   rotate: false
-  xy: 2, 2
+  xy: 20, 20
   size: 1, 1
   orig: 1, 1
   offset: 0, 0
@@ -62,7 +69,7 @@ overlayRight
   index: -1
 whitePixel
   rotate: false
-  xy: 20, 20
+  xy: 162, 31
   size: 1, 1
   orig: 1, 1
   offset: 0, 0

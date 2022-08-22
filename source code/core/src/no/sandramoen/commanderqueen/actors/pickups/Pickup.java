@@ -21,7 +21,6 @@ public class Pickup extends BaseActor3D {
         this.player = player;
 
         initializeModel(y, z);
-        checkIfIlluminated(tiles);
     }
 
     @Override
@@ -32,15 +31,6 @@ public class Pickup extends BaseActor3D {
 
     public void playSound() {
 
-    }
-
-    protected void checkIfIlluminated(Array<Tile> tiles) {
-        for (Tile tile : tiles) {
-            if (overlaps(tile)) {
-                GameUtils.illuminateBaseActor(this, tile);
-                break;
-            }
-        }
     }
 
     private void initializeModel(float y, float z) {

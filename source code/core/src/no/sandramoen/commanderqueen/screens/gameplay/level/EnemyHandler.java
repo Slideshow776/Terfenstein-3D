@@ -15,14 +15,18 @@ import no.sandramoen.commanderqueen.utils.GameUtils;
 
 public class EnemyHandler {
 
-    public static void update(boolean intervalFlag, Array<Enemy> enemies, Array<Tile> tiles, Array<Door> doors, Array<BaseActor3D> projectiles, Player player, Array<BaseActor3D> shootable, HUD hud) {
+    public static void update(
+            Array<Enemy> enemies, Array<Tile> tiles, Array<Door> doors, Array<BaseActor3D> projectiles, Player player,
+            Array<BaseActor3D> shootable, HUD hud, Array<TileShade> tileShades
+    ) {
         for (int i = 0; i < enemies.size; i++) {
             preventOverlapWithOtherEnemies(enemies, i);
-            illuminate(intervalFlag, enemies, tiles, i);
             preventOverLapWithTile(tiles, enemies.get(i));
             preventOverlapWithDoors(doors, enemies.get(i));
             handleProjectiles(projectiles, player, shootable, hud);
         }
+
+        GameUtils.checkEnemyShading(tileShades, enemies);
     }
 
     public static void updateEnemiesShootableList(Array<Enemy> enemies, Array<BaseActor3D> shootable) {
@@ -47,13 +51,6 @@ public class EnemyHandler {
             if (enemies.get(i) != enemies.get(j))
                 if (!(enemies.get(i) instanceof Hund) || !(enemies.get(j) instanceof Hund))
                     enemies.get(i).preventOverlap(enemies.get(j));
-        }
-    }
-
-    private static void illuminate(boolean intervalFlag, Array<Enemy> enemies, Array<Tile> tiles, int i) {
-        for (Tile tile : tiles) {
-            if (intervalFlag && enemies.get(i).overlaps(tile))
-                GameUtils.illuminateBaseActor(enemies.get(i), tile);
         }
     }
 

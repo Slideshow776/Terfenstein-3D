@@ -37,7 +37,7 @@ public class BaseActor3D {
     protected float height;
     protected float depth;
 
-    protected Polygon boundingPolygon;
+    public Polygon boundingPolygon;
     protected Stage3D stage3D;
     protected BoundingBox bounds = new BoundingBox();
     protected final Quaternion rotation;
@@ -148,7 +148,7 @@ public class BaseActor3D {
         boundingPolygon.setPosition(position.y, position.z);
         boundingPolygon.setRotation(getTurnAngle());
         boundingPolygon.setScale(scale.y, scale.z);
-        return (Polygon) boundingPolygon;
+        return boundingPolygon;
     }
 
     public boolean overlaps(BaseActor3D other) {

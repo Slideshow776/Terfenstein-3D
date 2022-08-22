@@ -3,7 +3,6 @@ package no.sandramoen.commanderqueen.utils;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.PerspectiveCamera;
 import com.badlogic.gdx.graphics.g3d.decals.Decal;
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
@@ -17,8 +16,12 @@ import com.badlogic.gdx.scenes.scene2d.ui.Widget;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Array;
 
+import java.util.ArrayList;
+
 import no.sandramoen.commanderqueen.actors.Tile;
+import no.sandramoen.commanderqueen.actors.characters.enemy.Enemy;
 import no.sandramoen.commanderqueen.actors.utils.baseActors.BaseActor3D;
+import no.sandramoen.commanderqueen.screens.gameplay.level.TileShade;
 
 public class GameUtils {
 
@@ -82,13 +85,6 @@ public class GameUtils {
         return angle;
     }
 
-    public static void illuminateBaseActor(BaseActor3D baseActor3D, Tile tile) {
-        if (tile.type == "U1" && tile.illuminated)
-            baseActor3D.setColor(Color.WHITE);
-        else if (tile.type == "U1")
-            baseActor3D.setColor(BaseGame.darkColor);
-    }
-
     public static float getPositionRelativeToFloor(float height) {
         return (Tile.height - height) / -2;
     }
@@ -103,6 +99,26 @@ public class GameUtils {
         music.setVolume(volume);
         music.setLooping(true);
         music.play();
+    }
+
+    public static void checkEnemyShading(Array<TileShade> tileShades, Array<Enemy> listToBeChecked) {
+        for (TileShade shade : tileShades) {
+            for (BaseActor3D baseActor3D : listToBeChecked) {
+                if (baseActor3D.boundingPolygon != null && shade.overlaps(baseActor3D)) {
+                    baseActor3D.setColor(shade.color);
+                }
+            }
+        }
+    }
+
+    public static void checkShading(Array<TileShade> tileShades, ArrayList<BaseActor3D> listToBeChecked) {
+        for (TileShade shade : tileShades) {
+            for (BaseActor3D baseActor3D : listToBeChecked) {
+                if (baseActor3D.boundingPolygon != null && shade.overlaps(baseActor3D)) {
+                    baseActor3D.setColor(shade.color);
+                }
+            }
+        }
     }
 
     public static float normalizeValue(float value, float min, float max) {

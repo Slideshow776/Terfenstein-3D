@@ -37,7 +37,6 @@ public class Barrel extends BaseActor3D {
         loadImage("barrel/barrel");
 
         initializeExplosionAnimation();
-        checkIfIlluminated(tiles);
     }
 
     @Override
@@ -82,15 +81,6 @@ public class Barrel extends BaseActor3D {
             damage = 0;
 
         return (int) (damage * BLAST_DAMAGE_MODIFIER);
-    }
-
-    private void checkIfIlluminated(Array<Tile> tiles) {
-        for (Tile tile : tiles) {
-            if (overlaps(tile)) {
-                GameUtils.illuminateBaseActor(this, tile);
-                break;
-            }
-        }
     }
 
     private void initializeExplosionAnimation() {

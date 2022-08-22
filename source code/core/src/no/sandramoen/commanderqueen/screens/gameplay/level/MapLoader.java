@@ -33,6 +33,7 @@ import no.sandramoen.commanderqueen.actors.characters.enemy.Enemy;
 import no.sandramoen.commanderqueen.actors.utils.TilemapActor;
 import no.sandramoen.commanderqueen.screens.gameplay.LevelScreen;
 import no.sandramoen.commanderqueen.utils.BaseGame;
+import no.sandramoen.commanderqueen.utils.GameUtils;
 import no.sandramoen.commanderqueen.utils.Stage3D;
 import no.sandramoen.commanderqueen.utils.pathFinding.TileGraph;
 
@@ -42,23 +43,26 @@ public class MapLoader {
     public Array<Elevator> elevators = new Array();
     public Array<Tile> floorTiles;
 
+    private HUD hud;
+    private Stage stage;
     private Stage3D stage3D;
     private TilemapActor tilemap;
-    private Stage stage;
-    private HUD hud;
+    private DecalBatch decalBatch;
 
     private Array<Tile> tiles;
+    private Array<Door> doors;
     private Array<Enemy> enemies;
     private Array<Pickup> pickups;
+    private Array<TileShade> tileShades;
     private Array<BaseActor3D> shootable;
-    private Array<Door> doors;
     private Array<BaseActor3D> projectiles;
-    private DecalBatch decalBatch;
 
     private Array<Array<Tile>> patrols = new Array();
 
     public MapLoader(TilemapActor tilemap, Array<Tile> tiles, Stage3D stage3D, Player player, Array<BaseActor3D> shootable,
-                     Array<Pickup> pickups, Array<Enemy> enemies, Stage stage, HUD hud, DecalBatch decalBatch, Array<Door> doors, Array<BaseActor3D> projectiles) {
+                     Array<Pickup> pickups, Array<Enemy> enemies, Stage stage, HUD hud, DecalBatch decalBatch,
+                     Array<Door> doors, Array<BaseActor3D> projectiles, Array<TileShade> tileShades
+    ) {
         this.tilemap = tilemap;
         this.tiles = tiles;
         this.stage3D = stage3D;
@@ -71,6 +75,7 @@ public class MapLoader {
         this.decalBatch = decalBatch;
         this.doors = doors;
         this.projectiles = projectiles;
+        this.tileShades = tileShades;
 
         floorTiles = new Array();
 
@@ -81,7 +86,8 @@ public class MapLoader {
         initializeBarrels();
         initializeEnemies();
         initializePickups();
-        initializeLights();
+        initializePointLights();
+        initializeTileShades();
         initializeProps();
     }
 
@@ -102,20 +108,16 @@ public class MapLoader {
             for (String texture : tileTextures) {
                 for (MapObject obj : tilemap.getTileList(type, texture)) {
                     MapProperties props = obj.getProperties();
-                    float y = (Float) props.get("x") * BaseGame.unitScale;
-                    float z = (Float) props.get("y") * BaseGame.unitScale;
+                    float y = props.get("x", Float.class) * BaseGame.unitScale;
+                    float z = props.get("y", Float.class) * BaseGame.unitScale;
 
-                    float width = (Float) props.get("width") * BaseGame.unitScale;
-                    float height = (Float) props.get("height") * BaseGame.unitScale;
+                    float width = props.get("width", Float.class) * BaseGame.unitScale;
+                    float height = props.get("height", Float.class) * BaseGame.unitScale;
+                    float rotation = getRotation(props);
 
-                    float rotation = 0;
-                    if (props.get("rotation") != null)
-                        rotation = (Float) props.get("rotation");
-                    rotation %= 360;
-
-                    float depth = (float) props.get("depth");
+                    float depth = props.get("depth", Float.class);
                     String secretMovementDirection = (String) props.get("secret");
-                    int secretLength = (int) props.get("secret length");
+                    int secretLength = props.get("secret length", Integer.class);
                     if (secretLength == 0) secretLength = 1;
                     if (!secretMovementDirection.isEmpty())
                         LevelScreen.numSecrets++;
@@ -124,7 +126,7 @@ public class MapLoader {
                     tiles.add(tile);
                     shootable.add(tile);
 
-                    String patrol = (String) props.get("patrol");
+                    String patrol = props.get("patrol", String.class);
                     if (patrol != null && patrol.length() > 0 && patrol.equalsIgnoreCase("a")) {
                         if (patrols.size == 0)
                             patrols.add(new Array());
@@ -160,15 +162,12 @@ public class MapLoader {
     private void initializeDoors() {
         for (MapObject obj : tilemap.getTileList("actors", "door")) {
             MapProperties props = obj.getProperties();
-            float x = (Float) props.get("x") * BaseGame.unitScale;
-            float y = (Float) props.get("y") * BaseGame.unitScale;
-            float rotation = 0;
-            if (props.get("rotation") != null)
-                rotation = (Float) props.get("rotation");
-            rotation %= 360;
+            float x = props.get("x", Float.class) * BaseGame.unitScale;
+            float y = props.get("y", Float.class) * BaseGame.unitScale;
+            float rotation = getRotation(props);
 
             Door door = new Door(x, y, stage3D, stage, rotation, player);
-            door.isLocked = (boolean) props.get("isLocked");
+            door.isLocked = props.get("isLocked", Boolean.class);
 
             doors.add(door);
             shootable.add(door);
@@ -178,12 +177,9 @@ public class MapLoader {
     private void initializeElevator() {
         for (MapObject obj : tilemap.getTileList("actors", "elevator")) {
             MapProperties props = obj.getProperties();
-            float x = (Float) props.get("x") * BaseGame.unitScale;
-            float y = (Float) props.get("y") * BaseGame.unitScale;
-            float rotation = 0;
-            if (props.get("rotation") != null)
-                rotation = (Float) props.get("rotation");
-            rotation %= 360;
+            float x = props.get("x", Float.class) * BaseGame.unitScale;
+            float y = props.get("y", Float.class) * BaseGame.unitScale;
+            float rotation = getRotation(props);
 
             Elevator elevator = new Elevator(x, y, stage3D, stage, rotation, player);
             shootable.add(elevator);
@@ -191,19 +187,41 @@ public class MapLoader {
         }
     }
 
-    private void initializeLights() {
-        int lightCount = 0;
-        for (MapObject obj : tilemap.getTileList("actors", "light")) {
+    private void initializePointLights() {
+        int pointLightCount = 0;
+        for (MapObject obj : tilemap.getTileList("actors", "point light")) {
             MapProperties props = obj.getProperties();
-            float y = (Float) props.get("x") * BaseGame.unitScale;
-            float z = (Float) props.get("y") * BaseGame.unitScale;
+            float y = props.get("x", Float.class) * BaseGame.unitScale;
+            float z = props.get("y", Float.class) * BaseGame.unitScale;
+            Color color = props.get("color", Color.class);
+            float height = props.get("map height", Float.class) * Tile.height;
+            float intensity = props.get("intensity", Float.class);
+
             PointLight pLight = new PointLight();
-            pLight.set(new Color(.6f, .6f, .9f, 1f), new Vector3(Tile.height / 2, y, z), 50f);
+            pLight.set(color, new Vector3(height, y, z), intensity);
             stage3D.environment.add(pLight);
-            lightCount++;
+            pointLightCount++;
         }
-        if (lightCount > 0)
-            Gdx.app.log(getClass().getSimpleName(), "added " + lightCount + " pointLights to map");
+
+        if (pointLightCount > 0)
+            Gdx.app.log(getClass().getSimpleName(), "added " + pointLightCount + " pointLights to map");
+    }
+
+    private void initializeTileShades() {
+        for (MapObject obj : tilemap.getTileList("actors", "tile shade")) {
+            MapProperties props = obj.getProperties();
+            float y = props.get("x", Float.class) * BaseGame.unitScale;
+            float z = props.get("y", Float.class) * BaseGame.unitScale;
+            float width = props.get("width", Float.class) * BaseGame.unitScale;
+            float height = props.get("height", Float.class) * BaseGame.unitScale;
+            Color color = props.get("color", Color.class);
+
+            System.out.println("jkl");
+
+            tileShades.add(new TileShade(y, z, width, height, color, stage3D));
+        }
+
+        GameUtils.checkShading(tileShades, stage3D.getActors3D());
     }
 
     private void initializePlayer() {
@@ -227,12 +245,10 @@ public class MapLoader {
     private void initializeEnemy(String type) {
         for (MapObject obj : tilemap.getTileList("actors", type)) {
             MapProperties props = obj.getProperties();
-            float x = (Float) props.get("x") * BaseGame.unitScale;
-            float y = (Float) props.get("y") * BaseGame.unitScale;
-            float rotation = 0;
-            if (props.get("rotation") != null)
-                rotation = (Float) props.get("rotation");
-            rotation %= 360;
+            float x = props.get("x", Float.class) * BaseGame.unitScale;
+            float y = props.get("y", Float.class) * BaseGame.unitScale;
+            float rotation = getRotation(props);
+
             if (type.equalsIgnoreCase("hund"))
                 enemies.add(new Hund(x, y, stage3D, player, rotation, tileGraph, floorTiles, stage, hud, decalBatch));
             if (type.equalsIgnoreCase("menig"))
@@ -243,7 +259,7 @@ public class MapLoader {
                 enemies.add(new Prest(x, y, stage3D, player, rotation, tileGraph, floorTiles, stage, hud, decalBatch, projectiles));
             shootable.add(enemies.get(enemies.size - 1));
 
-            String patrol = (String) props.get("patrol");
+            String patrol = props.get("patrol", String.class);
             if (patrol != null && patrol.equalsIgnoreCase("a") && patrols.size > 0)
                 enemies.get(enemies.size - 1).setPatrol(patrols.get(0));
         }
@@ -258,8 +274,8 @@ public class MapLoader {
     private void initializeBarrels() {
         for (MapObject obj : tilemap.getTileList("actors", "barrel")) {
             MapProperties props = obj.getProperties();
-            float x = (Float) props.get("x") * BaseGame.unitScale;
-            float y = (Float) props.get("y") * BaseGame.unitScale;
+            float x = props.get("x", Float.class) * BaseGame.unitScale;
+            float y = props.get("y", Float.class) * BaseGame.unitScale;
             shootable.add(new Barrel(x, y, stage3D, player, floorTiles));
         }
     }
@@ -279,8 +295,8 @@ public class MapLoader {
     private void initializePickup(String type, int amount) {
         for (MapObject obj : tilemap.getTileList("actors", type)) {
             MapProperties props = obj.getProperties();
-            float x = (Float) props.get("x") * BaseGame.unitScale;
-            float y = (Float) props.get("y") * BaseGame.unitScale;
+            float x = props.get("x", Float.class) * BaseGame.unitScale;
+            float y = props.get("y", Float.class) * BaseGame.unitScale;
 
             if (type.equalsIgnoreCase("health small") || type.equalsIgnoreCase("health medium"))
                 pickups.add(new Health(x, y, stage3D, amount, player, floorTiles));
@@ -307,10 +323,17 @@ public class MapLoader {
         for (String type : types) {
             for (MapObject obj : tilemap.getTileList("props", type)) {
                 MapProperties props = obj.getProperties();
-                float y = (Float) props.get("x") * BaseGame.unitScale;
-                float z = (Float) props.get("y") * BaseGame.unitScale;
+                float y = props.get("x", Float.class) * BaseGame.unitScale;
+                float z = props.get("y", Float.class) * BaseGame.unitScale;
                 new Prop(y, z, stage3D, type, player);
             }
         }
+    }
+
+    private float getRotation(MapProperties props) {
+        float rotation = 0;
+        if (props.get("rotation", Float.class) != null)
+            rotation = props.get("rotation", Float.class);
+        return rotation % 360;
     }
 }

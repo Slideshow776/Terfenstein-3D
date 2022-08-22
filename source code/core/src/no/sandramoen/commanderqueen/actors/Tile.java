@@ -12,7 +12,6 @@ public class Tile extends BaseActor3D {
 
     public int index;
     public String type;
-    public boolean illuminated = false;
     public boolean isOpeningSecret;
 
     public String secretMovementDirection;
@@ -31,15 +30,12 @@ public class Tile extends BaseActor3D {
         setBaseRectangle();
         loadImage("tiles/" + texture);
         turnBy(-180 + rotation);
-        if (texture.split(" ", 2)[0].equals("light"))
-            illuminated = true;
 
-        if (type == "2nd floor") {
+        if (type == "2nd floor")
             position.x = Tile.height;
-            isCollisionEnabled = false;
-        } else if (type == "U1") {
+        else if (type == "U1")
             position.x = -Tile.height;
-        }
+
         originalPosition = getPosition().cpy();
     }
 
