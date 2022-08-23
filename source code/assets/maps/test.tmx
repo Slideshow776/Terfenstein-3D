@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.1" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="15" height="15" tilewidth="64" tileheight="64" infinite="0" nextlayerid="17" nextobjectid="66023">
+<map version="1.9" tiledversion="1.9.1" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="15" height="15" tilewidth="64" tileheight="64" infinite="0" nextlayerid="17" nextobjectid="66024">
  <tileset firstgid="1" name="Assets" tilewidth="64" tileheight="64" tilecount="128" columns="16" objectalignment="center">
   <image source="assets.png" width="1024" height="512"/>
   <tile id="0">
@@ -34,7 +34,7 @@
   </tile>
   <tile id="17">
    <properties>
-    <property name="color" type="color" value="#00008fc3"/>
+    <property name="color" type="color" value="#ffd2fbff"/>
     <property name="intensity" type="float" value="50"/>
     <property name="map height" type="float" value="0.5"/>
     <property name="name" value="point light"/>
@@ -42,7 +42,9 @@
   </tile>
   <tile id="18">
    <properties>
-    <property name="color" type="color" value="#ffffffff"/>
+    <property name="color 0" type="color" value="#ffffffff"/>
+    <property name="color 1" type="color" value="#ff757575"/>
+    <property name="flickerFrequency" type="float" value="0"/>
     <property name="name" value="tile shade"/>
    </properties>
   </tile>
@@ -644,7 +646,7 @@
   <object id="66007" gid="145" x="960" y="640" width="64" height="64"/>
   <object id="66008" gid="145" x="960" y="704" width="64" height="64"/>
  </objectgroup>
- <objectgroup id="16" name="4th floor">
+ <objectgroup id="16" name="4th floor" visible="0">
   <object id="65970" gid="147" x="0" y="704" width="64" height="64"/>
   <object id="65971" gid="147" x="0" y="640" width="64" height="64"/>
   <object id="65972" gid="147" x="0" y="576" width="64" height="64"/>
@@ -674,12 +676,12 @@
   <object id="66021" gid="145" x="576" y="0" width="64" height="64"/>
   <object id="66022" gid="145" x="640" y="0" width="64" height="64"/>
  </objectgroup>
- <objectgroup id="13" name="props" visible="0">
+ <objectgroup id="13" name="props">
   <object id="65846" gid="113" x="512" y="704" width="64" height="64"/>
   <object id="65847" gid="114" x="448" y="704" width="64" height="64"/>
   <object id="65848" gid="114" x="576" y="704" width="64" height="64"/>
  </objectgroup>
- <objectgroup id="8" name="actors" visible="0">
+ <objectgroup id="8" name="actors">
   <object id="63202" gid="42" x="576" y="448" width="64" height="64"/>
   <object id="65552" gid="2" x="512" y="320" width="64" height="64"/>
   <object id="65554" gid="41" x="512" y="320" width="64" height="64"/>
@@ -703,12 +705,6 @@
   <object id="65572" gid="17" x="128" y="448" width="64" height="64"/>
   <object id="65573" gid="17" x="128" y="128" width="64" height="64"/>
   <object id="65574" gid="17" x="768" y="128" width="64" height="64"/>
-  <object id="65809" gid="19" x="512" y="533.5" width="448.667" height="268.333">
-   <properties>
-    <property name="color" type="color" value="#ffbcbcbc"/>
-    <property name="name" value="tile shade"/>
-   </properties>
-  </object>
   <object id="65840" gid="65" x="512" y="640" width="64" height="64"/>
   <object id="65841" gid="17" x="448" y="576" width="64" height="64"/>
   <object id="65842" gid="1" x="512" y="576" width="64" height="64"/>
@@ -718,5 +714,10 @@
   <object id="65906" gid="39" x="704" y="576" width="64" height="64"/>
   <object id="65907" gid="35" x="320" y="576" width="64" height="64"/>
   <object id="65918" gid="69" x="448" y="640" width="64" height="64"/>
+  <object id="66023" gid="19" x="510.5" y="565.5" width="445" height="299">
+   <properties>
+    <property name="color 1" type="color" value="#ff585858"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

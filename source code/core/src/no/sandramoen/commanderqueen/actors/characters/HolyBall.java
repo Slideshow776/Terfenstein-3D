@@ -1,5 +1,6 @@
 package no.sandramoen.commanderqueen.actors.characters;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g3d.environment.PointLight;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector3;
@@ -65,6 +66,10 @@ public class HolyBall extends BaseActor3D {
         super.remove();
         GameUtils.playSoundRelativeToDistance(BaseGame.holyBallExplosionSound, distanceBetween(player), VOCAL_RANGE, MathUtils.random(.9f, 1.1f));
         stage3D.environment.remove(light);
+    }
+
+    @Override
+    public void setColor(Color c) {
     }
 
     public int getDamage() {

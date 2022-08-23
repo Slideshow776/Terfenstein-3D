@@ -3,6 +3,7 @@ package no.sandramoen.commanderqueen.screens.gameplay;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
@@ -116,8 +117,14 @@ public class LevelScreen extends BaseScreen3D {
 
         TileHandler.updateTiles(dt, tiles, player);
         EnemyHandler.update(enemies, tiles, doors, projectiles, player, shootable, hud, tileShades);
+
+        for (BaseActor3D baseActor3D : mainStage3D.getActors3D())
+            for (TileShade shade : tileShades)
+                shade.setActorColor(baseActor3D);
+
         for (int i = 0; i < enemies.size; i++)
             if (enemies.get(i).isDead) removeEnemy(enemies.get(i));
+
         updateBarrels();
         PickupHandler.update(originalPickups, player, hud, weaponHandler, uiTable, uiHandler, mainStage3D, tiles);
         PickupHandler.update(newPickups, player, hud, weaponHandler, uiTable, uiHandler, mainStage3D, tiles);

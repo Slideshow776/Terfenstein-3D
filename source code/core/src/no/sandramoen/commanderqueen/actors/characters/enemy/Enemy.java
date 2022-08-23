@@ -29,8 +29,8 @@ import no.sandramoen.commanderqueen.utils.Stage3D;
 import no.sandramoen.commanderqueen.utils.pathFinding.TileGraph;
 
 public class Enemy extends BaseActor3D {
-    public static float activationRange = 30;
     public final int ID = MathUtils.random(1_000, 9_999);
+    public static float activationRange = 30;
     public int health = 1;
     public boolean isDead;
     public boolean isActive;
@@ -109,6 +109,8 @@ public class Enemy extends BaseActor3D {
     private boolean isAttackDodging;
     private boolean isPlayerVisible;
     private boolean isPlayerLastPositionKnown;
+
+    private boolean isMuzzleColor;
 
     private BaseActor3D goingTo;
     private HUD hud;
@@ -192,8 +194,10 @@ public class Enemy extends BaseActor3D {
 
     @Override
     public void setColor(Color color) {
-        super.setColor(color);
-        sprite.setColor(color);
+        if (!isMuzzleColor) {
+            super.setColor(color);
+            sprite.setColor(color);
+        }
     }
 
     public void die() {
@@ -201,7 +205,6 @@ public class Enemy extends BaseActor3D {
         isDead = true;
         totalTime = 0f;
         attackDelayActor.clearActions();
-        isCollisionEnabled = false;
         if (isGibs) {
             currentAnimation = gibAnimation;
             BaseGame.wetSplashSound.play(BaseGame.soundVolume);
@@ -285,7 +288,10 @@ public class Enemy extends BaseActor3D {
                         activateNearByEnemies();
                         stage3D.lightManager.addMuzzleLight(position);
                         setColor(new Color(1, 1, .9f, 1));
-                    })
+                        isMuzzleColor = true;
+                    }),
+                    Actions.delay(shootImageDelay),
+                    Actions.run(() -> isMuzzleColor = false)
             ));
     }
 

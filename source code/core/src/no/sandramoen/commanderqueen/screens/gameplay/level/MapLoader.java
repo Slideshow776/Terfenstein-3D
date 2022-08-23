@@ -211,13 +211,16 @@ public class MapLoader {
     private void initializeTileShades() {
         for (MapObject obj : tilemap.getTileList("actors", "tile shade")) {
             MapProperties props = obj.getProperties();
+            long id = props.get("id", Integer.class);
             float y = props.get("x", Float.class) * BaseGame.unitScale;
             float z = props.get("y", Float.class) * BaseGame.unitScale;
             float width = props.get("width", Float.class) * BaseGame.unitScale;
             float height = props.get("height", Float.class) * BaseGame.unitScale;
-            Color color = props.get("color", Color.class);
+            Color color0 = props.get("color 0", Color.class);
+            Color color1 = props.get("color 1", Color.class);
+            float flickerFrequency = props.get("flickerFrequency", Float.class);
 
-            tileShades.add(new TileShade(y, z, width, height, color, stage3D));
+            tileShades.add(new TileShade(id, y, z, width, height, color0, color1, flickerFrequency, stage3D));
         }
 
         GameUtils.checkShading(tileShades, stage3D.getActors3D());

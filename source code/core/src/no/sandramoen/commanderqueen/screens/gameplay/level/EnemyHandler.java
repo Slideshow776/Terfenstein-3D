@@ -19,6 +19,7 @@ public class EnemyHandler {
             Array<Enemy> enemies, Array<Tile> tiles, Array<Door> doors, Array<BaseActor3D> projectiles, Player player,
             Array<BaseActor3D> shootable, HUD hud, Array<TileShade> tileShades
     ) {
+
         for (int i = 0; i < enemies.size; i++) {
             preventOverlapWithOtherEnemies(enemies, i);
             preventOverLapWithTile(tiles, enemies.get(i));
@@ -26,7 +27,7 @@ public class EnemyHandler {
             handleProjectiles(projectiles, player, shootable, hud);
         }
 
-        GameUtils.checkEnemyShading(tileShades, enemies);
+        /*GameUtils.checkEnemyShading(tileShades, enemies);*/
     }
 
     public static void updateEnemiesShootableList(Array<Enemy> enemies, Array<BaseActor3D> shootable) {

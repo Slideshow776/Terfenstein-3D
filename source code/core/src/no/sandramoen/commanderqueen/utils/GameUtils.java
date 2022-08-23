@@ -105,7 +105,7 @@ public class GameUtils {
         for (TileShade shade : tileShades) {
             for (BaseActor3D baseActor3D : listToBeChecked) {
                 if (baseActor3D.boundingPolygon != null && shade.overlaps(baseActor3D)) {
-                    baseActor3D.setColor(shade.color);
+                    baseActor3D.setColor(shade.color0);
                 }
             }
         }
@@ -115,7 +115,7 @@ public class GameUtils {
         for (TileShade shade : tileShades) {
             for (BaseActor3D baseActor3D : listToBeChecked) {
                 if (baseActor3D.boundingPolygon != null && shade.overlaps(baseActor3D)) {
-                    baseActor3D.setColor(shade.color);
+                    baseActor3D.setColor(shade.color0);
                 }
             }
         }
