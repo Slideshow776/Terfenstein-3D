@@ -31,7 +31,11 @@ public class Tile extends BaseActor3D {
         loadImage("tiles/" + texture);
         turnBy(-180 + rotation);
 
-        if (type == "2nd floor")
+        if (type == "4th floor")
+            position.x = Tile.height * 3;
+        else if (type == "3rd floor")
+            position.x = Tile.height * 2;
+        else if (type == "2nd floor")
             position.x = Tile.height;
         else if (type == "U1")
             position.x = -Tile.height;

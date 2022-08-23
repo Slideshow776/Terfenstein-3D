@@ -99,7 +99,8 @@ public class MapLoader {
 
     private void createTiles() {
         Array<String> tileTypes = new Array<>();
-        tileTypes.add("U1", "1st floor", "2nd floor");
+        tileTypes.add("U1", "1st floor", "2nd floor", "3rd floor");
+        tileTypes.add("4th floor");
         Array<String> tileTextures = new Array<>();
         tileTextures.add("big plates", "lonplate", "light big plates", "light lonplate");
         tileTextures.add("lights 0", "flag 0", "elevator wall", "light lonplate 2");
@@ -215,8 +216,6 @@ public class MapLoader {
             float width = props.get("width", Float.class) * BaseGame.unitScale;
             float height = props.get("height", Float.class) * BaseGame.unitScale;
             Color color = props.get("color", Color.class);
-
-            System.out.println("jkl");
 
             tileShades.add(new TileShade(y, z, width, height, color, stage3D));
         }
