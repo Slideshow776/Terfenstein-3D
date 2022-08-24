@@ -3,6 +3,7 @@ package no.sandramoen.commanderqueen.screens.gameplay.level;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 
+import no.sandramoen.commanderqueen.actors.characters.enemy.Enemy;
 import no.sandramoen.commanderqueen.actors.utils.baseActors.BaseActor3D;
 import no.sandramoen.commanderqueen.utils.GameUtils;
 import no.sandramoen.commanderqueen.utils.Stage3D;
@@ -40,6 +41,10 @@ public class TileShade extends BaseActor3D {
             }
     }
 
+    @Override
+    public void setColor(Color color) {
+    }
+
     public void setActorColor(BaseActor3D baseActor3D) {
         if (baseActor3D.boundingPolygon != null && overlaps(baseActor3D)) {
             if (isColor0)
@@ -62,6 +67,6 @@ public class TileShade extends BaseActor3D {
 
     private void checkColorAlpha(long id, Color color) {
         if (color.a != 1)
-            Gdx.app.error(getClass().getSimpleName(), "Warning: Shade #" + id + "Color 0's alpha is: " + color.a);
+            Gdx.app.error(getClass().getSimpleName(), "Warning: Shade #" + id + "color's alpha is: " + color.a);
     }
 }

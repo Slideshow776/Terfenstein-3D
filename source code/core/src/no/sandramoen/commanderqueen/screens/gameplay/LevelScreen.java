@@ -11,6 +11,7 @@ import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.math.collision.Ray;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.utils.Array;
+import com.sun.org.apache.bcel.internal.generic.IF_ACMPEQ;
 
 import no.sandramoen.commanderqueen.actors.Barrel;
 import no.sandramoen.commanderqueen.actors.Door;
@@ -55,6 +56,7 @@ public class LevelScreen extends BaseScreen3D {
     private Array<Tile> tiles;
     private Array<Door> doors;
     private Array<Enemy> enemies;
+    private Array<Enemy> deadEnemies;
     private Array<Pickup> originalPickups;
     private Array<Pickup> newPickups;
     private Array<BaseActor3D> shootable;
@@ -118,9 +120,7 @@ public class LevelScreen extends BaseScreen3D {
         TileHandler.updateTiles(dt, tiles, player);
         EnemyHandler.update(enemies, tiles, doors, projectiles, player, shootable, hud, tileShades);
 
-        for (BaseActor3D baseActor3D : mainStage3D.getActors3D())
-            for (TileShade shade : tileShades)
-                shade.setActorColor(baseActor3D);
+        shadeHandler();
 
         for (int i = 0; i < enemies.size; i++)
             if (enemies.get(i).isDead) removeEnemy(enemies.get(i));
@@ -270,6 +270,7 @@ public class LevelScreen extends BaseScreen3D {
             newPickups.add(new Bullets(enemy.position.y + MathUtils.random(-1, 1), enemy.position.z + MathUtils.random(-1, 1), mainStage3D, 2, player, tiles));
         if (enemy instanceof Sersjant)
             newPickups.add(new Shells(enemy.position.y + MathUtils.random(-1, 1), enemy.position.z + MathUtils.random(-1, 1), mainStage3D, 2, player, tiles));
+        deadEnemies.add(enemy);
         enemies.removeValue(enemy, false);
         shootable.removeValue(enemy, false);
         EnemyHandler.updateEnemiesShootableList(enemies, shootable);
@@ -348,6 +349,7 @@ public class LevelScreen extends BaseScreen3D {
         originalPickups = new Array();
         newPickups = new Array();
         enemies = new Array();
+        deadEnemies = new Array();
         doors = new Array();
         projectiles = new Array();
         tileShades = new Array();
@@ -386,5 +388,30 @@ public class LevelScreen extends BaseScreen3D {
         levelData.add(PAR_TIME);
 
         BaseGame.setActiveScreen(new LevelFinishScreen(levelData, numLevel, hud.health, hud.armor, hud.bullets, hud.shells, weaponHandler.weapons));
+    }
+
+    private void shadeHandler() {
+        for (BaseActor3D baseActor3D : mainStage3D.getActors3D()) {
+            baseActor3D.setColor(Color.WHITE);
+            for (TileShade shade : tileShades) {
+                shade.setActorColor(baseActor3D);
+            }
+        }
+
+        for (Enemy enemy : enemies) {
+            if (!enemy.isDead) {
+                enemy.setColor(Color.WHITE);
+                for (TileShade shade : tileShades) {
+                    shade.setActorColor(enemy);
+                }
+            }
+        }
+
+        for (Enemy enemy : deadEnemies) {
+            enemy.setColor(Color.WHITE);
+            for (TileShade shade : tileShades) {
+                shade.setActorColor(enemy);
+            }
+        }
     }
 }

@@ -17,6 +17,7 @@ import no.sandramoen.commanderqueen.utils.pathFinding.TileGraph;
 
 public class Menig extends Enemy {
     private Sound shootSound = BaseGame.pistolShotSound;
+    private long shootSoundID;
 
     public Menig(float y, float z, Stage3D s, Player player, Float rotation, TileGraph tileGraph, Array<Tile> floorTiles, Stage stage, HUD hud, DecalBatch batch) {
         super(y, z, s, player, rotation, tileGraph, floorTiles, stage, hud, batch);
@@ -28,6 +29,7 @@ public class Menig extends Enemy {
         maxDamage = 15;
         score = 10;
         painChance = .78f;
+        isRanged = false;
 
         initializeAnimations();
     }
@@ -36,7 +38,7 @@ public class Menig extends Enemy {
     public void die() {
         if (!isDead) {
             GameUtils.playSoundRelativeToDistance(BaseGame.menigDeathSound, distanceBetween(player), VOCAL_RANGE);
-            shootSound.stop();
+            shootSound.stop(shootSoundID);
         }
         super.die();
     }
@@ -50,7 +52,7 @@ public class Menig extends Enemy {
 
     @Override
     protected void shootSound() {
-        GameUtils.playSoundRelativeToDistance(shootSound, distanceBetween(player), VOCAL_RANGE, .6f);
+        shootSoundID = GameUtils.playSoundRelativeToDistance(shootSound, distanceBetween(player), VOCAL_RANGE, .6f);
         super.shootSound();
     }
 

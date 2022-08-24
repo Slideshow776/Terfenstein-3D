@@ -202,6 +202,7 @@ public class Enemy extends BaseActor3D {
 
     public void die() {
         if (isDead) return;
+        isMuzzleColor = false;
         isDead = true;
         totalTime = 0f;
         attackDelayActor.clearActions();
@@ -448,6 +449,8 @@ public class Enemy extends BaseActor3D {
     }
 
     private void shoot() {
+        if (!currentAnimation.isAnimationFinished(totalTime))
+            return;
         state = State.ATTACKING;
         currentAnimation = shootAnimation;
         totalTime = 0;

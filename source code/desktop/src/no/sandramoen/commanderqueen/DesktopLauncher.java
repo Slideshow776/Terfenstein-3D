@@ -17,9 +17,7 @@ public class DesktopLauncher {
 
 	private static void setWindowedMode(float percentOfScreenSize, Lwjgl3ApplicationConfiguration config) {
 		Dimension dimension = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-		System.out.println(dimension);
 		int width = (int) (dimension.width * percentOfScreenSize);
-		width = 3300;
 
 		float aspectRatio = 16 / 9f;
 		int height = (int) (width / aspectRatio);
