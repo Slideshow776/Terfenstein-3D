@@ -1,6 +1,6 @@
 
 images.pack.png
-size: 512, 128
+size: 256, 128
 format: RGBA8888
 filter: Nearest, Nearest
 repeat: none
@@ -39,16 +39,9 @@ crosshair
   orig: 16, 16
   offset: 0, 0
   index: -1
-door0
-  rotate: false
-  xy: 162, 37
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
 elevator
   rotate: false
-  xy: 228, 37
+  xy: 162, 37
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
@@ -62,7 +55,7 @@ overlayLeft
   index: -1
 overlayRight
   rotate: false
-  xy: 294, 100
+  xy: 228, 100
   size: 4, 1
   orig: 4, 1
   offset: 0, 0
@@ -207,6 +200,40 @@ decals/bullet puff 4
   index: -1
 
 images.pack4.png
+size: 512, 128
+format: RGBA8888
+filter: Nearest, Nearest
+repeat: none
+doors/door0
+  rotate: false
+  xy: 2, 2
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+doors/doorBlue
+  rotate: false
+  xy: 68, 2
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+doors/doorGreen
+  rotate: false
+  xy: 134, 2
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+doors/doorRed
+  rotate: false
+  xy: 200, 2
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+
+images.pack5.png
 size: 128, 64
 format: RGBA8888
 filter: Nearest, Nearest
@@ -226,7 +253,7 @@ enemies/holy ball/travelling 0
   offset: 0, 0
   index: -1
 
-images.pack5.png
+images.pack6.png
 size: 1024, 256
 format: RGBA8888
 filter: Nearest, Nearest
@@ -547,7 +574,7 @@ enemies/hund/walk side right 3
   offset: 0, 0
   index: -1
 
-images.pack6.png
+images.pack7.png
 size: 1024, 256
 format: RGBA8888
 filter: Nearest, Nearest
@@ -952,7 +979,7 @@ enemies/menig/walk side right 3
   offset: 0, 0
   index: -1
 
-images.pack7.png
+images.pack8.png
 size: 1024, 256
 format: RGBA8888
 filter: Nearest, Nearest
@@ -1350,7 +1377,7 @@ enemies/prest/walk side right 3
   offset: 0, 0
   index: -1
 
-images.pack8.png
+images.pack9.png
 size: 1024, 256
 format: RGBA8888
 filter: Nearest, Nearest
@@ -1755,7 +1782,7 @@ enemies/sersjant/walk side right 3
   offset: 0, 0
   index: -1
 
-images.pack9.png
+images.pack10.png
 size: 1024, 512
 format: RGBA8888
 filter: Nearest, Nearest
@@ -2090,7 +2117,7 @@ hud/TR4 0
   offset: 0, 0
   index: -1
 
-images.pack10.png
+images.pack11.png
 size: 256, 128
 format: RGBA8888
 filter: Nearest, Nearest
@@ -2117,7 +2144,7 @@ level finished/you are here
   offset: 0, 0
   index: -1
 
-images.pack11.png
+images.pack12.png
 size: 256, 64
 format: RGBA8888
 filter: Nearest, Nearest
@@ -2143,6 +2170,13 @@ pickups/armor small
   orig: 32, 32
   offset: 0, 0
   index: -1
+pickups/blueKey
+  rotate: false
+  xy: 227, 54
+  size: 17, 6
+  orig: 17, 6
+  offset: 0, 0
+  index: -1
 pickups/bullet
   rotate: false
   xy: 159, 28
@@ -2157,6 +2191,13 @@ pickups/chaingun
   orig: 32, 16
   offset: 0, 0
   index: -1
+pickups/greenKey
+  rotate: false
+  xy: 36, 17
+  size: 17, 6
+  orig: 17, 6
+  offset: 0, 0
+  index: -1
 pickups/health medium
   rotate: false
   xy: 2, 25
@@ -2169,6 +2210,13 @@ pickups/health small
   xy: 193, 28
   size: 32, 32
   orig: 32, 32
+  offset: 0, 0
+  index: -1
+pickups/redKey
+  rotate: false
+  xy: 94, 2
+  size: 17, 6
+  orig: 17, 6
   offset: 0, 0
   index: -1
 pickups/shells
@@ -2186,7 +2234,7 @@ pickups/shotgun
   offset: 0, 0
   index: -1
 
-images.pack12.png
+images.pack13.png
 size: 128, 64
 format: RGBA8888
 filter: Nearest, Nearest
@@ -2206,7 +2254,7 @@ props/suitcase 0
   offset: 0, 0
   index: -1
 
-images.pack13.png
+images.pack14.png
 size: 1024, 128
 format: RGBA8888
 filter: Nearest, Nearest
@@ -2282,7 +2330,7 @@ tiles/lonplate
   offset: 0, 0
   index: -1
 
-images.pack14.png
+images.pack15.png
 size: 256, 128
 format: RGBA8888
 filter: Nearest, Nearest
@@ -2309,7 +2357,7 @@ weapons/boot/icon
   offset: 0, 0
   index: -1
 
-images.pack15.png
+images.pack16.png
 size: 256, 512
 format: RGBA8888
 filter: Nearest, Nearest
@@ -2343,7 +2391,7 @@ weapons/chaingun/shooting 2
   offset: 0, 0
   index: -1
 
-images.pack16.png
+images.pack17.png
 size: 1024, 256
 format: RGBA8888
 filter: Nearest, Nearest
@@ -2391,7 +2439,7 @@ weapons/pistol/shooting 3
   offset: 0, 0
   index: -1
 
-images.pack17.png
+images.pack18.png
 size: 1024, 256
 format: RGBA8888
 filter: Nearest, Nearest

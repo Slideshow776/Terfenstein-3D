@@ -175,7 +175,7 @@ public class LevelScreen extends BaseScreen3D {
         } else if (keycode == Keys.SPACE) {
             for (Door door : doors)
                 if (player.isWithinDistance(Tile.height * .8f, door))
-                    door.openAndClose();
+                    door.tryToOpenDoor(hud.keys);
             for (Elevator elevator : mapLoader.elevators)
                 if (player.isWithinDistance(Tile.height * 1.1f, elevator))
                     levelFinished();
@@ -267,9 +267,9 @@ public class LevelScreen extends BaseScreen3D {
     private void removeEnemy(Enemy enemy) {
         enemy.die();
         if (enemy instanceof Menig)
-            newPickups.add(new Bullets(enemy.position.y + MathUtils.random(-1, 1), enemy.position.z + MathUtils.random(-1, 1), mainStage3D, 2, player, tiles));
+            newPickups.add(new Bullets(enemy.position.y + MathUtils.random(-1, 1), enemy.position.z + MathUtils.random(-1, 1), mainStage3D, 2, player));
         if (enemy instanceof Sersjant)
-            newPickups.add(new Shells(enemy.position.y + MathUtils.random(-1, 1), enemy.position.z + MathUtils.random(-1, 1), mainStage3D, 2, player, tiles));
+            newPickups.add(new Shells(enemy.position.y + MathUtils.random(-1, 1), enemy.position.z + MathUtils.random(-1, 1), mainStage3D, 2, player));
         deadEnemies.add(enemy);
         enemies.removeValue(enemy, false);
         shootable.removeValue(enemy, false);

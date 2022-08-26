@@ -10,6 +10,7 @@ import no.sandramoen.commanderqueen.actors.pickups.Bullets;
 import no.sandramoen.commanderqueen.actors.pickups.Armor;
 import no.sandramoen.commanderqueen.actors.pickups.Chaingun;
 import no.sandramoen.commanderqueen.actors.pickups.Health;
+import no.sandramoen.commanderqueen.actors.pickups.Key;
 import no.sandramoen.commanderqueen.actors.pickups.Pickup;
 import no.sandramoen.commanderqueen.actors.pickups.Shells;
 import no.sandramoen.commanderqueen.actors.pickups.Shotgun;
@@ -32,16 +33,19 @@ public class PickupHandler {
                 } else if (pickup instanceof Health) {
                     if (hud.incrementHealth(pickup.amount))
                         removePickup(pickups, pickup);
+                } else if (pickup instanceof Key) {
+                    hud.addKey((Key) pickup);
+                    removePickup(pickups, pickup);
                 } else if (pickup instanceof Shotgun) {
                     weaponHandler.makeAvailable("shotgun");
-                    Shells shells = new Shells(0, 0, stage3D, 8, player, tiles);
+                    Shells shells = new Shells(0, 0, stage3D, 8, player);
                     hud.incrementAmmo(shells, weaponHandler.currentWeapon);
                     shells.remove();
 
                     pickUpWeapon(hud, pickups, pickup, weaponHandler, uiTable, uiHandler);
                 } else if (pickup instanceof Chaingun) {
                     weaponHandler.makeAvailable("chaingun");
-                    Bullets bullets = new Bullets(0, 0, stage3D, 20, player, tiles);
+                    Bullets bullets = new Bullets(0, 0, stage3D, 20, player);
                     hud.incrementAmmo(bullets, weaponHandler.currentWeapon);
                     bullets.remove();
 

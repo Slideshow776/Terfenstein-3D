@@ -24,6 +24,7 @@ import no.sandramoen.commanderqueen.actors.pickups.Bullets;
 import no.sandramoen.commanderqueen.actors.pickups.Armor;
 import no.sandramoen.commanderqueen.actors.pickups.Chaingun;
 import no.sandramoen.commanderqueen.actors.pickups.Health;
+import no.sandramoen.commanderqueen.actors.pickups.Key;
 import no.sandramoen.commanderqueen.actors.pickups.Pickup;
 import no.sandramoen.commanderqueen.actors.pickups.Shells;
 import no.sandramoen.commanderqueen.actors.pickups.Shotgun;
@@ -166,8 +167,9 @@ public class MapLoader {
             float x = props.get("x", Float.class) * BaseGame.unitScale;
             float y = props.get("y", Float.class) * BaseGame.unitScale;
             float rotation = getRotation(props);
+            String key = props.get("color", String.class);
 
-            Door door = new Door(x, y, stage3D, stage, rotation, player);
+            Door door = new Door(x, y, stage3D, stage, rotation, player, key);
             door.isLocked = props.get("isLocked", Boolean.class);
 
             doors.add(door);
@@ -292,6 +294,7 @@ public class MapLoader {
         initializePickup("armor big", 200);
         initializePickup("shotgun", 8);
         initializePickup("chaingun", 20);
+        initializePickup("key", -1);
     }
 
     private void initializePickup(String type, int amount) {
@@ -301,20 +304,23 @@ public class MapLoader {
             float y = props.get("y", Float.class) * BaseGame.unitScale;
 
             if (type.equalsIgnoreCase("health small") || type.equalsIgnoreCase("health medium"))
-                pickups.add(new Health(x, y, stage3D, amount, player, floorTiles));
+                pickups.add(new Health(x, y, stage3D, amount, player));
 
             else if (type.equalsIgnoreCase("bullets"))
-                pickups.add(new Bullets(x, y, stage3D, amount, player, floorTiles));
+                pickups.add(new Bullets(x, y, stage3D, amount, player));
             else if (type.equalsIgnoreCase("shells"))
-                pickups.add(new Shells(x, y, stage3D, amount, player, floorTiles));
+                pickups.add(new Shells(x, y, stage3D, amount, player));
+
+            else if (type.equalsIgnoreCase("key"))
+                pickups.add(new Key(x, y, stage3D, props.get("color", String.class), player));
 
             else if (type.equalsIgnoreCase("shotgun"))
-                pickups.add(new Shotgun(x, y, stage3D, amount, player, floorTiles));
+                pickups.add(new Shotgun(x, y, stage3D, amount, player));
             else if (type.equalsIgnoreCase("chaingun"))
-                pickups.add(new Chaingun(x, y, stage3D, amount, player, floorTiles));
+                pickups.add(new Chaingun(x, y, stage3D, amount, player));
 
             else if (type.equalsIgnoreCase("armor small") || type.equalsIgnoreCase("armor medium") || type.equalsIgnoreCase("armor big"))
-                pickups.add(new Armor(x, y, stage3D, amount, player, floorTiles));
+                pickups.add(new Armor(x, y, stage3D, amount, player));
         }
     }
 

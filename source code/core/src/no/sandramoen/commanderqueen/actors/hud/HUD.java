@@ -13,6 +13,7 @@ import com.badlogic.gdx.utils.Array;
 
 import no.sandramoen.commanderqueen.actors.characters.Player;
 import no.sandramoen.commanderqueen.actors.pickups.Bullets;
+import no.sandramoen.commanderqueen.actors.pickups.Key;
 import no.sandramoen.commanderqueen.actors.pickups.Pickup;
 import no.sandramoen.commanderqueen.actors.pickups.Shells;
 import no.sandramoen.commanderqueen.actors.utils.baseActors.BaseActor;
@@ -30,6 +31,7 @@ public class HUD extends BaseActor {
     public Player player;
     public Table weaponsTable;
     public boolean isInvulnerable;
+    public Array<Key> keys;
 
     public int armor;
     public int health;
@@ -66,12 +68,17 @@ public class HUD extends BaseActor {
 
         overlayIndicator = new OverlayIndicator(stage);
         face = new Face(stage, getFaceHealthIndex());
+        keys = new Array();
     }
 
     @Override
     public void act(float dt) {
         super.act(dt);
         checkInvulnerability(dt);
+    }
+
+    public void addKey(Key key) {
+        keys.add(key);
     }
 
     public void setWeaponsTable(WeaponHandler weaponHandler) {

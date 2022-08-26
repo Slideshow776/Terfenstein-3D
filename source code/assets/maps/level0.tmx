@@ -93,13 +93,53 @@
     <property name="name" value="chaingun"/>
    </properties>
   </tile>
+  <tile id="48">
+   <properties>
+    <property name="color" value="red"/>
+    <property name="name" value="key"/>
+   </properties>
+  </tile>
+  <tile id="49">
+   <properties>
+    <property name="color" value="green"/>
+    <property name="name" value="key"/>
+   </properties>
+  </tile>
+  <tile id="50">
+   <properties>
+    <property name="color" value="blue"/>
+    <property name="name" value="key"/>
+   </properties>
+  </tile>
   <tile id="64">
    <properties>
+    <property name="color" value=""/>
     <property name="isLocked" type="bool" value="false"/>
     <property name="name" value="door"/>
    </properties>
   </tile>
   <tile id="65">
+   <properties>
+    <property name="color" value="green"/>
+    <property name="isLocked" type="bool" value="false"/>
+    <property name="name" value="door"/>
+   </properties>
+  </tile>
+  <tile id="66">
+   <properties>
+    <property name="color" value="blue"/>
+    <property name="isLocked" type="bool" value="false"/>
+    <property name="name" value="door"/>
+   </properties>
+  </tile>
+  <tile id="67">
+   <properties>
+    <property name="color" value="red"/>
+    <property name="isLocked" type="bool" value="false"/>
+    <property name="name" value="door"/>
+   </properties>
+  </tile>
+  <tile id="80">
    <properties>
     <property name="name" value="elevator"/>
    </properties>
@@ -910,7 +950,7 @@
   <object id="63712" gid="147" x="256" y="1088" width="64" height="64"/>
   <object id="63713" gid="147" x="256" y="1024" width="64" height="64"/>
   <object id="63714" gid="147" x="256" y="960" width="64" height="64"/>
-  <object id="63717" gid="147" x="911.772" y="1154.96" width="33.2822" height="59.8934"/>
+  <object id="63717" gid="147" x="917.647" y="1154.96" width="21.5322" height="59.8934"/>
   <object id="63723" gid="147" x="896" y="561.5" width="64" height="35"/>
   <object id="63724" gid="147" x="768" y="576" width="64" height="64"/>
   <object id="63727" gid="147" x="1088" y="561.375" width="64" height="34.75"/>
@@ -1066,23 +1106,23 @@
     <property name="secret" value="up"/>
    </properties>
   </object>
-  <object id="65366" gid="147" x="880.455" y="1152.81" width="32.6667" height="64"/>
-  <object id="65367" gid="147" x="911.478" y="1092.14" width="33.2822" height="65.2059"/>
-  <object id="65368" gid="147" x="880.167" y="1088.54" width="32.6667" height="64"/>
-  <object id="65369" gid="147" x="911.625" y="1028.09" width="33.2822" height="65.2059"/>
-  <object id="65370" gid="147" x="880.311" y="1025.67" width="32.6667" height="64"/>
-  <object id="65371" gid="147" x="911.332" y="962.607" width="33.2822" height="65.2059"/>
-  <object id="65372" gid="147" x="880.023" y="961.405" width="32.6667" height="64"/>
-  <object id="65379" gid="147" x="911.699" y="897.745" width="33.2822" height="65.2059"/>
-  <object id="65380" gid="147" x="880.383" y="897.742" width="32.6667" height="64"/>
-  <object id="65381" gid="147" x="911.405" y="832.264" width="33.2822" height="65.2059"/>
-  <object id="65382" gid="147" x="880.095" y="833.472" width="32.6667" height="64"/>
-  <object id="65383" gid="147" x="911.552" y="768.219" width="33.2822" height="65.2059"/>
-  <object id="65384" gid="147" x="880.239" y="770.602" width="32.6667" height="64"/>
-  <object id="65385" gid="147" x="911.258" y="702.733" width="33.2822" height="65.2059"/>
-  <object id="65386" gid="147" x="879.951" y="706.337" width="32.6667" height="64"/>
-  <object id="65388" gid="147" x="911.46" y="634.619" width="33.2822" height="76.5058"/>
-  <object id="65389" gid="147" x="880.148" y="627.104" width="32.6667" height="99.8485"/>
+  <object id="65366" gid="147" x="879.08" y="1152.81" width="29.9167" height="64"/>
+  <object id="65367" gid="147" x="917.603" y="1092.14" width="21.0322" height="65.2059"/>
+  <object id="65368" gid="147" x="878.917" y="1088.54" width="30.1667" height="64"/>
+  <object id="65369" gid="147" x="917.625" y="1028.09" width="21.2822" height="65.2059"/>
+  <object id="65370" gid="147" x="879.061" y="1025.67" width="30.1667" height="64"/>
+  <object id="65371" gid="147" x="917.332" y="962.607" width="21.2822" height="65.2059"/>
+  <object id="65372" gid="147" x="878.898" y="961.405" width="30.4167" height="64"/>
+  <object id="65379" gid="147" x="917.449" y="897.745" width="21.7822" height="65.2059"/>
+  <object id="65380" gid="147" x="879.008" y="897.742" width="29.9167" height="64"/>
+  <object id="65381" gid="147" x="917.28" y="832.264" width="21.5322" height="65.2059"/>
+  <object id="65382" gid="147" x="878.845" y="833.472" width="30.1667" height="64"/>
+  <object id="65383" gid="147" x="917.302" y="768.219" width="21.7822" height="65.2059"/>
+  <object id="65384" gid="147" x="879.114" y="770.602" width="30.4167" height="64"/>
+  <object id="65385" gid="147" x="917.383" y="702.733" width="21.0322" height="65.2059"/>
+  <object id="65386" gid="147" x="878.951" y="706.337" width="30.6667" height="64"/>
+  <object id="65388" gid="147" x="917.335" y="634.619" width="21.5322" height="76.5058"/>
+  <object id="65389" gid="147" x="878.898" y="627.104" width="30.1667" height="99.8485"/>
   <object id="65391" gid="147" x="960.182" y="561.621" width="64" height="35"/>
   <object id="65392" gid="147" x="1024.63" y="561.5" width="73.25" height="35"/>
   <object id="65393" gid="147" x="1108.65" y="1217.31" width="22.9205" height="71.25"/>

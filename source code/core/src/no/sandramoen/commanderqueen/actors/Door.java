@@ -3,8 +3,10 @@ package no.sandramoen.commanderqueen.actors;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
+import com.badlogic.gdx.utils.Array;
 
 import no.sandramoen.commanderqueen.actors.characters.Player;
+import no.sandramoen.commanderqueen.actors.pickups.Key;
 import no.sandramoen.commanderqueen.actors.utils.baseActors.BaseActor;
 import no.sandramoen.commanderqueen.actors.utils.baseActors.BaseActor3D;
 import no.sandramoen.commanderqueen.utils.BaseGame;
@@ -12,24 +14,33 @@ import no.sandramoen.commanderqueen.utils.GameUtils;
 import no.sandramoen.commanderqueen.utils.Stage3D;
 
 public class Door extends BaseActor3D {
-
     public boolean isLocked;
+
     private boolean isOpening;
     private boolean isClosing;
     private float speed = .04f;
     private float openHeight = Tile.height * .9f;
-
+    private String keyColor;
+    private Player player;
     private BaseActor openActor;
     private BaseActor closeActor;
 
-    private Player player;
-
-    public Door(float y, float z, Stage3D stage3D, Stage stage, float rotation, Player player) {
+    public Door(float y, float z, Stage3D stage3D, Stage stage, float rotation, Player player, String keyColor) {
         super(0, y, z, stage3D);
         this.player = player;
+        this.keyColor = keyColor;
 
         buildModel(4, 4, .25f, false);
-        loadImage("door0");
+
+        if (keyColor.equalsIgnoreCase("red"))
+            loadImage("doors/doorRed");
+        else if (keyColor.equalsIgnoreCase("green"))
+            loadImage("doors/doorGreen");
+        else if (keyColor.equalsIgnoreCase("blue"))
+            loadImage("doors/doorBlue");
+        else
+            loadImage("doors/door0");
+
         turnBy(-180 + rotation);
         setBaseRectangle();
 
@@ -71,6 +82,15 @@ public class Door extends BaseActor3D {
         isOpening = false;
 
         isPreventOverlapEnabled = true;
+    }
+
+    public void tryToOpenDoor(Array<Key> keys) {
+        if (isLocked || getPosition().x >= openHeight) return;
+
+        if (keys != null)
+            for (int i = 0; i < keys.size; i++)
+                if (keys.get(i).color.equalsIgnoreCase(this.keyColor))
+                    openAndClose();
     }
 
     public void openAndClose() {

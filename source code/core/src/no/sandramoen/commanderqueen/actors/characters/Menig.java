@@ -29,7 +29,6 @@ public class Menig extends Enemy {
         maxDamage = 15;
         score = 10;
         painChance = .78f;
-        isRanged = false;
 
         initializeAnimations();
     }
