@@ -85,9 +85,15 @@ public class Door extends BaseActor3D {
     }
 
     public void tryToOpenDoor(Array<Key> keys) {
-        if (isLocked || getPosition().x >= openHeight) return;
+        if (isLocked || getPosition().x >= openHeight)
+            return;
 
-        if (keys != null)
+        if (keyColor.isEmpty()) {
+            openAndClose();
+            return;
+        }
+
+        if (keys.size > 0)
             for (int i = 0; i < keys.size; i++)
                 if (keys.get(i).color.equalsIgnoreCase(this.keyColor))
                     openAndClose();
