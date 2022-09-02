@@ -81,20 +81,23 @@ public class EnemyHandler {
 
     private static void checkProjectilesCollision(Array<BaseActor3D> projectiles, Player player, Array<BaseActor3D> shootables, HUD hud) {
         for (BaseActor3D projectile : projectiles) {
-            if (projectile.overlaps(player)) {
-                hud.decrementHealth(((HolyBall) projectile).getDamage(), projectile);
-                if (projectile instanceof HolyBall)
-                    ((HolyBall) projectile).explode();
-            } else {
-                for (BaseActor3D shootable : shootables) {
-                    if (shootable instanceof Barrel && projectile.overlaps(shootable)) {
-                        ((Barrel) shootable).decrementHealth(((HolyBall) projectile).getDamage(), projectile.distanceBetween(player));
-                        if (projectile instanceof HolyBall)
-                            ((HolyBall) projectile).explode();
-                    } else if (shootable instanceof Tile && ((Tile) shootable).type.equalsIgnoreCase("walls") && projectile.overlaps(shootable)) {
-                        if (projectile instanceof HolyBall)
-                            ((HolyBall) projectile).explode();
+            for (BaseActor3D shootable : shootables) {
+                if (shootable instanceof Barrel && projectile.overlaps(shootable)) {
+                    if (projectile instanceof HolyBall) {
+                        HolyBall holyBall = (HolyBall) projectile;
+                        ((Barrel) shootable).decrementHealth(holyBall.getDamage(), projectile.distanceBetween(player));
+                        holyBall.explode();
                     }
+                } else if (shootable instanceof Tile && ((Tile) shootable).type.equalsIgnoreCase("walls") && projectile.overlaps(shootable)) {
+                    if (projectile instanceof HolyBall)
+                        ((HolyBall) projectile).explode();
+                }
+            }
+            if (projectile.overlaps(player)) {
+                if (projectile instanceof HolyBall) {
+                    HolyBall holyBall = (HolyBall) projectile;
+                    hud.decrementHealth(holyBall.getDamage(), projectile);
+                    holyBall.explode();
                 }
             }
         }

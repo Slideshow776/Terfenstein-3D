@@ -32,7 +32,7 @@ public class HolyBall extends BaseActor3D {
         super(0, position.y, position.z, stage3D);
         this.player = player;
 
-        buildModel(1.25f, 1.25f, .001f, true);
+        buildModel(1, 1, 1, true);
         setBaseRectangle();
         loadImage("enemies/holy ball/travelling 0");
 
