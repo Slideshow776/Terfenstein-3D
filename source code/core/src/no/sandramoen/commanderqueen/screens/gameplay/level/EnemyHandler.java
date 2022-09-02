@@ -8,6 +8,7 @@ import no.sandramoen.commanderqueen.actors.Tile;
 import no.sandramoen.commanderqueen.actors.characters.HolyBall;
 import no.sandramoen.commanderqueen.actors.characters.Hund;
 import no.sandramoen.commanderqueen.actors.characters.Player;
+import no.sandramoen.commanderqueen.actors.characters.Sersjant;
 import no.sandramoen.commanderqueen.actors.characters.enemy.Enemy;
 import no.sandramoen.commanderqueen.actors.hud.HUD;
 import no.sandramoen.commanderqueen.actors.utils.baseActors.BaseActor3D;
@@ -94,6 +95,7 @@ public class EnemyHandler {
                 }
             }
             if (projectile.overlaps(player)) {
+                player.forceMoveAwayFrom(projectile);
                 if (projectile instanceof HolyBall) {
                     HolyBall holyBall = (HolyBall) projectile;
                     hud.decrementHealth(holyBall.getDamage(), projectile);

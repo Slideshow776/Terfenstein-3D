@@ -56,7 +56,8 @@ public class Player extends BaseActor3D {
         if (isForcedToMove)
             forceMove(dt);
         else
-            movementPolling(dt);
+            keyboardPolling(dt);
+        mousePolling();
 
         this.stage3D.camera.position.y = position.y;
         this.stage3D.camera.position.z = position.z;
@@ -79,8 +80,8 @@ public class Player extends BaseActor3D {
 
     public void forceMoveAwayFrom(BaseActor3D source) {
         isForcedToMove = true;
-        if (position.y - source.position.y < 1) forceMoveY *= -1;
-        if (position.z - source.position.z < 1) forceMoveZ *= -1;
+        if (position.y - source.position.y <= 1) forceMoveY *= -1;
+        if (position.z - source.position.z <= 1) forceMoveZ *= -1;
         forceTime = totalTime + SECONDS_FORCED_TO_MOVE;
     }
 
@@ -122,12 +123,6 @@ public class Player extends BaseActor3D {
         } else {
             setXPosition();
         }
-    }
-
-    private void movementPolling(float dt) {
-        keyboardPolling(dt);
-        if (totalTime >= .15f)
-            mousePolling();
     }
 
     private void setXPosition() {
@@ -172,6 +167,9 @@ public class Player extends BaseActor3D {
     }
 
     private void mousePolling() {
+        if (totalTime < .15f)
+            return;
+
         if (Gdx.input.getDeltaX() < 300)
             turnPlayer(rotateSpeed * Gdx.input.getDeltaX() * BaseGame.mouseMovementSensitivity);
     }

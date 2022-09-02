@@ -19,6 +19,7 @@ import com.badlogic.gdx.utils.Array;
 import no.sandramoen.commanderqueen.actors.Barrel;
 import no.sandramoen.commanderqueen.actors.Tile;
 import no.sandramoen.commanderqueen.actors.characters.Player;
+import no.sandramoen.commanderqueen.actors.characters.Sersjant;
 import no.sandramoen.commanderqueen.actors.decals.BulletDecals;
 import no.sandramoen.commanderqueen.actors.hud.HUD;
 import no.sandramoen.commanderqueen.actors.utils.baseActors.BaseActor;
@@ -370,6 +371,7 @@ public class Enemy extends BaseActor3D {
             barrel.decrementHealth(getDamage(), distanceBetween(barrel));
         } else if (i > -1 && shootable.get(i) instanceof Player) {
             hud.decrementHealth(getDamage(), this);
+            if (this instanceof Sersjant) player.forceMoveAwayFrom(this);
         } else if (i > -1 && shootable.get(i) instanceof Tile && (((Tile) shootable.get(i)).type.equalsIgnoreCase("1st floor"))) {
             Vector3 temp = new Vector3().set(ray.direction).scl(distanceBetween(shootable.get(i)) - (Tile.diagonalLength / 2)).add(ray.origin);
             bulletDecals.addDecal(temp.x, temp.y, temp.z);
