@@ -207,7 +207,40 @@ This algorithm is used sparingly whenever there is a sound the enemy should resp
 ![Dijkstra's improved algorithm A*](https://happycoding.io/tutorials/libgdx/images/dijkstra-search.gif)
 
 ### Decals
-// TODO:
+A [decal](https://libgdx.com/wiki/graphics/3d/decals) is a 2D image in a 3D world. In this project it's used to generate an effect where the bullet hits stuff, e.g. a wall.
+This project implements this with a parent [class manager](https://github.com/Slideshow776/Terfenstein-3D/blob/master/source%20code/core/src/no/sandramoen/commanderqueen/actors/decals/DecalsManager.java) that can be [extended](https://github.com/Slideshow776/Terfenstein-3D/blob/master/source%20code/core/src/no/sandramoen/commanderqueen/actors/decals/BulletDecals.java), and then used [like so](https://github.com/Slideshow776/Terfenstein-3D/blob/master/source%20code/core/src/no/sandramoen/commanderqueen/screens/gameplay/LevelScreen.java).
+```
+Vector3 temp = new Vector3().set(ray.direction).scl(player.distanceBetween(shootable.get(i)) - (Tile.diagonalLength / 2)).add(ray.origin);
+bulletDecals.addDecal(temp.x, temp.y, temp.z);
+```
+This code will get the wall's position, and create a new `Decal` at roughly the wall's facing surface.
+
+### Camera Rolling
+For a lean-into-walking-direction effect:
+![roll demo](https://user-images.githubusercontent.com/4059636/188260161-cc00ca97-c036-4eb5-8391-6f4f9b4064d1.gif)
+![camera-movement](https://user-images.githubusercontent.com/4059636/188260208-71410b8b-cc0d-4922-868f-d2067d1bebdd.png)
+```
+private void keyboardPolling(float dt) {
+    if (Gdx.input.isKeyPressed(Keys.A))
+        rollAngle = MathUtils.clamp(rollAngle -= ROLL_INCREMENT, -ROLL_ANGLE_MAX, ROLL_ANGLE_MAX);
+
+    if (Gdx.input.isKeyPressed(Keys.D))
+        rollAngle = MathUtils.clamp(rollAngle += ROLL_INCREMENT, -ROLL_ANGLE_MAX, ROLL_ANGLE_MAX);
+
+    if (!Gdx.input.isKeyPressed(Keys.A) && !Gdx.input.isKeyPressed(Keys.D)) {
+      if (rollAngle > 0)
+          rollAngle -= ROLL_INCREMENT;
+      else if (rollAngle < 0)
+          rollAngle += ROLL_INCREMENT;
+    }
+}   
+```
+```
+public void rollCamera(float angle) {
+    camera.up.set(Vector3.X);
+    camera.rotate(camera.direction, angle);
+}
+```
 
 ## Other
 For other project specifics check out the [commits](https://github.com/Slideshow776/3D-shooting-game/commits/master).
