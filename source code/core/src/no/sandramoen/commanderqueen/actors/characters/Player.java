@@ -34,8 +34,8 @@ public class Player extends BaseActor3D {
     private float shakeAmount;
 
     private float rollAngle;
-    private final float ROLL_ANGLE_MAX = 2;
-    private final float ROLL_INCREMENT = .1f;
+    private final float ROLL_ANGLE_MAX = .8f;
+    private final float ROLL_INCREMENT = .02f;
 
     public Player(float y, float z, Stage3D stage3D, float rotation, Stage stage) {
         super(0, y, z, stage3D);

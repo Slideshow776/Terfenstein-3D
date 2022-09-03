@@ -287,8 +287,8 @@ public class MapLoader {
     private void initializePickups() {
         initializePickup("health small", 1);
         initializePickup("health medium", 100);
-        initializePickup("bullets", 2);
-        initializePickup("shells", 2);
+        initializePickup("bullets", 10);
+        initializePickup("shells", 4);
         initializePickup("armor small", 1);
         initializePickup("armor medium", 100);
         initializePickup("armor big", 200);

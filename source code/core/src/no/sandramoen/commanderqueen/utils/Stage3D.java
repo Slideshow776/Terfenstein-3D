@@ -156,7 +156,7 @@ public class Stage3D {
     }
 
     public void tiltCamera(float angle) {
-        Vector3 side = new Vector3(camera.direction.z, 0, -camera.direction.y);
+        Vector3 side = new Vector3(0, -camera.up.y, -camera.up.z);
         camera.direction.rotate(side, angle);
     }
 
