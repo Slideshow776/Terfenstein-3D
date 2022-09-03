@@ -1,10 +1,7 @@
 package no.sandramoen.commanderqueen.actors.characters;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
-import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.g3d.environment.DirectionalLight;
-import com.badlogic.gdx.graphics.g3d.environment.PointLight;
+import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -36,6 +33,10 @@ public class Player extends BaseActor3D {
     public boolean isShaking;
     private float shakeAmount;
 
+    private float rollAngle;
+    private final float ROLL_ANGLE_MAX = 2;
+    private final float ROLL_INCREMENT = .1f;
+
     public Player(float y, float z, Stage3D stage3D, float rotation, Stage stage) {
         super(0, y, z, stage3D);
         this.stage3D = stage3D;
@@ -58,15 +59,15 @@ public class Player extends BaseActor3D {
         else
             keyboardPolling(dt);
         mousePolling();
+        stage3D.rollCamera(rollAngle);
 
-        this.stage3D.camera.position.y = position.y;
-        this.stage3D.camera.position.z = position.z;
+        stage3D.camera.position.y = position.y;
+        stage3D.camera.position.z = position.z;
 
         if (isShaking && !isForcedToMove)
             shake();
         else
             headBobbing(dt);
-
 
         if (isMoving)
             BaseGame.metalWalkingMusic.setVolume(BaseGame.soundVolume);
@@ -95,7 +96,7 @@ public class Player extends BaseActor3D {
     }
 
     private void shake() {
-        this.stage3D.camera.position.set(
+        stage3D.camera.position.set(
                 position.x + MathUtils.random(0f, shakeAmount),
                 position.y + MathUtils.random(0f, shakeAmount),
                 position.z + MathUtils.random(0f, shakeAmount)
@@ -115,54 +116,66 @@ public class Player extends BaseActor3D {
         if (BaseGame.isHeadBobbing) {
             bobCounter += bobFrequency * dt;
             if ((int) bobCounter % 2 == 0 && isMoving)
-                this.stage3D.moveCameraUp(bobAmount);
+                stage3D.moveCameraUp(bobAmount);
             else if (isMoving)
-                this.stage3D.moveCameraUp(-bobAmount);
+                stage3D.moveCameraUp(-bobAmount);
             else
-                setXPosition();
+                resetXPosition();
         } else {
-            setXPosition();
+            resetXPosition();
         }
     }
 
-    private void setXPosition() {
+    private void resetXPosition() {
         position.x = 0;
         stage3D.camera.position.x = 0;
     }
 
     private void keyboardPolling(float dt) {
-        if (Gdx.input.isKeyPressed(Input.Keys.W)) {
+        if (Gdx.input.isKeyPressed(Keys.W)) {
             moveForward(-movementSpeed * dt);
             isMoving = true;
         } else {
             isMoving = false;
         }
 
-        if (Gdx.input.isKeyPressed(Input.Keys.A)) {
+        if (Gdx.input.isKeyPressed(Keys.A)) {
             moveRight(movementSpeed * dt);
             isMoving = true;
+            rollAngle = MathUtils.clamp(rollAngle -= ROLL_INCREMENT, -ROLL_ANGLE_MAX, ROLL_ANGLE_MAX);
         } else {
             isMoving = false;
         }
 
-        if (Gdx.input.isKeyPressed(Input.Keys.S)) {
+        if (Gdx.input.isKeyPressed(Keys.S)) {
             moveForward(movementSpeed * dt);
             isMoving = true;
         } else {
             isMoving = false;
         }
 
-        if (Gdx.input.isKeyPressed(Input.Keys.D)) {
+        if (Gdx.input.isKeyPressed(Keys.D)) {
             moveRight(-movementSpeed * dt);
             isMoving = true;
+            rollAngle = MathUtils.clamp(rollAngle += ROLL_INCREMENT, -ROLL_ANGLE_MAX, ROLL_ANGLE_MAX);
         } else {
             isMoving = false;
         }
+
+        if (!Gdx.input.isKeyPressed(Keys.A) && !Gdx.input.isKeyPressed(Keys.D))
+            resetRoll();
+    }
+
+    private void resetRoll() {
+        if (rollAngle > 0)
+            rollAngle -= ROLL_INCREMENT;
+        else if (rollAngle < 0)
+            rollAngle += ROLL_INCREMENT;
     }
 
     private void turnPlayer(float angle) {
         if (angle == 0) return;
-        this.stage3D.turnCamera(angle);
+        stage3D.turnCameraX(angle);
         turnBy(angle);
     }
 

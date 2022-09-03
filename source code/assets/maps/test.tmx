@@ -771,6 +771,5 @@
   <object id="66032" gid="67" x="448" y="256" width="64" height="64" rotation="90"/>
   <object id="66033" gid="66" x="448" y="320" width="64" height="64" rotation="90"/>
   <object id="66034" gid="68" x="448" y="384" width="64" height="64" rotation="90"/>
-  <object id="66035" gid="5" x="576" y="128" width="64" height="64"/>
  </objectgroup>
 </map>

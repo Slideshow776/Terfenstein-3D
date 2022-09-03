@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g3d.shaders.DefaultShader;
 import com.badlogic.gdx.graphics.g3d.utils.DefaultShaderProvider;
 import com.badlogic.gdx.graphics.g3d.utils.ShaderProvider;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.graphics.PerspectiveCamera;
 import com.badlogic.gdx.graphics.g3d.Environment;
@@ -140,12 +141,22 @@ public class Stage3D {
         setCameraDirection(new Vector3(x, y, z));
     }
 
-    public void turnCamera(float angle) {
+    public void turnCameraX(float angle) {
         camera.rotate(Vector3.X, -angle);
     }
 
+    public float getCameraRotation() {
+        float camAngle = -(float) Math.atan2(camera.up.x, camera.up.y) * MathUtils.radiansToDegrees + 180;
+        return camAngle;
+    }
+
+    public void rollCamera(float angle) {
+        camera.up.set(Vector3.X);
+        camera.rotate(camera.direction, angle);
+    }
+
     public void tiltCamera(float angle) {
-        Vector3 side = new Vector3(camera.direction.z, 0, -camera.direction.x);
+        Vector3 side = new Vector3(camera.direction.z, 0, -camera.direction.y);
         camera.direction.rotate(side, angle);
     }
 
