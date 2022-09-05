@@ -31,7 +31,7 @@ import no.sandramoen.commanderqueen.utils.pathFinding.TileGraph;
 
 public class Enemy extends BaseActor3D {
     public final int ID = MathUtils.random(1_000, 9_999);
-    public static float activationRange = 20;
+    public static float activationRange = 23;
     public int health = 1;
     public boolean isDead;
     public boolean isActive;
