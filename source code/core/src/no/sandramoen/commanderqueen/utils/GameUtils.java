@@ -101,16 +101,6 @@ public class GameUtils {
         music.play();
     }
 
-    public static void checkEnemyShading(Array<TileShade> tileShades, Array<Enemy> listToBeChecked) {
-        for (TileShade shade : tileShades) {
-            for (BaseActor3D baseActor3D : listToBeChecked) {
-                if (baseActor3D.boundingPolygon != null && shade.overlaps(baseActor3D)) {
-                    baseActor3D.setColor(shade.color0);
-                }
-            }
-        }
-    }
-
     public static void checkShading(Array<TileShade> tileShades, ArrayList<BaseActor3D> listToBeChecked) {
         for (TileShade shade : tileShades) {
             for (BaseActor3D baseActor3D : listToBeChecked) {

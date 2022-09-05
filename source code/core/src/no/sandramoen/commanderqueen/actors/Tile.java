@@ -47,9 +47,8 @@ public class Tile extends BaseActor3D {
     public void act(float dt) {
         super.act(dt);
 
-        if (isOpeningSecret) {
+        if (isOpeningSecret)
             openSecret();
-        }
     }
 
     public boolean isSecretTriggered() {

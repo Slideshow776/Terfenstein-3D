@@ -169,7 +169,7 @@ public class MapLoader {
             float rotation = getRotation(props);
             String key = props.get("color", String.class);
 
-            Door door = new Door(x, y, stage3D, stage, rotation, player, key);
+            Door door = new Door(x, y, stage3D, stage, rotation, player, key, shootable);
             door.isLocked = props.get("isLocked", Boolean.class);
 
             doors.add(door);
@@ -229,13 +229,16 @@ public class MapLoader {
     }
 
     private void initializePlayer() {
+        if (tilemap.getTileList("actors", "player start").size() == 0)
+            Gdx.app.error(getClass().getSimpleName(), "Error: Player position not found!");
+
         MapObject startPoint = tilemap.getTileList("actors", "player start").get(0);
-        float playerX = (float) startPoint.getProperties().get("x") * BaseGame.unitScale;
-        float playerY = (float) startPoint.getProperties().get("y") * BaseGame.unitScale;
-        float rotation = 0;
-        if (startPoint.getProperties().get("rotation") != null)
-            rotation = (float) startPoint.getProperties().get("rotation");
-        rotation %= 360;
+        MapProperties props = startPoint.getProperties();
+
+        float playerX = props.get("x", Float.class) * BaseGame.unitScale;
+        float playerY = props.get("y", Float.class) * BaseGame.unitScale;
+        float rotation = getRotation(props);
+
         player = new Player(playerX, playerY, stage3D, rotation, stage);
     }
 

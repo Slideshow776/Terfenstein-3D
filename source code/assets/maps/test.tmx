@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="15" height="15" tilewidth="64" tileheight="64" infinite="0" nextlayerid="17" nextobjectid="66038">
+<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="15" height="15" tilewidth="64" tileheight="64" infinite="0" nextlayerid="17" nextobjectid="66086">
  <tileset firstgid="1" name="Assets" tilewidth="64" tileheight="64" tilecount="128" columns="16" objectalignment="center">
   <image source="assets.png" width="1024" height="512"/>
   <tile id="0">
@@ -502,7 +502,7 @@
   <object id="65903" gid="147" x="768" y="768" width="64" height="64"/>
   <object id="65904" gid="147" x="704" y="768" width="64" height="64"/>
  </objectgroup>
- <objectgroup id="11" name="1st floor" visible="0">
+ <objectgroup id="11" name="1st floor">
   <object id="60509" gid="117" x="128" y="192" width="64" height="64"/>
   <object id="60510" gid="117" x="128" y="192" width="64" height="64"/>
   <object id="65576" gid="145" x="0" y="960" width="64" height="64"/>
@@ -571,6 +571,8 @@
   <object id="65985" gid="145" x="448" y="0" width="64" height="64"/>
   <object id="65986" gid="145" x="512" y="0" width="64" height="64"/>
   <object id="65987" gid="145" x="576" y="0" width="64" height="64"/>
+  <object id="66063" gid="147" x="448" y="256" width="64" height="64"/>
+  <object id="66064" gid="147" x="448" y="128" width="64" height="64"/>
  </objectgroup>
  <objectgroup id="12" name="2nd floor" visible="0">
   <object id="60601" gid="119" x="192" y="64" width="64" height="64"/>
@@ -768,8 +770,42 @@
   <object id="66029" gid="49" x="704" y="384" width="64" height="64"/>
   <object id="66030" gid="50" x="704" y="320" width="64" height="64"/>
   <object id="66031" gid="51" x="704" y="256" width="64" height="64"/>
-  <object id="66032" gid="67" x="448" y="256" width="64" height="64" rotation="90"/>
-  <object id="66033" gid="66" x="448" y="320" width="64" height="64" rotation="90"/>
-  <object id="66034" gid="68" x="448" y="384" width="64" height="64" rotation="90"/>
+  <object id="66041" gid="17" x="352.5" y="223.75" width="64" height="64"/>
+  <object id="66042" gid="17" x="352.75" y="216.5" width="64" height="64"/>
+  <object id="66043" gid="17" x="353.75" y="207" width="64" height="64"/>
+  <object id="66044" gid="17" x="353" y="202.5" width="64" height="64"/>
+  <object id="66045" gid="17" x="353.25" y="195" width="64" height="64"/>
+  <object id="66046" gid="17" x="353.25" y="190" width="64" height="64"/>
+  <object id="66047" gid="17" x="353" y="182.75" width="64" height="64"/>
+  <object id="66048" gid="17" x="352.75" y="177.25" width="64" height="64"/>
+  <object id="66049" gid="17" x="352.5" y="170.25" width="64" height="64"/>
+  <object id="66050" gid="17" x="353.25" y="162.5" width="64" height="64"/>
+  <object id="66051" gid="17" x="353" y="150" width="64" height="64"/>
+  <object id="66052" gid="17" x="353.25" y="141.75" width="64" height="64"/>
+  <object id="66057" gid="65" x="448" y="192" width="64" height="15.5" rotation="90"/>
+  <object id="66060" gid="67" x="768" y="256" width="64" height="64" rotation="90"/>
+  <object id="66061" gid="66" x="768" y="320" width="64" height="64" rotation="90"/>
+  <object id="66062" gid="68" x="768" y="384" width="64" height="64" rotation="90"/>
+  <object id="66065" gid="17" x="353" y="127" width="64" height="64"/>
+  <object id="66066" gid="17" x="353.5" y="115" width="64" height="64"/>
+  <object id="66067" gid="17" x="354" y="106.5" width="64" height="64"/>
+  <object id="66068" gid="17" x="351.5" y="88.5" width="64" height="64"/>
+  <object id="66069" gid="17" x="352" y="113.5" width="64" height="64"/>
+  <object id="66070" gid="17" x="349.5" y="130.5" width="64" height="64"/>
+  <object id="66071" gid="17" x="350" y="149" width="64" height="64"/>
+  <object id="66072" gid="17" x="352" y="164.5" width="64" height="64"/>
+  <object id="66073" gid="17" x="353" y="187.5" width="64" height="64"/>
+  <object id="66074" gid="17" x="352" y="200.5" width="64" height="64"/>
+  <object id="66075" gid="17" x="352.5" y="221" width="64" height="64"/>
+  <object id="66076" gid="17" x="351.5" y="237.5" width="64" height="64"/>
+  <object id="66077" gid="17" x="351" y="251.5" width="64" height="64"/>
+  <object id="66078" gid="17" x="352" y="261.5" width="64" height="64"/>
+  <object id="66079" gid="17" x="352" y="277" width="64" height="64"/>
+  <object id="66080" gid="17" x="350.5" y="291.5" width="64" height="64"/>
+  <object id="66081" gid="17" x="349.5" y="304.5" width="64" height="64"/>
+  <object id="66082" gid="17" x="356" y="86" width="64" height="64"/>
+  <object id="66083" gid="17" x="354.5" y="71.5" width="64" height="64"/>
+  <object id="66084" gid="17" x="354.5" y="54.5" width="64" height="64"/>
+  <object id="66085" gid="17" x="354" y="51" width="64" height="64"/>
  </objectgroup>
 </map>

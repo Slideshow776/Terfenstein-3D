@@ -1,5 +1,6 @@
 package no.sandramoen.commanderqueen.actors;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
@@ -25,12 +26,15 @@ public class Door extends BaseActor3D {
     private BaseActor openActor;
     private BaseActor closeActor;
 
-    public Door(float y, float z, Stage3D stage3D, Stage stage, float rotation, Player player, String keyColor) {
+    private BaseActor3D temp;
+
+    public Door(float y, float z, Stage3D stage3D, Stage stage, float rotation, Player player, String keyColor, Array<BaseActor3D> shootable) {
         super(0, y, z, stage3D);
         this.player = player;
         this.keyColor = keyColor;
 
         buildModel(4, 4, .25f, false);
+        setBaseRectangle();
 
         if (keyColor.equalsIgnoreCase("red"))
             loadImage("doors/doorRed");
@@ -42,10 +46,17 @@ public class Door extends BaseActor3D {
             loadImage("doors/door0");
 
         turnBy(-180 + rotation);
-        setBaseRectangle();
 
         openActor = new BaseActor(0, 0, stage);
         closeActor = new BaseActor(0, 0, stage);
+
+        temp = new BaseActor3D(0, y, z, stage3D);
+        temp.buildModel(4, 4, 4, true);
+        temp.loadImage("alphaPixel");
+        temp.turnBy(-180 + rotation);
+        temp.setColor(Color.GREEN);
+        temp.isVisible = false;
+        shootable.add(temp);
     }
 
     @Override
@@ -53,6 +64,7 @@ public class Door extends BaseActor3D {
         super.act(dt);
         checkIfShouldOpenDoor();
         checkIfShouldCloseDoor();
+        temp.setPosition(position);
     }
 
     public void open() {
