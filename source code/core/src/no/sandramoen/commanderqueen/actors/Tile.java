@@ -1,5 +1,6 @@
 package no.sandramoen.commanderqueen.actors;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector3;
 
 import no.sandramoen.commanderqueen.actors.utils.baseActors.BaseActor3D;
@@ -41,6 +42,7 @@ public class Tile extends BaseActor3D {
             position.x = -Tile.height;
 
         originalPosition = getPosition().cpy();
+        checkSecretMovementDirection();
     }
 
     @Override
@@ -132,5 +134,15 @@ public class Tile extends BaseActor3D {
             isVisible = false;
             BaseGame.secretWallSound.stop(secretSoundID);
         }
+    }
+
+    private void checkSecretMovementDirection() {
+        if (!secretMovementDirection.equalsIgnoreCase("up") ||
+                !secretMovementDirection.equalsIgnoreCase("down") ||
+                !secretMovementDirection.equalsIgnoreCase("north") ||
+                !secretMovementDirection.equalsIgnoreCase("east") ||
+                !secretMovementDirection.equalsIgnoreCase("south") ||
+                !secretMovementDirection.equalsIgnoreCase("west"))
+            Gdx.app.error(getClass().getSimpleName(), "Error: Door's secret movement direction is invalid");
     }
 }

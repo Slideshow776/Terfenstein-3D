@@ -207,7 +207,7 @@ public class LevelFinishScreen extends BaseScreen {
         if (numLevel.equalsIgnoreCase("test"))
             BaseGame.setActiveScreen(new LevelScreen(65, BaseGame.testMap, "test", health, armor, bullets, shells, weapons));
         else if (numLevel.equalsIgnoreCase("level 0"))
-            BaseGame.setActiveScreen(new LevelScreen(95, BaseGame.level0Map, "level 0", health, armor, bullets, shells, weapons));
+            BaseGame.setActiveScreen(new LevelScreen(95, BaseGame.level3Map, "level 0", health, armor, bullets, shells, weapons));
     }
 
     private String formatTime(float time) {

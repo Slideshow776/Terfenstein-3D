@@ -59,7 +59,7 @@ public class MenuScreen extends BaseScreen {
         startButton.addListener(
                 (Event event) -> {
                     if (GameUtils.isTouchDownEvent(event))
-                        BaseGame.setActiveScreen(new LevelScreen(40, BaseGame.level0Map, "level 0", 100, 0, 50, 20, null));
+                        BaseGame.setActiveScreen(new LevelScreen(40, BaseGame.level3Map, "level 0", 100, 0, 50, 20, null));
                     return false;
                 }
         );

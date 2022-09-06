@@ -11,8 +11,8 @@ public class Armor extends Pickup {
         super(y, z, s, player);
         this.amount = amount;
 
-        buildModel(1f, 1f, .001f, true);
-        setPosition(GameUtils.getPositionRelativeToFloor(1f), y, z);
+        buildModel(1.2f, 1.2f, .001f, true);
+        setPosition(GameUtils.getPositionRelativeToFloor(1.2f), y, z);
         setBaseRectangle();
 
         if (amount == 1)

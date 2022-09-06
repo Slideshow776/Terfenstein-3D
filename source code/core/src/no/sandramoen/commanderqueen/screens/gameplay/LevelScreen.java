@@ -157,6 +157,10 @@ public class LevelScreen extends BaseScreen3D {
         else if (keycode == Keys.G) {
             for (Tile tile : tiles)
                 tile.isVisible = !tile.isVisible;
+        } else if (keycode == Keys.NUMPAD_ADD) {
+            Player.movementSpeed += 1;
+        } else if (keycode == Keys.NUMPAD_SUBTRACT) {
+            Player.movementSpeed -= 1;
         }
         // ------------------------------------------
         else if (keycode == Keys.NUM_1) {

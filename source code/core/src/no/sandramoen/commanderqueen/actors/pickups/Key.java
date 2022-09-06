@@ -14,8 +14,8 @@ public class Key extends Pickup {
         super(y, z, s, player);
         this.color = color;
 
-        buildModel(1f, .5f, .001f, true);
-        setPosition(GameUtils.getPositionRelativeToFloor(.5f), y, z);
+        buildModel(1.2f, .7f, .001f, true);
+        setPosition(GameUtils.getPositionRelativeToFloor(.7f), y, z);
         setBaseRectangle();
 
 
@@ -32,6 +32,6 @@ public class Key extends Pickup {
     @Override
     public void playSound() {
         super.playSound();
-        BaseGame.holyBallExplosionSound.play(BaseGame.soundVolume); // TODO: need it's own sound
+        BaseGame.keySound.play(BaseGame.soundVolume);
     }
 }
