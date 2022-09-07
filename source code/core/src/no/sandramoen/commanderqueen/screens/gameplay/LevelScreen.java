@@ -125,8 +125,8 @@ public class LevelScreen extends BaseScreen3D {
             if (enemies.get(i).isDead) removeEnemy(enemies.get(i));
 
         updateBarrels();
-        PickupHandler.update(originalPickups, player, hud, weaponHandler, uiTable, uiHandler, mainStage3D, tiles);
-        PickupHandler.update(newPickups, player, hud, weaponHandler, uiTable, uiHandler, mainStage3D, tiles);
+        PickupHandler.update(originalPickups, player, hud, weaponHandler, uiTable, uiHandler, mainStage3D);
+        PickupHandler.update(newPickups, player, hud, weaponHandler, uiTable, uiHandler, mainStage3D);
 
         updateUI();
         for (Door door : doors)
@@ -323,7 +323,7 @@ public class LevelScreen extends BaseScreen3D {
 
     private void updateUI() {
         if (uiHandler.isReset) {
-            uiHandler = new UIHandler(uiTable, enemies, hud);
+            uiHandler.reset();
             uiHandler.isReset = false;
         }
         uiHandler.debugLabel.setText("FPS: " + Gdx.graphics.getFramesPerSecond() + "\nVisible: " + mainStage3D.visibleCount);

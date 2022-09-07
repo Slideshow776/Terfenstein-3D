@@ -151,7 +151,7 @@ public class HUD extends BaseActor {
     }
 
 
-    public void incrementAmmo(Pickup pickup, Weapon currentWeapon) {
+    public void incrementAmmunition(Pickup pickup, Weapon currentWeapon) {
         if (pickup instanceof Bullets)
             bullets += pickup.amount;
         else if (pickup instanceof Shells)
