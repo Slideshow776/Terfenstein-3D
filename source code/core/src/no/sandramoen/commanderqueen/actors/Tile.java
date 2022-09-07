@@ -42,7 +42,7 @@ public class Tile extends BaseActor3D {
             position.x = -Tile.height;
 
         originalPosition = getPosition().cpy();
-        checkSecretMovementDirection();
+        // checkSecretMovementDirection();
     }
 
     @Override
@@ -136,13 +136,13 @@ public class Tile extends BaseActor3D {
         }
     }
 
-    private void checkSecretMovementDirection() {
+    private void checkSecretMovementDirection() { // TODO: this is not working as intended, gives error for all tiles...
         if (!secretMovementDirection.equalsIgnoreCase("up") ||
                 !secretMovementDirection.equalsIgnoreCase("down") ||
                 !secretMovementDirection.equalsIgnoreCase("north") ||
                 !secretMovementDirection.equalsIgnoreCase("east") ||
                 !secretMovementDirection.equalsIgnoreCase("south") ||
                 !secretMovementDirection.equalsIgnoreCase("west"))
-            Gdx.app.error(getClass().getSimpleName(), "Error: Door's secret movement direction is invalid");
+            Gdx.app.error(getClass().getSimpleName(), "Error: Door's secret movement direction is invalid " + secretMovementDirection + ".");
     }
 }

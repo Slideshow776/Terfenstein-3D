@@ -178,7 +178,7 @@ public class LevelScreen extends BaseScreen3D {
         } else if (keycode == Keys.SPACE) {
             for (Door door : doors)
                 if (player.isWithinDistance(Tile.height * .8f, door))
-                    door.tryToOpenDoor(hud.keys);
+                    door.tryToOpenDoor(hud.keys.getKeys());
             for (Elevator elevator : mapLoader.elevators)
                 if (player.isWithinDistance(Tile.height * 1.1f, elevator))
                     levelFinished();

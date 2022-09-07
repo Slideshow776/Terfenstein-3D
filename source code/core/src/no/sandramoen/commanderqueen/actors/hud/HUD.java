@@ -28,10 +28,10 @@ import no.sandramoen.commanderqueen.utils.BaseGame;
 import no.sandramoen.commanderqueen.utils.GameUtils;
 
 public class HUD extends BaseActor {
+    public static final float WIDTH = .38f;
     public Player player;
     public Table weaponsTable;
     public boolean isInvulnerable;
-    public Array<Key> keys;
 
     public int armor;
     public int health;
@@ -50,6 +50,7 @@ public class HUD extends BaseActor {
     private Label scoreLabel;
 
     private Face face;
+    public Keys keys;
     private OverlayIndicator overlayIndicator;
 
     private Array<Image> weaponImages;
@@ -62,13 +63,15 @@ public class HUD extends BaseActor {
         this.shells = shells;
         initializeLabels();
 
-        setWidth(Gdx.graphics.getWidth() * 1 / 3f);
+        setWidth(Gdx.graphics.getWidth() * WIDTH);
         setSize(getWidth(), getWidth() / (5 / 1f));
         setPosition(Gdx.graphics.getWidth() * 1 / 2f - getWidth() / 2f, 0f);
+        /*setDebug(true);*/
 
         overlayIndicator = new OverlayIndicator(stage);
         face = new Face(stage, getFaceHealthIndex());
-        keys = new Array();
+        addActor(keys = new Keys(getX(), getY(), getWidth(), getHeight(), stage));
+        /*setDebug(true);*/
     }
 
     @Override
@@ -78,7 +81,7 @@ public class HUD extends BaseActor {
     }
 
     public void addKey(Key key) {
-        keys.add(key);
+        keys.addKey(key);
     }
 
     public void setWeaponsTable(WeaponHandler weaponHandler) {
@@ -104,9 +107,15 @@ public class HUD extends BaseActor {
         table.defaults().width(getWidth() / 5);
         table.add(armorLabel);
         table.add(healthLabel).padRight(getWidth() / 5);
-        table.add(ammoLabel);
+        table.add(getAmmoTable());
         table.add(scoreLabel);
         /*table.setDebug(true);*/
+        return table;
+    }
+
+    private Table getAmmoTable() {
+        Table table = new Table();
+        table.add(ammoLabel).padLeft(getWidth() / 12);
         return table;
     }
 

@@ -33,7 +33,7 @@ public class Door extends BaseActor3D {
         this.player = player;
         this.keyColor = keyColor;
 
-        buildModel(4, 4, .25f, false);
+        buildModel(4, 4, 1, false);
         setBaseRectangle();
 
         if (keyColor.equalsIgnoreCase("red"))
@@ -107,8 +107,10 @@ public class Door extends BaseActor3D {
 
         if (keys.size > 0)
             for (int i = 0; i < keys.size; i++)
-                if (keys.get(i).color.equalsIgnoreCase(this.keyColor))
+                if (keys.get(i).color.equalsIgnoreCase(this.keyColor)) {
+                    BaseGame.doorUnlockedSound.play(BaseGame.soundVolume);
                     openAndClose();
+                }
     }
 
     public void openAndClose() {
@@ -116,7 +118,7 @@ public class Door extends BaseActor3D {
         open();
         closeActor.clearActions();
         closeActor.addAction(Actions.sequence(
-                Actions.delay(5f),
+                Actions.delay(7.5f),
                 Actions.run(() -> close())
         ));
     }
