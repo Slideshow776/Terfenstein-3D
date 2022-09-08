@@ -26,12 +26,12 @@ public class Barrel extends BaseActor3D {
     private final float BLAST_DAMAGE_MODIFIER = 8.5f;
     private Player player;
 
-    public Barrel(float y, float z, Stage3D stage3D, Player player, Array<Tile> tiles) {
+    public Barrel(float y, float z, Stage3D stage3D, Player player) {
         super(0, y, z, stage3D);
         this.stage3D = stage3D;
         this.player = player;
 
-        buildModel(2.8f, 3.5f, .5f, true);
+        buildModel(2.8f, 3.5f, 2.8f, true);
         setPosition(GameUtils.getPositionRelativeToFloor(3.5f), y, z);
         setBaseRectangle();
         loadImage("barrel/barrel");

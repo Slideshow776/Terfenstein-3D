@@ -283,7 +283,7 @@ public class MapLoader {
             MapProperties props = obj.getProperties();
             float x = props.get("x", Float.class) * BaseGame.unitScale;
             float y = props.get("y", Float.class) * BaseGame.unitScale;
-            shootable.add(new Barrel(x, y, stage3D, player, floorTiles));
+            shootable.add(new Barrel(x, y, stage3D, player));
         }
     }
 

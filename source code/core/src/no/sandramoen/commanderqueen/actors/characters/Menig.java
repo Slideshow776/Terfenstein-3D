@@ -63,7 +63,7 @@ public class Menig extends Enemy {
 
     @Override
     protected void playActivateSound() {
-        GameUtils.playSoundRelativeToDistance(BaseGame.menigActiveSound, distanceBetween(player) * 1.2f, VOCAL_RANGE);
+        GameUtils.playSoundRelativeToDistance(BaseGame.menigActiveSound, distanceBetween(player) * 10, VOCAL_RANGE);
         super.playActivateSound();
     }
 

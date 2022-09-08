@@ -238,7 +238,7 @@
    </properties>
   </tile>
  </tileset>
- <objectgroup id="7" name="U1">
+ <objectgroup id="7" name="U1" visible="0">
   <object id="69639" gid="147" x="3688.47" y="2281.83" width="66.6667" height="104.25">
    <properties>
     <property name="depth" type="float" value="3.9"/>
@@ -2027,7 +2027,7 @@
   <object id="77177" gid="147" x="1536" y="192" width="64" height="64"/>
   <object id="77178" gid="147" x="1472" y="192" width="64" height="64"/>
  </objectgroup>
- <objectgroup id="11" name="1st floor">
+ <objectgroup id="11" name="1st floor" visible="0">
   <object id="71495" gid="147" x="3431.15" y="2261.71" width="64" height="64"/>
   <object id="71496" gid="147" x="3431.15" y="2197.71" width="64" height="64"/>
   <object id="71498" gid="147" x="3431.15" y="2069.71" width="64" height="64"/>
@@ -3716,12 +3716,12 @@
     <property name="depth" type="float" value="4.2"/>
    </properties>
   </object>
-  <object id="76848" gid="147" x="0.00133333" y="3328.04" width="64" height="64">
+  <object id="76848" gid="147" x="0.00133333" y="3324.54" width="64" height="71">
    <properties>
     <property name="depth" type="float" value="3.85"/>
    </properties>
   </object>
-  <object id="76849" gid="147" x="-63.9987" y="3328.04" width="64" height="64">
+  <object id="76849" gid="147" x="-63.9987" y="3324.54" width="64" height="71">
    <properties>
     <property name="depth" type="float" value="3.8"/>
    </properties>

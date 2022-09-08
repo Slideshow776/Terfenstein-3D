@@ -44,26 +44,28 @@ public class UIHandler {
                 .size(hud.getWidth(), hud.getHeight())
                 .row();
 
+        pickupLabel = new TypingLabel("", new Label.LabelStyle(BaseGame.mySkin.get("arcade26", BitmapFont.class), null));
+        uiTable.add(pickupLabel)
+                .expandX()
+                .top()
+                .left()
+                .padTop(Gdx.graphics.getHeight() * .01f)
+                .padBottom(Gdx.graphics.getHeight() * .01f)
+                .padLeft(Gdx.graphics.getWidth() * .01f)
+                .row();
+
         statusLabel = new Label("enemies left: " + enemies.size, new Label.LabelStyle(BaseGame.mySkin.get("arcade26", BitmapFont.class), null));
         statusLabel.setColor(Color.DARK_GRAY);
         uiTable.add(statusLabel)
                 .expandX()
                 .left()
                 .padLeft(Gdx.graphics.getWidth() * .01f)
+                .padTop(Gdx.graphics.getHeight() * .05f)
                 .row();
 
         debugLabel = new Label(" ", new Label.LabelStyle(BaseGame.mySkin.get("arcade26", BitmapFont.class), null));
         debugLabel.setColor(Color.DARK_GRAY);
         uiTable.add(debugLabel)
-                .expandX()
-                .top()
-                .left()
-                .padTop(Gdx.graphics.getHeight() * .01f)
-                .padLeft(Gdx.graphics.getWidth() * .01f)
-                .row();
-
-        pickupLabel = new TypingLabel("", new Label.LabelStyle(BaseGame.mySkin.get("arcade26", BitmapFont.class), null));
-        uiTable.add(pickupLabel)
                 .expandX()
                 .top()
                 .left()

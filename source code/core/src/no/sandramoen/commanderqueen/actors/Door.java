@@ -96,21 +96,24 @@ public class Door extends BaseActor3D {
         isPreventOverlapEnabled = true;
     }
 
-    public void tryToOpenDoor(Array<Key> keys) {
+    public String tryToOpenDoor(Array<Key> keys) {
         if (isLocked || getPosition().x >= openHeight)
-            return;
+            return "";
 
         if (keyColor.isEmpty()) {
             openAndClose();
-            return;
+            return "";
         }
 
         if (keys.size > 0)
             for (int i = 0; i < keys.size; i++)
-                if (keys.get(i).color.equalsIgnoreCase(this.keyColor)) {
+                if (keys.get(i).color.equalsIgnoreCase(keyColor)) {
                     BaseGame.doorUnlockedSound.play(BaseGame.soundVolume);
                     openAndClose();
+                    return "";
                 }
+        String color = "{COLOR=}";
+        return "Find the " + color + keyColor + " key to open this door...";
     }
 
     public void openAndClose() {

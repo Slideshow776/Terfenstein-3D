@@ -46,6 +46,9 @@ public class Player extends BaseActor3D {
         setBaseRectangle();
         isVisible = false;
         turnPlayer(rotation);
+
+        stage3D.camera.position.y = position.y;
+        stage3D.camera.position.z = position.z;
     }
 
     @Override

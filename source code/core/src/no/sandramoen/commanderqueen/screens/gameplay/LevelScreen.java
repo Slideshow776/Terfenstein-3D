@@ -80,6 +80,12 @@ public class LevelScreen extends BaseScreen3D {
     private TiledMap tiledMap;
     private String numLevel;
 
+    private int startingHealth;
+    private int startingArmor;
+    private int startingBullets;
+    private int startingShells;
+    private Array<Weapon> startingWeapons;
+
     public LevelScreen(float parTime, TiledMap map, String numLevel, int health, int armor, int bullets, int shells, Array<Weapon> weapons) {
         long startTime = System.currentTimeMillis();
         this.numLevel = numLevel;
@@ -103,6 +109,12 @@ public class LevelScreen extends BaseScreen3D {
 
         numEnemies = enemies.size;
         numPickups = originalPickups.size;
+
+        startingHealth = hud.health;
+        startingArmor = hud.armor;
+        startingBullets = hud.bullets;
+        startingShells = hud.shells;
+        startingWeapons = weaponHandler.weapons;
 
         GameUtils.printLoadingTime(getClass().getSimpleName(), "Level", startTime);
     }
@@ -134,7 +146,7 @@ public class LevelScreen extends BaseScreen3D {
         for (Elevator elevator : mapLoader.elevators)
             player.preventOverlap(elevator);
 
-        buttonPolling();
+        mouseButtonPolling();
 
         bulletDecals.render(dt);
         bloodDecals.render(dt);
@@ -147,6 +159,8 @@ public class LevelScreen extends BaseScreen3D {
             BaseGame.setActiveScreen(new MenuScreen());
         } else if (keycode == Keys.R)
             BaseGame.setActiveScreen(new LevelScreen(PAR_TIME, BaseGame.testMap, "test", 100, 0, 50, 50, null));
+        else if (isGameOver && totalTime > 2)
+            restartLevel();
         else if (keycode == Keys.Q)
             hud.setInvulnerable();
         else if (keycode == Keys.F) {
@@ -177,8 +191,11 @@ public class LevelScreen extends BaseScreen3D {
             hud.setAmmo(weaponHandler.currentWeapon);
         } else if (keycode == Keys.SPACE) {
             for (Door door : doors)
-                if (player.isWithinDistance(Tile.height * .8f, door))
-                    door.tryToOpenDoor(hud.keys.getKeys());
+                if (player.isWithinDistance(Tile.height * .8f, door)) {
+                    String message = door.tryToOpenDoor(hud.keys.getKeys());
+                    if (!message.isEmpty())
+                        uiHandler.setPickupLabel(message);
+                }
             for (Elevator elevator : mapLoader.elevators)
                 if (player.isWithinDistance(Tile.height * 1.1f, elevator))
                     levelFinished();
@@ -190,6 +207,13 @@ public class LevelScreen extends BaseScreen3D {
     @Override
     public void dispose() {
         mainStage3D.dispose();
+    }
+
+    @Override
+    public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+        if (isGameOver && totalTime > 2)
+            restartLevel();
+        return super.touchDown(screenX, screenY, pointer, button);
     }
 
     @Override
@@ -207,7 +231,7 @@ public class LevelScreen extends BaseScreen3D {
         return super.scrolled(amountX, amountY);
     }
 
-    private void buttonPolling() {
+    private void mouseButtonPolling() {
         if (Gdx.input.isButtonPressed(Input.Buttons.LEFT) && !isGameOver) {
             if (weaponHandler.isReady)
                 shoot();
@@ -307,7 +331,21 @@ public class LevelScreen extends BaseScreen3D {
             BaseGame.metalWalkingMusic.stop();
             uiHandler.gameLabel.setText("G A M E   O V E R !");
             mainStage3D.camera.position.x = -Tile.height * .48f;
+            totalTime = 0;
         }
+    }
+
+    private void restartLevel() {
+        if (numLevel.equalsIgnoreCase("test"))
+            BaseGame.setActiveScreen(new LevelScreen(65, BaseGame.testMap, "test", startingHealth, startingArmor, startingBullets, startingShells, startingWeapons));
+        else if (numLevel.equalsIgnoreCase("level 1"))
+            BaseGame.setActiveScreen(new LevelScreen(95, BaseGame.level1Map, "level 1", startingHealth, startingArmor, startingBullets, startingShells, startingWeapons));
+        else if (numLevel.equalsIgnoreCase("level 2"))
+            BaseGame.setActiveScreen(new LevelScreen(95, BaseGame.level2Map, "level 2", startingHealth, startingArmor, startingBullets, startingShells, startingWeapons));
+        else if (numLevel.equalsIgnoreCase("level 3"))
+            BaseGame.setActiveScreen(new LevelScreen(95, BaseGame.level3Map, "level 3", startingHealth, startingArmor, startingBullets, startingShells, startingWeapons));
+        else if (numLevel.equalsIgnoreCase("level 4"))
+            BaseGame.setActiveScreen(new LevelScreen(95, BaseGame.level4Map, "level 4", startingHealth, startingArmor, startingBullets, startingShells, startingWeapons));
     }
 
 
@@ -376,19 +414,24 @@ public class LevelScreen extends BaseScreen3D {
         BaseGame.level0Music.stop();
     }
 
-    private void levelFinished() {
-        BaseGame.elevatorSound.play(BaseGame.soundVolume);
-        stopLevel();
+    private Array getLevelData() {
         Array levelData = new Array();
-        if (numLevel.equalsIgnoreCase("test"))
-            levelData.add("Test");
-        else if (numLevel.equalsIgnoreCase("level 0"))
+        if (numLevel.equalsIgnoreCase("level 1"))
             levelData.add("Hangar");
+        else
+            levelData.add("Test");
         levelData.add((int) ((1 - (enemies.size / (float) numEnemies)) * 100));
         levelData.add((int) ((1 - (originalPickups.size / (float) numPickups)) * 100));
         levelData.add((int) ((foundSecrets / (float) numSecrets) * 100));
         levelData.add(totalTime);
         levelData.add(PAR_TIME);
+        return levelData;
+    }
+
+    private void levelFinished() {
+        BaseGame.elevatorSound.play(BaseGame.soundVolume);
+        stopLevel();
+        Array levelData = getLevelData();
 
         BaseGame.setActiveScreen(new LevelFinishScreen(levelData, numLevel, hud.health, hud.armor, hud.bullets, hud.shells, weaponHandler.weapons));
     }

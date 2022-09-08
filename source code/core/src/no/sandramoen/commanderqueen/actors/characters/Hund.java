@@ -44,7 +44,7 @@ public class Hund extends Enemy {
 
     @Override
     protected void playActivateSound() {
-        GameUtils.playSoundRelativeToDistance(BaseGame.hundActivateSound, distanceBetween(player) * 1.2f, VOCAL_RANGE);
+        GameUtils.playSoundRelativeToDistance(BaseGame.hundActivateSound, distanceBetween(player) * 10, VOCAL_RANGE);
         super.playActivateSound();
     }
 
@@ -71,7 +71,7 @@ public class Hund extends Enemy {
 
     private void initializeHurtAnimation() {
         Array<TextureAtlas.AtlasRegion> animationImages = new Array();
-            animationImages.add(BaseGame.textureAtlas.findRegion("enemies/hund/gib 0"));
+        animationImages.add(BaseGame.textureAtlas.findRegion("enemies/hund/gib 0"));
         hurtAnimation = new Animation(.1f, animationImages, Animation.PlayMode.NORMAL);
     }
 
