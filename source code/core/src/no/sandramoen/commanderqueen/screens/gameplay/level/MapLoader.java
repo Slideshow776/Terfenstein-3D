@@ -105,6 +105,7 @@ public class MapLoader {
         Array<String> tileTextures = new Array<>();
         tileTextures.add("big plates", "lonplate", "light big plates", "light lonplate");
         tileTextures.add("lights 0", "flag 0", "elevator wall", "light lonplate 2");
+        tileTextures.add("hexgon 0");
 
         for (String type : tileTypes) {
             for (String texture : tileTextures) {

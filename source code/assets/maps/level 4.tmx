@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="50" height="50" tilewidth="64" tileheight="64" infinite="0" nextlayerid="17" nextobjectid="68142">
+<map version="1.9" tiledversion="1.9.1" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="50" height="50" tilewidth="64" tileheight="64" infinite="0" nextlayerid="17" nextobjectid="68142">
  <tileset firstgid="1" name="Assets" tilewidth="64" tileheight="64" tilecount="128" columns="16" objectalignment="center">
   <image source="assets.png" width="1024" height="512"/>
   <tile id="0">
@@ -168,7 +168,7 @@
   <tile id="1">
    <properties>
     <property name="depth" type="float" value="4"/>
-    <property name="name" value=""/>
+    <property name="name" value="hexgon 0"/>
     <property name="secret" value=""/>
     <property name="secret length" type="int" value="0"/>
    </properties>

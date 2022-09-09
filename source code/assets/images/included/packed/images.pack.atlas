@@ -2301,37 +2301,44 @@ tiles/flag 0
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/light big plates
+tiles/hexgon 0
   rotate: false
   xy: 332, 2
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/light lonplate
+tiles/light big plates
   rotate: false
   xy: 398, 2
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/light lonplate 2
+tiles/light lonplate
   rotate: false
   xy: 464, 2
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/lights 0
+tiles/light lonplate 2
   rotate: false
   xy: 530, 2
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/lonplate
+tiles/lights 0
   rotate: false
   xy: 596, 2
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+tiles/lonplate
+  rotate: false
+  xy: 662, 2
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
