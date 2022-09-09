@@ -16,6 +16,7 @@ import no.sandramoen.commanderqueen.actors.pickups.Shells;
 import no.sandramoen.commanderqueen.actors.pickups.Shotgun;
 import no.sandramoen.commanderqueen.actors.utils.baseActors.BaseActor;
 import no.sandramoen.commanderqueen.actors.weapon.WeaponHandler;
+import no.sandramoen.commanderqueen.utils.BaseGame;
 import no.sandramoen.commanderqueen.utils.Stage3D;
 
 public class PickupHandler {
@@ -46,7 +47,14 @@ public class PickupHandler {
                 } else if (pickup instanceof Key) {
                     hud.addKey((Key) pickup);
                     removePickup(pickups, pickup);
-                    setPickupLabel(uiHandler, hud, "You picked up a " + ((Key) pickup).color + " key!");
+                    String color = "";
+                    if (((Key) pickup).color.equalsIgnoreCase("red"))
+                        color = "{COLOR=" + BaseGame.redColor + "}";
+                    else if (((Key) pickup).color.equalsIgnoreCase("green"))
+                        color = "{COLOR=" + BaseGame.greenColor + "}";
+                    else if (((Key) pickup).color.equalsIgnoreCase("blue"))
+                        color = "{COLOR=" + BaseGame.blueColor + "}";
+                    setPickupLabel(uiHandler, hud, "You picked up a " + color + ((Key) pickup).color + " key{CLEARCOLOR}!");
                 } else if (pickup instanceof Shotgun) {
                     weaponHandler.makeAvailable("shotgun");
                     Shells shells = new Shells(0, 0, stage3D, 8, player);

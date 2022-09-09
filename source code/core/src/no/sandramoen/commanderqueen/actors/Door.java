@@ -112,8 +112,14 @@ public class Door extends BaseActor3D {
                     openAndClose();
                     return "";
                 }
-        String color = "{COLOR=}";
-        return "Find the " + color + keyColor + " key to open this door...";
+        String color = "";
+        if (keyColor.equalsIgnoreCase("red"))
+            color = "{COLOR=" + BaseGame.redColor + "}";
+        else if (keyColor.equalsIgnoreCase("green"))
+            color = "{COLOR=" + BaseGame.greenColor + "}";
+        else if (keyColor.equalsIgnoreCase("blue"))
+            color = "{COLOR=" + BaseGame.blueColor + "}";
+        return "Find the " + color + keyColor + " key {CLEARCOLOR}to open this door...";
     }
 
     public void openAndClose() {
