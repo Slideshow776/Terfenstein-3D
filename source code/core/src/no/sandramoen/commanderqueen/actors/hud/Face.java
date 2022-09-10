@@ -94,7 +94,7 @@ public class Face extends BaseActor {
     }
 
     private void setDimensions() {
-        setWidth(Gdx.graphics.getWidth() * 1 / 3f);
+        setWidth(Gdx.graphics.getWidth() * HUD.WIDTH);
         setSize(getWidth(), getWidth() / (5 / 1f));
         setPosition(Gdx.graphics.getWidth() * 1 / 2f - getWidth() / 2f, 0f);
     }

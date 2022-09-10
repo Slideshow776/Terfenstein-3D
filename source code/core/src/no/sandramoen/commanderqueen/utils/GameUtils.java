@@ -3,7 +3,6 @@ package no.sandramoen.commanderqueen.utils;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.PerspectiveCamera;
 import com.badlogic.gdx.graphics.g3d.decals.Decal;
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
@@ -17,8 +16,12 @@ import com.badlogic.gdx.scenes.scene2d.ui.Widget;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Array;
 
+import java.util.ArrayList;
+
 import no.sandramoen.commanderqueen.actors.Tile;
+import no.sandramoen.commanderqueen.actors.characters.enemy.Enemy;
 import no.sandramoen.commanderqueen.actors.utils.baseActors.BaseActor3D;
+import no.sandramoen.commanderqueen.screens.gameplay.level.TileShade;
 
 public class GameUtils {
 
@@ -28,6 +31,7 @@ public class GameUtils {
         BaseGame.preferences.putFloat("soundVolume", BaseGame.soundVolume);
         BaseGame.preferences.putFloat("voiceVolume", BaseGame.voiceVolume);
         BaseGame.preferences.putFloat("mouseMovementSensitivity", BaseGame.mouseMovementSensitivity);
+        BaseGame.preferences.putBoolean("isHeadBobbing", BaseGame.isHeadBobbing);
         BaseGame.preferences.flush();
     }
 
@@ -38,6 +42,7 @@ public class GameUtils {
         BaseGame.soundVolume = BaseGame.preferences.getFloat("soundVolume");
         BaseGame.voiceVolume = BaseGame.preferences.getFloat("voiceVolume");
         BaseGame.mouseMovementSensitivity = BaseGame.preferences.getFloat("mouseMovementSensitivity");
+        BaseGame.isHeadBobbing = BaseGame.preferences.getBoolean("isHeadBobbing");
     }
 
     public static void setWidgetHoverColor(Widget widget) {
@@ -63,7 +68,7 @@ public class GameUtils {
         decal.lookAt(temp, camera.up);
     }
 
-    public static float getAngleTowardsBaseActor3D(BaseActor3D actorA, BaseActor3D actorB) { // TODO: still using this?
+    public static float getAngleTowardsBaseActor3D(BaseActor3D actorA, BaseActor3D actorB) {
         float angle = MathUtils.atan(
                 Math.abs(actorA.position.z - actorB.position.z) /
                         Math.abs(actorA.position.y - actorB.position.y)
@@ -80,13 +85,6 @@ public class GameUtils {
         return angle;
     }
 
-    public static void illuminateBaseActor(BaseActor3D baseActor3D, Tile tile) {
-        if (tile.type == "floors" && tile.illuminated)
-            baseActor3D.setColor(Color.WHITE);
-        else if (tile.type == "floors")
-            baseActor3D.setColor(BaseGame.darkColor);
-    }
-
     public static float getPositionRelativeToFloor(float height) {
         return (Tile.height - height) / -2;
     }
@@ -101,6 +99,16 @@ public class GameUtils {
         music.setVolume(volume);
         music.setLooping(true);
         music.play();
+    }
+
+    public static void checkShading(Array<TileShade> tileShades, ArrayList<BaseActor3D> listToBeChecked) {
+        for (TileShade shade : tileShades) {
+            for (BaseActor3D baseActor3D : listToBeChecked) {
+                if (baseActor3D.boundingPolygon != null && shade.overlaps(baseActor3D)) {
+                    baseActor3D.setColor(shade.color0);
+                }
+            }
+        }
     }
 
     public static float normalizeValue(float value, float min, float max) {
@@ -127,9 +135,9 @@ public class GameUtils {
         return sound.play(BaseGame.soundVolume / GameUtils.normalizeValue(distance, 0f, vocalRange), pitch, 0);
     }
 
-    public static void printLoadingTime(String tag, long startTime) {
+    public static void printLoadingTime(String tag, String string,  long startTime) {
         long endTime = System.currentTimeMillis();
-        Gdx.app.log(tag, "took " + (endTime - startTime) + " ms to load.");
+        Gdx.app.log(tag, string + " took " + (endTime - startTime) + " ms to load.");
     }
 
     public static int getRayPickedListIndex(Vector3 origin, Vector3 direction, Array<BaseActor3D> list) {

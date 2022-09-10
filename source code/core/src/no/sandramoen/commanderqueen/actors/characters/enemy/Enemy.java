@@ -19,6 +19,7 @@ import com.badlogic.gdx.utils.Array;
 import no.sandramoen.commanderqueen.actors.Barrel;
 import no.sandramoen.commanderqueen.actors.Tile;
 import no.sandramoen.commanderqueen.actors.characters.Player;
+import no.sandramoen.commanderqueen.actors.characters.Sersjant;
 import no.sandramoen.commanderqueen.actors.decals.BulletDecals;
 import no.sandramoen.commanderqueen.actors.hud.HUD;
 import no.sandramoen.commanderqueen.actors.utils.baseActors.BaseActor;
@@ -29,13 +30,15 @@ import no.sandramoen.commanderqueen.utils.Stage3D;
 import no.sandramoen.commanderqueen.utils.pathFinding.TileGraph;
 
 public class Enemy extends BaseActor3D {
-    public static float activationRange = 30;
     public final int ID = MathUtils.random(1_000, 9_999);
+    public static float activationRange = 30;
     public int health = 1;
     public boolean isDead;
     public boolean isActive;
     public boolean isRanged = true;
+    public boolean isHitscan = true;
     public int score = 0;
+
     public Array<Tile> patrol = new Array();
     private int patrolIndex = 0;
 
@@ -108,6 +111,8 @@ public class Enemy extends BaseActor3D {
     private boolean isPlayerVisible;
     private boolean isPlayerLastPositionKnown;
 
+    private boolean isMuzzleColor;
+
     private BaseActor3D goingTo;
     private HUD hud;
     private Stage stage;
@@ -122,6 +127,11 @@ public class Enemy extends BaseActor3D {
     private DecalBatch decalBatch;
     private BulletDecals bulletDecals;
     private Tile startingPosition;
+
+
+    private boolean intervalFlag;
+    private final float INTERVAL_COUNTER_FREQUENCY = 1;
+    private float intervalCounter = MathUtils.random(0, INTERVAL_COUNTER_FREQUENCY);
 
     public Enemy(float y, float z, Stage3D stage3D, Player player, float rotation, TileGraph tileGraph, Array<Tile> floorTiles, Stage stage, HUD hud, DecalBatch batch) {
         super(0, y, z, stage3D);
@@ -142,7 +152,6 @@ public class Enemy extends BaseActor3D {
         setDirection();
         bulletDecals = new BulletDecals(stage3D.camera, decalBatch);
         attackDelayActor = new BaseActor(0, 0, stage);
-        checkIllumination();
 
         startingPosition = getTileActorIsOn(this, floorTiles);
     }
@@ -161,6 +170,7 @@ public class Enemy extends BaseActor3D {
         angleTowardPlayer = GameUtils.getAngleTowardsBaseActor3D(this, player);
         setDirection();
         setDirectionalAnimation();
+        setIntervalFlag(dt);
         attackIfPlayerIsVisible();
 
         if (!isActive) return;
@@ -185,17 +195,18 @@ public class Enemy extends BaseActor3D {
 
     @Override
     public void setColor(Color color) {
-        super.setColor(color);
-        sprite.setColor(color);
+        if (!isMuzzleColor) {
+            super.setColor(color);
+            sprite.setColor(color);
+        }
     }
 
     public void die() {
         if (isDead) return;
+        isMuzzleColor = false;
         isDead = true;
         totalTime = 0f;
         attackDelayActor.clearActions();
-        checkIllumination();
-        isCollisionEnabled = false;
         if (isGibs) {
             currentAnimation = gibAnimation;
             BaseGame.wetSplashSound.play(BaseGame.soundVolume);
@@ -274,12 +285,19 @@ public class Enemy extends BaseActor3D {
                     Actions.delay(shootImageDelay),
                     Actions.run(() -> {
                         shootSound();
-                        checkIfShotPlayerOrBarrel();
+                        if (isHitscan) checkIfShotPlayerOrBarrel();
+                        else generateProjectile();
                         activateNearByEnemies();
                         stage3D.lightManager.addMuzzleLight(position);
                         setColor(new Color(1, 1, .9f, 1));
-                    })
+                        isMuzzleColor = true;
+                    }),
+                    Actions.delay(shootImageDelay),
+                    Actions.run(() -> isMuzzleColor = false)
             ));
+    }
+
+    protected void generateProjectile() {
     }
 
     protected void shootSound() {
@@ -291,16 +309,6 @@ public class Enemy extends BaseActor3D {
     protected void setHealth(int health) {
         this.health = health;
         gibThreshold = -health - 1;
-    }
-
-    protected void checkIllumination() {
-        attackDelayActor.clearActions();
-        for (Tile tile : floorTiles) {
-            if (overlaps(tile)) {
-                GameUtils.illuminateBaseActor(this, tile);
-                break;
-            }
-        }
     }
 
     protected void initializeSprite(float size) {
@@ -363,7 +371,8 @@ public class Enemy extends BaseActor3D {
             barrel.decrementHealth(getDamage(), distanceBetween(barrel));
         } else if (i > -1 && shootable.get(i) instanceof Player) {
             hud.decrementHealth(getDamage(), this);
-        } else if (i > -1 && shootable.get(i) instanceof Tile && (((Tile) shootable.get(i)).type.equalsIgnoreCase("walls"))) {
+            if (this instanceof Sersjant) player.forceMoveAwayFrom(this);
+        } else if (i > -1 && shootable.get(i) instanceof Tile && (((Tile) shootable.get(i)).type.equalsIgnoreCase("1st floor"))) {
             Vector3 temp = new Vector3().set(ray.direction).scl(distanceBetween(shootable.get(i)) - (Tile.diagonalLength / 2)).add(ray.origin);
             bulletDecals.addDecal(temp.x, temp.y, temp.z);
         }
@@ -373,10 +382,8 @@ public class Enemy extends BaseActor3D {
         checkAttackStateChange(dt);
         if (isAttackDodging) {
             moveInZigZag(dt);
-            if (state != State.HURT && state != State.WALKING) {
+            if (state != State.HURT && state != State.WALKING)
                 state = State.WALKING;
-                checkIllumination();
-            }
         } else {
             attack(dt);
         }
@@ -411,7 +418,7 @@ public class Enemy extends BaseActor3D {
         for (BaseActor3D baseActor3D : shootable) {
             if (baseActor3D instanceof Tile) {
                 Tile temp = (Tile) baseActor3D;
-                if (temp.type == "walls" && overlaps(temp) && dodgeDirectionAngle != 0) {
+                if (temp.type.equalsIgnoreCase("1st floor") && overlaps(temp) && dodgeDirectionAngle != 0) {
                     dodgeDirectionAngle = 0;
                     resetDodgeDirectionAngleAfterDelay();
                     break;
@@ -444,6 +451,8 @@ public class Enemy extends BaseActor3D {
     }
 
     private void shoot() {
+        if (!currentAnimation.isAnimationFinished(totalTime))
+            return;
         state = State.ATTACKING;
         currentAnimation = shootAnimation;
         totalTime = 0;
@@ -470,7 +479,6 @@ public class Enemy extends BaseActor3D {
 
     private void setTemporaryHurtState() {
         state = State.HURT;
-        checkIllumination();
         setStateToIdleAfterDelay(.4f);
         currentAnimation = hurtAnimation;
     }
@@ -483,7 +491,7 @@ public class Enemy extends BaseActor3D {
     }
 
     private void attackIfPlayerIsVisible() {
-        if (stage3D.intervalFlag) {
+        if (intervalFlag) {
             isPlayerVisible = isPlayerVisible();
             if (isPlayerVisible)
                 setAttackState();
@@ -610,6 +618,16 @@ public class Enemy extends BaseActor3D {
             }
         } catch (Exception exception) {
             Gdx.app.error(getClass().getSimpleName(), "setPathToLastKnownPlayerPosition() failed => " + exception);
+        }
+    }
+
+    private void setIntervalFlag(float dt) {
+        if (intervalCounter > INTERVAL_COUNTER_FREQUENCY) {
+            intervalFlag = true;
+            intervalCounter = 0;
+        } else {
+            intervalFlag = false;
+            intervalCounter += dt;
         }
     }
 

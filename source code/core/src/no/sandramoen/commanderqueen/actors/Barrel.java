@@ -26,7 +26,7 @@ public class Barrel extends BaseActor3D {
     private final float BLAST_DAMAGE_MODIFIER = 8.5f;
     private Player player;
 
-    public Barrel(float y, float z, Stage3D stage3D, Player player, Array<Tile> tiles) {
+    public Barrel(float y, float z, Stage3D stage3D, Player player) {
         super(0, y, z, stage3D);
         this.stage3D = stage3D;
         this.player = player;
@@ -37,7 +37,6 @@ public class Barrel extends BaseActor3D {
         loadImage("barrel/barrel");
 
         initializeExplosionAnimation();
-        checkIfIlluminated(tiles);
     }
 
     @Override
@@ -82,15 +81,6 @@ public class Barrel extends BaseActor3D {
             damage = 0;
 
         return (int) (damage * BLAST_DAMAGE_MODIFIER);
-    }
-
-    private void checkIfIlluminated(Array<Tile> tiles) {
-        for (Tile tile : tiles) {
-            if (overlaps(tile)) {
-                GameUtils.illuminateBaseActor(this, tile);
-                break;
-            }
-        }
     }
 
     private void initializeExplosionAnimation() {

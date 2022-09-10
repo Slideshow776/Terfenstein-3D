@@ -15,6 +15,7 @@ import no.sandramoen.commanderqueen.actors.hud.HUD;
 import no.sandramoen.commanderqueen.actors.utils.baseActors.BaseActor;
 import no.sandramoen.commanderqueen.actors.utils.baseActors.BaseActor3D;
 import no.sandramoen.commanderqueen.actors.weapon.weapons.Boot;
+import no.sandramoen.commanderqueen.actors.weapon.weapons.Chaingun;
 import no.sandramoen.commanderqueen.actors.weapon.weapons.Pistol;
 import no.sandramoen.commanderqueen.actors.weapon.weapons.Shotgun;
 import no.sandramoen.commanderqueen.actors.weapon.weapons.Weapon;
@@ -31,6 +32,7 @@ public class WeaponHandler extends BaseActor {
     private float totalTime = 5f;
     private float swayAmount = .01f;
     private float swayFrequency = .5f;
+    private float originalWidth;
 
     private float isReadyCounter;
 
@@ -47,16 +49,16 @@ public class WeaponHandler extends BaseActor {
         this.shootable = shootable;
         this.stage3D = stage3D;
 
-        restPosition = new Vector2(Gdx.graphics.getWidth() * 3 / 5 - getWidth() / 2, -Gdx.graphics.getHeight() * swayAmount);
+        setSize(Gdx.graphics.getWidth() * .25f, Gdx.graphics.getWidth() * .25f);
+        originalWidth = getWidth();
+
+        setPosition();
+        moveUp();
         crosshair = new Crosshair(stage);
 
-        setSize(Gdx.graphics.getWidth() * .25f, Gdx.graphics.getWidth() * .25f);
-        setPosition(restPosition.x, -getHeight());
-        moveUp();
-
         weapons = new Array();
-        weapons.add(new Boot(), new Pistol(), new Shotgun());
-        currentWeapon = weapons.get(1);
+        weapons.add(new Boot(), new Pistol(), new Shotgun(), new Chaingun());
+        setWeapon(1);
     }
 
     @Override
@@ -90,11 +92,18 @@ public class WeaponHandler extends BaseActor {
         if (i >= 0 && i < weapons.size && weapons.get(i).isAvailable) {
             totalTime = 5f;
             currentWeapon = weapons.get(i);
+            if (currentWeapon instanceof Chaingun)
+                setWidth(originalWidth * 2f);
+            else
+                setWidth(originalWidth);
+
+            isReadyCounter = -.25f;
+            setPosition();
             return true;
-        } else if (!weapons.get(i).isAvailable) {
+        } else if (i >= 0 && i < weapons.size && !weapons.get(i).isAvailable) {
             Gdx.app.error(getClass().getSimpleName(), "Error: " + weapons.get(i).getClass().getSimpleName() + " is not available");
         } else {
-            Gdx.app.error(getClass().getSimpleName(), "Error: Weapon change to out of bounds => i: " + i + ", weapon size: " + weapons.size);
+            Gdx.app.error(getClass().getSimpleName(), "Error: Weapon change to out of bounds => i: " + i + ", weapons size: " + weapons.size);
         }
         return false;
     }
@@ -137,6 +146,7 @@ public class WeaponHandler extends BaseActor {
             if (ammo > 0 && currentWeapon.isAmmoDependent) {
                 totalTime = 0f;
                 currentWeapon.attackSound();
+                shakyCam();
             } else if (currentWeapon.isAmmoDependent) {
                 currentWeapon.emptySound();
             }
@@ -191,6 +201,8 @@ public class WeaponHandler extends BaseActor {
             weapons.get(1).isAvailable = true;
         else if (weapon.equalsIgnoreCase("shotgun"))
             weapons.get(2).isAvailable = true;
+        else if (weapon.equalsIgnoreCase("chaingun"))
+            weapons.get(3).isAvailable = true;
     }
 
     private void setCrosshairColor(Array<BaseActor3D> shootable, PerspectiveCamera camera) {
@@ -225,5 +237,19 @@ public class WeaponHandler extends BaseActor {
     private void moveUp() {
         clearActions();
         addAction(Actions.moveTo(restPosition.x, restPosition.y, 1f));
+    }
+
+    private void setPosition() {
+        restPosition = new Vector2(Gdx.graphics.getWidth() * 4 / 5 - getWidth() / 2, -Gdx.graphics.getHeight() * swayAmount);
+        setPosition(restPosition.x, -getHeight());
+    }
+
+    private void shakyCam() {
+        if (currentWeapon instanceof Pistol)
+            player.shakeyCam(.1f, .05f);
+        else if (currentWeapon instanceof Shotgun)
+            player.shakeyCam(.1f, .3f);
+        else if (currentWeapon instanceof Chaingun)
+            player.shakeyCam(.1f, .2f);
     }
 }

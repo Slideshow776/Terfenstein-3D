@@ -58,8 +58,7 @@ public class DecalsManager {
         private void initializeDecal(float x, float y, float z) {
             decal = Decal.newDecal(BaseGame.textureAtlas.findRegion(imagePaths.get(0)), true);
             decal.setDimensions(MathUtils.random(.8f, 1.2f), MathUtils.random(.8f, 1.2f));
-            decal.setPosition(x, y, z);/*
-            decal.setScale(2);*/
+            decal.setPosition(x, y, z);
         }
 
         private void initializeAnimation() {

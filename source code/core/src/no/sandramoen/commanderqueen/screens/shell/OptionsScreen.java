@@ -5,21 +5,19 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.Event;
+import com.badlogic.gdx.scenes.scene2d.ui.CheckBox;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.github.tommyettinger.textra.TypingLabel;
 
+import no.sandramoen.commanderqueen.ui.BaseCheckbox;
 import no.sandramoen.commanderqueen.ui.BaseSlider;
 import no.sandramoen.commanderqueen.utils.BaseGame;
 import no.sandramoen.commanderqueen.utils.BaseScreen;
 import no.sandramoen.commanderqueen.utils.GameUtils;
 
 public class OptionsScreen extends BaseScreen {
-    private BaseSlider soundSlider;
-    private BaseSlider musicSlider;
-    private BaseSlider voiceSlider;
-    private BaseSlider mouseSensitivitySlider;
 
     @Override
     public void initialize() {
@@ -28,23 +26,14 @@ public class OptionsScreen extends BaseScreen {
                 .growY()
                 .row();
 
-        Table optionsTable = new Table();
-        soundSlider = new BaseSlider("Sound", 0, 1, .1f);
-        musicSlider = new BaseSlider("Music", 0, 1, .1f);
-        voiceSlider = new BaseSlider("Voice", 0, 1, .1f);
-        mouseSensitivitySlider = new BaseSlider("Mouse Sensitivity", .01f, .1f, .01f);
-
-        optionsTable.defaults().spaceTop(Gdx.graphics.getHeight() * .05f).width(Gdx.graphics.getWidth() * .6f);
-        optionsTable.add(soundSlider).row();
-        optionsTable.add(musicSlider).row();
-        optionsTable.add(voiceSlider).row();
-        optionsTable.add(mouseSensitivitySlider).row();
-        uiTable.add(optionsTable)
+        uiTable.add(optionsTable())
                 .growY()
                 .row();
-        /*optionsTable.setDebug(true);*/
 
-        uiTable.add(initializeBackButton()).expandY().width(Gdx.graphics.getWidth() * .125f).height(Gdx.graphics.getHeight() * .075f);
+        uiTable.add(initializeBackButton())
+                .expandY()
+                .width(Gdx.graphics.getWidth() * .125f)
+                .height(Gdx.graphics.getHeight() * .075f);
 
         /*uiTable.setDebug(true);*/
     }
@@ -59,6 +48,27 @@ public class OptionsScreen extends BaseScreen {
         if (keycode == Input.Keys.ESCAPE || keycode == Input.Keys.Q)
             BaseGame.setActiveScreen(new MenuScreen());
         return super.keyDown(keycode);
+    }
+
+    private Table optionsTable() {
+        Table table = new Table();
+
+        BaseSlider soundSlider = new BaseSlider("Sound", 0, 1, .1f);
+        BaseSlider musicSlider = new BaseSlider("Music", 0, 1, .1f);
+        BaseSlider voiceSlider = new BaseSlider("Voice", 0, 1, .1f);
+        BaseSlider mouseSensitivitySlider = new BaseSlider("Mouse Sensitivity", .01f, .1f, .01f);
+        BaseCheckbox headBobCheckBox = new BaseCheckbox("Head Bob");
+        headBobCheckBox.checkBox.setChecked(BaseGame.isHeadBobbing);
+
+        table.defaults().spaceTop(Gdx.graphics.getHeight() * .05f).width(Gdx.graphics.getWidth() * .6f);
+        table.add(soundSlider).row();
+        table.add(musicSlider).row();
+        table.add(voiceSlider).row();
+        table.add(mouseSensitivitySlider).row();
+        table.add(headBobCheckBox);
+
+        /*table.setDebug(true);*/
+        return table;
     }
 
     private TextButton initializeBackButton() {

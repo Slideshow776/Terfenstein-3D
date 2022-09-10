@@ -2,7 +2,6 @@ package no.sandramoen.commanderqueen.screens.shell;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.Event;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
@@ -35,7 +34,6 @@ public class MenuScreen extends BaseScreen {
 
     @Override
     public void update(float delta) {
-
     }
 
     @Override
@@ -51,17 +49,24 @@ public class MenuScreen extends BaseScreen {
                 .height(Gdx.graphics.getHeight() * .075f)
                 .spaceTop(Gdx.graphics.getHeight() * .01f);
 
+        uiTable.add(startButton()).row();
+        uiTable.add(optionsButton()).row();
+        uiTable.add(exitButton()).row();
+    }
+
+    private TextButton startButton() {
         TextButton startButton = new TextButton("Start", BaseGame.mySkin);
         startButton.addListener(
                 (Event event) -> {
                     if (GameUtils.isTouchDownEvent(event))
-                        BaseGame.setActiveScreen(new LevelScreen());
+                        BaseGame.setActiveScreen(new LevelScreen(40, BaseGame.level1Map, "level 1", 100, 0, 10, 0, null));
                     return false;
                 }
         );
-        uiTable.add(startButton)
-                .row();
+        return startButton;
+    }
 
+    private TextButton optionsButton() {
         TextButton optionsButton = new TextButton("Options", BaseGame.mySkin);
         optionsButton.addListener(
                 (Event event) -> {
@@ -70,9 +75,10 @@ public class MenuScreen extends BaseScreen {
                     return false;
                 }
         );
-        uiTable.add(optionsButton)
-                .row();
+        return optionsButton;
+    }
 
+    private TextButton exitButton() {
         TextButton exitButton = new TextButton("Exit", BaseGame.mySkin);
         exitButton.addListener(
                 (Event event) -> {
@@ -81,7 +87,6 @@ public class MenuScreen extends BaseScreen {
                     return false;
                 }
         );
-        uiTable.add(exitButton)
-                .row();
+        return exitButton;
     }
 }

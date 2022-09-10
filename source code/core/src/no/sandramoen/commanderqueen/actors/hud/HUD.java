@@ -13,12 +13,14 @@ import com.badlogic.gdx.utils.Array;
 
 import no.sandramoen.commanderqueen.actors.characters.Player;
 import no.sandramoen.commanderqueen.actors.pickups.Bullets;
+import no.sandramoen.commanderqueen.actors.pickups.Key;
 import no.sandramoen.commanderqueen.actors.pickups.Pickup;
 import no.sandramoen.commanderqueen.actors.pickups.Shells;
 import no.sandramoen.commanderqueen.actors.utils.baseActors.BaseActor;
 import no.sandramoen.commanderqueen.actors.utils.baseActors.BaseActor3D;
 import no.sandramoen.commanderqueen.actors.weapon.WeaponHandler;
 import no.sandramoen.commanderqueen.actors.weapon.weapons.Boot;
+import no.sandramoen.commanderqueen.actors.weapon.weapons.Chaingun;
 import no.sandramoen.commanderqueen.actors.weapon.weapons.Pistol;
 import no.sandramoen.commanderqueen.actors.weapon.weapons.Shotgun;
 import no.sandramoen.commanderqueen.actors.weapon.weapons.Weapon;
@@ -26,15 +28,16 @@ import no.sandramoen.commanderqueen.utils.BaseGame;
 import no.sandramoen.commanderqueen.utils.GameUtils;
 
 public class HUD extends BaseActor {
+    public static final float WIDTH = .38f;
     public Player player;
     public Table weaponsTable;
     public boolean isInvulnerable;
 
-    private int armor = 0;
-    private int health = 100;
-    private int bullets = 50;
-    private int shells = 20;
-    private int score = 0;
+    public int armor;
+    public int health;
+    public int bullets;
+    public int shells;
+    private int score;
 
     private float armorProtectionValue = 1 / 3f;
 
@@ -47,20 +50,28 @@ public class HUD extends BaseActor {
     private Label scoreLabel;
 
     private Face face;
+    public Keys keys;
     private OverlayIndicator overlayIndicator;
 
     private Array<Image> weaponImages;
 
-    public HUD(Stage stage) {
+    public HUD(Stage stage, int health, int armor, int bullets, int shells) {
         super(0, 0, stage);
+        this.health = health;
+        this.armor = armor;
+        this.bullets = bullets;
+        this.shells = shells;
         initializeLabels();
 
-        setWidth(Gdx.graphics.getWidth() * 1 / 3f);
+        setWidth(Gdx.graphics.getWidth() * WIDTH);
         setSize(getWidth(), getWidth() / (5 / 1f));
         setPosition(Gdx.graphics.getWidth() * 1 / 2f - getWidth() / 2f, 0f);
+        /*setDebug(true);*/
 
         overlayIndicator = new OverlayIndicator(stage);
         face = new Face(stage, getFaceHealthIndex());
+        addActor(keys = new Keys(getX(), getY(), getWidth(), getHeight(), stage));
+        /*setDebug(true);*/
     }
 
     @Override
@@ -69,11 +80,16 @@ public class HUD extends BaseActor {
         checkInvulnerability(dt);
     }
 
+    public void addKey(Key key) {
+        keys.addKey(key);
+    }
+
     public void setWeaponsTable(WeaponHandler weaponHandler) {
         weaponImages = new Array();
         weaponImages.add(new Image(BaseGame.textureAtlas.findRegion("weapons/boot/icon")));
         weaponImages.add(new Image(BaseGame.textureAtlas.findRegion("weapons/pistol/icon")));
         weaponImages.add(new Image(BaseGame.textureAtlas.findRegion("weapons/shotgun/icon")));
+        weaponImages.add(new Image(BaseGame.textureAtlas.findRegion("weapons/chaingun/icon")));
 
         Table table = new Table();
         table.defaults().grow().width(Gdx.graphics.getWidth() * .05f).height(Gdx.graphics.getHeight() * .05f);
@@ -91,9 +107,15 @@ public class HUD extends BaseActor {
         table.defaults().width(getWidth() / 5);
         table.add(armorLabel);
         table.add(healthLabel).padRight(getWidth() / 5);
-        table.add(ammoLabel);
+        table.add(getAmmoTable());
         table.add(scoreLabel);
         /*table.setDebug(true);*/
+        return table;
+    }
+
+    private Table getAmmoTable() {
+        Table table = new Table();
+        table.add(ammoLabel).padLeft(getWidth() / 12);
         return table;
     }
 
@@ -125,10 +147,11 @@ public class HUD extends BaseActor {
         setHurtFace(amount, angle);
         setOverlayAngle(amount, angle);
         healthLabel.setText(health + "%");
+        player.shakeyCam(.1f, .1f);
     }
 
 
-    public void incrementAmmo(Pickup pickup, Weapon currentWeapon) {
+    public void incrementAmmunition(Pickup pickup, Weapon currentWeapon) {
         if (pickup instanceof Bullets)
             bullets += pickup.amount;
         else if (pickup instanceof Shells)
@@ -136,14 +159,14 @@ public class HUD extends BaseActor {
 
         overlayIndicator.flash(BaseGame.yellowColor, .1f);
 
-        if (currentWeapon instanceof Pistol)
+        if (currentWeapon instanceof Pistol || currentWeapon instanceof Chaingun)
             ammoLabel.setText(bullets + "");
         else if (currentWeapon instanceof Shotgun)
             ammoLabel.setText(shells + "");
     }
 
     public void decrementAmmo(Weapon currentWeapon) {
-        if (currentWeapon instanceof Pistol && bullets > 0) {
+        if ((currentWeapon instanceof Pistol || currentWeapon instanceof Chaingun) && bullets > 0) {
             bullets--;
             ammoLabel.setText(bullets + "");
         } else if (currentWeapon instanceof Shotgun && shells > 0) {
@@ -153,7 +176,7 @@ public class HUD extends BaseActor {
     }
 
     public int getAmmo(Weapon currentWeapon) {
-        if (currentWeapon instanceof Pistol)
+        if (currentWeapon instanceof Pistol || currentWeapon instanceof Chaingun)
             return bullets;
         else if (currentWeapon instanceof Shotgun)
             return shells;
@@ -164,7 +187,7 @@ public class HUD extends BaseActor {
     public void setAmmo(Weapon currentWeapon) {
         if (currentWeapon instanceof Boot)
             ammoLabel.setText("");
-        else if (currentWeapon instanceof Pistol)
+        else if (currentWeapon instanceof Pistol || currentWeapon instanceof Chaingun)
             ammoLabel.setText(bullets + "");
         else if (currentWeapon instanceof Shotgun)
             ammoLabel.setText(shells + "");
@@ -233,6 +256,8 @@ public class HUD extends BaseActor {
             weaponImages.get(1).setColor(Color.WHITE);
         else if (currentWeapon instanceof Shotgun)
             weaponImages.get(2).setColor(Color.WHITE);
+        else if (currentWeapon instanceof Chaingun)
+            weaponImages.get(3).setColor(Color.WHITE);
     }
 
 

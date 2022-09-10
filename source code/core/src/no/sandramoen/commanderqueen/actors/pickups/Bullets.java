@@ -1,8 +1,5 @@
 package no.sandramoen.commanderqueen.actors.pickups;
 
-import com.badlogic.gdx.utils.Array;
-
-import no.sandramoen.commanderqueen.actors.Tile;
 import no.sandramoen.commanderqueen.actors.characters.Player;
 import no.sandramoen.commanderqueen.utils.BaseGame;
 import no.sandramoen.commanderqueen.utils.GameUtils;
@@ -10,15 +7,15 @@ import no.sandramoen.commanderqueen.utils.Stage3D;
 
 public class Bullets extends Pickup {
 
-    public Bullets(float y, float z, Stage3D s, int amount, Player player, Array<Tile> tiles) {
-        super(y, z, s, player, tiles);
+    public Bullets(float y, float z, Stage3D s, int amount, Player player) {
+        super(y, z, s, player);
         this.amount = amount;
-        buildModel(.4f, .5f, .001f, true);
-        loadImage("pickups/bullet");
 
-        setPosition(GameUtils.getPositionRelativeToFloor(.5f), y, z);
-        checkIfIlluminated(tiles);
+        buildModel(.7f, .8f, .001f, true);
+        setPosition(GameUtils.getPositionRelativeToFloor(.8f), y, z);
         setBaseRectangle();
+
+        loadImage("pickups/bullet");
     }
 
     @Override
