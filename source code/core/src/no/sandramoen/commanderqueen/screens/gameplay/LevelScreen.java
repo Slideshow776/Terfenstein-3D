@@ -96,9 +96,13 @@ public class LevelScreen extends BaseScreen3D {
         tiledMap = map;
 
         /*GameUtils.playLoopingMusic(BaseGame.level0Music);*/
+        GameUtils.playLoopingMusic(BaseGame.ambientFanMusic);
+        BaseGame.ambientFanMusic.setPosition(MathUtils.random(0, 15));
         GameUtils.playLoopingMusic(BaseGame.metalWalkingMusic, 0);
+
         initializeMap(health, armor, bullets, shells);
         initializePlayer(weapons);
+
         uiHandler = new UIHandler(uiTable, enemies, hud);
         hud.setAmmo(weaponHandler.currentWeapon);
         bulletDecals = new BulletDecals(mainStage3D.camera, decalBatch);
@@ -155,14 +159,12 @@ public class LevelScreen extends BaseScreen3D {
     @Override
     public boolean keyDown(int keycode) {
         if (keycode == Keys.ESCAPE || keycode == Keys.Q) {
-            stopLevel();
+            BaseGame.levelScreen = this;
             BaseGame.setActiveScreen(new MenuScreen());
         } else if (keycode == Keys.R)
             BaseGame.setActiveScreen(new LevelScreen(PAR_TIME, BaseGame.testMap, "test", 100, 0, 50, 50, null));
         else if (isGameOver && totalTime > 2)
             restartLevel();
-        else if (keycode == Keys.Q)
-            hud.setInvulnerable();
         else if (keycode == Keys.F) {
             player.isCollisionEnabled = !player.isCollisionEnabled;
             Gdx.app.log(getClass().getSimpleName(), "player.isCollisionEnabled: " + player.isCollisionEnabled);
@@ -194,7 +196,7 @@ public class LevelScreen extends BaseScreen3D {
                 if (player.isWithinDistance(Tile.height * .8f, door)) {
                     String message = door.tryToOpenDoor(hud.keys.getKeys());
                     if (!message.isEmpty())
-                        uiHandler.setPickupLabel(message);
+                        uiHandler.setPickupLabel(message, true);
                 }
             for (Elevator elevator : mapLoader.elevators)
                 if (player.isWithinDistance(Tile.height * 1.1f, elevator))
@@ -231,8 +233,16 @@ public class LevelScreen extends BaseScreen3D {
         return super.scrolled(amountX, amountY);
     }
 
+    @Override
+    public void show() {
+        super.show();
+        if (!Gdx.input.isCursorCatched())
+            Gdx.input.setCursorCatched(true);
+        totalTime = 0;
+    }
+
     private void mouseButtonPolling() {
-        if (Gdx.input.isButtonPressed(Input.Buttons.LEFT) && !isGameOver) {
+        if (Gdx.input.isButtonPressed(Input.Buttons.LEFT) && !isGameOver && totalTime > 1) {
             if (weaponHandler.isReady)
                 shoot();
             holdingDown = true;
@@ -412,6 +422,7 @@ public class LevelScreen extends BaseScreen3D {
     private void stopLevel() {
         BaseGame.metalWalkingMusic.stop();
         BaseGame.level0Music.stop();
+        BaseGame.ambientFanMusic.stop();
     }
 
     private Array getLevelData() {

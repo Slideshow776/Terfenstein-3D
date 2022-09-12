@@ -2,10 +2,14 @@ package no.sandramoen.commanderqueen.screens.shell;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.scenes.scene2d.Event;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.utils.Array;
 import com.github.tommyettinger.textra.TypingLabel;
 
 import no.sandramoen.commanderqueen.screens.gameplay.LevelScreen;
@@ -49,44 +53,105 @@ public class MenuScreen extends BaseScreen {
                 .height(Gdx.graphics.getHeight() * .075f)
                 .spaceTop(Gdx.graphics.getHeight() * .01f);
 
+        if (BaseGame.levelScreen != null)
+            uiTable.add(resumeButton()).row();
         uiTable.add(startButton()).row();
         uiTable.add(optionsButton()).row();
         uiTable.add(exitButton()).row();
     }
 
+    private TextButton resumeButton() {
+        TextButton button = new TextButton("Resume", BaseGame.mySkin);
+        button.setColor(BaseGame.blueColor);
+        button.addListener(
+                (Event event) -> {
+                    if (GameUtils.isTouchDownEvent(event))
+                        BaseGame.setActiveScreen(BaseGame.levelScreen);
+                    return false;
+                }
+        );
+        return button;
+    }
+
     private TextButton startButton() {
-        TextButton startButton = new TextButton("Start", BaseGame.mySkin);
-        startButton.addListener(
+        TextButton button = new TextButton("Start", BaseGame.mySkin);
+        button.addListener(
                 (Event event) -> {
                     if (GameUtils.isTouchDownEvent(event))
                         BaseGame.setActiveScreen(new LevelScreen(40, BaseGame.level1Map, "level 1", 100, 0, 10, 0, null));
                     return false;
                 }
         );
-        return startButton;
+        return button;
     }
 
     private TextButton optionsButton() {
-        TextButton optionsButton = new TextButton("Options", BaseGame.mySkin);
-        optionsButton.addListener(
+        TextButton button = new TextButton("Options", BaseGame.mySkin);
+        button.addListener(
                 (Event event) -> {
                     if (GameUtils.isTouchDownEvent(event))
                         BaseGame.setActiveScreen(new OptionsScreen());
                     return false;
                 }
         );
-        return optionsButton;
+        return button;
     }
 
     private TextButton exitButton() {
-        TextButton exitButton = new TextButton("Exit", BaseGame.mySkin);
-        exitButton.addListener(
+        TextButton button = new TextButton("Exit", BaseGame.mySkin);
+        button.addListener(
                 (Event event) -> {
-                    if (GameUtils.isTouchDownEvent(event))
-                        Gdx.app.exit();
+                    if (GameUtils.isTouchDownEvent(event)) {
+                        button.addAction(Actions.sequence(
+                                Actions.run(() -> playRandomSound()),
+                                Actions.delay(1),
+                                Actions.run(() -> Gdx.app.exit())
+                        ));
+                    }
                     return false;
                 }
         );
-        return exitButton;
+        return button;
+    }
+
+    private void playRandomSound() {
+        Array<Sound> sounds = new Array();
+        sounds.add(BaseGame.pistolShotSound);
+        sounds.add(BaseGame.menigActiveSound);
+        sounds.add(BaseGame.menigHurtSound);
+        sounds.add(BaseGame.menigDeathSound);
+        sounds.add(BaseGame.menigMeleeSound);
+        sounds.add(BaseGame.ammoPickupSound);
+        sounds.add(BaseGame.armorPickupSound);
+        sounds.add(BaseGame.healthPickupSound);
+        sounds.add(BaseGame.explosionSound);
+        sounds.add(BaseGame.outOfAmmoSound);
+        sounds.add(BaseGame.invulnerableSound);
+        sounds.add(BaseGame.vulnerableSound);
+        sounds.add(BaseGame.metalSound);
+        sounds.add(BaseGame.wetSplashSound);
+        sounds.add(BaseGame.bootAttackSound);
+        sounds.add(BaseGame.bootMissSound);
+        sounds.add(BaseGame.hundMeleeSound);
+        sounds.add(BaseGame.hundDieSound);
+        sounds.add(BaseGame.hundActivateSound);
+        sounds.add(BaseGame.shotgunSound);
+        sounds.add(BaseGame.door0OpeningSound);
+        sounds.add(BaseGame.door0ClosingSound);
+        sounds.add(BaseGame.elevatorSound);
+        sounds.add(BaseGame.click1Sound);
+        sounds.add(BaseGame.hoverOverEnterSound);
+        sounds.add(BaseGame.playerUgh);
+        sounds.add(BaseGame.secretWallSound);
+        sounds.add(BaseGame.holyBallSpawnSound);
+        sounds.add(BaseGame.holyBallExplosionSound);
+        sounds.add(BaseGame.caseDroppingSound);
+        sounds.add(BaseGame.chaingunPowerDownSound);
+        sounds.add(BaseGame.keySound);
+        sounds.add(BaseGame.doorUnlockedSound);
+        sounds.add(BaseGame.doorLockedSound);
+        sounds.add(BaseGame.weaponPickupSound);
+
+        sounds.get(MathUtils.random(0, sounds.size-1)).play(BaseGame.soundVolume);
     }
 }

@@ -27,7 +27,10 @@ public class Tile extends BaseActor3D {
         this.secretMovementDirection = secretMovementDirection;
         this.secretLength = secretLength;
 
-        buildModel(width, height, depth, false);
+        if (texture.equalsIgnoreCase("blank"))
+            buildModel(width, height, depth, true);
+        else
+            buildModel(width, height, depth, false);
         setBaseRectangle();
         loadImage("tiles/" + texture);
         turnBy(-180 + rotation);

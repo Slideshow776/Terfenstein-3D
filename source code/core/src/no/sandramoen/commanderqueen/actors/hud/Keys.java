@@ -3,7 +3,10 @@ package no.sandramoen.commanderqueen.actors.hud;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
+import com.badlogic.gdx.scenes.scene2d.actions.SequenceAction;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Array;
 
 import no.sandramoen.commanderqueen.actors.pickups.Key;
@@ -44,16 +47,40 @@ public class Keys extends Table {
     public void addKey(Key key) {
         keys.add(key);
 
-        if (key.color.equalsIgnoreCase("red"))
+        if (key.color.equalsIgnoreCase("red")) {
             redKey.setVisible(true);
-        else if (key.color.equalsIgnoreCase("blue"))
+            redKey.addAction(wiggle());
+        } else if (key.color.equalsIgnoreCase("blue")) {
             blueKey.setVisible(true);
-        else if (key.color.equalsIgnoreCase("green"))
+            ;
+            blueKey.addAction(wiggle());
+        } else if (key.color.equalsIgnoreCase("green")) {
             greenKey.setVisible(true);
+            ;
+            greenKey.addAction(wiggle());
+        }
     }
 
     public Array<Key> getKeys() {
         return keys;
+    }
+
+    private SequenceAction wiggle() {
+        float amount = 10;
+        float delay = .1f;
+        return Actions.sequence(
+                Actions.rotateTo(amount, delay),
+                Actions.rotateTo(-amount, 2 * delay),
+                Actions.rotateTo(amount, delay),
+                Actions.rotateTo(-amount, 2 * delay),
+                Actions.rotateTo(amount, delay),
+                Actions.rotateTo(-amount, 2 * delay),
+                Actions.rotateTo(amount, delay),
+                Actions.rotateTo(-amount, 2 * delay),
+                Actions.rotateTo(amount, delay),
+                Actions.rotateTo(-amount, 2 * delay),
+                Actions.rotateTo(0, delay)
+        );
     }
 
     private BaseActor initializeKey(Color color, float width, float height) {
@@ -61,6 +88,7 @@ public class Keys extends Table {
         key.loadImage("hud/key");
         key.setSize(width * .04f, height * .1f);
         key.setColor(color);
+        key.setOrigin(Align.center);
         return key;
     }
 }

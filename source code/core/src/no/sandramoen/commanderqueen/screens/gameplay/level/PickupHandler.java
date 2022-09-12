@@ -30,19 +30,19 @@ public class PickupHandler {
                 if (pickup instanceof Bullets || pickup instanceof Shells) {
                     hud.incrementAmmunition(pickup, weaponHandler.currentWeapon);
                     if (pickup instanceof Bullets)
-                        setPickupLabel(uiHandler, hud, "You picked up some bullets!");
+                        setPickupLabel(uiHandler, hud, "You picked up some bullets!", false);
                     if (pickup instanceof Shells)
-                        setPickupLabel(uiHandler, hud, "You picked up some shotgun shells!");
+                        setPickupLabel(uiHandler, hud, "You picked up some shotgun shells!", false);
                     removePickup(pickups, pickup);
                 } else if (pickup instanceof Armor) {
                     if (hud.incrementArmor(pickup.amount, false)) {
                         removePickup(pickups, pickup);
-                        setPickupLabel(uiHandler, hud, "You picked up some armor!");
+                        setPickupLabel(uiHandler, hud, "You picked up some armor!", false);
                     }
                 } else if (pickup instanceof Health) {
                     if (hud.incrementHealth(pickup.amount)) {
                         removePickup(pickups, pickup);
-                        setPickupLabel(uiHandler, hud, "You picked some health!");
+                        setPickupLabel(uiHandler, hud, "You picked some health!", false);
                     }
                 } else if (pickup instanceof Key) {
                     hud.addKey((Key) pickup);
@@ -54,7 +54,7 @@ public class PickupHandler {
                         color = "{COLOR=" + BaseGame.greenColor + "}";
                     else if (((Key) pickup).color.equalsIgnoreCase("blue"))
                         color = "{COLOR=" + BaseGame.blueColor + "}";
-                    setPickupLabel(uiHandler, hud, "You picked up a " + color + ((Key) pickup).color + " key{CLEARCOLOR}!");
+                    setPickupLabel(uiHandler, hud, "You picked up a " + color + ((Key) pickup).color + " key{CLEARCOLOR}!", true);
                 } else if (pickup instanceof Shotgun) {
                     weaponHandler.makeAvailable("shotgun");
                     Shells shells = new Shells(0, 0, stage3D, 8, player);
@@ -62,7 +62,7 @@ public class PickupHandler {
                     shells.remove();
 
                     pickUpWeapon(hud, pickups, pickup, weaponHandler, uiTable, uiHandler);
-                    setPickupLabel(uiHandler, hud, "You picked up a shotgun!");
+                    setPickupLabel(uiHandler, hud, "You picked up a shotgun!", true);
                 } else if (pickup instanceof Chaingun) {
                     weaponHandler.makeAvailable("chaingun");
                     Bullets bullets = new Bullets(0, 0, stage3D, 20, player);
@@ -70,7 +70,7 @@ public class PickupHandler {
                     bullets.remove();
 
                     pickUpWeapon(hud, pickups, pickup, weaponHandler, uiTable, uiHandler);
-                    setPickupLabel(uiHandler, hud, "You picked up a chaingun!");
+                    setPickupLabel(uiHandler, hud, "You picked up a chaingun!", true);
                 }
             }
         }
@@ -84,6 +84,7 @@ public class PickupHandler {
 
     private static void pickUpWeapon(HUD hud, Array<Pickup> pickups, Pickup pickup, WeaponHandler weaponHandler, Table uiTable, UIHandler uiHandler) {
         hud.setEvilFace();
+        BaseGame.weaponPickupSound.play(BaseGame.soundVolume);
         removePickup(pickups, pickup);
 
         hud.setWeaponsTable(weaponHandler);
@@ -91,11 +92,11 @@ public class PickupHandler {
         uiHandler.isReset = true;
     }
 
-    public static void setPickupLabel(UIHandler uiHandler, BaseActor baseActor, String message) {
+    public static void setPickupLabel(UIHandler uiHandler, BaseActor baseActor, String message, boolean important) {
         baseActor.addAction(Actions.sequence(
                 Actions.delay(.1f),
                 Actions.run(() -> {
-                    uiHandler.setPickupLabel(message);
+                    uiHandler.setPickupLabel(message, important);
                 })
         ));
     }

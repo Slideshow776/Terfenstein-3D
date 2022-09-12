@@ -97,8 +97,10 @@ public class Door extends BaseActor3D {
     }
 
     public String tryToOpenDoor(Array<Key> keys) {
-        if (isLocked || getPosition().x >= openHeight)
+        if (isLocked || getPosition().x >= openHeight) {
+            BaseGame.doorLockedSound.play(BaseGame.soundVolume);
             return "";
+        }
 
         if (keyColor.isEmpty()) {
             openAndClose();
@@ -112,6 +114,7 @@ public class Door extends BaseActor3D {
                     openAndClose();
                     return "";
                 }
+        BaseGame.doorLockedSound.play(BaseGame.soundVolume);
         String color = "";
         if (keyColor.equalsIgnoreCase("red"))
             color = "{COLOR=" + BaseGame.redColor + "}";

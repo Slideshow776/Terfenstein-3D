@@ -89,7 +89,9 @@ public class UIHandler {
         /*uiTable.setDebug(true);*/
     }
 
-    public void setPickupLabel(String message) {
+    public void setPickupLabel(String message, boolean important) {
+        if (!important && pickupLabel.hasActions())
+            return;
         pickupLabel.setText("{FADE}{FASTER}" + message);
         pickupLabel.restart();
         pickupLabel.clearActions();

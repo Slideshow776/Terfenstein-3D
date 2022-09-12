@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset version="1.9" tiledversion="1.9.0" name="Tileset" tilewidth="64" tileheight="64" tilecount="128" columns="16" objectalignment="center">
+<tileset version="1.9" tiledversion="1.9.1" name="Tileset" tilewidth="64" tileheight="64" tilecount="128" columns="16" objectalignment="center">
  <image source="tileset.png" width="1024" height="512"/>
  <tile id="0">
   <properties>
    <property name="depth" type="float" value="4"/>
-   <property name="name" value=""/>
+   <property name="name" value="blank"/>
    <property name="secret" value=""/>
    <property name="secret length" type="int" value="0"/>
   </properties>
@@ -12,7 +12,7 @@
  <tile id="1">
   <properties>
    <property name="depth" type="float" value="4"/>
-   <property name="name" value=""/>
+   <property name="name" value="hexagon 0"/>
    <property name="secret" value=""/>
    <property name="secret length" type="int" value="0"/>
   </properties>
@@ -29,6 +29,14 @@
   <properties>
    <property name="depth" type="float" value="4"/>
    <property name="name" value="light lonplate 2"/>
+   <property name="secret" value=""/>
+   <property name="secret length" type="int" value="0"/>
+  </properties>
+ </tile>
+ <tile id="4">
+  <properties>
+   <property name="depth" type="float" value="4"/>
+   <property name="name" value="cliff 0"/>
    <property name="secret" value=""/>
    <property name="secret length" type="int" value="0"/>
   </properties>
@@ -77,6 +85,86 @@
   <properties>
    <property name="depth" type="float" value="4"/>
    <property name="name" value="lights 0"/>
+   <property name="secret" value=""/>
+   <property name="secret length" type="int" value="0"/>
+  </properties>
+ </tile>
+ <tile id="33">
+  <properties>
+   <property name="depth" type="float" value="4"/>
+   <property name="name" value="brick 0"/>
+   <property name="secret" value=""/>
+   <property name="secret length" type="int" value="0"/>
+  </properties>
+ </tile>
+ <tile id="34">
+  <properties>
+   <property name="depth" type="float" value="4"/>
+   <property name="name" value="brick 1"/>
+   <property name="secret" value=""/>
+   <property name="secret length" type="int" value="0"/>
+  </properties>
+ </tile>
+ <tile id="35">
+  <properties>
+   <property name="depth" type="float" value="4"/>
+   <property name="name" value="brick 2"/>
+   <property name="secret" value=""/>
+   <property name="secret length" type="int" value="0"/>
+  </properties>
+ </tile>
+ <tile id="36">
+  <properties>
+   <property name="depth" type="float" value="4"/>
+   <property name="name" value="brick 3"/>
+   <property name="secret" value=""/>
+   <property name="secret length" type="int" value="0"/>
+  </properties>
+ </tile>
+ <tile id="48">
+  <properties>
+   <property name="depth" type="float" value="4"/>
+   <property name="name" value="cliff 1"/>
+   <property name="secret" value=""/>
+   <property name="secret length" type="int" value="0"/>
+  </properties>
+ </tile>
+ <tile id="49">
+  <properties>
+   <property name="depth" type="float" value="4"/>
+   <property name="name" value="light big plates 1"/>
+   <property name="secret" value=""/>
+   <property name="secret length" type="int" value="0"/>
+  </properties>
+ </tile>
+ <tile id="50">
+  <properties>
+   <property name="depth" type="float" value="4"/>
+   <property name="name" value="hexagon 1"/>
+   <property name="secret" value=""/>
+   <property name="secret length" type="int" value="0"/>
+  </properties>
+ </tile>
+ <tile id="51">
+  <properties>
+   <property name="depth" type="float" value="4"/>
+   <property name="name" value="flag 2"/>
+   <property name="secret" value=""/>
+   <property name="secret length" type="int" value="0"/>
+  </properties>
+ </tile>
+ <tile id="52">
+  <properties>
+   <property name="depth" type="float" value="4"/>
+   <property name="name" value="flag 3"/>
+   <property name="secret" value=""/>
+   <property name="secret length" type="int" value="0"/>
+  </properties>
+ </tile>
+ <tile id="64">
+  <properties>
+   <property name="depth" type="float" value="4"/>
+   <property name="name" value="flag 1"/>
    <property name="secret" value=""/>
    <property name="secret length" type="int" value="0"/>
   </properties>

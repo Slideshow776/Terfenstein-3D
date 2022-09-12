@@ -105,7 +105,10 @@ public class MapLoader {
         Array<String> tileTextures = new Array<>();
         tileTextures.add("big plates", "lonplate", "light big plates", "light lonplate");
         tileTextures.add("lights 0", "flag 0", "elevator wall", "light lonplate 2");
-        tileTextures.add("hexgon 0");
+        tileTextures.add("hexagon 0", "hexagon 1", "brick 0", "brick 1");
+        tileTextures.add("brick 2", "brick 3", "cliff 0", "cliff 1");
+        tileTextures.add("light big plates 1", "flag 1", "flag 2", "flag 3");
+        tileTextures.add("blank");
 
         for (String type : tileTypes) {
             for (String texture : tileTextures) {
@@ -330,7 +333,7 @@ public class MapLoader {
 
     private void initializeProps() {
         Array<String> types = new Array<>();
-        types.add("computer 0", "suitcase 0");
+        types.add("computer 0", "suitcase 0", "statue 0");
 
         for (String type : types) {
             for (MapObject obj : tilemap.getTileList("props", type)) {

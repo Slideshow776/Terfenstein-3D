@@ -2242,7 +2242,7 @@ pickups/shotgun
   index: -1
 
 images.pack13.png
-size: 128, 64
+size: 128, 128
 format: RGBA8888
 filter: Nearest, Nearest
 repeat: none
@@ -2253,92 +2253,176 @@ props/computer 0
   orig: 33, 33
   offset: 0, 0
   index: -1
+props/statue 0
+  rotate: false
+  xy: 2, 37
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
 props/suitcase 0
   rotate: false
-  xy: 37, 3
+  xy: 68, 69
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 
 images.pack14.png
-size: 1024, 128
+size: 512, 256
 format: RGBA8888
 filter: Nearest, Nearest
 repeat: none
 tiles/big plates
   rotate: false
+  xy: 2, 137
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+tiles/blank
+  rotate: false
   xy: 2, 2
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+tiles/brick 0
+  rotate: false
+  xy: 2, 71
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+tiles/brick 1
+  rotate: false
+  xy: 68, 137
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+tiles/brick 2
+  rotate: false
+  xy: 2, 5
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+tiles/brick 3
+  rotate: false
+  xy: 68, 71
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 tiles/circles0
   rotate: false
-  xy: 68, 2
+  xy: 134, 137
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/cliff0
+tiles/cliff 0
   rotate: false
-  xy: 134, 2
+  xy: 68, 5
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+tiles/cliff 1
+  rotate: false
+  xy: 134, 71
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 tiles/elevator wall
   rotate: false
-  xy: 200, 2
+  xy: 200, 137
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 tiles/flag 0
   rotate: false
-  xy: 266, 2
+  xy: 134, 5
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/hexgon 0
+tiles/flag 1
   rotate: false
-  xy: 332, 2
+  xy: 200, 71
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+tiles/flag 2
+  rotate: false
+  xy: 266, 137
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+tiles/flag 3
+  rotate: false
+  xy: 200, 5
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+tiles/hexagon 0
+  rotate: false
+  xy: 266, 71
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+tiles/hexagon 1
+  rotate: false
+  xy: 332, 137
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 tiles/light big plates
   rotate: false
-  xy: 398, 2
+  xy: 266, 5
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+tiles/light big plates 1
+  rotate: false
+  xy: 332, 71
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 tiles/light lonplate
   rotate: false
-  xy: 464, 2
+  xy: 398, 137
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 tiles/light lonplate 2
   rotate: false
-  xy: 530, 2
+  xy: 332, 5
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 tiles/lights 0
   rotate: false
-  xy: 596, 2
+  xy: 398, 71
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 tiles/lonplate
   rotate: false
-  xy: 662, 2
+  xy: 398, 5
   size: 64, 64
   orig: 64, 64
   offset: 0, 0

@@ -88,7 +88,7 @@ public class Face extends BaseActor {
 
     private void setDelayedStAnimation() {
         addAction(Actions.sequence(
-                Actions.delay(1f),
+                Actions.delay(2f),
                 Actions.run(() -> setSTAnimation(healthIndex))
         ));
     }

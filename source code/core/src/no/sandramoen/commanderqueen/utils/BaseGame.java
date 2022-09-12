@@ -16,6 +16,8 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 
+import no.sandramoen.commanderqueen.screens.gameplay.LevelScreen;
+
 public abstract class BaseGame extends Game implements AssetErrorListener {
 
     private static BaseGame game;
@@ -24,6 +26,7 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
     // game assets
     public static TextureAtlas textureAtlas;
     public static Skin mySkin;
+    public static LevelScreen levelScreen;
 
     public static String defaultShader;
     public static String shockwaveShader;
@@ -36,6 +39,7 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
 
     public static Music level0Music;
     public static Music metalWalkingMusic;
+    public static Music ambientFanMusic;
 
     public static Sound pistolShotSound;
     public static Sound menigActiveSound;
@@ -70,6 +74,8 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
     public static Sound chaingunPowerDownSound;
     public static Sound keySound;
     public static Sound doorUnlockedSound;
+    public static Sound doorLockedSound;
+    public static Sound weaponPickupSound;
 
     // game state
     public static Preferences preferences;
@@ -154,6 +160,7 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
         // music
         assetManager.load("audio/music/342991__furbyguy__stuttering-guitar-metal.wav", Music.class);
         assetManager.load("audio/music/398937__mypantsfelldown__metal-footsteps.wav", Music.class);
+        assetManager.load("audio/music/249738__adrilahan__fan.wav", Music.class);
 
         // sound
         assetManager.load("audio/sound/370220__eflexmusic__pistol-shot-close-mixed.wav", Sound.class);
@@ -189,6 +196,8 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
         assetManager.load("audio/sound/395378__skylar1146__machinepoweroff.wav", Sound.class);
         assetManager.load("audio/sound/563519__gdog1622__keys-metalretrieve-trimmed-01.wav", Sound.class);
         assetManager.load("audio/sound/131438__skydran__keys-on-door-and-open.wav", Sound.class);
+        assetManager.load("audio/sound/391724__jpolito__jp-circuitbox-locked01.wav", Sound.class);
+        assetManager.load("audio/sound/433563__burghrecords__cinematic-impact-intro-01.wav", Sound.class);
 
         // tiled maps
         assetManager.setLoader(TiledMap.class, new TmxMapLoader(new InternalFileHandleResolver()));
@@ -208,6 +217,7 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
         // music
         level0Music = assetManager.get("audio/music/342991__furbyguy__stuttering-guitar-metal.wav", Music.class);
         metalWalkingMusic = assetManager.get("audio/music/398937__mypantsfelldown__metal-footsteps.wav", Music.class);
+        ambientFanMusic = assetManager.get("audio/music/249738__adrilahan__fan.wav", Music.class);
 
         // sound
         pistolShotSound = assetManager.get("audio/sound/370220__eflexmusic__pistol-shot-close-mixed.wav", Sound.class);
@@ -243,6 +253,8 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
         chaingunPowerDownSound = assetManager.get("audio/sound/395378__skylar1146__machinepoweroff.wav", Sound.class);
         keySound = assetManager.get("audio/sound/563519__gdog1622__keys-metalretrieve-trimmed-01.wav", Sound.class);
         doorUnlockedSound = assetManager.get("audio/sound/131438__skydran__keys-on-door-and-open.wav", Sound.class);
+        doorLockedSound = assetManager.get("audio/sound/391724__jpolito__jp-circuitbox-locked01.wav", Sound.class);
+        weaponPickupSound = assetManager.get("audio/sound/433563__burghrecords__cinematic-impact-intro-01.wav", Sound.class);
 
         // tiled maps
         testMap = assetManager.get("maps/test.tmx", TiledMap.class);
