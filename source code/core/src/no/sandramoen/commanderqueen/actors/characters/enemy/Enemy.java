@@ -220,7 +220,7 @@ public class Enemy extends BaseActor3D {
             isActive = true;
             playActivateSound();
         }
-        if (goingTo == null || source == player)
+        if (source != null && (goingTo == null || source == player))
             setNewAIPath(source);
     }
 
@@ -234,6 +234,8 @@ public class Enemy extends BaseActor3D {
             findPlayer();
         } else if (health <= 0)
             die();
+        if (!isActive)
+            activate(null);
     }
 
     public void forceMoveAwayFrom(BaseActor3D source) {

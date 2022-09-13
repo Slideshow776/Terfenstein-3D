@@ -13,19 +13,21 @@ public class Tile extends BaseActor3D {
 
     public int index;
     public String type;
-    public boolean isOpeningSecret;
+    public boolean isAIpath;
 
     public String secretMovementDirection;
+    private boolean isOpeningSecret;
     private float speed = .04f;
     private long secretSoundID;
     private Vector3 originalPosition;
     private int secretLength;
 
-    public Tile(float y, float z, float width, float height, float depth, String type, String texture, Stage3D stage3D, float rotation, String secretMovementDirection, int secretLength) {
+    public Tile(float y, float z, float width, float height, float depth, String type, String texture, Stage3D stage3D, float rotation, String secretMovementDirection, int secretLength, boolean isAIpath) {
         super(0, y, z, stage3D);
         this.type = type;
         this.secretMovementDirection = secretMovementDirection;
         this.secretLength = secretLength;
+        this.isAIpath = isAIpath;
 
         if (texture.equalsIgnoreCase("blank"))
             buildModel(width, height, depth, true);

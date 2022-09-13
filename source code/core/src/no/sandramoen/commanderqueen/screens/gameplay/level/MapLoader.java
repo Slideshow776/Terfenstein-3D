@@ -124,11 +124,13 @@ public class MapLoader {
                     float depth = props.get("depth", Float.class);
                     String secretMovementDirection = (String) props.get("secret");
                     int secretLength = props.get("secret length", Integer.class);
-                    if (secretLength == 0) secretLength = 1;
                     if (!secretMovementDirection.isEmpty())
                         LevelScreen.numSecrets++;
+                    boolean isAIpath = true;
+                    if (props.get("isAIpath", Boolean.class) != null)
+                        isAIpath = props.get("isAIpath", Boolean.class);
 
-                    Tile tile = new Tile(y, z, width, depth, height, type, texture, stage3D, rotation, secretMovementDirection, secretLength);
+                    Tile tile = new Tile(y, z, width, depth, height, type, texture, stage3D, rotation, secretMovementDirection, secretLength, isAIpath);
                     tiles.add(tile);
                     shootable.add(tile);
 
@@ -146,7 +148,7 @@ public class MapLoader {
     private void addTilesToAIGraph() {
         tileGraph = new TileGraph();
         for (Tile tile : tiles)
-            if (tile.type == "U1") {
+            if (tile.type == "U1" && tile.isAIpath) {
                 tileGraph.addTile(tile);
                 floorTiles.add(tile);
             }

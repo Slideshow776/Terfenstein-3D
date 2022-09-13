@@ -99,6 +99,7 @@ public class WeaponHandler extends BaseActor {
 
             isReadyCounter = -.25f;
             setPosition();
+            moveUp();
             return true;
         } else if (i >= 0 && i < weapons.size && !weapons.get(i).isAvailable) {
             Gdx.app.error(getClass().getSimpleName(), "Error: " + weapons.get(i).getClass().getSimpleName() + " is not available");
@@ -176,15 +177,6 @@ public class WeaponHandler extends BaseActor {
         return new Vector2(maxSpreadX, maxSpreadY);
     }
 
-    public void sway(boolean isMoving) {
-        if (!hasActions() && isMoving) {
-            addAction(getSwayAction());
-        } else if (!isMoving) {
-            clearActions();
-            addAction(Actions.moveTo(restPosition.x, restPosition.y, .5f));
-        }
-    }
-
     public void moveDown() {
         clearActions();
         addAction(Actions.moveBy(0, -getHeight(), 1f));
@@ -226,7 +218,16 @@ public class WeaponHandler extends BaseActor {
         }
     }
 
-    private RepeatAction getSwayAction() {
+    private void sway(boolean isMoving) {
+        if (!hasActions() && isMoving) {
+            addAction(sway());
+        } else if (!isMoving) {
+            clearActions();
+            addAction(Actions.moveTo(restPosition.x, restPosition.y, .5f));
+        }
+    }
+
+    private RepeatAction sway() {
         return Actions.forever(Actions.sequence(
                 Actions.moveBy(Gdx.graphics.getWidth() * swayAmount, Gdx.graphics.getHeight() * swayAmount, swayFrequency),
                 Actions.moveBy(-Gdx.graphics.getWidth() * 2 * swayAmount, -Gdx.graphics.getHeight() * 2 * swayAmount, 2 * swayFrequency),

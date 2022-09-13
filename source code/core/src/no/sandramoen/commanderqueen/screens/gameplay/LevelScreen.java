@@ -95,7 +95,8 @@ public class LevelScreen extends BaseScreen3D {
         PAR_TIME = parTime;
         tiledMap = map;
 
-        /*GameUtils.playLoopingMusic(BaseGame.level0Music);*/
+
+        playLevelMusic();
         GameUtils.playLoopingMusic(BaseGame.ambientFanMusic);
         BaseGame.ambientFanMusic.setPosition(MathUtils.random(0, 15));
         GameUtils.playLoopingMusic(BaseGame.metalWalkingMusic, 0);
@@ -132,7 +133,7 @@ public class LevelScreen extends BaseScreen3D {
         totalTime += dt;
         checkGameOverCondition();
 
-        TileHandler.updateTiles(dt, tiles, player);
+        TileHandler.updateTiles(dt, tiles, player, uiHandler);
         EnemyHandler.update(enemies, tiles, doors, projectiles, player, shootable, hud, tileShades);
 
         shadeHandler();
@@ -159,6 +160,7 @@ public class LevelScreen extends BaseScreen3D {
     @Override
     public boolean keyDown(int keycode) {
         if (keycode == Keys.ESCAPE || keycode == Keys.Q) {
+            stopLevel();
             BaseGame.levelScreen = this;
             BaseGame.setActiveScreen(new MenuScreen());
         } else if (keycode == Keys.R)
@@ -239,6 +241,23 @@ public class LevelScreen extends BaseScreen3D {
         if (!Gdx.input.isCursorCatched())
             Gdx.input.setCursorCatched(true);
         totalTime = 0;
+        playLevelMusic();
+    }
+
+    private void playLevelMusic() {
+        BaseGame.menuMusic.stop();
+        BaseGame.levelFinishMusic.stop();
+
+        if (numLevel.equalsIgnoreCase("level 1"))
+            GameUtils.playLoopingMusic(BaseGame.level1Music);
+        else if (numLevel.equalsIgnoreCase("level 2"))
+            GameUtils.playLoopingMusic(BaseGame.level2Music);
+        else if (numLevel.equalsIgnoreCase("level 3"))
+            GameUtils.playLoopingMusic(BaseGame.level3Music);
+        else if (numLevel.equalsIgnoreCase("level 4"))
+            GameUtils.playLoopingMusic(BaseGame.level4Music);
+        else if (numLevel.equalsIgnoreCase("level 5"))
+            GameUtils.playLoopingMusic(BaseGame.level5Music);
     }
 
     private void mouseButtonPolling() {
@@ -421,7 +440,12 @@ public class LevelScreen extends BaseScreen3D {
 
     private void stopLevel() {
         BaseGame.metalWalkingMusic.stop();
-        BaseGame.level0Music.stop();
+        BaseGame.menuMusic.stop();
+        BaseGame.level1Music.stop();
+        BaseGame.level2Music.stop();
+        BaseGame.level3Music.stop();
+        BaseGame.level4Music.stop();
+        BaseGame.level5Music.stop();
         BaseGame.ambientFanMusic.stop();
     }
 
@@ -429,6 +453,14 @@ public class LevelScreen extends BaseScreen3D {
         Array levelData = new Array();
         if (numLevel.equalsIgnoreCase("level 1"))
             levelData.add("Hangar");
+        else if (numLevel.equalsIgnoreCase("level 2"))
+            levelData.add("Loading Bay");
+        else if (numLevel.equalsIgnoreCase("level 3"))
+            levelData.add("Complex");
+        else if (numLevel.equalsIgnoreCase("level 4"))
+            levelData.add("Great Hall");
+        else if (numLevel.equalsIgnoreCase("level 5"))
+            levelData.add("Bunkers");
         else
             levelData.add("Test");
         levelData.add((int) ((1 - (enemies.size / (float) numEnemies)) * 100));
@@ -436,7 +468,21 @@ public class LevelScreen extends BaseScreen3D {
         levelData.add((int) ((foundSecrets / (float) numSecrets) * 100));
         levelData.add(totalTime);
         levelData.add(PAR_TIME);
+        levelData.add(getNextLevelName());
         return levelData;
+    }
+
+    private String getNextLevelName() {
+        if (numLevel.equalsIgnoreCase("level 1"))
+            return "Loading Bay";
+        else if (numLevel.equalsIgnoreCase("level 2"))
+            return "Complex";
+        else if (numLevel.equalsIgnoreCase("level 3"))
+            return "Great Hall";
+        else if (numLevel.equalsIgnoreCase("level 4"))
+            return "Bunkers";
+        else
+            return "Test";
     }
 
     private void levelFinished() {

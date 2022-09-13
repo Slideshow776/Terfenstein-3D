@@ -17,7 +17,7 @@ public class TileHandler {
     private static float PLAYER_PUSH_FREQUENCY = .5f;
     private static boolean isPlayerReadyToPush;
 
-    public static void updateTiles(float dt, Array<Tile> tiles, Player player) {
+    public static void updateTiles(float dt, Array<Tile> tiles, Player player, UIHandler uiHandler) {
         for (Tile tile : tiles) {
             if (tile.type.equalsIgnoreCase("1st floor") && player.overlaps(tile))
                 player.preventOverlap(tile);
@@ -26,6 +26,7 @@ public class TileHandler {
                 if (!tile.secretMovementDirection.isEmpty() && !tile.isSecretTriggered()) {
                     LevelScreen.foundSecrets++;
                     player.shakeyCam(1.5f, .2f);
+                    uiHandler.setPickupLabel("You found a secret!", true);
                 }
                 BaseGame.playerUgh.play(BaseGame.soundVolume, MathUtils.random(.9f, 1.1f), 0);
                 isPlayerReadyToPush = false;

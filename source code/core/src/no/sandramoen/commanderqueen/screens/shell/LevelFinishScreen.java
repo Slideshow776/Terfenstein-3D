@@ -12,12 +12,17 @@ import no.sandramoen.commanderqueen.actors.weapon.weapons.Weapon;
 import no.sandramoen.commanderqueen.screens.gameplay.LevelScreen;
 import no.sandramoen.commanderqueen.utils.BaseGame;
 import no.sandramoen.commanderqueen.utils.BaseScreen;
+import no.sandramoen.commanderqueen.utils.GameUtils;
 
 public class LevelFinishScreen extends BaseScreen {
     private boolean isEnteringState;
 
     private Image mapImage = new Image(BaseGame.textureAtlas.findRegion("level finished/map0"));
-    private Image explosionImage = new Image(BaseGame.textureAtlas.findRegion("level finished/explosion"));
+    private Image explosionImage0 = new Image(BaseGame.textureAtlas.findRegion("level finished/explosion"));
+    private Image explosionImage1 = new Image(BaseGame.textureAtlas.findRegion("level finished/explosion"));
+    private Image explosionImage2 = new Image(BaseGame.textureAtlas.findRegion("level finished/explosion"));
+    private Image explosionImage3 = new Image(BaseGame.textureAtlas.findRegion("level finished/explosion"));
+    private Image explosionImage4 = new Image(BaseGame.textureAtlas.findRegion("level finished/explosion"));
     private Image youAreHereImage = new Image(BaseGame.textureAtlas.findRegion("level finished/you are here"));
 
     private TypingLabel nameLabel;
@@ -55,6 +60,7 @@ public class LevelFinishScreen extends BaseScreen {
     private int shells;
     private Array<Weapon> weapons;
     private String numLevel;
+    private String levelName;
 
     public LevelFinishScreen(Array args, String numLevel, int health, int armor, int bullets, int shells, Array<Weapon> weapons) {
         this.numLevel = numLevel;
@@ -64,11 +70,13 @@ public class LevelFinishScreen extends BaseScreen {
         this.shells = shells;
         this.weapons = weapons;
 
-        if (args.size != 6)
+        if (args.size != 7)
             Gdx.app.error(getClass().getSimpleName(), "Error: Missing level data, size is " + args.size);
+        levelName = (String) args.get(6);
 
         initializeLabels(args);
         initializeImages();
+        GameUtils.playLoopingMusic(BaseGame.levelFinishMusic);
     }
 
     @Override
@@ -125,23 +133,28 @@ public class LevelFinishScreen extends BaseScreen {
     private void playCountingUpSound(boolean finished, float dt) {
         if (finished) {
             BaseGame.pistolShotSound.stop(pistolSoundID);
-            BaseGame.pistolShotSound.play(BaseGame.soundVolume, .5f, 0);
+            BaseGame.pistolShotSound.play(BaseGame.soundVolume * .5f, .5f, 0);
             count = -.5f;
         } else if (soundCount >= SOUND_COUNT_FREQUENCY) {
             soundCount = 0;
-            pistolSoundID = BaseGame.pistolShotSound.play(BaseGame.soundVolume * .5f, 1.5f, 0);
+            pistolSoundID = BaseGame.pistolShotSound.play(BaseGame.soundVolume * .25f, 1.5f, 0);
         } else {
             soundCount += dt;
         }
     }
 
     private void inputReaction() {
-        if (killCount < kills || itemCount < items || secretCount < secrets || timeCount < time || parCount < par)
+        if (killCount < kills || itemCount < items || secretCount < secrets || timeCount < time || parCount < par) {
             setAllArgsInstantlyVisible();
-        else if (!isEnteringState)
+        } else if (!isEnteringState) {
+            if (numLevel.equalsIgnoreCase("level 5")) {
+                BaseGame.levelScreen = null;
+                BaseGame.setActiveScreen(new MenuScreen());
+            }
             showEnteringState();
-        else
+        } else {
             setNewScreen();
+        }
     }
 
     private TypingLabel initializeTypingLabel(String string) {
@@ -179,7 +192,7 @@ public class LevelFinishScreen extends BaseScreen {
         isEnteringState = true;
         nameLabel.setText("Entering");
         nameLabel.setColor(BaseGame.whiteColor);
-        statusLabel.setText("Nuclear Plant");
+        statusLabel.setText(levelName);
         statusLabel.setColor(BaseGame.redColor);
 
         killNameLabel.setText("");
@@ -197,7 +210,7 @@ public class LevelFinishScreen extends BaseScreen {
                 Actions.alpha(1, .5f)
 
         )));
-        explosionImage.setVisible(true);
+        explosionImage0.setVisible(true);
         pistolSoundID = BaseGame.pistolShotSound.play(BaseGame.soundVolume, .5f, 0);
     }
 
@@ -212,6 +225,8 @@ public class LevelFinishScreen extends BaseScreen {
             BaseGame.setActiveScreen(new LevelScreen(95, BaseGame.level3Map, "level 3", health, armor, bullets, shells, weapons));
         else if (numLevel.equalsIgnoreCase("level 3"))
             BaseGame.setActiveScreen(new LevelScreen(95, BaseGame.level4Map, "level 4", health, armor, bullets, shells, weapons));
+        else if (numLevel.equalsIgnoreCase("level 4"))
+            BaseGame.setActiveScreen(new LevelScreen(95, BaseGame.level5Map, "level 5", health, armor, bullets, shells, weapons));
     }
 
     private String formatTime(float time) {
@@ -292,9 +307,17 @@ public class LevelFinishScreen extends BaseScreen {
         youAreHereImage.setPosition(Gdx.graphics.getWidth() * .51f, Gdx.graphics.getHeight() * .35f);
         mainStage.addActor(youAreHereImage);
 
-        explosionImage.setVisible(false);
-        explosionImage.setSize(Gdx.graphics.getWidth() * .05f, Gdx.graphics.getHeight() * .05f);
-        explosionImage.setPosition(Gdx.graphics.getWidth() * .48f, Gdx.graphics.getHeight() * .54f);
-        mainStage.addActor(explosionImage);
+        imageSetup(explosionImage0);
+        imageSetup(explosionImage1);
+        imageSetup(explosionImage2);
+        imageSetup(explosionImage3);
+        imageSetup(explosionImage4);
+    }
+
+    private void imageSetup(Image image) {
+        image.setVisible(false);
+        image.setSize(Gdx.graphics.getWidth() * .05f, Gdx.graphics.getHeight() * .05f);
+        image.setPosition(Gdx.graphics.getWidth() * .48f, Gdx.graphics.getHeight() * .54f);
+        mainStage.addActor(image);
     }
 }

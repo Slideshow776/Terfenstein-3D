@@ -3,6 +3,7 @@ package no.sandramoen.commanderqueen.actors.characters;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
@@ -37,6 +38,8 @@ public class Player extends BaseActor3D {
     private final float ROLL_ANGLE_MAX = .8f;
     private final float ROLL_INCREMENT = .02f;
 
+    private Vector2 lastPosition;
+
     public Player(float y, float z, Stage3D stage3D, float rotation, Stage stage) {
         super(0, y, z, stage3D);
         this.stage3D = stage3D;
@@ -49,6 +52,7 @@ public class Player extends BaseActor3D {
 
         stage3D.camera.position.y = position.y;
         stage3D.camera.position.z = position.z;
+        lastPosition = new Vector2(getPosition().y, getPosition().z);
     }
 
     @Override
@@ -72,6 +76,7 @@ public class Player extends BaseActor3D {
         else
             headBobbing(dt);
 
+        checkIfMoving();
         if (isMoving)
             BaseGame.metalWalkingMusic.setVolume(BaseGame.soundVolume);
         else
@@ -137,32 +142,20 @@ public class Player extends BaseActor3D {
     private void keyboardPolling(float dt) {
         if (Gdx.input.isKeyPressed(Keys.W)) {
             moveForward(-movementSpeed * dt);
-            isMoving = true;
-        } else {
-            isMoving = false;
         }
 
         if (Gdx.input.isKeyPressed(Keys.A)) {
             moveRight(movementSpeed * dt);
-            isMoving = true;
             rollAngle = MathUtils.clamp(rollAngle -= ROLL_INCREMENT, -ROLL_ANGLE_MAX, ROLL_ANGLE_MAX);
-        } else {
-            isMoving = false;
         }
 
         if (Gdx.input.isKeyPressed(Keys.S)) {
             moveForward(movementSpeed * dt);
-            isMoving = true;
-        } else {
-            isMoving = false;
         }
 
         if (Gdx.input.isKeyPressed(Keys.D)) {
             moveRight(-movementSpeed * dt);
-            isMoving = true;
             rollAngle = MathUtils.clamp(rollAngle += ROLL_INCREMENT, -ROLL_ANGLE_MAX, ROLL_ANGLE_MAX);
-        } else {
-            isMoving = false;
         }
 
         if (!Gdx.input.isKeyPressed(Keys.A) && !Gdx.input.isKeyPressed(Keys.D))
@@ -188,5 +181,14 @@ public class Player extends BaseActor3D {
 
         if (Gdx.input.getDeltaX() < 300)
             turnPlayer(rotateSpeed * Gdx.input.getDeltaX() * BaseGame.mouseMovementSensitivity);
+    }
+
+    private void checkIfMoving() {
+        if (position.y != lastPosition.x || position.z != lastPosition.y)
+            isMoving = true;
+        else isMoving = false;
+
+        lastPosition.x = getPosition().y;
+        lastPosition.y = getPosition().z;
     }
 }

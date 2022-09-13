@@ -1524,20 +1524,65 @@
   <object id="75008" gid="130" x="1216" y="1728" width="64" height="64" rotation="90"/>
   <object id="75009" gid="130" x="1280" y="1728" width="64" height="64" rotation="90"/>
   <object id="75010" gid="130" x="1344" y="1728" width="64" height="64" rotation="90"/>
-  <object id="75767" gid="130" x="2176" y="704" width="64" height="64"/>
-  <object id="75768" gid="130" x="2176" y="640" width="64" height="64"/>
-  <object id="75769" gid="130" x="2176" y="576" width="64" height="64"/>
-  <object id="75770" gid="130" x="2176" y="512" width="64" height="64"/>
-  <object id="75771" gid="130" x="2176" y="448" width="64" height="64"/>
-  <object id="75772" gid="130" x="2176" y="384" width="64" height="64"/>
-  <object id="75773" gid="130" x="2176" y="320" width="64" height="64"/>
-  <object id="75774" gid="130" x="2176" y="256" width="64" height="64"/>
-  <object id="75775" gid="130" x="2176" y="192" width="64" height="64"/>
-  <object id="75776" gid="130" x="2176" y="128" width="64" height="64"/>
-  <object id="75777" gid="130" x="2176" y="64" width="64" height="64"/>
+  <object id="75767" gid="130" x="2176" y="704" width="64" height="64">
+   <properties>
+    <property name="isAIpath" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="75768" gid="130" x="2176" y="640" width="64" height="64">
+   <properties>
+    <property name="isAIpath" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="75769" gid="130" x="2176" y="576" width="64" height="64">
+   <properties>
+    <property name="isAIpath" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="75770" gid="130" x="2176" y="512" width="64" height="64">
+   <properties>
+    <property name="isAIpath" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="75771" gid="130" x="2176" y="448" width="64" height="64">
+   <properties>
+    <property name="isAIpath" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="75772" gid="130" x="2176" y="384" width="64" height="64">
+   <properties>
+    <property name="isAIpath" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="75773" gid="130" x="2176" y="320" width="64" height="64">
+   <properties>
+    <property name="isAIpath" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="75774" gid="130" x="2176" y="256" width="64" height="64">
+   <properties>
+    <property name="isAIpath" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="75775" gid="130" x="2176" y="192" width="64" height="64">
+   <properties>
+    <property name="isAIpath" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="75776" gid="130" x="2176" y="128" width="64" height="64">
+   <properties>
+    <property name="isAIpath" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="75777" gid="130" x="2176" y="64" width="64" height="64">
+   <properties>
+    <property name="isAIpath" type="bool" value="false"/>
+   </properties>
+  </object>
   <object id="75797" gid="130" x="2187.1" y="42.8807" width="64.0541" height="65.0234" rotation="300">
    <properties>
     <property name="depth" type="float" value="4.2"/>
+    <property name="isAIpath" type="bool" value="false"/>
    </properties>
   </object>
   <object id="75826" gid="130" x="3431.14" y="2005.7" width="64" height="64"/>
@@ -1928,15 +1973,51 @@
   <object id="76841" gid="130" x="1280" y="2880" width="64" height="64"/>
   <object id="76842" gid="130" x="1216" y="2880" width="64" height="64"/>
   <object id="76843" gid="130" x="1408" y="2832" width="64" height="32"/>
-  <object id="77131" gid="130" x="1342.63" y="4160" width="72.25" height="64"/>
-  <object id="77132" gid="130" x="1342.63" y="4096" width="71.75" height="64"/>
-  <object id="77133" gid="130" x="1344" y="4032" width="64" height="64"/>
-  <object id="77134" gid="130" x="1344" y="3968" width="64" height="64"/>
-  <object id="77135" gid="130" x="1344" y="3904" width="64" height="64"/>
-  <object id="77136" gid="130" x="1344" y="3840" width="64" height="64"/>
-  <object id="77137" gid="130" x="1344" y="3776" width="64" height="64"/>
-  <object id="77138" gid="130" x="1344" y="3712" width="64" height="64"/>
-  <object id="77139" gid="130" x="1344" y="3648" width="64" height="64"/>
+  <object id="77131" gid="130" x="1342.63" y="4160" width="72.25" height="64">
+   <properties>
+    <property name="isAIpath" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="77132" gid="130" x="1342.63" y="4096" width="71.75" height="64">
+   <properties>
+    <property name="isAIpath" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="77133" gid="130" x="1344" y="4032" width="64" height="64">
+   <properties>
+    <property name="isAIpath" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="77134" gid="130" x="1344" y="3968" width="64" height="64">
+   <properties>
+    <property name="isAIpath" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="77135" gid="130" x="1344" y="3904" width="64" height="64">
+   <properties>
+    <property name="isAIpath" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="77136" gid="130" x="1344" y="3840" width="64" height="64">
+   <properties>
+    <property name="isAIpath" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="77137" gid="130" x="1344" y="3776" width="64" height="64">
+   <properties>
+    <property name="isAIpath" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="77138" gid="130" x="1344" y="3712" width="64" height="64">
+   <properties>
+    <property name="isAIpath" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="77139" gid="130" x="1344" y="3648" width="64" height="64">
+   <properties>
+    <property name="isAIpath" type="bool" value="false"/>
+   </properties>
+  </object>
   <object id="77172" gid="130" x="1408" y="128" width="64" height="64"/>
   <object id="77173" gid="130" x="1472" y="128" width="64" height="64"/>
   <object id="77174" gid="130" x="1472" y="64" width="64" height="64"/>
@@ -1944,22 +2025,48 @@
   <object id="77176" gid="130" x="1536" y="128" width="64" height="64"/>
   <object id="77177" gid="130" x="1536" y="192" width="64" height="64"/>
   <object id="77178" gid="130" x="1472" y="192" width="64" height="64"/>
-  <object id="78989" gid="133" x="3407.38" y="2378.11" width="64" height="64" rotation="15"/>
-  <object id="78990" gid="133" x="3345.91" y="2361.67" width="64" height="64" rotation="15"/>
-  <object id="78991" gid="133" x="3284.82" y="2345.31" width="64" height="64" rotation="15"/>
-  <object id="78992" gid="133" x="3223.82" y="2328.95" width="64" height="64" rotation="15"/>
-  <object id="78993" gid="133" x="3072" y="2304" width="64" height="64"/>
+  <object id="78989" gid="133" x="3407.38" y="2378.11" width="64" height="64" rotation="15">
+   <properties>
+    <property name="isAIpath" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="78990" gid="133" x="3345.91" y="2361.67" width="64" height="64" rotation="15">
+   <properties>
+    <property name="isAIpath" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="78991" gid="133" x="3284.82" y="2345.31" width="64" height="64" rotation="15">
+   <properties>
+    <property name="isAIpath" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="78992" gid="133" x="3223.82" y="2328.95" width="64" height="64" rotation="15">
+   <properties>
+    <property name="isAIpath" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="78993" gid="133" x="3072" y="2304" width="64" height="64">
+   <properties>
+    <property name="isAIpath" type="bool" value="false"/>
+   </properties>
+  </object>
   <object id="78994" gid="133" x="3162.04" y="2312.39" width="64" height="64" rotation="15">
    <properties>
     <property name="depth" type="float" value="4.1"/>
+    <property name="isAIpath" type="bool" value="false"/>
    </properties>
   </object>
   <object id="78995" gid="133" x="3141.63" y="2299.88" width="75.25" height="72.25">
    <properties>
     <property name="depth" type="float" value="3.9"/>
+    <property name="isAIpath" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="79039" gid="133" x="3008" y="2304" width="64" height="64"/>
+  <object id="79039" gid="133" x="3008" y="2304" width="64" height="64">
+   <properties>
+    <property name="isAIpath" type="bool" value="false"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="11" name="1st floor">
   <object id="71495" gid="147" x="3431.15" y="2261.71" width="64" height="64"/>
@@ -2866,7 +2973,7 @@
   </object>
   <object id="79037" gid="133" x="3082.5" y="2367.36" width="85" height="65.2727"/>
  </objectgroup>
- <objectgroup id="17" name="2nd floor" visible="0">
+ <objectgroup id="17" name="2nd floor">
   <object id="73296" gid="178" x="3431.15" y="2261.71" width="64" height="64"/>
   <object id="73297" gid="178" x="3431.15" y="2197.71" width="64" height="64"/>
   <object id="73298" gid="178" x="3431.15" y="2133.71" width="64" height="64"/>
@@ -3491,12 +3598,12 @@
   <object id="75653" gid="147" x="960" y="896" width="64" height="64"/>
   <object id="75726" gid="165" x="1216" y="768" width="64" height="64"/>
   <object id="75727" gid="165" x="1344" y="768" width="64" height="64"/>
-  <object id="75810" gid="177" x="2176" y="714.807" width="64" height="43.375">
+  <object id="75810" gid="177" x="2178" y="714.807" width="85" height="43.375">
    <properties>
     <property name="depth" type="float" value="3.9"/>
    </properties>
   </object>
-  <object id="75811" gid="177" x="2176" y="661.119" width="64" height="64"/>
+  <object id="75811" gid="177" x="2178.25" y="661.119" width="84.5" height="64"/>
   <object id="75812" gid="177" x="2176" y="597.119" width="64" height="64"/>
   <object id="75813" gid="177" x="2176" y="533.119" width="64" height="64"/>
   <object id="75814" gid="177" x="2176" y="469.119" width="64" height="64"/>
@@ -5293,14 +5400,14 @@
   <object id="77061" gid="1" x="640" y="3072" width="64" height="64" rotation="90"/>
   <object id="77062" gid="1" x="1216" y="2880" width="64" height="64"/>
   <object id="77063" gid="1" x="1536" y="2880" width="64" height="64"/>
-  <object id="77064" gid="1" x="1152" y="3264" width="64" height="64"/>
+  <object id="77064" gid="1" x="1152" y="3264" width="64" height="64" rotation="210"/>
   <object id="77065" gid="1" x="1152" y="3392" width="64" height="64"/>
-  <object id="77066" gid="1" x="1152" y="3584" width="64" height="64"/>
-  <object id="77067" gid="1" x="1536" y="3392" width="64" height="64"/>
-  <object id="77068" gid="1" x="1536" y="3584" width="64" height="64"/>
-  <object id="77069" gid="1" x="1536" y="3264" width="64" height="64"/>
-  <object id="77072" gid="3" x="1280" y="3456" width="64" height="64"/>
-  <object id="77073" gid="3" x="1408" y="3456" width="64" height="64"/>
+  <object id="77066" gid="1" x="1152" y="3584" width="64" height="64" rotation="165"/>
+  <object id="77067" gid="1" x="1536" y="3392" width="64" height="64" rotation="75"/>
+  <object id="77068" gid="1" x="1536" y="3584" width="64" height="64" rotation="105"/>
+  <object id="77069" gid="1" x="1536" y="3264" width="64" height="64" rotation="90"/>
+  <object id="77072" gid="3" x="1280" y="3392" width="64" height="64" rotation="90"/>
+  <object id="77073" gid="3" x="1280" y="3520" width="64" height="64" rotation="80.5418"/>
   <object id="77079" gid="3" x="960" y="3584" width="64" height="64" rotation="90"/>
   <object id="77081" gid="3" x="960" y="3072" width="64" height="64" rotation="90"/>
   <object id="77082" gid="65" x="64" y="3328" width="64" height="64" rotation="90"/>
@@ -5330,7 +5437,7 @@
   <object id="77195" gid="3" x="2304" y="4096" width="64" height="64" rotation="255"/>
   <object id="77197" gid="3" x="2176" y="4096" width="64" height="64" rotation="255"/>
   <object id="77199" gid="3" x="576" y="-192" width="64" height="64" rotation="263.942"/>
-  <object id="77200" gid="19" x="-752" y="1696" width="928" height="3008">
+  <object id="77200" gid="19" x="-576.242" y="1489.94" width="1279.52" height="3420.12">
    <properties>
     <property name="color 0" type="color" value="#ff7c7c7c"/>
    </properties>

@@ -36,8 +36,15 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
     public static TiledMap level2Map;
     public static TiledMap level3Map;
     public static TiledMap level4Map;
+    public static TiledMap level5Map;
 
-    public static Music level0Music;
+    public static Music menuMusic;
+    public static Music levelFinishMusic;
+    public static Music level1Music;
+    public static Music level2Music;
+    public static Music level3Music;
+    public static Music level4Music;
+    public static Music level5Music;
     public static Music metalWalkingMusic;
     public static Music ambientFanMusic;
 
@@ -158,9 +165,15 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
         assetManager.load(new AssetDescriptor("shaders/shockwave.fs", Text.class, new TextLoader.TextParameter()));
 
         // music
-        assetManager.load("audio/music/342991__furbyguy__stuttering-guitar-metal.wav", Music.class);
         assetManager.load("audio/music/398937__mypantsfelldown__metal-footsteps.wav", Music.class);
         assetManager.load("audio/music/249738__adrilahan__fan.wav", Music.class);
+        assetManager.load("audio/music/584444__daniel-prellball__military-tank-music.wav", Music.class);
+        assetManager.load("audio/music/559485__code-box__battle-tactics.wav", Music.class);
+        assetManager.load("audio/music/595840__lagmusics__heavy-metal-looping.mp3", Music.class);
+        assetManager.load("audio/music/524240__badoink__hard-rock-loop.wav", Music.class);
+        assetManager.load("audio/music/587251__lagmusics__epic-and-aggressive-percussion.mp3", Music.class);
+        assetManager.load("audio/music/578908__lagmusics__virtual-heavy-metal.wav", Music.class);
+        assetManager.load("audio/music/457210__kiddpark__13-drum-cadences.wav", Music.class);
 
         // sound
         assetManager.load("audio/sound/370220__eflexmusic__pistol-shot-close-mixed.wav", Sound.class);
@@ -206,6 +219,7 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
         assetManager.load("maps/level 2.tmx", TiledMap.class);
         assetManager.load("maps/level 3.tmx", TiledMap.class);
         assetManager.load("maps/level 4.tmx", TiledMap.class);
+        assetManager.load("maps/level 5.tmx", TiledMap.class);
 
         assetManager.finishLoading();
 
@@ -215,7 +229,13 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
         shockwaveShader = assetManager.get("shaders/shockwave.fs", Text.class).getString();
 
         // music
-        level0Music = assetManager.get("audio/music/342991__furbyguy__stuttering-guitar-metal.wav", Music.class);
+        menuMusic = assetManager.get("audio/music/587251__lagmusics__epic-and-aggressive-percussion.mp3", Music.class);
+        levelFinishMusic = assetManager.get("audio/music/457210__kiddpark__13-drum-cadences.wav", Music.class);
+        level1Music = assetManager.get("audio/music/584444__daniel-prellball__military-tank-music.wav", Music.class);
+        level2Music = assetManager.get("audio/music/559485__code-box__battle-tactics.wav", Music.class);
+        level3Music = assetManager.get("audio/music/595840__lagmusics__heavy-metal-looping.mp3", Music.class);
+        level4Music = assetManager.get("audio/music/524240__badoink__hard-rock-loop.wav", Music.class);
+        level5Music = assetManager.get("audio/music/578908__lagmusics__virtual-heavy-metal.wav", Music.class);
         metalWalkingMusic = assetManager.get("audio/music/398937__mypantsfelldown__metal-footsteps.wav", Music.class);
         ambientFanMusic = assetManager.get("audio/music/249738__adrilahan__fan.wav", Music.class);
 
@@ -262,6 +282,7 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
         level2Map = assetManager.get("maps/level 2.tmx", TiledMap.class);
         level3Map = assetManager.get("maps/level 3.tmx", TiledMap.class);
         level4Map = assetManager.get("maps/level 4.tmx", TiledMap.class);
+        level5Map = assetManager.get("maps/level 5.tmx", TiledMap.class);
 
         textureAtlas = assetManager.get("images/included/packed/images.pack.atlas");
         GameUtils.printLoadingTime(getClass().getSimpleName(),"Assetmanager", startTime);

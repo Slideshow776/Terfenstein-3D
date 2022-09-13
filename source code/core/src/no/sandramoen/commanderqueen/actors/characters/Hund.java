@@ -3,6 +3,7 @@ package no.sandramoen.commanderqueen.actors.characters;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g3d.decals.DecalBatch;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Array;
 
@@ -32,13 +33,13 @@ public class Hund extends Enemy {
 
     @Override
     public void die() {
-        GameUtils.playSoundRelativeToDistance(BaseGame.hundDieSound, distanceBetween(player), VOCAL_RANGE);
+        GameUtils.playSoundRelativeToDistance(BaseGame.hundDieSound, distanceBetween(player), VOCAL_RANGE, MathUtils.random(.8f, 1.2f));
         super.die();
     }
 
     @Override
     protected void meleeSound() {
-        BaseGame.hundMeleeSound.play(BaseGame.soundVolume);
+        BaseGame.hundMeleeSound.play(BaseGame.soundVolume, MathUtils.random(.9f, 1.1f), 0);
         super.meleeSound();
     }
 
