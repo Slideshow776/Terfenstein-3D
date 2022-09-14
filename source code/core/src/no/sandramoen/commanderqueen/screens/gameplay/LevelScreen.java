@@ -431,11 +431,11 @@ public class LevelScreen extends BaseScreen3D {
         player = mapLoader.player;
         hud.player = player;
         weaponHandler = new WeaponHandler(uiStage, hud, player, shootable, mainStage3D);
-        hud.setWeaponsTable(weaponHandler);
         if (weapons != null)
             for (Weapon weapon : weapons)
                 if (weapon.isAvailable)
                     weaponHandler.makeAvailable(weapon.getClass().getSimpleName());
+        hud.setWeaponsTable(weaponHandler);
     }
 
     private void stopLevel() {
@@ -489,7 +489,6 @@ public class LevelScreen extends BaseScreen3D {
         BaseGame.elevatorSound.play(BaseGame.soundVolume);
         stopLevel();
         Array levelData = getLevelData();
-
         BaseGame.setActiveScreen(new LevelFinishScreen(levelData, numLevel, hud.health, hud.armor, hud.bullets, hud.shells, weaponHandler.weapons));
     }
 
