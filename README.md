@@ -135,7 +135,7 @@ private void mousePolling() {
 ```
 
 ### Collisions
-While the game is 3D viewed from a birds perspective the area of movement is 2D, and thus we can implement a simple/standard 2D collision detection system using these functions found in `BaseActor3D.java`: 
+While the game is 3D viewed from a birds perspective the area of movement is 2D, and thus we can implement a simple/standard 2D collision detection system using these functions found in [`BaseActor3D.java`](https://github.com/Slideshow776/Terfenstein-3D/blob/master/source%20code/core/src/no/sandramoen/commanderqueen/actors/utils/baseActors/BaseActor3D.java): 
 * `setBaseRectangle()`
 * `setBasePolygon()`
 * `getBoundaryPolygon()`
@@ -194,7 +194,7 @@ private static int getClosestListIndex(Ray ray, Array<BaseActor3D> list) {
 }
 ```
 This allows for the enemy to scan for the player to detect them, and also to be able to shoot them.
-Raypicking should be used sparingly, this game runs the algorithm for all enemies not dead every second.
+Raypicking should be used sparingly, this game runs the algorithm for all enemies not dead, facing the player, at it's own interval.
 
 ### Pathfinding
 LibGDX's [AI library](https://github.com/libgdx/gdx-ai) was included in [this](https://github.com/Slideshow776/3D-shooting-game/commit/85b5b903a4aa80ca0621bc0a6462f40481b43761) and [this](https://github.com/Slideshow776/3D-shooting-game/commit/7aaa1c3a9080e70785d45faa4b5848deb7654dfc) commits following [this excellent tutorial](https://happycoding.io/tutorials/libgdx/pathfinding).
@@ -242,4 +242,4 @@ public void rollCamera(float angle) {
 ## Other
 For other project specifics check out the [commits](https://github.com/Slideshow776/3D-shooting-game/commits/master).
 
-[Go back to the top](#3d-shooting-game).
+[Go back to the top](https://github.com/Slideshow776/Terfenstein-3D#terfenstein-3d).
