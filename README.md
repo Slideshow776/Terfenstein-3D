@@ -242,4 +242,4 @@ public void rollCamera(float angle) {
 ## Other
 For other project specifics check out the [commits](https://github.com/Slideshow776/3D-shooting-game/commits/master).
 
-[Go back to the top](#3d-shooting-game).
+[Go back to the top](https://github.com/Slideshow776/Terfenstein-3D#terfenstein-3d).
