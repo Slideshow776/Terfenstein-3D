@@ -135,7 +135,7 @@ private void mousePolling() {
 ```
 
 ### Collisions
-While the game is 3D viewed from a birds perspective the area of movement is 2D, and thus we can implement a simple/standard 2D collision detection system using these functions found in `BaseActor3D.java`: 
+While the game is 3D viewed from a birds perspective the area of movement is 2D, and thus we can implement a simple/standard 2D collision detection system using these functions found in [`BaseActor3D.java`](https://github.com/Slideshow776/Terfenstein-3D/blob/master/source%20code/core/src/no/sandramoen/commanderqueen/actors/utils/baseActors/BaseActor3D.java): 
 * `setBaseRectangle()`
 * `setBasePolygon()`
 * `getBoundaryPolygon()`
