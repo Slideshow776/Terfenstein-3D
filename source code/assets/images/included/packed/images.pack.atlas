@@ -2152,90 +2152,97 @@ level finished/you are here
   index: -1
 
 images.pack12.png
-size: 256, 64
+size: 128, 128
 format: RGBA8888
 filter: Nearest, Nearest
 repeat: none
 pickups/armor big
   rotate: false
-  xy: 57, 28
+  xy: 2, 2
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 pickups/armor medium
   rotate: false
-  xy: 91, 28
+  xy: 36, 2
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 pickups/armor small
   rotate: false
-  xy: 125, 28
+  xy: 57, 94
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 pickups/blueKey
   rotate: false
-  xy: 227, 54
+  xy: 91, 94
   size: 17, 6
   orig: 17, 6
   offset: 0, 0
   index: -1
 pickups/bullet
   rotate: false
-  xy: 159, 28
+  xy: 39, 57
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 pickups/chaingun
   rotate: false
-  xy: 2, 7
+  xy: 39, 39
   size: 32, 16
   orig: 32, 16
   offset: 0, 0
   index: -1
 pickups/greenKey
   rotate: false
-  xy: 36, 17
+  xy: 73, 34
   size: 17, 6
   orig: 17, 6
   offset: 0, 0
   index: -1
 pickups/health medium
   rotate: false
-  xy: 2, 25
+  xy: 2, 91
   size: 53, 35
   orig: 53, 35
   offset: 0, 0
   index: -1
 pickups/health small
   rotate: false
-  xy: 193, 28
+  xy: 73, 60
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 pickups/redKey
   rotate: false
-  xy: 94, 2
+  xy: 70, 26
   size: 17, 6
   orig: 17, 6
   offset: 0, 0
   index: -1
+pickups/rocket
+  rotate: false
+  xy: 2, 36
+  size: 35, 53
+  orig: 35, 53
+  offset: 0, 0
+  index: -1
 pickups/shells
   rotate: false
-  xy: 57, 2
+  xy: 91, 102
   size: 35, 24
   orig: 35, 24
   offset: 0, 0
   index: -1
 pickups/shotgun
   rotate: false
-  xy: 94, 10
+  xy: 73, 42
   size: 32, 16
   orig: 32, 16
   offset: 0, 0
@@ -2269,6 +2276,26 @@ props/suitcase 0
   index: -1
 
 images.pack14.png
+size: 128, 64
+format: RGBA8888
+filter: Nearest, Nearest
+repeat: none
+rocket/exploding 0
+  rotate: false
+  xy: 2, 2
+  size: 42, 42
+  orig: 42, 42
+  offset: 0, 0
+  index: -1
+rocket/travelling 0
+  rotate: false
+  xy: 46, 2
+  size: 42, 42
+  orig: 42, 42
+  offset: 0, 0
+  index: -1
+
+images.pack15.png
 size: 512, 256
 format: RGBA8888
 filter: Nearest, Nearest
@@ -2428,7 +2455,7 @@ tiles/lonplate
   offset: 0, 0
   index: -1
 
-images.pack15.png
+images.pack16.png
 size: 256, 128
 format: RGBA8888
 filter: Nearest, Nearest
@@ -2455,7 +2482,7 @@ weapons/boot/icon
   offset: 0, 0
   index: -1
 
-images.pack16.png
+images.pack17.png
 size: 256, 512
 format: RGBA8888
 filter: Nearest, Nearest
@@ -2489,7 +2516,7 @@ weapons/chaingun/shooting 2
   offset: 0, 0
   index: -1
 
-images.pack17.png
+images.pack18.png
 size: 1024, 256
 format: RGBA8888
 filter: Nearest, Nearest
@@ -2537,7 +2564,41 @@ weapons/pistol/shooting 3
   offset: 0, 0
   index: -1
 
-images.pack18.png
+images.pack19.png
+size: 1024, 256
+format: RGBA8888
+filter: Nearest, Nearest
+repeat: none
+weapons/rocketlauncher/shooting 0
+  rotate: false
+  xy: 2, 2
+  size: 194, 140
+  orig: 194, 140
+  offset: 0, 0
+  index: -1
+weapons/rocketlauncher/shooting 1
+  rotate: false
+  xy: 198, 2
+  size: 194, 140
+  orig: 194, 140
+  offset: 0, 0
+  index: -1
+weapons/rocketlauncher/shooting 2
+  rotate: false
+  xy: 394, 2
+  size: 194, 140
+  orig: 194, 140
+  offset: 0, 0
+  index: -1
+weapons/rocketlauncher/shooting 3
+  rotate: false
+  xy: 590, 2
+  size: 194, 140
+  orig: 194, 140
+  offset: 0, 0
+  index: -1
+
+images.pack20.png
 size: 1024, 256
 format: RGBA8888
 filter: Nearest, Nearest

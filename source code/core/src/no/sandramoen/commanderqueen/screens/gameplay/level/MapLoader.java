@@ -26,6 +26,7 @@ import no.sandramoen.commanderqueen.actors.pickups.Chaingun;
 import no.sandramoen.commanderqueen.actors.pickups.Health;
 import no.sandramoen.commanderqueen.actors.pickups.Key;
 import no.sandramoen.commanderqueen.actors.pickups.Pickup;
+import no.sandramoen.commanderqueen.actors.pickups.Rocket;
 import no.sandramoen.commanderqueen.actors.pickups.Shells;
 import no.sandramoen.commanderqueen.actors.pickups.Shotgun;
 import no.sandramoen.commanderqueen.actors.props.Prop;
@@ -298,6 +299,7 @@ public class MapLoader {
         initializePickup("health medium", 100);
         initializePickup("bullets", 10);
         initializePickup("shells", 4);
+        initializePickup("rocket", 1);
         initializePickup("armor small", 1);
         initializePickup("armor medium", 100);
         initializePickup("armor big", 200);
@@ -319,6 +321,8 @@ public class MapLoader {
                 pickups.add(new Bullets(x, y, stage3D, amount, player));
             else if (type.equalsIgnoreCase("shells"))
                 pickups.add(new Shells(x, y, stage3D, amount, player));
+            else if (type.equalsIgnoreCase("rocket"))
+                pickups.add(new Rocket(x, y, stage3D, amount, player));
 
             else if (type.equalsIgnoreCase("key"))
                 pickups.add(new Key(x, y, stage3D, props.get("color", String.class), player));

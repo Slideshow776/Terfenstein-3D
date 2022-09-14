@@ -16,6 +16,7 @@ import no.sandramoen.commanderqueen.actors.Barrel;
 import no.sandramoen.commanderqueen.actors.Door;
 import no.sandramoen.commanderqueen.actors.Elevator;
 import no.sandramoen.commanderqueen.actors.characters.Menig;
+import no.sandramoen.commanderqueen.actors.characters.Rocket;
 import no.sandramoen.commanderqueen.actors.characters.Sersjant;
 import no.sandramoen.commanderqueen.actors.decals.BloodDecals;
 import no.sandramoen.commanderqueen.actors.decals.BulletDecals;
@@ -84,9 +85,10 @@ public class LevelScreen extends BaseScreen3D {
     private int startingArmor;
     private int startingBullets;
     private int startingShells;
+    private int startingRockets;
     private Array<Weapon> startingWeapons;
 
-    public LevelScreen(float parTime, TiledMap map, String numLevel, int health, int armor, int bullets, int shells, Array<Weapon> weapons) {
+    public LevelScreen(float parTime, TiledMap map, String numLevel, int health, int armor, int bullets, int shells, int rockets, Array<Weapon> weapons) {
         long startTime = System.currentTimeMillis();
         this.numLevel = numLevel;
         numSecrets = 0;
@@ -101,7 +103,7 @@ public class LevelScreen extends BaseScreen3D {
         BaseGame.ambientFanMusic.setPosition(MathUtils.random(0, 15));
         GameUtils.playLoopingMusic(BaseGame.metalWalkingMusic, 0);
 
-        initializeMap(health, armor, bullets, shells);
+        initializeMap(health, armor, bullets, shells, rockets);
         initializePlayer(weapons);
 
         uiHandler = new UIHandler(uiTable, enemies, hud);
@@ -119,6 +121,7 @@ public class LevelScreen extends BaseScreen3D {
         startingArmor = hud.armor;
         startingBullets = hud.bullets;
         startingShells = hud.shells;
+        startingRockets = hud.rockets;
         startingWeapons = weaponHandler.weapons;
 
         GameUtils.printLoadingTime(getClass().getSimpleName(), "Level", startTime);
@@ -134,7 +137,7 @@ public class LevelScreen extends BaseScreen3D {
         checkGameOverCondition();
 
         TileHandler.updateTiles(dt, tiles, player, uiHandler);
-        EnemyHandler.update(enemies, tiles, doors, projectiles, player, shootable, hud, tileShades);
+        EnemyHandler.update(enemies, tiles, doors, projectiles, player, shootable, hud, mainStage3D);
 
         shadeHandler();
 
@@ -164,7 +167,7 @@ public class LevelScreen extends BaseScreen3D {
             BaseGame.levelScreen = this;
             BaseGame.setActiveScreen(new MenuScreen());
         } else if (keycode == Keys.R)
-            BaseGame.setActiveScreen(new LevelScreen(PAR_TIME, BaseGame.testMap, "test", 100, 0, 50, 50, null));
+            BaseGame.setActiveScreen(new LevelScreen(PAR_TIME, BaseGame.testMap, "test", 100, 0, 50, 50, 50, null));
         else if (isGameOver && totalTime > 2)
             restartLevel();
         else if (keycode == Keys.F) {
@@ -192,6 +195,9 @@ public class LevelScreen extends BaseScreen3D {
             hud.setAmmo(weaponHandler.currentWeapon);
         } else if (keycode == Keys.NUM_4) {
             weaponHandler.setWeapon(3);
+            hud.setAmmo(weaponHandler.currentWeapon);
+        } else if (keycode == Keys.NUM_5) {
+            weaponHandler.setWeapon(4);
             hud.setAmmo(weaponHandler.currentWeapon);
         } else if (keycode == Keys.SPACE) {
             for (Door door : doors)
@@ -262,23 +268,28 @@ public class LevelScreen extends BaseScreen3D {
 
     private void mouseButtonPolling() {
         if (Gdx.input.isButtonPressed(Input.Buttons.LEFT) && !isGameOver && totalTime > 1) {
-            if (weaponHandler.isReady)
+            if (weaponHandler.isReadyToShoot)
                 shoot();
             holdingDown = true;
         }
     }
 
     private void shoot() {
-        if (!weaponHandler.currentWeapon.isMelee) {
+        if (!weaponHandler.currentWeapon.isMelee && !weaponHandler.currentWeapon.isProjectile) {
             weaponHandler.shoot(hud.getAmmo(weaponHandler.currentWeapon));
             if (weaponHandler.currentWeapon.isAmmoDependent && hud.getAmmo(weaponHandler.currentWeapon) > 0) {
-                if (hud.getAmmo(weaponHandler.currentWeapon) > 0) {
-                    player.muzzleLight();
-                    hud.decrementAmmo(weaponHandler.currentWeapon);
-                    for (int i = 0; i < weaponHandler.currentWeapon.numShotsFired; i++)
-                        rayPickTarget();
-                    EnemyHandler.activateEnemies(enemies, Enemy.activationRange, player);
-                }
+                player.muzzleLight();
+                hud.decrementAmmo(weaponHandler.currentWeapon);
+                EnemyHandler.activateEnemies(enemies, Enemy.activationRange, player);
+                for (int i = 0; i < weaponHandler.currentWeapon.numShotsFired; i++)
+                    rayPickTarget();
+            }
+        } else if (weaponHandler.currentWeapon.isProjectile) {
+            if (weaponHandler.shoot(hud.getAmmo(weaponHandler.currentWeapon))) {
+                projectiles.add(new Rocket(player.position, player.getTurnAngle(), mainStage3D, player));
+                player.muzzleLight();
+                hud.decrementAmmo(weaponHandler.currentWeapon);
+                EnemyHandler.activateEnemies(enemies, Enemy.activationRange, player);
             }
         } else {
             weaponHandler.melee(rayPickTarget());
@@ -366,15 +377,15 @@ public class LevelScreen extends BaseScreen3D {
 
     private void restartLevel() {
         if (numLevel.equalsIgnoreCase("test"))
-            BaseGame.setActiveScreen(new LevelScreen(65, BaseGame.testMap, "test", startingHealth, startingArmor, startingBullets, startingShells, startingWeapons));
+            BaseGame.setActiveScreen(new LevelScreen(65, BaseGame.testMap, "test", startingHealth, startingArmor, startingBullets, startingShells, startingRockets, startingWeapons));
         else if (numLevel.equalsIgnoreCase("level 1"))
-            BaseGame.setActiveScreen(new LevelScreen(95, BaseGame.level1Map, "level 1", startingHealth, startingArmor, startingBullets, startingShells, startingWeapons));
+            BaseGame.setActiveScreen(new LevelScreen(95, BaseGame.level1Map, "level 1", startingHealth, startingArmor, startingBullets, startingShells, startingRockets, startingWeapons));
         else if (numLevel.equalsIgnoreCase("level 2"))
-            BaseGame.setActiveScreen(new LevelScreen(95, BaseGame.level2Map, "level 2", startingHealth, startingArmor, startingBullets, startingShells, startingWeapons));
+            BaseGame.setActiveScreen(new LevelScreen(95, BaseGame.level2Map, "level 2", startingHealth, startingArmor, startingBullets, startingShells, startingRockets, startingWeapons));
         else if (numLevel.equalsIgnoreCase("level 3"))
-            BaseGame.setActiveScreen(new LevelScreen(95, BaseGame.level3Map, "level 3", startingHealth, startingArmor, startingBullets, startingShells, startingWeapons));
+            BaseGame.setActiveScreen(new LevelScreen(95, BaseGame.level3Map, "level 3", startingHealth, startingArmor, startingBullets, startingShells, startingRockets, startingWeapons));
         else if (numLevel.equalsIgnoreCase("level 4"))
-            BaseGame.setActiveScreen(new LevelScreen(38, BaseGame.level4Map, "level 4", startingHealth, startingArmor, startingBullets, startingShells, startingWeapons));
+            BaseGame.setActiveScreen(new LevelScreen(38, BaseGame.level4Map, "level 4", startingHealth, startingArmor, startingBullets, startingShells, startingRockets, startingWeapons));
     }
 
 
@@ -412,7 +423,7 @@ public class LevelScreen extends BaseScreen3D {
     }
 
 
-    private void initializeMap(int health, int armor, int bullets, int shells) {
+    private void initializeMap(int health, int armor, int bullets, int shells, int rockets) {
         tilemap = new TilemapActor(tiledMap, mainStage3D);
         tiles = new Array();
         shootable = new Array();
@@ -423,7 +434,7 @@ public class LevelScreen extends BaseScreen3D {
         doors = new Array();
         projectiles = new Array();
         tileShades = new Array();
-        hud = new HUD(uiStage, health, armor, bullets, shells);
+        hud = new HUD(uiStage, health, armor, bullets, shells, rockets);
         mapLoader = new MapLoader(tilemap, tiles, mainStage3D, player, shootable, originalPickups, enemies, uiStage, hud, decalBatch, doors, projectiles, tileShades);
     }
 
@@ -489,7 +500,7 @@ public class LevelScreen extends BaseScreen3D {
         BaseGame.elevatorSound.play(BaseGame.soundVolume);
         stopLevel();
         Array levelData = getLevelData();
-        BaseGame.setActiveScreen(new LevelFinishScreen(levelData, numLevel, hud.health, hud.armor, hud.bullets, hud.shells, weaponHandler.weapons));
+        BaseGame.setActiveScreen(new LevelFinishScreen(levelData, numLevel, hud.health, hud.armor, hud.bullets, hud.shells, hud.rockets, weaponHandler.weapons));
     }
 
     private void shadeHandler() {

@@ -19,7 +19,7 @@ public class Barrel extends BaseActor3D {
     public int health = 20;
     public final float BLAST_RANGE = 15;
 
-    private boolean explode;
+    private boolean isExploding;
     private float totalTime;
     private Stage3D stage3D;
     private Animation<TextureRegion> explodeAnimation;
@@ -49,13 +49,13 @@ public class Barrel extends BaseActor3D {
     @Override
     public void draw(ModelBatch batch, Environment env) {
         super.draw(batch, env);
-        if (explode)
+        if (isExploding)
             loadImage(explodeAnimation.getKeyFrame(totalTime).toString());
     }
 
     public void explode() {
-        if (!explode) {
-            explode = true;
+        if (!isExploding) {
+            isExploding = true;
             isPreventOverlapEnabled = false;
             health = 0;
             totalTime = 0;
@@ -65,7 +65,7 @@ public class Barrel extends BaseActor3D {
     }
 
     public void decrementHealth(int amount, float distance) {
-        if (!explode) {
+        if (!isExploding) {
             health -= amount;
             if (health > 0 && amount > 0)
                 GameUtils.playSoundRelativeToDistance(BaseGame.metalSound, distance, 15f, MathUtils.random(.7f, 1.4f));
@@ -73,7 +73,7 @@ public class Barrel extends BaseActor3D {
     }
 
     public int getBlastDamage(float range) {
-        if (explode)
+        if (isExploding)
             return 0;
 
         float damage = BLAST_RANGE - range;

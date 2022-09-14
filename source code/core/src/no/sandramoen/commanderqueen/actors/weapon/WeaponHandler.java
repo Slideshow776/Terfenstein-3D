@@ -17,6 +17,7 @@ import no.sandramoen.commanderqueen.actors.utils.baseActors.BaseActor3D;
 import no.sandramoen.commanderqueen.actors.weapon.weapons.Boot;
 import no.sandramoen.commanderqueen.actors.weapon.weapons.Chaingun;
 import no.sandramoen.commanderqueen.actors.weapon.weapons.Pistol;
+import no.sandramoen.commanderqueen.actors.weapon.weapons.RocketLauncher;
 import no.sandramoen.commanderqueen.actors.weapon.weapons.Shotgun;
 import no.sandramoen.commanderqueen.actors.weapon.weapons.Weapon;
 import no.sandramoen.commanderqueen.utils.BaseGame;
@@ -27,7 +28,7 @@ public class WeaponHandler extends BaseActor {
     public Crosshair crosshair;
     public Weapon currentWeapon;
     public Array<Weapon> weapons;
-    public boolean isReady;
+    public boolean isReadyToShoot;
 
     private float totalTime = 5f;
     private float swayAmount = .01f;
@@ -58,6 +59,7 @@ public class WeaponHandler extends BaseActor {
 
         weapons = new Array();
         weapons.add(new Boot(), new Pistol(), new Shotgun(), new Chaingun());
+        weapons.add(new RocketLauncher());
         setWeapon(1);
     }
 
@@ -92,7 +94,7 @@ public class WeaponHandler extends BaseActor {
         if (i >= 0 && i < weapons.size && weapons.get(i).isAvailable) {
             totalTime = 5f;
             currentWeapon = weapons.get(i);
-            if (currentWeapon instanceof Chaingun)
+            if (currentWeapon instanceof Chaingun || currentWeapon instanceof RocketLauncher)
                 setWidth(originalWidth * 2f);
             else
                 setWidth(originalWidth);
@@ -139,24 +141,26 @@ public class WeaponHandler extends BaseActor {
         totalTime = 5f;
     }
 
-    public void shoot(int ammo) {
-        if (isReady) {
-            isReady = false;
+    public boolean shoot(int ammo) {
+        if (isReadyToShoot) {
+            isReadyToShoot = false;
             isReadyCounter = 0;
 
             if (ammo > 0 && currentWeapon.isAmmoDependent) {
                 totalTime = 0f;
                 currentWeapon.attackSound();
                 shakyCam();
+                return true;
             } else if (currentWeapon.isAmmoDependent) {
                 currentWeapon.emptySound();
             }
         }
+        return false;
     }
 
     public void melee(boolean isHit) {
-        if (isReady) {
-            isReady = false;
+        if (isReadyToShoot) {
+            isReadyToShoot = false;
             isReadyCounter = 0;
             totalTime = 0f;
 
@@ -211,7 +215,7 @@ public class WeaponHandler extends BaseActor {
 
     private void checkIfReadyToShoot(float dt) {
         if (isReadyCounter > currentWeapon.getRateOfFire()) {
-            isReady = true;
+            isReadyToShoot = true;
             isReadyCounter = 0;
         } else {
             isReadyCounter += dt;

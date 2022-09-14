@@ -15,6 +15,7 @@ import no.sandramoen.commanderqueen.actors.characters.Player;
 import no.sandramoen.commanderqueen.actors.pickups.Bullets;
 import no.sandramoen.commanderqueen.actors.pickups.Key;
 import no.sandramoen.commanderqueen.actors.pickups.Pickup;
+import no.sandramoen.commanderqueen.actors.pickups.Rocket;
 import no.sandramoen.commanderqueen.actors.pickups.Shells;
 import no.sandramoen.commanderqueen.actors.utils.baseActors.BaseActor;
 import no.sandramoen.commanderqueen.actors.utils.baseActors.BaseActor3D;
@@ -22,6 +23,7 @@ import no.sandramoen.commanderqueen.actors.weapon.WeaponHandler;
 import no.sandramoen.commanderqueen.actors.weapon.weapons.Boot;
 import no.sandramoen.commanderqueen.actors.weapon.weapons.Chaingun;
 import no.sandramoen.commanderqueen.actors.weapon.weapons.Pistol;
+import no.sandramoen.commanderqueen.actors.weapon.weapons.RocketLauncher;
 import no.sandramoen.commanderqueen.actors.weapon.weapons.Shotgun;
 import no.sandramoen.commanderqueen.actors.weapon.weapons.Weapon;
 import no.sandramoen.commanderqueen.utils.BaseGame;
@@ -37,6 +39,7 @@ public class HUD extends BaseActor {
     public int health;
     public int bullets;
     public int shells;
+    public int rockets;
     private int score;
 
     private float armorProtectionValue = 1 / 3f;
@@ -55,12 +58,13 @@ public class HUD extends BaseActor {
 
     private Array<Image> weaponImages;
 
-    public HUD(Stage stage, int health, int armor, int bullets, int shells) {
+    public HUD(Stage stage, int health, int armor, int bullets, int shells, int rockets) {
         super(0, 0, stage);
         this.health = health;
         this.armor = armor;
         this.bullets = bullets;
         this.shells = shells;
+        this.rockets = rockets;
         initializeLabels();
 
         setWidth(Gdx.graphics.getWidth() * WIDTH);
@@ -156,6 +160,8 @@ public class HUD extends BaseActor {
             bullets += pickup.amount;
         else if (pickup instanceof Shells)
             shells += pickup.amount;
+        else if (pickup instanceof Rocket)
+            rockets += pickup.amount;
 
         overlayIndicator.flash(BaseGame.yellowColor, .1f);
 
@@ -163,6 +169,8 @@ public class HUD extends BaseActor {
             ammoLabel.setText(bullets + "");
         else if (currentWeapon instanceof Shotgun)
             ammoLabel.setText(shells + "");
+        else if (currentWeapon instanceof RocketLauncher)
+            ammoLabel.setText(rockets + "");
     }
 
     public void decrementAmmo(Weapon currentWeapon) {
@@ -172,6 +180,9 @@ public class HUD extends BaseActor {
         } else if (currentWeapon instanceof Shotgun && shells > 0) {
             shells--;
             ammoLabel.setText(shells + "");
+        } else if (currentWeapon instanceof RocketLauncher && rockets > 0) {
+            rockets--;
+            ammoLabel.setText(rockets + "");
         }
     }
 
@@ -180,6 +191,8 @@ public class HUD extends BaseActor {
             return bullets;
         else if (currentWeapon instanceof Shotgun)
             return shells;
+        else if (currentWeapon instanceof RocketLauncher)
+            return rockets;
         Gdx.app.error(getClass().getSimpleName(), "Error: couldn't get ammo, current weapon is unknown => " + currentWeapon.getClass().getSimpleName());
         return -1;
     }
@@ -191,6 +204,8 @@ public class HUD extends BaseActor {
             ammoLabel.setText(bullets + "");
         else if (currentWeapon instanceof Shotgun)
             ammoLabel.setText(shells + "");
+        else if (currentWeapon instanceof RocketLauncher)
+            ammoLabel.setText(rockets + ""); // TODO
         else
             Gdx.app.error(getClass().getSimpleName(), "Error could not set ammo label, unrecognized weapon => " + currentWeapon);
         fadeWeaponsTableInAndOut(currentWeapon);

@@ -9,6 +9,7 @@ public abstract class Weapon {
     public Animation<TextureRegion> idleAnimation;
     public boolean isAmmoDependent;
     public boolean isMelee;
+    public boolean isProjectile;
     public boolean isAvailable;
     public float range = 100f;
     public int inventoryIndex;

@@ -5,7 +5,6 @@ import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.math.MathUtils;
-import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Event;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.actions.SequenceAction;
@@ -14,7 +13,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.utils.Array;
 import com.github.tommyettinger.textra.TypingLabel;
 
-import no.sandramoen.commanderqueen.actors.utils.baseActors.BaseActor;
 import no.sandramoen.commanderqueen.screens.gameplay.LevelScreen;
 import no.sandramoen.commanderqueen.ui.MadeByLabel;
 import no.sandramoen.commanderqueen.utils.BaseGame;
@@ -119,7 +117,7 @@ public class MenuScreen extends BaseScreen {
     }
 
     private void startLevel1() {
-        BaseGame.setActiveScreen(new LevelScreen(20, BaseGame.level1Map, "level 1", 100, 0, 10, 0, null));
+        BaseGame.setActiveScreen(new LevelScreen(20, BaseGame.level1Map, "level 1", 100, 0, 10, 0, 0,null));
     }
 
     private SequenceAction exitGameWithSoundAndDelay() {
@@ -167,6 +165,7 @@ public class MenuScreen extends BaseScreen {
         sounds.add(BaseGame.doorUnlockedSound);
         sounds.add(BaseGame.doorLockedSound);
         sounds.add(BaseGame.weaponPickupSound);
+        sounds.add(BaseGame.rocketLaunchSound);
 
         sounds.get(MathUtils.random(0, sounds.size - 1)).play(BaseGame.soundVolume);
     }

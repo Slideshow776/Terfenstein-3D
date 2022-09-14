@@ -60,16 +60,18 @@ public class LevelFinishScreen extends BaseScreen {
     private int armor;
     private int bullets;
     private int shells;
+    private int rockets;
     private Array<Weapon> weapons;
     private String numLevel;
     private String levelName;
 
-    public LevelFinishScreen(Array args, String numLevel, int health, int armor, int bullets, int shells, Array<Weapon> weapons) {
+    public LevelFinishScreen(Array args, String numLevel, int health, int armor, int bullets, int shells, int rockets, Array<Weapon> weapons) {
         this.numLevel = numLevel;
         this.health = health;
         this.armor = armor;
         this.bullets = bullets;
         this.shells = shells;
+        this.rockets = rockets;
         this.weapons = weapons;
 
         if (args.size != 7)
@@ -258,15 +260,15 @@ public class LevelFinishScreen extends BaseScreen {
         BaseGame.pistolShotSound.play(BaseGame.soundVolume, .5f, 0);
 
         if (numLevel.equalsIgnoreCase("test"))
-            BaseGame.setActiveScreen(new LevelScreen(65, BaseGame.testMap, "test", health, armor, bullets, shells, weapons));
+            BaseGame.setActiveScreen(new LevelScreen(65, BaseGame.testMap, "test", health, armor, bullets, shells, rockets, weapons));
         else if (numLevel.equalsIgnoreCase("level 1"))
-            BaseGame.setActiveScreen(new LevelScreen(32, BaseGame.level2Map, "level 2", health, armor, bullets, shells, weapons));
+            BaseGame.setActiveScreen(new LevelScreen(32, BaseGame.level2Map, "level 2", health, armor, bullets, shells, rockets, weapons));
         else if (numLevel.equalsIgnoreCase("level 2"))
-            BaseGame.setActiveScreen(new LevelScreen(32, BaseGame.level3Map, "level 3", health, armor, bullets, shells, weapons));
+            BaseGame.setActiveScreen(new LevelScreen(32, BaseGame.level3Map, "level 3", health, armor, bullets, shells, rockets, weapons));
         else if (numLevel.equalsIgnoreCase("level 3"))
-            BaseGame.setActiveScreen(new LevelScreen(38, BaseGame.level4Map, "level 4", health, armor, bullets, shells, weapons));
+            BaseGame.setActiveScreen(new LevelScreen(38, BaseGame.level4Map, "level 4", health, armor, bullets, shells, rockets, weapons));
         else if (numLevel.equalsIgnoreCase("level 4"))
-            BaseGame.setActiveScreen(new LevelScreen(57, BaseGame.level5Map, "level 5", health, armor, bullets, shells, weapons));
+            BaseGame.setActiveScreen(new LevelScreen(57, BaseGame.level5Map, "level 5", health, armor, bullets, shells, rockets, weapons));
     }
 
     private String formatTime(float time) {

@@ -12,6 +12,7 @@ import no.sandramoen.commanderqueen.actors.pickups.Chaingun;
 import no.sandramoen.commanderqueen.actors.pickups.Health;
 import no.sandramoen.commanderqueen.actors.pickups.Key;
 import no.sandramoen.commanderqueen.actors.pickups.Pickup;
+import no.sandramoen.commanderqueen.actors.pickups.Rocket;
 import no.sandramoen.commanderqueen.actors.pickups.Shells;
 import no.sandramoen.commanderqueen.actors.pickups.Shotgun;
 import no.sandramoen.commanderqueen.actors.utils.baseActors.BaseActor;
@@ -27,12 +28,14 @@ public class PickupHandler {
     ) {
         for (Pickup pickup : pickups) {
             if (player.overlaps(pickup)) {
-                if (pickup instanceof Bullets || pickup instanceof Shells) {
+                if (pickup instanceof Bullets || pickup instanceof Shells || pickup instanceof Rocket) {
                     hud.incrementAmmunition(pickup, weaponHandler.currentWeapon);
                     if (pickup instanceof Bullets)
                         setPickupLabel(uiHandler, hud, "You picked up some bullets!", false);
                     if (pickup instanceof Shells)
                         setPickupLabel(uiHandler, hud, "You picked up some shotgun shells!", false);
+                    if (pickup instanceof Rocket)
+                        setPickupLabel(uiHandler, hud, "You picked up a rocket!", false);
                     removePickup(pickups, pickup);
                 } else if (pickup instanceof Armor) {
                     if (hud.incrementArmor(pickup.amount, false)) {
