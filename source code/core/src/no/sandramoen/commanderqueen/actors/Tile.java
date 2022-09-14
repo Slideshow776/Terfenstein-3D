@@ -62,7 +62,7 @@ public class Tile extends BaseActor3D {
         if (isOpeningSecret)
             return true;
         isOpeningSecret = true;
-        secretSoundID = BaseGame.secretWallSound.play(BaseGame.soundVolume);
+        secretSoundID = BaseGame.secretWallSound.play(BaseGame.soundVolume * 1.5f);
         return false;
     }
 

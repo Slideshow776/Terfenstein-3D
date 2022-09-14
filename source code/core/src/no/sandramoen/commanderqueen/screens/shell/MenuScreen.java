@@ -1,17 +1,20 @@
 package no.sandramoen.commanderqueen.screens.shell;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
+import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Event;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
+import com.badlogic.gdx.scenes.scene2d.actions.SequenceAction;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.utils.Array;
 import com.github.tommyettinger.textra.TypingLabel;
 
+import no.sandramoen.commanderqueen.actors.utils.baseActors.BaseActor;
 import no.sandramoen.commanderqueen.screens.gameplay.LevelScreen;
 import no.sandramoen.commanderqueen.ui.MadeByLabel;
 import no.sandramoen.commanderqueen.utils.BaseGame;
@@ -46,8 +49,10 @@ public class MenuScreen extends BaseScreen {
 
     @Override
     public boolean keyDown(int keycode) {
-        if (keycode == Input.Keys.ESCAPE || keycode == Input.Keys.Q)
-            Gdx.app.exit();
+        if (keycode == Keys.ESCAPE || keycode == Keys.Q)
+            uiStage.addAction(exitGameWithSoundAndDelay());
+        else if (keycode == Keys.ENTER || keycode == Keys.NUMPAD_ENTER || keycode == Keys.SPACE)
+            startLevel1();
         return super.keyDown(keycode);
     }
 
@@ -82,7 +87,7 @@ public class MenuScreen extends BaseScreen {
         button.addListener(
                 (Event event) -> {
                     if (GameUtils.isTouchDownEvent(event))
-                        BaseGame.setActiveScreen(new LevelScreen(40, BaseGame.level1Map, "level 1", 100, 0, 10, 0, null));
+                        startLevel1();
                     return false;
                 }
         );
@@ -105,17 +110,24 @@ public class MenuScreen extends BaseScreen {
         TextButton button = new TextButton("Exit", BaseGame.mySkin);
         button.addListener(
                 (Event event) -> {
-                    if (GameUtils.isTouchDownEvent(event)) {
-                        button.addAction(Actions.sequence(
-                                Actions.run(() -> playRandomSound()),
-                                Actions.delay(1),
-                                Actions.run(() -> Gdx.app.exit())
-                        ));
-                    }
+                    if (GameUtils.isTouchDownEvent(event))
+                        button.addAction(exitGameWithSoundAndDelay());
                     return false;
                 }
         );
         return button;
+    }
+
+    private void startLevel1() {
+        BaseGame.setActiveScreen(new LevelScreen(20, BaseGame.level1Map, "level 1", 100, 0, 10, 0, null));
+    }
+
+    private SequenceAction exitGameWithSoundAndDelay() {
+        return Actions.sequence(
+                Actions.run(() -> playRandomSound()),
+                Actions.delay(1),
+                Actions.run(() -> Gdx.app.exit())
+        );
     }
 
     private void playRandomSound() {
@@ -156,6 +168,6 @@ public class MenuScreen extends BaseScreen {
         sounds.add(BaseGame.doorLockedSound);
         sounds.add(BaseGame.weaponPickupSound);
 
-        sounds.get(MathUtils.random(0, sounds.size-1)).play(BaseGame.soundVolume);
+        sounds.get(MathUtils.random(0, sounds.size - 1)).play(BaseGame.soundVolume);
     }
 }

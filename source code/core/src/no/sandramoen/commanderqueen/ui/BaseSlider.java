@@ -60,8 +60,10 @@ public class BaseSlider extends Table {
                 BaseGame.click1Sound.play(GameUtils.normalizeValue(slider.getValue(), min, max));
                 if (value.equalsIgnoreCase("sound"))
                     BaseGame.soundVolume = slider.getValue();
-                else if (value.equalsIgnoreCase("music"))
+                else if (value.equalsIgnoreCase("music")) {
                     BaseGame.musicVolume = slider.getValue();
+                    BaseGame.menuMusic.setVolume(BaseGame.musicVolume);
+                }
                 else if (value.equalsIgnoreCase("voice"))
                     BaseGame.voiceVolume = slider.getValue();
                 else if (value.equalsIgnoreCase("mouse sensitivity"))

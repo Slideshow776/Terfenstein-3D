@@ -255,9 +255,9 @@ public class LevelScreen extends BaseScreen3D {
         else if (numLevel.equalsIgnoreCase("level 3"))
             GameUtils.playLoopingMusic(BaseGame.level3Music);
         else if (numLevel.equalsIgnoreCase("level 4"))
-            GameUtils.playLoopingMusic(BaseGame.level4Music);
+            GameUtils.playLoopingMusic(BaseGame.level4Music, BaseGame.musicVolume * 1.2f);
         else if (numLevel.equalsIgnoreCase("level 5"))
-            GameUtils.playLoopingMusic(BaseGame.level5Music);
+            GameUtils.playLoopingMusic(BaseGame.level5Music, BaseGame.musicVolume * .7f);
     }
 
     private void mouseButtonPolling() {
@@ -374,7 +374,7 @@ public class LevelScreen extends BaseScreen3D {
         else if (numLevel.equalsIgnoreCase("level 3"))
             BaseGame.setActiveScreen(new LevelScreen(95, BaseGame.level3Map, "level 3", startingHealth, startingArmor, startingBullets, startingShells, startingWeapons));
         else if (numLevel.equalsIgnoreCase("level 4"))
-            BaseGame.setActiveScreen(new LevelScreen(95, BaseGame.level4Map, "level 4", startingHealth, startingArmor, startingBullets, startingShells, startingWeapons));
+            BaseGame.setActiveScreen(new LevelScreen(38, BaseGame.level4Map, "level 4", startingHealth, startingArmor, startingBullets, startingShells, startingWeapons));
     }
 
 

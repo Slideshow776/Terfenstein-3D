@@ -156,7 +156,7 @@
   </tile>
  </tileset>
  <tileset firstgid="129" source="Tileset.tsx"/>
- <objectgroup id="7" name="U1" visible="0">
+ <objectgroup id="7" name="U1">
   <object id="66465" gid="130" x="384" y="768" width="64" height="64"/>
   <object id="66466" gid="130" x="448" y="768" width="64" height="64"/>
   <object id="66467" gid="130" x="512" y="768" width="64" height="64"/>
@@ -1839,7 +1839,7 @@
   <object id="68461" gid="1" x="1280" y="448" width="64" height="64" rotation="90"/>
   <object id="68462" gid="1" x="1280" y="576" width="64" height="64" rotation="90"/>
   <object id="68466" gid="5" x="2048" y="2496" width="64" height="64" rotation="180"/>
-  <object id="68467" gid="17" x="1984" y="2368" width="64" height="64"/>
+  <object id="68467" gid="17" x="2112" y="2432" width="64" height="64"/>
   <object id="68468" gid="17" x="448" y="448" width="64" height="64"/>
   <object id="68469" gid="1" x="2048" y="1408" width="64" height="64" rotation="180"/>
   <object id="68473" gid="1" x="2048" y="1088" width="64" height="64" rotation="180"/>

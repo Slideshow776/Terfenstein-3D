@@ -2204,7 +2204,7 @@
  </objectgroup>
  <objectgroup id="8" name="actors">
   <object id="63202" gid="42" x="576" y="448" width="64" height="64"/>
-  <object id="65703" gid="2" x="1536" y="2496" width="64" height="64" rotation="180"/>
+  <object id="65703" gid="2" x="1536" y="192" width="64" height="64" rotation="180"/>
   <object id="66397" gid="49" x="2816" y="1728" width="64" height="64"/>
   <object id="66398" gid="51" x="256" y="1728" width="64" height="64"/>
   <object id="66399" gid="68" x="960" y="1728" width="64" height="64" rotation="270"/>

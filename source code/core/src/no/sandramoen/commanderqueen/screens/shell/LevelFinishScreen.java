@@ -1,7 +1,9 @@
 package no.sandramoen.commanderqueen.screens.shell;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
@@ -204,14 +206,52 @@ public class LevelFinishScreen extends BaseScreen {
         timeLabel.setText("");
         parLabel.setText("");
 
-        youAreHereImage.setVisible(true);
         youAreHereImage.addAction(Actions.forever(Actions.sequence(
                 Actions.alpha(.8f, .5f),
                 Actions.alpha(1, .5f)
 
         )));
-        explosionImage0.setVisible(true);
+        setMapMarkings();
         pistolSoundID = BaseGame.pistolShotSound.play(BaseGame.soundVolume, .5f, 0);
+    }
+
+    private void setMapMarkings() {
+        Vector2 level1 = new Vector2(Gdx.graphics.getWidth() * .48f, Gdx.graphics.getHeight() * .54f);
+        Vector2 level2 = new Vector2(Gdx.graphics.getWidth() * .5f, Gdx.graphics.getHeight() * .33f);
+        Vector2 level3 = new Vector2(Gdx.graphics.getWidth() * .44f, Gdx.graphics.getHeight() * .39f);
+        Vector2 level4 = new Vector2(Gdx.graphics.getWidth() * .55f, Gdx.graphics.getHeight() * .39f);
+        Vector2 level5 = new Vector2(Gdx.graphics.getWidth() * .58f, Gdx.graphics.getHeight() * .33f);
+
+        explosionImage0.setVisible(true);
+        explosionImage0.setPosition(level1.x, level1.y);
+        explosionImage1.setPosition(level2.x - (youAreHereImage.getWidth() / 4), level2.y);
+        explosionImage2.setPosition(level3.x - (youAreHereImage.getWidth() / 4), level3.y);
+        explosionImage3.setPosition(level4.x - (youAreHereImage.getWidth() / 4), level4.y);
+        explosionImage4.setPosition(level5.x - (youAreHereImage.getWidth() / 4), level5.y);
+
+        youAreHereImage.setVisible(true);
+
+        if (numLevel.equalsIgnoreCase("level 1")) {
+            youAreHereImage.setPosition(level2.x, level2.y);
+        } else if (numLevel.equalsIgnoreCase("level 2")) {
+            explosionImage1.setVisible(true);
+            youAreHereImage.setPosition(level3.x, level3.y);
+        } else if (numLevel.equalsIgnoreCase("level 3")) {
+            explosionImage1.setVisible(true);
+            explosionImage2.setVisible(true);
+            youAreHereImage.setPosition(level4.x, level4.y);
+        } else if (numLevel.equalsIgnoreCase("level 4")) {
+            explosionImage1.setVisible(true);
+            explosionImage2.setVisible(true);
+            explosionImage3.setVisible(true);
+            youAreHereImage.setPosition(level5.x, level5.y);
+        } else if (numLevel.equalsIgnoreCase("level 5")) {
+            explosionImage1.setVisible(true);
+            explosionImage2.setVisible(true);
+            explosionImage3.setVisible(true);
+            explosionImage4.setVisible(true);
+            youAreHereImage.setPosition(level2.x, level2.y);
+        }
     }
 
     private void setNewScreen() {
@@ -220,13 +260,13 @@ public class LevelFinishScreen extends BaseScreen {
         if (numLevel.equalsIgnoreCase("test"))
             BaseGame.setActiveScreen(new LevelScreen(65, BaseGame.testMap, "test", health, armor, bullets, shells, weapons));
         else if (numLevel.equalsIgnoreCase("level 1"))
-            BaseGame.setActiveScreen(new LevelScreen(95, BaseGame.level2Map, "level 2", health, armor, bullets, shells, weapons));
+            BaseGame.setActiveScreen(new LevelScreen(32, BaseGame.level2Map, "level 2", health, armor, bullets, shells, weapons));
         else if (numLevel.equalsIgnoreCase("level 2"))
-            BaseGame.setActiveScreen(new LevelScreen(95, BaseGame.level3Map, "level 3", health, armor, bullets, shells, weapons));
+            BaseGame.setActiveScreen(new LevelScreen(32, BaseGame.level3Map, "level 3", health, armor, bullets, shells, weapons));
         else if (numLevel.equalsIgnoreCase("level 3"))
-            BaseGame.setActiveScreen(new LevelScreen(95, BaseGame.level4Map, "level 4", health, armor, bullets, shells, weapons));
+            BaseGame.setActiveScreen(new LevelScreen(38, BaseGame.level4Map, "level 4", health, armor, bullets, shells, weapons));
         else if (numLevel.equalsIgnoreCase("level 4"))
-            BaseGame.setActiveScreen(new LevelScreen(95, BaseGame.level5Map, "level 5", health, armor, bullets, shells, weapons));
+            BaseGame.setActiveScreen(new LevelScreen(57, BaseGame.level5Map, "level 5", health, armor, bullets, shells, weapons));
     }
 
     private String formatTime(float time) {
@@ -304,7 +344,6 @@ public class LevelFinishScreen extends BaseScreen {
 
         youAreHereImage.setVisible(false);
         youAreHereImage.setSize(Gdx.graphics.getWidth() * .1f, Gdx.graphics.getHeight() * .05f);
-        youAreHereImage.setPosition(Gdx.graphics.getWidth() * .51f, Gdx.graphics.getHeight() * .35f);
         mainStage.addActor(youAreHereImage);
 
         imageSetup(explosionImage0);
@@ -317,7 +356,6 @@ public class LevelFinishScreen extends BaseScreen {
     private void imageSetup(Image image) {
         image.setVisible(false);
         image.setSize(Gdx.graphics.getWidth() * .05f, Gdx.graphics.getHeight() * .05f);
-        image.setPosition(Gdx.graphics.getWidth() * .48f, Gdx.graphics.getHeight() * .54f);
         mainStage.addActor(image);
     }
 }
