@@ -264,6 +264,8 @@ public class LevelScreen extends BaseScreen3D {
             GameUtils.playLoopingMusic(BaseGame.level4Music, BaseGame.musicVolume * 1.2f);
         else if (numLevel.equalsIgnoreCase("level 5"))
             GameUtils.playLoopingMusic(BaseGame.level5Music, BaseGame.musicVolume * .7f);
+        else if (numLevel.equalsIgnoreCase("level 6"))
+            GameUtils.playLoopingMusic(BaseGame.level5Music, BaseGame.musicVolume * .7f); // TODO: find music for level 6
     }
 
     private void mouseButtonPolling() {
@@ -334,7 +336,7 @@ public class LevelScreen extends BaseScreen3D {
     private void removeEnemy(Enemy enemy) {
         enemy.die();
         if (enemy instanceof Menig)
-            newPickups.add(new Bullets(enemy.position.y + MathUtils.random(-1, 1), enemy.position.z + MathUtils.random(-1, 1), mainStage3D, 10, player));
+            newPickups.add(new Bullets(enemy.position.y + MathUtils.random(-1, 1), enemy.position.z + MathUtils.random(-1, 1), mainStage3D, 4, player));
         if (enemy instanceof Sersjant)
             newPickups.add(new Shells(enemy.position.y + MathUtils.random(-1, 1), enemy.position.z + MathUtils.random(-1, 1), mainStage3D, 4, player));
         deadEnemies.add(enemy);
@@ -472,6 +474,8 @@ public class LevelScreen extends BaseScreen3D {
             levelData.add("Great Hall");
         else if (numLevel.equalsIgnoreCase("level 5"))
             levelData.add("Bunkers");
+        else if (numLevel.equalsIgnoreCase("level 6"))
+            levelData.add("Factory");
         else
             levelData.add("Test");
         levelData.add((int) ((1 - (enemies.size / (float) numEnemies)) * 100));

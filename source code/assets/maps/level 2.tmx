@@ -2973,7 +2973,7 @@
   </object>
   <object id="79037" gid="133" x="3082.5" y="2367.36" width="85" height="65.2727"/>
  </objectgroup>
- <objectgroup id="17" name="2nd floor">
+ <objectgroup id="17" name="2nd floor" visible="0">
   <object id="73296" gid="178" x="3431.15" y="2261.71" width="64" height="64"/>
   <object id="73297" gid="178" x="3431.15" y="2197.71" width="64" height="64"/>
   <object id="73298" gid="178" x="3431.15" y="2133.71" width="64" height="64"/>
@@ -5394,10 +5394,10 @@
   <object id="76494" gid="68" x="3431.5" y="2006.5" width="64" height="64" rotation="90"/>
   <object id="76625" gid="81" x="1408" y="2624" width="64" height="64"/>
   <object id="77048" gid="65" x="1408" y="2816" width="64" height="64"/>
-  <object id="77053" gid="4" x="1024" y="3072" width="64" height="64" rotation="90"/>
+  <object id="77053" gid="4" x="1024" y="3072" width="64" height="64" rotation="60"/>
   <object id="77055" gid="4" x="1024" y="3584" width="64" height="64" rotation="90"/>
   <object id="77059" gid="1" x="640" y="3584" width="64" height="64" rotation="90"/>
-  <object id="77061" gid="1" x="640" y="3072" width="64" height="64" rotation="90"/>
+  <object id="77061" gid="1" x="640" y="3072" width="64" height="64" rotation="75"/>
   <object id="77062" gid="1" x="1216" y="2880" width="64" height="64"/>
   <object id="77063" gid="1" x="1536" y="2880" width="64" height="64"/>
   <object id="77064" gid="1" x="1152" y="3264" width="64" height="64" rotation="210"/>

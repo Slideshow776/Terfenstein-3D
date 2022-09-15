@@ -2207,97 +2207,104 @@ level finished/you are here
   index: -1
 
 images.pack13.png
-size: 128, 128
+size: 512, 64
 format: RGBA8888
 filter: Nearest, Nearest
 repeat: none
 pickups/armor big
   rotate: false
-  xy: 2, 2
+  xy: 154, 23
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 pickups/armor medium
   rotate: false
-  xy: 36, 2
+  xy: 188, 23
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 pickups/armor small
   rotate: false
-  xy: 57, 94
+  xy: 222, 23
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 pickups/blueKey
   rotate: false
-  xy: 91, 94
+  xy: 57, 27
   size: 17, 6
   orig: 17, 6
   offset: 0, 0
   index: -1
 pickups/bullet
   rotate: false
-  xy: 39, 57
+  xy: 256, 23
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 pickups/chaingun
   rotate: false
-  xy: 39, 39
+  xy: 2, 2
   size: 32, 16
   orig: 32, 16
   offset: 0, 0
   index: -1
 pickups/greenKey
   rotate: false
-  xy: 73, 34
+  xy: 324, 23
   size: 17, 6
   orig: 17, 6
   offset: 0, 0
   index: -1
 pickups/health medium
   rotate: false
-  xy: 2, 91
+  xy: 2, 20
   size: 53, 35
   orig: 53, 35
   offset: 0, 0
   index: -1
 pickups/health small
   rotate: false
-  xy: 73, 60
+  xy: 290, 23
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 pickups/redKey
   rotate: false
-  xy: 70, 26
+  xy: 361, 49
   size: 17, 6
   orig: 17, 6
   offset: 0, 0
   index: -1
 pickups/rocket
   rotate: false
-  xy: 2, 36
+  xy: 117, 2
   size: 35, 53
   orig: 35, 53
   offset: 0, 0
   index: -1
+pickups/rocketLauncher
+  rotate: false
+  xy: 57, 35
+  size: 58, 20
+  orig: 58, 20
+  offset: 0, 0
+  index: -1
 pickups/shells
   rotate: false
-  xy: 91, 102
+  xy: 324, 31
   size: 35, 24
   orig: 35, 24
   offset: 0, 0
   index: -1
 pickups/shotgun
   rotate: false
-  xy: 73, 42
+  xy: 154, 5
   size: 32, 16
   orig: 32, 16
   offset: 0, 0
@@ -2624,30 +2631,37 @@ size: 1024, 256
 format: RGBA8888
 filter: Nearest, Nearest
 repeat: none
-weapons/rocketlauncher/shooting 0
+weapons/rocketlauncher/icon
   rotate: false
   xy: 2, 2
+  size: 58, 20
+  orig: 58, 20
+  offset: 0, 0
+  index: -1
+weapons/rocketlauncher/shooting 0
+  rotate: false
+  xy: 2, 24
   size: 194, 140
   orig: 194, 140
   offset: 0, 0
   index: -1
 weapons/rocketlauncher/shooting 1
   rotate: false
-  xy: 198, 2
+  xy: 198, 24
   size: 194, 140
   orig: 194, 140
   offset: 0, 0
   index: -1
 weapons/rocketlauncher/shooting 2
   rotate: false
-  xy: 394, 2
+  xy: 394, 24
   size: 194, 140
   orig: 194, 140
   offset: 0, 0
   index: -1
 weapons/rocketlauncher/shooting 3
   rotate: false
-  xy: 590, 2
+  xy: 590, 24
   size: 194, 140
   orig: 194, 140
   offset: 0, 0

@@ -16,7 +16,7 @@ public class RocketLauncher extends Weapon {
         maxDamage = 0;
         numShotsFired = 1;
         isAmmoDependent = true;
-        isAvailable = true; // TODO:
+        isAvailable = false;
         isProjectile = true;
         inventoryIndex = 5;
         initializeAnimations();

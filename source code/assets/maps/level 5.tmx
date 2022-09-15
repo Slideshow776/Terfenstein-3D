@@ -2513,13 +2513,6 @@
   <object id="69572" gid="65" x="3392" y="2368" width="64" height="64" rotation="90"/>
   <object id="69866" gid="65" x="2944" y="2432" width="64" height="64"/>
   <object id="69867" gid="65" x="2176" y="3072" width="64" height="64" rotation="90"/>
-  <object id="70559" gid="19" x="1616" y="1584" width="352" height="288">
-   <properties>
-    <property name="color 0" type="color" value="#ffe2e2e2"/>
-    <property name="color 1" type="color" value="#ffff4343"/>
-    <property name="flickerFrequency" type="float" value="0"/>
-   </properties>
-  </object>
   <object id="70590" gid="65" x="2518" y="2709.75" width="64" height="64" rotation="135"/>
   <object id="70592" gid="65" x="3289.13" y="3485.58" width="64" height="64" rotation="135"/>
   <object id="70593" gid="65" x="2496" y="3520" width="64" height="64" rotation="45"/>

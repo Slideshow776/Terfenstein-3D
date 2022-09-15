@@ -27,6 +27,7 @@ import no.sandramoen.commanderqueen.actors.pickups.Health;
 import no.sandramoen.commanderqueen.actors.pickups.Key;
 import no.sandramoen.commanderqueen.actors.pickups.Pickup;
 import no.sandramoen.commanderqueen.actors.pickups.Rocket;
+import no.sandramoen.commanderqueen.actors.pickups.RocketLauncher;
 import no.sandramoen.commanderqueen.actors.pickups.Shells;
 import no.sandramoen.commanderqueen.actors.pickups.Shotgun;
 import no.sandramoen.commanderqueen.actors.props.Prop;
@@ -297,7 +298,7 @@ public class MapLoader {
     private void initializePickups() {
         initializePickup("health small", 1);
         initializePickup("health medium", 100);
-        initializePickup("bullets", 10);
+        initializePickup("bullets", 4);
         initializePickup("shells", 4);
         initializePickup("rocket", 1);
         initializePickup("armor small", 1);
@@ -305,6 +306,7 @@ public class MapLoader {
         initializePickup("armor big", 200);
         initializePickup("shotgun", 8);
         initializePickup("chaingun", 20);
+        initializePickup("rocketLauncher", 15);
         initializePickup("key", -1);
     }
 
@@ -331,6 +333,8 @@ public class MapLoader {
                 pickups.add(new Shotgun(x, y, stage3D, amount, player));
             else if (type.equalsIgnoreCase("chaingun"))
                 pickups.add(new Chaingun(x, y, stage3D, amount, player));
+            else if (type.equalsIgnoreCase("rocketLauncher"))
+                pickups.add(new RocketLauncher(x, y, stage3D, amount, player));
 
             else if (type.equalsIgnoreCase("armor small") || type.equalsIgnoreCase("armor medium") || type.equalsIgnoreCase("armor big"))
                 pickups.add(new Armor(x, y, stage3D, amount, player));

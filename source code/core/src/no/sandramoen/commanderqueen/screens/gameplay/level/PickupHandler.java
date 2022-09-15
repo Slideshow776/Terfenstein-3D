@@ -13,6 +13,7 @@ import no.sandramoen.commanderqueen.actors.pickups.Health;
 import no.sandramoen.commanderqueen.actors.pickups.Key;
 import no.sandramoen.commanderqueen.actors.pickups.Pickup;
 import no.sandramoen.commanderqueen.actors.pickups.Rocket;
+import no.sandramoen.commanderqueen.actors.pickups.RocketLauncher;
 import no.sandramoen.commanderqueen.actors.pickups.Shells;
 import no.sandramoen.commanderqueen.actors.pickups.Shotgun;
 import no.sandramoen.commanderqueen.actors.utils.baseActors.BaseActor;
@@ -74,6 +75,14 @@ public class PickupHandler {
 
                     pickUpWeapon(hud, pickups, pickup, weaponHandler, uiTable, uiHandler);
                     setPickupLabel(uiHandler, hud, "You picked up a chaingun!", true);
+                } else if (pickup instanceof RocketLauncher) {
+                    weaponHandler.makeAvailable("rocketLauncher");
+                    Rocket rockets = new Rocket(0, 0, stage3D, 15, player);
+                    hud.incrementAmmunition(rockets, weaponHandler.currentWeapon);
+                    rockets.remove();
+
+                    pickUpWeapon(hud, pickups, pickup, weaponHandler, uiTable, uiHandler);
+                    setPickupLabel(uiHandler, hud, "You picked up a rocket launcher!", true);
                 }
             }
         }

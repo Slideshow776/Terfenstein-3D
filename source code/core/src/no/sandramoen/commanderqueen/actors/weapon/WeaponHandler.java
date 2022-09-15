@@ -199,6 +199,8 @@ public class WeaponHandler extends BaseActor {
             weapons.get(2).isAvailable = true;
         else if (weapon.equalsIgnoreCase("chaingun"))
             weapons.get(3).isAvailable = true;
+        else if (weapon.equalsIgnoreCase("rocketLauncher"))
+            weapons.get(4).isAvailable = true;
     }
 
     private void setCrosshairColor(Array<BaseActor3D> shootable, PerspectiveCamera camera) {

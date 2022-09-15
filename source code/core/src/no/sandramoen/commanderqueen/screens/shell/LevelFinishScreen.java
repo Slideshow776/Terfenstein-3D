@@ -151,7 +151,7 @@ public class LevelFinishScreen extends BaseScreen {
         if (killCount < kills || itemCount < items || secretCount < secrets || timeCount < time || parCount < par) {
             setAllArgsInstantlyVisible();
         } else if (!isEnteringState) {
-            if (numLevel.equalsIgnoreCase("level 5")) {
+            if (numLevel.equalsIgnoreCase("level 6")) {
                 BaseGame.levelScreen = null;
                 BaseGame.setActiveScreen(new MenuScreen());
             }
@@ -248,6 +248,12 @@ public class LevelFinishScreen extends BaseScreen {
             explosionImage3.setVisible(true);
             youAreHereImage.setPosition(level5.x, level5.y);
         } else if (numLevel.equalsIgnoreCase("level 5")) {
+            explosionImage1.setVisible(true);
+            explosionImage2.setVisible(true);
+            explosionImage3.setVisible(true);
+            explosionImage4.setVisible(true);
+            youAreHereImage.setPosition(level2.x, level2.y); // TODO
+        } else if (numLevel.equalsIgnoreCase("level 6")) { // TODO
             explosionImage1.setVisible(true);
             explosionImage2.setVisible(true);
             explosionImage3.setVisible(true);

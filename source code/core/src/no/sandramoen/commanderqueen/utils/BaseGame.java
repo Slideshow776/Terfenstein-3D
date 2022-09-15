@@ -37,6 +37,7 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
     public static TiledMap level3Map;
     public static TiledMap level4Map;
     public static TiledMap level5Map;
+    public static TiledMap level6Map;
 
     public static Music menuMusic;
     public static Music levelFinishMusic;
@@ -222,6 +223,7 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
         assetManager.load("maps/level 3.tmx", TiledMap.class);
         assetManager.load("maps/level 4.tmx", TiledMap.class);
         assetManager.load("maps/level 5.tmx", TiledMap.class);
+        assetManager.load("maps/level 6.tmx", TiledMap.class);
 
         assetManager.finishLoading();
 
@@ -286,6 +288,7 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
         level3Map = assetManager.get("maps/level 3.tmx", TiledMap.class);
         level4Map = assetManager.get("maps/level 4.tmx", TiledMap.class);
         level5Map = assetManager.get("maps/level 5.tmx", TiledMap.class);
+        level6Map = assetManager.get("maps/level 6.tmx", TiledMap.class);
 
         textureAtlas = assetManager.get("images/included/packed/images.pack.atlas");
         GameUtils.printLoadingTime(getClass().getSimpleName(),"Assetmanager", startTime);

@@ -94,6 +94,7 @@ public class HUD extends BaseActor {
         weaponImages.add(new Image(BaseGame.textureAtlas.findRegion("weapons/pistol/icon")));
         weaponImages.add(new Image(BaseGame.textureAtlas.findRegion("weapons/shotgun/icon")));
         weaponImages.add(new Image(BaseGame.textureAtlas.findRegion("weapons/chaingun/icon")));
+        weaponImages.add(new Image(BaseGame.textureAtlas.findRegion("weapons/rocketlauncher/icon")));
 
         Table table = new Table();
         table.defaults().grow().width(Gdx.graphics.getWidth() * .05f).height(Gdx.graphics.getHeight() * .05f);
@@ -273,6 +274,8 @@ public class HUD extends BaseActor {
             weaponImages.get(2).setColor(Color.WHITE);
         else if (currentWeapon instanceof Chaingun)
             weaponImages.get(3).setColor(Color.WHITE);
+        else if (currentWeapon instanceof RocketLauncher)
+            weaponImages.get(4).setColor(Color.WHITE);
     }
 
 
