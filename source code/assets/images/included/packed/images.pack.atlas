@@ -1783,6 +1783,61 @@ enemies/sersjant/walk side right 3
   index: -1
 
 images.pack10.png
+size: 1024, 128
+format: RGBA8888
+filter: Nearest, Nearest
+repeat: none
+explosion0/explosion1
+  rotate: false
+  xy: 2, 2
+  size: 127, 104
+  orig: 127, 104
+  offset: 0, 0
+  index: -1
+explosion0/explosion2
+  rotate: false
+  xy: 131, 2
+  size: 127, 104
+  orig: 127, 104
+  offset: 0, 0
+  index: -1
+explosion0/explosion3
+  rotate: false
+  xy: 260, 2
+  size: 127, 104
+  orig: 127, 104
+  offset: 0, 0
+  index: -1
+explosion0/explosion4
+  rotate: false
+  xy: 389, 2
+  size: 127, 104
+  orig: 127, 104
+  offset: 0, 0
+  index: -1
+explosion0/explosion5
+  rotate: false
+  xy: 518, 2
+  size: 127, 104
+  orig: 127, 104
+  offset: 0, 0
+  index: -1
+explosion0/explosion6
+  rotate: false
+  xy: 647, 2
+  size: 127, 104
+  orig: 127, 104
+  offset: 0, 0
+  index: -1
+explosion0/explosion7
+  rotate: false
+  xy: 776, 2
+  size: 127, 104
+  orig: 127, 104
+  offset: 0, 0
+  index: -1
+
+images.pack11.png
 size: 1024, 512
 format: RGBA8888
 filter: Nearest, Nearest
@@ -2124,7 +2179,7 @@ hud/key
   offset: 0, 0
   index: -1
 
-images.pack11.png
+images.pack12.png
 size: 256, 128
 format: RGBA8888
 filter: Nearest, Nearest
@@ -2151,7 +2206,7 @@ level finished/you are here
   offset: 0, 0
   index: -1
 
-images.pack12.png
+images.pack13.png
 size: 128, 128
 format: RGBA8888
 filter: Nearest, Nearest
@@ -2248,7 +2303,7 @@ pickups/shotgun
   offset: 0, 0
   index: -1
 
-images.pack13.png
+images.pack14.png
 size: 128, 128
 format: RGBA8888
 filter: Nearest, Nearest
@@ -2275,7 +2330,7 @@ props/suitcase 0
   offset: 0, 0
   index: -1
 
-images.pack14.png
+images.pack15.png
 size: 128, 64
 format: RGBA8888
 filter: Nearest, Nearest
@@ -2295,7 +2350,7 @@ rocket/travelling 0
   offset: 0, 0
   index: -1
 
-images.pack15.png
+images.pack16.png
 size: 512, 256
 format: RGBA8888
 filter: Nearest, Nearest
@@ -2455,7 +2510,7 @@ tiles/lonplate
   offset: 0, 0
   index: -1
 
-images.pack16.png
+images.pack17.png
 size: 256, 128
 format: RGBA8888
 filter: Nearest, Nearest
@@ -2482,7 +2537,7 @@ weapons/boot/icon
   offset: 0, 0
   index: -1
 
-images.pack17.png
+images.pack18.png
 size: 256, 512
 format: RGBA8888
 filter: Nearest, Nearest
@@ -2516,7 +2571,7 @@ weapons/chaingun/shooting 2
   offset: 0, 0
   index: -1
 
-images.pack18.png
+images.pack19.png
 size: 1024, 256
 format: RGBA8888
 filter: Nearest, Nearest
@@ -2564,7 +2619,7 @@ weapons/pistol/shooting 3
   offset: 0, 0
   index: -1
 
-images.pack19.png
+images.pack20.png
 size: 1024, 256
 format: RGBA8888
 filter: Nearest, Nearest
@@ -2598,7 +2653,7 @@ weapons/rocketlauncher/shooting 3
   offset: 0, 0
   index: -1
 
-images.pack20.png
+images.pack21.png
 size: 1024, 256
 format: RGBA8888
 filter: Nearest, Nearest

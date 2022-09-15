@@ -101,8 +101,8 @@ public class Rocket extends BaseActor3D {
 
     private void initializeExplosionAnimation() {
         Array<TextureAtlas.AtlasRegion> animationImages = new Array();
-        for (int i = 4; i <= 8; i++)
-            animationImages.add(BaseGame.textureAtlas.findRegion("barrel/barrel explode " + i));
+        for (int i = 1; i <= 7; i++)
+            animationImages.add(BaseGame.textureAtlas.findRegion("explosion0/explosion" + i));
         explodeAnimation = new Animation(.2f, animationImages, Animation.PlayMode.NORMAL);
         animationImages.clear();
     }

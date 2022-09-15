@@ -146,9 +146,10 @@ public class EnemyHandler {
     }
 
     private static void createBarrelExplosion(float x, float y, Stage3D stage3D, Player player, Array<BaseActor3D> shootables) {
-        Barrel temp = new Barrel(x, y, stage3D, player);
-        temp.isVisible = false;
-        shootables.add(temp);
-        temp.health = 0;
+        Barrel barrel = new Barrel(x, y, stage3D, player);
+        barrel.isVisible = false;
+        barrel.health = 0;
+        barrel.setScale(1, 1, .00001f);
+        shootables.add(barrel);
     }
 }
