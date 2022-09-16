@@ -2611,16 +2611,16 @@ weapons/pistol/shooting 2
   orig: 194, 140
   offset: 0, 0
   index: -1
-weapons/pistol/shooting 4
+weapons/pistol/shooting 3
   rotate: false
-  xy: 394, 20
+  xy: 590, 20
   size: 194, 140
   orig: 194, 140
   offset: 0, 0
   index: -1
-weapons/pistol/shooting 3
+weapons/pistol/shooting 4
   rotate: false
-  xy: 590, 20
+  xy: 786, 20
   size: 194, 140
   orig: 194, 140
   offset: 0, 0
@@ -2701,6 +2701,13 @@ weapons/shotgun/shooting 2
   offset: 0, 0
   index: -1
 weapons/shotgun/shooting 3
+  rotate: false
+  xy: 590, 20
+  size: 194, 140
+  orig: 194, 140
+  offset: 0, 0
+  index: -1
+weapons/shotgun/shooting 5
   rotate: false
   xy: 590, 20
   size: 194, 140
