@@ -120,9 +120,8 @@ public class WeaponHandler extends BaseActor {
                         return;
                     j++;
                 }
-                setWeapon(0);
-            } else
-                setWeapon(0);
+            }
+            setWeapon(0);
         } else if (i >= 0) { // down
             int j = 0;
             while (currentWeapon.inventoryIndex - 1 - j >= 0) {
