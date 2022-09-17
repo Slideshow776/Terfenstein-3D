@@ -268,7 +268,6 @@ public class LevelFinishScreen extends BaseScreen {
 
     private void setNewScreen() {
         BaseGame.pistolShotSound.play(BaseGame.soundVolume, .5f, 0);
-
         if (numLevel.equalsIgnoreCase("test"))
             BaseGame.setActiveScreen(new LevelScreen(65, BaseGame.testMap, "test", health, armor, bullets, shells, rockets, weapons));
         else if (numLevel.equalsIgnoreCase("level 1"))

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.1" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="100" height="100" tilewidth="64" tileheight="64" infinite="0" nextlayerid="17" nextobjectid="71443">
+<map version="1.9" tiledversion="1.9.1" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="100" height="100" tilewidth="64" tileheight="64" infinite="0" nextlayerid="17" nextobjectid="71445">
  <tileset firstgid="1" name="Assets" tilewidth="64" tileheight="64" tilecount="128" columns="16" objectalignment="center">
   <image source="assets.png" width="1024" height="512"/>
   <tile id="0">
@@ -1236,8 +1236,6 @@
   <object id="68936" gid="165" x="2048" y="2752" width="64" height="64"/>
   <object id="68938" gid="165" x="2048" y="2880" width="64" height="64"/>
   <object id="68939" gid="165" x="2048" y="2944" width="64" height="64"/>
-  <object id="68940" gid="165" x="2048" y="3008" width="64" height="64"/>
-  <object id="68942" gid="165" x="2048" y="3136" width="64" height="64"/>
   <object id="68943" gid="165" x="2048" y="3200" width="64" height="64"/>
   <object id="68944" gid="165" x="2048" y="3264" width="64" height="64"/>
   <object id="68945" gid="165" x="2048" y="3328" width="64" height="64"/>
@@ -1549,6 +1547,8 @@
   <object id="71125" gid="165" x="1664" y="3776" width="64" height="64"/>
   <object id="71126" gid="165" x="1728" y="3776" width="64" height="64"/>
   <object id="71127" gid="165" x="1792" y="3776" width="64" height="64"/>
+  <object id="71443" gid="180" x="2048" y="3008" width="64" height="64"/>
+  <object id="71444" gid="180" x="2048" y="3136" width="64" height="64"/>
  </objectgroup>
  <objectgroup id="12" name="2nd floor" visible="0">
   <object id="60601" gid="119" x="192" y="64" width="64" height="64"/>

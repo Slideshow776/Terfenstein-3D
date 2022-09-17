@@ -2358,7 +2358,7 @@ rocket/travelling 0
   index: -1
 
 images.pack16.png
-size: 512, 256
+size: 1024, 256
 format: RGBA8888
 filter: Nearest, Nearest
 repeat: none
@@ -2404,114 +2404,156 @@ tiles/brick 3
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/circles0
+tiles/brick 3 flag
   rotate: false
   xy: 134, 137
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/cliff 0
+tiles/circles0
   rotate: false
   xy: 68, 5
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/cliff 1
+tiles/cliff 0
   rotate: false
   xy: 134, 71
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/elevator wall
+tiles/cliff 1
   rotate: false
   xy: 200, 137
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/flag 0
+tiles/cliff 1 flag
   rotate: false
   xy: 134, 5
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/flag 1
+tiles/elevator wall
   rotate: false
   xy: 200, 71
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/flag 2
+tiles/flag 0
   rotate: false
   xy: 266, 137
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/flag 3
+tiles/flag 1
   rotate: false
   xy: 200, 5
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/hexagon 0
+tiles/flag 2
   rotate: false
   xy: 266, 71
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/hexagon 1
+tiles/flag 3
   rotate: false
   xy: 332, 137
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/light big plates
+tiles/hexagon 0
   rotate: false
   xy: 266, 5
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/light big plates 1
+tiles/hexagon 1
   rotate: false
   xy: 332, 71
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/light lonplate
+tiles/light big plates
   rotate: false
   xy: 398, 137
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/light lonplate 2
+tiles/light big plates 1
   rotate: false
   xy: 332, 5
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/lights 0
+tiles/light lonplate
   rotate: false
   xy: 398, 71
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/lonplate
+tiles/light lonplate 2
+  rotate: false
+  xy: 464, 137
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+tiles/lights 0
   rotate: false
   xy: 398, 5
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+tiles/lonplate
+  rotate: false
+  xy: 464, 71
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+tiles/wood 1
+  rotate: false
+  xy: 530, 137
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+tiles/wood 1 flag
+  rotate: false
+  xy: 530, 71
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+tiles/wood 2
+  rotate: false
+  xy: 464, 5
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+tiles/wood 2 flag
+  rotate: false
+  xy: 596, 137
   size: 64, 64
   orig: 64, 64
   offset: 0, 0

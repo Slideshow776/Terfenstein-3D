@@ -110,7 +110,8 @@ public class MapLoader {
         tileTextures.add("hexagon 0", "hexagon 1", "brick 0", "brick 1");
         tileTextures.add("brick 2", "brick 3", "cliff 0", "cliff 1");
         tileTextures.add("light big plates 1", "flag 1", "flag 2", "flag 3");
-        tileTextures.add("blank");
+        tileTextures.add("blank", "cliff 1 flag", "brick 3 flag", "wood 1");
+        tileTextures.add("wood 1 flag", "wood 2", "wood 2 flag");
 
         for (String type : tileTypes) {
             for (String texture : tileTextures) {

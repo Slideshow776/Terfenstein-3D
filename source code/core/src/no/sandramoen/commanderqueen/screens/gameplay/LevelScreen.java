@@ -265,7 +265,7 @@ public class LevelScreen extends BaseScreen3D {
         else if (numLevel.equalsIgnoreCase("level 5"))
             GameUtils.playLoopingMusic(BaseGame.level5Music, BaseGame.musicVolume * .7f);
         else if (numLevel.equalsIgnoreCase("level 6"))
-            GameUtils.playLoopingMusic(BaseGame.level6Music, BaseGame.musicVolume * .5f); // TODO: find music for level 6
+            GameUtils.playLoopingMusic(BaseGame.level6Music, BaseGame.musicVolume * .5f);
     }
 
     private void mouseButtonPolling() {
@@ -464,6 +464,7 @@ public class LevelScreen extends BaseScreen3D {
         BaseGame.level4Music.stop();
         BaseGame.level5Music.stop();
         BaseGame.level6Music.stop();
+        BaseGame.level7Music.stop();
         BaseGame.ambientFanMusic.stop();
     }
 
@@ -483,6 +484,7 @@ public class LevelScreen extends BaseScreen3D {
             levelData.add("Factory");
         else
             levelData.add("Test");
+
         levelData.add((int) ((1 - (enemies.size / (float) numEnemies)) * 100));
         levelData.add((int) ((1 - (originalPickups.size / (float) numPickups)) * 100));
         levelData.add((int) ((foundSecrets / (float) numSecrets) * 100));
@@ -501,8 +503,10 @@ public class LevelScreen extends BaseScreen3D {
             return "Great Hall";
         else if (numLevel.equalsIgnoreCase("level 4"))
             return "Bunkers";
-        else if (numLevel.equalsIgnoreCase("level 6"))
+        else if (numLevel.equalsIgnoreCase("level 5"))
             return "Factory";
+        else if (numLevel.equalsIgnoreCase("level 6"))
+            return "Laboratories";
         else
             return "Test";
     }
