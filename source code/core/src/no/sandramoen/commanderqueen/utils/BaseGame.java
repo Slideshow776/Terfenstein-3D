@@ -46,6 +46,7 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
     public static Music level3Music;
     public static Music level4Music;
     public static Music level5Music;
+    public static Music level6Music;
     public static Music metalWalkingMusic;
     public static Music ambientFanMusic;
 
@@ -176,6 +177,7 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
         assetManager.load("audio/music/587251__lagmusics__epic-and-aggressive-percussion.mp3", Music.class);
         assetManager.load("audio/music/578908__lagmusics__virtual-heavy-metal.wav", Music.class);
         assetManager.load("audio/music/457210__kiddpark__13-drum-cadences.wav", Music.class);
+        assetManager.load("audio/music/580131__badoink__t-rox.wav", Music.class);
 
         // sound
         assetManager.load("audio/sound/370220__eflexmusic__pistol-shot-close-mixed.wav", Sound.class);
@@ -240,6 +242,7 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
         level3Music = assetManager.get("audio/music/595840__lagmusics__heavy-metal-looping.mp3", Music.class);
         level4Music = assetManager.get("audio/music/524240__badoink__hard-rock-loop.wav", Music.class);
         level5Music = assetManager.get("audio/music/578908__lagmusics__virtual-heavy-metal.wav", Music.class);
+        level6Music = assetManager.get("audio/music/580131__badoink__t-rox.wav", Music.class);
         metalWalkingMusic = assetManager.get("audio/music/398937__mypantsfelldown__metal-footsteps.wav", Music.class);
         ambientFanMusic = assetManager.get("audio/music/249738__adrilahan__fan.wav", Music.class);
 

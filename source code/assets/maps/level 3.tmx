@@ -1884,9 +1884,9 @@
   <object id="65564" gid="34" x="192" y="704" width="64" height="64"/>
   <object id="65565" gid="34" x="160" y="704" width="64" height="64"/>
   <object id="65566" gid="34" x="96" y="704.5" width="64" height="64"/>
-  <object id="65568" gid="18" x="1152" y="1088" width="64" height="64">
+  <object id="65568" gid="18" x="1152.67" y="1080" width="64" height="64">
    <properties>
-    <property name="intensity" type="float" value="1"/>
+    <property name="intensity" type="float" value="2"/>
    </properties>
   </object>
   <object id="65569" gid="19" x="1848" y="616" width="720" height="1264">

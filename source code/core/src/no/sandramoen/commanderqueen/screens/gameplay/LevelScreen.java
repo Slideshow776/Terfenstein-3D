@@ -261,11 +261,11 @@ public class LevelScreen extends BaseScreen3D {
         else if (numLevel.equalsIgnoreCase("level 3"))
             GameUtils.playLoopingMusic(BaseGame.level3Music);
         else if (numLevel.equalsIgnoreCase("level 4"))
-            GameUtils.playLoopingMusic(BaseGame.level4Music, BaseGame.musicVolume * 1.2f);
+            GameUtils.playLoopingMusic(BaseGame.level4Music, BaseGame.musicVolume * 1.5f);
         else if (numLevel.equalsIgnoreCase("level 5"))
             GameUtils.playLoopingMusic(BaseGame.level5Music, BaseGame.musicVolume * .7f);
         else if (numLevel.equalsIgnoreCase("level 6"))
-            GameUtils.playLoopingMusic(BaseGame.level5Music, BaseGame.musicVolume * .7f); // TODO: find music for level 6
+            GameUtils.playLoopingMusic(BaseGame.level6Music, BaseGame.musicVolume * .5f); // TODO: find music for level 6
     }
 
     private void mouseButtonPolling() {
@@ -388,6 +388,10 @@ public class LevelScreen extends BaseScreen3D {
             BaseGame.setActiveScreen(new LevelScreen(95, BaseGame.level3Map, "level 3", startingHealth, startingArmor, startingBullets, startingShells, startingRockets, startingWeapons));
         else if (numLevel.equalsIgnoreCase("level 4"))
             BaseGame.setActiveScreen(new LevelScreen(38, BaseGame.level4Map, "level 4", startingHealth, startingArmor, startingBullets, startingShells, startingRockets, startingWeapons));
+        else if (numLevel.equalsIgnoreCase("level 5"))
+            BaseGame.setActiveScreen(new LevelScreen(38, BaseGame.level5Map, "level 5", startingHealth, startingArmor, startingBullets, startingShells, startingRockets, startingWeapons));
+        else if (numLevel.equalsIgnoreCase("level 6"))
+            BaseGame.setActiveScreen(new LevelScreen(38, BaseGame.level6Map, "level 6", startingHealth, startingArmor, startingBullets, startingShells, startingRockets, startingWeapons));
     }
 
 
@@ -459,6 +463,7 @@ public class LevelScreen extends BaseScreen3D {
         BaseGame.level3Music.stop();
         BaseGame.level4Music.stop();
         BaseGame.level5Music.stop();
+        BaseGame.level6Music.stop();
         BaseGame.ambientFanMusic.stop();
     }
 
@@ -496,6 +501,8 @@ public class LevelScreen extends BaseScreen3D {
             return "Great Hall";
         else if (numLevel.equalsIgnoreCase("level 4"))
             return "Bunkers";
+        else if (numLevel.equalsIgnoreCase("level 6"))
+            return "Factory";
         else
             return "Test";
     }

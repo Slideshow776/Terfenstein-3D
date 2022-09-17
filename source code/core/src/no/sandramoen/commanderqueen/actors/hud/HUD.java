@@ -206,7 +206,7 @@ public class HUD extends BaseActor {
         else if (currentWeapon instanceof Shotgun)
             ammoLabel.setText(shells + "");
         else if (currentWeapon instanceof RocketLauncher)
-            ammoLabel.setText(rockets + ""); // TODO
+            ammoLabel.setText(rockets + "");
         else
             Gdx.app.error(getClass().getSimpleName(), "Error could not set ammo label, unrecognized weapon => " + currentWeapon);
         fadeWeaponsTableInAndOut(currentWeapon);

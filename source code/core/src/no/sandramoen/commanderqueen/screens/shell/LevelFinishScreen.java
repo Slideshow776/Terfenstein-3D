@@ -25,6 +25,7 @@ public class LevelFinishScreen extends BaseScreen {
     private Image explosionImage2 = new Image(BaseGame.textureAtlas.findRegion("level finished/explosion"));
     private Image explosionImage3 = new Image(BaseGame.textureAtlas.findRegion("level finished/explosion"));
     private Image explosionImage4 = new Image(BaseGame.textureAtlas.findRegion("level finished/explosion"));
+    private Image explosionImage5 = new Image(BaseGame.textureAtlas.findRegion("level finished/explosion"));
     private Image youAreHereImage = new Image(BaseGame.textureAtlas.findRegion("level finished/you are here"));
 
     private TypingLabel nameLabel;
@@ -223,6 +224,7 @@ public class LevelFinishScreen extends BaseScreen {
         Vector2 level3 = new Vector2(Gdx.graphics.getWidth() * .44f, Gdx.graphics.getHeight() * .39f);
         Vector2 level4 = new Vector2(Gdx.graphics.getWidth() * .55f, Gdx.graphics.getHeight() * .39f);
         Vector2 level5 = new Vector2(Gdx.graphics.getWidth() * .58f, Gdx.graphics.getHeight() * .33f);
+        Vector2 level6 = new Vector2(Gdx.graphics.getWidth() * .33f, Gdx.graphics.getHeight() * .33f);
 
         explosionImage0.setVisible(true);
         explosionImage0.setPosition(level1.x, level1.y);
@@ -230,6 +232,7 @@ public class LevelFinishScreen extends BaseScreen {
         explosionImage2.setPosition(level3.x - (youAreHereImage.getWidth() / 4), level3.y);
         explosionImage3.setPosition(level4.x - (youAreHereImage.getWidth() / 4), level4.y);
         explosionImage4.setPosition(level5.x - (youAreHereImage.getWidth() / 4), level5.y);
+        explosionImage5.setPosition(level6.x - (youAreHereImage.getWidth() / 4), level5.y);
 
         youAreHereImage.setVisible(true);
 
@@ -252,12 +255,13 @@ public class LevelFinishScreen extends BaseScreen {
             explosionImage2.setVisible(true);
             explosionImage3.setVisible(true);
             explosionImage4.setVisible(true);
-            youAreHereImage.setPosition(level2.x, level2.y); // TODO
-        } else if (numLevel.equalsIgnoreCase("level 6")) { // TODO
+            youAreHereImage.setPosition(level6.x, level6.y); // TODO
+        } else if (numLevel.equalsIgnoreCase("level 6")) {
             explosionImage1.setVisible(true);
             explosionImage2.setVisible(true);
             explosionImage3.setVisible(true);
             explosionImage4.setVisible(true);
+            explosionImage5.setVisible(true);
             youAreHereImage.setPosition(level2.x, level2.y);
         }
     }
@@ -275,6 +279,8 @@ public class LevelFinishScreen extends BaseScreen {
             BaseGame.setActiveScreen(new LevelScreen(38, BaseGame.level4Map, "level 4", health, armor, bullets, shells, rockets, weapons));
         else if (numLevel.equalsIgnoreCase("level 4"))
             BaseGame.setActiveScreen(new LevelScreen(57, BaseGame.level5Map, "level 5", health, armor, bullets, shells, rockets, weapons));
+        else if (numLevel.equalsIgnoreCase("level 5"))
+            BaseGame.setActiveScreen(new LevelScreen(83, BaseGame.level6Map, "level 6", health, armor, bullets, shells, rockets, weapons));
     }
 
     private String formatTime(float time) {
@@ -359,6 +365,7 @@ public class LevelFinishScreen extends BaseScreen {
         imageSetup(explosionImage2);
         imageSetup(explosionImage3);
         imageSetup(explosionImage4);
+        imageSetup(explosionImage5);
     }
 
     private void imageSetup(Image image) {
