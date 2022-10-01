@@ -26,12 +26,13 @@ www-test/
 /android/libs/x86/
 /android/libs/x86_64/
 /android/gen/
-.idea/
+.idea/*
 *.ipr
 *.iws
 *.iml
 /android/out/
 com_crashlytics_export_strings.xml
+/.idea/misc.xml
 
 ## Eclipse
 
