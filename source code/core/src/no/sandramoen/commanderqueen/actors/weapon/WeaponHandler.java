@@ -16,6 +16,7 @@ import no.sandramoen.commanderqueen.actors.utils.baseActors.BaseActor;
 import no.sandramoen.commanderqueen.actors.utils.baseActors.BaseActor3D;
 import no.sandramoen.commanderqueen.actors.weapon.weapons.Boot;
 import no.sandramoen.commanderqueen.actors.weapon.weapons.Chaingun;
+import no.sandramoen.commanderqueen.actors.weapon.weapons.Chainsaw;
 import no.sandramoen.commanderqueen.actors.weapon.weapons.Pistol;
 import no.sandramoen.commanderqueen.actors.weapon.weapons.RocketLauncher;
 import no.sandramoen.commanderqueen.actors.weapon.weapons.Shotgun;
@@ -58,7 +59,7 @@ public class WeaponHandler extends BaseActor {
         crosshair = new Crosshair(stage);
 
         weapons = new Array();
-        weapons.add(new Boot(), new Pistol(), new Shotgun(), new Chaingun());
+        weapons.add(new Chainsaw(), new Pistol(), new Shotgun(), new Chaingun());
         weapons.add(new RocketLauncher());
         setWeapon(1);
     }
@@ -73,6 +74,7 @@ public class WeaponHandler extends BaseActor {
             sway(player.isMoving);
 
         setCrosshairColor(shootable, stage3D.camera);
+        currentWeapon.act(dt);
     }
 
     @Override
@@ -93,8 +95,10 @@ public class WeaponHandler extends BaseActor {
     public boolean setWeapon(int i) {
         if (i >= 0 && i < weapons.size && weapons.get(i).isAvailable) {
             totalTime = 5f;
+            if (currentWeapon != null)
+                currentWeapon.stopSound();
             currentWeapon = weapons.get(i);
-            if (currentWeapon instanceof Chaingun || currentWeapon instanceof RocketLauncher)
+            if (currentWeapon instanceof Chaingun || currentWeapon instanceof RocketLauncher || currentWeapon instanceof Chainsaw)
                 setWidth(originalWidth * 2f);
             else
                 setWidth(originalWidth);
@@ -163,10 +167,12 @@ public class WeaponHandler extends BaseActor {
             isReadyCounter = 0;
             totalTime = 0f;
 
-            if (isHit)
+            if (isHit || currentWeapon instanceof Chainsaw)
                 currentWeapon.attackSound();
             else
                 currentWeapon.emptySound();
+
+            shakyCam();
         }
     }
 

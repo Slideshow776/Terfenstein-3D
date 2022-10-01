@@ -2621,6 +2621,40 @@ weapons/chaingun/shooting 2
   index: -1
 
 images.pack19.png
+size: 1024, 128
+format: RGBA8888
+filter: Nearest, Nearest
+repeat: none
+weapons/chainsaw/attacking 1
+  rotate: false
+  xy: 2, 2
+  size: 187, 105
+  orig: 187, 105
+  offset: 0, 0
+  index: -1
+weapons/chainsaw/attacking 2
+  rotate: false
+  xy: 191, 2
+  size: 187, 105
+  orig: 187, 105
+  offset: 0, 0
+  index: -1
+weapons/chainsaw/idle 1
+  rotate: false
+  xy: 380, 2
+  size: 187, 105
+  orig: 187, 105
+  offset: 0, 0
+  index: -1
+weapons/chainsaw/idle 2
+  rotate: false
+  xy: 569, 2
+  size: 187, 105
+  orig: 187, 105
+  offset: 0, 0
+  index: -1
+
+images.pack20.png
 size: 1024, 256
 format: RGBA8888
 filter: Nearest, Nearest
@@ -2668,7 +2702,7 @@ weapons/pistol/shooting 4
   offset: 0, 0
   index: -1
 
-images.pack20.png
+images.pack21.png
 size: 1024, 256
 format: RGBA8888
 filter: Nearest, Nearest
@@ -2709,7 +2743,7 @@ weapons/rocketlauncher/shooting 3
   offset: 0, 0
   index: -1
 
-images.pack21.png
+images.pack22.png
 size: 1024, 256
 format: RGBA8888
 filter: Nearest, Nearest

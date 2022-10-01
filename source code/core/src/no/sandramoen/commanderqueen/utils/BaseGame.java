@@ -51,6 +51,8 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
     public static Music level7Music;
     public static Music metalWalkingMusic;
     public static Music ambientFanMusic;
+    public static Music chainSawIdleMusic;
+    public static Music chainSawAttackingMusic;
 
     public static Sound pistolShotSound;
     public static Sound menigActiveSound;
@@ -181,6 +183,8 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
         assetManager.load("audio/music/457210__kiddpark__13-drum-cadences.wav", Music.class);
         assetManager.load("audio/music/580131__badoink__t-rox.wav", Music.class);
         assetManager.load("audio/music/585515__badoink__glitch-rock-loop.wav", Music.class);
+        assetManager.load("audio/sound/453259__kyles__chainsaw-start-and-idle.wav", Music.class);
+        assetManager.load("audio/sound/453259__kyles__chainsaw-start-and-idle_HIGH_PITHCED.wav", Music.class);
 
         // sound
         assetManager.load("audio/sound/370220__eflexmusic__pistol-shot-close-mixed.wav", Sound.class);
@@ -250,6 +254,8 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
         metalWalkingMusic = assetManager.get("audio/music/398937__mypantsfelldown__metal-footsteps.wav", Music.class);
         ambientFanMusic = assetManager.get("audio/music/249738__adrilahan__fan.wav", Music.class);
         level7Music = assetManager.get("audio/music/585515__badoink__glitch-rock-loop.wav", Music.class);
+        chainSawIdleMusic = assetManager.get("audio/sound/453259__kyles__chainsaw-start-and-idle.wav", Music.class);
+        chainSawAttackingMusic = assetManager.get("audio/sound/453259__kyles__chainsaw-start-and-idle_HIGH_PITHCED.wav", Music.class);
 
         // sound
         pistolShotSound = assetManager.get("audio/sound/370220__eflexmusic__pistol-shot-close-mixed.wav", Sound.class);

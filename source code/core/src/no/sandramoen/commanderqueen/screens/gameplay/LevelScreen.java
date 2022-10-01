@@ -323,7 +323,7 @@ public class LevelScreen extends BaseScreen3D {
                 } else if (shootable.get(i) instanceof Barrel) {
                     Barrel barrel = (Barrel) shootable.get(i);
                     barrel.decrementHealth(weaponHandler.getDamage(), player.distanceBetween(barrel));
-                } else if (!weaponHandler.currentWeapon.isMelee) {
+                } else {
                     Vector3 temp = new Vector3().set(ray.direction).scl(player.distanceBetween(shootable.get(i)) - (Tile.diagonalLength / 2)).add(ray.origin);
                     bulletDecals.addDecal(temp.x, temp.y, temp.z);
                 }
@@ -375,6 +375,9 @@ public class LevelScreen extends BaseScreen3D {
             mainStage3D.camera.position.x = -Tile.height * .48f;
             totalTime = 0;
         }
+
+        BaseGame.chainSawAttackingMusic.stop();
+        BaseGame.chainSawIdleMusic.stop();
     }
 
     private void restartLevel() {
@@ -466,6 +469,8 @@ public class LevelScreen extends BaseScreen3D {
         BaseGame.level6Music.stop();
         BaseGame.level7Music.stop();
         BaseGame.ambientFanMusic.stop();
+        BaseGame.chainSawAttackingMusic.stop();
+        BaseGame.chainSawIdleMusic.stop();
     }
 
     private Array getLevelData() {
