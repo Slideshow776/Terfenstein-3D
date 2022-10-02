@@ -1060,7 +1060,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="11" name="1st floor">
+ <objectgroup id="11" name="1st floor" visible="0">
   <object id="60509" gid="117" x="128" y="192" width="64" height="64"/>
   <object id="60510" gid="117" x="128" y="192" width="64" height="64"/>
   <object id="66418" gid="147" x="1216" y="2240" width="64" height="64"/>
@@ -1238,20 +1238,20 @@
   <object id="66680" gid="147" x="2112" y="1792" width="64" height="64"/>
   <object id="66681" gid="147" x="2112" y="1664" width="64" height="64"/>
   <object id="66682" gid="147" x="2112" y="1536" width="64" height="64"/>
-  <object id="66716" gid="193" x="1216" y="2048" width="64" height="64"/>
-  <object id="66717" gid="193" x="1216" y="1920" width="64" height="64"/>
-  <object id="66718" gid="193" x="1216" y="1792" width="64" height="64"/>
-  <object id="66719" gid="193" x="1216" y="1664" width="64" height="64"/>
-  <object id="66720" gid="193" x="1216" y="1536" width="64" height="64"/>
-  <object id="66721" gid="193" x="1216" y="1408" width="64" height="64"/>
-  <object id="66722" gid="193" x="1216" y="1280" width="64" height="64"/>
-  <object id="66723" gid="193" x="1856" y="1280" width="64" height="64"/>
-  <object id="66724" gid="193" x="1856" y="1408" width="64" height="64"/>
-  <object id="66725" gid="193" x="1856" y="1536" width="64" height="64"/>
-  <object id="66726" gid="193" x="1856" y="1664" width="64" height="64"/>
-  <object id="66727" gid="193" x="1856" y="1792" width="64" height="64"/>
-  <object id="66728" gid="193" x="1856" y="1920" width="64" height="64"/>
-  <object id="66729" gid="193" x="1856" y="2048" width="64" height="64"/>
+  <object id="66716" gid="197" x="1216" y="2048" width="64" height="64"/>
+  <object id="66717" gid="197" x="1216" y="1920" width="64" height="64"/>
+  <object id="66718" gid="197" x="1216" y="1792" width="64" height="64"/>
+  <object id="66719" gid="197" x="1216" y="1664" width="64" height="64"/>
+  <object id="66720" gid="197" x="1216" y="1536" width="64" height="64"/>
+  <object id="66721" gid="197" x="1216" y="1408" width="64" height="64"/>
+  <object id="66722" gid="197" x="1216" y="1280" width="64" height="64"/>
+  <object id="66723" gid="197" x="1856" y="1280" width="64" height="64"/>
+  <object id="66724" gid="197" x="1856" y="1408" width="64" height="64"/>
+  <object id="66725" gid="197" x="1856" y="1536" width="64" height="64"/>
+  <object id="66726" gid="197" x="1856" y="1664" width="64" height="64"/>
+  <object id="66727" gid="197" x="1856" y="1792" width="64" height="64"/>
+  <object id="66728" gid="197" x="1856" y="1920" width="64" height="64"/>
+  <object id="66729" gid="197" x="1856" y="2048" width="64" height="64"/>
   <object id="67507" gid="149" x="960" y="1856" width="64" height="64"/>
   <object id="67508" gid="149" x="960" y="1600" width="64" height="64"/>
   <object id="67512" gid="149" x="2112" y="1600" width="64" height="64"/>
@@ -1405,20 +1405,20 @@
  <objectgroup id="12" name="2nd floor" visible="0">
   <object id="60601" gid="119" x="192" y="64" width="64" height="64"/>
   <object id="60602" gid="119" x="960" y="576" width="64" height="64"/>
-  <object id="66730" gid="180" x="1856" y="2048" width="64" height="64"/>
-  <object id="66731" gid="180" x="1856" y="1920" width="64" height="64"/>
-  <object id="66732" gid="180" x="1856" y="1792" width="64" height="64"/>
-  <object id="66733" gid="180" x="1856" y="1664" width="64" height="64"/>
-  <object id="66734" gid="180" x="1856" y="1536" width="64" height="64"/>
-  <object id="66735" gid="180" x="1856" y="1408" width="64" height="64"/>
-  <object id="66736" gid="180" x="1856" y="1280" width="64" height="64"/>
-  <object id="66737" gid="180" x="1216" y="1280" width="64" height="64"/>
-  <object id="66738" gid="180" x="1216" y="1408" width="64" height="64"/>
-  <object id="66739" gid="180" x="1216" y="1536" width="64" height="64"/>
-  <object id="66740" gid="180" x="1216" y="1664" width="64" height="64"/>
-  <object id="66741" gid="180" x="1216" y="1792" width="64" height="64"/>
-  <object id="66742" gid="180" x="1216" y="1920" width="64" height="64"/>
-  <object id="66743" gid="180" x="1216" y="2048" width="64" height="64"/>
+  <object id="66730" gid="209" x="1856" y="2048" width="64" height="64"/>
+  <object id="66731" gid="209" x="1856" y="1920" width="64" height="64"/>
+  <object id="66732" gid="209" x="1856" y="1792" width="64" height="64"/>
+  <object id="66733" gid="209" x="1856" y="1664" width="64" height="64"/>
+  <object id="66734" gid="209" x="1856" y="1536" width="64" height="64"/>
+  <object id="66735" gid="209" x="1856" y="1408" width="64" height="64"/>
+  <object id="66736" gid="209" x="1856" y="1280" width="64" height="64"/>
+  <object id="66737" gid="209" x="1216" y="1280" width="64" height="64"/>
+  <object id="66738" gid="209" x="1216" y="1408" width="64" height="64"/>
+  <object id="66739" gid="209" x="1216" y="1536" width="64" height="64"/>
+  <object id="66740" gid="209" x="1216" y="1664" width="64" height="64"/>
+  <object id="66741" gid="209" x="1216" y="1792" width="64" height="64"/>
+  <object id="66742" gid="209" x="1216" y="1920" width="64" height="64"/>
+  <object id="66743" gid="209" x="1216" y="2048" width="64" height="64"/>
   <object id="66744" gid="178" x="1024" y="2240" width="64" height="64"/>
   <object id="66745" gid="178" x="1088" y="2240" width="64" height="64"/>
   <object id="66746" gid="178" x="1152" y="2240" width="64" height="64"/>
@@ -1828,21 +1828,21 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="15" name="3rd floor" visible="0">
-  <object id="67056" gid="181" x="1856" y="2048" width="64" height="64"/>
-  <object id="67057" gid="181" x="1856" y="1920" width="64" height="64"/>
-  <object id="67058" gid="181" x="1856" y="1792" width="64" height="64"/>
-  <object id="67059" gid="181" x="1856" y="1664" width="64" height="64"/>
-  <object id="67060" gid="181" x="1856" y="1536" width="64" height="64"/>
-  <object id="67061" gid="181" x="1856" y="1408" width="64" height="64"/>
-  <object id="67062" gid="181" x="1856" y="1280" width="64" height="64"/>
-  <object id="67063" gid="181" x="1216" y="1280" width="64" height="64"/>
-  <object id="67064" gid="181" x="1216" y="1408" width="64" height="64"/>
-  <object id="67065" gid="181" x="1216" y="1536" width="64" height="64"/>
-  <object id="67066" gid="181" x="1216" y="1664" width="64" height="64"/>
-  <object id="67067" gid="181" x="1216" y="1792" width="64" height="64"/>
-  <object id="67068" gid="181" x="1216" y="1920" width="64" height="64"/>
-  <object id="67069" gid="181" x="1216" y="2048" width="64" height="64"/>
+ <objectgroup id="15" name="3rd floor">
+  <object id="67056" gid="210" x="1856" y="2048" width="64" height="64"/>
+  <object id="67057" gid="210" x="1856" y="1920" width="64" height="64"/>
+  <object id="67058" gid="210" x="1856" y="1792" width="64" height="64"/>
+  <object id="67059" gid="210" x="1856" y="1664" width="64" height="64"/>
+  <object id="67060" gid="210" x="1856" y="1536" width="64" height="64"/>
+  <object id="67061" gid="210" x="1856" y="1408" width="64" height="64"/>
+  <object id="67062" gid="210" x="1856" y="1280" width="64" height="64"/>
+  <object id="67063" gid="210" x="1216" y="1280" width="64" height="64"/>
+  <object id="67064" gid="210" x="1216" y="1408" width="64" height="64"/>
+  <object id="67065" gid="210" x="1216" y="1536" width="64" height="64"/>
+  <object id="67066" gid="210" x="1216" y="1664" width="64" height="64"/>
+  <object id="67067" gid="210" x="1216" y="1792" width="64" height="64"/>
+  <object id="67068" gid="210" x="1216" y="1920" width="64" height="64"/>
+  <object id="67069" gid="210" x="1216" y="2048" width="64" height="64"/>
   <object id="67070" gid="178" x="1024" y="2240" width="64" height="64"/>
   <object id="67071" gid="178" x="1088" y="2240" width="64" height="64"/>
   <object id="67072" gid="178" x="1152" y="2240" width="64" height="64"/>
@@ -2206,7 +2206,7 @@
  <objectgroup id="13" name="props" visible="0">
   <object id="68142" gid="115" x="1536" y="1600" width="64" height="64"/>
  </objectgroup>
- <objectgroup id="8" name="actors">
+ <objectgroup id="8" name="actors" visible="0">
   <object id="63202" gid="42" x="576" y="448" width="64" height="64"/>
   <object id="65703" gid="2" x="1536" y="2496" width="64" height="64" rotation="180"/>
   <object id="66397" gid="49" x="2816" y="1728" width="64" height="64"/>

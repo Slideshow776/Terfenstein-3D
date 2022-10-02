@@ -9,6 +9,7 @@ import no.sandramoen.commanderqueen.actors.hud.HUD;
 import no.sandramoen.commanderqueen.actors.pickups.Bullets;
 import no.sandramoen.commanderqueen.actors.pickups.Armor;
 import no.sandramoen.commanderqueen.actors.pickups.Chaingun;
+import no.sandramoen.commanderqueen.actors.pickups.Chainsaw;
 import no.sandramoen.commanderqueen.actors.pickups.Health;
 import no.sandramoen.commanderqueen.actors.pickups.Key;
 import no.sandramoen.commanderqueen.actors.pickups.Pickup;
@@ -83,6 +84,10 @@ public class PickupHandler {
 
                     pickUpWeapon(hud, pickups, pickup, weaponHandler, uiTable, uiHandler);
                     setPickupLabel(uiHandler, hud, "You picked up a rocket launcher!", true);
+                } else if (pickup instanceof Chainsaw) {
+                    weaponHandler.makeAvailable("chainsaw");
+                    pickUpWeapon(hud, pickups, pickup, weaponHandler, uiTable, uiHandler);
+                    setPickupLabel(uiHandler, hud, "You picked up a chainsaw!", true);
                 }
             }
         }

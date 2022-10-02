@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.1" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="80" height="80" tilewidth="64" tileheight="64" infinite="0" nextlayerid="17" nextobjectid="76203">
+<map version="1.9" tiledversion="1.9.1" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="80" height="80" tilewidth="64" tileheight="64" infinite="0" nextlayerid="17" nextobjectid="76204">
  <tileset firstgid="1" name="Assets" tilewidth="64" tileheight="64" tilecount="128" columns="16" objectalignment="center">
   <image source="assets.png" width="1024" height="512"/>
   <tile id="0">
@@ -101,6 +101,11 @@
   <tile id="42">
    <properties>
     <property name="name" value="rocketLauncher"/>
+   </properties>
+  </tile>
+  <tile id="43">
+   <properties>
+    <property name="name" value="chainsaw"/>
    </properties>
   </tile>
   <tile id="48">
@@ -2964,15 +2969,6 @@
   <object id="73476" gid="4" x="2176" y="2880" width="64" height="64"/>
   <object id="73477" gid="4" x="2432" y="2752" width="64" height="64" rotation="90"/>
   <object id="73478" gid="4" x="2432" y="2624" width="64" height="64" rotation="75"/>
-  <object id="73479" gid="40" x="896" y="4096" width="64" height="64"/>
-  <object id="73480" gid="41" x="896" y="4096" width="64" height="64"/>
-  <object id="73481" gid="34" x="896" y="4096" width="64" height="64"/>
-  <object id="73482" gid="34" x="896" y="4096" width="64" height="64"/>
-  <object id="73483" gid="34" x="896" y="4096" width="64" height="64"/>
-  <object id="73484" gid="39" x="896" y="4096" width="64" height="64"/>
-  <object id="73485" gid="39" x="896" y="4096" width="64" height="64"/>
-  <object id="73486" gid="39" x="896" y="4096" width="64" height="64"/>
-  <object id="73487" gid="39" x="896" y="4096" width="64" height="64"/>
   <object id="73488" gid="43" x="1024" y="3840" width="64" height="64"/>
   <object id="73489" gid="33" x="1856" y="3904" width="64" height="64"/>
   <object id="73491" gid="1" x="2368" y="3776" width="64" height="64" rotation="90"/>

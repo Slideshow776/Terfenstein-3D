@@ -2253,6 +2253,13 @@ pickups/chaingun
   orig: 32, 16
   offset: 0, 0
   index: -1
+pickups/chainsaw
+  rotate: false
+  xy: 154, 5
+  size: 32, 16
+  orig: 32, 16
+  offset: 0, 0
+  index: -1
 pickups/greenKey
   rotate: false
   xy: 324, 23
@@ -2276,7 +2283,7 @@ pickups/health small
   index: -1
 pickups/redKey
   rotate: false
-  xy: 361, 49
+  xy: 36, 12
   size: 17, 6
   orig: 17, 6
   offset: 0, 0
@@ -2304,7 +2311,7 @@ pickups/shells
   index: -1
 pickups/shotgun
   rotate: false
-  xy: 154, 5
+  xy: 361, 39
   size: 32, 16
   orig: 32, 16
   offset: 0, 0
@@ -2627,28 +2634,35 @@ filter: Nearest, Nearest
 repeat: none
 weapons/chainsaw/attacking 1
   rotate: false
-  xy: 2, 2
+  xy: 2, 20
   size: 187, 105
   orig: 187, 105
   offset: 0, 0
   index: -1
 weapons/chainsaw/attacking 2
   rotate: false
-  xy: 191, 2
+  xy: 191, 20
   size: 187, 105
   orig: 187, 105
   offset: 0, 0
   index: -1
+weapons/chainsaw/icon
+  rotate: false
+  xy: 2, 2
+  size: 32, 16
+  orig: 32, 16
+  offset: 0, 0
+  index: -1
 weapons/chainsaw/idle 1
   rotate: false
-  xy: 380, 2
+  xy: 380, 20
   size: 187, 105
   orig: 187, 105
   offset: 0, 0
   index: -1
 weapons/chainsaw/idle 2
   rotate: false
-  xy: 569, 2
+  xy: 569, 20
   size: 187, 105
   orig: 187, 105
   offset: 0, 0

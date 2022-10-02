@@ -53,14 +53,12 @@ public class Chainsaw extends Weapon {
     @Override
     public void stopSound() {
         super.stopSound();
-        System.out.println("stopping sound " + MathUtils.random(1_000, 9_999));
         idleSound.stop();
         attackingSound.stop();
     }
 
     @Override
     public void emptySound() {
-
     }
 
 

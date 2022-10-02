@@ -59,7 +59,7 @@ public class WeaponHandler extends BaseActor {
         crosshair = new Crosshair(stage);
 
         weapons = new Array();
-        weapons.add(new Chainsaw(), new Pistol(), new Shotgun(), new Chaingun());
+        weapons.add(new Boot(), new Pistol(), new Shotgun(), new Chaingun());
         weapons.add(new RocketLauncher());
         setWeapon(1);
     }
@@ -97,6 +97,7 @@ public class WeaponHandler extends BaseActor {
             totalTime = 5f;
             if (currentWeapon != null)
                 currentWeapon.stopSound();
+            System.out.println(weapons.get(i).getClass().getSimpleName());
             currentWeapon = weapons.get(i);
             if (currentWeapon instanceof Chaingun || currentWeapon instanceof RocketLauncher || currentWeapon instanceof Chainsaw)
                 setWidth(originalWidth * 2f);
@@ -206,6 +207,10 @@ public class WeaponHandler extends BaseActor {
             weapons.get(3).isAvailable = true;
         else if (weapon.equalsIgnoreCase("rocketLauncher"))
             weapons.get(4).isAvailable = true;
+        else if (weapon.equalsIgnoreCase("chainsaw")) {
+            weapons.removeIndex(0);
+            weapons.insert(0, new Chainsaw());
+        }
     }
 
     private void setCrosshairColor(Array<BaseActor3D> shootable, PerspectiveCamera camera) {

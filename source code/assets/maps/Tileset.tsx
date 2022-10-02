@@ -218,6 +218,28 @@
  </tile>
  <tile id="68">
   <properties>
+   <property name="depth" type="float" value="4"/>
+   <property name="isAIpath" type="bool" value="true"/>
+   <property name="name" value="flag 1"/>
+   <property name="secret" value=""/>
+   <property name="secret length" type="int" value="1"/>
+  </properties>
+ </tile>
+ <tile id="80">
+  <properties>
+   <property name="depth" type="float" value="4"/>
+   <property name="isAIpath" type="bool" value="true"/>
+   <property name="name" value="flag 2"/>
+   <property name="secret" value=""/>
+   <property name="secret length" type="int" value="1"/>
+  </properties>
+ </tile>
+ <tile id="81">
+  <properties>
+   <property name="depth" type="float" value="4"/>
+   <property name="isAIpath" type="bool" value="true"/>
+   <property name="name" value="flag 3"/>
+   <property name="secret" value=""/>
    <property name="secret length" type="int" value="1"/>
   </properties>
  </tile>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset version="1.9" tiledversion="1.9.0" name="Assets" tilewidth="64" tileheight="64" tilecount="128" columns="16" objectalignment="center">
+<tileset version="1.9" tiledversion="1.9.1" name="Assets" tilewidth="64" tileheight="64" tilecount="128" columns="16" objectalignment="center">
  <image source="assets.png" width="1024" height="512"/>
  <tile id="0">
   <properties>
@@ -90,6 +90,21 @@
  <tile id="40">
   <properties>
    <property name="name" value="chaingun"/>
+  </properties>
+ </tile>
+ <tile id="41">
+  <properties>
+   <property name="name" value="rocket"/>
+  </properties>
+ </tile>
+ <tile id="42">
+  <properties>
+   <property name="name" value="rocketLauncher"/>
+  </properties>
+ </tile>
+ <tile id="43">
+  <properties>
+   <property name="name" value="chainsaw"/>
   </properties>
  </tile>
  <tile id="48">

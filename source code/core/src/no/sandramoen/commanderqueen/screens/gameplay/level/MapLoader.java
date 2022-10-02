@@ -23,6 +23,7 @@ import no.sandramoen.commanderqueen.actors.hud.HUD;
 import no.sandramoen.commanderqueen.actors.pickups.Bullets;
 import no.sandramoen.commanderqueen.actors.pickups.Armor;
 import no.sandramoen.commanderqueen.actors.pickups.Chaingun;
+import no.sandramoen.commanderqueen.actors.pickups.Chainsaw;
 import no.sandramoen.commanderqueen.actors.pickups.Health;
 import no.sandramoen.commanderqueen.actors.pickups.Key;
 import no.sandramoen.commanderqueen.actors.pickups.Pickup;
@@ -309,6 +310,7 @@ public class MapLoader {
         initializePickup("chaingun", 20);
         initializePickup("rocketLauncher", 15);
         initializePickup("key", -1);
+        initializePickup("chainsaw", -1);
     }
 
     private void initializePickup(String type, int amount) {
@@ -336,6 +338,8 @@ public class MapLoader {
                 pickups.add(new Chaingun(x, y, stage3D, amount, player));
             else if (type.equalsIgnoreCase("rocketLauncher"))
                 pickups.add(new RocketLauncher(x, y, stage3D, amount, player));
+            else if (type.equalsIgnoreCase("chainsaw"))
+                pickups.add(new Chainsaw(x, y, stage3D, amount, player));
 
             else if (type.equalsIgnoreCase("armor small") || type.equalsIgnoreCase("armor medium") || type.equalsIgnoreCase("armor big"))
                 pickups.add(new Armor(x, y, stage3D, amount, player));

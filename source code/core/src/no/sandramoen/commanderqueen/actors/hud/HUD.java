@@ -22,6 +22,7 @@ import no.sandramoen.commanderqueen.actors.utils.baseActors.BaseActor3D;
 import no.sandramoen.commanderqueen.actors.weapon.WeaponHandler;
 import no.sandramoen.commanderqueen.actors.weapon.weapons.Boot;
 import no.sandramoen.commanderqueen.actors.weapon.weapons.Chaingun;
+import no.sandramoen.commanderqueen.actors.weapon.weapons.Chainsaw;
 import no.sandramoen.commanderqueen.actors.weapon.weapons.Pistol;
 import no.sandramoen.commanderqueen.actors.weapon.weapons.RocketLauncher;
 import no.sandramoen.commanderqueen.actors.weapon.weapons.Shotgun;
@@ -90,7 +91,10 @@ public class HUD extends BaseActor {
 
     public void setWeaponsTable(WeaponHandler weaponHandler) {
         weaponImages = new Array();
-        weaponImages.add(new Image(BaseGame.textureAtlas.findRegion("weapons/boot/icon")));
+        if (weaponHandler.weapons.first() instanceof Chainsaw)
+            weaponImages.add(new Image(BaseGame.textureAtlas.findRegion("weapons/chainsaw/icon")));
+        else
+            weaponImages.add(new Image(BaseGame.textureAtlas.findRegion("weapons/boot/icon")));
         weaponImages.add(new Image(BaseGame.textureAtlas.findRegion("weapons/pistol/icon")));
         weaponImages.add(new Image(BaseGame.textureAtlas.findRegion("weapons/shotgun/icon")));
         weaponImages.add(new Image(BaseGame.textureAtlas.findRegion("weapons/chaingun/icon")));
@@ -199,7 +203,7 @@ public class HUD extends BaseActor {
     }
 
     public void setAmmo(Weapon currentWeapon) {
-        if (currentWeapon instanceof Boot)
+        if (currentWeapon instanceof Boot || currentWeapon instanceof Chainsaw)
             ammoLabel.setText("");
         else if (currentWeapon instanceof Pistol || currentWeapon instanceof Chaingun)
             ammoLabel.setText(bullets + "");
