@@ -239,6 +239,28 @@ public void rollCamera(float angle) {
 }
 ```
 
+### Level Design
+Some level design facets that are used are:
+* lights
+* affordances
+* visual guidance
+* pickups
+* pacing (remember downbeats)
+* leading lines
+* local landmarks
+* avoid straights
+* junctions
+* choices of traversal
+* gating
+* bread crumbs
+* negative space
+* readability (is it easy to know where to go?)
+* environmental storytelling
+* illusion of space
+These are covered in [this book](https://www.lulu.com/shop/max-pears/lets-design-exploration/paperback/product-zerwr7.html?page=1&pageSize=4).
+
+[![image](https://user-images.githubusercontent.com/4059636/194706249-e244466e-0cb2-41e9-9599-3f78370f1d86.png)](https://www.lulu.com/shop/max-pears/lets-design-exploration/paperback/product-zerwr7.html?page=1&pageSize=4)
+
 ## Other
 For other project specifics check out the [commits](https://github.com/Slideshow776/3D-shooting-game/commits/master).
 
