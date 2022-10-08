@@ -2,6 +2,7 @@ package no.sandramoen.commanderqueen.screens.shell;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.math.MathUtils;
@@ -117,7 +118,7 @@ public class MenuScreen extends BaseScreen {
     }
 
     private void startLevel1() {
-        BaseGame.setActiveScreen(new LevelScreen(20, BaseGame.level1Map, "level 1", 100, 0, 10, 0, 0,null));
+        BaseGame.setActiveScreen(new LevelScreen(20, BaseGame.level1Map, "level 1", 100, 0, 10, 0, 0, null));
     }
 
     private SequenceAction exitGameWithSoundAndDelay() {
@@ -129,7 +130,7 @@ public class MenuScreen extends BaseScreen {
     }
 
     private void playRandomSound() {
-        Array<Sound> sounds = new Array();
+        Array sounds = new Array();
         sounds.add(BaseGame.pistolShotSound);
         sounds.add(BaseGame.menigActiveSound);
         sounds.add(BaseGame.menigHurtSound);
@@ -166,7 +167,19 @@ public class MenuScreen extends BaseScreen {
         sounds.add(BaseGame.doorLockedSound);
         sounds.add(BaseGame.weaponPickupSound);
         sounds.add(BaseGame.rocketLaunchSound);
+        sounds.add(BaseGame.chainSawAttackingMusic);
+        sounds.add(BaseGame.chainSawAttackingMusic);
 
-        sounds.get(MathUtils.random(0, sounds.size - 1)).play(BaseGame.soundVolume);
+        try {
+            Sound sound = (Sound) sounds.get(MathUtils.random(0, sounds.size - 1));
+            sound.play(BaseGame.soundVolume);
+        } catch (Throwable throwable) {
+            try {
+                Music music = (Music) sounds.get(MathUtils.random(0, sounds.size - 1));
+                music.setVolume(BaseGame.soundVolume);
+                music.play();
+            } catch (Throwable throwable1) {
+            }
+        }
     }
 }

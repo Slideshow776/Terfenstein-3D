@@ -102,7 +102,7 @@ public class EnemyHandler {
                         ((Rocket) projectile).explode();
                         createBarrelExplosion(projectile.getPosition().y, projectile.getPosition().z, stage3D, player, shootables);
                     }
-                } else if (shootable instanceof Door && projectile.overlaps(shootable)) {
+                } else if (shootable instanceof Door && projectile.overlaps(shootable) && shootable.isPreventOverlapEnabled) {
                     if (projectile instanceof HolyBall)
                         ((HolyBall) projectile).explode();
                     else if (projectile instanceof Rocket) {
@@ -131,7 +131,6 @@ public class EnemyHandler {
     }
 
     private static void removeProjectiles(Array<BaseActor3D> projectiles) {
-
         for (BaseActor3D projectile : projectiles) {
             if (projectile instanceof HolyBall && ((HolyBall) projectile).isRemovable) {
                 projectile.remove();

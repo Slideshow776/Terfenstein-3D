@@ -178,9 +178,8 @@ public class MapLoader {
             float y = props.get("y", Float.class) * BaseGame.unitScale;
             float rotation = getRotation(props);
             String key = props.get("color", String.class);
-
-            Door door = new Door(x, y, stage3D, stage, rotation, player, key, shootable);
-            door.isLocked = props.get("isLocked", Boolean.class);
+            Boolean isLocked = props.get("isLocked", Boolean.class);
+            Door door = new Door(x, y, stage3D, stage, rotation, player, key, shootable, isLocked);
 
             doors.add(door);
             shootable.add(door);

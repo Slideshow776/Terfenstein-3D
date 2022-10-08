@@ -15,23 +15,24 @@ import no.sandramoen.commanderqueen.utils.GameUtils;
 import no.sandramoen.commanderqueen.utils.Stage3D;
 
 public class Door extends BaseActor3D {
-    public boolean isLocked;
-
+    private boolean isLocked;
     private boolean isOpening;
     private boolean isClosing;
+
     private float speed = .04f;
     private float openHeight = Tile.height * .9f;
+
     private String keyColor;
     private Player player;
     private BaseActor openActor;
     private BaseActor closeActor;
-
     private BaseActor3D temp;
 
-    public Door(float y, float z, Stage3D stage3D, Stage stage, float rotation, Player player, String keyColor, Array<BaseActor3D> shootable) {
+    public Door(float y, float z, Stage3D stage3D, Stage stage, float rotation, Player player, String keyColor, Array<BaseActor3D> shootable, Boolean isLocked) {
         super(0, y, z, stage3D);
         this.player = player;
         this.keyColor = keyColor;
+        this.isLocked = isLocked;
 
         buildModel(4, 4, 1, false);
         setBaseRectangle();
@@ -42,8 +43,11 @@ public class Door extends BaseActor3D {
             loadImage("doors/doorGreen");
         else if (keyColor.equalsIgnoreCase("blue"))
             loadImage("doors/doorBlue");
+        else if (this.isLocked)
+            loadImage("doors/door0Locked");
         else
             loadImage("doors/door0");
+
 
         turnBy(-180 + rotation);
 
@@ -97,10 +101,13 @@ public class Door extends BaseActor3D {
     }
 
     public String tryToOpenDoor(Array<Key> keys) {
-        if (isLocked || getPosition().x >= openHeight) {
+        if (isLocked) {
             BaseGame.doorLockedSound.play(BaseGame.soundVolume);
-            return "";
+            return "This door is locked";
         }
+
+        if (getPosition().x >= openHeight)
+            return "";
 
         if (keyColor.isEmpty()) {
             openAndClose();

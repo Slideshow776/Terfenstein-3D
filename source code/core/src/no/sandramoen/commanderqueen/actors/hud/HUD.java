@@ -92,13 +92,13 @@ public class HUD extends BaseActor {
     public void setWeaponsTable(WeaponHandler weaponHandler) {
         weaponImages = new Array();
         if (weaponHandler.weapons.first() instanceof Chainsaw)
-            weaponImages.add(new Image(BaseGame.textureAtlas.findRegion("weapons/chainsaw/icon")));
+            weaponImages.add(new Image(BaseGame.textureAtlas.findRegion("pickups/chainsaw")));
         else
-            weaponImages.add(new Image(BaseGame.textureAtlas.findRegion("weapons/boot/icon")));
-        weaponImages.add(new Image(BaseGame.textureAtlas.findRegion("weapons/pistol/icon")));
-        weaponImages.add(new Image(BaseGame.textureAtlas.findRegion("weapons/shotgun/icon")));
-        weaponImages.add(new Image(BaseGame.textureAtlas.findRegion("weapons/chaingun/icon")));
-        weaponImages.add(new Image(BaseGame.textureAtlas.findRegion("weapons/rocketlauncher/icon")));
+            weaponImages.add(new Image(BaseGame.textureAtlas.findRegion("pickups/boot")));
+        weaponImages.add(new Image(BaseGame.textureAtlas.findRegion("pickups/pistol")));
+        weaponImages.add(new Image(BaseGame.textureAtlas.findRegion("pickups/shotgun")));
+        weaponImages.add(new Image(BaseGame.textureAtlas.findRegion("pickups/chaingun")));
+        weaponImages.add(new Image(BaseGame.textureAtlas.findRegion("pickups/rocketlauncher")));
 
         Table table = new Table();
         table.defaults().grow().width(Gdx.graphics.getWidth() * .05f).height(Gdx.graphics.getHeight() * .05f);
@@ -271,6 +271,8 @@ public class HUD extends BaseActor {
             image.setColor(Color.DARK_GRAY);
 
         if (currentWeapon instanceof Boot)
+            weaponImages.get(0).setColor(Color.WHITE);
+        else if (currentWeapon instanceof Chainsaw)
             weaponImages.get(0).setColor(Color.WHITE);
         else if (currentWeapon instanceof Pistol)
             weaponImages.get(1).setColor(Color.WHITE);

@@ -6,9 +6,16 @@ filter: Nearest, Nearest
 repeat: none
 alphaPixel
   rotate: false
-  xy: 2, 2
+  xy: 181, 34
   size: 1, 1
   orig: 1, 1
+  offset: 0, 0
+  index: -1
+blueKey
+  rotate: false
+  xy: 162, 29
+  size: 17, 6
+  orig: 17, 6
   offset: 0, 0
   index: -1
 button
@@ -27,7 +34,7 @@ button-pressed
   index: -1
 clearPixel
   rotate: false
-  xy: 20, 20
+  xy: 228, 92
   size: 1, 1
   orig: 1, 1
   offset: 0, 0
@@ -46,23 +53,37 @@ elevator
   orig: 64, 64
   offset: 0, 0
   index: -1
+greenKey
+  rotate: false
+  xy: 228, 95
+  size: 17, 6
+  orig: 17, 6
+  offset: 0, 0
+  index: -1
 overlayLeft
   rotate: false
-  xy: 162, 34
+  xy: 2, 2
   size: 4, 1
   orig: 4, 1
   offset: 0, 0
   index: -1
 overlayRight
   rotate: false
-  xy: 228, 100
+  xy: 162, 26
   size: 4, 1
   orig: 4, 1
   offset: 0, 0
   index: -1
+redKey
+  rotate: false
+  xy: 20, 15
+  size: 17, 6
+  orig: 17, 6
+  offset: 0, 0
+  index: -1
 whitePixel
   rotate: false
-  xy: 162, 31
+  xy: 247, 100
   size: 1, 1
   orig: 1, 1
   offset: 0, 0
@@ -211,23 +232,30 @@ doors/door0
   orig: 64, 64
   offset: 0, 0
   index: -1
-doors/doorBlue
+doors/door0Locked
   rotate: false
   xy: 68, 2
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-doors/doorGreen
+doors/doorBlue
   rotate: false
   xy: 134, 2
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-doors/doorRed
+doors/doorGreen
   rotate: false
   xy: 200, 2
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+doors/doorRed
+  rotate: false
+  xy: 266, 2
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
@@ -2234,9 +2262,16 @@ pickups/armor small
   index: -1
 pickups/blueKey
   rotate: false
-  xy: 57, 27
-  size: 17, 6
-  orig: 17, 6
+  xy: 57, 22
+  size: 33, 11
+  orig: 33, 11
+  offset: 0, 0
+  index: -1
+pickups/boot
+  rotate: false
+  xy: 36, 2
+  size: 16, 16
+  orig: 16, 16
   offset: 0, 0
   index: -1
 pickups/bullet
@@ -2262,9 +2297,9 @@ pickups/chainsaw
   index: -1
 pickups/greenKey
   rotate: false
-  xy: 324, 23
-  size: 17, 6
-  orig: 17, 6
+  xy: 188, 10
+  size: 33, 11
+  orig: 33, 11
   offset: 0, 0
   index: -1
 pickups/health medium
@@ -2281,11 +2316,18 @@ pickups/health small
   orig: 32, 32
   offset: 0, 0
   index: -1
+pickups/pistol
+  rotate: false
+  xy: 92, 17
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
 pickups/redKey
   rotate: false
-  xy: 36, 12
-  size: 17, 6
-  orig: 17, 6
+  xy: 395, 44
+  size: 33, 11
+  orig: 33, 11
   offset: 0, 0
   index: -1
 pickups/rocket
@@ -2573,23 +2615,16 @@ filter: Nearest, Nearest
 repeat: none
 weapons/boot/1
   rotate: false
-  xy: 2, 20
+  xy: 2, 2
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 weapons/boot/2
   rotate: false
-  xy: 68, 20
+  xy: 68, 2
   size: 64, 64
   orig: 64, 64
-  offset: 0, 0
-  index: -1
-weapons/boot/icon
-  rotate: false
-  xy: 2, 2
-  size: 16, 16
-  orig: 16, 16
   offset: 0, 0
   index: -1
 
@@ -2598,13 +2633,6 @@ size: 256, 512
 format: RGBA8888
 filter: Nearest, Nearest
 repeat: none
-weapons/chaingun/icon
-  rotate: false
-  xy: 198, 410
-  size: 32, 16
-  orig: 32, 16
-  offset: 0, 0
-  index: -1
 weapons/chaingun/shooting 0
   rotate: false
   xy: 2, 286
@@ -2634,35 +2662,28 @@ filter: Nearest, Nearest
 repeat: none
 weapons/chainsaw/attacking 1
   rotate: false
-  xy: 2, 20
+  xy: 2, 2
   size: 187, 105
   orig: 187, 105
   offset: 0, 0
   index: -1
 weapons/chainsaw/attacking 2
   rotate: false
-  xy: 191, 20
+  xy: 191, 2
   size: 187, 105
   orig: 187, 105
   offset: 0, 0
   index: -1
-weapons/chainsaw/icon
-  rotate: false
-  xy: 2, 2
-  size: 32, 16
-  orig: 32, 16
-  offset: 0, 0
-  index: -1
 weapons/chainsaw/idle 1
   rotate: false
-  xy: 380, 20
+  xy: 380, 2
   size: 187, 105
   orig: 187, 105
   offset: 0, 0
   index: -1
 weapons/chainsaw/idle 2
   rotate: false
-  xy: 569, 20
+  xy: 569, 2
   size: 187, 105
   orig: 187, 105
   offset: 0, 0
@@ -2673,44 +2694,37 @@ size: 1024, 256
 format: RGBA8888
 filter: Nearest, Nearest
 repeat: none
-weapons/pistol/icon
-  rotate: false
-  xy: 2, 2
-  size: 16, 16
-  orig: 16, 16
-  offset: 0, 0
-  index: -1
 weapons/pistol/shooting 0
   rotate: false
-  xy: 2, 20
+  xy: 2, 2
   size: 194, 140
   orig: 194, 140
   offset: 0, 0
   index: -1
 weapons/pistol/shooting 1
   rotate: false
-  xy: 198, 20
+  xy: 198, 2
   size: 194, 140
   orig: 194, 140
   offset: 0, 0
   index: -1
 weapons/pistol/shooting 2
   rotate: false
-  xy: 394, 20
+  xy: 394, 2
   size: 194, 140
   orig: 194, 140
   offset: 0, 0
   index: -1
 weapons/pistol/shooting 3
   rotate: false
-  xy: 590, 20
+  xy: 590, 2
   size: 194, 140
   orig: 194, 140
   offset: 0, 0
   index: -1
 weapons/pistol/shooting 4
   rotate: false
-  xy: 786, 20
+  xy: 786, 2
   size: 194, 140
   orig: 194, 140
   offset: 0, 0
@@ -2721,37 +2735,30 @@ size: 1024, 256
 format: RGBA8888
 filter: Nearest, Nearest
 repeat: none
-weapons/rocketlauncher/icon
-  rotate: false
-  xy: 2, 2
-  size: 58, 20
-  orig: 58, 20
-  offset: 0, 0
-  index: -1
 weapons/rocketlauncher/shooting 0
   rotate: false
-  xy: 2, 24
+  xy: 2, 2
   size: 194, 140
   orig: 194, 140
   offset: 0, 0
   index: -1
 weapons/rocketlauncher/shooting 1
   rotate: false
-  xy: 198, 24
+  xy: 198, 2
   size: 194, 140
   orig: 194, 140
   offset: 0, 0
   index: -1
 weapons/rocketlauncher/shooting 2
   rotate: false
-  xy: 394, 24
+  xy: 394, 2
   size: 194, 140
   orig: 194, 140
   offset: 0, 0
   index: -1
 weapons/rocketlauncher/shooting 3
   rotate: false
-  xy: 590, 24
+  xy: 590, 2
   size: 194, 140
   orig: 194, 140
   offset: 0, 0
@@ -2762,51 +2769,44 @@ size: 1024, 256
 format: RGBA8888
 filter: Nearest, Nearest
 repeat: none
-weapons/shotgun/icon
-  rotate: false
-  xy: 2, 2
-  size: 32, 16
-  orig: 32, 16
-  offset: 0, 0
-  index: -1
 weapons/shotgun/shooting 0
   rotate: false
-  xy: 2, 20
+  xy: 2, 2
   size: 194, 140
   orig: 194, 140
   offset: 0, 0
   index: -1
 weapons/shotgun/shooting 1
   rotate: false
-  xy: 198, 20
+  xy: 198, 2
   size: 194, 140
   orig: 194, 140
   offset: 0, 0
   index: -1
 weapons/shotgun/shooting 2
   rotate: false
-  xy: 394, 20
+  xy: 394, 2
   size: 194, 140
   orig: 194, 140
   offset: 0, 0
   index: -1
 weapons/shotgun/shooting 3
   rotate: false
-  xy: 590, 20
+  xy: 590, 2
   size: 194, 140
   orig: 194, 140
   offset: 0, 0
   index: -1
 weapons/shotgun/shooting 5
   rotate: false
-  xy: 590, 20
+  xy: 590, 2
   size: 194, 140
   orig: 194, 140
   offset: 0, 0
   index: -1
 weapons/shotgun/shooting 4
   rotate: false
-  xy: 786, 20
+  xy: 786, 2
   size: 194, 140
   orig: 194, 140
   offset: 0, 0

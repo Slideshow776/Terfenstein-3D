@@ -14,7 +14,7 @@ public class Chainsaw extends Pickup {
         super(y, z, s, player);
         this.amount = amount;
 
-        buildModel(3f, 1f, .001f, true);
+        buildModel(2.5f, 1.5f, .001f, true);
         setPosition(GameUtils.getPositionRelativeToFloor(1f), y, z);
         setBaseRectangle();
 

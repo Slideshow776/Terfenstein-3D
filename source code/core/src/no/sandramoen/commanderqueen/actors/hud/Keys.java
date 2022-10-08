@@ -2,6 +2,7 @@ package no.sandramoen.commanderqueen.actors.hud;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.actions.SequenceAction;
@@ -9,6 +10,10 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Array;
 
+import no.sandramoen.commanderqueen.actors.particles.BlueKeyEffect;
+import no.sandramoen.commanderqueen.actors.particles.GreenKeyEffect;
+import no.sandramoen.commanderqueen.actors.particles.ParticleActor;
+import no.sandramoen.commanderqueen.actors.particles.RedKeyEffect;
 import no.sandramoen.commanderqueen.actors.pickups.Key;
 import no.sandramoen.commanderqueen.actors.utils.baseActors.BaseActor;
 import no.sandramoen.commanderqueen.utils.BaseGame;
@@ -50,14 +55,17 @@ public class Keys extends Table {
         if (key.color.equalsIgnoreCase("red")) {
             redKey.setVisible(true);
             redKey.addAction(wiggle());
+            addEffect(new RedKeyEffect(), redKey);
         } else if (key.color.equalsIgnoreCase("blue")) {
             blueKey.setVisible(true);
-            ;
             blueKey.addAction(wiggle());
+            addEffect(new BlueKeyEffect(), blueKey);
         } else if (key.color.equalsIgnoreCase("green")) {
             greenKey.setVisible(true);
-            ;
             greenKey.addAction(wiggle());
+            addEffect(new GreenKeyEffect(), greenKey);
+        } else {
+            Gdx.app.error(getClass().getSimpleName(), "Error: Couldn't add key: " + key);
         }
     }
 
@@ -65,10 +73,21 @@ public class Keys extends Table {
         return keys;
     }
 
+    private void addEffect(ParticleActor effect, BaseActor key) {
+        effect.setScale(.5f);
+        effect.centerAtActor(key);
+        addActor(effect);
+        effect.start();
+    }
+
     private SequenceAction wiggle() {
         float amount = 10;
         float delay = .1f;
         return Actions.sequence(
+                Actions.rotateTo(amount, delay),
+                Actions.rotateTo(-amount, 2 * delay),
+                Actions.rotateTo(amount, delay),
+                Actions.rotateTo(-amount, 2 * delay),
                 Actions.rotateTo(amount, delay),
                 Actions.rotateTo(-amount, 2 * delay),
                 Actions.rotateTo(amount, delay),

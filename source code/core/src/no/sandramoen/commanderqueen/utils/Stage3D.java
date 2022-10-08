@@ -33,7 +33,6 @@ public class Stage3D {
     public Stage3D() {
         environment = new Environment();
         lightManager = new LightManager(environment);
-        lightManager.setAmbient();
 
         camera = new PerspectiveCamera(67, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         camera.rotate(-90, 0, 0, 1);
