@@ -98,7 +98,7 @@ public class HUD extends BaseActor {
         weaponImages.add(new Image(BaseGame.textureAtlas.findRegion("pickups/pistol")));
         weaponImages.add(new Image(BaseGame.textureAtlas.findRegion("pickups/shotgun")));
         weaponImages.add(new Image(BaseGame.textureAtlas.findRegion("pickups/chaingun")));
-        weaponImages.add(new Image(BaseGame.textureAtlas.findRegion("pickups/rocketlauncher")));
+        weaponImages.add(new Image(BaseGame.textureAtlas.findRegion("pickups/rocketLauncher")));
 
         Table table = new Table();
         table.defaults().grow().width(Gdx.graphics.getWidth() * .05f).height(Gdx.graphics.getHeight() * .05f);
