@@ -17,7 +17,7 @@ import no.sandramoen.commanderqueen.utils.BaseGame;
 public class UIHandler {
     public Label debugLabel;
     public TypingLabel pickupLabel;
-    public Label gameLabel;
+    public TypingLabel gameLabel;
     public Label statusLabel;
 
     public boolean isReset;
@@ -73,9 +73,9 @@ public class UIHandler {
                 .padLeft(Gdx.graphics.getWidth() * .01f)
                 .row();
 
-        gameLabel = new Label("", new Label.LabelStyle(BaseGame.mySkin.get("arcade26", BitmapFont.class), null));
+        gameLabel = new TypingLabel("", new Label.LabelStyle(BaseGame.mySkin.get("arcade26", BitmapFont.class), null));
         gameLabel.setColor(Color.RED);
-        gameLabel.setFontScale(2f);
+        gameLabel.font.scale(2f, 2f);
         uiTable.add(gameLabel)
                 .expand()
                 .center()

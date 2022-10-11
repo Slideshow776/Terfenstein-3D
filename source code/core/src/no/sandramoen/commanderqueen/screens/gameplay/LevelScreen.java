@@ -140,7 +140,6 @@ public class LevelScreen extends BaseScreen3D {
 
         TileHandler.updateTiles(dt, tiles, player, uiHandler);
         EnemyHandler.update(enemies, tiles, doors, projectiles, player, shootable, hud, mainStage3D);
-
         shadeHandler();
 
         for (int i = 0; i < enemies.size; i++)
@@ -373,6 +372,7 @@ public class LevelScreen extends BaseScreen3D {
             for (Enemy enemy : enemies)
                 enemy.isRanged = false;
             BaseGame.metalWalkingMusic.stop();
+            uiHandler.gameLabel.restart();
             uiHandler.gameLabel.setText("G A M E   O V E R !");
             mainStage3D.camera.position.x = -Tile.height * .48f;
             totalTime = 0;
@@ -475,23 +475,26 @@ public class LevelScreen extends BaseScreen3D {
         BaseGame.chainSawIdleMusic.stop();
     }
 
+    private String getLevelName() {
+        if (numLevel.equalsIgnoreCase("level 1"))
+            return "Hangar";
+        else if (numLevel.equalsIgnoreCase("level 2"))
+            return "Loading Bay";
+        else if (numLevel.equalsIgnoreCase("level 3"))
+            return "Complex";
+        else if (numLevel.equalsIgnoreCase("level 4"))
+            return "Great Hall";
+        else if (numLevel.equalsIgnoreCase("level 5"))
+            return "Bunkers";
+        else if (numLevel.equalsIgnoreCase("level 6"))
+            return "Factory";
+        else
+            return "Test";
+    }
+
     private Array getLevelData() {
         Array levelData = new Array();
-        if (numLevel.equalsIgnoreCase("level 1"))
-            levelData.add("Hangar");
-        else if (numLevel.equalsIgnoreCase("level 2"))
-            levelData.add("Loading Bay");
-        else if (numLevel.equalsIgnoreCase("level 3"))
-            levelData.add("Complex");
-        else if (numLevel.equalsIgnoreCase("level 4"))
-            levelData.add("Great Hall");
-        else if (numLevel.equalsIgnoreCase("level 5"))
-            levelData.add("Bunkers");
-        else if (numLevel.equalsIgnoreCase("level 6"))
-            levelData.add("Factory");
-        else
-            levelData.add("Test");
-
+        levelData.add(getLevelName());
         levelData.add((int) ((1 - (enemies.size / (float) numEnemies)) * 100));
         levelData.add((int) ((1 - (originalPickups.size / (float) numPickups)) * 100));
         levelData.add((int) ((foundSecrets / (float) numSecrets) * 100));

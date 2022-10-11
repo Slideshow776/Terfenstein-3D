@@ -97,7 +97,6 @@ public class WeaponHandler extends BaseActor {
             totalTime = 5f;
             if (currentWeapon != null)
                 currentWeapon.stopSound();
-            System.out.println(weapons.get(i).getClass().getSimpleName());
             currentWeapon = weapons.get(i);
             if (currentWeapon instanceof Chaingun || currentWeapon instanceof RocketLauncher || currentWeapon instanceof Chainsaw)
                 setWidth(originalWidth * 2f);
