@@ -24,7 +24,7 @@ allprojects {
 
     version = '1.0'
     ext {
-        appName = "Commander Queen"
+        appName = "Terfenstein 3D"
         gdxVersion = '1.11.0'
         roboVMVersion = '2.3.16'
         box2DLightsVersion = '1.5'

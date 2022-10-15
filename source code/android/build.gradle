@@ -17,7 +17,7 @@ android {
         exclude 'META-INF/robovm/ios/robovm.xml'
     }
     defaultConfig {
-        applicationId "no.sandramoen.commanderqueen"
+        applicationId "no.sandramoen.terfenstein3D"
         minSdkVersion 14
         targetSdkVersion 31
         versionCode 1
@@ -84,7 +84,7 @@ task run(type: Exec) {
     }
 
     def adb = path + "/platform-tools/adb"
-    commandLine "$adb", 'shell', 'am', 'start', '-n', 'no.sandramoen.commanderqueen/no.sandramoen.commanderqueen.AndroidLauncher'
+    commandLine "$adb", 'shell', 'am', 'start', '-n', 'no.sandramoen.terfenstein3D/no.sandramoen.terfenstein3D.AndroidLauncher'
 }
 
 eclipse.project.name = appName + "-android"
