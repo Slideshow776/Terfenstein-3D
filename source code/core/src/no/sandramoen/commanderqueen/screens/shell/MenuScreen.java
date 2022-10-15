@@ -24,13 +24,16 @@ public class MenuScreen extends BaseScreen {
     @Override
     public void initialize() {
         TypingLabel titleLabel = new TypingLabel("Terfenstein 3D", new Label.LabelStyle(BaseGame.mySkin.get("arcade64", BitmapFont.class), null));
+        titleLabel.setColor(BaseGame.redColor);
         uiTable.add(titleLabel)
                 .padBottom(Gdx.graphics.getHeight() * .09f)
                 .row();
 
         addTextButtons();
 
-        uiTable.add(new MadeByLabel()).padTop(Gdx.graphics.getHeight() * .09f);
+        uiTable.add(new MadeByLabel())
+                .fillX()
+                .padTop(Gdx.graphics.getHeight() * .09f);
 
         /*uiTable.setDebug(true);*/
 
@@ -66,6 +69,7 @@ public class MenuScreen extends BaseScreen {
         uiTable.add(startButton()).row();
         uiTable.add(optionsButton()).row();
         uiTable.add(exitButton()).row();
+        uiTable.defaults().reset();
     }
 
     private TextButton resumeButton() {

@@ -90,6 +90,7 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
     public static Sound doorLockedSound;
     public static Sound weaponPickupSound;
     public static Sound rocketLaunchSound;
+    public static Sound tinnitusSound;
 
     // game state
     public static Preferences preferences;
@@ -224,6 +225,7 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
         assetManager.load("audio/sound/391724__jpolito__jp-circuitbox-locked01.wav", Sound.class);
         assetManager.load("audio/sound/433563__burghrecords__cinematic-impact-intro-01.wav", Sound.class);
         assetManager.load("audio/sound/480870__c3sabertooth__launch-futuristic.wav", Sound.class);
+        assetManager.load("audio/sound/377206__tnturner__tinnitus.wav", Sound.class);
 
         // tiled maps
         assetManager.setLoader(TiledMap.class, new TmxMapLoader(new InternalFileHandleResolver()));
@@ -295,6 +297,7 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
         doorLockedSound = assetManager.get("audio/sound/391724__jpolito__jp-circuitbox-locked01.wav", Sound.class);
         weaponPickupSound = assetManager.get("audio/sound/433563__burghrecords__cinematic-impact-intro-01.wav", Sound.class);
         rocketLaunchSound = assetManager.get("audio/sound/480870__c3sabertooth__launch-futuristic.wav", Sound.class);
+        tinnitusSound = assetManager.get("audio/sound/377206__tnturner__tinnitus.wav", Sound.class);
 
         // tiled maps
         testMap = assetManager.get("maps/test.tmx", TiledMap.class);

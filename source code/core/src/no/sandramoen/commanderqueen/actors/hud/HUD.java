@@ -348,9 +348,10 @@ public class HUD extends BaseActor {
 
     private void setHurtFace(int amount, float angle) {
         if (health > 0) {
-            if (amount >= 20)
+            if (amount >= 20) {
                 face.setOuch(getFaceHealthIndex());
-            else {
+                BaseGame.tinnitusSound.play(BaseGame.soundVolume * .25f);
+            } else {
                 if (angle < 130)
                     face.setTurnRight(getFaceHealthIndex());
                 else if (angle > 230)

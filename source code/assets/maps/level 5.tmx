@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.1" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="100" height="100" tilewidth="64" tileheight="64" infinite="0" nextlayerid="17" nextobjectid="71517">
+<map version="1.9" tiledversion="1.9.1" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="100" height="100" tilewidth="64" tileheight="64" infinite="0" nextlayerid="17" nextobjectid="71528">
  <tileset firstgid="1" name="Assets" tilewidth="64" tileheight="64" tilecount="128" columns="16" objectalignment="center">
   <image source="assets.png" width="1024" height="512"/>
   <tile id="0">
@@ -2722,5 +2722,16 @@
   <object id="71514" gid="292" x="1984" y="2880" width="64" height="64"/>
   <object id="71515" gid="292" x="1984" y="3328" width="64" height="64"/>
   <object id="71516" gid="292" x="1984" y="3456" width="64" height="64"/>
+  <object id="71517" gid="294" x="2880" y="2112" width="64" height="64"/>
+  <object id="71518" gid="294" x="2944" y="2112" width="64" height="64"/>
+  <object id="71519" gid="294" x="3008" y="2112" width="64" height="64"/>
+  <object id="71520" gid="294" x="2976" y="2112" width="64" height="64"/>
+  <object id="71521" gid="294" x="2912" y="2112" width="64" height="64"/>
+  <object id="71522" gid="292" x="2880" y="2176" width="64" height="64"/>
+  <object id="71523" gid="292" x="2880" y="2208" width="64" height="64"/>
+  <object id="71524" gid="292" x="2880" y="2240" width="64" height="64"/>
+  <object id="71525" gid="294" x="3008" y="2176" width="64" height="64"/>
+  <object id="71526" gid="294" x="3008" y="2208" width="64" height="64"/>
+  <object id="71527" gid="294" x="3008" y="2240" width="64" height="64"/>
  </objectgroup>
 </map>

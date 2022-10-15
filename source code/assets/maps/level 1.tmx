@@ -4847,7 +4847,7 @@
   <object id="68468" gid="17" x="448" y="448" width="64" height="64"/>
   <object id="68469" gid="1" x="2048" y="1408" width="64" height="64" rotation="180"/>
   <object id="68473" gid="1" x="2048" y="1088" width="64" height="64" rotation="180"/>
-  <object id="68474" gid="5" x="2304" y="1600" width="64" height="64" rotation="162.885"/>
+  <object id="68474" gid="5" x="2304" y="1536" width="64" height="64" rotation="162.885"/>
   <object id="68753" gid="38" x="576" y="1920" width="64" height="64"/>
   <object id="68754" gid="38" x="576" y="1856" width="64" height="64"/>
   <object id="68755" gid="38" x="576" y="1984" width="64" height="64"/>
@@ -4965,7 +4965,7 @@
     <property name="map height" type="float" value="0.5"/>
    </properties>
   </object>
-  <object id="68943" gid="19" x="2048" y="1323" width="768" height="640.667">
+  <object id="68943" gid="19" x="2048" y="1344" width="768" height="640.667">
    <properties>
     <property name="color 0" type="color" value="#ffa1a1a1"/>
    </properties>

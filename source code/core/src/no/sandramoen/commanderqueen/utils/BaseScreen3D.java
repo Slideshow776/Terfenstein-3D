@@ -40,7 +40,7 @@ public abstract class BaseScreen3D implements Screen, InputProcessor {
 
         update(dt);
 
-        Gdx.gl.glClearColor(0, 0, 0, 1);
+        Gdx.gl.glClearColor(.2f, .2f, .2f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT + GL20.GL_DEPTH_BUFFER_BIT);
 
         mainStage3D.draw();

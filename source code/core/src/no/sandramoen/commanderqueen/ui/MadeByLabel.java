@@ -18,16 +18,7 @@ public class MadeByLabel extends TypingLabel {
         setAlignment(Align.center);
         setColor(BaseGame.grayColor);
         addClickListener();
-        TypingLabel temp = this;
         GameUtils.setWidgetHoverColor(this);
-    }
-
-    private void openURIWithDelay() {
-        BaseGame.click1Sound.play(BaseGame.soundVolume);
-        addAction(Actions.sequence(
-                Actions.delay(.5f),
-                Actions.run(() -> Gdx.net.openURI("https://sandramoen.no"))
-        ));
     }
 
     private void addClickListener() {
@@ -38,5 +29,13 @@ public class MadeByLabel extends TypingLabel {
                     return false;
                 }
         );
+    }
+
+    private void openURIWithDelay() {
+        BaseGame.click1Sound.play(BaseGame.soundVolume);
+        addAction(Actions.sequence(
+                Actions.delay(.5f),
+                Actions.run(() -> Gdx.net.openURI("https://sandramoen.no"))
+        ));
     }
 }

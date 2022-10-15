@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.1" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="50" height="50" tilewidth="64" tileheight="64" infinite="0" nextlayerid="17" nextobjectid="68596">
+<map version="1.9" tiledversion="1.9.1" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="50" height="50" tilewidth="64" tileheight="64" infinite="0" nextlayerid="17" nextobjectid="68613">
  <tileset firstgid="1" name="Assets" tilewidth="64" tileheight="64" tilecount="128" columns="16" objectalignment="center">
   <image source="assets.png" width="1024" height="512"/>
   <tile id="0">
@@ -1322,7 +1322,6 @@
   <object id="66466" gid="147" x="1024" y="2304" width="64" height="64"/>
   <object id="66473" gid="147" x="1216" y="2624" width="64" height="64"/>
   <object id="66474" gid="147" x="1152" y="2624" width="64" height="64"/>
-  <object id="66493" gid="147" x="512" y="1856" width="64" height="64" rotation="90"/>
   <object id="66494" gid="147" x="448" y="1856" width="64" height="64" rotation="90"/>
   <object id="66496" gid="147" x="320" y="1856" width="64" height="64" rotation="90"/>
   <object id="66497" gid="147" x="256" y="1856" width="64" height="64" rotation="90"/>
@@ -1332,7 +1331,6 @@
   <object id="66501" gid="147" x="256" y="1600" width="64" height="64" rotation="90"/>
   <object id="66502" gid="147" x="320" y="1600" width="64" height="64" rotation="90"/>
   <object id="66504" gid="147" x="448" y="1600" width="64" height="64" rotation="90"/>
-  <object id="66505" gid="147" x="512" y="1600" width="64" height="64" rotation="90"/>
   <object id="66558" gid="147" x="2560" y="1600" width="64" height="64" rotation="270"/>
   <object id="66559" gid="147" x="2624" y="1600" width="64" height="64" rotation="270"/>
   <object id="66560" gid="147" x="2688" y="1600" width="64" height="64" rotation="270"/>
@@ -1649,6 +1647,8 @@
   <object id="68513" gid="147" x="1481.48" y="1097.3" width="32" height="32.2652" rotation="315"/>
   <object id="68542" gid="147" x="1590.68" y="2230.69" width="32" height="32.1657" rotation="45"/>
   <object id="68543" gid="147" x="1611.37" y="2224" width="41.2527" height="32"/>
+  <object id="68611" gid="149" x="512" y="1856" width="64" height="64"/>
+  <object id="68612" gid="149" x="512" y="1600" width="64" height="64"/>
  </objectgroup>
  <objectgroup id="12" name="2nd floor">
   <object id="60601" gid="119" x="192" y="64" width="64" height="64"/>
@@ -2229,6 +2229,21 @@
   <object id="68449" gid="178" x="1920" y="2752" width="64" height="64"/>
   <object id="68460" gid="178" x="1664" y="2880" width="64" height="64"/>
   <object id="68461" gid="178" x="1600" y="2880" width="64" height="64"/>
+  <object id="68596" gid="178" x="1024" y="2496" width="64" height="64" rotation="90"/>
+  <object id="68597" gid="178" x="384" y="2240" width="64" height="64"/>
+  <object id="68598" gid="178" x="192" y="2112" width="64" height="64"/>
+  <object id="68599" gid="178" x="128" y="1344" width="64" height="64"/>
+  <object id="68600" gid="178" x="384" y="1216" width="64" height="64"/>
+  <object id="68601" gid="178" x="1024" y="896" width="64" height="64"/>
+  <object id="68602" gid="178" x="1152" y="704" width="64" height="64"/>
+  <object id="68603" gid="178" x="1920" y="704" width="64" height="64"/>
+  <object id="68604" gid="178" x="2048" y="896" width="64" height="64"/>
+  <object id="68605" gid="178" x="2304" y="1280" width="64" height="64"/>
+  <object id="68606" gid="178" x="2752" y="1408" width="64" height="64"/>
+  <object id="68607" gid="178" x="3072" y="1728" width="64" height="64"/>
+  <object id="68608" gid="178" x="2752" y="2048" width="64" height="64"/>
+  <object id="68609" gid="178" x="2304" y="2176" width="64" height="64"/>
+  <object id="68610" gid="178" x="2048" y="2496" width="64" height="64"/>
  </objectgroup>
  <objectgroup id="15" name="3rd floor" visible="0">
   <object id="67056" gid="210" x="1856" y="2048" width="64" height="64"/>
@@ -2836,7 +2851,11 @@
     <property name="map height" type="float" value="0.5"/>
    </properties>
   </object>
-  <object id="68580" gid="321" x="1024" y="2496" width="64" height="64" rotation="90"/>
+  <object id="68580" gid="321" x="1024" y="2496" width="64" height="64" rotation="90">
+   <properties>
+    <property name="isLocked" type="bool" value="true"/>
+   </properties>
+  </object>
   <object id="68581" gid="65" x="1536" y="704" width="64" height="64"/>
   <object id="68582" gid="321" x="192" y="2112" width="64" height="64" rotation="90">
    <properties>
