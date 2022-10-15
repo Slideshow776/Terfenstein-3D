@@ -21,6 +21,7 @@ public class Tile extends BaseActor3D {
     private long secretSoundID;
     private Vector3 originalPosition;
     private int secretLength;
+    private String texture;
 
     public Tile(float y, float z, float width, float height, float depth, String type, String texture, Stage3D stage3D, float rotation, String secretMovementDirection, int secretLength, boolean isAIpath) {
         super(0, y, z, stage3D);
@@ -28,6 +29,7 @@ public class Tile extends BaseActor3D {
         this.secretMovementDirection = secretMovementDirection;
         this.secretLength = secretLength;
         this.isAIpath = isAIpath;
+        this.texture = texture;
 
         if (texture.equalsIgnoreCase("blank"))
             buildModel(width, height, depth, true);
@@ -64,6 +66,10 @@ public class Tile extends BaseActor3D {
         isOpeningSecret = true;
         secretSoundID = BaseGame.secretWallSound.play(BaseGame.soundVolume * 1.5f);
         return false;
+    }
+
+    public void setBloody() {
+        loadImage("tiles/bloody/" + texture);
     }
 
     private void openSecret() {

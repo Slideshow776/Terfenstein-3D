@@ -4,8 +4,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.g3d.environment.DirectionalLight;
-import com.badlogic.gdx.graphics.g3d.environment.SpotLight;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
@@ -325,13 +323,29 @@ public class LevelScreen extends BaseScreen3D {
                     Barrel barrel = (Barrel) shootable.get(i);
                     barrel.decrementHealth(weaponHandler.getDamage(), player.distanceBetween(barrel));
                 } else {
-                    Vector3 temp = new Vector3().set(ray.direction).scl(player.distanceBetween(shootable.get(i)) - (Tile.diagonalLength / 2)).add(ray.origin);
+                    Vector3 temp = new Vector3().set(ray.direction).scl(player.distanceBetween(shootable.get(i)) - (Tile.diagonalLength * .4f)).add(ray.origin);
                     bulletDecals.addDecal(temp.x, temp.y, temp.z);
                 }
                 return true;
             }
         }
         return false;
+    }
+
+    private void setBloodyTiles(Enemy enemy) {
+        setBloodyTile(new Ray(enemy.position, new Vector3(0, 0, 1)), enemy);
+        setBloodyTile(new Ray(enemy.position, new Vector3(0, 0, -1)), enemy);
+        setBloodyTile(new Ray(enemy.position, new Vector3(0, 1, 0)), enemy);
+        setBloodyTile(new Ray(enemy.position, new Vector3(0, -1, 0)), enemy);/*
+        setBloodyTile(new Ray(enemy.position, new Vector3(1, 0, 0)), enemy);*/
+        setBloodyTile(new Ray(enemy.position, new Vector3(-1, 0, 0)), enemy);
+    }
+
+    private void setBloodyTile(Ray ray, Enemy enemy) {
+        int i = GameUtils.getClosestListIndex(ray, shootable);
+        if (i >= 0)
+            if (shootable.get(i) instanceof Tile && enemy.distanceBetween(shootable.get(i)) <= 6)
+                ((Tile) shootable.get(i)).setBloody();
     }
 
     private void removeEnemy(Enemy enemy) {
@@ -348,6 +362,7 @@ public class LevelScreen extends BaseScreen3D {
         hud.incrementScore(enemy.score, false);
         hud.setKillFace();
         uiHandler.statusLabel.setText("enemies left: " + enemies.size);
+        setBloodyTiles(enemy);
     }
 
 

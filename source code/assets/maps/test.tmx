@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.1" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="15" height="15" tilewidth="64" tileheight="64" infinite="0" nextlayerid="17" nextobjectid="66128">
+<map version="1.9" tiledversion="1.9.1" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="15" height="15" tilewidth="64" tileheight="64" infinite="0" nextlayerid="17" nextobjectid="66137">
  <tileset firstgid="1" source="Assets.tsx"/>
  <tileset firstgid="129" source="Tileset.tsx"/>
  <objectgroup id="7" name="U1" visible="0">
@@ -145,7 +145,6 @@
   <object id="65514" gid="145" x="640" y="64" width="64" height="64"/>
   <object id="65515" gid="145" x="704" y="64" width="64" height="64"/>
   <object id="65516" gid="145" x="768" y="64" width="64" height="64"/>
-  <object id="65517" gid="145" x="832" y="64" width="64" height="64"/>
   <object id="65518" gid="145" x="896" y="64" width="64" height="64"/>
   <object id="65519" gid="145" x="960" y="64" width="64" height="64"/>
   <object id="65520" gid="145" x="64" y="0" width="64" height="64"/>
@@ -255,8 +254,9 @@
   <object id="65902" gid="147" x="768" y="704" width="64" height="64"/>
   <object id="65903" gid="147" x="768" y="768" width="64" height="64"/>
   <object id="65904" gid="147" x="704" y="768" width="64" height="64"/>
+  <object id="66135" gid="145" x="832" y="64" width="64" height="64"/>
  </objectgroup>
- <objectgroup id="11" name="1st floor" visible="0">
+ <objectgroup id="11" name="1st floor">
   <object id="60509" gid="117" x="128" y="192" width="64" height="64"/>
   <object id="60510" gid="117" x="128" y="192" width="64" height="64"/>
   <object id="65576" gid="145" x="0" y="960" width="64" height="64"/>
@@ -561,5 +561,6 @@
   <object id="66100" gid="42" x="512" y="384" width="64" height="64"/>
   <object id="66126" gid="43" x="512" y="320" width="64" height="64"/>
   <object id="66127" gid="44" x="768" y="64" width="64" height="64"/>
+  <object id="66136" gid="1" x="576" y="576" width="64" height="64"/>
  </objectgroup>
 </map>
