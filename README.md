@@ -257,7 +257,8 @@ Some level design facets that are used are:
 * readability (is it easy to know where to go?)
 * environmental storytelling
 * illusion of space
-These are covered in [this book](https://www.lulu.com/shop/max-pears/lets-design-exploration/paperback/product-zerwr7.html?page=1&pageSize=4).
+
+These, and more, are covered in [this book](https://www.lulu.com/shop/max-pears/lets-design-exploration/paperback/product-zerwr7.html?page=1&pageSize=4).
 
 [![image](https://user-images.githubusercontent.com/4059636/194706249-e244466e-0cb2-41e9-9599-3f78370f1d86.png)](https://www.lulu.com/shop/max-pears/lets-design-exploration/paperback/product-zerwr7.html?page=1&pageSize=4)
 
