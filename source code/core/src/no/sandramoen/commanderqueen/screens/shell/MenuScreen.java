@@ -48,8 +48,8 @@ public class MenuScreen extends BaseScreen {
 
     @Override
     public boolean keyDown(int keycode) {
-        if (keycode == Keys.ESCAPE || keycode == Keys.Q)
-            uiStage.addAction(exitGameWithSoundAndDelay());
+        if (keycode == Keys.ESCAPE || keycode == Keys.Q && !uiTable.hasActions())
+            uiTable.addAction(exitGameWithSoundAndDelay());
         else if (keycode == Keys.ENTER || keycode == Keys.NUMPAD_ENTER || keycode == Keys.SPACE)
             startLevel1();
         return super.keyDown(keycode);
@@ -109,7 +109,7 @@ public class MenuScreen extends BaseScreen {
         TextButton button = new TextButton("Exit", BaseGame.mySkin);
         button.addListener(
                 (Event event) -> {
-                    if (GameUtils.isTouchDownEvent(event))
+                    if (GameUtils.isTouchDownEvent(event) && !button.hasActions())
                         button.addAction(exitGameWithSoundAndDelay());
                     return false;
                 }

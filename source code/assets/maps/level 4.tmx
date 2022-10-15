@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.1" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="50" height="50" tilewidth="64" tileheight="64" infinite="0" nextlayerid="17" nextobjectid="68578">
+<map version="1.9" tiledversion="1.9.1" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="50" height="50" tilewidth="64" tileheight="64" infinite="0" nextlayerid="17" nextobjectid="68596">
  <tileset firstgid="1" name="Assets" tilewidth="64" tileheight="64" tilecount="128" columns="16" objectalignment="center">
   <image source="assets.png" width="1024" height="512"/>
   <tile id="0">
@@ -1554,7 +1554,6 @@
   <object id="67960" gid="131" x="1664" y="256" width="64" height="64"/>
   <object id="67961" gid="131" x="1600" y="304" width="64" height="32"/>
   <object id="67962" gid="131" x="1472" y="304" width="64" height="32"/>
-  <object id="67963" gid="65" x="1536" y="704" width="64" height="64"/>
   <object id="67964" gid="149" x="1408" y="1088" width="64" height="64"/>
   <object id="67965" gid="149" x="1664" y="1088" width="64" height="64"/>
   <object id="67968" gid="147" x="960" y="1152" width="64" height="64"/>
@@ -1650,77 +1649,6 @@
   <object id="68513" gid="147" x="1481.48" y="1097.3" width="32" height="32.2652" rotation="315"/>
   <object id="68542" gid="147" x="1590.68" y="2230.69" width="32" height="32.1657" rotation="45"/>
   <object id="68543" gid="147" x="1611.37" y="2224" width="41.2527" height="32"/>
-  <object id="68544" gid="321" x="1024" y="2496" width="64" height="64" rotation="90"/>
-  <object id="68545" gid="321" x="192" y="2112" width="64" height="64" rotation="90">
-   <properties>
-    <property name="isLocked" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="68546" gid="321" x="384" y="2240" width="64" height="64">
-   <properties>
-    <property name="isLocked" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="68547" gid="321" x="128" y="1344" width="64" height="64" rotation="90">
-   <properties>
-    <property name="isLocked" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="68548" gid="321" x="384" y="1216" width="64" height="64">
-   <properties>
-    <property name="isLocked" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="68549" gid="321" x="1920" y="704" width="64" height="64">
-   <properties>
-    <property name="isLocked" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="68550" gid="321" x="2048" y="896" width="64" height="64" rotation="90">
-   <properties>
-    <property name="isLocked" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="68551" gid="321" x="2304" y="1280" width="64" height="64">
-   <properties>
-    <property name="isLocked" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="68552" gid="321" x="2752" y="1408" width="64" height="64">
-   <properties>
-    <property name="isLocked" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="68553" gid="321" x="3072" y="1728" width="64" height="64" rotation="90">
-   <properties>
-    <property name="isLocked" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="68554" gid="321" x="2752" y="2048" width="64" height="64">
-   <properties>
-    <property name="isLocked" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="68555" gid="321" x="2304" y="2176" width="64" height="64">
-   <properties>
-    <property name="isLocked" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="68556" gid="321" x="2048" y="2496" width="64" height="64" rotation="90">
-   <properties>
-    <property name="isLocked" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="68557" gid="321" x="1152" y="704" width="64" height="64">
-   <properties>
-    <property name="isLocked" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="68558" gid="321" x="1024" y="896" width="64" height="64" rotation="90">
-   <properties>
-    <property name="isLocked" type="bool" value="true"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="12" name="2nd floor">
   <object id="60601" gid="119" x="192" y="64" width="64" height="64"/>
@@ -2834,11 +2762,6 @@
     <property name="color 0" type="color" value="#ffacacac"/>
    </properties>
   </object>
-  <object id="68219" gid="18" x="768" y="2112" width="64" height="64">
-   <properties>
-    <property name="intensity" type="float" value="2"/>
-   </properties>
-  </object>
   <object id="68235" gid="19" x="817" y="1183" width="201.333" height="109.333">
    <properties>
     <property name="color 0" type="color" value="#ffacacac"/>
@@ -2899,5 +2822,91 @@
   <object id="68538" gid="294" x="640" y="1728" width="64" height="64"/>
   <object id="68539" gid="294" x="544" y="1728" width="64" height="64"/>
   <object id="68540" gid="294" x="512" y="1728" width="64" height="64"/>
+  <object id="68578" gid="274" x="768" y="2112" width="64" height="64">
+   <properties>
+    <property name="color" type="color" value="#ffde9e41"/>
+    <property name="intensity" type="float" value="5"/>
+    <property name="map height" type="float" value="0.5"/>
+   </properties>
+  </object>
+  <object id="68579" gid="274" x="832" y="1344" width="64" height="64">
+   <properties>
+    <property name="color" type="color" value="#ffde9e41"/>
+    <property name="intensity" type="float" value="5"/>
+    <property name="map height" type="float" value="0.5"/>
+   </properties>
+  </object>
+  <object id="68580" gid="321" x="1024" y="2496" width="64" height="64" rotation="90"/>
+  <object id="68581" gid="65" x="1536" y="704" width="64" height="64"/>
+  <object id="68582" gid="321" x="192" y="2112" width="64" height="64" rotation="90">
+   <properties>
+    <property name="isLocked" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="68583" gid="321" x="384" y="2240" width="64" height="64">
+   <properties>
+    <property name="isLocked" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="68584" gid="321" x="128" y="1344" width="64" height="64" rotation="90">
+   <properties>
+    <property name="isLocked" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="68585" gid="321" x="384" y="1216" width="64" height="64">
+   <properties>
+    <property name="isLocked" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="68586" gid="321" x="1920" y="704" width="64" height="64">
+   <properties>
+    <property name="isLocked" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="68587" gid="321" x="2048" y="896" width="64" height="64" rotation="90">
+   <properties>
+    <property name="isLocked" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="68588" gid="321" x="2304" y="1280" width="64" height="64">
+   <properties>
+    <property name="isLocked" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="68589" gid="321" x="2752" y="1408" width="64" height="64">
+   <properties>
+    <property name="isLocked" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="68590" gid="321" x="3072" y="1728" width="64" height="64" rotation="90">
+   <properties>
+    <property name="isLocked" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="68591" gid="321" x="2752" y="2048" width="64" height="64">
+   <properties>
+    <property name="isLocked" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="68592" gid="321" x="2304" y="2176" width="64" height="64">
+   <properties>
+    <property name="isLocked" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="68593" gid="321" x="2048" y="2496" width="64" height="64" rotation="90">
+   <properties>
+    <property name="isLocked" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="68594" gid="321" x="1152" y="704" width="64" height="64">
+   <properties>
+    <property name="isLocked" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="68595" gid="321" x="1024" y="896" width="64" height="64" rotation="90">
+   <properties>
+    <property name="isLocked" type="bool" value="true"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>
