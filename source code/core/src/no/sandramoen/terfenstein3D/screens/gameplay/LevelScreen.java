@@ -537,10 +537,15 @@ public class LevelScreen extends BaseScreen3D {
     }
 
     private void levelFinished() {
+        for (int i = 0; i < mapLoader.elevators.size; i++)
+            mapLoader.elevators.get(i).activate();
         BaseGame.elevatorSound.play(BaseGame.soundVolume);
         stopLevel();
         Array levelData = getLevelData();
-        BaseGame.setActiveScreen(new LevelFinishScreen(levelData, numLevel, hud.health, hud.armor, hud.bullets, hud.shells, hud.rockets, weaponHandler.weapons));
+        uiStage.addAction(Actions.sequence(
+                Actions.delay(.25f),
+                Actions.run(() -> BaseGame.setActiveScreen(new LevelFinishScreen(levelData, numLevel, hud.health, hud.armor, hud.bullets, hud.shells, hud.rockets, weaponHandler.weapons)))
+        ));
     }
 
     private void shadeHandler() {

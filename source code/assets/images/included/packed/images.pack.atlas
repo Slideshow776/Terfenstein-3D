@@ -1,6 +1,6 @@
 
 images.pack.png
-size: 256, 128
+size: 512, 128
 format: RGBA8888
 filter: Nearest, Nearest
 repeat: none
@@ -34,7 +34,7 @@ button-pressed
   index: -1
 clearPixel
   rotate: false
-  xy: 228, 92
+  xy: 294, 92
   size: 1, 1
   orig: 1, 1
   offset: 0, 0
@@ -53,9 +53,16 @@ elevator
   orig: 64, 64
   offset: 0, 0
   index: -1
+elevator down
+  rotate: false
+  xy: 228, 37
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
 greenKey
   rotate: false
-  xy: 228, 95
+  xy: 294, 95
   size: 17, 6
   orig: 17, 6
   offset: 0, 0
@@ -83,7 +90,7 @@ redKey
   index: -1
 whitePixel
   rotate: false
-  xy: 247, 100
+  xy: 313, 100
   size: 1, 1
   orig: 1, 1
   offset: 0, 0
@@ -2607,142 +2614,156 @@ tiles/light big plates 1
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/light big plates image
+tiles/light big plates green marker
   rotate: false
   xy: 398, 401
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/light big plates krans
+tiles/light big plates image
   rotate: false
   xy: 68, 5
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/light big plates poster 1
+tiles/light big plates krans
   rotate: false
   xy: 134, 71
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/light big plates poster 2
+tiles/light big plates poster 1
   rotate: false
   xy: 200, 137
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/light lonplate
+tiles/light big plates poster 2
   rotate: false
   xy: 266, 203
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/light lonplate 2
+tiles/light big plates red marker
   rotate: false
   xy: 332, 269
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/lights 0
+tiles/light lonplate
   rotate: false
   xy: 398, 335
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/lonplate
+tiles/light lonplate 2
   rotate: false
   xy: 134, 5
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/wood 1
+tiles/lights 0
   rotate: false
   xy: 200, 71
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/wood 1 flag
-  rotate: false
-  xy: 332, 203
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-tiles/wood 1 image1
-  rotate: false
-  xy: 398, 269
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-tiles/wood 1 krans1
-  rotate: false
-  xy: 200, 5
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-tiles/wood 1 poster 1
-  rotate: false
-  xy: 266, 71
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-tiles/wood 1 poster 2
-  rotate: false
-  xy: 332, 137
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-tiles/wood 2
+tiles/lonplate
   rotate: false
   xy: 266, 137
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/wood 2 flag
+tiles/wood 1
+  rotate: false
+  xy: 332, 203
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+tiles/wood 1 flag
+  rotate: false
+  xy: 200, 5
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+tiles/wood 1 image1
+  rotate: false
+  xy: 266, 71
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+tiles/wood 1 krans1
+  rotate: false
+  xy: 332, 137
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+tiles/wood 1 poster 1
   rotate: false
   xy: 398, 203
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/wood 2 image
+tiles/wood 1 poster 2
   rotate: false
   xy: 266, 5
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/wood 2 krans
+tiles/wood 2
+  rotate: false
+  xy: 398, 269
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+tiles/wood 2 flag
   rotate: false
   xy: 332, 71
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/wood 2 poster 1
+tiles/wood 2 image
   rotate: false
   xy: 398, 137
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/wood 2 poster 2
+tiles/wood 2 krans
   rotate: false
   xy: 332, 5
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+tiles/wood 2 poster 1
+  rotate: false
+  xy: 398, 71
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+tiles/wood 2 poster 2
+  rotate: false
+  xy: 398, 5
   size: 64, 64
   orig: 64, 64
   offset: 0, 0

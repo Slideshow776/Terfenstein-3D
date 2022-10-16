@@ -19,4 +19,8 @@ public class Elevator extends BaseActor3D {
         turnBy(-180 + rotation);
         setBaseRectangle();
     }
+
+    public void activate() {
+        loadImage("elevator down");
+    }
 }
