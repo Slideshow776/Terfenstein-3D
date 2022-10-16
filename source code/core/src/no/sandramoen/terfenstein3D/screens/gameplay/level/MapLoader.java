@@ -112,7 +112,13 @@ public class MapLoader {
         tileTextures.add("brick 2", "brick 3", "cliff 0", "cliff 1");
         tileTextures.add("light big plates 1", "flag 1", "flag 2", "flag 3");
         tileTextures.add("blank", "cliff 1 flag", "brick 3 flag", "wood 1");
-        tileTextures.add("wood 1 flag", "wood 2", "wood 2 flag");
+        tileTextures.add("wood 1 flag", "wood 2", "wood 2 flag", "");
+        tileTextures.add("light big plates red", "light big plates green", "brick 3 image", "cliff 1 image");
+        tileTextures.add("light big plates image", "wood 1 image", "wood 2 image", "brick 3 krans");
+        tileTextures.add("cliff 1 flag", "light big plates krans", "wood 1 krans", "wood 2 krans");
+        tileTextures.add("brick 3 poster 1", "cliff 1 poster 1", "light big plates poster 1", "wood 1 poster 1");
+        tileTextures.add("brick 3 poster 2", "cliff 1 poster 2", "light big plates poster 2", "wood 1 poster 2");
+        tileTextures.add("wood 2 poster 1", "wood 2 poster 2", "cliff 1 krans");
 
         for (String type : tileTypes) {
             for (String texture : tileTextures) {

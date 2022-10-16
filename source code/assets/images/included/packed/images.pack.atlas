@@ -2614,7 +2614,7 @@ tiles/light big plates 1
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/light big plates green marker
+tiles/light big plates green
   rotate: false
   xy: 398, 401
   size: 64, 64
@@ -2649,7 +2649,7 @@ tiles/light big plates poster 2
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/light big plates red marker
+tiles/light big plates red
   rotate: false
   xy: 332, 269
   size: 64, 64
@@ -2698,14 +2698,14 @@ tiles/wood 1 flag
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/wood 1 image1
+tiles/wood 1 image
   rotate: false
   xy: 266, 71
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/wood 1 krans1
+tiles/wood 1 krans
   rotate: false
   xy: 332, 137
   size: 64, 64
@@ -2770,13 +2770,13 @@ tiles/wood 2 poster 2
   index: -1
 
 images.pack17.png
-size: 1024, 256
+size: 512, 512
 format: RGBA8888
 filter: Nearest, Nearest
 repeat: none
 tiles/bloody/big plates
   rotate: false
-  xy: 2, 137
+  xy: 2, 401
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
@@ -2790,182 +2790,336 @@ tiles/bloody/blank
   index: -1
 tiles/bloody/brick 0
   rotate: false
-  xy: 2, 71
+  xy: 2, 335
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 tiles/bloody/brick 1
   rotate: false
-  xy: 68, 137
+  xy: 68, 401
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 tiles/bloody/brick 2
   rotate: false
-  xy: 2, 5
+  xy: 2, 269
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 tiles/bloody/brick 3
   rotate: false
-  xy: 68, 71
+  xy: 68, 335
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 tiles/bloody/brick 3 flag
   rotate: false
-  xy: 134, 137
+  xy: 134, 401
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+tiles/bloody/brick 3 image
+  rotate: false
+  xy: 2, 203
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+tiles/bloody/brick 3 krans
+  rotate: false
+  xy: 68, 269
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+tiles/bloody/brick 3 poster 1
+  rotate: false
+  xy: 134, 335
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+tiles/bloody/brick 3 poster 2
+  rotate: false
+  xy: 200, 401
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 tiles/bloody/circles0
   rotate: false
-  xy: 68, 5
+  xy: 2, 137
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 tiles/bloody/cliff 0
   rotate: false
-  xy: 134, 71
+  xy: 68, 203
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 tiles/bloody/cliff 1
   rotate: false
-  xy: 200, 137
+  xy: 134, 269
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 tiles/bloody/cliff 1 flag
   rotate: false
-  xy: 134, 5
+  xy: 200, 335
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+tiles/bloody/cliff 1 image
+  rotate: false
+  xy: 266, 401
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+tiles/bloody/cliff 1 krans
+  rotate: false
+  xy: 2, 71
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+tiles/bloody/cliff 1 poster 1
+  rotate: false
+  xy: 68, 137
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+tiles/bloody/cliff 1 poster 2
+  rotate: false
+  xy: 134, 203
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 tiles/bloody/elevator wall
   rotate: false
-  xy: 200, 71
+  xy: 200, 269
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 tiles/bloody/flag 0
   rotate: false
-  xy: 266, 137
+  xy: 266, 335
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 tiles/bloody/flag 1
   rotate: false
-  xy: 200, 5
+  xy: 332, 401
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 tiles/bloody/flag 2
   rotate: false
-  xy: 266, 71
+  xy: 2, 5
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 tiles/bloody/flag 3
   rotate: false
-  xy: 332, 137
+  xy: 68, 71
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 tiles/bloody/hexagon 0
   rotate: false
-  xy: 266, 5
+  xy: 134, 137
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 tiles/bloody/hexagon 1
   rotate: false
-  xy: 332, 71
+  xy: 200, 203
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 tiles/bloody/light big plates
   rotate: false
-  xy: 398, 137
+  xy: 266, 269
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 tiles/bloody/light big plates 1
   rotate: false
-  xy: 332, 5
+  xy: 332, 335
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+tiles/bloody/light big plates green
+  rotate: false
+  xy: 398, 401
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+tiles/bloody/light big plates image
+  rotate: false
+  xy: 68, 5
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+tiles/bloody/light big plates krans
+  rotate: false
+  xy: 134, 71
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+tiles/bloody/light big plates poster 1
+  rotate: false
+  xy: 200, 137
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+tiles/bloody/light big plates poster 2
+  rotate: false
+  xy: 266, 203
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+tiles/bloody/light big plates red
+  rotate: false
+  xy: 332, 269
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 tiles/bloody/light lonplate
   rotate: false
-  xy: 398, 71
+  xy: 398, 335
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 tiles/bloody/light lonplate 2
   rotate: false
-  xy: 464, 137
+  xy: 134, 5
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 tiles/bloody/lights 0
   rotate: false
-  xy: 398, 5
+  xy: 200, 71
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 tiles/bloody/lonplate
   rotate: false
-  xy: 464, 71
+  xy: 266, 137
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 tiles/bloody/wood 1
   rotate: false
-  xy: 530, 137
+  xy: 332, 203
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 tiles/bloody/wood 1 flag
   rotate: false
-  xy: 530, 71
+  xy: 200, 5
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+tiles/bloody/wood 1 image
+  rotate: false
+  xy: 266, 71
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+tiles/bloody/wood 1 krans
+  rotate: false
+  xy: 332, 137
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+tiles/bloody/wood 1 poster 1
+  rotate: false
+  xy: 398, 203
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+tiles/bloody/wood 1 poster 2
+  rotate: false
+  xy: 266, 5
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 tiles/bloody/wood 2
   rotate: false
-  xy: 464, 5
+  xy: 398, 269
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 tiles/bloody/wood 2 flag
   rotate: false
-  xy: 596, 137
+  xy: 332, 71
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+tiles/bloody/wood 2 image
+  rotate: false
+  xy: 398, 137
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+tiles/bloody/wood 2 krans
+  rotate: false
+  xy: 332, 5
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+tiles/bloody/wood 2 poster 1
+  rotate: false
+  xy: 398, 71
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+tiles/bloody/wood 2 poster 2
+  rotate: false
+  xy: 398, 5
   size: 64, 64
   orig: 64, 64
   offset: 0, 0

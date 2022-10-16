@@ -543,7 +543,7 @@ public class LevelScreen extends BaseScreen3D {
         stopLevel();
         Array levelData = getLevelData();
         uiStage.addAction(Actions.sequence(
-                Actions.delay(.25f),
+                Actions.delay(.5f),
                 Actions.run(() -> BaseGame.setActiveScreen(new LevelFinishScreen(levelData, numLevel, hud.health, hud.armor, hud.bullets, hud.shells, hud.rockets, weaponHandler.weapons)))
         ));
     }

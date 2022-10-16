@@ -45,6 +45,42 @@
    <property name="secret length" type="int" value="1"/>
   </properties>
  </tile>
+ <tile id="5">
+  <properties>
+   <property name="depth" type="float" value="4"/>
+   <property name="isAIpath" type="bool" value="true"/>
+   <property name="name" value="brick 3 image"/>
+   <property name="secret" value=""/>
+   <property name="secret length" type="int" value="1"/>
+  </properties>
+ </tile>
+ <tile id="6">
+  <properties>
+   <property name="depth" type="float" value="4"/>
+   <property name="isAIpath" type="bool" value="true"/>
+   <property name="name" value="brick 3 krans"/>
+   <property name="secret" value=""/>
+   <property name="secret length" type="int" value="1"/>
+  </properties>
+ </tile>
+ <tile id="7">
+  <properties>
+   <property name="depth" type="float" value="4"/>
+   <property name="isAIpath" type="bool" value="true"/>
+   <property name="name" value="brick 3 poster 1"/>
+   <property name="secret" value=""/>
+   <property name="secret length" type="int" value="1"/>
+  </properties>
+ </tile>
+ <tile id="8">
+  <properties>
+   <property name="depth" type="float" value="4"/>
+   <property name="isAIpath" type="bool" value="true"/>
+   <property name="name" value="brick 3 poster 2"/>
+   <property name="secret" value=""/>
+   <property name="secret length" type="int" value="1"/>
+  </properties>
+ </tile>
  <tile id="16">
   <properties>
    <property name="depth" type="float" value="4"/>
@@ -86,6 +122,42 @@
    <property name="depth" type="float" value="4"/>
    <property name="isAIpath" type="bool" value="true"/>
    <property name="name" value="flag 0"/>
+   <property name="secret" value=""/>
+   <property name="secret length" type="int" value="1"/>
+  </properties>
+ </tile>
+ <tile id="21">
+  <properties>
+   <property name="depth" type="float" value="4"/>
+   <property name="isAIpath" type="bool" value="true"/>
+   <property name="name" value="cliff 1 image"/>
+   <property name="secret" value=""/>
+   <property name="secret length" type="int" value="1"/>
+  </properties>
+ </tile>
+ <tile id="22">
+  <properties>
+   <property name="depth" type="float" value="4"/>
+   <property name="isAIpath" type="bool" value="true"/>
+   <property name="name" value="cliff 1 krans"/>
+   <property name="secret" value=""/>
+   <property name="secret length" type="int" value="1"/>
+  </properties>
+ </tile>
+ <tile id="23">
+  <properties>
+   <property name="depth" type="float" value="4"/>
+   <property name="isAIpath" type="bool" value="true"/>
+   <property name="name" value="cliff 1 poster 1"/>
+   <property name="secret" value=""/>
+   <property name="secret length" type="int" value="1"/>
+  </properties>
+ </tile>
+ <tile id="24">
+  <properties>
+   <property name="depth" type="float" value="4"/>
+   <property name="isAIpath" type="bool" value="true"/>
+   <property name="name" value="cliff 1 poster 2"/>
    <property name="secret" value=""/>
    <property name="secret length" type="int" value="1"/>
   </properties>
@@ -135,6 +207,42 @@
    <property name="secret length" type="int" value="1"/>
   </properties>
  </tile>
+ <tile id="37">
+  <properties>
+   <property name="depth" type="float" value="4"/>
+   <property name="isAIpath" type="bool" value="true"/>
+   <property name="name" value="light big plates image"/>
+   <property name="secret" value=""/>
+   <property name="secret length" type="int" value="1"/>
+  </properties>
+ </tile>
+ <tile id="38">
+  <properties>
+   <property name="depth" type="float" value="4"/>
+   <property name="isAIpath" type="bool" value="true"/>
+   <property name="name" value="light big plates krans"/>
+   <property name="secret" value=""/>
+   <property name="secret length" type="int" value="1"/>
+  </properties>
+ </tile>
+ <tile id="39">
+  <properties>
+   <property name="depth" type="float" value="4"/>
+   <property name="isAIpath" type="bool" value="true"/>
+   <property name="name" value="light big plates poster 1"/>
+   <property name="secret" value=""/>
+   <property name="secret length" type="int" value="1"/>
+  </properties>
+ </tile>
+ <tile id="40">
+  <properties>
+   <property name="depth" type="float" value="4"/>
+   <property name="isAIpath" type="bool" value="true"/>
+   <property name="name" value="light big plates poster 2"/>
+   <property name="secret" value=""/>
+   <property name="secret length" type="int" value="1"/>
+  </properties>
+ </tile>
  <tile id="48">
   <properties>
    <property name="depth" type="float" value="4"/>
@@ -176,6 +284,42 @@
    <property name="depth" type="float" value="4"/>
    <property name="isAIpath" type="bool" value="true"/>
    <property name="name" value="cliff 1 flag"/>
+   <property name="secret" value=""/>
+   <property name="secret length" type="int" value="1"/>
+  </properties>
+ </tile>
+ <tile id="53">
+  <properties>
+   <property name="depth" type="float" value="4"/>
+   <property name="isAIpath" type="bool" value="true"/>
+   <property name="name" value="wood 1 image"/>
+   <property name="secret" value=""/>
+   <property name="secret length" type="int" value="1"/>
+  </properties>
+ </tile>
+ <tile id="54">
+  <properties>
+   <property name="depth" type="float" value="4"/>
+   <property name="isAIpath" type="bool" value="true"/>
+   <property name="name" value="wood 1 krans"/>
+   <property name="secret" value=""/>
+   <property name="secret length" type="int" value="1"/>
+  </properties>
+ </tile>
+ <tile id="55">
+  <properties>
+   <property name="depth" type="float" value="4"/>
+   <property name="isAIpath" type="bool" value="true"/>
+   <property name="name" value="wood 1 poster 1"/>
+   <property name="secret" value=""/>
+   <property name="secret length" type="int" value="1"/>
+  </properties>
+ </tile>
+ <tile id="56">
+  <properties>
+   <property name="depth" type="float" value="4"/>
+   <property name="isAIpath" type="bool" value="true"/>
+   <property name="name" value="wood 1 poster 2"/>
    <property name="secret" value=""/>
    <property name="secret length" type="int" value="1"/>
   </properties>
@@ -225,6 +369,42 @@
    <property name="secret length" type="int" value="1"/>
   </properties>
  </tile>
+ <tile id="69">
+  <properties>
+   <property name="depth" type="float" value="4"/>
+   <property name="isAIpath" type="bool" value="true"/>
+   <property name="name" value="wood 2 image"/>
+   <property name="secret" value=""/>
+   <property name="secret length" type="int" value="1"/>
+  </properties>
+ </tile>
+ <tile id="70">
+  <properties>
+   <property name="depth" type="float" value="4"/>
+   <property name="isAIpath" type="bool" value="true"/>
+   <property name="name" value="wood 2 krans"/>
+   <property name="secret" value=""/>
+   <property name="secret length" type="int" value="1"/>
+  </properties>
+ </tile>
+ <tile id="71">
+  <properties>
+   <property name="depth" type="float" value="4"/>
+   <property name="isAIpath" type="bool" value="true"/>
+   <property name="name" value="wood 2 poster 1"/>
+   <property name="secret" value=""/>
+   <property name="secret length" type="int" value="1"/>
+  </properties>
+ </tile>
+ <tile id="72">
+  <properties>
+   <property name="depth" type="float" value="4"/>
+   <property name="isAIpath" type="bool" value="true"/>
+   <property name="name" value="wood 2 poster 2"/>
+   <property name="secret" value=""/>
+   <property name="secret length" type="int" value="1"/>
+  </properties>
+ </tile>
  <tile id="80">
   <properties>
    <property name="depth" type="float" value="4"/>
@@ -239,6 +419,24 @@
    <property name="depth" type="float" value="4"/>
    <property name="isAIpath" type="bool" value="true"/>
    <property name="name" value="flag 3"/>
+   <property name="secret" value=""/>
+   <property name="secret length" type="int" value="1"/>
+  </properties>
+ </tile>
+ <tile id="82">
+  <properties>
+   <property name="depth" type="float" value="4"/>
+   <property name="isAIpath" type="bool" value="true"/>
+   <property name="name" value="light big plates red"/>
+   <property name="secret" value=""/>
+   <property name="secret length" type="int" value="1"/>
+  </properties>
+ </tile>
+ <tile id="83">
+  <properties>
+   <property name="depth" type="float" value="4"/>
+   <property name="isAIpath" type="bool" value="true"/>
+   <property name="name" value="light big plates green"/>
    <property name="secret" value=""/>
    <property name="secret length" type="int" value="1"/>
   </properties>
