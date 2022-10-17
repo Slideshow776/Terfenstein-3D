@@ -118,7 +118,12 @@ public class MapLoader {
         tileTextures.add("cliff 1 flag", "light big plates krans", "wood 1 krans", "wood 2 krans");
         tileTextures.add("brick 3 poster 1", "cliff 1 poster 1", "light big plates poster 1", "wood 1 poster 1");
         tileTextures.add("brick 3 poster 2", "cliff 1 poster 2", "light big plates poster 2", "wood 1 poster 2");
-        tileTextures.add("wood 2 poster 1", "wood 2 poster 2", "cliff 1 krans");
+        tileTextures.add("wood 2 poster 1", "wood 2 poster 2", "cliff 1 krans", "light big plates pipe up");
+        tileTextures.add("light big plates pipe side", "light big plates pipe end", "light big plates 1 pipe down", "brick 3 prison 1");
+        tileTextures.add("wood 1 prison 1", "wood 2 prison 1", "cliff 1 prison 1", "");
+        tileTextures.add("brick 3 eagle 1", "cliff 1 eagle 1", "light big plates eagle 1", "wood 1 eagle 1");
+        tileTextures.add("wood 2 eagle 1", "", "", "");
+        // tileTextures.add("", "", "", "");
 
         for (String type : tileTypes) {
             for (String texture : tileTextures) {
@@ -199,7 +204,7 @@ public class MapLoader {
             float y = props.get("y", Float.class) * BaseGame.unitScale;
             float rotation = getRotation(props);
 
-            Elevator elevator = new Elevator(x, y, stage3D, stage, rotation, player);
+            Elevator elevator = new Elevator(x, y, stage3D, stage, rotation);
             shootable.add(elevator);
             elevators.add(elevator);
         }

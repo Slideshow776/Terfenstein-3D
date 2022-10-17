@@ -350,7 +350,7 @@ public class HUD extends BaseActor {
         if (health > 0) {
             if (amount >= 20) {
                 face.setOuch(getFaceHealthIndex());
-                BaseGame.tinnitusSound.play(BaseGame.soundVolume * .25f);
+                BaseGame.tinnitusSound.play(BaseGame.soundVolume * .5f);
             } else {
                 if (angle < 130)
                     face.setTurnRight(getFaceHealthIndex());

@@ -206,7 +206,7 @@ public class LevelScreen extends BaseScreen3D {
                         uiHandler.setPickupLabel(message, true);
                 }
             for (Elevator elevator : mapLoader.elevators)
-                if (player.isWithinDistance(Tile.height * 1.1f, elevator))
+                if (player.isWithinDistance(Tile.height * 1.1f, elevator) && !elevator.activated)
                     levelFinished();
         }
 

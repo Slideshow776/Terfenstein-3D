@@ -11,7 +11,7 @@ public class MyGdxGame extends BaseGame {
 		// setActiveScreen(new SplashScreen());
 		// setActiveScreen(new MenuScreen());
 		// setActiveScreen(new OptionsScreen());
-		setActiveScreen(new LevelScreen(30, BaseGame.level5Map, "level 5", 100, 0, 50, 25, 0, null));
+		setActiveScreen(new LevelScreen(30, BaseGame.level2Map, "level 2", 100, 0, 50, 25, 0, null));
 	}
 }
  
