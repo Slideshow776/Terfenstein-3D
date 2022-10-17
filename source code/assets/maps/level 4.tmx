@@ -2622,7 +2622,7 @@
   <object id="68027" gid="178" x="1600" y="1152" width="64" height="64"/>
   <object id="68028" gid="178" x="1664" y="1152" width="64" height="64"/>
  </objectgroup>
- <objectgroup id="13" name="props" visible="0">
+ <objectgroup id="13" name="props">
   <object id="68142" gid="115" x="1536" y="1600" width="64" height="64"/>
  </objectgroup>
  <objectgroup id="8" name="actors">

@@ -358,7 +358,11 @@ public class MapLoader {
 
     private void initializeProps() {
         Array<String> types = new Array<>();
-        types.add("computer 0", "suitcase 0", "statue 0");
+        types.add("computer 0", "suitcase 0", "statue 0", "lightBulb 0");
+        types.add("lightBulb 1", "table 1", "chair 0", "chair 1");
+        types.add("barrel 1", "flag 1", "trash 1", "lightBulb 2");
+        types.add("vase 1", "vase 2", "palle 1", "forklift");
+        // types.add("");
 
         for (String type : types) {
             for (MapObject obj : tilemap.getTileList("props", type)) {

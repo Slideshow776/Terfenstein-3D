@@ -168,4 +168,74 @@
    <property name="name" value="suitcase 0"/>
   </properties>
  </tile>
+ <tile id="114">
+  <properties>
+   <property name="name" value="statue 0"/>
+  </properties>
+ </tile>
+ <tile id="115">
+  <properties>
+   <property name="name" value="lightBulb 0"/>
+  </properties>
+ </tile>
+ <tile id="116">
+  <properties>
+   <property name="name" value="lightBulb 1"/>
+  </properties>
+ </tile>
+ <tile id="117">
+  <properties>
+   <property name="name" value="table 1"/>
+  </properties>
+ </tile>
+ <tile id="118">
+  <properties>
+   <property name="name" value="chair 1"/>
+  </properties>
+ </tile>
+ <tile id="119">
+  <properties>
+   <property name="name" value="chair 0"/>
+  </properties>
+ </tile>
+ <tile id="120">
+  <properties>
+   <property name="name" value="barrel 1"/>
+  </properties>
+ </tile>
+ <tile id="121">
+  <properties>
+   <property name="name" value="flag 1"/>
+  </properties>
+ </tile>
+ <tile id="122">
+  <properties>
+   <property name="name" value="trash 1"/>
+  </properties>
+ </tile>
+ <tile id="123">
+  <properties>
+   <property name="name" value="lightBulb 2"/>
+  </properties>
+ </tile>
+ <tile id="124">
+  <properties>
+   <property name="name" value="vase 1"/>
+  </properties>
+ </tile>
+ <tile id="125">
+  <properties>
+   <property name="name" value="vase 2"/>
+  </properties>
+ </tile>
+ <tile id="126">
+  <properties>
+   <property name="name" value="palle 1"/>
+  </properties>
+ </tile>
+ <tile id="127">
+  <properties>
+   <property name="name" value="forklift"/>
+  </properties>
+ </tile>
 </tileset>
