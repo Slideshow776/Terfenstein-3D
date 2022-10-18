@@ -262,6 +262,9 @@ These, and more, are covered in [this book](https://www.lulu.com/shop/max-pears/
 
 [![image](https://user-images.githubusercontent.com/4059636/194706249-e244466e-0cb2-41e9-9599-3f78370f1d86.png)](https://www.lulu.com/shop/max-pears/lets-design-exploration/paperback/product-zerwr7.html?page=1&pageSize=4)
 
+### Convert `.jar` to `.exe`
+Follow [this tutorial](https://fullstackdeveloper.guru/2020/06/17/how-to-create-a-windows-native-java-application-generating-exe-file/) to do so.
+
 ## Other
 For other project specifics check out the [commits](https://github.com/Slideshow776/3D-shooting-game/commits/master).
 
