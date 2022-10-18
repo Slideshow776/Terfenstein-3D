@@ -1,4 +1,6 @@
 # Terfenstein 3D
+![feature graphics](https://user-images.githubusercontent.com/4059636/196458021-0576331b-919d-4677-95e1-f02230bc31e4.png)
+
 
 ![image](https://user-images.githubusercontent.com/4059636/184866741-be475fb3-9945-4740-a251-5781a98a6eea.gif)
 
