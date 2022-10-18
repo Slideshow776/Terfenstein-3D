@@ -2096,8 +2096,8 @@
   <object id="66100" gid="395" x="-64" y="256" width="64" height="64"/>
   <object id="66101" gid="395" x="-64" y="224" width="64" height="64"/>
   <object id="66102" gid="395" x="-64" y="192" width="64" height="64"/>
-  <object id="66103" gid="397" x="896" y="896" width="64" height="64"/>
-  <object id="66104" gid="398" x="896" y="864" width="64" height="64"/>
+  <object id="66103" gid="397" x="910.333" y="896.333" width="64" height="64"/>
+  <object id="66104" gid="398" x="910.333" y="864.333" width="64" height="64"/>
   <object id="66105" gid="394" x="896" y="1088" width="64" height="64"/>
   <object id="66107" gid="399" x="64" y="-64" width="64" height="64"/>
   <object id="66108" gid="399" x="0" y="-64" width="64" height="64"/>
