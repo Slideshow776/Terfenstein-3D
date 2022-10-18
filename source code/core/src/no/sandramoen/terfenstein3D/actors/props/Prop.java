@@ -16,13 +16,17 @@ public class Prop extends BaseActor3D {
             initializeModel(y, z, 3.5f, 2.5f);
         else if (type.equalsIgnoreCase("suitcase 0"))
             initializeModel(y, z, 1, 1);
-        else if (type.equalsIgnoreCase("statue 0") || type.equalsIgnoreCase("lightBulb 2"))
+        else if (type.equalsIgnoreCase("statue 0"))
             initializeModel(y, z, 8, 8);
         else if (type.equalsIgnoreCase("forklift"))
             initializeModel(y, z, 8, 4);
+        else if (type.equalsIgnoreCase("lightBulb 2") || type.equalsIgnoreCase("lightBulb 3"))
+            initializeModel(y, z, 4, 8);
         else
             initializeModel(y, z, 4, 4);
         loadImage("props/" + type);
+
+        System.out.println("type: " + type);
     }
 
     @Override

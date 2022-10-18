@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset version="1.9" tiledversion="1.9.1" name="Assets" tilewidth="64" tileheight="64" tilecount="128" columns="16" objectalignment="center">
- <image source="assets.png" width="1024" height="512"/>
+<tileset version="1.9" tiledversion="1.9.1" name="Assets" tilewidth="64" tileheight="64" tilecount="144" columns="16" objectalignment="center">
+ <image source="assets.png" width="1024" height="576"/>
  <tile id="0">
   <properties>
    <property name="name" value="menig"/>
@@ -236,6 +236,21 @@
  <tile id="127">
   <properties>
    <property name="name" value="forklift"/>
+  </properties>
+ </tile>
+ <tile id="128">
+  <properties>
+   <property name="name" value="bed 1"/>
+  </properties>
+ </tile>
+ <tile id="129">
+  <properties>
+   <property name="name" value="dog bed 1"/>
+  </properties>
+ </tile>
+ <tile id="130">
+  <properties>
+   <property name="name" value="lightBulb 3"/>
   </properties>
  </tile>
 </tileset>

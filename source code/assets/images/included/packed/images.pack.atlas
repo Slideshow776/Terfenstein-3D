@@ -2367,118 +2367,139 @@ pickups/shotgun
   index: -1
 
 images.pack14.png
-size: 1024, 128
+size: 512, 256
 format: RGBA8888
 filter: Nearest, Nearest
 repeat: none
 props/barrel 1
   rotate: false
-  xy: 2, 2
+  xy: 2, 103
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+props/bed 1
+  rotate: false
+  xy: 2, 37
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 props/chair 0
   rotate: false
-  xy: 93, 61
+  xy: 93, 162
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 props/chair 1
   rotate: false
-  xy: 159, 61
+  xy: 159, 162
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 props/computer 0
   rotate: false
-  xy: 885, 92
+  xy: 2, 2
   size: 33, 33
   orig: 33, 33
   offset: 0, 0
   index: -1
+props/dog bed 1
+  rotate: false
+  xy: 225, 162
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
 props/flag 1
   rotate: false
-  xy: 225, 61
+  xy: 291, 162
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 props/forklift
   rotate: false
-  xy: 2, 68
+  xy: 2, 169
   size: 89, 57
   orig: 89, 57
   offset: 0, 0
   index: -1
 props/lightBulb 0
   rotate: false
-  xy: 291, 61
+  xy: 357, 162
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 props/lightBulb 1
   rotate: false
-  xy: 357, 61
+  xy: 423, 162
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 props/lightBulb 2
   rotate: false
-  xy: 423, 61
+  xy: 68, 96
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+props/lightBulb 3
+  rotate: false
+  xy: 134, 96
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 props/palle 1
   rotate: false
-  xy: 489, 61
+  xy: 200, 96
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 props/statue 0
   rotate: false
-  xy: 555, 61
+  xy: 266, 96
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 props/suitcase 0
   rotate: false
-  xy: 920, 93
+  xy: 200, 62
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 props/table 1
   rotate: false
-  xy: 621, 61
+  xy: 332, 96
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 props/trash 1
   rotate: false
-  xy: 687, 61
+  xy: 398, 96
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 props/vase 1
   rotate: false
-  xy: 753, 61
+  xy: 68, 30
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 props/vase 2
   rotate: false
-  xy: 819, 61
+  xy: 134, 30
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
