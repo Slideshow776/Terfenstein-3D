@@ -1,3 +1,7 @@
+plugins {
+    id "org.beryx.runtime" version "1.12.7"
+}
+
 sourceCompatibility = 1.8
 sourceSets.main.java.srcDirs = [ "src/" ]
 sourceSets.main.resources.srcDirs = ["../assets"]
@@ -5,20 +9,6 @@ sourceSets.main.resources.srcDirs = ["../assets"]
 project.ext.mainClassName = "no.sandramoen.terfenstein3D.DesktopLauncher"
 project.ext.assetsDir = new File("../assets")
 
-import org.gradle.internal.os.OperatingSystem
-
-task run(dependsOn: classes, type: JavaExec) {
-    main = project.mainClassName
-    classpath = sourceSets.main.runtimeClasspath
-    standardInput = System.in
-    workingDir = project.assetsDir
-    ignoreExitValue = true
-
-    if (OperatingSystem.current() == OperatingSystem.MAC_OS) {
-        // Required to run on macOS
-        jvmArgs += "-XstartOnFirstThread"
-    }
-}
 
 task debug(dependsOn: classes, type: JavaExec) {
     main = project.mainClassName
@@ -29,7 +19,11 @@ task debug(dependsOn: classes, type: JavaExec) {
     debug = true
 }
 
+def appName = "Terfenstein 3D"
+
 task dist(type: Jar) {
+    archiveFileName = "${appName}.jar"
+    destinationDirectory = file("$buildDir\\lib")
     duplicatesStrategy(DuplicatesStrategy.EXCLUDE)
     manifest {
         attributes 'Main-Class': project.mainClassName
@@ -45,3 +39,51 @@ task dist(type: Jar) {
 dist.dependsOn classes
 
 eclipse.project.name = appName + "-desktop"
+
+
+
+def imageDir = "$buildDir/jpgArchives"
+
+runtime {
+    options = ['--strip-debug',
+               '--compress', '2',
+               '--no-header-files',
+               '--no-man-pages',
+               '--strip-native-commands']
+    modules = [
+            'java.base' ,
+            'java.desktop',
+            'java.logging',
+            'jdk.incubator.foreign',
+            'jdk.unsupported',
+    ]
+    distDir = file(buildDir)
+
+    jpackage {
+        jpackageHome = 'C:\\Program Files\\Java\\jdk-15.0.1'
+        skipInstaller = true
+        mainJar = "${appName}.jar"
+        mainClass = project.mainClassName
+        imageName = "${appName}"
+        imageOutputDir = file("$imageDir")
+        def currentOs = org.gradle.internal.os.OperatingSystem.current()
+        if (currentOs.windows) {
+            imageOptions += ["--icon", rootProject.file("assets/images/excluded/icon.ico")] // 32x32
+        }/* else if (currentOs.linux) {
+            imageOptions += ["--icon", rootProject.file("assets/images/excluded/Terfenstein.png")]
+        } else if (currentOs.macOsX) {
+            // TODO icon missing
+            // imageOptions = ["--icon", rootProject.file("assets/images/excluded/yourgame.icns")]
+        }*/
+    }
+}
+
+task packageWindows(type: Zip) {
+    group = "Terfenstein 3D"
+    dependsOn jpackageImage
+    archiveFileName = 'Terfenstein 3D-windows64.zip'
+    // from rootProject.file('jpackage/in/dist-extras')
+    from(file("$imageDir/Terfenstein 3D/"))
+    destinationDirectory = rootProject.file('desktop/build/libs')
+    into "Terfenstein-v$version-windows-64"
+}

@@ -2215,13 +2215,13 @@ hud/key
   index: -1
 
 images.pack12.png
-size: 256, 128
+size: 1024, 512
 format: RGBA8888
 filter: Nearest, Nearest
 repeat: none
 level finished/explosion
   rotate: false
-  xy: 132, 65
+  xy: 516, 281
   size: 26, 27
   orig: 26, 27
   offset: 0, 0
@@ -2229,8 +2229,8 @@ level finished/explosion
 level finished/map0
   rotate: false
   xy: 2, 20
-  size: 128, 72
-  orig: 128, 72
+  size: 512, 288
+  orig: 512, 288
   offset: 0, 0
   index: -1
 level finished/you are here

@@ -25,8 +25,6 @@ public class Prop extends BaseActor3D {
         else
             initializeModel(y, z, 4, 4);
         loadImage("props/" + type);
-
-        System.out.println("type: " + type);
     }
 
     @Override
