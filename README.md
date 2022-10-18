@@ -264,6 +264,7 @@ These, and more, are covered in [this book](https://www.lulu.com/shop/max-pears/
 
 ### Convert `.jar` to `.exe`
 Follow [this tutorial](https://fullstackdeveloper.guru/2020/06/17/how-to-create-a-windows-native-java-application-generating-exe-file/) to do so.
+To automate this process checkout the [desktop build file](https://github.com/Slideshow776/Terfenstein-3D/blob/master/source%20code/desktop/build.gradle).
 
 ## Other
 For other project specifics check out the [commits](https://github.com/Slideshow776/3D-shooting-game/commits/master).
