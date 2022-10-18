@@ -20,8 +20,10 @@ public class OptionsScreen extends BaseScreen {
     @Override
     public void initialize() {
         TypingLabel label = new TypingLabel("Options", new Label.LabelStyle(BaseGame.mySkin.get("arcade64", BitmapFont.class), null));
+        label.font.scale(.8f, .8f);
         uiTable.add(label)
                 .growY()
+                .padBottom(-Gdx.graphics.getHeight() * .15f)
                 .row();
 
         uiTable.add(optionsTable())

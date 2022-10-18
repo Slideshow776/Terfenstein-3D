@@ -1,6 +1,7 @@
 package no.sandramoen.terfenstein3D;
 
 import no.sandramoen.terfenstein3D.screens.gameplay.LevelScreen;
+import no.sandramoen.terfenstein3D.screens.shell.MenuScreen;
 import no.sandramoen.terfenstein3D.utils.BaseGame;
 
 public class MyGdxGame extends BaseGame {
@@ -9,9 +10,9 @@ public class MyGdxGame extends BaseGame {
 	public void create() {
 		super.create();
 		// setActiveScreen(new SplashScreen());
-		// setActiveScreen(new MenuScreen());
+		setActiveScreen(new MenuScreen());
 		// setActiveScreen(new OptionsScreen());
-		setActiveScreen(new LevelScreen(30, BaseGame.level6Map, "level 6", 100, 0, 50, 25, 0, null));
+		// setActiveScreen(new LevelScreen(30, BaseGame.level6Map, "level 6", 100, 0, 50, 25, 0, null));
 	}
 }
  

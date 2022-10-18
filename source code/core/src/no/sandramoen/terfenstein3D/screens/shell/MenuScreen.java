@@ -9,8 +9,10 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.scenes.scene2d.Event;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.actions.SequenceAction;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Array;
 import com.github.tommyettinger.textra.TypingLabel;
 
@@ -23,9 +25,17 @@ import no.sandramoen.terfenstein3D.utils.GameUtils;
 public class MenuScreen extends BaseScreen {
     @Override
     public void initialize() {
-        TypingLabel titleLabel = new TypingLabel("Terfenstein 3D", new Label.LabelStyle(BaseGame.mySkin.get("arcade64", BitmapFont.class), null));
+        /*TypingLabel titleLabel = new TypingLabel("Terfenstein 3D", new Label.LabelStyle(BaseGame.mySkin.get("arcade64", BitmapFont.class), null));
         titleLabel.setColor(BaseGame.redColor);
         uiTable.add(titleLabel)
+                .padBottom(Gdx.graphics.getHeight() * .09f)
+                .row();*/
+
+        Image featureGraphics = new Image(BaseGame.textureAtlas.findRegion("feature graphics"));
+        featureGraphics.scaleBy(2.25f);
+        featureGraphics.setOrigin(Align.center);
+        featureGraphics.addAction(Actions.sequence(Actions.fadeOut(0), Actions.fadeIn(.5f)));
+        uiTable.add(featureGraphics)
                 .padBottom(Gdx.graphics.getHeight() * .09f)
                 .row();
 

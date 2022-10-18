@@ -1,40 +1,40 @@
 
 images.pack.png
-size: 512, 128
+size: 1024, 128
 format: RGBA8888
 filter: Nearest, Nearest
 repeat: none
 alphaPixel
   rotate: false
-  xy: 181, 34
+  xy: 398, 28
   size: 1, 1
   orig: 1, 1
   offset: 0, 0
   index: -1
 blueKey
   rotate: false
-  xy: 162, 29
+  xy: 379, 23
   size: 17, 6
   orig: 17, 6
   offset: 0, 0
   index: -1
 button
   rotate: false
-  xy: 2, 23
+  xy: 379, 31
   size: 78, 78
   orig: 78, 78
   offset: 0, 0
   index: -1
 button-pressed
   rotate: false
-  xy: 82, 23
+  xy: 459, 31
   size: 78, 78
   orig: 78, 78
   offset: 0, 0
   index: -1
 clearPixel
   rotate: false
-  xy: 294, 92
+  xy: 539, 34
   size: 1, 1
   orig: 1, 1
   offset: 0, 0
@@ -48,21 +48,28 @@ crosshair
   index: -1
 elevator
   rotate: false
-  xy: 162, 37
+  xy: 539, 45
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 elevator down
   rotate: false
-  xy: 228, 37
+  xy: 605, 45
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
+feature graphics
+  rotate: false
+  xy: 2, 23
+  size: 375, 86
+  orig: 375, 86
+  offset: 0, 0
+  index: -1
 greenKey
   rotate: false
-  xy: 294, 95
+  xy: 539, 37
   size: 17, 6
   orig: 17, 6
   offset: 0, 0
@@ -76,21 +83,21 @@ overlayLeft
   index: -1
 overlayRight
   rotate: false
-  xy: 162, 26
+  xy: 20, 20
   size: 4, 1
   orig: 4, 1
   offset: 0, 0
   index: -1
 redKey
   rotate: false
-  xy: 20, 15
+  xy: 671, 103
   size: 17, 6
   orig: 17, 6
   offset: 0, 0
   index: -1
 whitePixel
   rotate: false
-  xy: 313, 100
+  xy: 558, 42
   size: 1, 1
   orig: 1, 1
   offset: 0, 0
