@@ -2887,7 +2887,7 @@
   <object id="67625" gid="3" x="640" y="1984" width="64" height="64" rotation="270"/>
   <object id="67626" gid="3" x="640" y="1664" width="64" height="64" rotation="270"/>
   <object id="67627" gid="3" x="640" y="1344" width="64" height="64" rotation="270"/>
-  <object id="67628" gid="65" x="1536" y="320" width="64" height="64"/>
+  <object id="67628" gid="341" x="1536" y="320" width="64" height="64"/>
   <object id="67643" gid="17" x="1024" y="2176" width="64" height="64"/>
   <object id="67644" gid="17" x="1408" y="1152" width="64" height="64"/>
   <object id="67645" gid="17" x="1856" y="1856" width="64" height="64"/>

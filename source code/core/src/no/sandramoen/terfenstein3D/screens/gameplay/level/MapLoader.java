@@ -188,9 +188,16 @@ public class MapLoader {
             float x = props.get("x", Float.class) * BaseGame.unitScale;
             float y = props.get("y", Float.class) * BaseGame.unitScale;
             float rotation = getRotation(props);
+            boolean isElevator = false;
+            try {
+                isElevator = props.get("isElevator", Boolean.class);
+
+            } catch (Exception e) {
+
+            }
             String key = props.get("color", String.class);
             Boolean isLocked = props.get("isLocked", Boolean.class);
-            Door door = new Door(x, y, stage3D, stage, rotation, player, key, shootable, isLocked);
+            Door door = new Door(x, y, stage3D, stage, rotation, player, key, shootable, isLocked, isElevator);
 
             doors.add(door);
             shootable.add(door);

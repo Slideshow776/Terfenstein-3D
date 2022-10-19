@@ -396,6 +396,7 @@
    </properties>
   </tile>
  </tileset>
+ <tileset firstgid="417" source="Assets.tsx"/>
  <objectgroup id="7" name="U1" visible="0">
   <object id="69639" gid="146" x="3688.47" y="2281.83" width="66.6667" height="104.25">
    <properties>
@@ -5228,9 +5229,9 @@
   <object id="79192" gid="390" x="2240" y="1920" width="64" height="64"/>
   <object id="79193" gid="391" x="2214" y="1911" width="64" height="64"/>
   <object id="79194" gid="392" x="2257" y="1925" width="64" height="64"/>
-  <object id="79195" gid="399" x="3680" y="1920" width="64" height="64"/>
-  <object id="79196" gid="399" x="3680" y="1888" width="64" height="64"/>
-  <object id="79197" gid="399" x="3680" y="1856" width="64" height="64"/>
+  <object id="79195" gid="399" x="3680.67" y="2154.67" width="64" height="64"/>
+  <object id="79196" gid="399" x="3667.33" y="2120" width="64" height="64"/>
+  <object id="79197" gid="485" x="3684.67" y="2090.17" width="64" height="64"/>
   <object id="79198" gid="399" x="2656" y="0" width="64" height="64"/>
   <object id="79199" gid="399" x="2592" y="-32" width="64" height="64"/>
   <object id="79200" gid="399" x="192" y="32" width="64" height="64"/>
@@ -5483,7 +5484,7 @@
   <object id="76493" gid="38" x="2752" y="1984" width="64" height="64"/>
   <object id="76494" gid="68" x="3431.5" y="2006.5" width="64" height="64" rotation="90"/>
   <object id="76625" gid="81" x="1408" y="2624" width="64" height="64"/>
-  <object id="77048" gid="65" x="1408" y="2816" width="64" height="64"/>
+  <object id="77048" gid="485" x="1408" y="2816" width="64" height="64"/>
   <object id="77053" gid="4" x="1024" y="3072" width="64" height="64" rotation="60"/>
   <object id="77055" gid="4" x="1024" y="3584" width="64" height="64" rotation="90"/>
   <object id="77059" gid="1" x="640" y="3584" width="64" height="64" rotation="90"/>

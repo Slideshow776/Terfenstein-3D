@@ -248,6 +248,13 @@ doors/door0
   index: -1
 doors/door0Locked
   rotate: false
+  xy: 134, 2
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+doors/door1
+  rotate: false
   xy: 68, 2
   size: 64, 64
   orig: 64, 64
@@ -255,21 +262,21 @@ doors/door0Locked
   index: -1
 doors/doorBlue
   rotate: false
-  xy: 134, 2
+  xy: 200, 2
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 doors/doorGreen
   rotate: false
-  xy: 200, 2
+  xy: 266, 2
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 doors/doorRed
   rotate: false
-  xy: 266, 2
+  xy: 332, 2
   size: 64, 64
   orig: 64, 64
   offset: 0, 0

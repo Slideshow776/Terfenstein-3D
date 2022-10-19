@@ -2166,7 +2166,7 @@
   <object id="66171" gid="401" x="2624" y="1088" width="64" height="64"/>
   <object id="66172" gid="401" x="2624" y="1152" width="64" height="64"/>
  </objectgroup>
- <objectgroup id="8" name="actors" visible="0">
+ <objectgroup id="8" name="actors">
   <object id="63593" gid="2" x="-512" y="1088" width="64" height="64" rotation="269.242"/>
   <object id="63952" gid="1" x="512" y="896" width="64" height="64"/>
   <object id="65105" gid="65" x="2752" y="576" width="64" height="64"/>
@@ -2273,7 +2273,7 @@
   <object id="65419" gid="38" x="3152.75" y="394.5" width="64" height="64"/>
   <object id="65420" gid="36" x="3185.5" y="396.75" width="64" height="64"/>
   <object id="65421" gid="36" x="3216.5" y="396" width="64" height="64"/>
-  <object id="65422" gid="65" x="3072" y="320" width="64" height="64" rotation="90"/>
+  <object id="65422" gid="341" x="3072" y="320" width="64" height="64" rotation="90"/>
   <object id="65487" gid="65" x="-320" y="1024" width="64" height="64"/>
   <object id="65525" gid="65" x="128" y="1088" width="64" height="64" rotation="90"/>
   <object id="65526" gid="40" x="-320" y="832" width="64" height="64"/>

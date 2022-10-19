@@ -128,6 +128,7 @@
  <tile id="64">
   <properties>
    <property name="color" value=""/>
+   <property name="isElevator" type="bool" value="false"/>
    <property name="isLocked" type="bool" value="false"/>
    <property name="name" value="door"/>
   </properties>
@@ -135,6 +136,7 @@
  <tile id="65">
   <properties>
    <property name="color" value="green"/>
+   <property name="isElevator" type="bool" value="false"/>
    <property name="isLocked" type="bool" value="false"/>
    <property name="name" value="door"/>
   </properties>
@@ -142,6 +144,7 @@
  <tile id="66">
   <properties>
    <property name="color" value="blue"/>
+   <property name="isElevator" type="bool" value="false"/>
    <property name="isLocked" type="bool" value="false"/>
    <property name="name" value="door"/>
   </properties>
@@ -149,6 +152,15 @@
  <tile id="67">
   <properties>
    <property name="color" value="red"/>
+   <property name="isElevator" type="bool" value="false"/>
+   <property name="isLocked" type="bool" value="false"/>
+   <property name="name" value="door"/>
+  </properties>
+ </tile>
+ <tile id="68">
+  <properties>
+   <property name="color" value=""/>
+   <property name="isElevator" type="bool" value="true"/>
    <property name="isLocked" type="bool" value="false"/>
    <property name="name" value="door"/>
   </properties>

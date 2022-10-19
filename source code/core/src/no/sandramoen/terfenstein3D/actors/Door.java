@@ -28,7 +28,7 @@ public class Door extends BaseActor3D {
     private BaseActor closeActor;
     private BaseActor3D temp;
 
-    public Door(float y, float z, Stage3D stage3D, Stage stage, float rotation, Player player, String keyColor, Array<BaseActor3D> shootable, Boolean isLocked) {
+    public Door(float y, float z, Stage3D stage3D, Stage stage, float rotation, Player player, String keyColor, Array<BaseActor3D> shootable, Boolean isLocked, Boolean isElevator) {
         super(0, y, z, stage3D);
         this.player = player;
         this.keyColor = keyColor;
@@ -43,6 +43,8 @@ public class Door extends BaseActor3D {
             loadImage("doors/doorGreen");
         else if (keyColor.equalsIgnoreCase("blue"))
             loadImage("doors/doorBlue");
+        else if (isElevator)
+            loadImage("doors/door1");
         else if (this.isLocked)
             loadImage("doors/door0Locked");
         else
