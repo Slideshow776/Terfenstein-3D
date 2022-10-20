@@ -180,6 +180,16 @@ public class MenuScreen extends BaseScreen {
         sounds.add(BaseGame.rocketLaunchSound);
         sounds.add(BaseGame.chainSawAttackingMusic);
         sounds.add(BaseGame.chainSawAttackingMusic);
+        sounds.add(BaseGame.prestDeathSound);
+        sounds.add(BaseGame.prestActiveSound);
+        sounds.add(BaseGame.prestPainSound);
+        sounds.add(BaseGame.sersjantActiveSound);
+        sounds.add(BaseGame.sersjantDeath1Sound);
+        sounds.add(BaseGame.sersjantDeath2Sound);
+        sounds.add(BaseGame.sersjantPainSound);
+        sounds.add(BaseGame.fenrikActiveSound);
+        sounds.add(BaseGame.fenrikPainSound);
+        sounds.add(BaseGame.fenrikDeathSound);
 
         try {
             Sound sound = (Sound) sounds.get(MathUtils.random(0, sounds.size - 1));

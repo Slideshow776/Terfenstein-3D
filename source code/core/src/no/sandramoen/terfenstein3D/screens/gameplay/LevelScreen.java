@@ -166,8 +166,8 @@ public class LevelScreen extends BaseScreen3D {
             stopLevel();
             BaseGame.levelScreen = this;
             BaseGame.setActiveScreen(new MenuScreen());
-        } else if (keycode == Keys.R)
-            BaseGame.setActiveScreen(new LevelScreen(PAR_TIME, BaseGame.testMap, "test", 100, 0, 50, 50, 50, null));
+        } /*else if (keycode == Keys.R)
+            BaseGame.setActiveScreen(new LevelScreen(PAR_TIME, BaseGame.testMap, "test", 100, 0, 50, 50, 50, null));*/
         else if (isGameOver && totalTime > 2)
             restartLevel();
         else if (keycode == Keys.F) {
@@ -175,6 +175,8 @@ public class LevelScreen extends BaseScreen3D {
             Gdx.app.log(getClass().getSimpleName(), "player.isCollisionEnabled: " + player.isCollisionEnabled);
         } else if (keycode == Keys.V)
             hud.setInvulnerable();
+        else if (keycode == Keys.B)
+            hud.incrementHealth(1);
         else if (keycode == Keys.G) {
             for (Tile tile : tiles)
                 tile.isVisible = !tile.isVisible;

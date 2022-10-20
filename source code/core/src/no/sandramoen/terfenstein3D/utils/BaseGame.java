@@ -66,6 +66,9 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
     public static Sound prestActiveSound;
     public static Sound prestPainSound;
     public static Sound prestDeathSound;
+    public static Sound fenrikActiveSound;
+    public static Sound fenrikPainSound;
+    public static Sound fenrikDeathSound;
     public static Sound ammoPickupSound;
     public static Sound armorPickupSound;
     public static Sound healthPickupSound;
@@ -207,6 +210,9 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
         assetManager.load("audio/sound/voice/prest_active.wav", Sound.class);
         assetManager.load("audio/sound/voice/prest_pain.wav", Sound.class);
         assetManager.load("audio/sound/voice/prest_death.wav", Sound.class);
+        assetManager.load("audio/sound/voice/fenrik_active.wav", Sound.class);
+        assetManager.load("audio/sound/voice/fenrik_pain.wav", Sound.class);
+        assetManager.load("audio/sound/voice/fenrik_death.wav", Sound.class);
         assetManager.load("audio/sound/Pickup_Coin45.wav", Sound.class);
         assetManager.load("audio/sound/armor pickup.wav", Sound.class);
         assetManager.load("audio/sound/health pickup.wav", Sound.class);
@@ -286,6 +292,9 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
         prestActiveSound = assetManager.get("audio/sound/voice/prest_active.wav", Sound.class);
         prestPainSound = assetManager.get("audio/sound/voice/prest_pain.wav", Sound.class);
         prestDeathSound = assetManager.get("audio/sound/voice/prest_death.wav", Sound.class);
+        fenrikActiveSound = assetManager.get("audio/sound/voice/fenrik_active.wav", Sound.class);
+        fenrikPainSound = assetManager.get("audio/sound/voice/fenrik_pain.wav", Sound.class);
+        fenrikDeathSound = assetManager.get("audio/sound/voice/fenrik_death.wav", Sound.class);
         ammoPickupSound = assetManager.get("audio/sound/Pickup_Coin45.wav", Sound.class);
         armorPickupSound = assetManager.get("audio/sound/armor pickup.wav", Sound.class);
         healthPickupSound = assetManager.get("audio/sound/health pickup.wav", Sound.class);

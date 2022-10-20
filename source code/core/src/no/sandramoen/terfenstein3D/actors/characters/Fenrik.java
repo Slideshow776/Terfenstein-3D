@@ -41,9 +41,7 @@ public class Fenrik extends Enemy {
     public void die() {
         if (!isDead) {
             if (MathUtils.randomBoolean())
-                GameUtils.playSoundRelativeToDistance(BaseGame.sersjantDeath1Sound, distanceBetween(player) * 5, VOCAL_RANGE);
-            else
-                GameUtils.playSoundRelativeToDistance(BaseGame.sersjantDeath2Sound, distanceBetween(player) * 5, VOCAL_RANGE);
+                GameUtils.playSoundRelativeToDistance(BaseGame.fenrikDeathSound, distanceBetween(player) * 5, VOCAL_RANGE);
             shootSound.stop(shootSoundID);
         }
         super.die();
@@ -52,7 +50,7 @@ public class Fenrik extends Enemy {
     @Override
     public void decrementHealth(int amount) {
         if (health - amount > 0 && amount > 0)
-            GameUtils.playSoundRelativeToDistance(BaseGame.sersjantPainSound, distanceBetween(player) * 5, VOCAL_RANGE);
+            GameUtils.playSoundRelativeToDistance(BaseGame.fenrikPainSound, distanceBetween(player) * 5, VOCAL_RANGE);
         super.decrementHealth(amount);
     }
 
@@ -70,7 +68,7 @@ public class Fenrik extends Enemy {
 
     @Override
     protected void playActivateSound() {
-        GameUtils.playSoundRelativeToDistance(BaseGame.sersjantActiveSound, distanceBetween(player) * 5, VOCAL_RANGE);
+        GameUtils.playSoundRelativeToDistance(BaseGame.fenrikActiveSound, distanceBetween(player) * 5, VOCAL_RANGE);
         super.playActivateSound();
     }
 

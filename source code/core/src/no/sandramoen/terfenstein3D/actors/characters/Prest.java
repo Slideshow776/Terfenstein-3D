@@ -71,7 +71,7 @@ public class Prest extends Enemy {
 
     @Override
     protected void playActivateSound() {
-        GameUtils.playSoundRelativeToDistance(BaseGame.prestActiveSound, distanceBetween(player) * 5, VOCAL_RANGE);
+        GameUtils.playSoundRelativeToDistance(BaseGame.prestActiveSound, distanceBetween(player) * 4, VOCAL_RANGE);
         super.playActivateSound();
     }
 
