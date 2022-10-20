@@ -15,6 +15,7 @@ import com.badlogic.gdx.utils.Array;
 import no.sandramoen.terfenstein3D.actors.Barrel;
 import no.sandramoen.terfenstein3D.actors.Door;
 import no.sandramoen.terfenstein3D.actors.Elevator;
+import no.sandramoen.terfenstein3D.actors.characters.Fenrik;
 import no.sandramoen.terfenstein3D.actors.characters.Menig;
 import no.sandramoen.terfenstein3D.actors.characters.Rocket;
 import no.sandramoen.terfenstein3D.actors.characters.Sersjant;
@@ -350,7 +351,7 @@ public class LevelScreen extends BaseScreen3D {
 
     private void removeEnemy(Enemy enemy) {
         enemy.die();
-        if (enemy instanceof Menig)
+        if (enemy instanceof Menig || enemy instanceof Fenrik)
             newPickups.add(new Bullets(enemy.position.y + MathUtils.random(-1, 1), enemy.position.z + MathUtils.random(-1, 1), mainStage3D, 4, player));
         if (enemy instanceof Sersjant)
             newPickups.add(new Shells(enemy.position.y + MathUtils.random(-1, 1), enemy.position.z + MathUtils.random(-1, 1), mainStage3D, 4, player));

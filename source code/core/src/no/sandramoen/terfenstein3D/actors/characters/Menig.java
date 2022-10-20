@@ -45,7 +45,7 @@ public class Menig extends Enemy {
     @Override
     public void decrementHealth(int amount) {
         if (health - amount > 0 && amount > 0)
-            GameUtils.playSoundRelativeToDistance(BaseGame.menigHurtSound, distanceBetween(player), VOCAL_RANGE);
+            GameUtils.playSoundRelativeToDistance(BaseGame.menigPainSound, distanceBetween(player), VOCAL_RANGE);
         super.decrementHealth(amount);
     }
 

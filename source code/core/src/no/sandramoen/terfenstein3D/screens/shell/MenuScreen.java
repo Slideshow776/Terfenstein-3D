@@ -4,17 +4,14 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.scenes.scene2d.Event;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.actions.SequenceAction;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Array;
-import com.github.tommyettinger.textra.TypingLabel;
 
 import no.sandramoen.terfenstein3D.screens.gameplay.LevelScreen;
 import no.sandramoen.terfenstein3D.ui.MadeByLabel;
@@ -147,7 +144,7 @@ public class MenuScreen extends BaseScreen {
         Array sounds = new Array();
         sounds.add(BaseGame.pistolShotSound);
         sounds.add(BaseGame.menigActiveSound);
-        sounds.add(BaseGame.menigHurtSound);
+        sounds.add(BaseGame.menigPainSound);
         sounds.add(BaseGame.menigDeathSound);
         sounds.add(BaseGame.menigMeleeSound);
         sounds.add(BaseGame.ammoPickupSound);

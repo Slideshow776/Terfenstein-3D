@@ -130,7 +130,7 @@ public class GameUtils {
         sound.play(BaseGame.soundVolume / GameUtils.normalizeValue(distance, 0f, vocalRange));
     }
 
-    public static long playSoundRelativeToDistance(Sound sound, Float distance, Float vocalRange, Float pitch) {
+    public static long playSoundRelativeToDistance(Sound sound, float distance, float vocalRange, float pitch) {
         return sound.play(BaseGame.soundVolume / GameUtils.normalizeValue(distance, 0f, vocalRange), pitch, 0);
     }
 

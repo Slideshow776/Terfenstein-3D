@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.1" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="100" height="100" tilewidth="64" tileheight="64" infinite="0" nextlayerid="17" nextobjectid="72035">
+<map version="1.9" tiledversion="1.9.1" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="100" height="100" tilewidth="64" tileheight="64" infinite="0" nextlayerid="17" nextobjectid="72049">
  <tileset firstgid="1" name="Assets" tilewidth="64" tileheight="64" tilecount="144" columns="16" objectalignment="center">
   <image source="assets.png" width="1024" height="576"/>
   <tile id="0">
@@ -162,7 +162,7 @@
  </tileset>
  <tileset firstgid="145" source="Tileset.tsx"/>
  <tileset firstgid="273" source="Assets.tsx"/>
- <objectgroup id="7" name="U1">
+ <objectgroup id="7" name="U1" visible="0">
   <object id="68031" gid="146" x="1920" y="2112" width="64" height="64"/>
   <object id="68032" gid="146" x="1984" y="2112" width="64" height="64"/>
   <object id="68033" gid="146" x="2048" y="2112" width="64" height="64"/>
@@ -2910,6 +2910,16 @@
   <object id="71965" gid="395" x="2752" y="3776" width="64" height="64"/>
   <object id="71966" gid="395" x="2816" y="2496" width="64" height="64"/>
   <object id="71967" gid="393" x="2656" y="2656" width="64" height="64"/>
+  <object id="72037" gid="390" x="2884.5" y="2110.5" width="64" height="64"/>
+  <object id="72038" gid="390" x="3012.5" y="2238.5" width="64" height="64"/>
+  <object id="72039" gid="391" x="2868.5" y="2134.5" width="64" height="64"/>
+  <object id="72040" gid="391" x="2892.5" y="2101.83" width="64" height="64"/>
+  <object id="72041" gid="392" x="2899.17" y="2123.83" width="64" height="64"/>
+  <object id="72042" gid="394" x="3015.83" y="2100.5" width="64" height="64"/>
+  <object id="72043" gid="393" x="2873.17" y="2247.83" width="64" height="64"/>
+  <object id="72045" gid="392" x="3020.5" y="2231.67" width="64" height="64"/>
+  <object id="72046" gid="391" x="3015.17" y="2243" width="64" height="64"/>
+  <object id="72047" gid="389" x="2944" y="2176" width="64" height="64"/>
  </objectgroup>
  <objectgroup id="8" name="actors">
   <object id="63202" gid="42" x="576" y="448" width="64" height="64"/>
@@ -3152,16 +3162,7 @@
   <object id="71997" gid="310" x="2944" y="2176" width="64" height="64"/>
   <object id="71998" gid="310" x="2944" y="2240" width="64" height="64"/>
   <object id="71999" gid="310" x="2944" y="2208" width="64" height="64"/>
-  <object id="72000" gid="310" x="2944" y="2144" width="64" height="64"/>
-  <object id="72001" gid="390" x="2880" y="2112" width="64" height="64"/>
-  <object id="72002" gid="390" x="3008" y="2240" width="64" height="64"/>
-  <object id="72003" gid="391" x="2864" y="2136" width="64" height="64"/>
-  <object id="72004" gid="391" x="2888" y="2103.33" width="64" height="64"/>
-  <object id="72005" gid="392" x="2894.67" y="2125.33" width="64" height="64"/>
-  <object id="72006" gid="392" x="3026" y="2232.67" width="64" height="64"/>
-  <object id="72007" gid="391" x="3020.67" y="2244" width="64" height="64"/>
-  <object id="72008" gid="389" x="2944" y="2176" width="64" height="64"/>
-  <object id="72009" gid="394" x="3011.33" y="2102" width="64" height="64"/>
-  <object id="72010" gid="393" x="2868.67" y="2249.33" width="64" height="64"/>
+  <object id="72035" gid="278" x="3776" y="2176" width="64" height="64" rotation="45"/>
+  <object id="72048" gid="310" x="2944" y="2144" width="64" height="64"/>
  </objectgroup>
 </map>

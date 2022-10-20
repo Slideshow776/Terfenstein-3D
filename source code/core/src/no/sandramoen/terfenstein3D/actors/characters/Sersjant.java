@@ -4,6 +4,7 @@ import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g3d.decals.DecalBatch;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Array;
 
@@ -21,14 +22,14 @@ public class Sersjant extends Enemy {
 
     public Sersjant(float y, float z, Stage3D s, Player player, Float rotation, TileGraph tileGraph, Array<Tile> floorTiles, Stage stage, HUD hud, DecalBatch batch) {
         super(y, z, s, player, rotation, tileGraph, floorTiles, stage, hud, batch);
-        movementSpeed = Player.movementSpeed / 140f;
+        movementSpeed = Player.movementSpeed / 120f;
         setHealth(30);
         shootImageDelay = .5f;
         attackStateChangeFrequency = 1.5f * shootImageDelay;
         minDamage = 3;
         maxDamage = 15;
-        score = 10;
-        painChance = .78f;
+        score = 20;
+        painChance = .68f;
         numShots = 3;
 
         initializeAnimations();
@@ -37,7 +38,10 @@ public class Sersjant extends Enemy {
     @Override
     public void die() {
         if (!isDead) {
-            GameUtils.playSoundRelativeToDistance(BaseGame.menigDeathSound, distanceBetween(player), VOCAL_RANGE);
+            if (MathUtils.randomBoolean())
+                GameUtils.playSoundRelativeToDistance(BaseGame.sersjantDeath1Sound, distanceBetween(player) * 5, VOCAL_RANGE);
+            else
+                GameUtils.playSoundRelativeToDistance(BaseGame.sersjantDeath2Sound, distanceBetween(player) * 5, VOCAL_RANGE);
             shootSound.stop(shootSoundID);
         }
         super.die();
@@ -46,7 +50,7 @@ public class Sersjant extends Enemy {
     @Override
     public void decrementHealth(int amount) {
         if (health - amount > 0 && amount > 0)
-            GameUtils.playSoundRelativeToDistance(BaseGame.menigHurtSound, distanceBetween(player), VOCAL_RANGE);
+            GameUtils.playSoundRelativeToDistance(BaseGame.sersjantPainSound, distanceBetween(player) * 5, VOCAL_RANGE);
         super.decrementHealth(amount);
     }
 
@@ -64,7 +68,7 @@ public class Sersjant extends Enemy {
 
     @Override
     protected void playActivateSound() {
-        GameUtils.playSoundRelativeToDistance(BaseGame.menigActiveSound, distanceBetween(player) * 10, VOCAL_RANGE);
+        GameUtils.playSoundRelativeToDistance(BaseGame.sersjantActiveSound, distanceBetween(player) * 5, VOCAL_RANGE);
         super.playActivateSound();
     }
 

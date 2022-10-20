@@ -26,6 +26,11 @@
    <property name="name" value="prest"/>
   </properties>
  </tile>
+ <tile id="5">
+  <properties>
+   <property name="name" value="fenrik"/>
+  </properties>
+ </tile>
  <tile id="16">
   <properties>
    <property name="name" value="barrel"/>

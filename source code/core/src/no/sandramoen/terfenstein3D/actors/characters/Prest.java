@@ -41,14 +41,14 @@ public class Prest extends Enemy {
     @Override
     public void die() {
         if (!isDead)
-            GameUtils.playSoundRelativeToDistance(BaseGame.menigDeathSound, distanceBetween(player), VOCAL_RANGE);
+            GameUtils.playSoundRelativeToDistance(BaseGame.prestDeathSound, distanceBetween(player), VOCAL_RANGE);
         super.die();
     }
 
     @Override
     public void decrementHealth(int amount) {
         if (health - amount > 0 && amount > 0)
-            GameUtils.playSoundRelativeToDistance(BaseGame.menigHurtSound, distanceBetween(player), VOCAL_RANGE);
+            GameUtils.playSoundRelativeToDistance(BaseGame.prestPainSound, distanceBetween(player), VOCAL_RANGE);
         super.decrementHealth(amount);
     }
 
@@ -71,7 +71,7 @@ public class Prest extends Enemy {
 
     @Override
     protected void playActivateSound() {
-        GameUtils.playSoundRelativeToDistance(BaseGame.menigActiveSound, distanceBetween(player) * 10, VOCAL_RANGE);
+        GameUtils.playSoundRelativeToDistance(BaseGame.prestActiveSound, distanceBetween(player) * 5, VOCAL_RANGE);
         super.playActivateSound();
     }
 

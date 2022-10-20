@@ -14,6 +14,7 @@ import no.sandramoen.terfenstein3D.actors.Barrel;
 import no.sandramoen.terfenstein3D.actors.Door;
 import no.sandramoen.terfenstein3D.actors.Elevator;
 import no.sandramoen.terfenstein3D.actors.Tile;
+import no.sandramoen.terfenstein3D.actors.characters.Fenrik;
 import no.sandramoen.terfenstein3D.actors.characters.Hund;
 import no.sandramoen.terfenstein3D.actors.characters.Menig;
 import no.sandramoen.terfenstein3D.actors.characters.Player;
@@ -274,6 +275,7 @@ public class MapLoader {
         initializeEnemy("menig");
         initializeEnemy("sersjant");
         initializeEnemy("prest");
+        initializeEnemy("fenrik");
     }
 
     private void initializeEnemy(String type) {
@@ -291,6 +293,8 @@ public class MapLoader {
                 enemies.add(new Sersjant(x, y, stage3D, player, rotation, tileGraph, floorTiles, stage, hud, decalBatch));
             if (type.equalsIgnoreCase("prest"))
                 enemies.add(new Prest(x, y, stage3D, player, rotation, tileGraph, floorTiles, stage, hud, decalBatch, projectiles));
+            if (type.equalsIgnoreCase("fenrik"))
+                enemies.add(new Fenrik(x, y, stage3D, player, rotation, tileGraph, floorTiles, stage, hud, decalBatch));
             shootable.add(enemies.get(enemies.size - 1));
 
             String patrol = props.get("patrol", String.class);

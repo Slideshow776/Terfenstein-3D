@@ -56,9 +56,16 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
 
     public static Sound pistolShotSound;
     public static Sound menigActiveSound;
-    public static Sound menigHurtSound;
+    public static Sound menigPainSound;
     public static Sound menigDeathSound;
     public static Sound menigMeleeSound;
+    public static Sound sersjantPainSound;
+    public static Sound sersjantActiveSound;
+    public static Sound sersjantDeath1Sound;
+    public static Sound sersjantDeath2Sound;
+    public static Sound prestActiveSound;
+    public static Sound prestPainSound;
+    public static Sound prestDeathSound;
     public static Sound ammoPickupSound;
     public static Sound armorPickupSound;
     public static Sound healthPickupSound;
@@ -190,9 +197,16 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
 
         // sound
         assetManager.load("audio/sound/370220__eflexmusic__pistol-shot-close-mixed.wav", Sound.class);
-        assetManager.load("audio/sound/menig_ai.wav", Sound.class);
-        assetManager.load("audio/sound/menig_active.wav", Sound.class);
-        assetManager.load("audio/sound/menig_ugh.wav", Sound.class);
+        assetManager.load("audio/sound/voice/menig_pain.wav", Sound.class);
+        assetManager.load("audio/sound/voice/menig_active.wav", Sound.class);
+        assetManager.load("audio/sound/voice/menig_death.wav", Sound.class);
+        assetManager.load("audio/sound/voice/sersjant_pain.wav", Sound.class);
+        assetManager.load("audio/sound/voice/sersjant_active.wav", Sound.class);
+        assetManager.load("audio/sound/voice/sersjant_death_1.wav", Sound.class);
+        assetManager.load("audio/sound/voice/sersjant_death_2.wav", Sound.class);
+        assetManager.load("audio/sound/voice/prest_active.wav", Sound.class);
+        assetManager.load("audio/sound/voice/prest_pain.wav", Sound.class);
+        assetManager.load("audio/sound/voice/prest_death.wav", Sound.class);
         assetManager.load("audio/sound/Pickup_Coin45.wav", Sound.class);
         assetManager.load("audio/sound/armor pickup.wav", Sound.class);
         assetManager.load("audio/sound/health pickup.wav", Sound.class);
@@ -262,9 +276,16 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
 
         // sound
         pistolShotSound = assetManager.get("audio/sound/370220__eflexmusic__pistol-shot-close-mixed.wav", Sound.class);
-        menigHurtSound = assetManager.get("audio/sound/menig_ai.wav", Sound.class);
-        menigActiveSound = assetManager.get("audio/sound/menig_active.wav", Sound.class);
-        menigDeathSound = assetManager.get("audio/sound/menig_ugh.wav", Sound.class);
+        menigPainSound = assetManager.get("audio/sound/voice/menig_pain.wav", Sound.class);
+        menigActiveSound = assetManager.get("audio/sound/voice/menig_active.wav", Sound.class);
+        menigDeathSound = assetManager.get("audio/sound/voice/menig_death.wav", Sound.class);
+        sersjantActiveSound = assetManager.get("audio/sound/voice/sersjant_active.wav", Sound.class);
+        sersjantPainSound = assetManager.get("audio/sound/voice/sersjant_pain.wav", Sound.class);
+        sersjantDeath1Sound = assetManager.get("audio/sound/voice/sersjant_death_1.wav", Sound.class);
+        sersjantDeath2Sound = assetManager.get("audio/sound/voice/sersjant_death_2.wav", Sound.class);
+        prestActiveSound = assetManager.get("audio/sound/voice/prest_active.wav", Sound.class);
+        prestPainSound = assetManager.get("audio/sound/voice/prest_pain.wav", Sound.class);
+        prestDeathSound = assetManager.get("audio/sound/voice/prest_death.wav", Sound.class);
         ammoPickupSound = assetManager.get("audio/sound/Pickup_Coin45.wav", Sound.class);
         armorPickupSound = assetManager.get("audio/sound/armor pickup.wav", Sound.class);
         healthPickupSound = assetManager.get("audio/sound/health pickup.wav", Sound.class);

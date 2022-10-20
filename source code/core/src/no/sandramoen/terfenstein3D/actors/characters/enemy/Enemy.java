@@ -18,6 +18,8 @@ import com.badlogic.gdx.utils.Array;
 
 import no.sandramoen.terfenstein3D.actors.Barrel;
 import no.sandramoen.terfenstein3D.actors.Tile;
+import no.sandramoen.terfenstein3D.actors.characters.Fenrik;
+import no.sandramoen.terfenstein3D.actors.characters.Menig;
 import no.sandramoen.terfenstein3D.actors.characters.Player;
 import no.sandramoen.terfenstein3D.actors.characters.Sersjant;
 import no.sandramoen.terfenstein3D.actors.decals.BulletDecals;
@@ -143,6 +145,11 @@ public class Enemy extends BaseActor3D {
         this.decalBatch = batch;
 
         float size = 3;
+        if (this instanceof Menig)
+            size = 2.8f;
+        else if (this instanceof Fenrik)
+            size = 3.2f;
+
         buildModel(1.5f, size, 1.5f, false);
         initializeSprite(size);
         turnBy(-180 + rotation);
@@ -481,7 +488,7 @@ public class Enemy extends BaseActor3D {
 
     private void setTemporaryHurtState() {
         state = State.HURT;
-        setStateToIdleAfterDelay(.4f);
+        setStateToIdleAfterDelay(.3f);
         currentAnimation = hurtAnimation;
     }
 

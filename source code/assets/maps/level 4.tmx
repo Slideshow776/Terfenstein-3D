@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.1" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="50" height="50" tilewidth="64" tileheight="64" infinite="0" nextlayerid="17" nextobjectid="68795">
+<map version="1.9" tiledversion="1.9.1" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="50" height="50" tilewidth="64" tileheight="64" infinite="0" nextlayerid="17" nextobjectid="68835">
  <tileset firstgid="1" name="Assets" tilewidth="64" tileheight="64" tilecount="144" columns="16" objectalignment="center">
   <image source="assets.png" width="1024" height="576"/>
   <tile id="0">
@@ -2920,7 +2920,6 @@
   <object id="67729" gid="17" x="2048" y="1280" width="64" height="64"/>
   <object id="67730" gid="17" x="1792" y="1280" width="64" height="64"/>
   <object id="67731" gid="17" x="1280" y="2016" width="64" height="64"/>
-  <object id="67734" gid="3" x="1472" y="384" width="64" height="64"/>
   <object id="67735" gid="3" x="1536" y="384" width="64" height="64"/>
   <object id="67736" gid="3" x="1600" y="384" width="64" height="64"/>
   <object id="67737" gid="3" x="1600" y="448" width="64" height="64"/>
@@ -3123,5 +3122,43 @@
     <property name="isLocked" type="bool" value="true"/>
    </properties>
   </object>
+  <object id="68795" gid="313" x="1536" y="2496" width="64" height="64"/>
+  <object id="68796" gid="312" x="1536" y="2496" width="64" height="64"/>
+  <object id="68797" gid="311" x="1536" y="2496" width="64" height="64"/>
+  <object id="68798" gid="311" x="1536" y="2496" width="64" height="64"/>
+  <object id="68799" gid="311" x="1536" y="2496" width="64" height="64"/>
+  <object id="68800" gid="311" x="1536" y="2496" width="64" height="64"/>
+  <object id="68801" gid="311" x="1536" y="2496" width="64" height="64"/>
+  <object id="68802" gid="311" x="1536" y="2496" width="64" height="64"/>
+  <object id="68803" gid="306" x="1536" y="2496" width="64" height="64"/>
+  <object id="68804" gid="306" x="1536" y="2496" width="64" height="64"/>
+  <object id="68805" gid="306" x="1536" y="2496" width="64" height="64"/>
+  <object id="68806" gid="306" x="1536" y="2496" width="64" height="64"/>
+  <object id="68807" gid="306" x="1536" y="2496" width="64" height="64"/>
+  <object id="68808" gid="306" x="1536" y="2496" width="64" height="64"/>
+  <object id="68809" gid="306" x="1536" y="2496" width="64" height="64"/>
+  <object id="68810" gid="306" x="1536" y="2496" width="64" height="64"/>
+  <object id="68811" gid="306" x="1536" y="2496" width="64" height="64"/>
+  <object id="68812" gid="315" x="1536" y="2496" width="64" height="64"/>
+  <object id="68813" gid="314" x="1536" y="2496" width="64" height="64"/>
+  <object id="68814" gid="314" x="1536" y="2496" width="64" height="64"/>
+  <object id="68815" gid="314" x="1536" y="2496" width="64" height="64"/>
+  <object id="68816" gid="314" x="1536" y="2496" width="64" height="64"/>
+  <object id="68817" gid="314" x="1536" y="2496" width="64" height="64"/>
+  <object id="68818" gid="314" x="1536" y="2496" width="64" height="64"/>
+  <object id="68819" gid="314" x="1536" y="2496" width="64" height="64"/>
+  <object id="68820" gid="314" x="1536" y="2496" width="64" height="64"/>
+  <object id="68821" gid="314" x="1536" y="2496" width="64" height="64"/>
+  <object id="68822" gid="314" x="1536" y="2496" width="64" height="64"/>
+  <object id="68823" gid="306" x="1536" y="2496" width="64" height="64"/>
+  <object id="68824" gid="306" x="1536" y="2496" width="64" height="64"/>
+  <object id="68825" gid="306" x="1536" y="2496" width="64" height="64"/>
+  <object id="68826" gid="306" x="1536" y="2496" width="64" height="64"/>
+  <object id="68827" gid="306" x="1536" y="2496" width="64" height="64"/>
+  <object id="68828" gid="306" x="1536" y="2496" width="64" height="64"/>
+  <object id="68829" gid="306" x="1536" y="2496" width="64" height="64"/>
+  <object id="68830" gid="306" x="1536" y="2496" width="64" height="64"/>
+  <object id="68831" gid="306" x="1536" y="2496" width="64" height="64"/>
+  <object id="68834" gid="278" x="1472" y="384" width="64" height="64"/>
  </objectgroup>
 </map>

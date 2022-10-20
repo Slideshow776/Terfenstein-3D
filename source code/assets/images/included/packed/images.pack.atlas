@@ -283,6 +283,411 @@ doors/doorRed
   index: -1
 
 images.pack5.png
+size: 1024, 256
+format: RGBA8888
+filter: Nearest, Nearest
+repeat: none
+enemies/fenrik/die 0
+  rotate: false
+  xy: 2, 202
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+enemies/fenrik/die 1
+  rotate: false
+  xy: 2, 152
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+enemies/fenrik/die 2
+  rotate: false
+  xy: 52, 202
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+enemies/fenrik/die 3
+  rotate: false
+  xy: 2, 102
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+enemies/fenrik/die 4
+  rotate: false
+  xy: 52, 152
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+enemies/fenrik/gib 0
+  rotate: false
+  xy: 102, 202
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+enemies/fenrik/gib 1
+  rotate: false
+  xy: 2, 52
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+enemies/fenrik/gib 2
+  rotate: false
+  xy: 52, 102
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+enemies/fenrik/gib 3
+  rotate: false
+  xy: 102, 152
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+enemies/fenrik/gib 4
+  rotate: false
+  xy: 152, 202
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+enemies/fenrik/gib 5
+  rotate: false
+  xy: 2, 2
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+enemies/fenrik/gib 6
+  rotate: false
+  xy: 52, 52
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+enemies/fenrik/hurt 0
+  rotate: false
+  xy: 102, 102
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+enemies/fenrik/idle back 0
+  rotate: false
+  xy: 152, 152
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+enemies/fenrik/idle back side left 0
+  rotate: false
+  xy: 202, 202
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+enemies/fenrik/idle back side right 0
+  rotate: false
+  xy: 52, 2
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+enemies/fenrik/idle front 0
+  rotate: false
+  xy: 102, 52
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+enemies/fenrik/idle front side left 0
+  rotate: false
+  xy: 152, 102
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+enemies/fenrik/idle front side right 0
+  rotate: false
+  xy: 202, 152
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+enemies/fenrik/idle side left 0
+  rotate: false
+  xy: 252, 202
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+enemies/fenrik/idle side right 0
+  rotate: false
+  xy: 102, 2
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+enemies/fenrik/melee 0
+  rotate: false
+  xy: 152, 52
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+enemies/fenrik/melee 1
+  rotate: false
+  xy: 202, 102
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+enemies/fenrik/shoot 0
+  rotate: false
+  xy: 252, 152
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+enemies/fenrik/shoot 1
+  rotate: false
+  xy: 302, 202
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+enemies/fenrik/walk back 0
+  rotate: false
+  xy: 152, 2
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+enemies/fenrik/walk back 1
+  rotate: false
+  xy: 202, 52
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+enemies/fenrik/walk back 2
+  rotate: false
+  xy: 252, 102
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+enemies/fenrik/walk back 3
+  rotate: false
+  xy: 302, 152
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+enemies/fenrik/walk back side left 0
+  rotate: false
+  xy: 352, 202
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+enemies/fenrik/walk back side left 1
+  rotate: false
+  xy: 202, 2
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+enemies/fenrik/walk back side left 2
+  rotate: false
+  xy: 252, 52
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+enemies/fenrik/walk back side left 3
+  rotate: false
+  xy: 302, 102
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+enemies/fenrik/walk back side right 0
+  rotate: false
+  xy: 352, 152
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+enemies/fenrik/walk back side right 1
+  rotate: false
+  xy: 402, 202
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+enemies/fenrik/walk back side right 2
+  rotate: false
+  xy: 252, 2
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+enemies/fenrik/walk back side right 3
+  rotate: false
+  xy: 302, 52
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+enemies/fenrik/walk front 0
+  rotate: false
+  xy: 352, 102
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+enemies/fenrik/walk front 1
+  rotate: false
+  xy: 402, 152
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+enemies/fenrik/walk front 2
+  rotate: false
+  xy: 452, 202
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+enemies/fenrik/walk front 3
+  rotate: false
+  xy: 302, 2
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+enemies/fenrik/walk front side left 0
+  rotate: false
+  xy: 352, 52
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+enemies/fenrik/walk front side left 1
+  rotate: false
+  xy: 402, 102
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+enemies/fenrik/walk front side left 2
+  rotate: false
+  xy: 452, 152
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+enemies/fenrik/walk front side left 3
+  rotate: false
+  xy: 502, 202
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+enemies/fenrik/walk front side right 0
+  rotate: false
+  xy: 352, 2
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+enemies/fenrik/walk front side right 1
+  rotate: false
+  xy: 402, 52
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+enemies/fenrik/walk front side right 2
+  rotate: false
+  xy: 452, 102
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+enemies/fenrik/walk front side right 3
+  rotate: false
+  xy: 502, 152
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+enemies/fenrik/walk side left 0
+  rotate: false
+  xy: 552, 202
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+enemies/fenrik/walk side left 1
+  rotate: false
+  xy: 402, 2
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+enemies/fenrik/walk side left 2
+  rotate: false
+  xy: 452, 52
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+enemies/fenrik/walk side left 3
+  rotate: false
+  xy: 502, 102
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+enemies/fenrik/walk side right 0
+  rotate: false
+  xy: 552, 152
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+enemies/fenrik/walk side right 1
+  rotate: false
+  xy: 602, 202
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+enemies/fenrik/walk side right 2
+  rotate: false
+  xy: 452, 2
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+enemies/fenrik/walk side right 3
+  rotate: false
+  xy: 502, 52
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+
+images.pack6.png
 size: 128, 64
 format: RGBA8888
 filter: Nearest, Nearest
@@ -302,7 +707,7 @@ enemies/holy ball/travelling 0
   offset: 0, 0
   index: -1
 
-images.pack6.png
+images.pack7.png
 size: 1024, 256
 format: RGBA8888
 filter: Nearest, Nearest
@@ -623,7 +1028,7 @@ enemies/hund/walk side right 3
   offset: 0, 0
   index: -1
 
-images.pack7.png
+images.pack8.png
 size: 1024, 256
 format: RGBA8888
 filter: Nearest, Nearest
@@ -1028,7 +1433,7 @@ enemies/menig/walk side right 3
   offset: 0, 0
   index: -1
 
-images.pack8.png
+images.pack9.png
 size: 1024, 256
 format: RGBA8888
 filter: Nearest, Nearest
@@ -1426,7 +1831,7 @@ enemies/prest/walk side right 3
   offset: 0, 0
   index: -1
 
-images.pack9.png
+images.pack10.png
 size: 1024, 256
 format: RGBA8888
 filter: Nearest, Nearest
@@ -1831,7 +2236,7 @@ enemies/sersjant/walk side right 3
   offset: 0, 0
   index: -1
 
-images.pack10.png
+images.pack11.png
 size: 1024, 128
 format: RGBA8888
 filter: Nearest, Nearest
@@ -1886,7 +2291,7 @@ explosion0/explosion7
   offset: 0, 0
   index: -1
 
-images.pack11.png
+images.pack12.png
 size: 1024, 512
 format: RGBA8888
 filter: Nearest, Nearest
@@ -2228,7 +2633,7 @@ hud/key
   offset: 0, 0
   index: -1
 
-images.pack12.png
+images.pack13.png
 size: 1024, 512
 format: RGBA8888
 filter: Nearest, Nearest
@@ -2255,7 +2660,7 @@ level finished/you are here
   offset: 0, 0
   index: -1
 
-images.pack13.png
+images.pack14.png
 size: 512, 64
 format: RGBA8888
 filter: Nearest, Nearest
@@ -2380,7 +2785,7 @@ pickups/shotgun
   offset: 0, 0
   index: -1
 
-images.pack14.png
+images.pack15.png
 size: 512, 256
 format: RGBA8888
 filter: Nearest, Nearest
@@ -2519,7 +2924,7 @@ props/vase 2
   offset: 0, 0
   index: -1
 
-images.pack15.png
+images.pack16.png
 size: 128, 64
 format: RGBA8888
 filter: Nearest, Nearest
@@ -2539,7 +2944,7 @@ rocket/travelling 0
   offset: 0, 0
   index: -1
 
-images.pack16.png
+images.pack17.png
 size: 1024, 512
 format: RGBA8888
 filter: Nearest, Nearest
@@ -3000,7 +3405,7 @@ tiles/wood 2 prison 1
   offset: 0, 0
   index: -1
 
-images.pack17.png
+images.pack18.png
 size: 1024, 512
 format: RGBA8888
 filter: Nearest, Nearest
@@ -3447,7 +3852,7 @@ tiles/bloody/wood 2 prison 1
   offset: 0, 0
   index: -1
 
-images.pack18.png
+images.pack19.png
 size: 256, 128
 format: RGBA8888
 filter: Nearest, Nearest
@@ -3467,7 +3872,7 @@ weapons/boot/2
   offset: 0, 0
   index: -1
 
-images.pack19.png
+images.pack20.png
 size: 256, 512
 format: RGBA8888
 filter: Nearest, Nearest
@@ -3494,7 +3899,7 @@ weapons/chaingun/shooting 2
   offset: 0, 0
   index: -1
 
-images.pack20.png
+images.pack21.png
 size: 1024, 128
 format: RGBA8888
 filter: Nearest, Nearest
@@ -3528,7 +3933,7 @@ weapons/chainsaw/idle 2
   offset: 0, 0
   index: -1
 
-images.pack21.png
+images.pack22.png
 size: 1024, 256
 format: RGBA8888
 filter: Nearest, Nearest
@@ -3569,7 +3974,7 @@ weapons/pistol/shooting 4
   offset: 0, 0
   index: -1
 
-images.pack22.png
+images.pack23.png
 size: 1024, 256
 format: RGBA8888
 filter: Nearest, Nearest
@@ -3603,7 +4008,7 @@ weapons/rocketlauncher/shooting 3
   offset: 0, 0
   index: -1
 
-images.pack23.png
+images.pack24.png
 size: 1024, 256
 format: RGBA8888
 filter: Nearest, Nearest
