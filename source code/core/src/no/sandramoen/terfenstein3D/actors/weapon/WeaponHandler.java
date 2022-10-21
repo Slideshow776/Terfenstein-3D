@@ -107,9 +107,9 @@ public class WeaponHandler extends BaseActor {
             setPosition();
             moveUp();
             return true;
-        } else if (i >= 0 && i < weapons.size && !weapons.get(i).isAvailable) {
+        }/* else if (i >= 0 && i < weapons.size && !weapons.get(i).isAvailable) {
             Gdx.app.error(getClass().getSimpleName(), "Error: " + weapons.get(i).getClass().getSimpleName() + " is not available");
-        } else {
+        }*/ else {
             Gdx.app.error(getClass().getSimpleName(), "Error: Weapon change to out of bounds => i: " + i + ", weapons size: " + weapons.size);
         }
         return false;

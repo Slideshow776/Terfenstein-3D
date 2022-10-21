@@ -9,6 +9,7 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.math.collision.Ray;
+import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.utils.Array;
 
@@ -46,6 +47,7 @@ import no.sandramoen.terfenstein3D.utils.GameUtils;
 import no.sandramoen.terfenstein3D.screens.gameplay.level.PickupHandler;
 import no.sandramoen.terfenstein3D.screens.gameplay.level.TileHandler;
 import no.sandramoen.terfenstein3D.screens.gameplay.level.UIHandler;
+import no.sandramoen.terfenstein3D.utils.Stage3D;
 
 public class LevelScreen extends BaseScreen3D {
     private HUD hud;
@@ -117,13 +119,7 @@ public class LevelScreen extends BaseScreen3D {
 
         numEnemies = enemies.size;
         numPickups = originalPickups.size;
-
-        startingHealth = hud.health;
-        startingArmor = hud.armor;
-        startingBullets = hud.bullets;
-        startingShells = hud.shells;
-        startingRockets = hud.rockets;
-        startingWeapons = weaponHandler.weapons;
+        setStartingVariables();
 
         GameUtils.printLoadingTime(getClass().getSimpleName(), "Level", startTime);
     }
@@ -167,8 +163,7 @@ public class LevelScreen extends BaseScreen3D {
             BaseGame.levelScreen = this;
             BaseGame.setActiveScreen(new MenuScreen());
         } /*else if (keycode == Keys.R)
-            BaseGame.setActiveScreen(new LevelScreen(PAR_TIME, BaseGame.testMap, "test", 100, 0, 50, 50, 50, null));*/
-        else if (isGameOver && totalTime > 2)
+            BaseGame.setActiveScreen(new LevelScreen(PAR_TIME, BaseGame.testMap, "test", 100, 0, 50, 50, 50, null));*/ else if (isGameOver && totalTime > 2)
             restartLevel();
         else if (keycode == Keys.F) {
             player.isCollisionEnabled = !player.isCollisionEnabled;
@@ -398,6 +393,26 @@ public class LevelScreen extends BaseScreen3D {
 
         BaseGame.chainSawAttackingMusic.stop();
         BaseGame.chainSawIdleMusic.stop();
+    }
+
+    private void setStartingVariables() {
+        startingHealth = hud.health;
+        startingArmor = hud.armor;
+        startingBullets = hud.bullets;
+        startingShells = hud.shells;
+        startingRockets = hud.rockets;
+
+        setStartingWeaponsAvailability();
+    }
+
+    public void setStartingWeaponsAvailability() {
+        WeaponHandler temp = new WeaponHandler(uiStage, hud, player, shootable, mainStage3D);
+        temp.pause = true;
+        temp.setAnimationPaused(true);
+        for (Weapon weaponA : weaponHandler.weapons)
+            for (Weapon weaponB : temp.weapons)
+                weaponB.isAvailable = weaponA.isAvailable;
+        startingWeapons = temp.weapons;
     }
 
     private void restartLevel() {
