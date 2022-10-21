@@ -22,6 +22,7 @@ public class Barrel extends BaseActor3D {
     private boolean isExploding;
     private float totalTime;
     private Stage3D stage3D;
+    private Animation<TextureRegion> idleAnimation;
     private Animation<TextureRegion> explodeAnimation;
     private final float BLAST_DAMAGE_MODIFIER = 8.5f;
     private Player player;
@@ -36,6 +37,7 @@ public class Barrel extends BaseActor3D {
         setBaseRectangle();
         loadImage("barrel/barrel");
 
+        initializeIdleAnimation();
         initializeExplosionAnimation();
     }
 
@@ -50,7 +52,9 @@ public class Barrel extends BaseActor3D {
     public void draw(ModelBatch batch, Environment env) {
         super.draw(batch, env);
         if (isExploding)
-            loadImage(explodeAnimation.getKeyFrame(totalTime).toString());
+            loadImage(explodeAnimation.getKeyFrame(totalTime).toString());/*
+        else
+            loadImage(idleAnimation.getKeyFrame(totalTime).toString());*/
     }
 
     public void explode() {
@@ -83,6 +87,13 @@ public class Barrel extends BaseActor3D {
         return (int) (damage * BLAST_DAMAGE_MODIFIER);
     }
 
+    private void initializeIdleAnimation() {
+        Array<TextureAtlas.AtlasRegion> animationImages = new Array();
+        for (int i = 0; i <= 5; i++)
+            animationImages.add(BaseGame.textureAtlas.findRegion("barrel/idle " + i));
+        idleAnimation = new Animation(.5f, animationImages, Animation.PlayMode.LOOP);
+        animationImages.clear();
+    }
     private void initializeExplosionAnimation() {
         Array<TextureAtlas.AtlasRegion> animationImages = new Array();
         for (int i = 1; i <= 8; i++)

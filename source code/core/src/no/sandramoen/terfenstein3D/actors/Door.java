@@ -139,7 +139,7 @@ public class Door extends BaseActor3D {
         open();
         closeActor.clearActions();
         closeActor.addAction(Actions.sequence(
-                Actions.delay(7.5f),
+                Actions.delay(11f),
                 Actions.run(() -> close())
         ));
     }

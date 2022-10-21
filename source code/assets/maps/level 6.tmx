@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.1" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="80" height="80" tilewidth="64" tileheight="64" infinite="0" nextlayerid="17" nextobjectid="76994">
+<map version="1.9" tiledversion="1.9.1" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="80" height="80" tilewidth="64" tileheight="64" infinite="0" nextlayerid="17" nextobjectid="76995">
  <tileset firstgid="1" name="Assets" tilewidth="64" tileheight="64" tilecount="144" columns="16" objectalignment="center">
   <image source="assets.png" width="1024" height="576"/>
   <tile id="0">
@@ -212,7 +212,7 @@
   <object id="71485" gid="146" x="1408" y="4032" width="64" height="64"/>
   <object id="71486" gid="146" x="1408" y="4096" width="64" height="64"/>
   <object id="71487" gid="146" x="896" y="3904" width="64" height="64"/>
-  <object id="71490" gid="146" x="1472" y="4032" width="64" height="64"/>
+  <object id="71490" gid="146" x="1456" y="4032" width="32" height="64"/>
   <object id="71631" gid="194" x="1536" y="4224" width="64" height="64"/>
   <object id="71632" gid="194" x="1536" y="4160" width="64" height="64"/>
   <object id="71633" gid="194" x="1536" y="4096" width="64" height="64"/>
@@ -3571,7 +3571,7 @@
   <object id="73605" gid="39" x="2432" y="2944" width="64" height="64"/>
   <object id="73606" gid="39" x="2560" y="2944" width="64" height="64"/>
   <object id="73607" gid="65" x="2496" y="2816" width="64" height="64"/>
-  <object id="73609" gid="38" x="896" y="3936" width="64" height="64"/>
+  <object id="73609" gid="38" x="895.875" y="3941.5" width="64" height="64"/>
   <object id="73610" gid="38" x="896" y="3968" width="64" height="64"/>
   <object id="73611" gid="38" x="896" y="4000" width="64" height="64"/>
   <object id="73612" gid="38" x="1440" y="4032" width="64" height="64"/>
@@ -3909,5 +3909,6 @@
   <object id="76991" gid="278" x="3328" y="2432" width="64" height="64"/>
   <object id="76992" gid="278" x="2944" y="3904" width="64" height="64" rotation="270"/>
   <object id="76993" gid="278" x="768" y="3072" width="64" height="64" rotation="270"/>
+  <object id="76994" gid="316" x="1856" y="2304" width="64" height="64"/>
  </objectgroup>
 </map>

@@ -486,8 +486,8 @@
  <tile id="78"/>
  <tile id="79"/>
  <tile id="102"/>
- <tile id="88"/>
- <tile id="89"/>
+ <tile id="91"/>
+ <tile id="92"/>
  <tile id="81">
   <properties>
    <property name="depth" type="float" value="4"/>
@@ -515,9 +515,6 @@
    <property name="secret length" type="int" value="1"/>
   </properties>
  </tile>
- <tile id="90"/>
- <tile id="91"/>
- <tile id="92"/>
  <tile id="93"/>
  <tile id="94"/>
  <tile id="95"/>
@@ -528,6 +525,9 @@
  <tile id="100"/>
  <tile id="101"/>
  <tile id="103"/>
+ <tile id="104"/>
+ <tile id="105"/>
+ <tile id="106"/>
  <tile id="80">
   <properties>
    <property name="depth" type="float" value="4"/>
@@ -573,9 +573,6 @@
    <property name="secret length" type="int" value="1"/>
   </properties>
  </tile>
- <tile id="104"/>
- <tile id="105"/>
- <tile id="106"/>
  <tile id="107"/>
  <tile id="108"/>
  <tile id="109"/>
@@ -584,6 +581,9 @@
  <tile id="112"/>
  <tile id="113"/>
  <tile id="114"/>
+ <tile id="115"/>
+ <tile id="116"/>
+ <tile id="117"/>
  <tile id="68">
   <properties>
    <property name="depth" type="float" value="4"/>
@@ -611,9 +611,33 @@
    <property name="secret length" type="int" value="1"/>
   </properties>
  </tile>
- <tile id="115"/>
- <tile id="116"/>
- <tile id="117"/>
+ <tile id="88">
+  <properties>
+   <property name="depth" type="float" value="4"/>
+   <property name="isAIpath" type="bool" value="true"/>
+   <property name="name" value="light big plates 1 red carpet 1"/>
+   <property name="secret" value=""/>
+   <property name="secret length" type="int" value="1"/>
+  </properties>
+ </tile>
+ <tile id="89">
+  <properties>
+   <property name="depth" type="float" value="4"/>
+   <property name="isAIpath" type="bool" value="true"/>
+   <property name="name" value="light big plates 1 red carpet 2"/>
+   <property name="secret" value=""/>
+   <property name="secret length" type="int" value="1"/>
+  </properties>
+ </tile>
+ <tile id="90">
+  <properties>
+   <property name="depth" type="float" value="4"/>
+   <property name="isAIpath" type="bool" value="true"/>
+   <property name="name" value="light big plates 1 red carpet 3"/>
+   <property name="secret" value=""/>
+   <property name="secret length" type="int" value="1"/>
+  </properties>
+ </tile>
  <tile id="118"/>
  <tile id="119"/>
  <tile id="120"/>

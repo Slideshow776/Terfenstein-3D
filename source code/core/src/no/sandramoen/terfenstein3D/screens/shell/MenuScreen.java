@@ -129,7 +129,7 @@ public class MenuScreen extends BaseScreen {
     }
 
     private void startLevel1() {
-        BaseGame.setActiveScreen(new LevelScreen(20, BaseGame.level1Map, "level 1", 100, 0, 10, 0, 0, null));
+        BaseGame.setActiveScreen(new LevelScreen(20, BaseGame.level1Map, "level 1", 100, 0, 20, 0, 0, null));
     }
 
     private SequenceAction exitGameWithSoundAndDelay() {

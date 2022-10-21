@@ -11,7 +11,7 @@ public class Shells extends Pickup {
         super(y, z, s, player);
         this.amount = amount;
 
-        buildModel(1.2f, .8f, .001f, true);
+        buildModel(1.3f, .9f, .001f, true);
         setPosition(GameUtils.getPositionRelativeToFloor(.8f), y, z);
         setBaseRectangle();
 

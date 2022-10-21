@@ -11,7 +11,7 @@ public class Rocket extends Pickup {
         super(y, z, s, player);
         this.amount = amount;
 
-        buildModel(.8f, .8f, .001f, true);
+        buildModel(.9f, .9f, .001f, true);
         setPosition(GameUtils.getPositionRelativeToFloor(.8f), y, z);
         setBaseRectangle();
 

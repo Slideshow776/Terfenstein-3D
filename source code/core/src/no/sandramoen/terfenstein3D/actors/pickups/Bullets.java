@@ -11,7 +11,7 @@ public class Bullets extends Pickup {
         super(y, z, s, player);
         this.amount = amount;
 
-        buildModel(.7f, .8f, .001f, true);
+        buildModel(.8f, .9f, .001f, true);
         setPosition(GameUtils.getPositionRelativeToFloor(.8f), y, z);
         setBaseRectangle();
 

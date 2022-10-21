@@ -53,12 +53,16 @@ public class PickupHandler {
                     hud.addKey((Key) pickup);
                     removePickup(pickups, pickup);
                     String color = "";
-                    if (((Key) pickup).color.equalsIgnoreCase("red"))
+                    if (((Key) pickup).color.equalsIgnoreCase("red")) {
                         color = "{COLOR=" + BaseGame.redColor + "}";
-                    else if (((Key) pickup).color.equalsIgnoreCase("green"))
+                        hud.flash(BaseGame.redColor);
+                    } else if (((Key) pickup).color.equalsIgnoreCase("green")) {
                         color = "{COLOR=" + BaseGame.greenColor + "}";
-                    else if (((Key) pickup).color.equalsIgnoreCase("blue"))
+                        hud.flash(BaseGame.greenColor);
+                    } else if (((Key) pickup).color.equalsIgnoreCase("blue")) {
                         color = "{COLOR=" + BaseGame.blueColor + "}";
+                        hud.flash(BaseGame.blueColor);
+                    }
                     setPickupLabel(uiHandler, hud, "You picked up a " + color + ((Key) pickup).color + " key{CLEARCOLOR}!", true);
                 } else if (pickup instanceof Shotgun) {
                     weaponHandler.makeAvailable("shotgun");

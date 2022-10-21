@@ -234,6 +234,10 @@ public class HUD extends BaseActor {
             overlayIndicator.flash(BaseGame.yellowColor, .1f);
     }
 
+    public void flash(Color color) {
+        overlayIndicator.flash(color);
+    }
+
 
     public void setKillFace() {
         face.setKillFace(getFaceHealthIndex());
@@ -338,19 +342,20 @@ public class HUD extends BaseActor {
 
 
     private void setOverlayAngle(int amount, float angle) {
+        float alpha = .7f;
         if (angle < 130)
-            overlayIndicator.flashRight(BaseGame.redColor, .5f * amount / 12);
+            overlayIndicator.flashRight(BaseGame.redColor, alpha * amount / 12);
         else if (angle > 230)
-            overlayIndicator.flashLeft(BaseGame.redColor, .5f * amount / 12);
+            overlayIndicator.flashLeft(BaseGame.redColor, alpha * amount / 12);
         else
-            overlayIndicator.flash(BaseGame.redColor, .5f * amount / 12);
+            overlayIndicator.flashBlood(BaseGame.redColor, alpha * amount / 12);
     }
 
     private void setHurtFace(int amount, float angle) {
         if (health > 0) {
             if (amount >= 20) {
                 face.setOuch(getFaceHealthIndex());
-                BaseGame.tinnitusSound.play(BaseGame.soundVolume * .5f);
+                BaseGame.tinnitusSound.play(BaseGame.soundVolume * .7f);
             } else {
                 if (angle < 130)
                     face.setTurnRight(getFaceHealthIndex());

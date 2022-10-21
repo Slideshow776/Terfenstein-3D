@@ -162,8 +162,8 @@ public class LevelScreen extends BaseScreen3D {
             stopLevel();
             BaseGame.levelScreen = this;
             BaseGame.setActiveScreen(new MenuScreen());
-        } /*else if (keycode == Keys.R)
-            BaseGame.setActiveScreen(new LevelScreen(PAR_TIME, BaseGame.testMap, "test", 100, 0, 50, 50, 50, null));*/ else if (isGameOver && totalTime > 2)
+        } else if (keycode == Keys.R)
+            BaseGame.setActiveScreen(new LevelScreen(PAR_TIME, BaseGame.testMap, "test", 100, 0, 50, 50, 50, null)); else if (isGameOver && totalTime > 2)
             restartLevel();
         else if (keycode == Keys.F) {
             player.isCollisionEnabled = !player.isCollisionEnabled;
@@ -351,7 +351,7 @@ public class LevelScreen extends BaseScreen3D {
         if (enemy instanceof Menig || enemy instanceof Fenrik)
             newPickups.add(new Bullets(enemy.position.y + MathUtils.random(-1, 1), enemy.position.z + MathUtils.random(-1, 1), mainStage3D, 4, player));
         if (enemy instanceof Sersjant)
-            newPickups.add(new Shells(enemy.position.y + MathUtils.random(-1, 1), enemy.position.z + MathUtils.random(-1, 1), mainStage3D, 4, player));
+            newPickups.add(new Shells(enemy.position.y + MathUtils.random(-1, 1), enemy.position.z + MathUtils.random(-1, 1), mainStage3D, 2, player));
         deadEnemies.add(enemy);
         enemies.removeValue(enemy, false);
         shootable.removeValue(enemy, false);

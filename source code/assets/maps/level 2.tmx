@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.1" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="60" height="60" tilewidth="64" tileheight="64" infinite="0" nextlayerid="19" nextobjectid="79353">
+<map version="1.9" tiledversion="1.9.1" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="60" height="60" tilewidth="64" tileheight="64" infinite="0" nextlayerid="19" nextobjectid="79399">
  <tileset firstgid="1" name="Assets" tilewidth="64" tileheight="64" tilecount="144" columns="16" objectalignment="center">
   <image source="assets.png" width="1024" height="576"/>
   <tile id="0">
@@ -5231,7 +5231,6 @@
   <object id="79194" gid="392" x="2257" y="1925" width="64" height="64"/>
   <object id="79195" gid="399" x="3680.67" y="2154.67" width="64" height="64"/>
   <object id="79196" gid="399" x="3667.33" y="2120" width="64" height="64"/>
-  <object id="79197" gid="485" x="3684.67" y="2090.17" width="64" height="64"/>
   <object id="79198" gid="399" x="2656" y="0" width="64" height="64"/>
   <object id="79199" gid="399" x="2592" y="-32" width="64" height="64"/>
   <object id="79200" gid="399" x="192" y="32" width="64" height="64"/>
@@ -5749,5 +5748,25 @@
     <property name="isLocked" type="bool" value="true"/>
    </properties>
   </object>
+  <object id="79377" gid="454" x="2560" y="2240" width="64" height="64"/>
+  <object id="79378" gid="454" x="2432" y="2304" width="64" height="64"/>
+  <object id="79379" gid="454" x="2560" y="2304" width="64" height="64"/>
+  <object id="79380" gid="454" x="2560" y="2176" width="64" height="64"/>
+  <object id="79381" gid="454" x="2432" y="1664" width="64" height="64"/>
+  <object id="79382" gid="454" x="2432" y="1632" width="64" height="64"/>
+  <object id="79383" gid="454" x="2432" y="1696" width="64" height="64"/>
+  <object id="79384" gid="454" x="2944" y="1696" width="64" height="64"/>
+  <object id="79385" gid="454" x="1280" y="1184" width="64" height="64"/>
+  <object id="79386" gid="454" x="1280" y="1248" width="64" height="64"/>
+  <object id="79387" gid="454" x="1280" y="1312" width="64" height="64"/>
+  <object id="79388" gid="454" x="1280" y="1376" width="64" height="64"/>
+  <object id="79391" gid="454" x="-66.3333" y="3345" width="64" height="64"/>
+  <object id="79392" gid="454" x="-106" y="3383.67" width="64" height="64"/>
+  <object id="79393" gid="454" x="-141.667" y="3419.67" width="64" height="64"/>
+  <object id="79394" gid="454" x="-174.333" y="3453" width="64" height="64"/>
+  <object id="79395" gid="454" x="-287" y="3626" width="64" height="64"/>
+  <object id="79396" gid="454" x="-288.5" y="3579.75" width="64" height="64"/>
+  <object id="79397" gid="454" x="1293.25" y="-225" width="64" height="64"/>
+  <object id="79398" gid="460" x="2176" y="384" width="64" height="64"/>
  </objectgroup>
 </map>

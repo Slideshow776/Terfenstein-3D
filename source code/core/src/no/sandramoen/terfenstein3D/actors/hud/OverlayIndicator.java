@@ -29,26 +29,31 @@ public class OverlayIndicator extends BaseActor {
         addAction(fadeInAndOut(alpha));
     }
 
+    public void flashBlood(Color color, float alpha) {
+        setColor(color);
+        addAction(fadeInAndOutBlood(alpha));
+    }
+
     public void flashRight(Color color) {
-        setImage("overlayRight");
+        setImage("overlayRight_new");
         setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         flash(color);
     }
 
     public void flashRight(Color color, float alpha) {
-        setImage("overlayRight");
+        setImage("overlayRight_new");
         setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         flash(color, alpha);
     }
 
     public void flashLeft(Color color) {
-        setImage("overlayLeft");
+        setImage("overlayLeft_new");
         setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         flash(color);
     }
 
     public void flashLeft(Color color, float alpha) {
-        setImage("overlayLeft");
+        setImage("overlayLeft_new");
         setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         flash(color, alpha);
     }
@@ -60,6 +65,17 @@ public class OverlayIndicator extends BaseActor {
 
     private SequenceAction fadeInAndOut(float maxAlpha) {
         setOpacity(0f);
+        return Actions.sequence(
+                Actions.alpha(0),
+                Actions.alpha(maxAlpha, FADE_IN_AND_OUT_DURATION / 2),
+                Actions.alpha(0f, FADE_IN_AND_OUT_DURATION / 2),
+                Actions.run(() -> setImage("whitePixel"))
+        );
+    }
+
+    private SequenceAction fadeInAndOutBlood(float maxAlpha) {
+        setOpacity(0f);
+        setImage("overlayCentert_new");
         return Actions.sequence(
                 Actions.alpha(0),
                 Actions.alpha(maxAlpha, FADE_IN_AND_OUT_DURATION / 2),

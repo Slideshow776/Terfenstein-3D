@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.1" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="100" height="100" tilewidth="64" tileheight="64" infinite="0" nextlayerid="17" nextobjectid="72049">
+<map version="1.9" tiledversion="1.9.1" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="100" height="100" tilewidth="64" tileheight="64" infinite="0" nextlayerid="17" nextobjectid="72142">
  <tileset firstgid="1" name="Assets" tilewidth="64" tileheight="64" tilecount="144" columns="16" objectalignment="center">
   <image source="assets.png" width="1024" height="576"/>
   <tile id="0">
@@ -1144,6 +1144,13 @@
   <object id="72019" gid="148" x="2944" y="1920" width="64" height="64"/>
   <object id="72020" gid="148" x="2944" y="2032" width="64" height="32"/>
   <object id="72021" gid="146" x="2944" y="2064" width="64" height="32"/>
+  <object id="72077" gid="146" x="3776" y="4288" width="64" height="64"/>
+  <object id="72078" gid="146" x="3840" y="4288" width="64" height="64"/>
+  <object id="72137" gid="146" x="2048" y="3008" width="64" height="64" rotation="90">
+   <properties>
+    <property name="isAIpath" type="bool" value="false"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="11" name="1st floor">
   <object id="60509" gid="117" x="128" y="192" width="64" height="64"/>
@@ -1444,14 +1451,14 @@
   <object id="70624" gid="209" x="3056" y="2112" width="32" height="64"/>
   <object id="70625" gid="209" x="3056" y="2176" width="32" height="64"/>
   <object id="70626" gid="209" x="3056" y="2240" width="32" height="64"/>
-  <object id="70630" gid="231" x="1984" y="2944" width="64" height="64"/>
+  <object id="70630" gid="231" x="1984" y="2960" width="64" height="32"/>
   <object id="70631" gid="163" x="1984" y="3200" width="64" height="64"/>
   <object id="70632" gid="163" x="1920" y="3200" width="64" height="64"/>
   <object id="70633" gid="163" x="1856" y="3200" width="64" height="64"/>
   <object id="70634" gid="163" x="1792" y="3200" width="64" height="64"/>
   <object id="70635" gid="163" x="1728" y="3200" width="64" height="64"/>
-  <object id="70636" gid="230" x="1920" y="2944" width="64" height="64"/>
-  <object id="70637" gid="230" x="1856" y="2944" width="64" height="64"/>
+  <object id="70636" gid="230" x="1920" y="2960" width="64" height="32"/>
+  <object id="70637" gid="230" x="1856" y="2960" width="64" height="32"/>
   <object id="70638" gid="230" x="1792" y="2944" width="64" height="64"/>
   <object id="70639" gid="230" x="1728" y="2944" width="64" height="64"/>
   <object id="70640" gid="163" x="1408" y="3008" width="64" height="64"/>
@@ -1551,7 +1558,12 @@
   <object id="71080" gid="218" x="4096" y="4032" width="64" height="64"/>
   <object id="71081" gid="209" x="4032" y="4032" width="64" height="64"/>
   <object id="71082" gid="209" x="3776" y="4224" width="64" height="64"/>
-  <object id="71083" gid="217" x="3776" y="4288" width="64" height="64"/>
+  <object id="71083" gid="217" x="3776" y="4288" width="64" height="64">
+   <properties>
+    <property name="secret" value="east"/>
+    <property name="secret length" type="int" value="2"/>
+   </properties>
+  </object>
   <object id="71084" gid="209" x="3776" y="4352" width="64" height="64"/>
   <object id="71085" gid="209" x="3712" y="4416" width="64" height="64"/>
   <object id="71086" gid="218" x="3648" y="4416" width="64" height="64"/>
@@ -1598,7 +1610,7 @@
   <object id="71454" gid="210" x="2032" y="3136.83" width="32" height="62.3333"/>
   <object id="71456" gid="209" x="2048.21" y="3136" width="63.5833" height="64"/>
   <object id="71460" gid="210" x="2032" y="3008.69" width="32" height="62.0606"/>
-  <object id="71461" gid="209" x="2048.21" y="3007.91" width="63.5833" height="64.1818"/>
+  <object id="71461" gid="209" x="2032.23" y="3008" width="31.5416" height="64.1818"/>
   <object id="71483" gid="209" x="2880" y="2288" width="64" height="32"/>
   <object id="71484" gid="209" x="3008" y="2288" width="64" height="32"/>
   <object id="71559" gid="163" x="1664" y="3200" width="64" height="64"/>
@@ -1623,6 +1635,21 @@
   <object id="71992" gid="147" x="3056" y="1984" width="32" height="64"/>
   <object id="71993" gid="147" x="2880" y="2032" width="64" height="32"/>
   <object id="71994" gid="147" x="3008" y="2032" width="64" height="32"/>
+  <object id="72079" gid="209" x="3840" y="4224" width="64" height="64"/>
+  <object id="72080" gid="209" x="3840" y="4352" width="64" height="64"/>
+  <object id="72081" gid="209" x="3904" y="4224" width="64" height="64"/>
+  <object id="72082" gid="209" x="3904" y="4352" width="64" height="64"/>
+  <object id="72083" gid="217" x="3904" y="4288" width="64" height="64">
+   <properties>
+    <property name="secret" value=""/>
+    <property name="secret length" type="int" value="1"/>
+   </properties>
+  </object>
+  <object id="72134" gid="209" x="1856" y="2928" width="64" height="32"/>
+  <object id="72135" gid="209" x="1920" y="2928" width="64" height="32"/>
+  <object id="72136" gid="209" x="1984" y="2928" width="64" height="32"/>
+  <object id="72138" gid="209" x="2052.66" y="3012.74" width="45.3381" height="32" rotation="314.873"/>
+  <object id="72140" gid="209" x="2064" y="2992" width="32" height="32"/>
  </objectgroup>
  <objectgroup id="12" name="2nd floor" visible="0">
   <object id="60601" gid="119" x="192" y="64" width="64" height="64"/>
@@ -2372,7 +2399,7 @@
   <object id="70795" gid="194" x="1856" y="3200" width="64" height="64"/>
   <object id="70796" gid="194" x="1920" y="3200" width="64" height="64"/>
   <object id="70797" gid="194" x="1984" y="3200" width="64" height="64"/>
-  <object id="70798" gid="194" x="2048" y="3008" width="64" height="64"/>
+  <object id="70798" gid="194" x="2032" y="3008" width="32" height="64"/>
   <object id="70799" gid="194" x="2048" y="3136" width="64" height="64"/>
   <object id="70801" gid="211" x="2944" y="2320" width="64" height="32"/>
   <object id="70802" gid="148" x="2944" y="2288" width="64" height="32"/>
@@ -2580,6 +2607,9 @@
   <object id="72031" gid="148" x="2944" y="2032" width="64" height="32"/>
   <object id="72033" gid="148" x="2944" y="2032" width="64" height="32"/>
   <object id="72034" gid="211" x="2944" y="2064" width="64" height="32"/>
+  <object id="72085" gid="211" x="3776" y="4288" width="64" height="64"/>
+  <object id="72086" gid="211" x="3840" y="4288" width="64" height="64"/>
+  <object id="72141" gid="211" x="2064" y="3008" width="64" height="32" rotation="90"/>
  </objectgroup>
  <objectgroup id="15" name="3rd floor" visible="0">
   <object id="70770" gid="162" x="1728" y="3136" width="64" height="64"/>
@@ -2648,13 +2678,9 @@
   <object id="71642" gid="394" x="1792" y="3968" width="64" height="64"/>
   <object id="71643" gid="394" x="1920" y="4096" width="64" height="64"/>
   <object id="71644" gid="394" x="1920" y="3648" width="64" height="64"/>
-  <object id="71646" gid="389" x="2112" y="3904" width="64" height="64"/>
-  <object id="71647" gid="389" x="2112" y="2368" width="64" height="64"/>
   <object id="71648" gid="389" x="2912" y="3104" width="64" height="64"/>
   <object id="71649" gid="389" x="2880" y="3488" width="64" height="64"/>
   <object id="71650" gid="389" x="3328" y="3136" width="64" height="64"/>
-  <object id="71651" gid="389" x="3712" y="3904" width="64" height="64"/>
-  <object id="71652" gid="389" x="3712" y="2368" width="64" height="64"/>
   <object id="71653" gid="390" x="2368" y="2880" width="64" height="64"/>
   <object id="71654" gid="390" x="2432" y="3072" width="64" height="64"/>
   <object id="71655" gid="390" x="2432" y="3264" width="64" height="64"/>
@@ -2920,6 +2946,14 @@
   <object id="72045" gid="392" x="3020.5" y="2231.67" width="64" height="64"/>
   <object id="72046" gid="391" x="3015.17" y="2243" width="64" height="64"/>
   <object id="72047" gid="389" x="2944" y="2176" width="64" height="64"/>
+  <object id="72126" gid="389" x="2304" y="2368" width="64" height="64"/>
+  <object id="72127" gid="389" x="2112" y="2496" width="64" height="64"/>
+  <object id="72128" gid="389" x="3520" y="2368" width="64" height="64"/>
+  <object id="72129" gid="389" x="3712" y="2496" width="64" height="64"/>
+  <object id="72130" gid="389" x="3520" y="3904" width="64" height="64"/>
+  <object id="72131" gid="389" x="3712" y="3712" width="64" height="64"/>
+  <object id="72132" gid="389" x="2304" y="3904" width="64" height="64"/>
+  <object id="72133" gid="389" x="2112" y="3712" width="64" height="64"/>
  </objectgroup>
  <objectgroup id="8" name="actors">
   <object id="63202" gid="42" x="576" y="448" width="64" height="64"/>
@@ -3066,8 +3100,8 @@
   <object id="71399" gid="38" x="2816" y="3776" width="64" height="64"/>
   <object id="71400" gid="38" x="2880" y="3776" width="64" height="64"/>
   <object id="71401" gid="38" x="2944" y="3776" width="64" height="64"/>
-  <object id="71403" gid="38" x="3584" y="3136" width="64" height="64"/>
-  <object id="71404" gid="38" x="3584" y="3072" width="64" height="64"/>
+  <object id="71403" gid="38" x="3574.5" y="3135" width="64" height="64"/>
+  <object id="71404" gid="38" x="3574.5" y="3071" width="64" height="64"/>
   <object id="71405" gid="38" x="2624" y="2816" width="64" height="64"/>
   <object id="71406" gid="38" x="2688" y="2880" width="64" height="64"/>
   <object id="71408" gid="38" x="2624" y="3392" width="64" height="64"/>
@@ -3080,7 +3114,7 @@
   <object id="71415" gid="38" x="2560" y="2752" width="64" height="64"/>
   <object id="71416" gid="38" x="2560" y="3456" width="64" height="64"/>
   <object id="71417" gid="38" x="3264" y="3456" width="64" height="64"/>
-  <object id="71464" gid="18" x="2912" y="3104" width="64" height="64">
+  <object id="71464" gid="18" x="2911" y="3105.33" width="64" height="64">
    <properties>
     <property name="intensity" type="float" value="10"/>
    </properties>
@@ -3164,5 +3198,41 @@
   <object id="71999" gid="310" x="2944" y="2208" width="64" height="64"/>
   <object id="72035" gid="278" x="3776" y="2176" width="64" height="64" rotation="45"/>
   <object id="72048" gid="310" x="2944" y="2144" width="64" height="64"/>
+  <object id="72049" gid="310" x="2304" y="3136" width="64" height="64"/>
+  <object id="72050" gid="310" x="2304" y="3072" width="64" height="64"/>
+  <object id="72051" gid="310" x="2304" y="3008" width="64" height="64"/>
+  <object id="72052" gid="310" x="2176" y="4224" width="64" height="64"/>
+  <object id="72053" gid="310" x="1792" y="3904" width="64" height="64"/>
+  <object id="72054" gid="310" x="2688" y="4032" width="64" height="64"/>
+  <object id="72055" gid="310" x="3136" y="4032" width="64" height="64"/>
+  <object id="72056" gid="310" x="2816" y="3712" width="64" height="64"/>
+  <object id="72057" gid="310" x="2880" y="3712" width="64" height="64"/>
+  <object id="72058" gid="310" x="2944" y="3712" width="64" height="64"/>
+  <object id="72059" gid="310" x="3574.5" y="3199" width="64" height="64"/>
+  <object id="72060" gid="310" x="3510.5" y="3199" width="64" height="64"/>
+  <object id="72061" gid="310" x="3510.5" y="3135" width="64" height="64"/>
+  <object id="72062" gid="310" x="3510.5" y="3071" width="64" height="64"/>
+  <object id="72063" gid="310" x="2944" y="2560" width="64" height="64"/>
+  <object id="72064" gid="310" x="3008" y="2560" width="64" height="64"/>
+  <object id="72065" gid="310" x="2624" y="2240" width="64" height="64"/>
+  <object id="72066" gid="310" x="3200" y="2240" width="64" height="64"/>
+  <object id="72067" gid="310" x="2176" y="1984" width="64" height="64"/>
+  <object id="72068" gid="310" x="1792" y="2304" width="64" height="64"/>
+  <object id="72069" gid="310" x="1984" y="2816" width="64" height="64"/>
+  <object id="72070" gid="310" x="1984" y="3392" width="64" height="64"/>
+  <object id="72071" gid="310" x="3648" y="4224" width="64" height="64"/>
+  <object id="72072" gid="310" x="4032" y="3840" width="64" height="64"/>
+  <object id="72073" gid="310" x="3840" y="3392" width="64" height="64"/>
+  <object id="72074" gid="310" x="3840" y="2816" width="64" height="64"/>
+  <object id="72075" gid="310" x="4032" y="2368" width="64" height="64"/>
+  <object id="72076" gid="310" x="3584" y="1984" width="64" height="64"/>
+  <object id="72084" gid="316" x="3840" y="4288" width="64" height="64"/>
+  <object id="72088" gid="290" x="3712" y="4288" width="64" height="64">
+   <properties>
+    <property name="color" type="color" value="#ffde9e41"/>
+    <property name="intensity" type="float" value="5"/>
+    <property name="map height" type="float" value="0.5"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

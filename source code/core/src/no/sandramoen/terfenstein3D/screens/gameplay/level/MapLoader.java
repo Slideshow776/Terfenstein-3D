@@ -123,7 +123,7 @@ public class MapLoader {
         tileTextures.add("light big plates pipe side", "light big plates pipe end", "light big plates 1 pipe down", "brick 3 prison 1");
         tileTextures.add("wood 1 prison 1", "wood 2 prison 1", "cliff 1 prison 1", "");
         tileTextures.add("brick 3 eagle 1", "cliff 1 eagle 1", "light big plates eagle 1", "wood 1 eagle 1");
-        tileTextures.add("wood 2 eagle 1", "", "", "");
+        tileTextures.add("wood 2 eagle 1", "light big plates 1 red carpet 1", "light big plates 1 red carpet 2", "light big plates 1 red carpet 3");
         // tileTextures.add("", "", "", "");
 
         for (String type : tileTypes) {
