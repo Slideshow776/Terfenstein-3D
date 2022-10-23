@@ -161,6 +161,8 @@ public class Enemy extends BaseActor3D {
         attackDelayActor = new BaseActor(0, 0, stage);
 
         startingPosition = getTileActorIsOn(this, floorTiles);
+        isCollisionEnabled = false;
+        isPreventOverlapEnabled = false;
     }
 
     @Override
@@ -225,6 +227,8 @@ public class Enemy extends BaseActor3D {
     public void activate(BaseActor3D source) {
         if (!isActive) {
             isActive = true;
+            isCollisionEnabled = true;
+            isPreventOverlapEnabled = true;
             playActivateSound();
         }
         if (source != null && (goingTo == null || source == player))
@@ -271,6 +275,8 @@ public class Enemy extends BaseActor3D {
         patrol = path;
         setNewAIPath(patrol.get(getPatrolIndex()));
         isActive = true;
+        isCollisionEnabled = true;
+        isPreventOverlapEnabled = true;
     }
 
 
@@ -518,6 +524,8 @@ public class Enemy extends BaseActor3D {
         if (!isActive)
             playActivateSound();
         isActive = true;
+        isCollisionEnabled = true;
+        isPreventOverlapEnabled = true;
         isAttacking = true;
         isPlayerLastPositionKnown = true;
         attackStateChangeCounter = attackStateChangeFrequency / 2;
@@ -595,6 +603,8 @@ public class Enemy extends BaseActor3D {
         } else if (tilePathCounter >= tilePath.getCount()) {
             if (getTileActorIsOn(this, floorTiles) != startingPosition) {
                 isActive = false;
+                isCollisionEnabled = false;
+                isPreventOverlapEnabled = false;
                 state = State.IDLE;
                 tilePath = null;
                 new BaseActor(0, 0, stage).addAction(Actions.sequence(
@@ -605,6 +615,8 @@ public class Enemy extends BaseActor3D {
                             else
                                 setNewAIPath(startingPosition);
                             isActive = true;
+                            isCollisionEnabled = true;
+                            isPreventOverlapEnabled = true;
                             state = State.WALKING;
                         })
                 ));

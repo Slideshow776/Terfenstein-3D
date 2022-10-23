@@ -3755,23 +3755,6 @@
   <object id="76193" gid="36" x="2624" y="2368" width="64" height="64"/>
   <object id="76194" gid="36" x="2688" y="2368" width="64" height="64"/>
   <object id="76195" gid="36" x="2752" y="2368" width="64" height="64"/>
-  <object id="76204" gid="313" x="896" y="4096" width="64" height="64"/>
-  <object id="76205" gid="312" x="896" y="4096" width="64" height="64"/>
-  <object id="76206" gid="311" x="896" y="4096" width="64" height="64"/>
-  <object id="76207" gid="311" x="896" y="4096" width="64" height="64"/>
-  <object id="76208" gid="311" x="896" y="4096" width="64" height="64"/>
-  <object id="76209" gid="311" x="896" y="4096" width="64" height="64"/>
-  <object id="76210" gid="311" x="896" y="4096" width="64" height="64"/>
-  <object id="76211" gid="306" x="896" y="4096" width="64" height="64"/>
-  <object id="76212" gid="306" x="896" y="4096" width="64" height="64"/>
-  <object id="76213" gid="306" x="896" y="4096" width="64" height="64"/>
-  <object id="76214" gid="306" x="896" y="4096" width="64" height="64"/>
-  <object id="76215" gid="306" x="896" y="4096" width="64" height="64"/>
-  <object id="76216" gid="306" x="896" y="4096" width="64" height="64"/>
-  <object id="76217" gid="306" x="896" y="4096" width="64" height="64"/>
-  <object id="76218" gid="306" x="896" y="4096" width="64" height="64"/>
-  <object id="76219" gid="306" x="896" y="4096" width="64" height="64"/>
-  <object id="76220" gid="306" x="896" y="4096" width="64" height="64"/>
   <object id="76236" gid="290" x="896" y="3968" width="64" height="64">
    <properties>
     <property name="color" type="color" value="#ffde9e41"/>

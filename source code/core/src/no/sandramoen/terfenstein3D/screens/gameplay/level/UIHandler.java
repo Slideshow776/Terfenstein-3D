@@ -24,6 +24,7 @@ public class UIHandler {
     private Table uiTable;
     private Array<Enemy> enemies;
     private HUD hud;
+    private boolean isDebug = true;
 
     public UIHandler(Table uiTable, Array<Enemy> enemies, HUD hud) {
         this.uiTable = uiTable;
@@ -55,22 +56,24 @@ public class UIHandler {
 
         statusLabel = new Label("enemies left: " + enemies.size, new Label.LabelStyle(BaseGame.mySkin.get("arcade26", BitmapFont.class), null));
         statusLabel.setColor(Color.DARK_GRAY);
-        uiTable.add(statusLabel)
-                .expandX()
-                .left()
-                .padLeft(Gdx.graphics.getWidth() * .01f)
-                .padTop(Gdx.graphics.getHeight() * .05f)
-                .row();
+        if (isDebug)
+            uiTable.add(statusLabel)
+                    .expandX()
+                    .left()
+                    .padLeft(Gdx.graphics.getWidth() * .01f)
+                    .padTop(Gdx.graphics.getHeight() * .05f)
+                    .row();
 
         debugLabel = new Label(" ", new Label.LabelStyle(BaseGame.mySkin.get("arcade26", BitmapFont.class), null));
         debugLabel.setColor(Color.DARK_GRAY);
-        uiTable.add(debugLabel)
-                .expandX()
-                .top()
-                .left()
-                .padTop(Gdx.graphics.getHeight() * .01f)
-                .padLeft(Gdx.graphics.getWidth() * .01f)
-                .row();
+        if (isDebug)
+            uiTable.add(debugLabel)
+                    .expandX()
+                    .top()
+                    .left()
+                    .padTop(Gdx.graphics.getHeight() * .01f)
+                    .padLeft(Gdx.graphics.getWidth() * .01f)
+                    .row();
 
         gameLabel = new TypingLabel("", new Label.LabelStyle(BaseGame.mySkin.get("arcade26", BitmapFont.class), null));
         gameLabel.setColor(Color.RED);
