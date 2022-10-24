@@ -13,7 +13,7 @@ public class Health extends Pickup {
         super(y, z, s, player);
         this.amount = amount;
 
-        buildModel(1.4f, 1.4f, .001f, true);
+        buildModel(1.5f, 1.5f, .001f, true);
         setPosition(GameUtils.getPositionRelativeToFloor(1.2f), y, z);
         setBaseRectangle();
 

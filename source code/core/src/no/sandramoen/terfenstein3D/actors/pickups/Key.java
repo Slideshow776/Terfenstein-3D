@@ -16,7 +16,7 @@ public class Key extends Pickup {
         super(y, z, s, player);
         this.color = color;
 
-        buildModel(1.3f, .8f, .001f, true);
+        buildModel(1.4f, .9f, .001f, true);
         setPosition(GameUtils.getPositionRelativeToFloor(4), y, z);
         setBaseRectangle();
 

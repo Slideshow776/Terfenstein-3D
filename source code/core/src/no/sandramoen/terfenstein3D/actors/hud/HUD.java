@@ -92,13 +92,13 @@ public class HUD extends BaseActor {
     public void setWeaponsTable(WeaponHandler weaponHandler) {
         weaponImages = new Array();
         if (weaponHandler.weapons.first() instanceof Chainsaw)
-            weaponImages.add(new Image(BaseGame.textureAtlas.findRegion("pickups/chainsaw")));
+            weaponImages.add(new Image(BaseGame.textureAtlas.findRegion("weapons/icons/chainsaw")));
         else
-            weaponImages.add(new Image(BaseGame.textureAtlas.findRegion("pickups/boot")));
-        weaponImages.add(new Image(BaseGame.textureAtlas.findRegion("pickups/pistol")));
-        weaponImages.add(new Image(BaseGame.textureAtlas.findRegion("pickups/shotgun")));
-        weaponImages.add(new Image(BaseGame.textureAtlas.findRegion("pickups/chaingun")));
-        weaponImages.add(new Image(BaseGame.textureAtlas.findRegion("pickups/rocketLauncher")));
+            weaponImages.add(new Image(BaseGame.textureAtlas.findRegion("weapons/icons/boot")));
+        weaponImages.add(new Image(BaseGame.textureAtlas.findRegion("weapons/icons/pistol")));
+        weaponImages.add(new Image(BaseGame.textureAtlas.findRegion("weapons/icons/shotgun")));
+        weaponImages.add(new Image(BaseGame.textureAtlas.findRegion("weapons/icons/chaingun")));
+        weaponImages.add(new Image(BaseGame.textureAtlas.findRegion("weapons/icons/rocketLauncher")));
 
         Table table = new Table();
         table.defaults().grow().width(Gdx.graphics.getWidth() * .05f).height(Gdx.graphics.getHeight() * .05f);

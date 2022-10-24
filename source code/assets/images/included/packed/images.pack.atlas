@@ -1,124 +1,131 @@
 
 images.pack.png
-size: 512, 256
+size: 1024, 256
 format: RGBA8888
 filter: Nearest, Nearest
 repeat: none
 alphaPixel
   rotate: false
-  xy: 509, 251
+  xy: 2, 2
   size: 1, 1
   orig: 1, 1
   offset: 0, 0
   index: -1
 blueKey
   rotate: false
-  xy: 2, 10
+  xy: 379, 153
   size: 17, 6
   orig: 17, 6
   offset: 0, 0
   index: -1
 button
   rotate: false
-  xy: 262, 86
+  xy: 379, 161
   size: 78, 78
   orig: 78, 78
   offset: 0, 0
   index: -1
 button-pressed
   rotate: false
-  xy: 342, 44
+  xy: 459, 161
   size: 78, 78
   orig: 78, 78
   offset: 0, 0
   index: -1
 clearPixel
   rotate: false
-  xy: 509, 248
+  xy: 20, 20
   size: 1, 1
   orig: 1, 1
   offset: 0, 0
   index: -1
 crosshair
   rotate: false
-  xy: 2, 18
+  xy: 2, 5
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
   index: -1
+crosshair_holdDown
+  rotate: false
+  xy: 539, 175
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
 elevator
   rotate: false
-  xy: 262, 20
+  xy: 605, 175
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 elevator down
   rotate: false
-  xy: 422, 58
+  xy: 671, 175
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 feature graphics
   rotate: false
-  xy: 2, 166
+  xy: 2, 153
   size: 375, 86
   orig: 375, 86
   offset: 0, 0
   index: -1
 greenKey
   rotate: false
-  xy: 2, 2
+  xy: 539, 167
   size: 17, 6
   orig: 17, 6
   offset: 0, 0
   index: -1
 overlayCentert_new
   rotate: false
-  xy: 379, 124
+  xy: 2, 23
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
 overlayLeft
   rotate: false
-  xy: 20, 25
+  xy: 392, 150
   size: 4, 1
   orig: 4, 1
   offset: 0, 0
   index: -1
 overlayLeft_new
   rotate: false
-  xy: 2, 36
+  xy: 132, 23
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
 overlayRight
   rotate: false
-  xy: 20, 22
+  xy: 398, 158
   size: 4, 1
   orig: 4, 1
   offset: 0, 0
   index: -1
 overlayRight_new
   rotate: false
-  xy: 132, 36
+  xy: 262, 23
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
 redKey
   rotate: false
-  xy: 20, 28
+  xy: 737, 233
   size: 17, 6
   orig: 17, 6
   offset: 0, 0
   index: -1
 whitePixel
   rotate: false
-  xy: 509, 245
+  xy: 539, 164
   size: 1, 1
   orig: 1, 1
   offset: 0, 0
@@ -2944,6 +2951,13 @@ props/palle 1
   orig: 64, 64
   offset: 0, 0
   index: -1
+props/skeleton 1
+  rotate: false
+  xy: 332, 97
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
 props/statue 0
   rotate: false
   xy: 2, 103
@@ -2953,35 +2967,35 @@ props/statue 0
   index: -1
 props/suitcase 0
   rotate: false
-  xy: 200, 63
+  xy: 266, 63
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 props/table 1
   rotate: false
-  xy: 332, 97
+  xy: 398, 97
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 props/trash 1
   rotate: false
-  xy: 398, 97
+  xy: 68, 31
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 props/vase 1
   rotate: false
-  xy: 68, 31
+  xy: 134, 31
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 props/vase 2
   rotate: false
-  xy: 134, 31
+  xy: 200, 31
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
@@ -3103,387 +3117,443 @@ tiles/brick 3 prison 1
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/circles0
+tiles/brick 3 prison 2
   rotate: false
   xy: 134, 269
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/cliff 0
+tiles/brick 3 prison 3
   rotate: false
   xy: 200, 335
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/cliff 1
+tiles/circles0
   rotate: false
   xy: 266, 401
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/cliff 1 eagle 1
+tiles/cliff 0
   rotate: false
   xy: 2, 71
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/cliff 1 flag
+tiles/cliff 1
   rotate: false
   xy: 68, 137
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/cliff 1 image
+tiles/cliff 1 eagle 1
   rotate: false
   xy: 134, 203
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/cliff 1 krans
+tiles/cliff 1 flag
   rotate: false
   xy: 200, 269
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/cliff 1 poster 1
+tiles/cliff 1 image
   rotate: false
   xy: 266, 335
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/cliff 1 poster 2
+tiles/cliff 1 krans
   rotate: false
   xy: 332, 401
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/cliff 1 prison 1
+tiles/cliff 1 poster 1
   rotate: false
   xy: 2, 5
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/elevator wall
+tiles/cliff 1 poster 2
   rotate: false
   xy: 68, 71
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/flag 0
+tiles/cliff 1 prison 1
   rotate: false
   xy: 134, 137
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/flag 1
+tiles/cliff 1 prison 2
   rotate: false
   xy: 200, 203
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/flag 2
+tiles/cliff 1 prison 3
   rotate: false
   xy: 266, 269
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/flag 3
+tiles/elevator wall
   rotate: false
   xy: 332, 335
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/hexagon 0
+tiles/flag 0
   rotate: false
   xy: 398, 401
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/hexagon 1
+tiles/flag 1
   rotate: false
   xy: 68, 5
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/light big plates
+tiles/flag 2
   rotate: false
   xy: 134, 71
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/light big plates 1
+tiles/flag 3
   rotate: false
   xy: 200, 137
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/light big plates 1 pipe down
+tiles/hexagon 0
   rotate: false
   xy: 266, 203
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/light big plates 1 red carpet 1
+tiles/hexagon 1
   rotate: false
   xy: 332, 269
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/light big plates 1 red carpet 2
+tiles/light big plates
   rotate: false
   xy: 398, 335
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/light big plates 1 red carpet 3
+tiles/light big plates 1
   rotate: false
   xy: 464, 401
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/light big plates eagle 1
+tiles/light big plates 1 pipe down
   rotate: false
   xy: 134, 5
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/light big plates green
+tiles/light big plates 1 red carpet 1
   rotate: false
   xy: 200, 71
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/light big plates image
+tiles/light big plates 1 red carpet 2
   rotate: false
   xy: 266, 137
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/light big plates krans
+tiles/light big plates 1 red carpet 3
   rotate: false
   xy: 332, 203
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/light big plates pipe end
+tiles/light big plates eagle 1
   rotate: false
   xy: 398, 269
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/light big plates pipe side
+tiles/light big plates green
   rotate: false
   xy: 464, 335
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/light big plates pipe up
+tiles/light big plates image
   rotate: false
   xy: 530, 401
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/light big plates poster 1
+tiles/light big plates krans
   rotate: false
   xy: 200, 5
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/light big plates poster 2
+tiles/light big plates pipe end
   rotate: false
   xy: 266, 71
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/light big plates red
+tiles/light big plates pipe side
   rotate: false
   xy: 332, 137
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/light lonplate
+tiles/light big plates pipe up
   rotate: false
   xy: 398, 203
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/light lonplate 2
+tiles/light big plates poster 1
   rotate: false
   xy: 464, 269
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/lights 0
+tiles/light big plates poster 2
   rotate: false
   xy: 530, 335
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/lonplate
+tiles/light big plates red
   rotate: false
   xy: 596, 401
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/wood 1
+tiles/light big plates secret
   rotate: false
   xy: 266, 5
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/wood 1 eagle 1
+tiles/light lonplate
+  rotate: false
+  xy: 332, 71
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+tiles/light lonplate 2
   rotate: false
   xy: 398, 137
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/wood 1 flag
+tiles/lights 0
   rotate: false
   xy: 464, 203
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/wood 1 image
+tiles/lonplate
   rotate: false
   xy: 530, 269
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/wood 1 krans
+tiles/wood 1
   rotate: false
   xy: 596, 335
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/wood 1 poster 1
-  rotate: false
-  xy: 662, 401
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-tiles/wood 1 poster 2
+tiles/wood 1 eagle 1
   rotate: false
   xy: 332, 5
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/wood 1 prison 1
+tiles/wood 1 flag
   rotate: false
   xy: 398, 71
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/wood 2
-  rotate: false
-  xy: 332, 71
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-tiles/wood 1 eagle 2
-  rotate: false
-  xy: 332, 71
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-tiles/wood 1 prison 2
-  rotate: false
-  xy: 332, 71
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-tiles/wood 2 eagle 1
+tiles/wood 1 image
   rotate: false
   xy: 464, 137
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/wood 2 flag
+tiles/wood 1 krans
   rotate: false
   xy: 530, 203
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/wood 2 image
+tiles/wood 1 poster 1
   rotate: false
   xy: 596, 269
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/wood 2 krans
+tiles/wood 1 poster 2
   rotate: false
   xy: 662, 335
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/wood 2 poster 1
+tiles/wood 1 prison 1
   rotate: false
   xy: 728, 401
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/wood 2 poster 2
+tiles/wood 1 prison 2
   rotate: false
   xy: 398, 5
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/wood 2 prison 1
+tiles/wood 1 prison 3
   rotate: false
   xy: 464, 71
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+tiles/wood 2
+  rotate: false
+  xy: 662, 401
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+tiles/wood 1 prison 4
+  rotate: false
+  xy: 662, 401
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+tiles/wood 2 eagle 1
+  rotate: false
+  xy: 530, 137
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+tiles/wood 2 flag
+  rotate: false
+  xy: 596, 203
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+tiles/wood 2 image
+  rotate: false
+  xy: 662, 269
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+tiles/wood 2 krans
+  rotate: false
+  xy: 728, 335
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+tiles/wood 2 poster 1
+  rotate: false
+  xy: 794, 401
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+tiles/wood 2 poster 2
+  rotate: false
+  xy: 464, 5
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+tiles/wood 2 prison 1
+  rotate: false
+  xy: 530, 71
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+tiles/wood 2 prison 2
+  rotate: false
+  xy: 596, 137
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+tiles/wood 2 prison 3
+  rotate: false
+  xy: 662, 203
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
@@ -3585,373 +3655,436 @@ tiles/bloody/brick 3 prison 1
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/bloody/circles0
+tiles/bloody/brick 3 prison 2
   rotate: false
   xy: 134, 269
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/bloody/cliff 0
+tiles/bloody/brick 3 prison 3
   rotate: false
   xy: 200, 335
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/bloody/cliff 1
+tiles/bloody/circles0
   rotate: false
   xy: 266, 401
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/bloody/cliff 1 eagle 1
+tiles/bloody/cliff 0
   rotate: false
   xy: 2, 71
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/bloody/cliff 1 flag
+tiles/bloody/cliff 1
   rotate: false
   xy: 68, 137
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/bloody/cliff 1 image
+tiles/bloody/cliff 1 eagle 1
   rotate: false
   xy: 134, 203
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/bloody/cliff 1 krans
+tiles/bloody/cliff 1 flag
   rotate: false
   xy: 200, 269
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/bloody/cliff 1 poster 1
+tiles/bloody/cliff 1 image
   rotate: false
   xy: 266, 335
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/bloody/cliff 1 poster 2
+tiles/bloody/cliff 1 krans
   rotate: false
   xy: 332, 401
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/bloody/cliff 1 prison 1
+tiles/bloody/cliff 1 poster 1
   rotate: false
   xy: 2, 5
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/bloody/elevator wall
+tiles/bloody/cliff 1 poster 2
   rotate: false
   xy: 68, 71
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/bloody/flag 0
+tiles/bloody/cliff 1 prison 1
   rotate: false
   xy: 134, 137
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/bloody/flag 1
+tiles/bloody/cliff 1 prison 2
   rotate: false
   xy: 200, 203
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/bloody/flag 2
+tiles/bloody/cliff 1 prison 3
   rotate: false
   xy: 266, 269
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/bloody/flag 3
+tiles/bloody/elevator wall
   rotate: false
   xy: 332, 335
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/bloody/hexagon 0
+tiles/bloody/flag 0
   rotate: false
   xy: 398, 401
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/bloody/hexagon 1
+tiles/bloody/flag 1
   rotate: false
   xy: 68, 5
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/bloody/light big plates
+tiles/bloody/flag 2
   rotate: false
   xy: 134, 71
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/bloody/light big plates 1
+tiles/bloody/flag 3
   rotate: false
   xy: 200, 137
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/bloody/light big plates 1 pipe down
+tiles/bloody/hexagon 0
   rotate: false
   xy: 266, 203
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/bloody/light big plates 1 red carpet 1
+tiles/bloody/hexagon 1
   rotate: false
   xy: 332, 269
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/bloody/light big plates 1 red carpet 2
+tiles/bloody/light big plates
   rotate: false
   xy: 398, 335
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/bloody/light big plates 1 red carpet 3
+tiles/bloody/light big plates 1
   rotate: false
   xy: 464, 401
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/bloody/light big plates eagle 1
+tiles/bloody/light big plates 1 pipe down
   rotate: false
   xy: 134, 5
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/bloody/light big plates green
+tiles/bloody/light big plates 1 red carpet 1
   rotate: false
   xy: 200, 71
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/bloody/light big plates image
+tiles/bloody/light big plates 1 red carpet 2
   rotate: false
   xy: 266, 137
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/bloody/light big plates krans
+tiles/bloody/light big plates 1 red carpet 3
   rotate: false
   xy: 332, 203
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/bloody/light big plates pipe end
+tiles/bloody/light big plates eagle 1
   rotate: false
   xy: 398, 269
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/bloody/light big plates pipe side
+tiles/bloody/light big plates green
   rotate: false
   xy: 464, 335
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/bloody/light big plates pipe up
+tiles/bloody/light big plates image
   rotate: false
   xy: 530, 401
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/bloody/light big plates poster 1
+tiles/bloody/light big plates krans
   rotate: false
   xy: 200, 5
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/bloody/light big plates poster 2
+tiles/bloody/light big plates pipe end
   rotate: false
   xy: 266, 71
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/bloody/light big plates red
+tiles/bloody/light big plates pipe side
   rotate: false
   xy: 332, 137
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/bloody/light lonplate
+tiles/bloody/light big plates pipe up
   rotate: false
   xy: 398, 203
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/bloody/light lonplate 2
+tiles/bloody/light big plates poster 1
   rotate: false
   xy: 464, 269
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/bloody/lights 0
+tiles/bloody/light big plates poster 2
   rotate: false
   xy: 530, 335
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/bloody/lonplate
+tiles/bloody/light big plates red
   rotate: false
   xy: 596, 401
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/bloody/wood 1
+tiles/bloody/light big plates secret
   rotate: false
   xy: 266, 5
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/bloody/wood 1 eagle 1
-  rotate: false
-  xy: 398, 137
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-tiles/bloody/wood 1 flag
-  rotate: false
-  xy: 464, 203
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-tiles/bloody/wood 1 image
-  rotate: false
-  xy: 530, 269
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-tiles/bloody/wood 1 krans
-  rotate: false
-  xy: 596, 335
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-tiles/bloody/wood 1 poster 1
-  rotate: false
-  xy: 662, 401
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-tiles/bloody/wood 1 poster 2
-  rotate: false
-  xy: 332, 5
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-tiles/bloody/wood 1 prison 1
-  rotate: false
-  xy: 398, 71
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-tiles/bloody/wood 2
+tiles/bloody/light lonplate
   rotate: false
   xy: 332, 71
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/bloody/wood 2 eagle 1
+tiles/bloody/light lonplate 2
+  rotate: false
+  xy: 398, 137
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+tiles/bloody/lights 0
+  rotate: false
+  xy: 464, 203
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+tiles/bloody/lonplate
+  rotate: false
+  xy: 530, 269
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+tiles/bloody/wood 1
+  rotate: false
+  xy: 596, 335
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+tiles/bloody/wood 1 eagle 1
+  rotate: false
+  xy: 332, 5
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+tiles/bloody/wood 1 flag
+  rotate: false
+  xy: 398, 71
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+tiles/bloody/wood 1 image
   rotate: false
   xy: 464, 137
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/bloody/wood 2 flag
+tiles/bloody/wood 1 krans
   rotate: false
   xy: 530, 203
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/bloody/wood 2 image
+tiles/bloody/wood 1 poster 1
   rotate: false
   xy: 596, 269
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/bloody/wood 2 krans
+tiles/bloody/wood 1 poster 2
   rotate: false
   xy: 662, 335
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/bloody/wood 2 poster 1
+tiles/bloody/wood 1 prison 1
   rotate: false
   xy: 728, 401
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/bloody/wood 2 poster 2
+tiles/bloody/wood 1 prison 2
   rotate: false
   xy: 398, 5
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tiles/bloody/wood 2 prison 1
+tiles/bloody/wood 1 prison 3
   rotate: false
   xy: 464, 71
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+tiles/bloody/wood 2
+  rotate: false
+  xy: 662, 401
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+tiles/bloody/wood 2 eagle 1
+  rotate: false
+  xy: 530, 137
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+tiles/bloody/wood 2 flag
+  rotate: false
+  xy: 596, 203
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+tiles/bloody/wood 2 image
+  rotate: false
+  xy: 662, 269
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+tiles/bloody/wood 2 krans
+  rotate: false
+  xy: 728, 335
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+tiles/bloody/wood 2 poster 1
+  rotate: false
+  xy: 794, 401
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+tiles/bloody/wood 2 poster 2
+  rotate: false
+  xy: 464, 5
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+tiles/bloody/wood 2 prison 1
+  rotate: false
+  xy: 530, 71
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+tiles/bloody/wood 2 prison 2
+  rotate: false
+  xy: 596, 137
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+tiles/bloody/wood 2 prison 3
+  rotate: false
+  xy: 662, 203
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
@@ -4039,6 +4172,54 @@ weapons/chainsaw/idle 2
   index: -1
 
 images.pack22.png
+size: 256, 32
+format: RGBA8888
+filter: Nearest, Nearest
+repeat: none
+weapons/icons/boot
+  rotate: false
+  xy: 164, 5
+  size: 16, 22
+  orig: 16, 22
+  offset: 0, 0
+  index: -1
+weapons/icons/chaingun
+  rotate: false
+  xy: 62, 9
+  size: 32, 18
+  orig: 32, 18
+  offset: 0, 0
+  index: -1
+weapons/icons/chainsaw
+  rotate: false
+  xy: 96, 11
+  size: 32, 16
+  orig: 32, 16
+  offset: 0, 0
+  index: -1
+weapons/icons/pistol
+  rotate: false
+  xy: 182, 6
+  size: 16, 21
+  orig: 16, 21
+  offset: 0, 0
+  index: -1
+weapons/icons/rocketLauncher
+  rotate: false
+  xy: 2, 2
+  size: 58, 25
+  orig: 58, 25
+  offset: 0, 0
+  index: -1
+weapons/icons/shotgun
+  rotate: false
+  xy: 130, 11
+  size: 32, 16
+  orig: 32, 16
+  offset: 0, 0
+  index: -1
+
+images.pack23.png
 size: 1024, 256
 format: RGBA8888
 filter: Nearest, Nearest
@@ -4079,7 +4260,7 @@ weapons/pistol/shooting 4
   offset: 0, 0
   index: -1
 
-images.pack23.png
+images.pack24.png
 size: 1024, 256
 format: RGBA8888
 filter: Nearest, Nearest
@@ -4113,7 +4294,7 @@ weapons/rocketlauncher/shooting 3
   offset: 0, 0
   index: -1
 
-images.pack24.png
+images.pack25.png
 size: 1024, 256
 format: RGBA8888
 filter: Nearest, Nearest

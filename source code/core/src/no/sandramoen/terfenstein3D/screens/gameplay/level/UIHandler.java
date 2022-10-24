@@ -38,6 +38,23 @@ public class UIHandler {
         constructTable(uiTable, enemies, hud);
     }
 
+    public void setGameLabel(String message) {
+        gameLabel.restart();
+        gameLabel.setText(message);
+    }
+
+    public void setTemporaryGameLabel(String message) {
+        setGameLabel(message);
+        clearTypingLabelAfterDelay(gameLabel, 3.5f);
+    }
+
+    private void clearTypingLabelAfterDelay(TypingLabel label, float delay) {
+        label.addAction(Actions.sequence(
+                Actions.delay(delay),
+                Actions.run(() -> setGameLabel(""))
+        ));
+    }
+
     private void constructTable(Table uiTable, Array<Enemy> enemies, HUD hud) {
         uiTable.add(hud.weaponsTable)
                 .colspan(2)
@@ -75,9 +92,7 @@ public class UIHandler {
                     .padLeft(Gdx.graphics.getWidth() * .01f)
                     .row();
 
-        gameLabel = new TypingLabel("", new Label.LabelStyle(BaseGame.mySkin.get("arcade26", BitmapFont.class), null));
-        gameLabel.setColor(Color.RED);
-        gameLabel.font.scale(2f, 2f);
+        gameLabel = new TypingLabel("", new Label.LabelStyle(BaseGame.mySkin.get("arcade64", BitmapFont.class), null));
         uiTable.add(gameLabel)
                 .expand()
                 .center()

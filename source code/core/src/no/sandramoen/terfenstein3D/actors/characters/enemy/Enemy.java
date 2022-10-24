@@ -19,6 +19,7 @@ import com.badlogic.gdx.utils.Array;
 import no.sandramoen.terfenstein3D.actors.Barrel;
 import no.sandramoen.terfenstein3D.actors.Tile;
 import no.sandramoen.terfenstein3D.actors.characters.Fenrik;
+import no.sandramoen.terfenstein3D.actors.characters.Hund;
 import no.sandramoen.terfenstein3D.actors.characters.Menig;
 import no.sandramoen.terfenstein3D.actors.characters.Player;
 import no.sandramoen.terfenstein3D.actors.characters.Sersjant;
@@ -184,6 +185,8 @@ public class Enemy extends BaseActor3D {
 
         if (!isActive) return;
 
+        if (this instanceof Hund && intervalFlag && MathUtils.random(0f, 1f) > .5f && isPlayerVisible)
+            GameUtils.playSoundRelativeToDistance(BaseGame.hundActivateSound, BaseGame.soundVolume, 50, MathUtils.random(.7f, 1.3f));
         bulletDecals.render(dt);
         setPathToLastKnownPlayerPosition();
 

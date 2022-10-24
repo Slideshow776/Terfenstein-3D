@@ -158,8 +158,8 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
     private void loadGameState() {
         GameUtils.loadGameState();
         if (!loadPersonalParameters) {
-            soundVolume = .3f;
-            musicVolume = .7f;
+            soundVolume = .7f;
+            musicVolume = .4f;
             voiceVolume = 1f;
             mouseMovementSensitivity = .05f;
             isHeadBobbing = true;
@@ -191,7 +191,7 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
         assetManager.load("audio/music/595840__lagmusics__heavy-metal-looping.mp3", Music.class);
         assetManager.load("audio/music/524240__badoink__hard-rock-loop.wav", Music.class);
         assetManager.load("audio/music/587251__lagmusics__epic-and-aggressive-percussion.mp3", Music.class);
-        assetManager.load("audio/music/578908__lagmusics__virtual-heavy-metal.wav", Music.class);
+        assetManager.load("audio/music/559846__migfus20__rock-music.wav", Music.class);
         assetManager.load("audio/music/457210__kiddpark__13-drum-cadences.wav", Music.class);
         assetManager.load("audio/music/580131__badoink__t-rox.wav", Music.class);
         assetManager.load("audio/music/585515__badoink__glitch-rock-loop.wav", Music.class);
@@ -272,7 +272,7 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
         level2Music = assetManager.get("audio/music/559485__code-box__battle-tactics.wav", Music.class);
         level3Music = assetManager.get("audio/music/595840__lagmusics__heavy-metal-looping.mp3", Music.class);
         level4Music = assetManager.get("audio/music/524240__badoink__hard-rock-loop.wav", Music.class);
-        level5Music = assetManager.get("audio/music/578908__lagmusics__virtual-heavy-metal.wav", Music.class);
+        level5Music = assetManager.get("audio/music/559846__migfus20__rock-music.wav", Music.class);
         level6Music = assetManager.get("audio/music/580131__badoink__t-rox.wav", Music.class);
         metalWalkingMusic = assetManager.get("audio/music/398937__mypantsfelldown__metal-footsteps.wav", Music.class);
         ambientFanMusic = assetManager.get("audio/music/249738__adrilahan__fan.wav", Music.class);

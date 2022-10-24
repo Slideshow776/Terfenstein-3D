@@ -14,7 +14,7 @@ public class Chaingun extends Pickup {
         super(y, z, s, player);
         this.amount = amount;
 
-        buildModel(3.1f, 1.1f, .001f, true);
+        buildModel(3.2f, 1.2f, .001f, true);
         setPosition(GameUtils.getPositionRelativeToFloor(1f), y, z);
         setBaseRectangle();
 

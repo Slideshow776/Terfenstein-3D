@@ -72,6 +72,15 @@
    <property name="secret length" type="int" value="1"/>
   </properties>
  </tile>
+ <tile id="10">
+  <properties>
+   <property name="depth" type="float" value="4"/>
+   <property name="isAIpath" type="bool" value="true"/>
+   <property name="name" value="brick 3 eagle 1"/>
+   <property name="secret" value=""/>
+   <property name="secret length" type="int" value="1"/>
+  </properties>
+ </tile>
  <tile id="9">
   <properties>
    <property name="depth" type="float" value="4"/>
@@ -81,11 +90,20 @@
    <property name="secret length" type="int" value="1"/>
   </properties>
  </tile>
- <tile id="10">
+ <tile id="11">
   <properties>
    <property name="depth" type="float" value="4"/>
    <property name="isAIpath" type="bool" value="true"/>
-   <property name="name" value="brick 3 eagle 1"/>
+   <property name="name" value="brick 3 prison 2"/>
+   <property name="secret" value=""/>
+   <property name="secret length" type="int" value="1"/>
+  </properties>
+ </tile>
+ <tile id="12">
+  <properties>
+   <property name="depth" type="float" value="4"/>
+   <property name="isAIpath" type="bool" value="true"/>
+   <property name="name" value="brick 3 prison 3"/>
    <property name="secret" value=""/>
    <property name="secret length" type="int" value="1"/>
   </properties>
@@ -99,8 +117,6 @@
    <property name="secret length" type="int" value="1"/>
   </properties>
  </tile>
- <tile id="11"/>
- <tile id="12"/>
  <tile id="13"/>
  <tile id="14"/>
  <tile id="15"/>
@@ -176,6 +192,15 @@
    <property name="secret length" type="int" value="1"/>
   </properties>
  </tile>
+ <tile id="26">
+  <properties>
+   <property name="depth" type="float" value="4"/>
+   <property name="isAIpath" type="bool" value="true"/>
+   <property name="name" value="cliff 1 eagle 1"/>
+   <property name="secret" value=""/>
+   <property name="secret length" type="int" value="1"/>
+  </properties>
+ </tile>
  <tile id="25">
   <properties>
    <property name="depth" type="float" value="4"/>
@@ -185,11 +210,20 @@
    <property name="secret length" type="int" value="1"/>
   </properties>
  </tile>
- <tile id="26">
+ <tile id="27">
   <properties>
    <property name="depth" type="float" value="4"/>
    <property name="isAIpath" type="bool" value="true"/>
-   <property name="name" value="cliff 1 eagle 1"/>
+   <property name="name" value="cliff 1 prison 2"/>
+   <property name="secret" value=""/>
+   <property name="secret length" type="int" value="1"/>
+  </properties>
+ </tile>
+ <tile id="28">
+  <properties>
+   <property name="depth" type="float" value="4"/>
+   <property name="isAIpath" type="bool" value="true"/>
+   <property name="name" value="cliff 1 prison 3"/>
    <property name="secret" value=""/>
    <property name="secret length" type="int" value="1"/>
   </properties>
@@ -203,8 +237,6 @@
    <property name="secret length" type="int" value="1"/>
   </properties>
  </tile>
- <tile id="27"/>
- <tile id="28"/>
  <tile id="29"/>
  <tile id="30"/>
  <tile id="31"/>
@@ -280,7 +312,6 @@
    <property name="secret length" type="int" value="1"/>
   </properties>
  </tile>
- <tile id="41"/>
  <tile id="42">
   <properties>
    <property name="depth" type="float" value="4"/>
@@ -290,26 +321,27 @@
    <property name="secret length" type="int" value="1"/>
   </properties>
  </tile>
+ <tile id="41"/>
  <tile id="43"/>
  <tile id="44"/>
  <tile id="45"/>
  <tile id="46"/>
  <tile id="47"/>
- <tile id="59"/>
- <tile id="35">
-  <properties>
-   <property name="depth" type="float" value="4"/>
-   <property name="isAIpath" type="bool" value="true"/>
-   <property name="name" value="brick 2"/>
-   <property name="secret" value=""/>
-   <property name="secret length" type="int" value="1"/>
-  </properties>
- </tile>
+ <tile id="61"/>
  <tile id="3">
   <properties>
    <property name="depth" type="float" value="4"/>
    <property name="isAIpath" type="bool" value="true"/>
    <property name="name" value="light lonplate 2"/>
+   <property name="secret" value=""/>
+   <property name="secret length" type="int" value="1"/>
+  </properties>
+ </tile>
+ <tile id="35">
+  <properties>
+   <property name="depth" type="float" value="4"/>
+   <property name="isAIpath" type="bool" value="true"/>
+   <property name="name" value="brick 2"/>
    <property name="secret" value=""/>
    <property name="secret length" type="int" value="1"/>
   </properties>
@@ -368,15 +400,6 @@
    <property name="secret length" type="int" value="1"/>
   </properties>
  </tile>
- <tile id="57">
-  <properties>
-   <property name="depth" type="float" value="4"/>
-   <property name="isAIpath" type="bool" value="true"/>
-   <property name="name" value="wood 1 prison 1"/>
-   <property name="secret" value=""/>
-   <property name="secret length" type="int" value="1"/>
-  </properties>
- </tile>
  <tile id="58">
   <properties>
    <property name="depth" type="float" value="4"/>
@@ -386,26 +409,51 @@
    <property name="secret length" type="int" value="1"/>
   </properties>
  </tile>
- <tile id="60"/>
- <tile id="61"/>
- <tile id="62"/>
- <tile id="63"/>
- <tile id="75"/>
- <tile id="77"/>
- <tile id="50">
+ <tile id="57">
   <properties>
    <property name="depth" type="float" value="4"/>
    <property name="isAIpath" type="bool" value="true"/>
-   <property name="name" value="hexagon 1"/>
+   <property name="name" value="wood 1 prison 1"/>
    <property name="secret" value=""/>
    <property name="secret length" type="int" value="1"/>
   </properties>
  </tile>
+ <tile id="60">
+  <properties>
+   <property name="depth" type="float" value="4"/>
+   <property name="isAIpath" type="bool" value="true"/>
+   <property name="name" value="wood 1 prison 2"/>
+   <property name="secret" value=""/>
+   <property name="secret length" type="int" value="1"/>
+  </properties>
+ </tile>
+ <tile id="59">
+  <properties>
+   <property name="depth" type="float" value="4"/>
+   <property name="isAIpath" type="bool" value="true"/>
+   <property name="name" value="wood 1 prison 3"/>
+   <property name="secret" value=""/>
+   <property name="secret length" type="int" value="1"/>
+  </properties>
+ </tile>
+ <tile id="62"/>
+ <tile id="63"/>
+ <tile id="77"/>
+ <tile id="78"/>
  <tile id="34">
   <properties>
    <property name="depth" type="float" value="4"/>
    <property name="isAIpath" type="bool" value="true"/>
    <property name="name" value="brick 1"/>
+   <property name="secret" value=""/>
+   <property name="secret length" type="int" value="1"/>
+  </properties>
+ </tile>
+ <tile id="50">
+  <properties>
+   <property name="depth" type="float" value="4"/>
+   <property name="isAIpath" type="bool" value="true"/>
+   <property name="name" value="hexagon 1"/>
    <property name="secret" value=""/>
    <property name="secret length" type="int" value="1"/>
   </properties>
@@ -464,15 +512,6 @@
    <property name="secret length" type="int" value="1"/>
   </properties>
  </tile>
- <tile id="73">
-  <properties>
-   <property name="depth" type="float" value="4"/>
-   <property name="isAIpath" type="bool" value="true"/>
-   <property name="name" value="wood 2 prison 1"/>
-   <property name="secret" value=""/>
-   <property name="secret length" type="int" value="1"/>
-  </properties>
- </tile>
  <tile id="74">
   <properties>
    <property name="depth" type="float" value="4"/>
@@ -482,12 +521,37 @@
    <property name="secret length" type="int" value="1"/>
   </properties>
  </tile>
- <tile id="76"/>
- <tile id="78"/>
+ <tile id="73">
+  <properties>
+   <property name="depth" type="float" value="4"/>
+   <property name="isAIpath" type="bool" value="true"/>
+   <property name="name" value="wood 2 prison 1"/>
+   <property name="secret" value=""/>
+   <property name="secret length" type="int" value="1"/>
+  </properties>
+ </tile>
+ <tile id="76">
+  <properties>
+   <property name="depth" type="float" value="4"/>
+   <property name="isAIpath" type="bool" value="true"/>
+   <property name="name" value="wood 2 prison 2"/>
+   <property name="secret" value=""/>
+   <property name="secret length" type="int" value="1"/>
+  </properties>
+ </tile>
+ <tile id="75">
+  <properties>
+   <property name="depth" type="float" value="4"/>
+   <property name="isAIpath" type="bool" value="true"/>
+   <property name="name" value="wood 2 prison 3"/>
+   <property name="secret" value=""/>
+   <property name="secret length" type="int" value="1"/>
+  </properties>
+ </tile>
  <tile id="79"/>
  <tile id="102"/>
- <tile id="91"/>
  <tile id="92"/>
+ <tile id="93"/>
  <tile id="81">
   <properties>
    <property name="depth" type="float" value="4"/>
@@ -515,7 +579,6 @@
    <property name="secret length" type="int" value="1"/>
   </properties>
  </tile>
- <tile id="93"/>
  <tile id="94"/>
  <tile id="95"/>
  <tile id="96"/>
@@ -528,6 +591,7 @@
  <tile id="104"/>
  <tile id="105"/>
  <tile id="106"/>
+ <tile id="107"/>
  <tile id="80">
   <properties>
    <property name="depth" type="float" value="4"/>
@@ -573,7 +637,15 @@
    <property name="secret length" type="int" value="1"/>
   </properties>
  </tile>
- <tile id="107"/>
+ <tile id="91">
+  <properties>
+   <property name="depth" type="float" value="4"/>
+   <property name="isAIpath" type="bool" value="true"/>
+   <property name="name" value="light big plates secret"/>
+   <property name="secret" value=""/>
+   <property name="secret length" type="int" value="1"/>
+  </properties>
+ </tile>
  <tile id="108"/>
  <tile id="109"/>
  <tile id="110"/>

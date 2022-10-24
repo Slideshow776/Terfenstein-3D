@@ -86,6 +86,12 @@ public class WeaponHandler extends BaseActor {
             batch.draw(currentWeapon.shootAnimation.getKeyFrame(totalTime), getX(), getY(), getWidth(), getHeight());
     }
 
+    @Override
+    public boolean remove() {
+        crosshair.remove();
+        return super.remove();
+    }
+
     public void playerDied() {
         moveDown();
         crosshair.setVisible(false);
@@ -176,14 +182,18 @@ public class WeaponHandler extends BaseActor {
         }
     }
 
-    public Vector2 getSpread(boolean holdingDown, float fieldOfView) {
+    public Vector2 getSpread(boolean isHoldingDown, float fieldOfView) {
         int maxSpreadX = 0;
         int maxSpreadY = 0;
-        if (holdingDown || currentWeapon instanceof Shotgun) {
+        if (isHoldingDown || currentWeapon instanceof Shotgun) {
             maxSpreadX = (int) (Gdx.graphics.getWidth() / fieldOfView * currentWeapon.getSpreadAngle());
             maxSpreadY = (int) (maxSpreadX / BaseGame.aspectRatio);
         }
         return new Vector2(maxSpreadX, maxSpreadY);
+    }
+
+    public void setCrosshair(boolean isHoldingDown) {
+        crosshair.setCrosshairSize(isHoldingDown);
     }
 
     public void moveDown() {

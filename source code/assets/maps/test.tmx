@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.1" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="15" height="15" tilewidth="64" tileheight="64" infinite="0" nextlayerid="17" nextobjectid="66188">
+<map version="1.9" tiledversion="1.9.1" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="15" height="15" tilewidth="64" tileheight="64" infinite="0" nextlayerid="17" nextobjectid="66219">
  <tileset firstgid="1" source="Assets.tsx"/>
  <tileset firstgid="145" source="Tileset.tsx"/>
  <objectgroup id="7" name="U1" visible="0">
@@ -500,5 +500,36 @@
   <object id="66185" gid="1" x="576" y="448" width="64" height="64"/>
   <object id="66186" gid="1" x="640" y="448" width="64" height="64"/>
   <object id="66187" gid="1" x="512" y="448" width="64" height="64"/>
+  <object id="66188" gid="34" x="576" y="192" width="64" height="64"/>
+  <object id="66189" gid="34" x="576" y="192" width="64" height="64"/>
+  <object id="66190" gid="34" x="576" y="192" width="64" height="64"/>
+  <object id="66191" gid="34" x="576" y="192" width="64" height="64"/>
+  <object id="66192" gid="34" x="576" y="192" width="64" height="64"/>
+  <object id="66193" gid="34" x="576" y="192" width="64" height="64"/>
+  <object id="66194" gid="34" x="576" y="192" width="64" height="64"/>
+  <object id="66195" gid="34" x="576" y="192" width="64" height="64"/>
+  <object id="66196" gid="34" x="576" y="192" width="64" height="64"/>
+  <object id="66197" gid="34" x="576" y="192" width="64" height="64"/>
+  <object id="66198" gid="34" x="576" y="192" width="64" height="64"/>
+  <object id="66199" gid="34" x="576" y="192" width="64" height="64"/>
+  <object id="66200" gid="34" x="576" y="192" width="64" height="64"/>
+  <object id="66201" gid="34" x="576" y="192" width="64" height="64"/>
+  <object id="66202" gid="34" x="576" y="192" width="64" height="64"/>
+  <object id="66203" gid="34" x="576" y="192" width="64" height="64"/>
+  <object id="66204" gid="34" x="576" y="192" width="64" height="64"/>
+  <object id="66205" gid="34" x="576" y="192" width="64" height="64"/>
+  <object id="66206" gid="34" x="576" y="192" width="64" height="64"/>
+  <object id="66207" gid="34" x="576" y="192" width="64" height="64"/>
+  <object id="66208" gid="34" x="576" y="192" width="64" height="64"/>
+  <object id="66209" gid="34" x="576" y="192" width="64" height="64"/>
+  <object id="66210" gid="34" x="576" y="192" width="64" height="64"/>
+  <object id="66211" gid="34" x="576" y="192" width="64" height="64"/>
+  <object id="66212" gid="34" x="576" y="192" width="64" height="64"/>
+  <object id="66213" gid="34" x="576" y="192" width="64" height="64"/>
+  <object id="66214" gid="34" x="576" y="192" width="64" height="64"/>
+  <object id="66215" gid="34" x="576" y="192" width="64" height="64"/>
+  <object id="66216" gid="34" x="576" y="192" width="64" height="64"/>
+  <object id="66217" gid="34" x="576" y="192" width="64" height="64"/>
+  <object id="66218" gid="34" x="576" y="192" width="64" height="64"/>
  </objectgroup>
 </map>

@@ -157,7 +157,7 @@
  </tileset>
  <tileset firstgid="145" source="Tileset.tsx"/>
  <tileset firstgid="273" source="Assets.tsx"/>
- <objectgroup id="7" name="U1" visible="0">
+ <objectgroup id="7" name="U1">
   <object id="63886" gid="146" x="-64" y="1088" width="64" height="64"/>
   <object id="63887" gid="146" x="0" y="1088" width="64" height="64"/>
   <object id="63888" gid="146" x="64" y="1088" width="64" height="64"/>
@@ -1158,7 +1158,7 @@
   <object id="65656" gid="181" x="1792" y="320" width="64" height="64"/>
   <object id="65657" gid="181" x="1792" y="384" width="64" height="64"/>
   <object id="65658" gid="181" x="1792" y="448" width="64" height="64"/>
-  <object id="65660" gid="153" x="1792" y="576" width="64" height="64"/>
+  <object id="65660" gid="181" x="1792" y="576" width="64" height="64"/>
   <object id="65661" gid="181" x="1920" y="0" width="64" height="64"/>
   <object id="65662" gid="181" x="1984" y="0" width="64" height="64"/>
   <object id="65664" gid="181" x="2112" y="0" width="64" height="64"/>
@@ -1166,25 +1166,25 @@
   <object id="65666" gid="181" x="2240" y="0" width="64" height="64"/>
   <object id="65667" gid="181" x="2304" y="0" width="64" height="64"/>
   <object id="65668" gid="181" x="2368" y="0" width="64" height="64"/>
-  <object id="65670" gid="181" x="1792" y="640" width="64" height="64"/>
+  <object id="65670" gid="153" x="1792" y="640" width="64" height="64"/>
   <object id="65671" gid="181" x="1792" y="704" width="64" height="64"/>
   <object id="65672" gid="181" x="1792" y="768" width="64" height="64"/>
   <object id="65673" gid="181" x="1792" y="832" width="64" height="64"/>
   <object id="65674" gid="181" x="1792" y="1216" width="64" height="64"/>
   <object id="65675" gid="154" x="1792" y="1152" width="64" height="64"/>
   <object id="65676" gid="181" x="1792" y="1088" width="64" height="64"/>
-  <object id="65677" gid="154" x="1792" y="1024" width="64" height="64"/>
+  <object id="65677" gid="156" x="1792" y="1024" width="64" height="64"/>
   <object id="65678" gid="181" x="1792" y="960" width="64" height="64"/>
   <object id="65679" gid="181" x="1856" y="896" width="64" height="64"/>
   <object id="65680" gid="181" x="2048" y="896" width="64" height="64"/>
   <object id="65681" gid="181" x="2112" y="896" width="64" height="64"/>
   <object id="65682" gid="150" x="2176" y="896" width="64" height="64"/>
   <object id="65683" gid="181" x="2240" y="896" width="64" height="64"/>
-  <object id="65684" gid="154" x="1920" y="1280" width="64" height="64"/>
+  <object id="65684" gid="157" x="1920" y="1280" width="64" height="64"/>
   <object id="65685" gid="181" x="1984" y="1280" width="64" height="64"/>
   <object id="65686" gid="181" x="2048" y="1280" width="64" height="64"/>
-  <object id="65688" gid="152" x="2176" y="1280" width="64" height="64"/>
-  <object id="65689" gid="181" x="2240" y="1280" width="64" height="64"/>
+  <object id="65688" gid="181" x="2176" y="1280" width="64" height="64"/>
+  <object id="65689" gid="152" x="2240" y="1280" width="64" height="64"/>
   <object id="65690" gid="181" x="2432" y="896" width="64" height="64"/>
   <object id="65691" gid="181" x="2496" y="896" width="64" height="64"/>
   <object id="65692" gid="211" x="2560" y="896" width="64" height="64"/>
@@ -1198,7 +1198,7 @@
   <object id="65701" gid="181" x="2368" y="1280" width="64" height="64"/>
   <object id="65702" gid="154" x="2304" y="1280" width="64" height="64"/>
   <object id="65703" gid="211" x="2624" y="1280" width="64" height="64"/>
-  <object id="65704" gid="202" x="2688" y="1280" width="64" height="64"/>
+  <object id="65704" gid="205" x="2688" y="1280" width="64" height="64"/>
   <object id="65706" gid="211" x="2752" y="1280" width="64" height="64"/>
   <object id="65707" gid="211" x="2760.38" y="864" width="47.2424" height="64"/>
   <object id="65708" gid="212" x="2816" y="864" width="64" height="64"/>
@@ -1258,7 +1258,7 @@
   <object id="65764" gid="181" x="2544" y="960" width="32" height="64"/>
   <object id="65765" gid="154" x="2544" y="1024" width="32" height="64"/>
   <object id="65766" gid="181" x="2544" y="1088" width="32" height="64"/>
-  <object id="65767" gid="154" x="2544" y="1152" width="32" height="64"/>
+  <object id="65767" gid="156" x="2544" y="1152" width="32" height="64"/>
   <object id="65768" gid="181" x="2544" y="1216" width="32" height="64"/>
   <object id="65825" gid="163" x="1072" y="80" width="32" height="32"/>
   <object id="65826" gid="163" x="1072" y="-64" width="32" height="64"/>
@@ -2166,7 +2166,7 @@
   <object id="66171" gid="401" x="2624" y="1088" width="64" height="64"/>
   <object id="66172" gid="401" x="2624" y="1152" width="64" height="64"/>
  </objectgroup>
- <objectgroup id="8" name="actors">
+ <objectgroup id="8" name="actors" visible="0">
   <object id="63593" gid="2" x="-512" y="1088" width="64" height="64" rotation="269.242"/>
   <object id="63952" gid="1" x="512" y="896" width="64" height="64"/>
   <object id="65105" gid="65" x="2752" y="576" width="64" height="64"/>

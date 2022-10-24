@@ -121,9 +121,11 @@ public class MapLoader {
         tileTextures.add("brick 3 poster 2", "cliff 1 poster 2", "light big plates poster 2", "wood 1 poster 2");
         tileTextures.add("wood 2 poster 1", "wood 2 poster 2", "cliff 1 krans", "light big plates pipe up");
         tileTextures.add("light big plates pipe side", "light big plates pipe end", "light big plates 1 pipe down", "brick 3 prison 1");
-        tileTextures.add("wood 1 prison 1", "wood 2 prison 1", "cliff 1 prison 1", "");
+        tileTextures.add("wood 1 prison 1", "wood 2 prison 1", "cliff 1 prison 1", "light big plates secret");
         tileTextures.add("brick 3 eagle 1", "cliff 1 eagle 1", "light big plates eagle 1", "wood 1 eagle 1");
         tileTextures.add("wood 2 eagle 1", "light big plates 1 red carpet 1", "light big plates 1 red carpet 2", "light big plates 1 red carpet 3");
+        tileTextures.add("brick 3 prison 2", "wood 1 prison 2", "wood 2 prison 2", "cliff 1 prison 2");
+        tileTextures.add("brick 3 prison 3", "wood 1 prison 3", "wood 2 prison 3", "cliff 1 prison 3");
         // tileTextures.add("", "", "", "");
 
         for (String type : tileTypes) {
@@ -297,6 +299,15 @@ public class MapLoader {
                 enemies.add(new Fenrik(x, y, stage3D, player, rotation, tileGraph, floorTiles, stage, hud, decalBatch));
             shootable.add(enemies.get(enemies.size - 1));
 
+            int health = -1;
+            try {
+                health = props.get("health", Integer.class);
+            } catch (Exception exception) {
+
+            }
+            if (health == 0)
+                enemies.get(enemies.size - 1).decrementHealth(20);
+
             String patrol = props.get("patrol", String.class);
             if (patrol != null && patrol.equalsIgnoreCase("a") && patrols.size > 0)
                 enemies.get(enemies.size - 1).setPatrol(patrols.get(0));
@@ -373,7 +384,7 @@ public class MapLoader {
         types.add("lightBulb 1", "table 1", "chair 0", "chair 1");
         types.add("barrel 1", "flag 1", "trash 1", "lightBulb 2");
         types.add("vase 1", "vase 2", "palle 1", "forklift");
-        types.add("dog bed 1", "bed 1", "lightBulb 3");
+        types.add("dog bed 1", "bed 1", "lightBulb 3", "skeleton 1");
         // types.add("");
 
         for (String type : types) {

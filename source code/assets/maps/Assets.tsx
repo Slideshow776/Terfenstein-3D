@@ -3,6 +3,7 @@
  <image source="assets.png" width="1024" height="576"/>
  <tile id="0">
   <properties>
+   <property name="health" type="int" value="-1"/>
    <property name="name" value="menig"/>
   </properties>
  </tile>
@@ -13,21 +14,25 @@
  </tile>
  <tile id="2">
   <properties>
+   <property name="health" type="int" value="-1"/>
    <property name="name" value="hund"/>
   </properties>
  </tile>
  <tile id="3">
   <properties>
+   <property name="health" type="int" value="-1"/>
    <property name="name" value="sersjant"/>
   </properties>
  </tile>
  <tile id="4">
   <properties>
+   <property name="health" type="int" value="-1"/>
    <property name="name" value="prest"/>
   </properties>
  </tile>
  <tile id="5">
   <properties>
+   <property name="health" type="int" value="-1"/>
    <property name="name" value="fenrik"/>
   </properties>
  </tile>
@@ -268,6 +273,11 @@
  <tile id="130">
   <properties>
    <property name="name" value="lightBulb 3"/>
+  </properties>
+ </tile>
+ <tile id="131">
+  <properties>
+   <property name="name" value="skeleton 1"/>
   </properties>
  </tile>
 </tileset>

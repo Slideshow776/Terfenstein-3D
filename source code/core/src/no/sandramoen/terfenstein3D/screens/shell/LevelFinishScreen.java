@@ -218,12 +218,12 @@ public class LevelFinishScreen extends BaseScreen {
     }
 
     private void setMapMarkings() {
-        Vector2 level1 = new Vector2(Gdx.graphics.getWidth() * .48f, Gdx.graphics.getHeight() * .54f);
+        Vector2 level1 = new Vector2(Gdx.graphics.getWidth() * .33f, Gdx.graphics.getHeight() * .33f);
         Vector2 level2 = new Vector2(Gdx.graphics.getWidth() * .5f, Gdx.graphics.getHeight() * .33f);
-        Vector2 level3 = new Vector2(Gdx.graphics.getWidth() * .44f, Gdx.graphics.getHeight() * .39f);
-        Vector2 level4 = new Vector2(Gdx.graphics.getWidth() * .55f, Gdx.graphics.getHeight() * .39f);
+        Vector2 level3 = new Vector2(Gdx.graphics.getWidth() * .55f, Gdx.graphics.getHeight() * .39f);
+        Vector2 level4 = new Vector2(Gdx.graphics.getWidth() * .44f, Gdx.graphics.getHeight() * .39f);
         Vector2 level5 = new Vector2(Gdx.graphics.getWidth() * .58f, Gdx.graphics.getHeight() * .33f);
-        Vector2 level6 = new Vector2(Gdx.graphics.getWidth() * .33f, Gdx.graphics.getHeight() * .33f);
+        Vector2 level6 = new Vector2(Gdx.graphics.getWidth() * .48f, Gdx.graphics.getHeight() * .54f);
 
         explosionImage0.setVisible(true);
         explosionImage0.setPosition(level1.x, level1.y);

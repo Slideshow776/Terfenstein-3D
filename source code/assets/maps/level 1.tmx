@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.1" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="38" height="48" tilewidth="64" tileheight="64" infinite="0" nextlayerid="17" nextobjectid="69080">
+<map version="1.9" tiledversion="1.9.1" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="38" height="48" tilewidth="64" tileheight="64" infinite="0" nextlayerid="17" nextobjectid="69211">
  <tileset firstgid="1" name="Assets" tilewidth="64" tileheight="64" tilecount="144" columns="16" objectalignment="center">
   <image source="assets.png" width="1024" height="576"/>
   <tile id="0">
@@ -786,30 +786,105 @@
   <object id="67248" gid="148" x="1984" y="2816" width="64" height="64"/>
   <object id="67249" gid="148" x="2048" y="2816" width="64" height="64"/>
   <object id="67250" gid="148" x="2112" y="2816" width="64" height="64"/>
-  <object id="68676" gid="146" x="448" y="1728" width="64" height="64"/>
-  <object id="68677" gid="146" x="448" y="1792" width="64" height="64"/>
-  <object id="68678" gid="146" x="384" y="1792" width="64" height="64"/>
-  <object id="68679" gid="146" x="320" y="1792" width="64" height="64"/>
-  <object id="68680" gid="146" x="320" y="1856" width="64" height="64"/>
-  <object id="68681" gid="146" x="320" y="1920" width="64" height="64"/>
-  <object id="68682" gid="146" x="320" y="1984" width="64" height="64"/>
-  <object id="68683" gid="146" x="384" y="1984" width="64" height="64"/>
-  <object id="68684" gid="146" x="384" y="1920" width="64" height="64"/>
-  <object id="68685" gid="146" x="384" y="1856" width="64" height="64"/>
-  <object id="68686" gid="146" x="448" y="1856" width="64" height="64"/>
-  <object id="68688" gid="146" x="448" y="1984" width="64" height="64"/>
-  <object id="68689" gid="146" x="512" y="1984" width="64" height="64"/>
-  <object id="68690" gid="146" x="512" y="1920" width="64" height="64"/>
-  <object id="68691" gid="146" x="512" y="1856" width="64" height="64"/>
-  <object id="68692" gid="146" x="512" y="1792" width="64" height="64"/>
-  <object id="68693" gid="146" x="576" y="1792" width="64" height="64"/>
-  <object id="68694" gid="146" x="576" y="1856" width="64" height="64"/>
-  <object id="68695" gid="146" x="576" y="1920" width="64" height="64"/>
-  <object id="68696" gid="146" x="576" y="1984" width="64" height="64"/>
-  <object id="68752" gid="146" x="448" y="1664" width="64" height="64"/>
-  <object id="68887" gid="146" x="384" y="1856" width="64" height="64"/>
-  <object id="68888" gid="146" x="384" y="1792" width="64" height="64"/>
-  <object id="68893" gid="146" x="448" y="1920" width="64" height="64"/>
+  <object id="68676" gid="146" x="256" y="1664" width="64" height="64"/>
+  <object id="68677" gid="146" x="256" y="1728" width="64" height="64">
+   <properties>
+    <property name="depth" type="float" value="4"/>
+   </properties>
+  </object>
+  <object id="68678" gid="146" x="192" y="1728" width="64" height="64"/>
+  <object id="68679" gid="146" x="128" y="1728" width="64" height="64">
+   <properties>
+    <property name="depth" type="float" value="4"/>
+   </properties>
+  </object>
+  <object id="68680" gid="146" x="128" y="1792" width="64" height="64">
+   <properties>
+    <property name="depth" type="float" value="4"/>
+   </properties>
+  </object>
+  <object id="68681" gid="146" x="128" y="1856" width="64" height="64">
+   <properties>
+    <property name="depth" type="float" value="4"/>
+   </properties>
+  </object>
+  <object id="68682" gid="146" x="128" y="1920" width="64" height="64">
+   <properties>
+    <property name="depth" type="float" value="4"/>
+   </properties>
+  </object>
+  <object id="68683" gid="146" x="192" y="1920" width="64" height="64">
+   <properties>
+    <property name="depth" type="float" value="4"/>
+   </properties>
+  </object>
+  <object id="68684" gid="146" x="192" y="1856" width="64" height="64">
+   <properties>
+    <property name="depth" type="float" value="4"/>
+   </properties>
+  </object>
+  <object id="68685" gid="146" x="192" y="1792" width="64" height="64"/>
+  <object id="68686" gid="146" x="256" y="1792" width="64" height="64">
+   <properties>
+    <property name="depth" type="float" value="4"/>
+   </properties>
+  </object>
+  <object id="68688" gid="146" x="256" y="1920" width="64" height="64">
+   <properties>
+    <property name="depth" type="float" value="4"/>
+   </properties>
+  </object>
+  <object id="68689" gid="146" x="320" y="1920" width="64" height="64">
+   <properties>
+    <property name="depth" type="float" value="4"/>
+   </properties>
+  </object>
+  <object id="68690" gid="146" x="320" y="1856" width="64" height="64">
+   <properties>
+    <property name="depth" type="float" value="4"/>
+   </properties>
+  </object>
+  <object id="68691" gid="146" x="320" y="1792" width="64" height="64">
+   <properties>
+    <property name="depth" type="float" value="4"/>
+   </properties>
+  </object>
+  <object id="68692" gid="146" x="320" y="1728" width="64" height="64">
+   <properties>
+    <property name="depth" type="float" value="4"/>
+   </properties>
+  </object>
+  <object id="68693" gid="146" x="384" y="1728" width="64" height="64">
+   <properties>
+    <property name="depth" type="float" value="4"/>
+   </properties>
+  </object>
+  <object id="68694" gid="146" x="384" y="1792" width="64" height="64">
+   <properties>
+    <property name="depth" type="float" value="4"/>
+   </properties>
+  </object>
+  <object id="68695" gid="146" x="384" y="1856" width="64" height="64">
+   <properties>
+    <property name="depth" type="float" value="4"/>
+   </properties>
+  </object>
+  <object id="68696" gid="146" x="384" y="1920" width="64" height="64">
+   <properties>
+    <property name="depth" type="float" value="4"/>
+   </properties>
+  </object>
+  <object id="68887" gid="146" x="192" y="1792" width="64" height="64">
+   <properties>
+    <property name="depth" type="float" value="4"/>
+   </properties>
+  </object>
+  <object id="68888" gid="146" x="192" y="1728" width="64" height="64">
+   <properties>
+    <property name="depth" type="float" value="4"/>
+   </properties>
+  </object>
+  <object id="68893" gid="146" x="256" y="1856" width="64" height="64"/>
   <object id="68928" gid="146" x="1920" y="640" width="64" height="64" rotation="90"/>
   <object id="68930" gid="146" x="576" y="640" width="64" height="64"/>
   <object id="68935" gid="146" x="1792" y="2176" width="64" height="64"/>
@@ -821,8 +896,44 @@
   <object id="68958" gid="146" x="2304" y="2496" width="64" height="64"/>
   <object id="68959" gid="146" x="2304" y="2176" width="64" height="64"/>
   <object id="68963" gid="146" x="1856" y="1408" width="64" height="64"/>
+  <object id="69111" gid="146" x="576" y="1728" width="64" height="64"/>
+  <object id="69112" gid="146" x="576" y="1792" width="64" height="64"/>
+  <object id="69113" gid="146" x="640" y="1728" width="64" height="64"/>
+  <object id="69114" gid="146" x="704" y="1728" width="64" height="64"/>
+  <object id="69115" gid="146" x="704" y="1792" width="64" height="64"/>
+  <object id="69116" gid="146" x="640" y="1792" width="64" height="64"/>
+  <object id="69117" gid="146" x="576" y="1856" width="64" height="64"/>
+  <object id="69118" gid="146" x="640" y="1856" width="64" height="64"/>
+  <object id="69119" gid="146" x="704" y="1856" width="64" height="64"/>
+  <object id="69120" gid="146" x="768" y="1792" width="64" height="64"/>
+  <object id="69121" gid="146" x="832" y="1792" width="64" height="64"/>
+  <object id="69122" gid="146" x="896" y="1792" width="64" height="64"/>
+  <object id="69123" gid="146" x="896" y="1728" width="64" height="64"/>
+  <object id="69124" gid="146" x="896" y="1664" width="64" height="64"/>
+  <object id="69125" gid="146" x="896" y="1600" width="64" height="64"/>
+  <object id="69126" gid="146" x="832" y="1600" width="64" height="64"/>
+  <object id="69127" gid="146" x="768" y="1600" width="64" height="64"/>
+  <object id="69129" gid="146" x="640" y="1664" width="64" height="64"/>
+  <object id="69192" gid="181" x="64" y="1728" width="64" height="64"/>
+  <object id="69193" gid="181" x="64" y="1792" width="64" height="64"/>
+  <object id="69194" gid="181" x="64" y="1856" width="64" height="64"/>
+  <object id="69195" gid="181" x="64" y="1920" width="64" height="64"/>
+  <object id="69196" gid="181" x="128" y="1984" width="64" height="64"/>
+  <object id="69197" gid="181" x="192" y="1984" width="64" height="64"/>
+  <object id="69198" gid="181" x="256" y="1984" width="64" height="64"/>
+  <object id="69199" gid="181" x="320" y="1984" width="64" height="64"/>
+  <object id="69200" gid="181" x="384" y="1984" width="64" height="64"/>
+  <object id="69201" gid="181" x="448" y="1920" width="64" height="64"/>
+  <object id="69202" gid="181" x="448" y="1856" width="64" height="64"/>
+  <object id="69203" gid="181" x="448" y="1792" width="64" height="64"/>
+  <object id="69204" gid="181" x="448" y="1728" width="64" height="64"/>
+  <object id="69205" gid="181" x="448" y="1664" width="64" height="64"/>
+  <object id="69206" gid="181" x="384" y="1664" width="64" height="64"/>
+  <object id="69207" gid="181" x="320" y="1664" width="64" height="64"/>
+  <object id="69208" gid="181" x="192" y="1664" width="64" height="64"/>
+  <object id="69209" gid="181" x="128" y="1664" width="64" height="64"/>
  </objectgroup>
- <objectgroup id="11" name="1st floor">
+ <objectgroup id="11" name="1st floor" opacity="0.9">
   <object id="67069" gid="163" x="320" y="896" width="64" height="64"/>
   <object id="67070" gid="163" x="320" y="832" width="64" height="64"/>
   <object id="67071" gid="163" x="576" y="896" width="64" height="64"/>
@@ -1025,11 +1136,15 @@
    </properties>
   </object>
   <object id="67340" gid="165" x="2176" y="1856" width="64" height="64"/>
-  <object id="68617" gid="181" x="768" y="1600" width="64" height="64"/>
+  <object id="68617" gid="181" x="768" y="1600" width="64" height="64">
+   <properties>
+    <property name="secret" value=""/>
+   </properties>
+  </object>
   <object id="68618" gid="181" x="768" y="1536" width="64" height="64"/>
   <object id="68619" gid="181" x="768" y="1472" width="64" height="64"/>
   <object id="68620" gid="181" x="768" y="1408" width="64" height="64"/>
-  <object id="68621" gid="181" x="768" y="1344" width="64" height="64">
+  <object id="68621" gid="155" x="768" y="1344" width="64" height="64">
    <properties>
     <property name="secret" value="up"/>
    </properties>
@@ -1055,34 +1170,27 @@
   <object id="68642" gid="181" x="64" y="1472" width="64" height="64"/>
   <object id="68643" gid="181" x="64" y="1536" width="64" height="64"/>
   <object id="68644" gid="181" x="64" y="1600" width="64" height="64"/>
-  <object id="68645" gid="181" x="128" y="1664" width="64" height="64"/>
-  <object id="68646" gid="181" x="192" y="1664" width="64" height="64"/>
-  <object id="68647" gid="181" x="256" y="1664" width="64" height="64"/>
-  <object id="68648" gid="181" x="320" y="1664" width="64" height="64"/>
-  <object id="68649" gid="181" x="384" y="1664" width="64" height="64"/>
   <object id="68651" gid="181" x="512" y="1664" width="64" height="64"/>
-  <object id="68652" gid="181" x="576" y="1664" width="64" height="64"/>
-  <object id="68653" gid="181" x="640" y="1664" width="64" height="64"/>
-  <object id="68654" gid="181" x="704" y="1664" width="64" height="64"/>
-  <object id="68656" gid="181" x="576" y="1472" width="64" height="64"/>
-  <object id="68657" gid="181" x="640" y="1472" width="64" height="64"/>
+  <object id="68652" gid="181" x="576" y="1648" width="64" height="32"/>
+  <object id="68654" gid="181" x="704" y="1648" width="64" height="32"/>
+  <object id="68657" gid="181" x="656" y="1472" width="32" height="64"/>
   <object id="68658" gid="181" x="704" y="1472" width="64" height="64"/>
-  <object id="68659" gid="181" x="384" y="1728" width="64" height="64"/>
-  <object id="68660" gid="181" x="512" y="1728" width="64" height="64"/>
-  <object id="68661" gid="181" x="576" y="1728" width="64" height="64"/>
-  <object id="68662" gid="181" x="320" y="1728" width="64" height="64"/>
-  <object id="68663" gid="181" x="256" y="1792" width="64" height="64"/>
-  <object id="68664" gid="181" x="640" y="1792" width="64" height="64"/>
-  <object id="68665" gid="155" x="640" y="1856" width="64" height="64"/>
-  <object id="68666" gid="181" x="640" y="1920" width="64" height="64"/>
-  <object id="68667" gid="181" x="640" y="1984" width="64" height="64"/>
-  <object id="68668" gid="181" x="576" y="2048" width="64" height="64"/>
-  <object id="68669" gid="181" x="512" y="2048" width="64" height="64"/>
-  <object id="68671" gid="181" x="384" y="2048" width="64" height="64"/>
-  <object id="68672" gid="181" x="320" y="2048" width="64" height="64"/>
-  <object id="68673" gid="181" x="256" y="1984" width="64" height="64"/>
-  <object id="68674" gid="181" x="256" y="1920" width="64" height="64"/>
-  <object id="68675" gid="154" x="256" y="1856" width="64" height="64"/>
+  <object id="68659" gid="181" x="192" y="1664" width="64" height="64"/>
+  <object id="68660" gid="181" x="320" y="1664" width="64" height="64"/>
+  <object id="68661" gid="181" x="384" y="1664" width="64" height="64"/>
+  <object id="68662" gid="181" x="128" y="1664" width="64" height="64"/>
+  <object id="68663" gid="181" x="64" y="1728" width="64" height="64"/>
+  <object id="68664" gid="181" x="448" y="1728" width="64" height="64"/>
+  <object id="68665" gid="155" x="448" y="1792" width="64" height="64"/>
+  <object id="68666" gid="154" x="448" y="1856" width="64" height="64"/>
+  <object id="68667" gid="181" x="448" y="1920" width="64" height="64"/>
+  <object id="68668" gid="181" x="384" y="1984" width="64" height="64"/>
+  <object id="68669" gid="157" x="320" y="1984" width="64" height="64"/>
+  <object id="68671" gid="156" x="192" y="1984" width="64" height="64"/>
+  <object id="68672" gid="181" x="128" y="1984" width="64" height="64"/>
+  <object id="68673" gid="181" x="64" y="1920" width="64" height="64"/>
+  <object id="68674" gid="181" x="64" y="1856" width="64" height="64"/>
+  <object id="68675" gid="154" x="64" y="1792" width="64" height="64"/>
   <object id="68770" gid="163" x="1792" y="2048" width="64" height="64"/>
   <object id="68771" gid="163" x="1856" y="1984" width="64" height="64"/>
   <object id="68772" gid="163" x="1792" y="1984" width="64" height="64"/>
@@ -1123,7 +1231,7 @@
    </properties>
   </object>
   <object id="68967" gid="182" x="768" y="384" width="64" height="64"/>
-  <object id="68968" gid="152" x="448" y="2048" width="64" height="64"/>
+  <object id="68968" gid="152" x="256" y="1984" width="64" height="64"/>
   <object id="68969" gid="185" x="2368" y="1344" width="64" height="64"/>
   <object id="68970" gid="184" x="1664" y="1472" width="64" height="64"/>
   <object id="68971" gid="184" x="2176" y="2048" width="64" height="64"/>
@@ -1131,24 +1239,42 @@
   <object id="68978" gid="231" x="1664" y="1152" width="64" height="64"/>
   <object id="68979" gid="230" x="1664" y="1216" width="64" height="64"/>
   <object id="68980" gid="229" x="1664" y="1280" width="64" height="64"/>
-  <object id="69060" gid="310" x="576" y="1952" width="64" height="64"/>
-  <object id="69061" gid="310" x="576" y="1888" width="64" height="64"/>
-  <object id="69062" gid="310" x="448" y="768" width="64" height="64"/>
-  <object id="69063" gid="310" x="864" y="512" width="64" height="64"/>
-  <object id="69064" gid="310" x="800" y="512" width="64" height="64"/>
-  <object id="69065" gid="310" x="736" y="512" width="64" height="64"/>
   <object id="69066" gid="310" x="1728" y="1472" width="64" height="64"/>
   <object id="69067" gid="310" x="1760" y="1472" width="64" height="64"/>
   <object id="69068" gid="310" x="1792" y="1472" width="64" height="64"/>
   <object id="69069" gid="310" x="1744" y="1495" width="64" height="64"/>
   <object id="69070" gid="310" x="1777.5" y="1497.5" width="64" height="64"/>
-  <object id="69072" gid="310" x="2048" y="1824" width="64" height="64"/>
-  <object id="69073" gid="310" x="2048" y="1888" width="64" height="64"/>
-  <object id="69074" gid="310" x="2016" y="2688" width="64" height="64"/>
-  <object id="69075" gid="310" x="2080" y="2688" width="64" height="64"/>
-  <object id="69076" gid="310" x="2112" y="2720" width="64" height="64"/>
+  <object id="69082" gid="181" x="448" y="1664" width="64" height="64"/>
+  <object id="69085" gid="154" x="512" y="1856" width="64" height="64"/>
+  <object id="69086" gid="156" x="512" y="1792" width="64" height="64"/>
+  <object id="69087" gid="157" x="512" y="1728" width="64" height="64"/>
+  <object id="69089" gid="156" x="768" y="1728" width="64" height="64"/>
+  <object id="69090" gid="154" x="768.5" y="1792" width="63" height="64">
+   <properties>
+    <property name="secret" value=""/>
+   </properties>
+  </object>
+  <object id="69091" gid="154" x="768" y="1856" width="64" height="64"/>
+  <object id="69093" gid="157" x="704" y="1920" width="64" height="64"/>
+  <object id="69094" gid="154" x="640" y="1920" width="64" height="64"/>
+  <object id="69095" gid="154" x="576" y="1920" width="64" height="64"/>
+  <object id="69096" gid="181" x="768" y="1664" width="64" height="64"/>
+  <object id="69097" gid="181" x="832" y="1728" width="64" height="64"/>
+  <object id="69098" gid="181" x="832" y="1856" width="64" height="64"/>
+  <object id="69099" gid="181" x="896" y="1856" width="64" height="64"/>
+  <object id="69100" gid="181" x="960" y="1792" width="64" height="64"/>
+  <object id="69101" gid="181" x="960" y="1728" width="64" height="64"/>
+  <object id="69102" gid="181" x="960" y="1664" width="64" height="64"/>
+  <object id="69103" gid="181" x="832" y="1664" width="64" height="64"/>
+  <object id="69104" gid="181" x="832" y="1536" width="64" height="64"/>
+  <object id="69105" gid="181" x="896" y="1536" width="64" height="64"/>
+  <object id="69106" gid="181" x="960" y="1600" width="64" height="64"/>
+  <object id="69158" gid="181" x="576" y="1680" width="64" height="32"/>
+  <object id="69159" gid="181" x="704" y="1680" width="64" height="32"/>
+  <object id="69162" gid="181" x="624" y="1456" width="32" height="32"/>
+  <object id="69163" gid="181" x="635.327" y="1476.7" width="45.2274" height="32" rotation="45"/>
  </objectgroup>
- <objectgroup id="12" name="2nd floor">
+ <objectgroup id="12" name="2nd floor" visible="0">
   <object id="67341" gid="181" x="768" y="1600" width="64" height="64">
    <properties>
     <property name="isAIpath" type="bool" value="false"/>
@@ -1285,31 +1411,6 @@
    </properties>
   </object>
   <object id="67369" gid="181" x="64" y="1600" width="64" height="64">
-   <properties>
-    <property name="isAIpath" type="bool" value="false"/>
-   </properties>
-  </object>
-  <object id="67370" gid="181" x="128" y="1664" width="64" height="64">
-   <properties>
-    <property name="isAIpath" type="bool" value="false"/>
-   </properties>
-  </object>
-  <object id="67371" gid="181" x="192" y="1664" width="64" height="64">
-   <properties>
-    <property name="isAIpath" type="bool" value="false"/>
-   </properties>
-  </object>
-  <object id="67372" gid="181" x="256" y="1664" width="64" height="64">
-   <properties>
-    <property name="isAIpath" type="bool" value="false"/>
-   </properties>
-  </object>
-  <object id="67373" gid="181" x="320" y="1664" width="64" height="64">
-   <properties>
-    <property name="isAIpath" type="bool" value="false"/>
-   </properties>
-  </object>
-  <object id="67374" gid="181" x="384" y="1664" width="64" height="64">
    <properties>
     <property name="isAIpath" type="bool" value="false"/>
    </properties>
@@ -2984,97 +3085,87 @@
     <property name="isAIpath" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="68697" gid="181" x="384" y="1728" width="64" height="64">
+  <object id="68697" gid="181" x="192" y="1664" width="64" height="64">
    <properties>
     <property name="isAIpath" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="68698" gid="181" x="512" y="1728" width="64" height="64">
+  <object id="68698" gid="181" x="320" y="1664" width="64" height="64">
    <properties>
     <property name="isAIpath" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="68699" gid="181" x="576" y="1728" width="64" height="64">
+  <object id="68699" gid="181" x="384" y="1664" width="64" height="64">
    <properties>
     <property name="isAIpath" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="68700" gid="181" x="320" y="1728" width="64" height="64">
+  <object id="68700" gid="181" x="128" y="1664" width="64" height="64">
    <properties>
     <property name="isAIpath" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="68701" gid="181" x="256" y="1792" width="64" height="64">
+  <object id="68701" gid="181" x="64" y="1728" width="64" height="64">
    <properties>
     <property name="isAIpath" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="68702" gid="181" x="640" y="1792" width="64" height="64">
+  <object id="68702" gid="181" x="448" y="1728" width="64" height="64">
    <properties>
     <property name="isAIpath" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="68703" gid="181" x="640" y="1856" width="64" height="64">
+  <object id="68703" gid="181" x="448" y="1792" width="64" height="64">
    <properties>
     <property name="isAIpath" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="68704" gid="181" x="640" y="1920" width="64" height="64">
+  <object id="68704" gid="181" x="448" y="1856" width="64" height="64">
    <properties>
     <property name="isAIpath" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="68705" gid="181" x="640" y="1984" width="64" height="64">
+  <object id="68705" gid="181" x="448" y="1920" width="64" height="64">
    <properties>
     <property name="isAIpath" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="68706" gid="181" x="576" y="2048" width="64" height="64">
+  <object id="68706" gid="181" x="384" y="1984" width="64" height="64">
    <properties>
     <property name="isAIpath" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="68707" gid="181" x="512" y="2048" width="64" height="64">
+  <object id="68707" gid="181" x="320" y="1984" width="64" height="64">
    <properties>
     <property name="isAIpath" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="68708" gid="181" x="448" y="2048" width="64" height="64">
+  <object id="68708" gid="181" x="256" y="1984" width="64" height="64">
    <properties>
     <property name="isAIpath" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="68709" gid="181" x="384" y="2048" width="64" height="64">
+  <object id="68709" gid="181" x="192" y="1984" width="64" height="64">
    <properties>
     <property name="isAIpath" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="68710" gid="181" x="320" y="2048" width="64" height="64">
+  <object id="68710" gid="181" x="128" y="1984" width="64" height="64">
    <properties>
     <property name="isAIpath" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="68711" gid="181" x="256" y="1984" width="64" height="64">
+  <object id="68711" gid="181" x="64" y="1920" width="64" height="64">
    <properties>
     <property name="isAIpath" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="68712" gid="181" x="256" y="1920" width="64" height="64">
+  <object id="68712" gid="181" x="64" y="1856" width="64" height="64">
    <properties>
     <property name="isAIpath" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="68713" gid="181" x="256" y="1856" width="64" height="64">
-   <properties>
-    <property name="isAIpath" type="bool" value="false"/>
-   </properties>
-  </object>
-  <object id="68764" gid="181" x="576" y="1472" width="64" height="64">
-   <properties>
-    <property name="isAIpath" type="bool" value="false"/>
-   </properties>
-  </object>
-  <object id="68765" gid="181" x="640" y="1472" width="64" height="64">
+  <object id="68713" gid="181" x="64" y="1792" width="64" height="64">
    <properties>
     <property name="isAIpath" type="bool" value="false"/>
    </properties>
@@ -3189,6 +3280,26 @@
     <property name="isAIpath" type="bool" value="false"/>
    </properties>
   </object>
+  <object id="69135" gid="181" x="576" y="1728" width="64" height="64"/>
+  <object id="69136" gid="181" x="576" y="1792" width="64" height="64"/>
+  <object id="69137" gid="181" x="640" y="1728" width="64" height="64"/>
+  <object id="69138" gid="181" x="640" y="1792" width="64" height="64"/>
+  <object id="69139" gid="181" x="704" y="1728" width="64" height="64"/>
+  <object id="69140" gid="181" x="704" y="1792" width="64" height="64"/>
+  <object id="69141" gid="181" x="704" y="1856" width="64" height="64"/>
+  <object id="69142" gid="181" x="640" y="1856" width="64" height="64"/>
+  <object id="69143" gid="181" x="576" y="1856" width="64" height="64"/>
+  <object id="69145" gid="181" x="448" y="1664" width="64" height="64"/>
+  <object id="69146" gid="181" x="768" y="1792" width="64" height="64"/>
+  <object id="69147" gid="181" x="832" y="1792" width="64" height="64"/>
+  <object id="69148" gid="181" x="896" y="1792" width="64" height="64"/>
+  <object id="69149" gid="181" x="896" y="1728" width="64" height="64"/>
+  <object id="69150" gid="181" x="896" y="1664" width="64" height="64"/>
+  <object id="69151" gid="181" x="896" y="1600" width="64" height="64"/>
+  <object id="69152" gid="181" x="832" y="1600" width="64" height="64"/>
+  <object id="69164" gid="181" x="656" y="1472" width="32" height="64"/>
+  <object id="69165" gid="181" x="624" y="1456" width="32" height="32"/>
+  <object id="69166" gid="181" x="635.327" y="1476.7" width="45.2274" height="32" rotation="45"/>
  </objectgroup>
  <objectgroup id="15" name="3rd floor" visible="0">
   <object id="67989" gid="164" x="960" y="768" width="64" height="64">
@@ -4331,31 +4442,6 @@
     <property name="isAIpath" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="68606" gid="181" x="128" y="1664" width="64" height="64">
-   <properties>
-    <property name="isAIpath" type="bool" value="false"/>
-   </properties>
-  </object>
-  <object id="68607" gid="181" x="192" y="1664" width="64" height="64">
-   <properties>
-    <property name="isAIpath" type="bool" value="false"/>
-   </properties>
-  </object>
-  <object id="68608" gid="181" x="256" y="1664" width="64" height="64">
-   <properties>
-    <property name="isAIpath" type="bool" value="false"/>
-   </properties>
-  </object>
-  <object id="68609" gid="181" x="320" y="1664" width="64" height="64">
-   <properties>
-    <property name="isAIpath" type="bool" value="false"/>
-   </properties>
-  </object>
-  <object id="68610" gid="181" x="384" y="1664" width="64" height="64">
-   <properties>
-    <property name="isAIpath" type="bool" value="false"/>
-   </properties>
-  </object>
   <object id="68611" gid="181" x="448" y="1664" width="64" height="64">
    <properties>
     <property name="isAIpath" type="bool" value="false"/>
@@ -4386,97 +4472,87 @@
     <property name="isAIpath" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="68714" gid="181" x="384" y="1728" width="64" height="64">
+  <object id="68714" gid="181" x="192" y="1664" width="64" height="64">
    <properties>
     <property name="isAIpath" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="68715" gid="181" x="512" y="1728" width="64" height="64">
+  <object id="68715" gid="181" x="320" y="1664" width="64" height="64">
    <properties>
     <property name="isAIpath" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="68716" gid="181" x="576" y="1728" width="64" height="64">
+  <object id="68716" gid="181" x="384" y="1664" width="64" height="64">
    <properties>
     <property name="isAIpath" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="68717" gid="181" x="320" y="1728" width="64" height="64">
+  <object id="68717" gid="181" x="128" y="1664" width="64" height="64">
    <properties>
     <property name="isAIpath" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="68718" gid="181" x="256" y="1792" width="64" height="64">
+  <object id="68718" gid="181" x="64" y="1728" width="64" height="64">
    <properties>
     <property name="isAIpath" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="68719" gid="181" x="640" y="1792" width="64" height="64">
+  <object id="68719" gid="181" x="448" y="1728" width="64" height="64">
    <properties>
     <property name="isAIpath" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="68720" gid="181" x="640" y="1856" width="64" height="64">
+  <object id="68720" gid="181" x="448" y="1792" width="64" height="64">
    <properties>
     <property name="isAIpath" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="68721" gid="181" x="640" y="1920" width="64" height="64">
+  <object id="68721" gid="181" x="448" y="1856" width="64" height="64">
    <properties>
     <property name="isAIpath" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="68722" gid="181" x="640" y="1984" width="64" height="64">
+  <object id="68722" gid="181" x="448" y="1920" width="64" height="64">
    <properties>
     <property name="isAIpath" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="68723" gid="181" x="576" y="2048" width="64" height="64">
+  <object id="68723" gid="181" x="384" y="1984" width="64" height="64">
    <properties>
     <property name="isAIpath" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="68724" gid="181" x="512" y="2048" width="64" height="64">
+  <object id="68724" gid="181" x="320" y="1984" width="64" height="64">
    <properties>
     <property name="isAIpath" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="68725" gid="181" x="448" y="2048" width="64" height="64">
+  <object id="68725" gid="181" x="256" y="1984" width="64" height="64">
    <properties>
     <property name="isAIpath" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="68726" gid="181" x="384" y="2048" width="64" height="64">
+  <object id="68726" gid="181" x="192" y="1984" width="64" height="64">
    <properties>
     <property name="isAIpath" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="68727" gid="181" x="320" y="2048" width="64" height="64">
+  <object id="68727" gid="181" x="128" y="1984" width="64" height="64">
    <properties>
     <property name="isAIpath" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="68728" gid="181" x="256" y="1984" width="64" height="64">
+  <object id="68728" gid="181" x="64" y="1920" width="64" height="64">
    <properties>
     <property name="isAIpath" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="68729" gid="181" x="256" y="1920" width="64" height="64">
+  <object id="68729" gid="181" x="64" y="1856" width="64" height="64">
    <properties>
     <property name="isAIpath" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="68730" gid="181" x="256" y="1856" width="64" height="64">
-   <properties>
-    <property name="isAIpath" type="bool" value="false"/>
-   </properties>
-  </object>
-  <object id="68767" gid="181" x="576" y="1472" width="64" height="64">
-   <properties>
-    <property name="isAIpath" type="bool" value="false"/>
-   </properties>
-  </object>
-  <object id="68768" gid="181" x="640" y="1472" width="64" height="64">
+  <object id="68730" gid="181" x="64" y="1792" width="64" height="64">
    <properties>
     <property name="isAIpath" type="bool" value="false"/>
    </properties>
@@ -4486,11 +4562,14 @@
     <property name="isAIpath" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="68911" gid="178" x="448" y="1920" width="64" height="64">
+  <object id="68911" gid="178" x="256" y="1856" width="64" height="64">
    <properties>
     <property name="isAIpath" type="bool" value="false"/>
    </properties>
   </object>
+  <object id="69167" gid="181" x="656" y="1472" width="32" height="64"/>
+  <object id="69168" gid="181" x="624" y="1456" width="32" height="32"/>
+  <object id="69169" gid="181" x="635.327" y="1476.7" width="45.2274" height="32" rotation="45"/>
  </objectgroup>
  <objectgroup id="16" name="4th floor" visible="0">
   <object id="68478" gid="178" x="128" y="1600" width="64" height="64">
@@ -4993,107 +5072,107 @@
     <property name="isAIpath" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="68731" gid="178" x="448" y="1728" width="64" height="64">
+  <object id="68731" gid="178" x="256" y="1664" width="64" height="64">
    <properties>
     <property name="isAIpath" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="68732" gid="178" x="448" y="1792" width="64" height="64">
+  <object id="68732" gid="178" x="256" y="1728" width="64" height="64">
    <properties>
     <property name="isAIpath" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="68733" gid="178" x="384" y="1792" width="64" height="64">
+  <object id="68733" gid="178" x="192" y="1728" width="64" height="64">
    <properties>
     <property name="isAIpath" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="68734" gid="178" x="320" y="1792" width="64" height="64">
+  <object id="68734" gid="178" x="128" y="1728" width="64" height="64">
    <properties>
     <property name="isAIpath" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="68735" gid="178" x="320" y="1856" width="64" height="64">
+  <object id="68735" gid="178" x="128" y="1792" width="64" height="64">
    <properties>
     <property name="isAIpath" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="68736" gid="178" x="320" y="1920" width="64" height="64">
+  <object id="68736" gid="178" x="128" y="1856" width="64" height="64">
    <properties>
     <property name="isAIpath" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="68737" gid="178" x="320" y="1984" width="64" height="64">
+  <object id="68737" gid="178" x="128" y="1920" width="64" height="64">
    <properties>
     <property name="isAIpath" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="68738" gid="178" x="384" y="1984" width="64" height="64">
+  <object id="68738" gid="178" x="192" y="1920" width="64" height="64">
    <properties>
     <property name="isAIpath" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="68739" gid="178" x="384" y="1920" width="64" height="64">
+  <object id="68739" gid="178" x="192" y="1856" width="64" height="64">
    <properties>
     <property name="isAIpath" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="68740" gid="178" x="384" y="1856" width="64" height="64">
+  <object id="68740" gid="178" x="192" y="1792" width="64" height="64">
    <properties>
     <property name="isAIpath" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="68741" gid="178" x="448" y="1856" width="64" height="64">
+  <object id="68741" gid="178" x="256" y="1792" width="64" height="64">
    <properties>
     <property name="isAIpath" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="68742" gid="178" x="448" y="1920" width="64" height="64">
+  <object id="68742" gid="178" x="256" y="1856" width="64" height="64">
    <properties>
     <property name="isAIpath" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="68743" gid="178" x="448" y="1984" width="64" height="64">
+  <object id="68743" gid="178" x="256" y="1920" width="64" height="64">
    <properties>
     <property name="isAIpath" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="68744" gid="178" x="512" y="1984" width="64" height="64">
+  <object id="68744" gid="178" x="320" y="1920" width="64" height="64">
    <properties>
     <property name="isAIpath" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="68745" gid="178" x="512" y="1920" width="64" height="64">
+  <object id="68745" gid="178" x="320" y="1856" width="64" height="64">
    <properties>
     <property name="isAIpath" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="68746" gid="178" x="512" y="1856" width="64" height="64">
+  <object id="68746" gid="178" x="320" y="1792" width="64" height="64">
    <properties>
     <property name="isAIpath" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="68747" gid="178" x="512" y="1792" width="64" height="64">
+  <object id="68747" gid="178" x="320" y="1728" width="64" height="64">
    <properties>
     <property name="isAIpath" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="68748" gid="178" x="576" y="1792" width="64" height="64">
+  <object id="68748" gid="178" x="384" y="1728" width="64" height="64">
    <properties>
     <property name="isAIpath" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="68749" gid="178" x="576" y="1856" width="64" height="64">
+  <object id="68749" gid="178" x="384" y="1792" width="64" height="64">
    <properties>
     <property name="isAIpath" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="68750" gid="178" x="576" y="1920" width="64" height="64">
+  <object id="68750" gid="178" x="384" y="1856" width="64" height="64">
    <properties>
     <property name="isAIpath" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="68751" gid="178" x="576" y="1984" width="64" height="64">
+  <object id="68751" gid="178" x="384" y="1920" width="64" height="64">
    <properties>
     <property name="isAIpath" type="bool" value="false"/>
    </properties>
@@ -5106,12 +5185,12 @@
   <object id="68990" gid="116" x="2048" y="832" width="64" height="64"/>
   <object id="68991" gid="116" x="2048" y="1856" width="64" height="64"/>
   <object id="68993" gid="118" x="128" y="1600" width="64" height="64"/>
-  <object id="68994" gid="118" x="320" y="1792" width="64" height="64"/>
+  <object id="68994" gid="118" x="135" y="1751.25" width="64" height="64"/>
   <object id="68995" gid="119" x="121.5" y="1573.5" width="64" height="64"/>
   <object id="68996" gid="120" x="152.5" y="1599.75" width="64" height="64"/>
-  <object id="68997" gid="120" x="313" y="1768.75" width="64" height="64"/>
-  <object id="68998" gid="119" x="329" y="1801.75" width="64" height="64"/>
-  <object id="69000" gid="121" x="576" y="1792" width="64" height="64"/>
+  <object id="68997" gid="120" x="128" y="1728" width="64" height="64"/>
+  <object id="68998" gid="119" x="144" y="1761" width="64" height="64"/>
+  <object id="69000" gid="121" x="391" y="1751.25" width="64" height="64"/>
   <object id="69001" gid="118" x="1728" y="1472" width="64" height="64"/>
   <object id="69002" gid="119" x="1792" y="1472" width="64" height="64"/>
   <object id="69003" gid="120" x="1713.25" y="1445.25" width="64" height="64"/>
@@ -5163,7 +5242,11 @@
   <object id="69056" gid="127" x="192" y="1408" width="64" height="64"/>
   <object id="69057" gid="127" x="192" y="1376" width="64" height="64"/>
   <object id="69058" gid="127" x="192" y="1280" width="64" height="64"/>
-  <object id="69059" gid="127" x="576" y="1344" width="64" height="64"/>
+  <object id="69059" gid="127" x="640" y="1216" width="64" height="64"/>
+  <object id="69153" gid="390" x="586.667" y="1724.33" width="64" height="64"/>
+  <object id="69154" gid="391" x="596.666" y="1712.17" width="64" height="64"/>
+  <object id="69156" gid="388" x="640" y="1792" width="64" height="64"/>
+  <object id="69210" gid="127" x="672" y="1184" width="64" height="64"/>
  </objectgroup>
  <objectgroup id="8" name="actors">
   <object id="67021" gid="81" x="1920" y="2752" width="64" height="64"/>
@@ -5174,29 +5257,29 @@
   <object id="67026" gid="65" x="2048" y="1664" width="64" height="64"/>
   <object id="67027" gid="65" x="2048" y="2048" width="64" height="64"/>
   <object id="67028" gid="341" x="2048" y="2624" width="64" height="64"/>
-  <object id="67029" gid="2" x="448" y="1536" width="64" height="64" rotation="180"/>
-  <object id="68461" gid="1" x="1280" y="448" width="64" height="64" rotation="90"/>
-  <object id="68462" gid="1" x="1280" y="576" width="64" height="64" rotation="90"/>
+  <object id="67029" gid="2" x="640" y="1856" width="64" height="64" rotation="180"/>
+  <object id="68461" gid="1" x="1262" y="448.5" width="64" height="64" rotation="90"/>
+  <object id="68462" gid="1" x="1264.5" y="576.5" width="64" height="64" rotation="90"/>
   <object id="68466" gid="5" x="2048" y="2496" width="64" height="64" rotation="180"/>
   <object id="68467" gid="17" x="2112" y="2432" width="64" height="64"/>
   <object id="68468" gid="17" x="448" y="448" width="64" height="64"/>
   <object id="68469" gid="1" x="2048" y="1408" width="64" height="64" rotation="180"/>
   <object id="68473" gid="1" x="2048" y="1088" width="64" height="64" rotation="180"/>
-  <object id="68474" gid="5" x="2304" y="1536" width="64" height="64" rotation="162.885"/>
-  <object id="68753" gid="38" x="576" y="1920" width="64" height="64"/>
-  <object id="68754" gid="38" x="576" y="1856" width="64" height="64"/>
-  <object id="68755" gid="38" x="576" y="1984" width="64" height="64"/>
+  <object id="68474" gid="5" x="2284" y="1432" width="64" height="64" rotation="162.885"/>
+  <object id="68753" gid="38" x="400.38" y="1841.22" width="64" height="64"/>
+  <object id="68754" gid="38" x="400.38" y="1777.22" width="64" height="64"/>
+  <object id="68755" gid="38" x="400.38" y="1905.22" width="64" height="64"/>
   <object id="68758" gid="36" x="128" y="1280" width="64" height="64"/>
   <object id="68759" gid="36" x="128" y="1216" width="64" height="64"/>
   <object id="68760" gid="36" x="128" y="1152" width="64" height="64"/>
   <object id="68762" gid="34" x="704" y="1600" width="64" height="64"/>
   <object id="68763" gid="34" x="704" y="1536" width="64" height="64"/>
-  <object id="68786" gid="1" x="2175" y="2397" width="64" height="64" rotation="150"/>
+  <object id="68786" gid="1" x="2161" y="2377" width="64" height="64" rotation="150"/>
   <object id="68812" gid="1" x="1728" y="1472" width="64" height="64"/>
   <object id="68813" gid="1" x="1775" y="1473" width="64" height="64"/>
-  <object id="68819" gid="37" x="448" y="1920" width="64" height="64"/>
+  <object id="68819" gid="37" x="256.213" y="1856.05" width="64" height="64"/>
   <object id="68820" gid="17" x="2112" y="1824" width="64" height="64"/>
-  <object id="68821" gid="17" x="1856" y="1600" width="64" height="64"/>
+  <object id="68821" gid="17" x="1860" y="1606" width="64" height="64"/>
   <object id="68828" gid="38" x="2112" y="2688" width="64" height="64"/>
   <object id="68829" gid="38" x="2112" y="2752" width="64" height="64"/>
   <object id="68830" gid="34" x="2112" y="2816" width="64" height="64"/>
@@ -5211,26 +5294,26 @@
   <object id="68839" gid="38" x="448" y="1088" width="64" height="64"/>
   <object id="68840" gid="38" x="448" y="896" width="64" height="64"/>
   <object id="68841" gid="38" x="448" y="832" width="64" height="64"/>
-  <object id="68874" gid="17" x="1280" y="512" width="64" height="64"/>
-  <object id="68877" gid="1" x="1536" y="384" width="64" height="64" rotation="90"/>
-  <object id="68878" gid="1" x="1536" y="640" width="64" height="64" rotation="90"/>
+  <object id="68874" gid="17" x="1290" y="511.5" width="64" height="64"/>
+  <object id="68877" gid="1" x="1545.5" y="384.5" width="64" height="64" rotation="90"/>
+  <object id="68878" gid="1" x="1543" y="640.5" width="64" height="64" rotation="90"/>
   <object id="68881" gid="38" x="720" y="1347.33" width="64" height="64"/>
-  <object id="68889" gid="19" x="457.333" y="1824.67" width="280" height="94.6667">
+  <object id="68889" gid="19" x="265.546" y="1760.72" width="280" height="94.6667">
    <properties>
     <property name="color 0" type="color" value="#ffdfdfdf"/>
    </properties>
   </object>
-  <object id="68890" gid="19" x="458.666" y="1976.67" width="280" height="34.6667">
+  <object id="68890" gid="19" x="266.879" y="1912.72" width="280" height="34.6667">
    <properties>
     <property name="color 0" type="color" value="#ffdfdfdf"/>
    </properties>
   </object>
-  <object id="68891" gid="19" x="362.999" y="1922.34" width="82" height="122">
+  <object id="68891" gid="19" x="171.212" y="1858.39" width="82" height="122">
    <properties>
     <property name="color 0" type="color" value="#ffdfdfdf"/>
    </properties>
   </object>
-  <object id="68892" gid="19" x="540.332" y="1920.34" width="82" height="122">
+  <object id="68892" gid="19" x="348.545" y="1856.39" width="82" height="122">
    <properties>
     <property name="color 0" type="color" value="#ffdfdfdf"/>
    </properties>
@@ -5256,7 +5339,7 @@
    </properties>
   </object>
   <object id="68909" gid="17" x="2048" y="1152" width="64" height="64"/>
-  <object id="68910" gid="18" x="448" y="1920" width="64" height="64">
+  <object id="68910" gid="18" x="256.213" y="1856.05" width="64" height="64">
    <properties>
     <property name="color" type="color" value="#ff00ff26"/>
     <property name="intensity" type="float" value="10"/>
@@ -5320,5 +5403,30 @@
     <property name="isLocked" type="bool" value="true"/>
    </properties>
   </object>
+  <object id="69110" gid="273" x="640" y="1792" width="64" height="64" rotation="180">
+   <properties>
+    <property name="health" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="69128" gid="337" x="640" y="1664" width="64" height="64">
+   <properties>
+    <property name="isLocked" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="69133" gid="289" x="704" y="1280" width="64" height="64"/>
+  <object id="69170" gid="18" x="640" y="1792" width="64" height="64">
+   <properties>
+    <property name="intensity" type="float" value="5"/>
+   </properties>
+  </object>
+  <object id="69183" gid="310" x="2048" y="1824" width="64" height="64"/>
+  <object id="69184" gid="310" x="2048" y="1888" width="64" height="64"/>
+  <object id="69185" gid="310" x="2016" y="2688" width="64" height="64"/>
+  <object id="69186" gid="310" x="2080" y="2688" width="64" height="64"/>
+  <object id="69187" gid="310" x="2112" y="2720" width="64" height="64"/>
+  <object id="69188" gid="310" x="448" y="768" width="64" height="64"/>
+  <object id="69189" gid="310" x="864" y="512" width="64" height="64"/>
+  <object id="69190" gid="310" x="800" y="512" width="64" height="64"/>
+  <object id="69191" gid="310" x="736" y="512" width="64" height="64"/>
  </objectgroup>
 </map>

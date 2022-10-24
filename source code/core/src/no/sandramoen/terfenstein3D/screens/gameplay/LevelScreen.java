@@ -100,7 +100,6 @@ public class LevelScreen extends BaseScreen3D {
         PAR_TIME = parTime;
         tiledMap = map;
 
-
         playLevelMusic();
         GameUtils.playLoopingMusic(BaseGame.ambientFanMusic);
         BaseGame.ambientFanMusic.setPosition(MathUtils.random(0, 15));
@@ -119,7 +118,8 @@ public class LevelScreen extends BaseScreen3D {
 
         numEnemies = enemies.size;
         numPickups = originalPickups.size;
-        setStartingVariables();
+        setStartingVariables(weapons);
+        setCurrentLevelMessage();
 
         GameUtils.printLoadingTime(getClass().getSimpleName(), "Level", startTime);
     }
@@ -163,7 +163,8 @@ public class LevelScreen extends BaseScreen3D {
             BaseGame.levelScreen = this;
             BaseGame.setActiveScreen(new MenuScreen());
         } else if (keycode == Keys.R)
-            BaseGame.setActiveScreen(new LevelScreen(PAR_TIME, BaseGame.testMap, "test", 100, 0, 50, 50, 50, null)); else if (isGameOver && totalTime > 2)
+            BaseGame.setActiveScreen(new LevelScreen(PAR_TIME, BaseGame.testMap, "test", 100, 0, 50, 50, 50, null));
+        else if (isGameOver && totalTime > 2)
             restartLevel();
         else if (keycode == Keys.F) {
             player.isCollisionEnabled = !player.isCollisionEnabled;
@@ -315,13 +316,13 @@ public class LevelScreen extends BaseScreen3D {
                     enemy.decrementHealth(weaponHandler.getDamage());
                     if (enemy.isDead) removeEnemy(enemy);
 
-                    Vector3 temp = new Vector3().set(ray.direction).scl(player.distanceBetween(enemy) - .2f).add(ray.origin);
+                    Vector3 temp = new Vector3().set(ray.direction).scl(player.distanceBetween(enemy) - .5f).add(ray.origin);
                     bloodDecals.addDecal(temp.x, temp.y, temp.z);
                 } else if (shootable.get(i) instanceof Barrel) {
                     Barrel barrel = (Barrel) shootable.get(i);
                     barrel.decrementHealth(weaponHandler.getDamage(), player.distanceBetween(barrel));
                 } else {
-                    Vector3 temp = new Vector3().set(ray.direction).scl(player.distanceBetween(shootable.get(i)) - (Tile.diagonalLength * .4f)).add(ray.origin);
+                    Vector3 temp = new Vector3().set(ray.direction).scl(player.distanceBetween(shootable.get(i)) - (Tile.diagonalLength * .5f)).add(ray.origin);
                     bulletDecals.addDecal(temp.x, temp.y, temp.z);
                 }
                 return true;
@@ -386,7 +387,7 @@ public class LevelScreen extends BaseScreen3D {
                 enemy.isRanged = false;
             BaseGame.metalWalkingMusic.stop();
             uiHandler.gameLabel.restart();
-            uiHandler.gameLabel.setText("G A M E   O V E R !");
+            uiHandler.gameLabel.setText("{color=#a53030}G A M E   O V E R !");
             mainStage3D.camera.position.x = -Tile.height * .48f;
             totalTime = 0;
         }
@@ -395,24 +396,13 @@ public class LevelScreen extends BaseScreen3D {
         BaseGame.chainSawIdleMusic.stop();
     }
 
-    private void setStartingVariables() {
+    private void setStartingVariables(Array<Weapon> weapons) {
         startingHealth = hud.health;
         startingArmor = hud.armor;
         startingBullets = hud.bullets;
         startingShells = hud.shells;
         startingRockets = hud.rockets;
-
-        setStartingWeaponsAvailability();
-    }
-
-    public void setStartingWeaponsAvailability() {
-        WeaponHandler temp = new WeaponHandler(uiStage, hud, player, shootable, mainStage3D);
-        temp.pause = true;
-        temp.setAnimationPaused(true);
-        for (Weapon weaponA : weaponHandler.weapons)
-            for (Weapon weaponB : temp.weapons)
-                weaponB.isAvailable = weaponA.isAvailable;
-        startingWeapons = temp.weapons;
+        startingWeapons = weapons;
     }
 
     private void restartLevel() {
@@ -588,6 +578,25 @@ public class LevelScreen extends BaseScreen3D {
             for (TileShade shade : tileShades) {
                 shade.setActorColor(enemy);
             }
+        }
+    }
+
+    private void setCurrentLevelMessage() {
+        if (numLevel.equalsIgnoreCase("level 1")) {
+            uiHandler.setTemporaryGameLabel("{SLOWER}{SHAKE}E S C A P E !");
+            BaseGame.weaponPickupSound.play(BaseGame.soundVolume);
+        } else if (numLevel.equalsIgnoreCase("level 2")) {
+            uiHandler.setTemporaryGameLabel("{SLOWER}{SHAKE}R E V E N G E !");
+        } else if (numLevel.equalsIgnoreCase("level 3")) {
+            uiHandler.setTemporaryGameLabel("{SLOWER}");
+        } else if (numLevel.equalsIgnoreCase("level 4")) {
+            uiHandler.setTemporaryGameLabel("{SLOWER}");
+        } else if (numLevel.equalsIgnoreCase("level 5")) {
+            uiHandler.setTemporaryGameLabel("{SLOWER}");
+        } else if (numLevel.equalsIgnoreCase("level 6")) {
+            uiHandler.setTemporaryGameLabel("{SLOWER}");
+        } else if (numLevel.equalsIgnoreCase("level 7")) {
+            uiHandler.setTemporaryGameLabel("{SLOWER}{RAINBOW}F R E E D O M !");
         }
     }
 }
