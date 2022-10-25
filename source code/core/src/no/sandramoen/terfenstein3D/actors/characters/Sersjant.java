@@ -31,6 +31,7 @@ public class Sersjant extends Enemy {
         score = 20;
         painChance = .68f;
         numShots = 3;
+        rangeThreshold = 55f;
 
         initializeAnimations();
     }
