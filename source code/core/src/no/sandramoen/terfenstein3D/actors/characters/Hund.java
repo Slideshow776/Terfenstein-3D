@@ -136,7 +136,7 @@ public class Hund extends Enemy {
 
     private void initializeDeathAnimation() {
         Array<TextureAtlas.AtlasRegion> animationImages = new Array();
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < 5; i++)
             animationImages.add(BaseGame.textureAtlas.findRegion("enemies/hund/die " + i));
         dieAnimation = new Animation(.3f, animationImages, Animation.PlayMode.NORMAL);
     }
