@@ -186,7 +186,7 @@ public class Enemy extends BaseActor3D {
         if (!isActive) return;
 
         if (this instanceof Hund && intervalFlag && MathUtils.random(0f, 1f) > .5f && isPlayerVisible)
-            GameUtils.playSoundRelativeToDistance(BaseGame.hundActivateSound, BaseGame.soundVolume, 50, MathUtils.random(.7f, 1.3f));
+            GameUtils.playSoundRelativeToDistance(BaseGame.hundActivateSound, BaseGame.soundVolume, 30, MathUtils.random(.7f, 1.3f));
         bulletDecals.render(dt);
         setPathToLastKnownPlayerPosition();
 

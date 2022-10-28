@@ -181,7 +181,7 @@ public class Prest extends Enemy {
 
     private void initializeGibAnimation() {
         Array<TextureAtlas.AtlasRegion> animationImages = new Array();
-        for (int i = 0; i < 6; i++)
+        for (int i = 0; i < 7; i++)
             animationImages.add(BaseGame.textureAtlas.findRegion("enemies/prest/gib " + i));
         gibAnimation = new Animation(.15f, animationImages, Animation.PlayMode.NORMAL);
     }

@@ -157,7 +157,7 @@
  </tileset>
  <tileset firstgid="145" source="Tileset.tsx"/>
  <tileset firstgid="273" source="Assets.tsx"/>
- <objectgroup id="7" name="U1" visible="0">
+ <objectgroup id="7" name="U1">
   <object id="63886" gid="146" x="-64" y="1088" width="64" height="64"/>
   <object id="63887" gid="146" x="0" y="1088" width="64" height="64"/>
   <object id="63888" gid="146" x="64" y="1088" width="64" height="64"/>
@@ -227,7 +227,11 @@
   <object id="64032" gid="164" x="512" y="384" width="64" height="64"/>
   <object id="64033" gid="164" x="512" y="448" width="64" height="64"/>
   <object id="64034" gid="164" x="576" y="384" width="64" height="64"/>
-  <object id="64035" gid="164" x="576" y="448" width="64" height="64"/>
+  <object id="64035" gid="164" x="576" y="448" width="64" height="64">
+   <properties>
+    <property name="isAIpath" type="bool" value="false"/>
+   </properties>
+  </object>
   <object id="64036" gid="164" x="640" y="384" width="64" height="64"/>
   <object id="64037" gid="164" x="704" y="384" width="64" height="64"/>
   <object id="64038" gid="164" x="704" y="448" width="64" height="64"/>
@@ -912,7 +916,11 @@
     <property name="isAIpath" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="65992" gid="164" x="640" y="448" width="64" height="64"/>
+  <object id="65992" gid="164" x="640" y="448" width="64" height="64">
+   <properties>
+    <property name="isAIpath" type="bool" value="false"/>
+   </properties>
+  </object>
   <object id="65996" gid="164" x="1088" y="64" width="64" height="64">
    <properties>
     <property name="isAIpath" type="bool" value="false"/>
