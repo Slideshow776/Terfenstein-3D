@@ -1,5 +1,4 @@
 # Terfenstein 3D
-![feature graphics](https://user-images.githubusercontent.com/4059636/196458021-0576331b-919d-4677-95e1-f02230bc31e4.png)
 
 [Wishlist it on Steam](https://store.steampowered.com/app/2192840/Terfenstein_3D/?beta=0)
 [![image](https://user-images.githubusercontent.com/4059636/198736454-b2d5e42d-f721-4a74-a444-36cbe1aa594e.png)](https://store.steampowered.com/app/2192840/Terfenstein_3D/?beta=0)
