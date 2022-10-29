@@ -511,6 +511,13 @@ enemies/fenrik/melee 0
   orig: 48, 48
   offset: 0, 0
   index: -1
+enemies/fenrik/shoot 0
+  rotate: false
+  xy: 152, 52
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
 enemies/fenrik/melee 1
   rotate: false
   xy: 202, 102
@@ -518,240 +525,233 @@ enemies/fenrik/melee 1
   orig: 48, 48
   offset: 0, 0
   index: -1
-enemies/fenrik/shoot 0
+enemies/fenrik/shoot 1
   rotate: false
   xy: 252, 152
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-enemies/fenrik/shoot 1
+enemies/fenrik/walk back 0
   rotate: false
   xy: 302, 202
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-enemies/fenrik/walk back 0
+enemies/fenrik/walk back 1
   rotate: false
   xy: 152, 2
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-enemies/fenrik/walk back 1
+enemies/fenrik/walk back 2
   rotate: false
   xy: 202, 52
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-enemies/fenrik/walk back 2
+enemies/fenrik/walk back 3
   rotate: false
   xy: 252, 102
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-enemies/fenrik/walk back 3
+enemies/fenrik/walk back side left 0
   rotate: false
   xy: 302, 152
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-enemies/fenrik/walk back side left 0
+enemies/fenrik/walk back side left 1
   rotate: false
   xy: 352, 202
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-enemies/fenrik/walk back side left 1
+enemies/fenrik/walk back side left 2
   rotate: false
   xy: 202, 2
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-enemies/fenrik/walk back side left 2
+enemies/fenrik/walk back side left 3
   rotate: false
   xy: 252, 52
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-enemies/fenrik/walk back side left 3
+enemies/fenrik/walk back side right 0
   rotate: false
   xy: 302, 102
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-enemies/fenrik/walk back side right 0
+enemies/fenrik/walk back side right 1
   rotate: false
   xy: 352, 152
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-enemies/fenrik/walk back side right 1
+enemies/fenrik/walk back side right 2
   rotate: false
   xy: 402, 202
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-enemies/fenrik/walk back side right 2
+enemies/fenrik/walk back side right 3
   rotate: false
   xy: 252, 2
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-enemies/fenrik/walk back side right 3
+enemies/fenrik/walk front 0
   rotate: false
   xy: 302, 52
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-enemies/fenrik/walk front 0
+enemies/fenrik/walk front 1
   rotate: false
   xy: 352, 102
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-enemies/fenrik/walk front 1
+enemies/fenrik/walk front 2
   rotate: false
   xy: 402, 152
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-enemies/fenrik/walk front 2
+enemies/fenrik/walk front 3
   rotate: false
   xy: 452, 202
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-enemies/fenrik/walk front 3
+enemies/fenrik/walk front side left 0
   rotate: false
   xy: 302, 2
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-enemies/fenrik/walk front side left 0
+enemies/fenrik/walk front side left 1
   rotate: false
   xy: 352, 52
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-enemies/fenrik/walk front side left 1
+enemies/fenrik/walk front side left 2
   rotate: false
   xy: 402, 102
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-enemies/fenrik/walk front side left 2
+enemies/fenrik/walk front side left 3
   rotate: false
   xy: 452, 152
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-enemies/fenrik/walk front side left 3
+enemies/fenrik/walk front side right 0
   rotate: false
   xy: 502, 202
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-enemies/fenrik/walk front side right 0
+enemies/fenrik/walk front side right 1
   rotate: false
   xy: 352, 2
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-enemies/fenrik/walk front side right 1
+enemies/fenrik/walk front side right 2
   rotate: false
   xy: 402, 52
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-enemies/fenrik/walk front side right 2
+enemies/fenrik/walk front side right 3
   rotate: false
   xy: 452, 102
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-enemies/fenrik/walk front side right 3
+enemies/fenrik/walk side left 0
   rotate: false
   xy: 502, 152
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-enemies/fenrik/walk side left 0
+enemies/fenrik/walk side left 1
   rotate: false
   xy: 552, 202
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-enemies/fenrik/walk side left 1
+enemies/fenrik/walk side left 2
   rotate: false
   xy: 402, 2
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-enemies/fenrik/walk side left 2
+enemies/fenrik/walk side left 3
   rotate: false
   xy: 452, 52
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-enemies/fenrik/walk side left 3
+enemies/fenrik/walk side right 0
   rotate: false
   xy: 502, 102
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-enemies/fenrik/walk side right 0
+enemies/fenrik/walk side right 1
   rotate: false
   xy: 552, 152
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-enemies/fenrik/walk side right 1
+enemies/fenrik/walk side right 2
   rotate: false
   xy: 602, 202
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-enemies/fenrik/walk side right 2
-  rotate: false
-  xy: 452, 2
-  size: 48, 48
-  orig: 48, 48
-  offset: 0, 0
-  index: -1
 enemies/fenrik/walk side right 3
   rotate: false
-  xy: 502, 52
+  xy: 452, 2
   size: 48, 48
   orig: 48, 48
   offset: 0, 0

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.1" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="15" height="15" tilewidth="64" tileheight="64" infinite="0" nextlayerid="17" nextobjectid="66219">
+<map version="1.9" tiledversion="1.9.1" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="15" height="15" tilewidth="64" tileheight="64" infinite="0" nextlayerid="17" nextobjectid="66225">
  <tileset firstgid="1" source="Assets.tsx"/>
  <tileset firstgid="145" source="Tileset.tsx"/>
  <objectgroup id="7" name="U1" visible="0">
@@ -428,20 +428,6 @@
   <object id="65906" gid="39" x="704" y="576" width="64" height="64"/>
   <object id="65907" gid="35" x="320" y="576" width="64" height="64"/>
   <object id="65918" gid="69" x="384" y="640" width="64" height="64"/>
-  <object id="66023" gid="19" x="512" y="576" width="445" height="299" visible="0">
-   <properties>
-    <property name="color 0" type="color" value="#ff2b2b2b"/>
-    <property name="color 1" type="color" value="#ffffffff"/>
-    <property name="flickerFrequency" type="float" value="2"/>
-   </properties>
-  </object>
-  <object id="66026" gid="19" x="241.5" y="350.5" width="305" height="299" visible="0">
-   <properties>
-    <property name="color 0" type="color" value="#ff2b2b2b"/>
-    <property name="color 1" type="color" value="#ffffffff"/>
-    <property name="flickerFrequency" type="float" value="2"/>
-   </properties>
-  </object>
   <object id="66029" gid="49" x="768" y="384" width="64" height="64"/>
   <object id="66030" gid="50" x="768" y="320" width="64" height="64"/>
   <object id="66031" gid="51" x="768" y="256" width="64" height="64"/>
@@ -497,9 +483,6 @@
   <object id="66126" gid="43" x="576" y="192" width="64" height="64"/>
   <object id="66127" gid="44" x="576" y="192" width="64" height="64"/>
   <object id="66170" gid="40" x="576" y="192" width="64" height="64"/>
-  <object id="66185" gid="1" x="576" y="448" width="64" height="64"/>
-  <object id="66186" gid="1" x="640" y="448" width="64" height="64"/>
-  <object id="66187" gid="1" x="512" y="448" width="64" height="64"/>
   <object id="66188" gid="34" x="576" y="192" width="64" height="64"/>
   <object id="66189" gid="34" x="576" y="192" width="64" height="64"/>
   <object id="66190" gid="34" x="576" y="192" width="64" height="64"/>
@@ -531,5 +514,15 @@
   <object id="66216" gid="34" x="576" y="192" width="64" height="64"/>
   <object id="66217" gid="34" x="576" y="192" width="64" height="64"/>
   <object id="66218" gid="34" x="576" y="192" width="64" height="64"/>
+  <object id="66219" gid="6" x="576" y="448" width="64" height="64"/>
+  <object id="66220" gid="4" x="640" y="448" width="64" height="64"/>
+  <object id="66221" gid="1" x="512" y="448" width="64" height="64"/>
+  <object id="66222" gid="5" x="704" y="448" width="64" height="64"/>
+  <object id="66224" gid="19" x="608" y="448" width="448" height="256">
+   <properties>
+    <property name="color 1" type="color" value="#ff3d3d3d"/>
+    <property name="flickerFrequency" type="float" value="2"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>
