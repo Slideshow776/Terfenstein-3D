@@ -9,7 +9,6 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.math.collision.Ray;
-import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.utils.Array;
 
@@ -47,7 +46,6 @@ import no.sandramoen.terfenstein3D.utils.GameUtils;
 import no.sandramoen.terfenstein3D.screens.gameplay.level.PickupHandler;
 import no.sandramoen.terfenstein3D.screens.gameplay.level.TileHandler;
 import no.sandramoen.terfenstein3D.screens.gameplay.level.UIHandler;
-import no.sandramoen.terfenstein3D.utils.Stage3D;
 
 public class LevelScreen extends BaseScreen3D {
     private HUD hud;
@@ -68,6 +66,7 @@ public class LevelScreen extends BaseScreen3D {
 
     private boolean isGameOver;
     private boolean holdingDown;
+    private boolean isLevelWon;
 
     private UIHandler uiHandler;
     private BulletDecals bulletDecals;
@@ -133,6 +132,10 @@ public class LevelScreen extends BaseScreen3D {
         totalTime += dt;
         checkGameOverCondition();
 
+        for (Tile tile : tiles)
+            if (numLevel.equalsIgnoreCase("level 7") && player.overlaps(tile) && tile.isWinCondition)
+                levelFinished();
+
         TileHandler.updateTiles(dt, tiles, player, uiHandler);
         EnemyHandler.update(enemies, tiles, doors, projectiles, player, shootable, hud, mainStage3D);
         shadeHandler();
@@ -159,7 +162,7 @@ public class LevelScreen extends BaseScreen3D {
     @Override
     public boolean keyDown(int keycode) {
         if (keycode == Keys.ESCAPE || keycode == Keys.Q) {
-            stopLevel();
+            stopLevelMusic();
             BaseGame.levelScreen = this;
             BaseGame.setActiveScreen(new MenuScreen());
         } else if (keycode == Keys.R)
@@ -197,7 +200,7 @@ public class LevelScreen extends BaseScreen3D {
         } else if (keycode == Keys.NUM_5) {
             weaponHandler.setWeapon(4);
             hud.setAmmo(weaponHandler.currentWeapon);
-        } else if (keycode == Keys.SPACE) {
+        } else if (keycode == Keys.SPACE && !isGameOver) {
             for (Door door : doors)
                 if (player.isWithinDistance(Tile.height * .8f, door)) {
                     String message = door.tryToOpenDoor(hud.keys.getKeys());
@@ -264,6 +267,8 @@ public class LevelScreen extends BaseScreen3D {
             GameUtils.playLoopingMusic(BaseGame.level5Music, BaseGame.musicVolume * .7f);
         else if (numLevel.equalsIgnoreCase("level 6"))
             GameUtils.playLoopingMusic(BaseGame.level6Music, BaseGame.musicVolume * .5f);
+        else if (numLevel.equalsIgnoreCase("level 7"))
+            GameUtils.playLoopingMusic(BaseGame.level7Music, BaseGame.musicVolume * .5f);
     }
 
     private void mouseButtonPolling() {
@@ -420,6 +425,8 @@ public class LevelScreen extends BaseScreen3D {
             BaseGame.setActiveScreen(new LevelScreen(38, BaseGame.level5Map, "level 5", startingHealth, startingArmor, startingBullets, startingShells, startingRockets, startingWeapons));
         else if (numLevel.equalsIgnoreCase("level 6"))
             BaseGame.setActiveScreen(new LevelScreen(38, BaseGame.level6Map, "level 6", startingHealth, startingArmor, startingBullets, startingShells, startingRockets, startingWeapons));
+        else if (numLevel.equalsIgnoreCase("level 7"))
+            BaseGame.setActiveScreen(new LevelScreen(0, BaseGame.level7Map, "level 7", startingHealth, startingArmor, startingBullets, startingShells, startingRockets, startingWeapons));
     }
 
 
@@ -483,7 +490,7 @@ public class LevelScreen extends BaseScreen3D {
         hud.setWeaponsTable(weaponHandler);
     }
 
-    private void stopLevel() {
+    private void stopLevelMusic() {
         BaseGame.metalWalkingMusic.stop();
         BaseGame.menuMusic.stop();
         BaseGame.level1Music.stop();
@@ -511,6 +518,8 @@ public class LevelScreen extends BaseScreen3D {
             return "Bunkers";
         else if (numLevel.equalsIgnoreCase("level 6"))
             return "Factory";
+        else if (numLevel.equalsIgnoreCase("level 7"))
+            return "Surface";
         else
             return "Test";
     }
@@ -539,24 +548,27 @@ public class LevelScreen extends BaseScreen3D {
         else if (numLevel.equalsIgnoreCase("level 5"))
             return "Factory";
         else if (numLevel.equalsIgnoreCase("level 6"))
-            return "Laboratories";
+            return "Surface";
         else
             return "Test";
     }
 
     private void levelFinished() {
-        for (int i = 0; i < mapLoader.elevators.size; i++)
-            mapLoader.elevators.get(i).activate();
-        BaseGame.elevatorSound.play(BaseGame.soundVolume);
-        stopLevel();
-        Array levelData = getLevelData();
-        uiStage.addAction(Actions.sequence(
-                Actions.delay(.5f),
-                Actions.run(() -> BaseGame.setActiveScreen(new LevelFinishScreen(levelData, numLevel, hud.health, hud.armor, hud.bullets, hud.shells, hud.rockets, weaponHandler.weapons)))
-        ));
+        if (!isLevelWon) {
+            isLevelWon = true;
+            for (int i = 0; i < mapLoader.elevators.size; i++)
+                mapLoader.elevators.get(i).activate();
+            BaseGame.elevatorSound.play(BaseGame.soundVolume);
+            stopLevelMusic();
+            Array levelData = getLevelData();
+            uiStage.addAction(Actions.sequence(
+                    Actions.delay(.5f),
+                    Actions.run(() -> BaseGame.setActiveScreen(new LevelFinishScreen(levelData, numLevel, hud.health, hud.armor, hud.bullets, hud.shells, hud.rockets, weaponHandler.weapons)))
+            ));
+        }
     }
 
-    private void shadeHandler() {
+    private void shadeHandler() { // TODO
         for (BaseActor3D baseActor3D : mainStage3D.getActors3D()) {
             baseActor3D.setColor(Color.WHITE);
             for (TileShade shade : tileShades) {
@@ -588,7 +600,7 @@ public class LevelScreen extends BaseScreen3D {
         } else if (numLevel.equalsIgnoreCase("level 2")) {
             uiHandler.setTemporaryGameLabel("{SLOWER}{SHAKE}R E V E N G E !");
         } else if (numLevel.equalsIgnoreCase("level 3")) {
-            uiHandler.setTemporaryGameLabel("{SLOWER}");
+            uiHandler.setTemporaryGameLabel("{SLOWER}{SHAKE}D E P R A V I T Y !");
         } else if (numLevel.equalsIgnoreCase("level 4")) {
             uiHandler.setTemporaryGameLabel("{SLOWER}");
         } else if (numLevel.equalsIgnoreCase("level 5")) {

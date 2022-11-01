@@ -147,8 +147,11 @@ public class MapLoader {
                     boolean isAIpath = true;
                     if (props.get("isAIpath", Boolean.class) != null)
                         isAIpath = props.get("isAIpath", Boolean.class);
+                    boolean isWinCondition = false;
+                    if (props.get("isWinCondition", Boolean.class) != null)
+                        isWinCondition = props.get("isWinCondition", Boolean.class);
 
-                    Tile tile = new Tile(y, z, width, depth, height, type, texture, stage3D, rotation, secretMovementDirection, secretLength, isAIpath);
+                    Tile tile = new Tile(y, z, width, depth, height, type, texture, stage3D, rotation, secretMovementDirection, secretLength, isAIpath, isWinCondition);
                     tiles.add(tile);
                     shootable.add(tile);
 

@@ -33,9 +33,11 @@ public class BarrelExplosionHandler {
             Barrel barrel = (Barrel) source;
 
             for (Enemy enemy : enemies) {
-                enemy.decrementHealth(barrel.getBlastDamage(source.distanceBetween(enemy)));
-                if (enemy.isWithinDistance(barrel.BLAST_RANGE, source))
-                    enemy.forceMoveAwayFrom(source);
+                if (source.distanceBetween(enemy) <= barrel.BLAST_RANGE * 1.5f) {
+                    enemy.decrementHealth(barrel.getBlastDamage(source.distanceBetween(enemy)));
+                    if (enemy.isWithinDistance(barrel.BLAST_RANGE, source))
+                        enemy.forceMoveAwayFrom(source);
+                }
             }
 
             player.shakeyCam(1, .2f);

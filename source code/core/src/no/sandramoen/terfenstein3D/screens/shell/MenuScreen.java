@@ -22,18 +22,12 @@ import no.sandramoen.terfenstein3D.utils.GameUtils;
 public class MenuScreen extends BaseScreen {
     @Override
     public void initialize() {
-        /*TypingLabel titleLabel = new TypingLabel("Terfenstein 3D", new Label.LabelStyle(BaseGame.mySkin.get("arcade64", BitmapFont.class), null));
-        titleLabel.setColor(BaseGame.redColor);
-        uiTable.add(titleLabel)
-                .padBottom(Gdx.graphics.getHeight() * .09f)
-                .row();*/
-
         Image featureGraphics = new Image(BaseGame.textureAtlas.findRegion("feature graphics"));
-        featureGraphics.scaleBy(2.25f);
         featureGraphics.setOrigin(Align.center);
         featureGraphics.addAction(Actions.sequence(Actions.fadeOut(0), Actions.fadeIn(.5f)));
         uiTable.add(featureGraphics)
-                .padBottom(Gdx.graphics.getHeight() * .09f)
+                .padBottom(Gdx.graphics.getHeight() * .045f)
+                .size(Gdx.graphics.getWidth() * .6f, Gdx.graphics.getHeight() * .225f)
                 .row();
 
         addTextButtons();

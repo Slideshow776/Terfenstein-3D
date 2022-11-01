@@ -1738,7 +1738,7 @@
   <object id="72152" gid="163" x="1408" y="3392" width="64" height="64"/>
   <object id="72153" gid="163" x="1408" y="3328" width="64" height="64"/>
  </objectgroup>
- <objectgroup id="12" name="2nd floor" visible="0">
+ <objectgroup id="12" name="2nd floor">
   <object id="60601" gid="119" x="192" y="64" width="64" height="64"/>
   <object id="60602" gid="119" x="960" y="576" width="64" height="64"/>
   <object id="69869" gid="211" x="1920" y="2112" width="64" height="64"/>

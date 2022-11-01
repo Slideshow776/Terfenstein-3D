@@ -14,8 +14,9 @@ public class Tile extends BaseActor3D {
     public int index;
     public String type;
     public boolean isAIpath;
-
     public String secretMovementDirection;
+    public boolean isWinCondition;
+
     private boolean isOpeningSecret;
     private float speed = .04f;
     private long secretSoundID;
@@ -23,13 +24,15 @@ public class Tile extends BaseActor3D {
     private int secretLength;
     private String texture;
 
-    public Tile(float y, float z, float width, float height, float depth, String type, String texture, Stage3D stage3D, float rotation, String secretMovementDirection, int secretLength, boolean isAIpath) {
+    public Tile(float y, float z, float width, float height, float depth, String type, String texture, Stage3D stage3D,
+                float rotation, String secretMovementDirection, int secretLength, boolean isAIpath, boolean isWinCondition) {
         super(0, y, z, stage3D);
         this.type = type;
         this.secretMovementDirection = secretMovementDirection;
         this.secretLength = secretLength;
-        this.isAIpath = isAIpath;
         this.texture = texture;
+        this.isAIpath = isAIpath;
+        this.isWinCondition = isWinCondition;
 
         if (texture.equalsIgnoreCase("blank"))
             buildModel(width, height, depth, true);

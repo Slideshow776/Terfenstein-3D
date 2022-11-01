@@ -197,6 +197,12 @@ public class Enemy extends BaseActor3D {
             state = State.WALKING;
             walkTilePath();
         }
+
+        if (state == State.IDLE && !isPlayerVisible)
+            isActive = false;
+
+        if (state == State.WALKING && tilePath == null)
+            state = State.IDLE;
     }
 
     @Override
@@ -225,6 +231,8 @@ public class Enemy extends BaseActor3D {
         } else {
             currentAnimation = dieAnimation;
         }
+        isCollisionEnabled = false;
+        isPreventOverlapEnabled = false;
     }
 
     public void activate(BaseActor3D source) {
