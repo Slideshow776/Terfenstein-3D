@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.1" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="80" height="80" tilewidth="64" tileheight="64" infinite="0" nextlayerid="17" nextobjectid="77070">
+<map version="1.9" tiledversion="1.9.1" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="80" height="80" tilewidth="64" tileheight="64" infinite="0" nextlayerid="17" nextobjectid="77079">
  <tileset firstgid="1" name="Assets" tilewidth="64" tileheight="64" tilecount="144" columns="16" objectalignment="center">
   <image source="assets.png" width="1024" height="576"/>
   <tile id="0">
@@ -177,7 +177,7 @@
  </tileset>
  <tileset firstgid="145" source="Tileset.tsx"/>
  <tileset firstgid="273" source="Assets.tsx"/>
- <objectgroup id="7" name="U1">
+ <objectgroup id="7" name="U1" visible="0">
   <object id="71443" gid="146" x="832" y="4096" width="64" height="64"/>
   <object id="71444" gid="146" x="768" y="4096" width="64" height="64"/>
   <object id="71445" gid="146" x="768" y="4032" width="64" height="64"/>
@@ -1715,7 +1715,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="11" name="1st floor" visible="0">
+ <objectgroup id="11" name="1st floor">
   <object id="60509" gid="117" x="-1216" y="192" width="64" height="64"/>
   <object id="60510" gid="117" x="-1216" y="192" width="64" height="64"/>
   <object id="72074" gid="181" x="1792" y="4160" width="64" height="64"/>
@@ -4242,5 +4242,7 @@
   <object id="77067" gid="306" x="896" y="4032" width="64" height="64"/>
   <object id="77068" gid="306" x="896" y="4032" width="64" height="64"/>
   <object id="77069" gid="309" x="896" y="4032" width="64" height="64"/>
+  <object id="77077" gid="314" x="3584" y="3584" width="64" height="64"/>
+  <object id="77078" gid="314" x="3584" y="4416" width="64" height="64"/>
  </objectgroup>
 </map>
