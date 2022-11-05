@@ -109,6 +109,7 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
     public static boolean isCustomShadersEnabled = true;
     public static float mouseMovementSensitivity = .05f;
     public static boolean isHeadBobbing;
+    public static boolean isHideUI = false;
     public static float aspectRatio = 16 / 9f;
     public static float voiceVolume = 1f;
     public static float soundVolume = .5f;

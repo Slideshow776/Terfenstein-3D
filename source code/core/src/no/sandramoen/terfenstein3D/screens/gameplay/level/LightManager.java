@@ -46,7 +46,7 @@ public class LightManager {
     }
 
     private void setAmbient() {
-        environment.set(new ColorAttribute(ColorAttribute.AmbientLight, .4f, .4f, .5f, 1f));
+        environment.set(new ColorAttribute(ColorAttribute.AmbientLight, .3f, .3f, .4f, 1f));
     }
 
     private void setDirectionalLight() {

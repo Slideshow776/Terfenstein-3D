@@ -76,6 +76,15 @@ public class HUD extends BaseActor {
         overlayIndicator = new OverlayIndicator(stage);
         face = new Face(stage, getFaceHealthIndex());
         addActor(keys = new Keys(getX(), getY(), getWidth(), getHeight(), stage));
+
+        if (BaseGame.isHideUI) {
+            face.setVisible(false);
+            ammoLabel.setVisible(false);
+            armorLabel.setVisible(false);
+            healthLabel.setVisible(false);
+            scoreLabel.setVisible(false);
+        }
+
         /*setDebug(true);*/
     }
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.1" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="15" height="15" tilewidth="64" tileheight="64" infinite="0" nextlayerid="17" nextobjectid="66225">
+<map version="1.9" tiledversion="1.9.1" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="15" height="15" tilewidth="64" tileheight="64" infinite="0" nextlayerid="17" nextobjectid="66326">
  <tileset firstgid="1" source="Assets.tsx"/>
  <tileset firstgid="145" source="Tileset.tsx"/>
  <objectgroup id="7" name="U1" visible="0">
@@ -191,6 +191,108 @@
   <object id="65903" gid="194" x="768" y="768" width="64" height="64"/>
   <object id="65904" gid="194" x="704" y="768" width="64" height="64"/>
   <object id="66135" gid="194" x="832" y="64" width="64" height="64"/>
+  <object id="66225" gid="146" x="1152" y="384" width="64" height="64">
+   <properties>
+    <property name="isAIpath" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="66226" gid="146" x="1216" y="384" width="64" height="64">
+   <properties>
+    <property name="isAIpath" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="66227" gid="146" x="1216" y="448" width="64" height="64">
+   <properties>
+    <property name="isAIpath" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="66228" gid="146" x="1152" y="448" width="64" height="64">
+   <properties>
+    <property name="isAIpath" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="66229" gid="146" x="1152" y="512" width="64" height="64">
+   <properties>
+    <property name="isAIpath" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="66230" gid="146" x="1216" y="512" width="64" height="64">
+   <properties>
+    <property name="isAIpath" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="66231" gid="146" x="1280" y="512" width="64" height="64"/>
+  <object id="66232" gid="146" x="1280" y="448" width="64" height="64"/>
+  <object id="66233" gid="146" x="1280" y="384" width="64" height="64"/>
+  <object id="66234" gid="146" x="1152" y="576" width="64" height="64">
+   <properties>
+    <property name="isAIpath" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="66235" gid="146" x="1216" y="576" width="64" height="64">
+   <properties>
+    <property name="isAIpath" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="66236" gid="146" x="1280" y="576" width="64" height="64"/>
+  <object id="66237" gid="146" x="1280" y="640" width="64" height="64"/>
+  <object id="66238" gid="146" x="1216" y="640" width="64" height="64">
+   <properties>
+    <property name="isAIpath" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="66239" gid="146" x="1152" y="640" width="64" height="64">
+   <properties>
+    <property name="isAIpath" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="66240" gid="146" x="1152" y="704" width="64" height="64">
+   <properties>
+    <property name="isAIpath" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="66241" gid="146" x="1216" y="704" width="64" height="64">
+   <properties>
+    <property name="isAIpath" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="66242" gid="146" x="1280" y="704" width="64" height="64"/>
+  <object id="66259" gid="146" x="1216" y="768" width="64" height="64"/>
+  <object id="66266" gid="146" x="1280" y="320" width="64" height="64"/>
+  <object id="66267" gid="146" x="1344" y="320" width="64" height="64"/>
+  <object id="66268" gid="146" x="1152" y="320" width="64" height="64">
+   <properties>
+    <property name="isAIpath" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="66269" gid="146" x="1216" y="320" width="64" height="64">
+   <properties>
+    <property name="isAIpath" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="66270" gid="146" x="1088" y="320" width="64" height="64">
+   <properties>
+    <property name="isAIpath" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="66307" gid="146" x="1088" y="256" width="64" height="64"/>
+  <object id="66308" gid="146" x="1152" y="256" width="64" height="64"/>
+  <object id="66309" gid="146" x="1216" y="256" width="64" height="64">
+   <properties>
+    <property name="isAIpath" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="66310" gid="146" x="1280" y="256" width="64" height="64"/>
+  <object id="66311" gid="146" x="1344" y="256" width="64" height="64"/>
+  <object id="66312" gid="146" x="1344" y="192" width="64" height="64"/>
+  <object id="66313" gid="146" x="1280" y="192" width="64" height="64"/>
+  <object id="66314" gid="146" x="1216" y="192" width="64" height="64">
+   <properties>
+    <property name="isAIpath" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="66315" gid="146" x="1152" y="192" width="64" height="64"/>
+  <object id="66316" gid="146" x="1088" y="192" width="64" height="64"/>
  </objectgroup>
  <objectgroup id="11" name="1st floor">
   <object id="60509" gid="117" x="128" y="192" width="64" height="64"/>
@@ -219,9 +321,6 @@
   <object id="65600" gid="209" x="960" y="448" width="64" height="64"/>
   <object id="65601" gid="209" x="960" y="384" width="64" height="64"/>
   <object id="65602" gid="209" x="960" y="320" width="64" height="64"/>
-  <object id="65604" gid="209" x="960" y="192" width="64" height="64"/>
-  <object id="65605" gid="209" x="960" y="128" width="64" height="64"/>
-  <object id="65606" gid="209" x="960" y="64" width="64" height="64"/>
   <object id="65607" gid="163" x="960" y="0" width="64" height="64"/>
   <object id="65608" gid="163" x="64" y="0" width="64" height="64"/>
   <object id="65609" gid="163" x="128" y="0" width="64" height="64"/>
@@ -264,6 +363,21 @@
   <object id="66115" gid="210" x="960" y="576" width="64" height="64"/>
   <object id="66116" gid="212" x="0" y="256" width="64" height="64"/>
   <object id="66117" gid="212" x="0" y="576" width="64" height="64"/>
+  <object id="66243" gid="193" x="1312" y="384" width="64" height="64"/>
+  <object id="66244" gid="193" x="1312" y="448" width="64" height="64"/>
+  <object id="66245" gid="193" x="1120" y="384" width="64" height="64"/>
+  <object id="66246" gid="193" x="1120" y="448" width="64" height="64"/>
+  <object id="66248" gid="193" x="1120" y="576" width="64" height="64"/>
+  <object id="66250" gid="193" x="1120" y="704" width="64" height="64"/>
+  <object id="66252" gid="193" x="1312" y="576" width="64" height="64"/>
+  <object id="66254" gid="193" x="1312" y="704" width="64" height="64"/>
+  <object id="66255" gid="193" x="1264" y="768" width="32" height="64"/>
+  <object id="66256" gid="193" x="1168" y="768" width="32" height="64"/>
+  <object id="66321" gid="193" x="1056" y="384" width="64" height="64"/>
+  <object id="66322" gid="193" x="992" y="384" width="64" height="64"/>
+  <object id="66323" gid="193" x="1376" y="384" width="64" height="64"/>
+  <object id="66324" gid="193" x="1440" y="384" width="64" height="64"/>
+  <object id="66325" gid="193" x="1504" y="384" width="64" height="64"/>
  </objectgroup>
  <objectgroup id="12" name="2nd floor" visible="0">
   <object id="60601" gid="119" x="192" y="64" width="64" height="64"/>
@@ -337,6 +451,28 @@
   <object id="65990" gid="194" x="512" y="0" width="64" height="64"/>
   <object id="65991" gid="194" x="576" y="0" width="64" height="64"/>
   <object id="65992" gid="194" x="640" y="0" width="64" height="64"/>
+  <object id="66278" gid="164" x="1184" y="384" width="64" height="64"/>
+  <object id="66279" gid="164" x="1248" y="384" width="64" height="64"/>
+  <object id="66280" gid="164" x="1248" y="448" width="64" height="64"/>
+  <object id="66281" gid="164" x="1088" y="320" width="64" height="64"/>
+  <object id="66282" gid="164" x="1152" y="320" width="64" height="64"/>
+  <object id="66283" gid="164" x="1216" y="320" width="64" height="64"/>
+  <object id="66284" gid="164" x="1280" y="320" width="64" height="64"/>
+  <object id="66285" gid="164" x="1344" y="320" width="64" height="64"/>
+  <object id="66286" gid="164" x="1184" y="448" width="64" height="64"/>
+  <object id="66287" gid="164" x="1184" y="512" width="64" height="64"/>
+  <object id="66288" gid="164" x="1248" y="512" width="64" height="64"/>
+  <object id="66289" gid="164" x="1248" y="576" width="64" height="64"/>
+  <object id="66290" gid="164" x="1184" y="576" width="64" height="64"/>
+  <object id="66291" gid="164" x="1184" y="640" width="64" height="64"/>
+  <object id="66292" gid="164" x="1248" y="640" width="64" height="64"/>
+  <object id="66293" gid="164" x="1248" y="704" width="64" height="64"/>
+  <object id="66294" gid="164" x="1184" y="704" width="64" height="64"/>
+  <object id="66295" gid="164" x="1120" y="640" width="64" height="64"/>
+  <object id="66296" gid="164" x="1120" y="512" width="64" height="64"/>
+  <object id="66297" gid="164" x="1312" y="512" width="64" height="64"/>
+  <object id="66298" gid="164" x="1312" y="640" width="64" height="64"/>
+  <object id="66299" gid="164" x="1216" y="768" width="64" height="64"/>
  </objectgroup>
  <objectgroup id="15" name="3rd floor" visible="0">
   <object id="65953" gid="163" x="320" y="640" width="64" height="64"/>
@@ -403,10 +539,13 @@
   <object id="66021" gid="161" x="576" y="0" width="64" height="64"/>
   <object id="66022" gid="161" x="640" y="0" width="64" height="64"/>
  </objectgroup>
- <objectgroup id="13" name="props" visible="0">
+ <objectgroup id="13" name="props">
   <object id="65846" gid="113" x="512" y="704" width="64" height="64"/>
   <object id="65847" gid="114" x="448" y="704" width="64" height="64"/>
   <object id="65848" gid="114" x="576" y="704" width="64" height="64"/>
+  <object id="66275" gid="117" x="1216" y="640" width="64" height="64"/>
+  <object id="66276" gid="117" x="1216" y="448" width="64" height="64"/>
+  <object id="66320" gid="133" x="1296.5" y="342.5" width="64" height="64"/>
  </objectgroup>
  <objectgroup id="8" name="actors">
   <object id="65567" gid="17" x="64" y="896" width="64" height="64"/>
@@ -468,7 +607,7 @@
   <object id="66083" gid="17" x="261" y="84.5" width="64" height="64"/>
   <object id="66084" gid="17" x="261" y="67.5" width="64" height="64"/>
   <object id="66085" gid="17" x="260.5" y="64" width="64" height="64"/>
-  <object id="66086" gid="2" x="576" y="256" width="64" height="64"/>
+  <object id="66086" gid="2" x="1216" y="192" width="64" height="64"/>
   <object id="66087" gid="41" x="576" y="192" width="64" height="64"/>
   <object id="66088" gid="34" x="320" y="704" width="64" height="64"/>
   <object id="66089" gid="34" x="384" y="704" width="64" height="64"/>
@@ -514,14 +653,21 @@
   <object id="66216" gid="34" x="576" y="192" width="64" height="64"/>
   <object id="66217" gid="34" x="576" y="192" width="64" height="64"/>
   <object id="66218" gid="34" x="576" y="192" width="64" height="64"/>
-  <object id="66219" gid="6" x="576" y="448" width="64" height="64"/>
-  <object id="66220" gid="4" x="640" y="448" width="64" height="64"/>
-  <object id="66221" gid="1" x="512" y="448" width="64" height="64"/>
-  <object id="66222" gid="5" x="704" y="448" width="64" height="64"/>
-  <object id="66224" gid="19" x="608" y="448" width="448" height="256">
+  <object id="66260" gid="65" x="1216" y="768" width="64" height="64"/>
+  <object id="66265" gid="1" x="1248" y="480" width="64" height="64"/>
+  <object id="66271" gid="65" x="1312" y="512" width="64" height="64" rotation="90"/>
+  <object id="66272" gid="65" x="1120" y="512" width="64" height="64" rotation="90"/>
+  <object id="66273" gid="65" x="1120" y="640" width="64" height="64" rotation="90"/>
+  <object id="66274" gid="65" x="1312" y="640" width="64" height="64" rotation="90"/>
+  <object id="66304" gid="18" x="1216" y="416" width="64" height="64">
    <properties>
-    <property name="color 1" type="color" value="#ff3d3d3d"/>
-    <property name="flickerFrequency" type="float" value="2"/>
+    <property name="intensity" type="float" value="10"/>
+   </properties>
+  </object>
+  <object id="66305" gid="18" x="1216" y="608" width="64" height="64">
+   <properties>
+    <property name="intensity" type="float" value="10"/>
+    <property name="map height" type="float" value="0.5"/>
    </properties>
   </object>
  </objectgroup>

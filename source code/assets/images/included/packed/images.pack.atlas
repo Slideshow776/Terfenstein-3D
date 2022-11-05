@@ -2883,140 +2883,147 @@ filter: Nearest, Nearest
 repeat: none
 props/barrel 1
   rotate: false
-  xy: 93, 164
+  xy: 93, 183
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 props/bed 1
   rotate: false
-  xy: 159, 164
+  xy: 159, 183
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 props/chair 0
   rotate: false
-  xy: 225, 164
+  xy: 225, 183
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 props/chair 1
   rotate: false
-  xy: 291, 164
+  xy: 291, 183
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 props/computer 0
   rotate: false
-  xy: 2, 2
+  xy: 266, 82
   size: 33, 33
   orig: 33, 33
   offset: 0, 0
   index: -1
 props/dog bed 1
   rotate: false
-  xy: 357, 164
+  xy: 357, 183
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 props/flag 1
   rotate: false
-  xy: 2, 104
+  xy: 2, 123
   size: 64, 65
   orig: 64, 65
   offset: 0, 0
   index: -1
 props/forklift
   rotate: false
-  xy: 2, 171
+  xy: 2, 190
   size: 89, 57
   orig: 89, 57
   offset: 0, 0
   index: -1
 props/lightBulb 0
   rotate: false
-  xy: 423, 164
+  xy: 423, 183
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 props/lightBulb 1
   rotate: false
-  xy: 68, 98
+  xy: 68, 117
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 props/lightBulb 2
   rotate: false
-  xy: 134, 98
+  xy: 134, 117
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 props/lightBulb 3
   rotate: false
-  xy: 200, 98
+  xy: 200, 117
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 props/palle 1
   rotate: false
-  xy: 266, 98
+  xy: 266, 117
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
+props/player
+  rotate: false
+  xy: 2, 2
+  size: 48, 52
+  orig: 48, 52
+  offset: 0, 0
+  index: -1
 props/skeleton 1
   rotate: false
-  xy: 332, 98
+  xy: 332, 117
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 props/statue 0
   rotate: false
-  xy: 2, 37
+  xy: 2, 56
   size: 64, 65
   orig: 64, 65
   offset: 0, 0
   index: -1
 props/suitcase 0
   rotate: false
-  xy: 266, 64
+  xy: 301, 83
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 props/table 1
   rotate: false
-  xy: 398, 98
+  xy: 398, 117
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 props/trash 1
   rotate: false
-  xy: 68, 32
+  xy: 68, 51
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 props/vase 1
   rotate: false
-  xy: 134, 32
+  xy: 134, 51
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 props/vase 2
   rotate: false
-  xy: 200, 32
+  xy: 200, 51
   size: 64, 64
   orig: 64, 64
   offset: 0, 0

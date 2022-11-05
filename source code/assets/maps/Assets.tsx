@@ -280,4 +280,9 @@
    <property name="name" value="skeleton 1"/>
   </properties>
  </tile>
+ <tile id="132">
+  <properties>
+   <property name="name" value="player"/>
+  </properties>
+ </tile>
 </tileset>

@@ -24,7 +24,7 @@ public class UIHandler {
     private Table uiTable;
     private Array<Enemy> enemies;
     private HUD hud;
-    private boolean isDebug = true;
+    private boolean isDebug = false;
 
     public UIHandler(Table uiTable, Array<Enemy> enemies, HUD hud) {
         this.uiTable = uiTable;
@@ -73,7 +73,7 @@ public class UIHandler {
 
         statusLabel = new Label("enemies left: " + enemies.size, new Label.LabelStyle(BaseGame.mySkin.get("arcade26", BitmapFont.class), null));
         statusLabel.setColor(Color.DARK_GRAY);
-        if (isDebug)
+        if (isDebug || !BaseGame.isHideUI)
             uiTable.add(statusLabel)
                     .expandX()
                     .left()
@@ -83,7 +83,7 @@ public class UIHandler {
 
         debugLabel = new Label(" ", new Label.LabelStyle(BaseGame.mySkin.get("arcade26", BitmapFont.class), null));
         debugLabel.setColor(Color.DARK_GRAY);
-        if (isDebug)
+        if (isDebug || !BaseGame.isHideUI)
             uiTable.add(debugLabel)
                     .expandX()
                     .top()

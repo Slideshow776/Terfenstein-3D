@@ -388,6 +388,7 @@ public class MapLoader {
         types.add("barrel 1", "flag 1", "trash 1", "lightBulb 2");
         types.add("vase 1", "vase 2", "palle 1", "forklift");
         types.add("dog bed 1", "bed 1", "lightBulb 3", "skeleton 1");
+        types.add("player");
         // types.add("");
 
         for (String type : types) {

@@ -62,6 +62,11 @@ public class WeaponHandler extends BaseActor {
         weapons.add(new Boot(), new Pistol(), new Shotgun(), new Chaingun());
         weapons.add(new RocketLauncher());
         setWeapon(1);
+
+        if (BaseGame.isHideUI) {
+            setVisible(false);
+            crosshair.setVisible(false);
+        }
     }
 
     @Override

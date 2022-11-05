@@ -22,6 +22,8 @@ public class Prop extends BaseActor3D {
             initializeModel(y, z, 8, 4);
         else if (type.equalsIgnoreCase("lightBulb 2") || type.equalsIgnoreCase("lightBulb 3"))
             initializeModel(y, z, 4, 8);
+        else if (type.equalsIgnoreCase("player"))
+            initializeModel(y, z, 3, 3);
         else
             initializeModel(y, z, 4, 4);
         loadImage("props/" + type);
