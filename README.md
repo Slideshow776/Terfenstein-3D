@@ -1,5 +1,7 @@
 # Terfenstein 3D
 
+![Main Capsule](https://user-images.githubusercontent.com/4059636/200133991-84551e8a-26b2-4126-8695-40a6689ac5de.png)
+
 [Wishlist it on Steam](https://store.steampowered.com/app/2192840/Terfenstein_3D/?beta=0)
 [![image](https://user-images.githubusercontent.com/4059636/198736454-b2d5e42d-f721-4a74-a444-36cbe1aa594e.png)](https://store.steampowered.com/app/2192840/Terfenstein_3D/?beta=0)
 
