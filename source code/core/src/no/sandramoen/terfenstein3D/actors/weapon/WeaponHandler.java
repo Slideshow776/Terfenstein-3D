@@ -35,6 +35,7 @@ public class WeaponHandler extends BaseActor {
     private float swayAmount = .01f;
     private float swayFrequency = .5f;
     private float originalWidth;
+    private float originalHeight;
 
     private float isReadyCounter;
 
@@ -53,6 +54,7 @@ public class WeaponHandler extends BaseActor {
 
         setSize(Gdx.graphics.getWidth() * .25f, Gdx.graphics.getWidth() * .25f);
         originalWidth = getWidth();
+        originalHeight = getHeight();
 
         setPosition();
         moveUp();
@@ -63,10 +65,10 @@ public class WeaponHandler extends BaseActor {
         weapons.add(new RocketLauncher());
         setWeapon(1);
 
-        if (BaseGame.isHideUI) {
+        /*if (BaseGame.isHideUI) {
             setVisible(false);
             crosshair.setVisible(false);
-        }
+        }*/
     }
 
     @Override
@@ -109,10 +111,15 @@ public class WeaponHandler extends BaseActor {
             if (currentWeapon != null)
                 currentWeapon.stopSound();
             currentWeapon = weapons.get(i);
-            if (currentWeapon instanceof Chaingun || currentWeapon instanceof RocketLauncher || currentWeapon instanceof Chainsaw)
+            if (currentWeapon instanceof Chaingun || currentWeapon instanceof RocketLauncher || currentWeapon instanceof Chainsaw || currentWeapon instanceof Boot)
                 setWidth(originalWidth * 2f);
             else
                 setWidth(originalWidth);
+
+            if (currentWeapon instanceof Boot)
+                setHeight(originalHeight * 1.8f);
+            else
+                setHeight(originalHeight);
 
             isReadyCounter = -.25f;
             setPosition();

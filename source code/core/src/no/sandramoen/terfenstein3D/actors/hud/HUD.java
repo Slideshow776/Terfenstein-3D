@@ -118,6 +118,8 @@ public class HUD extends BaseActor {
 
         weaponsTable = table;
         fadeWeaponsTableInAndOut(weaponHandler.currentWeapon);
+        if (BaseGame.isHideUI)
+            weaponsTable.setVisible(false);
     }
 
     public Table getLabelTable() {

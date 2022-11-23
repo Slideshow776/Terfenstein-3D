@@ -51,20 +51,22 @@ public class Keys extends Table {
     public void addKey(Key key) {
         keys.add(key);
 
-        if (key.color.equalsIgnoreCase("red")) {
-            redKey.setVisible(true);
-            redKey.addAction(wiggle());
-            addEffect(new RedKeyEffect(), redKey);
-        } else if (key.color.equalsIgnoreCase("blue")) {
-            blueKey.setVisible(true);
-            blueKey.addAction(wiggle());
-            addEffect(new BlueKeyEffect(), blueKey);
-        } else if (key.color.equalsIgnoreCase("green")) {
-            greenKey.setVisible(true);
-            greenKey.addAction(wiggle());
-            addEffect(new GreenKeyEffect(), greenKey);
-        } else {
-            Gdx.app.error(getClass().getSimpleName(), "Error: Couldn't add key: " + key);
+        if (!BaseGame.isHideUI) {
+            if (key.color.equalsIgnoreCase("red")) {
+                redKey.setVisible(true);
+                redKey.addAction(wiggle());
+                addEffect(new RedKeyEffect(), redKey);
+            } else if (key.color.equalsIgnoreCase("blue")) {
+                blueKey.setVisible(true);
+                blueKey.addAction(wiggle());
+                addEffect(new BlueKeyEffect(), blueKey);
+            } else if (key.color.equalsIgnoreCase("green")) {
+                greenKey.setVisible(true);
+                greenKey.addAction(wiggle());
+                addEffect(new GreenKeyEffect(), greenKey);
+            } else {
+                Gdx.app.error(getClass().getSimpleName(), "Error: Couldn't add key: " + key);
+            }
         }
     }
 

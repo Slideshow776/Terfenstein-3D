@@ -70,6 +70,8 @@ public class UIHandler {
                 .padBottom(Gdx.graphics.getHeight() * .01f)
                 .padLeft(Gdx.graphics.getWidth() * .01f)
                 .row();
+        /*if (BaseGame.isHideUI)
+            pickupLabel.setVisible(false);*/
 
         statusLabel = new Label("enemies left: " + enemies.size, new Label.LabelStyle(BaseGame.mySkin.get("arcade26", BitmapFont.class), null));
         statusLabel.setColor(Color.DARK_GRAY);

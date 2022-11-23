@@ -1132,7 +1132,7 @@
   <object id="67338" gid="178" x="1036.68" y="1313.79" width="52.1134" height="34.8922" rotation="22.6564"/>
   <object id="67339" gid="165" x="1920" y="1856" width="64" height="64">
    <properties>
-    <property name="secret" value="up"/>
+    <property name="secret" value="north"/>
    </properties>
   </object>
   <object id="67340" gid="165" x="2176" y="1856" width="64" height="64"/>

@@ -4200,6 +4200,54 @@ weapons/chainsaw/idle 2
   index: -1
 
 images.pack22.png
+size: 512, 512
+format: RGBA8888
+filter: Nearest, Nearest
+repeat: none
+weapons/handRock/1
+  rotate: false
+  xy: 2, 286
+  size: 194, 140
+  orig: 194, 140
+  offset: 0, 0
+  index: -1
+weapons/handRock/2
+  rotate: false
+  xy: 2, 144
+  size: 194, 140
+  orig: 194, 140
+  offset: 0, 0
+  index: -1
+weapons/handRock/3
+  rotate: false
+  xy: 198, 286
+  size: 194, 140
+  orig: 194, 140
+  offset: 0, 0
+  index: -1
+weapons/handRock/4
+  rotate: false
+  xy: 2, 2
+  size: 194, 140
+  orig: 194, 140
+  offset: 0, 0
+  index: -1
+weapons/handRock/5
+  rotate: false
+  xy: 198, 144
+  size: 194, 140
+  orig: 194, 140
+  offset: 0, 0
+  index: -1
+weapons/handRock/6
+  rotate: false
+  xy: 198, 2
+  size: 194, 140
+  orig: 194, 140
+  offset: 0, 0
+  index: -1
+
+images.pack23.png
 size: 256, 32
 format: RGBA8888
 filter: Nearest, Nearest
@@ -4247,7 +4295,7 @@ weapons/icons/shotgun
   offset: 0, 0
   index: -1
 
-images.pack23.png
+images.pack24.png
 size: 1024, 256
 format: RGBA8888
 filter: Nearest, Nearest
@@ -4288,7 +4336,7 @@ weapons/pistol/shooting 4
   offset: 0, 0
   index: -1
 
-images.pack24.png
+images.pack25.png
 size: 1024, 256
 format: RGBA8888
 filter: Nearest, Nearest
@@ -4322,7 +4370,7 @@ weapons/rocketlauncher/shooting 3
   offset: 0, 0
   index: -1
 
-images.pack25.png
+images.pack26.png
 size: 1024, 256
 format: RGBA8888
 filter: Nearest, Nearest

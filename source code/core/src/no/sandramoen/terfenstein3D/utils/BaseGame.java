@@ -109,7 +109,7 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
     public static boolean isCustomShadersEnabled = true;
     public static float mouseMovementSensitivity = .05f;
     public static boolean isHeadBobbing;
-    public static boolean isHideUI = false;
+    public static boolean isHideUI = true;
     public static float aspectRatio = 16 / 9f;
     public static float voiceVolume = 1f;
     public static float soundVolume = .5f;
@@ -227,7 +227,7 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
         assetManager.load("audio/sound/35213__abyssmal__slashkut.wav", Sound.class);
         assetManager.load("audio/sound/488608__spacejoe__metal-bowl-7.wav", Sound.class);
         assetManager.load("audio/sound/521958__kastenfrosch__wet-impact-2.ogg", Sound.class);
-        assetManager.load("audio/sound/493913__damnsatinist__heavy-punch.wav", Sound.class);
+        assetManager.load("audio/sound/399183__janbezouska__major-punch.wav", Sound.class);
         assetManager.load("audio/sound/632763__adh-dreaming__transition-swoosh.wav", Sound.class);
         assetManager.load("audio/sound/418107__crazymonke9__single-dog-bark-1.wav", Sound.class);
         assetManager.load("audio/sound/72724__moffet__impatient-whimpers-and-barks.wav", Sound.class);
@@ -310,7 +310,7 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
         menigMeleeSound = assetManager.get("audio/sound/35213__abyssmal__slashkut.wav", Sound.class);
         metalSound = assetManager.get("audio/sound/488608__spacejoe__metal-bowl-7.wav", Sound.class);
         wetSplashSound = assetManager.get("audio/sound/521958__kastenfrosch__wet-impact-2.ogg", Sound.class);
-        bootAttackSound = assetManager.get("audio/sound/493913__damnsatinist__heavy-punch.wav", Sound.class);
+        bootAttackSound = assetManager.get("audio/sound/399183__janbezouska__major-punch.wav", Sound.class);
         bootMissSound = assetManager.get("audio/sound/632763__adh-dreaming__transition-swoosh.wav", Sound.class);
         hundMeleeSound = assetManager.get("audio/sound/418107__crazymonke9__single-dog-bark-1.wav", Sound.class);
         hundDieSound = assetManager.get("audio/sound/72724__moffet__impatient-whimpers-and-barks.wav", Sound.class);
