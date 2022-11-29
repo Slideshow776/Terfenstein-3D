@@ -201,7 +201,7 @@ public class Enemy extends BaseActor3D {
         if (state == State.IDLE && !isPlayerVisible)
             isActive = false;
 
-        if (state == State.WALKING && tilePath == null)
+        if (state == State.WALKING && tilePath == null && !isPlayerVisible)
             state = State.IDLE;
     }
 

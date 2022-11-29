@@ -161,11 +161,14 @@ public class LevelScreen extends BaseScreen3D {
 
     @Override
     public boolean keyDown(int keycode) {
-        if (keycode == Keys.ESCAPE || keycode == Keys.Q) {
+        if (keycode == Keys.ESCAPE/* || keycode == Keys.Q*/) {
             stopLevelMusic();
             BaseGame.levelScreen = this;
             BaseGame.setActiveScreen(new MenuScreen());
-        } else if (keycode == Keys.R)
+        }
+
+        // ------------------------------------------
+        /* else if (keycode == Keys.R)
             BaseGame.setActiveScreen(new LevelScreen(PAR_TIME, BaseGame.testMap, "test", 100, 0, 50, 50, 50, null));
         else if (isGameOver && totalTime > 2)
             restartLevel();
@@ -183,8 +186,9 @@ public class LevelScreen extends BaseScreen3D {
             Player.movementSpeed += 1;
         } else if (keycode == Keys.NUMPAD_SUBTRACT) {
             Player.movementSpeed -= 1;
-        }
+        }*/
         // ------------------------------------------
+
         else if (keycode == Keys.NUM_1) {
             weaponHandler.setWeapon(0);
             hud.setAmmo(weaponHandler.currentWeapon);
@@ -200,7 +204,7 @@ public class LevelScreen extends BaseScreen3D {
         } else if (keycode == Keys.NUM_5) {
             weaponHandler.setWeapon(4);
             hud.setAmmo(weaponHandler.currentWeapon);
-        } else if (keycode == Keys.SPACE && !isGameOver) {
+        } else if ((keycode == Keys.SPACE) && !isGameOver) {
             for (Door door : doors)
                 if (player.isWithinDistance(Tile.height * .8f, door)) {
                     String message = door.tryToOpenDoor(hud.keys.getKeys());
@@ -211,7 +215,6 @@ public class LevelScreen extends BaseScreen3D {
                 if (player.isWithinDistance(Tile.height * 1.1f, elevator) && !elevator.activated)
                     levelFinished();
         }
-
         return super.keyDown(keycode);
     }
 

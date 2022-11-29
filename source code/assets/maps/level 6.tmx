@@ -2188,7 +2188,11 @@
   <object id="74885" gid="163" x="2944" y="3072" width="64" height="64"/>
   <object id="74886" gid="163" x="2880" y="3072" width="64" height="64"/>
   <object id="74887" gid="163" x="2880" y="3008" width="64" height="64"/>
-  <object id="74888" gid="163" x="2880" y="2944" width="64" height="64"/>
+  <object id="74888" gid="163" x="2880" y="2944" width="64" height="64">
+   <properties>
+    <property name="secret" value="up"/>
+   </properties>
+  </object>
   <object id="74889" gid="163" x="2880" y="2880" width="64" height="64"/>
   <object id="74890" gid="231" x="2768" y="2880" width="32" height="64"/>
   <object id="74891" gid="230" x="2768" y="2944" width="32" height="64"/>
@@ -4222,26 +4226,6 @@
     <property name="color 0" type="color" value="#fffcfcfc"/>
    </properties>
   </object>
-  <object id="77050" gid="312" x="896" y="4032" width="64" height="64"/>
-  <object id="77051" gid="313" x="896" y="4032" width="64" height="64"/>
-  <object id="77052" gid="311" x="896" y="4032" width="64" height="64"/>
-  <object id="77053" gid="311" x="896" y="4032" width="64" height="64"/>
-  <object id="77054" gid="311" x="896" y="4032" width="64" height="64"/>
-  <object id="77055" gid="311" x="896" y="4032" width="64" height="64"/>
-  <object id="77056" gid="311" x="896" y="4032" width="64" height="64"/>
-  <object id="77057" gid="306" x="896" y="4032" width="64" height="64"/>
-  <object id="77058" gid="306" x="896" y="4032" width="64" height="64"/>
-  <object id="77059" gid="306" x="896" y="4032" width="64" height="64"/>
-  <object id="77060" gid="306" x="896" y="4032" width="64" height="64"/>
-  <object id="77061" gid="306" x="896" y="4032" width="64" height="64"/>
-  <object id="77062" gid="306" x="896" y="4032" width="64" height="64"/>
-  <object id="77063" gid="306" x="896" y="4032" width="64" height="64"/>
-  <object id="77064" gid="306" x="896" y="4032" width="64" height="64"/>
-  <object id="77065" gid="306" x="896" y="4032" width="64" height="64"/>
-  <object id="77066" gid="306" x="896" y="4032" width="64" height="64"/>
-  <object id="77067" gid="306" x="896" y="4032" width="64" height="64"/>
-  <object id="77068" gid="306" x="896" y="4032" width="64" height="64"/>
-  <object id="77069" gid="309" x="896" y="4032" width="64" height="64"/>
   <object id="77077" gid="314" x="3584" y="3584" width="64" height="64"/>
   <object id="77078" gid="314" x="3584" y="4416" width="64" height="64"/>
  </objectgroup>
