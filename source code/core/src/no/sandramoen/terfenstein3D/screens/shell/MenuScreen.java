@@ -20,6 +20,8 @@ import no.sandramoen.terfenstein3D.utils.BaseScreen;
 import no.sandramoen.terfenstein3D.utils.GameUtils;
 
 public class MenuScreen extends BaseScreen {
+    private int initializedWidth;
+
     @Override
     public void initialize() {
         Image featureGraphics = new Image(BaseGame.textureAtlas.findRegion("feature graphics"));
@@ -48,6 +50,20 @@ public class MenuScreen extends BaseScreen {
 
     @Override
     public void update(float delta) {
+    }
+
+    @Override
+    public void resize(int width, int height) {
+        if (initializedWidth != 0)
+            initializedWidth = width;
+        super.resize(width, height);
+    }
+
+    @Override
+    public void resume() {
+        if (initializedWidth == 0)
+            BaseGame.setActiveScreen(new MenuScreen());
+        super.resume();
     }
 
     @Override

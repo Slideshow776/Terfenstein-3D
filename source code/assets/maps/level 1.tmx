@@ -1146,7 +1146,7 @@
   <object id="68620" gid="181" x="768" y="1408" width="64" height="64"/>
   <object id="68621" gid="155" x="768" y="1344" width="64" height="64">
    <properties>
-    <property name="secret" value="up"/>
+    <property name="secret" value="south"/>
    </properties>
   </object>
   <object id="68622" gid="181" x="768" y="1280" width="64" height="64"/>

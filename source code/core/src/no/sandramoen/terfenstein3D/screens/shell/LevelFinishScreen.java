@@ -85,6 +85,7 @@ public class LevelFinishScreen extends BaseScreen {
             BaseGame.escapeAmbientMusic.play();
         }
 
+        GameUtils.stopAllMusic();
         initializeLabels(args);
         initializeImages();
         GameUtils.playLoopingMusic(BaseGame.levelFinishMusic);

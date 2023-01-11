@@ -32,6 +32,7 @@ import no.sandramoen.terfenstein3D.actors.utils.baseActors.BaseActor;
 import no.sandramoen.terfenstein3D.actors.utils.baseActors.BaseActor3D;
 import no.sandramoen.terfenstein3D.actors.characters.enemy.Enemy;
 import no.sandramoen.terfenstein3D.actors.weapon.weapons.Chaingun;
+import no.sandramoen.terfenstein3D.actors.weapon.weapons.Chainsaw;
 import no.sandramoen.terfenstein3D.actors.weapon.weapons.Weapon;
 import no.sandramoen.terfenstein3D.screens.gameplay.level.BarrelExplosionHandler;
 import no.sandramoen.terfenstein3D.screens.gameplay.level.EnemyHandler;
@@ -162,7 +163,7 @@ public class LevelScreen extends BaseScreen3D {
     @Override
     public boolean keyDown(int keycode) {
         if (keycode == Keys.ESCAPE/* || keycode == Keys.Q*/) {
-            stopLevelMusic();
+            GameUtils.stopAllMusic();
             BaseGame.levelScreen = this;
             BaseGame.setActiveScreen(new MenuScreen());
         }
@@ -170,8 +171,6 @@ public class LevelScreen extends BaseScreen3D {
         // ------------------------------------------
         /* else if (keycode == Keys.R)
             BaseGame.setActiveScreen(new LevelScreen(PAR_TIME, BaseGame.testMap, "test", 100, 0, 50, 50, 50, null));
-        else if (isGameOver && totalTime > 2)
-            restartLevel();
         else if (keycode == Keys.F) {
             player.isCollisionEnabled = !player.isCollisionEnabled;
             Gdx.app.log(getClass().getSimpleName(), "player.isCollisionEnabled: " + player.isCollisionEnabled);
@@ -189,6 +188,8 @@ public class LevelScreen extends BaseScreen3D {
         }*/
         // ------------------------------------------
 
+        else if (isGameOver && totalTime > 2)
+            restartLevel();
         else if (keycode == Keys.NUM_1) {
             weaponHandler.setWeapon(0);
             hud.setAmmo(weaponHandler.currentWeapon);
@@ -493,21 +494,6 @@ public class LevelScreen extends BaseScreen3D {
         hud.setWeaponsTable(weaponHandler);
     }
 
-    private void stopLevelMusic() {
-        BaseGame.metalWalkingMusic.stop();
-        BaseGame.menuMusic.stop();
-        BaseGame.level1Music.stop();
-        BaseGame.level2Music.stop();
-        BaseGame.level3Music.stop();
-        BaseGame.level4Music.stop();
-        BaseGame.level5Music.stop();
-        BaseGame.level6Music.stop();
-        BaseGame.level7Music.stop();
-        BaseGame.ambientFanMusic.stop();
-        BaseGame.chainSawAttackingMusic.stop();
-        BaseGame.chainSawIdleMusic.stop();
-    }
-
     private String getLevelName() {
         if (numLevel.equalsIgnoreCase("level 1"))
             return "Hangar";
@@ -562,7 +548,9 @@ public class LevelScreen extends BaseScreen3D {
             for (int i = 0; i < mapLoader.elevators.size; i++)
                 mapLoader.elevators.get(i).activate();
             BaseGame.elevatorSound.play(BaseGame.soundVolume);
-            stopLevelMusic();
+            GameUtils.stopAllMusic();
+            if (weaponHandler.currentWeapon instanceof Chainsaw)
+                weaponHandler.setWeapon(1);
             Array levelData = getLevelData();
             uiStage.addAction(Actions.sequence(
                     Actions.delay(.5f),
@@ -605,13 +593,13 @@ public class LevelScreen extends BaseScreen3D {
         } else if (numLevel.equalsIgnoreCase("level 3")) {
             uiHandler.setTemporaryGameLabel("{SLOWER}{SHAKE}D E P R A V I T Y !");
         } else if (numLevel.equalsIgnoreCase("level 4")) {
-            uiHandler.setTemporaryGameLabel("{SLOWER}");
+            uiHandler.setTemporaryGameLabel("{SLOWER}{SHAKE}H A T E !");
         } else if (numLevel.equalsIgnoreCase("level 5")) {
-            uiHandler.setTemporaryGameLabel("{SLOWER}");
+            uiHandler.setTemporaryGameLabel("{SLOWER}{SHAKE}E M B R A C E !");
         } else if (numLevel.equalsIgnoreCase("level 6")) {
-            uiHandler.setTemporaryGameLabel("{SLOWER}");
+            uiHandler.setTemporaryGameLabel("{SLOWER}{SHAKE}R E G R E T !");
         } else if (numLevel.equalsIgnoreCase("level 7")) {
-            uiHandler.setTemporaryGameLabel("{SLOWER}{RAINBOW}F R E E D O M !");
+            uiHandler.setTemporaryGameLabel("{SLOWER}{SHAKE}{RAINBOW}F R E E D O M !");
         }
     }
 }

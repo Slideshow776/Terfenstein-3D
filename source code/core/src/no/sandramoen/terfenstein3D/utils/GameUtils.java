@@ -110,6 +110,21 @@ public class GameUtils {
         }
     }
 
+    public static void stopAllMusic() {
+        BaseGame.metalWalkingMusic.stop();
+        BaseGame.menuMusic.stop();
+        BaseGame.level1Music.stop();
+        BaseGame.level2Music.stop();
+        BaseGame.level3Music.stop();
+        BaseGame.level4Music.stop();
+        BaseGame.level5Music.stop();
+        BaseGame.level6Music.stop();
+        BaseGame.level7Music.stop();
+        BaseGame.ambientFanMusic.stop();
+        BaseGame.chainSawAttackingMusic.stop();
+        BaseGame.chainSawIdleMusic.stop();
+    }
+
     public static float normalizeValue(float value, float min, float max) {
         return (value - min) / (max - min);
     }
@@ -134,7 +149,7 @@ public class GameUtils {
         return sound.play(BaseGame.soundVolume / GameUtils.normalizeValue(distance, 0f, vocalRange), pitch, 0);
     }
 
-    public static void printLoadingTime(String tag, String string,  long startTime) {
+    public static void printLoadingTime(String tag, String string, long startTime) {
         long endTime = System.currentTimeMillis();
         Gdx.app.log(tag, string + " took " + (endTime - startTime) + " ms to load.");
     }

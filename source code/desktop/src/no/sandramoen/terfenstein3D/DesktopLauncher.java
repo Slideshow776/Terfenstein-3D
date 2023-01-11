@@ -11,8 +11,9 @@ public class DesktopLauncher {
         Lwjgl3ApplicationConfiguration config = new Lwjgl3ApplicationConfiguration();
         config.setForegroundFPS(60);
         config.setTitle("Terfenstein 3D");
+        config.setWindowIcon("images/excluded/icon_16x16.png", "images/excluded/icon_32x32.png");
 
-        boolean isFullscreen = false;
+        boolean isFullscreen = true;
         if (isFullscreen)
             config.setFullscreenMode(Lwjgl3ApplicationConfiguration.getDisplayMode());
         else

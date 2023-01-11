@@ -163,7 +163,7 @@ public abstract class BaseGame extends Game implements AssetErrorListener {
             soundVolume = .7f;
             musicVolume = .4f;
             voiceVolume = 1f;
-            mouseMovementSensitivity = .05f;
+            mouseMovementSensitivity = .04f;
             isHeadBobbing = true;
         }
     }

@@ -75,7 +75,7 @@ public class UIHandler {
 
         statusLabel = new Label("enemies left: " + enemies.size, new Label.LabelStyle(BaseGame.mySkin.get("arcade26", BitmapFont.class), null));
         statusLabel.setColor(Color.DARK_GRAY);
-        if (isDebug || !BaseGame.isHideUI)
+        if (isDebug/* || !BaseGame.isHideUI*/)
             uiTable.add(statusLabel)
                     .expandX()
                     .left()
@@ -85,7 +85,7 @@ public class UIHandler {
 
         debugLabel = new Label(" ", new Label.LabelStyle(BaseGame.mySkin.get("arcade26", BitmapFont.class), null));
         debugLabel.setColor(Color.DARK_GRAY);
-        if (isDebug || !BaseGame.isHideUI)
+        if (isDebug/* || !BaseGame.isHideUI*/)
             uiTable.add(debugLabel)
                     .expandX()
                     .top()
