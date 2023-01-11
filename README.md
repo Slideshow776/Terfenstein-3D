@@ -274,6 +274,19 @@ These, and more, are covered in [this book](https://www.lulu.com/shop/max-pears/
 Follow [this tutorial](https://fullstackdeveloper.guru/2020/06/17/how-to-create-a-windows-native-java-application-generating-exe-file/) to do so.
 To automate this process checkout the [desktop build file](https://github.com/Slideshow776/Terfenstein-3D/blob/master/source%20code/desktop/build.gradle).
 
+Alternatively use [packr]() with the following commands
+```
+java -jar packr-all-4.0.0.jar 
+--platform "windows64" 
+--jdk "C:\Program Files\Java\jdk-15.0.1" 
+--useZgcIfSupportedOs 
+--executable "Terfenstein 3D" 
+--classpath "C:\Users\Sandra Moen\dev\Terfenstein 3D\source code\desktop\build\lib\Terfenstein 3D.jar" 
+--mainclass "no.sandramoen.terfenstein3D.DesktopLauncher" 
+--resources "C:\Users\Sandra Moen\dev\Terfenstein 3D\source code\assets" 
+--output "C:\Users\Sandra Moen\Desktop\Terfenstein 3D\packr build files"
+```
+
 ## Other
 For other project specifics check out the [commits](https://github.com/Slideshow776/3D-shooting-game/commits/master).
 
