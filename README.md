@@ -274,7 +274,7 @@ These, and more, are covered in [this book](https://www.lulu.com/shop/max-pears/
 Follow [this tutorial](https://fullstackdeveloper.guru/2020/06/17/how-to-create-a-windows-native-java-application-generating-exe-file/) to do so.
 To automate this process checkout the [desktop build file](https://github.com/Slideshow776/Terfenstein-3D/blob/master/source%20code/desktop/build.gradle).
 
-Alternatively use [packr]() with the following commands
+Alternatively use [packr](https://github.com/libgdx/packr#usage) with the following commands
 ```
 java -jar packr-all-4.0.0.jar 
 --platform "windows64" 
