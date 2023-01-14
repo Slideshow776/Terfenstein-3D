@@ -4,7 +4,7 @@
 
 [![Trailer thumbnaik](https://user-images.githubusercontent.com/4059636/201704064-5a339898-6c23-4ee2-8d4f-5ac62d32c9a0.png)](https://youtu.be/BUj2IYbL-zI)
 
-[Wishlist it on Steam](https://store.steampowered.com/app/2192840/Terfenstein_3D/?beta=0)
+[Buy it on Steam?](https://store.steampowered.com/app/2192840/Terfenstein_3D/?beta=0)
 
 [![Main Capsule](https://user-images.githubusercontent.com/4059636/200133991-84551e8a-26b2-4126-8695-40a6689ac5de.png)](https://store.steampowered.com/app/2192840/Terfenstein_3D/?beta=0)
 
