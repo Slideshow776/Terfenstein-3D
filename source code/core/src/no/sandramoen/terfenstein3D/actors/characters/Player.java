@@ -14,9 +14,13 @@ import no.sandramoen.terfenstein3D.utils.Stage3D;
 public class Player extends BaseActor3D {
     public boolean isMoving;
     public static float movementSpeed = 11f;
+    private static float sprintScalar = 1.414f;
 
     private float rotateSpeed = 90f * .05f;
+
+    private static final float TIME_RESET_THRESHOLD = 100000f;
     private float totalTime = 0;
+    
     private Stage3D stage3D;
     private Stage stage;
 
@@ -38,6 +42,13 @@ public class Player extends BaseActor3D {
     private final float ROLL_INCREMENT = .02f;
 
     private Vector2 lastPosition;
+
+    // Movement key mappings
+    private static final int MOVE_FORWARD = Keys.W;
+    private static final int MOVE_LEFT = Keys.A; 
+    private static final int MOVE_BACKWARD = Keys.S;
+    private static final int MOVE_RIGHT = Keys.D;
+    private static final int SPRINT = Keys.SHIFT_LEFT;
 
     public Player(float y, float z, Stage3D stage3D, float rotation, Stage stage) {
         super(0, y, z, stage3D);
@@ -119,6 +130,9 @@ public class Player extends BaseActor3D {
 
     private void headBobbing(float dt) {
         totalTime += dt;
+        if (totalTime > TIME_RESET_THRESHOLD) {
+            totalTime = 0f;
+        }
 
         if (BaseGame.isHeadBobbing) {
             bobCounter += bobFrequency * dt;
@@ -139,26 +153,39 @@ public class Player extends BaseActor3D {
     }
 
     private void keyboardPolling(float dt) {
-        if (Gdx.input.isKeyPressed(Keys.W)) {
-            moveForward(-movementSpeed * dt);
+        
+        Vector2 moveVector = new Vector2(0, 0);
+
+        if (Gdx.input.isKeyPressed(MOVE_FORWARD)) {
+            moveVector.y = -1;
         }
 
-        if (Gdx.input.isKeyPressed(Keys.A)) {
-            moveRight(movementSpeed * dt);
+        if (Gdx.input.isKeyPressed(MOVE_BACKWARD)) {
+            moveVector.x = 1;
             rollAngle = MathUtils.clamp(rollAngle -= ROLL_INCREMENT, -ROLL_ANGLE_MAX, ROLL_ANGLE_MAX);
         }
 
-        if (Gdx.input.isKeyPressed(Keys.S)) {
-            moveForward(movementSpeed * dt);
+        if (Gdx.input.isKeyPressed(MOVE_LEFT)) {
+            moveVector.y = 1;
         }
 
-        if (Gdx.input.isKeyPressed(Keys.D)) {
-            moveRight(-movementSpeed * dt);
+        if (Gdx.input.isKeyPressed(MOVE_RIGHT)) {
+            moveVector.x = -1;
             rollAngle = MathUtils.clamp(rollAngle += ROLL_INCREMENT, -ROLL_ANGLE_MAX, ROLL_ANGLE_MAX);
         }
 
-        if (!Gdx.input.isKeyPressed(Keys.A) && !Gdx.input.isKeyPressed(Keys.D))
+        moveVector.nor();
+
+        if (!Gdx.input.isKeyPressed(MOVE_LEFT) && !Gdx.input.isKeyPressed(MOVE_RIGHT))
             resetRoll();
+
+        if (Gdx.input.isKeyPressed(SPRINT)){
+            moveForward(movementSpeed * sprintScalar * dt * moveVector.y);
+            moveRight(movementSpeed * sprintScalar * dt * moveVector.x);
+        } else {
+            moveForward(movementSpeed * dt * moveVector.y);
+            moveRight(movementSpeed * dt * moveVector.x);
+        }
     }
 
     private void resetRoll() {
