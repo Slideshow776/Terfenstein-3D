@@ -15,6 +15,7 @@ public class Player extends BaseActor3D {
     public boolean isMoving;
     public static float movementSpeed = 11f;
     private static float sprintScalar = 1.414f;
+    public static final Vector2 moveVector = new Vector2(0, 0);
 
     private float rotateSpeed = 90f * .05f;
 
@@ -154,7 +155,7 @@ public class Player extends BaseActor3D {
 
     private void keyboardPolling(float dt) {
         
-        Vector2 moveVector = new Vector2(0, 0);
+        moveVector.set(0, 0);
 
         if (Gdx.input.isKeyPressed(MOVE_FORWARD)) {
             moveVector.y = -1;
